@@ -1,0 +1,12 @@
+.click {
+    cursor: pointer;
+}
+
+.property-label {
+    width: 20%;
+    font-weight: bold;
+}
+
+.required {
+    color: red;
+}

@@ -1,0 +1,174 @@
+<?xml version="1.0" ?>
+<Profile xmlns="http://example.org/profile/vocab/">
+
+  <resourceTemplate id="work" minOccur="1" maxOccur="*">
+    <class id='http://bibframe.org/vocab/Book'>
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+        <property id="http://bibframe.org/vocab/proposed/title">
+          <propertyLabel>Title</propertyLabel>
+	</property>
+	<valueConstraint>
+          <valueLang></valueLang>
+          <valueDataType></valueDataType>
+	</valueConstraint>
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+        <property id="http://bibframe.org/vocab/preferedTitle">
+          <propertyLabel>Preferred Title</propertyLabel>
+        </property>
+	<valueConstraint>
+          <valueLang></valueLang>
+          <valueDataType></valueDataType>
+	</valueConstraint>
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="*" type="resource">
+        <property id="http://bibframe.org/vocab/subject">
+          <propertyLabel>Subject</propertyLabel>
+	</property>
+	<valueConstraint descriptionTemplateRef="authority" />
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="*" type="resource">
+        <property id="http://bibframe.org/vocab/language">
+          <propertyLabel>Language</propertyLabel>
+	</property>
+	<valueConstraint descriptionTemplateRef="language" />
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="*" type="resource">
+        <property id="http://bibframe.org/vocab/proposed/author">
+          <propertyLabel>Author</propertyLabel>
+	</property>
+	<valueConstraint descriptionTemplateRef="author" />
+      </propertyTemplate>
+      
+      <propertyTemplate minOccurs="0" maxOccurs="*" type="resource">
+        <property id="http://bibframe.org/vocab/hasInstance">
+           <propertyLabel>Has Instance</propertyLabel>
+	</property>
+        <valueConstraint descriptionTemplateRef="instance" />
+      </propertyTemplate>
+
+    </class>
+  </resourceTemplate>
+
+  <resourceTemplate id="instance" minOccur="1" maxOccur="*">
+
+   <class id="http://bibframe.org/vocab/proposed/EBook">
+
+      <propertyTemplate minOccurs="0" maxOccurs="*" type="resource">
+	<propertySelector>
+          <property id="http://bibframe.org/vocab/publication">
+	    <propertyLabel>publication</propertyLabel>
+	  </property>
+          <property id="http://bibframe.org/vocab/distribution">
+	    <propertyLabel>distribution</propertyLabel>
+	  </property>
+          <property id="http://bibframe.org/vocab/production">
+	    <propertyLabel>production</propertyLabel>
+	  </property>
+          <property id="http://bibframe.org/vocab/manufacture">
+	    <propertyLabel>manufacture</propertyLabel>
+	  </property>
+	</propertySelector>
+	<valueConstraint descriptionTemplateRef="provider" />
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+	<property id="http://bibframe.org/vocab/ISBN10">
+          <propertyLabel>ISBN 10</propertyLabel>
+	</property>
+      </propertyTemplate> 
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+	<property id="http://bibframe.org/vocab/ISBN13">
+          <propertyLabel>ISBN 13</propertyLabel>
+	</property>
+      </propertyTemplate> 
+      
+    </class>
+
+  </resourceTemplate>
+
+
+  <resourceTemplate id="language" minOccurs="1" maxOccurs="1">
+    <class id='http://bibframe.org/vocab/Agent'>
+
+    <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+      <property id="http://bibframe.org/vocab/label">
+        <propertyLabel>Label</propertyLabel>
+      </property>
+    </propertyTemplate> 
+ 
+    </class>
+  </resourceTemplate>    
+
+  <resourceTemplate id="language" minOccurs="1" maxOccurs="1">
+    <class id='http://bibframe.org/vocab/LanguageEntity'>
+
+    <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+      <property id="http://bibframe.org/vocab/label">
+        <propertyLabel>Label</propertyLabel>
+      </property>
+    </propertyTemplate>
+
+    </class>
+  </resourceTemplate>
+
+  <resourceTemplate id="authority" minOccurs="1" maxOccurs="1">
+    <class id='http://bibframe.org/vocab/Authority'>
+
+    <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+      <property id="http://bibframe.org/vocab/label">
+        <propertyLabel>Label</propertyLabel>
+      </property>
+    </propertyTemplate>
+
+    </class>
+  </resourceTemplate>
+
+  <resourceTemplate id="provider" minOccurs="1" maxOccurs="1">
+    <class id='http://bibframe.org/vocab/Provider'>
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+        <property id="http://bibframe.org/vocab/copyrightDate">
+          <propertyLabel>Copyright Date</propertyLabel>
+ 	  <valueConstraint>
+            <valueDataType id="http://bibframe.org/vocab/proposed/ISO8601">
+	      <valueLabel>IS0 8601</valueLabel>
+            </valueDataType>
+	  </valueConstraint>
+	</property>
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+        <property id="http://bibframe.org/vocab/providerDate">
+          <propertyLabel>Provider Date</propertyLabel>
+ 	  <valueConstraint>
+            <valueDataType id="http://bibframe.org/vocab/proposed/ISO8601">
+	      <valueLabel>IS0 8601</valueLabel>
+            </valueDataType>
+	  </valueConstraint>
+	</property>
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+        <property id="http://bibframe.org/vocab/providerName">
+          <propertyLabel>Provider Name</propertyLabel>
+	</property>
+      </propertyTemplate>
+
+      <propertyTemplate minOccurs="0" maxOccurs="1" type="literal">
+        <property id="http://bibframe.org/vocab/providerPlace">
+          <propertyLabel>Provider Place</propertyLabel>
+	</property>
+      </propertyTemplate>
+    </class>
+  </resourceTemplate>
+
+  <!-- etc -->
+
+</Profile>

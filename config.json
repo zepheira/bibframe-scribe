@@ -1,0 +1,12 @@
+{
+    "useClasses": [
+        {
+            "id": "http://bibframe.org/vocab/Book",
+            "label": "Book"
+        },
+        {
+            "id": "http://bibframe.org/vocab/proposed/EBook",
+            "label": "Electronic Book"
+        }
+    ]
+}

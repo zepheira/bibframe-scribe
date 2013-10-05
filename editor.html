@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="bibframeEditor">
+  <head>
+    <meta charset="utf-8">
+    <title>BIBFRAME Editor</title>
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="css/editor.css" rel="stylesheet">
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/value-constraint.js"></script>
+    <script src="js/property.js"></script>
+    <script src="js/property-template.js"></script>
+    <script src="js/resource-template.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/initializer.js"></script>
+    <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
+    <link rel="bibframe-profile" href="profiles/vanilla.xml">
+  </head>
+  <body ng-controller="EditorCtrl">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <h3>BIBFRAME Editor</h3>
+        </div>
+      </div>
+    </div>
+    <div class="tabbable tabs-left container">
+      <ul class="nav nav-tabs">
+          <li ng-repeat="profile in profileOptions">
+            <a ng-click="newEdit(profile)" href="#form" data-toggle="tab" class="click"><strong>{{ profile.label }}</strong></a>
+          </li>
+      </ul>
+      <div class="tab-content">
+        <div class="hero-unit" ng-show="!activeProfile">
+          <h2>Hi.</h2>
+          <p>Click a class on the left to begin creating a new work of that type.</p>
+        </div>
+        <div class="tab-pane" id="form">
+          <form class="form-inline well" ng-show="activeProfile!=null">
+            <p><small>Properties marked with a <span class="required">*</span> are required.</small></p>
+            <div ng-repeat="prop in activeProfile.getPropertyTemplates()">
+              <p>
+                <label for="{{ prop.getProperties()[0].getID() }}" class="property-label">{{ prop.getProperties()[0].getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
+                <span ng-switch="" on="prop.getType()">
+                  <span ng-switch-when="literal">
+                    <span ng-include="'basic.html'"></span>
+                  </span>
+                  <span ng-switch-when="resource">
+                    <span ng-include="'advanced.html'"></span>
+                  </span>
+                </span>
+              </p>
+            </div>
+            <div class="buttons">
+              <button class="btn" type="button">Clear</button>
+              <button class="btn btn-primary btn-large" type="button">Export</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/ng-template" id="basic.html">
+      <span ng-if="prop.getConstraint().hasComplexType()">
+        <!-- @@@ do something with complex type -->
+        <input type="text" id="{{ prop.getProperties()[0].getID() }}">
+      </span>
+      <span ng-if="!prop.getConstraint().hasComplexType()">
+        <input type="text" id="{{ prop.getProperties()[0].getID() }}">
+      </span>
+    </script>
+
+    <script type="text/ng-template" id="advanced.html">
+      <span ng-if="prop.getConstraint().hasReference()">
+        {{ profiles[idToURI[prop.getConstraint().getReference()]] }}
+        <select><option>hi</option></select>
+      </span>
+      <span ng-if="!prop.getConstraint().hasReference()">
+        {{ prop.getConstraint().getReference() }}
+      </span>
+      </span>
+    </script>
+  </body>
+</html>
