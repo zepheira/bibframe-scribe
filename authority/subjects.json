@@ -1,0 +1,20 @@
+{
+    "values": [
+        {
+            "label": "Ahab, Captain (Fictitious character) -- Fiction",
+            "uri": "urn:fake:captain-ahab--fiction"
+        },
+        {
+            "label": "Fish -- Fiction",
+            "uri": "urn:fake:fish--fiction"
+        },
+        {
+            "label": "Whaling -- Fiction",
+            "uri": "urn:fake:whaling--fiction"
+        },
+        {
+            "label": "Whales -- Fiction",
+            "uri": "urn:fake:whales--fiction"
+        }
+    ]
+}

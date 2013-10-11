@@ -67,7 +67,7 @@
                         "propertyLabel": "Author"
                     }],
                     "valueConstraint": {
-                        "descriptionTemplateRef": "author"
+                        "descriptionTemplateRef": "agent"
                     }
                 },
                 {
@@ -140,7 +140,7 @@
             }
         },
         {
-            "id": "language",
+            "id": "agent",
             "minOccurs": 1,
             "maxOccurs": 1,
             "class": {

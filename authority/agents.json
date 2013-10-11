@@ -1,0 +1,20 @@
+{
+    "values": [
+        {
+            "label": "Herman Melville",
+            "uri": "urn:fake:melville"
+        },
+        {
+            "label": "Charles Dickens",
+            "uri": "urn:fake:dickens"
+        },
+        {
+            "label": "Lewis Carroll",
+            "uri": "urn:fake:carroll"
+        },
+        {
+            "label": "Emily Brontë",
+            "uri": "urn:fake:bronte-emily"
+        }
+    ]
+}

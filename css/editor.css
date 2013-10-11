@@ -10,3 +10,14 @@
 .required {
     color: red;
 }
+
+.autocomplete {
+    left: 20%;
+    position: relative;
+    top: 5px;
+    width: 80%;
+}
+
+.dropdown-menu {
+    display: block;
+}

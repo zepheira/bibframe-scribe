@@ -8,5 +8,23 @@
             "id": "http://bibframe.org/vocab/proposed/EBook",
             "label": "Electronic Book"
         }
+    ],
+    "resourceServiceMap": [
+        {
+            "resource": "http://bibframe.org/vocab/Authority",
+            "services": ["Subjects"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Agent",
+            "services": ["Agents"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/LanguageEntity",
+            "services": ["Languages"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Provider",
+            "services": ["Providers"]
+        }        
     ]
 }

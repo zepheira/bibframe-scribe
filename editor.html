@@ -55,7 +55,7 @@
               </p>
             </div>
             <div class="buttons">
-              <button class="btn" type="button">Clear</button>
+              <button class="btn" type="button" ng-click="reset">Clear</button>
               <button class="btn btn-primary btn-large" type="button">Export</button>
             </div>
           </form>
@@ -75,13 +75,16 @@
 
     <script type="text/ng-template" id="advanced.html">
       <span ng-if="prop.getConstraint().hasReference()">
-        {{ profiles[idToURI[prop.getConstraint().getReference()]] }}
-        <select><option>hi</option></select>
-      </span>
-      <span ng-if="!prop.getConstraint().hasReference()">
-        {{ prop.getConstraint().getReference() }}
-      </span>
+        <input type="text" ng-keyup="autocomplete($event, prop)" ng-blur="abortAutocomplete()" placeholder="Search">
+        <div ng-show="hasComplete(prop)" class="autocomplete">
+          <ul class="dropdown-menu" role="menu">
+            <li role="presentation" ng-repeat="option in autocompletes">
+              <a href="#" ng-click="selectValue(prop,option.uri)">{{ option.label }}</a>
+            </li>
+          </ul>
+        </span>
       </span>
     </script>
+
   </body>
 </html>
