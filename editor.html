@@ -6,13 +6,14 @@
     <link href="css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="css/editor.css" rel="stylesheet">
     <script src="js/lib/jquery.min.js"></script>
-    <script src="js/lib/bootstrap.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
     <script src="js/value-constraint.js"></script>
     <script src="js/property.js"></script>
     <script src="js/property-template.js"></script>
     <script src="js/resource-template.js"></script>
+
     <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/initializer.js"></script>
@@ -27,18 +28,17 @@
         </div>
       </div>
     </div>
-    <div class="tabbable tabs-left container">
-      <ul class="nav nav-tabs">
-          <li ng-repeat="profile in profileOptions">
-            <a ng-click="newEdit(profile)" href="#form" data-toggle="tab" class="click"><strong>{{ profile.label }}</strong></a>
-          </li>
-      </ul>
-      <div class="tab-content">
-        <div class="hero-unit" ng-show="!activeProfile">
-          <h2>Hi.</h2>
-          <p>Click a class on the left to begin creating a new work of that type.</p>
-        </div>
-        <div class="tab-pane" id="form">
+    <div class="container">
+      <tabset vertical="true" type="tabs">
+        <tab disabled="true">
+          <tab-heading ng-show="!activeProfile"></tab-heading>
+          <div class="hero-unit">
+            <h2>Hi.</h2>
+            <p>Click a class on the left to begin creating a new work of that type.</p>
+          </div>
+        </tab>
+        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)">
+          <tab-heading>{{profile.label}}</tab-heading>
           <form class="form-inline well" ng-show="activeProfile!=null">
             <p><small>Properties marked with a <span class="required">*</span> are required.</small></p>
             <div ng-repeat="prop in activeProfile.getPropertyTemplates()">
@@ -55,34 +55,39 @@
               </p>
             </div>
             <div class="buttons">
-              <button class="btn" type="button" ng-click="reset">Clear</button>
-              <button class="btn btn-primary btn-large" type="button">Export</button>
+              <button class="btn" type="button" ng-click="reset()">Clear</button>
+              <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF()">Export</button>
             </div>
           </form>
-        </div>
-      </div>
+        </tab>
+      </tabset>
     </div>
 
     <script type="text/ng-template" id="basic.html">
       <span ng-if="prop.getConstraint().hasComplexType()">
         <!-- @@@ do something with complex type -->
-        <input type="text" id="{{ prop.getProperties()[0].getID() }}">
+        <!-- @@@ figure out how to read this into currentWork -->
+        <input type="text" class="input-xlarge" id="{{prop.getProperties()[0].getID()}}">
       </span>
       <span ng-if="!prop.getConstraint().hasComplexType()">
-        <input type="text" id="{{ prop.getProperties()[0].getID() }}">
+        <input type="text" class="input-xlarge" id="{{prop.getProperties()[0].getID()}}">
       </span>
     </script>
 
     <script type="text/ng-template" id="advanced.html">
       <span ng-if="prop.getConstraint().hasReference()">
-        <input type="text" ng-keyup="autocomplete($event, prop)" ng-blur="abortAutocomplete()" placeholder="Search">
-        <div ng-show="hasComplete(prop)" class="autocomplete">
-          <ul class="dropdown-menu" role="menu">
-            <li role="presentation" ng-repeat="option in autocompletes">
-              <a href="#" ng-click="selectValue(prop,option.uri)">{{ option.label }}</a>
-            </li>
-          </ul>
-        </span>
+        <input type="text"
+               class="input-xlarge"
+               placeholder="Search"
+               ng-model="selected"
+               typeahead="option.label for option in autocomplete(prop,$viewValue)"
+               typeahead-on-select="selectValue(prop,$item)"
+               typeahead-min-length="2"
+               typeahead-editable="false">
+        <ul>
+          <!-- @@@ add removal feature --->
+          <li ng-repeat="val in currentWork[prop.getProperties()[0].getID()]" class="badge badge-info">{{val.label}} <i class="icon-remove icon-white click" ng-click=""></i></li>
+        </ul>
       </span>
     </script>
 
