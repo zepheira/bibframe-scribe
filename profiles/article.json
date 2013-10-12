@@ -1,0 +1,381 @@
+{
+    "Profile": {
+        "resourceTemplate": [
+            {
+                "class": {
+                    "id": "http://bibframe.org/vocab/Article",
+                    "propertyTemplate": [
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/proposed/title",
+                                "propertyLabel": "Title"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/abbreviatedTitle",
+                                "propertyLabel": "Abbreviated Title"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/subject",
+                                "propertyLabel": "Subject"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "authority"
+                            }
+                        },
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/language",
+                                "propertyLabel": "Language"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "language"
+                            }
+                        },
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/proposed/author",
+                                "propertyLabel": "Author"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "agent"
+                            }
+                        },
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/hasInstance",
+                                "propertyLabel": "Has Instance"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "instance"
+                            }
+                        }
+                    ]
+                },
+                "id": "work",
+                "maxOccurs": "*",
+                "minOccurs": 1
+            },
+            {
+                "class": {
+                    "id": "http://bibframe.org/vocab/proposed/EArticle",
+                    "propertyTemplate": [
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/publisher",
+                                "propertyLabel": "publisher"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "provider"
+                            }
+                        },
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/distributor",
+                                "propertyLabel": "distributor"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "provider"
+                            }
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/format",
+                                "propertyLabel": "format"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISBN10",
+                                "propertyLabel": "ISBN 10"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISBN13",
+                                "propertyLabel": "ISBN 13"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                },
+                "id": "instance",
+                "maxOccurs": "*",
+                "minOccurs": 1
+            },
+            {
+                "class": {
+                    "id": "http://bibframe.org/vocab/proposed/PysicalArticle",
+                    "propertyTemplate": [
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/publisher",
+                                "propertyLabel": "publisher"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "provider"
+                            }
+                        },
+                        {
+                            "maxOccurs": "*",
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/distributor",
+                                "propertyLabel": "distributor"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "provider"
+                            }
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/journal",
+                                "propertyLabel": "Journal"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/volume",
+                                "propertyLabel": "volume"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/issue",
+                                "propertyLabel": "issue"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/number",
+                                "propertyLabel": "number"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISBN10",
+                                "propertyLabel": "ISBN 10"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISBN13",
+                                "propertyLabel": "ISBN 13"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                },
+                "id": "instance",
+                "maxOccurs": "*",
+                "minOccurs": 1
+            },
+            {
+                "class": {
+                    "id": "http://bibframe.org/vocab/Agent",
+                    "propertyTemplate": [
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/fName",
+                                "propertyLabel": "First Name"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/lName",
+                                "propertyLabel": "Last Name"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/affiliation",
+                                "propertyLabel": "Affiliation"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                },
+                "id": "agent",
+                "maxOccurs": 1,
+                "minOccurs": 1
+            },
+            {
+                "class": {
+                    "id": "http://bibframe.org/vocab/LanguageEntity",
+                    "propertyTemplate": [
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 1,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                },
+                "id": "language",
+                "maxOccurs": 1,
+                "minOccurs": 1
+            },
+            {
+                "class": {
+                    "id": "http://bibframe.org/vocab/Authority",
+                    "propertyTemplate": [
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                },
+                "id": "authority",
+                "maxOccurs": 1,
+                "minOccurs": 1
+            },
+            {
+                "class": {
+                    "id": "http://bibframe.org/vocab/Provider",
+                    "propertyTemplate": [
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/copyrightDate",
+                                "propertyLabel": "Copyright Date",
+                                "valueConstraint": {
+                                    "valueDataType": {
+                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                        "valueLabel": "ISO 8601"
+                                    }
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerDate",
+                                "propertyLabel": "Provider Date",
+                                "valueConstraint": {
+                                    "valueDataType": {
+                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                        "valueLabel": "ISO 8601"
+                                    }
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerName",
+                                "propertyLabel": "Provider Name"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "maxOccurs": 1,
+                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerPlace",
+                                "propertyLabel": "Provider Place"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                },
+                "id": "provider",
+                "maxOccurs": 1,
+                "minOccurs": 1
+            }
+        ]
+    }
+}
