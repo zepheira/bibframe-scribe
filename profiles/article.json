@@ -148,7 +148,7 @@
             },
             {
                 "class": {
-                    "id": "http://bibframe.org/vocab/proposed/PysicalArticle",
+                    "id": "http://bibframe.org/vocab/proposed/PhysicalArticle",
                     "propertyTemplate": [
                         {
                             "maxOccurs": "*",
