@@ -4,7 +4,7 @@ var PropertyTemplate = function(obj) {
     this._minOccurs = 0;
     this._maxOccurs = 1;
     this._type = "literal";
-    this._properties = [];
+    this._property = null;
     this._constraint = null;
 
     if (typeof obj.minOccurs !== "undefined") {
@@ -20,15 +20,7 @@ var PropertyTemplate = function(obj) {
     }
 
     if (typeof obj.property !== "undefined") {
-        for (i = 0; i < obj.property.length; i++) {
-            this._properties.push(new Property(obj.property[i]));
-        }
-    }
-
-    if (typeof obj.propertySelector !== "undefined") {
-        for (i = 0; i < obj.propertySelector.property.length; i++) {
-            this._properties.push(new Property(obj.propertySelector.property[i]));
-        }
+        this._property = new Property(obj.property);
     }
 
     if (typeof obj.valueConstraint !== "undefined") {
@@ -75,8 +67,8 @@ PropertyTemplate.prototype.getType = function() {
     return this._type;
 };
 
-PropertyTemplate.prototype.getProperties = function() {
-    return this._properties;
+PropertyTemplate.prototype.getProperty = function() {
+    return this._property;
 };
 
 PropertyTemplate.prototype.getConstraint = function() {

@@ -43,7 +43,7 @@
             <p><small>Properties marked with a <span class="required">*</span> are required.</small></p>
             <div ng-repeat="prop in activeProfile.getPropertyTemplates()">
               <p>
-                <label for="{{ prop.getProperties()[0].getID() }}" class="property-label">{{ prop.getProperties()[0].getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
+                <label for="{{ profile.uri }}-{{ prop.getProperty().getID() }}" class="property-label">{{ prop.getProperty().getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
                 <span ng-switch="" on="prop.getType()">
                   <span ng-switch-when="literal">
                     <span ng-include="'basic.html'"></span>
@@ -67,10 +67,10 @@
       <span ng-if="prop.getConstraint().hasComplexType()">
         <!-- @@@ do something with complex type -->
         <!-- @@@ figure out how to read this into currentWork -->
-        <input type="text" class="input-xlarge" id="{{prop.getProperties()[0].getID()}}">
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}">
       </span>
       <span ng-if="!prop.getConstraint().hasComplexType()">
-        <input type="text" class="input-xlarge" id="{{prop.getProperties()[0].getID()}}">
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}">
       </span>
     </script>
 
@@ -81,12 +81,12 @@
                placeholder="Search"
                ng-model="selected"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
-               typeahead-on-select="selectValue(prop,$item)"
-               typeahead-min-length="2"
-               typeahead-editable="false">
+               typeahead-on-select="selectValue(prop,$item);selected=null"
+               typeahead-min-length="1"
+               typeahead-editable="false"
+               id="{{profile.uri}}-{{prop.getProperty().getID()}}">
         <ul>
-          <!-- @@@ add removal feature --->
-          <li ng-repeat="val in currentWork[prop.getProperties()[0].getID()]" class="badge badge-info">{{val.label}} <i class="icon-remove icon-white click" ng-click=""></i></li>
+          <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">{{val.label}} <i class="icon-remove icon-white click" ng-click="removeValue(prop,val)"></i></li>
         </ul>
       </span>
     </script>

@@ -18,9 +18,10 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
 
     // initialize by retrieving configuration and profiles
     Configuration.get(null, null, function(response) {
+        angular.forEach(["book", "article"], function(profile) {
         Profiles.get(
             {},
-            {"profile": "vanilla", "format": "json"},
+            {"profile": profile, "format": "json"},
             function(resp) {
                 var templates;
                 templates = resp.Profile.resourceTemplate;
@@ -30,7 +31,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
                 });
                 $scope.initialize();
             }
-        );
+        )});
         $scope.config = response;
     });
 
@@ -82,7 +83,8 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
             });
             return true;
         } else {
-            // @@@ prevent tab from switching
+            // @@@ prevent tab from switching; perhaps disable all other tabs
+            //     when a form becomes dirty
             return false;
         }
     };
@@ -109,8 +111,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 
     $scope.completeLoading = function(prop) {
-        console.log('asdf');
-        return $scope.autocompleteLoading[prop.getProperties()[0].getID()];
+        return $scope.autocompleteLoading[prop.getProperty().getID()];
     };
 
     $scope.reset = function() {
@@ -148,7 +149,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         var seen = false;
         $scope.autocompletes = {};
         $scope.complete = {};
-        prop = property.getProperties()[0].getID();
+        prop = property.getProperty().getID();
         angular.forEach($scope.currentWork[prop], function(val) {
             if (selection.uri === val.value) {
                 seen = true;
@@ -157,15 +158,30 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         if (!seen) {
             $scope.currentWork[prop].push({"label": selection.label, "value": selection.uri});
         }
-        console.log($scope.currentWork);
     };
 
     $scope.initializeProperty = function(property) {
         var prop;
-        prop = property.getProperties()[0].getID();
+        prop = property.getProperty().getID();
         if (typeof $scope.currentWork[prop] === "undefined") {
             $scope.currentWork[prop] = [];
         }
+    };
+
+    $scope.removeValue = function(property, value) {
+        angular.forEach($scope.currentWork, function(objs, currentProp) {
+            if (currentProp === property.getProperty().getID()) {
+                var rmIdx = -1;
+                angular.forEach(objs, function(obj, idx) {
+                    if (obj.value === value.value) {
+                        rmIdx = idx;
+                    }
+                });
+                if (rmIdx >= 0) {
+                    objs.splice(rmIdx, 1);
+                }
+            }
+        });
     };
 };
 
