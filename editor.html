@@ -80,8 +80,11 @@ are required.</small></p>
 
     <script type="text/ng-template" id="basic.html">
       <span ng-if="prop.getConstraint().hasComplexType()">
-        <!-- @@@ do something with complex type -->
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-blur="setTextValue(prop,$event,'literal')" ng-required="prop.isRequired()">
+        <span ng-switch="" on="dataTypes[prop.getConstraint().getComplexTypeID()]">
+          <span ng-switch-when="date">
+            <input type="text" id="{{profile.uri}}-{{prop.getProperty().getID()}}"  ng-required="prop.isRequired()" datepicker-popup="yyyy-MM-dd" show-weeks="false" month-format="MM" ng-model="dt" class="input-xlarge">
+          </span>
+        </span>
       </span>
       <span ng-if="!prop.getConstraint().hasComplexType()" class="input-append">
         <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-required="prop.isRequired()" ng-model="inputted" ng-enter="setTextValue(prop,inputted,'literal');inputted=''"><button class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Add</button>

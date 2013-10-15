@@ -12,6 +12,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         "Languages": Languages,
         "Providers": Providers
     };
+    $scope.dataTypes = {};
 
     $scope.currentWork = {};
     $scope.activeProfile = null;
@@ -58,6 +59,10 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
                     $scope.resourceServices[item.resource] = [$scope.services[service]];
                 }
             });
+        });
+
+        angular.forEach($scope.config.dataTypes, function(dataType) {
+            $scope.dataTypes[dataType.id] = dataType.handler;
         });
     };
 
