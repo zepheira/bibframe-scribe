@@ -2,7 +2,6 @@
     "Profile": {
         "resourceTemplate": [
             {
-                "id": "work",
                 "class": {
                     "id": "http://bibframe.org/vocab/Article",
                     "propertyTemplate": [
@@ -69,129 +68,130 @@
                             }
                         }
                     ]
-                }
+                },
+                "id": "work"
             },
             {
-                "id": "instance",
-                "class": [ {
-                    "id": "http://bibframe.org/vocab/proposed/EArticle",
-		    "classLabel": "Electronic Article",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "publisher"
+                "class": [
+                    {
+                        "classLabel": "Electronic Article",
+                        "id": "http://bibframe.org/vocab/proposed/EArticle",
+                        "propertyTemplate": [
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/publisher",
+                                    "propertyLabel": "publisher"
+                                },
+                                "type": "resource",
+                                "valueConstraint": {
+                                    "descriptionTemplateRef": "provider"
+                                }
                             },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/distributor",
+                                    "propertyLabel": "distributor"
+                                },
+                                "type": "resource",
+                                "valueConstraint": {
+                                    "descriptionTemplateRef": "provider"
+                                }
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/format",
+                                    "propertyLabel": "format"
+                                },
+                                "type": "literal"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/ISBN10",
+                                    "propertyLabel": "ISBN 10"
+                                },
+                                "type": "literal"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/ISBN13",
+                                    "propertyLabel": "ISBN 13"
+                                },
+                                "type": "literal"
                             }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "distributor"
+                        ]
+                    },
+                    {
+                        "classLabel": "Physical Article",
+                        "id": "http://bibframe.org/vocab/proposed/PhysicalArticle",
+                        "propertyTemplate": [
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/publisher",
+                                    "propertyLabel": "publisher"
+                                },
+                                "type": "resource",
+                                "valueConstraint": {
+                                    "descriptionTemplateRef": "provider"
+                                }
                             },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/distributor",
+                                    "propertyLabel": "distributor"
+                                },
+                                "type": "resource",
+                                "valueConstraint": {
+                                    "descriptionTemplateRef": "provider"
+                                }
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/journal",
+                                    "propertyLabel": "Journal"
+                                },
+                                "type": "literal"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/volume",
+                                    "propertyLabel": "volume"
+                                },
+                                "type": "literal"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/issue",
+                                    "propertyLabel": "issue"
+                                },
+                                "type": "literal"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/number",
+                                    "propertyLabel": "number"
+                                },
+                                "type": "literal"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/ISBN10",
+                                    "propertyLabel": "ISBN 10"
+                                },
+                                "type": "literal"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibframe.org/vocab/ISBN13",
+                                    "propertyLabel": "ISBN 13"
+                                },
+                                "type": "literal"
                             }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/format",
-                                "propertyLabel": "format"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISBN10",
-                                "propertyLabel": "ISBN 10"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISBN13",
-                                "propertyLabel": "ISBN 13"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-		},                
-		{
-                    "id": "http://bibframe.org/vocab/proposed/PhysicalArticle",
-		    "classLabel": "Physical Article",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "publisher"
-                            },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "distributor"
-                            },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/journal",
-                                "propertyLabel": "Journal"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/volume",
-                                "propertyLabel": "volume"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/issue",
-                                "propertyLabel": "issue"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/number",
-                                "propertyLabel": "number"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISBN10",
-                                "propertyLabel": "ISBN 10"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISBN13",
-                                "propertyLabel": "ISBN 13"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                }
-		]
+                        ]
+                    }
+                ],
+                "id": "instance"
             },
             {
-                "id": "agent",
                 "class": {
                     "id": "http://bibframe.org/vocab/Agent",
                     "propertyTemplate": [
@@ -224,10 +224,10 @@
                             "type": "literal"
                         }
                     ]
-                }
+                },
+                "id": "agent"
             },
             {
-                "id": "language",
                 "class": {
                     "id": "http://bibframe.org/vocab/LanguageEntity",
                     "propertyTemplate": [
@@ -239,10 +239,10 @@
                             "type": "literal"
                         }
                     ]
-                }
+                },
+                "id": "language"
             },
             {
-                "id": "authority",
                 "class": {
                     "id": "http://bibframe.org/vocab/Authority",
                     "propertyTemplate": [
@@ -254,10 +254,10 @@
                             "type": "literal"
                         }
                     ]
-                }
+                },
+                "id": "authority"
             },
             {
-                "id": "provider",
                 "class": {
                     "id": "http://bibframe.org/vocab/Provider",
                     "propertyTemplate": [
@@ -302,7 +302,8 @@
                             "type": "literal"
                         }
                     ]
-                }
+                },
+                "id": "provider"
             }
         ]
     }
