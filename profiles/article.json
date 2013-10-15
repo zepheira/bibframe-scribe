@@ -91,6 +91,7 @@
                 "minOccurs": 1,
                 "class": [ {
                     "id": "http://bibframe.org/vocab/proposed/EArticle",
+		    "classLabel": "Electronic Article",
                     "propertyTemplate": [
                         {
                             "maxOccurs": "*",
@@ -147,6 +148,7 @@
 		},                
 		{
                     "id": "http://bibframe.org/vocab/proposed/PhysicalArticle",
+		    "classLabel": "Physical Article",
                     "propertyTemplate": [
                         {
                             "maxOccurs": "*",

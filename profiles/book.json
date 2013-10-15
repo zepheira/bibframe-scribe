@@ -4,6 +4,7 @@
             {
                 "class": {
                     "id": "http://bibframe.org/vocab/Book",
+		    "classLabel": "Book",
                     "propertyTemplate": [
                         {
                             "maxOccurs": 1,
@@ -86,8 +87,12 @@
                 "repeatable": "true"
             },
             {
-                "class": {
+                "id": "instance",
+                "mandatory": "true",
+                "repeatable": "true",
+                "class": [ {
                     "id": "http://bibframe.org/vocab/proposed/EBook",
+		    "classLabel": "Electronic Book",
                     "propertyTemplate": [
                         {
                             "minOccurs": 0,
@@ -166,13 +171,9 @@
                         }
                     ]
                 },
-                "id": "instance",
-                "mandatory": "true",
-                "repeatable": "true"
-            },
-            {
-                "class": {
+                {
                     "id": "http://bibframe.org/vocab/proposed/PaperBackBook",
+		    "classLabel": "Paperback Book",
                     "propertyTemplate": [
                         {
                             "minOccurs": 0,
@@ -251,13 +252,9 @@
                         }
                     ]
                 },
-                "id": "instance",
-                "mandatory": "true",
-                "repeatable": "true"
-            },
-            {
-                "class": {
+                {
                     "id": "http://bibframe.org/vocab/proposed/HardCoverBook",
+		    "classLabel": "Hardcover Book",
                     "propertyTemplate": [
                         {
                             "minOccurs": 0,
@@ -335,14 +332,16 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "instance",
+                }
+		]
+		},
+		{
+                "id": "agent",
                 "mandatory": "true",
-                "repeatable": "true"
-            },
-            {
+                "maxOccurs": 1,
                 "class": {
                     "id": "http://bibframe.org/vocab/Agent",
+		    "classLabel": "Agent",
                     "propertyTemplate": [
                         {
                             "maxOccurs": 1,
@@ -372,10 +371,7 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "agent",
-                "mandatory": "true",
-                "maxOccurs": 1
+                }
             },
             {
                 "class": {
@@ -399,6 +395,7 @@
             {
                 "class": {
                     "id": "http://bibframe.org/vocab/Authority",
+		    "classLabel": "Authority",
                     "propertyTemplate": [
                         {
                             "maxOccurs": 1,
@@ -418,6 +415,7 @@
             {
                 "class": {
                     "id": "http://bibframe.org/vocab/Provider",
+		    "classLabel": "Provider",
                     "propertyTemplate": [
                         {
                             "maxOccurs": 1,
