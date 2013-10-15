@@ -86,7 +86,10 @@
                 "minOccurs": 1
             },
             {
-                "class": {
+                "id": "instance",
+                "maxOccurs": "*",
+                "minOccurs": 1,
+                "class": [ {
                     "id": "http://bibframe.org/vocab/proposed/EArticle",
                     "propertyTemplate": [
                         {
@@ -141,13 +144,8 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "instance",
-                "maxOccurs": "*",
-                "minOccurs": 1
-            },
-            {
-                "class": {
+		},                
+		{
                     "id": "http://bibframe.org/vocab/proposed/PhysicalArticle",
                     "propertyTemplate": [
                         {
@@ -229,10 +227,8 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "instance",
-                "maxOccurs": "*",
-                "minOccurs": 1
+                }
+		]
             },
             {
                 "class": {
@@ -342,7 +338,7 @@
                             "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/providerDate",
-                                "propertyLabel": "Provider Date",
+                                "propertyLabel": "Date",
                                 "valueConstraint": {
                                     "valueDataType": {
                                         "id": "http://bibframe.org/vocab/proposed/ISO8601",
@@ -357,7 +353,7 @@
                             "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/providerName",
-                                "propertyLabel": "Provider Name"
+                                "propertyLabel": "Name"
                             },
                             "type": "literal"
                         },
@@ -366,7 +362,7 @@
                             "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/providerPlace",
-                                "propertyLabel": "Provider Place"
+                                "propertyLabel": "Place"
                             },
                             "type": "literal"
                         }
