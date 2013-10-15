@@ -38,5 +38,11 @@
             "resource": "http://bibframe.org/vocab/Provider",
             "services": ["Providers"]
         }        
+    ],
+    "dataTypes": [
+        {
+            "id": "http://bibframe.org/vocab/proposed/ISO8601",
+            "handler": "date"
+        }
     ]
 }
