@@ -15,6 +15,8 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
 
     $scope.currentWork = {};
     $scope.activeProfile = null;
+    $scope.showExport = false;
+    $scope.exportedRDF = "";
 
     // initialize by retrieving configuration and profiles
     Configuration.get(null, null, function(response) {
@@ -137,15 +139,22 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
             nsProp = prop.replace(/http\:\/\/bibframe\.org\/vocab\/proposed\//, "bfp:");
             nsProp = nsProp.replace(/http\:\/\/bibframe\.org\/vocab\//, "bf:");
             angular.forEach(vals, function(val) {
-                // @@@ put directly into value or pick out of properties
-                //     whether the value is a literal or a resource
-                rdf += '    <' + nsProp + ' rdf:resource="' + val.value + '"/>\n';
+                if (val.type === "resource") {
+                    rdf += '    <' + nsProp + ' rdf:resource="' + val.value + '"/>\n';
+                } else {
+                    rdf += '    <' + nsProp + '>' + val.value + '</' + nsProp + '>\n';
+                }
             });
         });
-        console.log(rdf+tail);
+        $scope.exportedRDF = rdf+tail;
+        $scope.showExport = true;
     };
 
-    $scope.selectValue = function(property, selection) {
+    $scope.setTextValue = function(property, evt, objType) {
+        $scope.currentWork[property.getProperty().getID()].push({"value": $(evt.target).val(), "type": objType});
+    };
+
+    $scope.selectValue = function(property, selection, objType) {
         var seen = false;
         $scope.autocompletes = {};
         $scope.complete = {};
@@ -156,7 +165,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
             }
         });
         if (!seen) {
-            $scope.currentWork[prop].push({"label": selection.label, "value": selection.uri});
+            $scope.currentWork[prop].push({"label": selection.label, "value": selection.uri, "type": objType});
         }
     };
 

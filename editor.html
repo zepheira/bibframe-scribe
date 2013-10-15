@@ -54,7 +54,7 @@
                 </span>
               </p>
             </div>
-            <div class="buttons">
+            <div class="form-actions">
               <button class="btn" type="button" ng-click="reset()">Clear</button>
               <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF()">Export</button>
             </div>
@@ -63,14 +63,24 @@
       </tabset>
     </div>
 
+    <div id="blackout" ng-show="showExport">&#160;</div>
+
+    <div class="container" id="export" ng-show="showExport">
+      <div class="hero-unit">
+        <h2>It's Dangerous To Go Alone! Take This.</h2>
+        <p><textarea rows="10" class="span10">{{exportedRDF}}</textarea></p>
+        <p class="text-center"><button class="btn" ng-click="showExport=false">Close</button></p>
+      </div>
+    </div>
+
+
     <script type="text/ng-template" id="basic.html">
       <span ng-if="prop.getConstraint().hasComplexType()">
         <!-- @@@ do something with complex type -->
-        <!-- @@@ figure out how to read this into currentWork -->
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}">
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-blur="setTextValue(prop,$event,'literal')">
       </span>
       <span ng-if="!prop.getConstraint().hasComplexType()">
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}">
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-blur="setTextValue(prop,$event,'literal')">
       </span>
     </script>
 
@@ -81,7 +91,7 @@
                placeholder="Search"
                ng-model="selected"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
-               typeahead-on-select="selectValue(prop,$item);selected=null"
+               typeahead-on-select="selectValue(prop,$item,'resource');selected=null"
                typeahead-min-length="1"
                typeahead-editable="false"
                id="{{profile.uri}}-{{prop.getProperty().getID()}}">
