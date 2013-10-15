@@ -62,33 +62,11 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 
     $scope.newEdit = function(profile) {
-        var conf, has;
-        conf = false;
-        has = false;
-        angular.forEach($scope.currentWork, function(v) {
-            if (typeof v === "object") {
-                if (v.length > 0) {
-                    has = true;
-                }
-            } else {
-                has = true;
-            }
+        $scope.currentWork = {};
+        $scope.activeProfile = $scope.profiles[profile.uri];
+        angular.forEach($scope.activeProfile.getPropertyTemplates(), function(prop) {
+            $scope.initializeProperty(prop);
         });
-        if (has) {
-            conf = confirm("You've started to catalog this item, really switch to different type?");
-        }
-        if (!has || conf) {
-            $scope.currentWork = {};
-            $scope.activeProfile = $scope.profiles[profile.uri];
-            angular.forEach($scope.activeProfile.getPropertyTemplates(), function(prop) {
-                $scope.initializeProperty(prop);
-            });
-            return true;
-        } else {
-            // @@@ prevent tab from switching; perhaps disable all other tabs
-            //     when a form becomes dirty
-            return false;
-        }
     };
 
     $scope.autocomplete = function(property, typed) {
@@ -150,8 +128,18 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         $scope.showExport = true;
     };
 
-    $scope.setTextValue = function(property, evt, objType) {
-        $scope.currentWork[property.getProperty().getID()].push({"value": $(evt.target).val(), "type": objType});
+    $scope.setTextValue = function(property, newVal, objType) {
+        var propID, seen;
+        propID = property.getProperty().getID();
+        seen = false;
+        angular.forEach($scope.currentWork[propID], function(val) {
+            if (val.value === newVal) {
+                seen = true;
+            }
+        });
+        if (!seen && newVal !== "") {
+            $scope.currentWork[propID].push({"label": newVal, "value": newVal, "type": objType});
+        }
     };
 
     $scope.selectValue = function(property, selection, objType) {
@@ -191,6 +179,16 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
                 }
             }
         });
+    };
+
+    $scope.isDirty = function() {
+        var dirty = false;
+        angular.forEach($scope.currentWork, function(vals, prop) {
+            if (vals.length > 0) {
+                dirty = true;
+            }
+        });
+        return dirty;
     };
 };
 

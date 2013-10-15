@@ -37,10 +37,11 @@
             <p>Click a class on the left to begin creating a new work of that type.</p>
           </div>
         </tab>
-        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)">
+        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)" disabled="isDirty()">
           <tab-heading>{{profile.label}}</tab-heading>
-          <form class="form-inline well" ng-show="activeProfile!=null">
-            <p><small>Properties marked with a <span class="required">*</span> are required.</small></p>
+          <form class="form-inline well" ng-show="activeProfile!=null" ng-submit="exportRDF()">
+            <p><small>Properties marked with <span class="required">*</span> 
+are required.</small></p>
             <div ng-repeat="prop in activeProfile.getPropertyTemplates()">
               <p>
                 <label for="{{ profile.uri }}-{{ prop.getProperty().getID() }}" class="property-label">{{ prop.getProperty().getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
@@ -53,10 +54,13 @@
                   </span>
                 </span>
               </p>
+              <ul>
+                <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">{{val.label}} <i class="icon-remove icon-white click" ng-click="removeValue(prop,val)"></i></li>
+              </ul>
             </div>
             <div class="form-actions">
-              <button class="btn" type="button" ng-click="reset()">Clear</button>
-              <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF()">Export</button>
+              <button class="btn" type="button" ng-click="reset()" ng-disabled="!isDirty()">Clear</button>
+              <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF()" ng-disabled="!isDirty()">Export</button>
             </div>
           </form>
         </tab>
@@ -77,10 +81,10 @@
     <script type="text/ng-template" id="basic.html">
       <span ng-if="prop.getConstraint().hasComplexType()">
         <!-- @@@ do something with complex type -->
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-blur="setTextValue(prop,$event,'literal')">
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-blur="setTextValue(prop,$event,'literal')" ng-required="prop.isRequired()">
       </span>
-      <span ng-if="!prop.getConstraint().hasComplexType()">
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-blur="setTextValue(prop,$event,'literal')">
+      <span ng-if="!prop.getConstraint().hasComplexType()" class="input-append">
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-required="prop.isRequired()" ng-model="inputted" ng-enter="setTextValue(prop,inputted,'literal');inputted=''"><button class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Add</button>
       </span>
     </script>
 
@@ -90,14 +94,12 @@
                class="input-xlarge"
                placeholder="Search"
                ng-model="selected"
+               ng-required="prop.isRequired()"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
                typeahead-on-select="selectValue(prop,$item,'resource');selected=null"
                typeahead-min-length="1"
                typeahead-editable="false"
                id="{{profile.uri}}-{{prop.getProperty().getID()}}">
-        <ul>
-          <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">{{val.label}} <i class="icon-remove icon-white click" ng-click="removeValue(prop,val)"></i></li>
-        </ul>
       </span>
     </script>
 

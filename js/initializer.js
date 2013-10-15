@@ -6,14 +6,16 @@ angular.module("bibframeEditor", [
     "agentServices",
     "languageServices",
     "providerServices"
-]).directive("ngInitializeProperty", function($compile) {
-    return {
-        "compile": function(tEl, tAttr) {
-            tEl[0].removeAttribute("ng-initialize-property");
-            return function(scope) {
-                scope.$eval(tAttr.ngInitializeProperty);
-                $compile(tEl[0])(scope);
-            };
-        }
+]).directive("ngEnter", function() {
+    return function(scope, element, attrs) {
+        element.bind("keydown keypress", function(event) {
+            if (event.which === 13) {
+                scope.$apply(function() {
+                    scope.$eval(attrs.ngEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
     };
 });
