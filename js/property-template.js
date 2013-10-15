@@ -1,21 +1,11 @@
 var PropertyTemplate = function(obj) {
     var i;
 
-    this._minOccurs = 0;
-    this._maxOccurs = 1;
     this._repeatable = false;
     this._mandatory = false;
     this._type = "literal";
     this._property = null;
     this._constraint = null;
-
-    if (typeof obj.minOccurs !== "undefined") {
-        this._minOccurs = obj.minOccurs;
-    }
-
-    if (typeof obj.maxOccurs !== "undefined") {
-        this._maxOccurs = obj.maxOccurs;
-    }
 
     if (typeof obj.repeatable !== "undefined") {
         this._repeatable = obj.repeatable;
@@ -42,27 +32,11 @@ PropertyTemplate.LITERAL = "literal";
 PropertyTemplate.RESOURCE = "resource";
 
 PropertyTemplate.prototype.isOptional = function() {
-    if ((typeof this._minOccurs === "number" && this._minOccurs === 0) || !this._mandatory){
-        return true;
-    } else {
-        return false;
-    }
-};
-
-PropertyTemplate.prototype.getMinOccurs = function() {
-    return this._minOccurs;
+    return !this._mandatory;
 };
 
 PropertyTemplate.prototype.isRequired = function() {
-    if ((typeof this._minOccurs === "number" && this._minOccurs > 0) || this._mandatory) {
-        return true;
-    } else {
-        return false;
-    }
-};
-
-PropertyTemplate.prototype.getMaxOccurs = function() {
-    return this._maxOccurs;
+    return this._mandatory;
 };
 
 PropertyTemplate.prototype.isRepeatable = function() {
