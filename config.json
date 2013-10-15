@@ -1,24 +1,12 @@
 {
     "useClasses": [
         {
-            "id": "http://bibframe.org/vocab/proposed/EArticle",
-            "label": "Electronic Article"
+            "id": "http://bibframe.org/vocab/Book",
+            "label": "Book"
         },
         {
-            "id": "http://bibframe.org/vocab/proposed/PhysicalArticle",
-            "label": "Physical Article"
-        },
-        {
-            "id": "http://bibframe.org/vocab/proposed/PaperBackBook",
-            "label": "Paperback Book"
-        },
-        {
-            "id": "http://bibframe.org/vocab/proposed/EBook",
-            "label": "Electronic Book"
-        },
-        {
-            "id": "http://bibframe.org/vocab/proposed/HardCoverBook",
-            "label": "Hardcover Book"
+            "id": "http://bibframe.org/vocab/Article",
+            "label": "Article"
         }
     ],
     "resourceServiceMap": [

@@ -4,10 +4,11 @@
             {
                 "class": {
                     "id": "http://bibframe.org/vocab/Book",
+		    "classLabel": "Book",
                     "propertyTemplate": [
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
+                            "mandatory": "true",
+                            "repeatable": "false",
                             "property": {
                                 "id": "http://bibframe.org/vocab/proposed/title",
                                 "propertyLabel": "Title"
@@ -19,8 +20,20 @@
                             }
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
+                            "property": {
+                                "id": "http://example.org/vocab/cost",
+                                "propertyLabel": "Cost"
+				"ns": "http://example.org/vocab/",
+				"name": "cost"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+			        "id": "http://example.org/vocab/CurrencyDataType",
+                                "valueLabel": "Currency",
+                                "valueLabelHint": "$"
+                            }
+                        },
+                        {
                             "property": {
                                 "id": "http://bibframe.org/vocab/preferredTitle",
                                 "propertyLabel": "Preferred Title"
@@ -32,7 +45,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/subject",
                                 "propertyLabel": "Subject"
@@ -44,7 +56,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/language",
                                 "propertyLabel": "Language"
@@ -56,7 +67,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/proposed/author",
                                 "propertyLabel": "Author"
@@ -68,7 +78,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/hasInstance",
                                 "propertyLabel": "Has Instance"
@@ -86,11 +95,14 @@
                 "repeatable": "true"
             },
             {
-                "class": {
+                "id": "instance",
+                "mandatory": "true",
+                "repeatable": "true",
+                "class": [ {
                     "id": "http://bibframe.org/vocab/proposed/EBook",
+		    "classLabel": "Electronic Book",
                     "propertyTemplate": [
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
                                 "propertyLabel": "publisher"
@@ -102,7 +114,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
                                 "propertyLabel": "distributor"
@@ -114,7 +125,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/producer",
                                 "propertyLabel": "producer"
@@ -126,7 +136,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/manufacturer",
                                 "propertyLabel": "manufacturer"
@@ -138,8 +147,6 @@
                             }
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/format",
                                 "propertyLabel": "format"
@@ -147,8 +154,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/ISBN10",
                                 "propertyLabel": "ISBN 10"
@@ -156,8 +161,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/ISBN13",
                                 "propertyLabel": "ISBN 13"
@@ -166,16 +169,11 @@
                         }
                     ]
                 },
-                "id": "instance",
-                "mandatory": "true",
-                "repeatable": "true"
-            },
-            {
-                "class": {
+                {
                     "id": "http://bibframe.org/vocab/proposed/PaperBackBook",
+		    "classLabel": "Paperback Book",
                     "propertyTemplate": [
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
                                 "propertyLabel": "publisher"
@@ -187,7 +185,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
                                 "propertyLabel": "distributor"
@@ -199,7 +196,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/producer",
                                 "propertyLabel": "producer"
@@ -211,7 +207,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/manufacturer",
                                 "propertyLabel": "manufacturer"
@@ -223,8 +218,6 @@
                             }
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/dimensions",
                                 "propertyLabel": "dimensions"
@@ -232,8 +225,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/ISBN10",
                                 "propertyLabel": "ISBN 10"
@@ -241,8 +232,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/ISBN13",
                                 "propertyLabel": "ISBN 13"
@@ -251,16 +240,11 @@
                         }
                     ]
                 },
-                "id": "instance",
-                "mandatory": "true",
-                "repeatable": "true"
-            },
-            {
-                "class": {
+                {
                     "id": "http://bibframe.org/vocab/proposed/HardCoverBook",
+		    "classLabel": "Hardcover Book",
                     "propertyTemplate": [
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
                                 "propertyLabel": "publisher"
@@ -272,7 +256,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
                                 "propertyLabel": "distributor"
@@ -284,7 +267,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/producer",
                                 "propertyLabel": "producer"
@@ -296,7 +278,6 @@
                             }
                         },
                         {
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/manufacturer",
                                 "propertyLabel": "manufacturer"
@@ -308,8 +289,6 @@
                             }
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/dimensions",
                                 "propertyLabel": "dimensions"
@@ -317,8 +296,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/ISBN10",
                                 "propertyLabel": "ISBN 10"
@@ -326,8 +303,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/ISBN13",
                                 "propertyLabel": "ISBN 13"
@@ -335,18 +310,17 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "instance",
+                }
+		]
+		},
+		{
+                "id": "agent",
                 "mandatory": "true",
-                "repeatable": "true"
-            },
-            {
                 "class": {
                     "id": "http://bibframe.org/vocab/Agent",
+		    "classLabel": "Agent",
                     "propertyTemplate": [
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/label",
                                 "propertyLabel": "Label"
@@ -354,8 +328,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/fName",
                                 "propertyLabel": "First Name"
@@ -363,8 +335,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/lName",
                                 "propertyLabel": "Last Name"
@@ -372,18 +342,15 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "agent",
-                "mandatory": "true",
-                "maxOccurs": 1
+                }
             },
             {
+                "id": "language",
                 "class": {
                     "id": "http://bibframe.org/vocab/LanguageEntity",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
-                            "maxOccurs": 1,
                             "property": {
                                 "id": "http://bibframe.org/vocab/label",
                                 "propertyLabel": "Label"
@@ -391,18 +358,15 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "language",
-                "mandatory": "true",
-                "maxOccurs": 1
+                }
             },
             {
+                "id": "authority",
                 "class": {
                     "id": "http://bibframe.org/vocab/Authority",
+		    "classLabel": "Authority",
                     "propertyTemplate": [
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/label",
                                 "propertyLabel": "Label"
@@ -410,48 +374,43 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "authority",
-                "mandatory": "true",
-                "maxOccurs": 1
+                }
             },
             {
+                "id": "provider",
                 "class": {
                     "id": "http://bibframe.org/vocab/Provider",
+		    "classLabel": "Provider",
                     "propertyTemplate": [
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/copyrightDate",
                                 "propertyLabel": "Copyright Date",
                                 "valueConstraint": {
                                     "valueDataType": {
                                         "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601"
+                                        "valueLabel": "ISO 8601",
+					"valueLabelHint": "ISO"
                                     }
                                 }
                             },
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/providerDate",
                                 "propertyLabel": "Provider Date",
                                 "valueConstraint": {
                                     "valueDataType": {
                                         "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601"
+                                        "valueLabel": "ISO 8601",
+					"valueLabelHint": "ISO"
                                     }
                                 }
                             },
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/providerName",
                                 "propertyLabel": "Provider Name"
@@ -459,8 +418,6 @@
                             "type": "literal"
                         },
                         {
-                            "maxOccurs": 1,
-                            "minOccurs": 0,
                             "property": {
                                 "id": "http://bibframe.org/vocab/providerPlace",
                                 "propertyLabel": "Provider Place"
@@ -468,10 +425,7 @@
                             "type": "literal"
                         }
                     ]
-                },
-                "id": "provider",
-                "mandatory": "true",
-                "maxOccurs": 1
+                }
             }
         ]
     }
