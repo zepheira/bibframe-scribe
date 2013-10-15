@@ -21,6 +21,20 @@
                         },
                         {
                             "property": {
+                                "id": "http://example.org/vocab/cost",
+                                "propertyLabel": "Cost"
+				"ns": "http://example.org/vocab/",
+				"name": "cost"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+			        "id": "http://example.org/vocab/CurrencyDataType",
+                                "valueLabel": "Currency",
+                                "valueLabelHint": "$"
+                            }
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibframe.org/vocab/preferredTitle",
                                 "propertyLabel": "Preferred Title"
                             },
@@ -375,7 +389,8 @@
                                 "valueConstraint": {
                                     "valueDataType": {
                                         "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601"
+                                        "valueLabel": "ISO 8601",
+					"valueLabelHint": "ISO"
                                     }
                                 }
                             },
@@ -388,7 +403,8 @@
                                 "valueConstraint": {
                                     "valueDataType": {
                                         "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601"
+                                        "valueLabel": "ISO 8601",
+					"valueLabelHint": "ISO"
                                     }
                                 }
                             },
