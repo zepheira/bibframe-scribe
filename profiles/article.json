@@ -81,7 +81,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "publisher"
+                                "propertyLabel": "Publisher"
                             },
                             "type": "resource",
                             "valueConstraint": {
@@ -91,7 +91,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "distributor"
+                                "propertyLabel": "Distributor"
                             },
                             "type": "resource",
                             "valueConstraint": {
@@ -101,7 +101,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/format",
-                                "propertyLabel": "format"
+                                "propertyLabel": "Format"
                             },
                             "type": "literal"
                         },
@@ -131,7 +131,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "publisher"
+                                "propertyLabel": "Publisher"
                             },
                             "type": "resource",
                             "valueConstraint": {
@@ -141,7 +141,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "distributor"
+                                "propertyLabel": "Distributor"
                             },
                             "type": "resource",
                             "valueConstraint": {
@@ -158,21 +158,21 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/volume",
-                                "propertyLabel": "volume"
+                                "propertyLabel": "Volume"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/issue",
-                                "propertyLabel": "issue"
+                                "propertyLabel": "Issue"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/number",
-                                "propertyLabel": "number"
+                                "propertyLabel": "Number"
                             },
                             "type": "literal"
                         },

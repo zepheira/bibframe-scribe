@@ -99,7 +99,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "publisher"
+                                "propertyLabel": "Publisher"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -110,7 +110,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "distributor"
+                                "propertyLabel": "Distributor"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -121,7 +121,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/producer",
-                                "propertyLabel": "producer"
+                                "propertyLabel": "Producer"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -132,7 +132,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/manufacturer",
-                                "propertyLabel": "manufacturer"
+                                "propertyLabel": "Manufacturer"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -143,7 +143,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/format",
-                                "propertyLabel": "format"
+                                "propertyLabel": "Format"
                             },
                             "type": "literal"
                         },
@@ -173,7 +173,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "publisher"
+                                "propertyLabel": "Publisher"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -184,7 +184,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "distributor"
+                                "propertyLabel": "Distributor"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -195,7 +195,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/producer",
-                                "propertyLabel": "producer"
+                                "propertyLabel": "Producer"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -206,7 +206,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/manufacturer",
-                                "propertyLabel": "manufacturer"
+                                "propertyLabel": "Manufacturer"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -217,7 +217,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/dimensions",
-                                "propertyLabel": "dimensions"
+                                "propertyLabel": "Dimensions"
                             },
                             "type": "literal"
                         },
@@ -247,7 +247,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "publisher"
+                                "propertyLabel": "Publisher"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -258,7 +258,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "distributor"
+                                "propertyLabel": "Distributor"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -269,7 +269,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/producer",
-                                "propertyLabel": "producer"
+                                "propertyLabel": "Producer"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -280,7 +280,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/manufacturer",
-                                "propertyLabel": "manufacturer"
+                                "propertyLabel": "Manufacturer"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -291,7 +291,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/dimensions",
-                                "propertyLabel": "dimensions"
+                                "propertyLabel": "Dimensions"
                             },
                             "type": "literal"
                         },
