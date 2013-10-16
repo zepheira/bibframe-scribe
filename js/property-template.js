@@ -8,11 +8,11 @@ var PropertyTemplate = function(obj) {
     this._constraint = null;
 
     if (typeof obj.repeatable !== "undefined") {
-        this._repeatable = obj.repeatable;
+        this._repeatable = new Boolean(obj.repeatable).valueOf();
     }
 
     if (typeof obj.mandatory !== "undefined") {
-        this._mandatory = obj.mandatory;
+        this._mandatory = new Boolean(obj.mandatory).valueOf();
     }
 
     if (typeof obj.type !== "undefined") {

@@ -1,20 +1,14 @@
 var ResourceTemplate = function(obj) {
-    var i;
+    var i, pt, INSTANCE;
 
-    this._repeatable = false;
-    this._mandatory = false;
+    INSTANCE = "http://bibframe.org/vocab/hasInstance";
+
     this._id = null;
     this._classLabel = null;
     this._classID = null;
     this._propertyTemplates = [];
-
-    if (typeof obj.repeatable !== "undefined") {
-        this._repeatable = obj.repeatable;
-    }
-
-    if (typeof obj.mandatory !== "undefined") {
-        this._mandatory = obj.mandatory;
-    }
+    this._work = false;
+    this._instanceRef = null;
 
     if (typeof obj.id !== "undefined") {
         this._id = obj.id;
@@ -31,7 +25,13 @@ var ResourceTemplate = function(obj) {
 
         if (typeof obj.class.propertyTemplate !== "undefined") {
             for (i = 0; i < obj.class.propertyTemplate.length; i++) {
-                this._propertyTemplates.push(new PropertyTemplate(obj.class.propertyTemplate[i]));
+                pt = new PropertyTemplate(obj.class.propertyTemplate[i]);
+                if (pt.getProperty().getID() === INSTANCE) {
+                    this._work = true;
+                    this._instanceRef = pt.getConstraint().getReference();
+                } else {
+                    this._propertyTemplates.push(pt);
+                }
             }
         }
     }
@@ -49,18 +49,18 @@ ResourceTemplate.prototype.getLabel = function() {
     return this._classLabel;
 };
 
-ResourceTemplate.prototype.isOptional = function() {
-    return !this._mandatory;
+ResourceTemplate.prototype.isWork = function() {
+    return this._work;
 };
 
-ResourceTemplate.prototype.isRequired = function() {
-    return this._mandatory;
-};
-
-PropertyTemplate.prototype.isRepeatable = function() {
-    return this._repeatable;
+ResourceTemplate.prototype.getInstancesID = function() {
+    return this._instanceRef;
 };
 
 ResourceTemplate.prototype.getPropertyTemplates = function() {
     return this._propertyTemplates;
+};
+
+ResourceTemplate.prototype.mergeWork = function(work) {
+    this._propertyTemplates = work.getPropertyTemplates().concat(this._propertyTemplates);
 };
