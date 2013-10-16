@@ -182,7 +182,9 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 
     $scope.removeValue = function(property, value) {
-        var prop = property.getProperty().getID();
+        var prop, empty;
+        empty = true;
+        prop = property.getProperty().getID();
         angular.forEach($scope.currentWork, function(objs, currentProp) {
             if (currentProp === prop) {
                 var rmIdx = -1;
@@ -193,6 +195,14 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
                 });
                 if (rmIdx >= 0) {
                     objs.splice(rmIdx, 1);
+                    angular.forEach($scope.currentWork, function(vals) {
+                        if (vals.length > 0) {
+                            empty = false;
+                        }
+                    });
+                    if (empty) {
+                        $scope.isDirty = false;
+                    }
                 }
             }
         });
