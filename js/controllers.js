@@ -45,7 +45,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
                 if (profile.getClassID() === item.id) {
                     $scope.profileOptions[item.id] = {};
                     $scope.profileOptions[item.id].uri = item.id;
-                    $scope.profileOptions[item.id].label = item.label;
+                    $scope.profileOptions[item.id].label = profile.getLabel();
                 }
             });
         });

@@ -4,6 +4,7 @@ var ResourceTemplate = function(obj) {
     this._repeatable = false;
     this._mandatory = false;
     this._id = null;
+    this._classLabel = null;
     this._classID = null;
     this._propertyTemplates = [];
 
@@ -24,6 +25,10 @@ var ResourceTemplate = function(obj) {
             this._classID = obj.class.id;
         }
 
+        if (typeof obj.class.classLabel !== "undefined") {
+            this._classLabel = obj.class.classLabel;
+        }
+
         if (typeof obj.class.propertyTemplate !== "undefined") {
             for (i = 0; i < obj.class.propertyTemplate.length; i++) {
                 this._propertyTemplates.push(new PropertyTemplate(obj.class.propertyTemplate[i]));
@@ -38,6 +43,10 @@ ResourceTemplate.prototype.getID = function() {
 
 ResourceTemplate.prototype.getClassID = function() {
     return this._classID;
+};
+
+ResourceTemplate.prototype.getLabel = function() {
+    return this._classLabel;
 };
 
 ResourceTemplate.prototype.isOptional = function() {
