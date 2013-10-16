@@ -21,6 +21,8 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     $scope.showExport = false;
     $scope.exportedRDF = "";
 
+    var namespacer = new Namespace();
+
     // initialize by retrieving configuration and profiles
     Configuration.get(null, null, function(response) {
         angular.forEach(["book", "article"], function(profile) {
@@ -123,22 +125,21 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         //     of generating strings
         var subj, rdf, tail;
         subj = $scope.randomRDFID(); // @@@ should be a service
-        rdf = '<?xml version="1.0"?>\n\n<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bf="http://bibframe.org/vocab/" xmlns:bfp="http://bibframe.org/vocab/proposed/">\n  <rdf:Description rdf:about="' + subj + '">\n';
+        rdf = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n  <rdf:Description rdf:about="' + subj + '">\n';
         tail = '  </rdf:Description>\n</rdf:RDF>\n';
         rdf += '    <rdf:type rdf:resource="' + $scope.activeResource.getClassID() + '"/>\n';
         angular.forEach($scope.currentWork, function(vals, prop) {
             var nsProp;
-            nsProp = prop.replace(/http\:\/\/bibframe\.org\/vocab\/proposed\//, "bfp:");
-            nsProp = nsProp.replace(/http\:\/\/bibframe\.org\/vocab\//, "bf:");
+            nsProp = namespacer.extractNamespace(prop);
             angular.forEach(vals, function(val) {
                 if (val.type === "resource") {
-                    rdf += '    <' + nsProp + ' rdf:resource="' + val.value + '"/>\n';
+                    rdf += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
                 } else {
-                    rdf += '    <' + nsProp + '>' + val.value + '</' + nsProp + '>\n';
+                    rdf += '    <' + nsProp.namespace + ':' + nsProp.term + '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
                 }
             });
         });
-        $scope.exportedRDF = rdf+tail;
+        $scope.exportedRDF = rdf + tail;
         $scope.showExport = true;
     };
 
@@ -176,6 +177,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     $scope.initializeProperty = function(property) {
         var prop;
         prop = property.getProperty().getID();
+        namespacer.extractNamespace(prop);
         if (typeof $scope.currentWork[prop] === "undefined") {
             $scope.currentWork[prop] = [];
         }
