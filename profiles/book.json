@@ -27,9 +27,11 @@
                             },
                             "type": "literal",
                             "valueConstraint": {
-                                "id": "http://example.org/vocab/CurrencyDataType",
-                                "valueLabel": "Currency",
-                                "valueLabelHint": "$"
+                                "valueDataType": {
+                                    "id": "http://example.org/vocab/CurrencyDataType",
+                                    "valueLabel": "Currency",
+                                    "valueLabelHint": "$"
+                                }
                             }
                         },
                         {
