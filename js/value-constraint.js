@@ -4,6 +4,7 @@ var ValueConstraint = function(obj) {
     this._type = null;
     this._typeID = null;
     this._typeLabel = null;
+    this._typeLabelHint = null;
 
     if (typeof obj.descriptionTemplateRef !== "undefined") {
         this._ref = obj.descriptionTemplateRef;
@@ -25,6 +26,10 @@ var ValueConstraint = function(obj) {
 
             if (typeof obj.valueDataType.valueLabel !== "undefined") {
                 this._typeLabel = obj.valueDataType.valueLabel;
+            }
+
+            if (typeof obj.valueDataType.valueLabelHint !== "undefined") {
+                this._typeLabelHint = obj.valueDataType.valueLabelHint;
             }
         }
     }
@@ -64,4 +69,8 @@ ValueConstraint.prototype.getComplexTypeID = function() {
 
 ValueConstraint.prototype.getComplexTypeLabel = function() {
     return this._typeLabel;
+};
+
+ValueConstraint.prototype.getComplexTypeLabelHint = function() {
+    return this._typeLabelHint;
 };
