@@ -1,11 +1,7 @@
 {
-    "useClasses": [
-        {
-            "id": "http://bibframe.org/vocab/Book"
-        },
-        {
-            "id": "http://bibframe.org/vocab/Article"
-        }
+    "useWorks": [
+        "http://bibframe.org/vocab/Book",
+        "http://bibframe.org/vocab/Article"
     ],
     "resourceServiceMap": [
         {
