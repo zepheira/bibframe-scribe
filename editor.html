@@ -84,7 +84,13 @@ are required.</small></p>
       <span ng-if="prop.getConstraint().hasComplexType()">
         <span ng-switch="" on="dataTypes[prop.getConstraint().getComplexTypeID()]">
           <span ng-switch-when="date">
-            <input type="text" id="{{profile.uri}}-{{prop.getProperty().getID()}}"  ng-required="prop.isRequired()" datepicker-popup="yyyy-MM-dd" show-weeks="false" month-format="MM" ng-model="dt" class="input-xlarge">
+            <input type="text" id="{{profile.uri}}-{{prop.getProperty().getID()}}"  ng-required="prop.isRequired()" datepicker-popup="yyyy-MM-dd" show-weeks="false" month-format="MM" ng-model="dt" class="input-xlarge" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+          </span>
+          <span ng-switch-default class="input-prepend input-append">
+            <span class="add-on" ng-show="prop.getConstraint().hasHint()">{{prop.getConstraint().getComplexTypeLabelHint()}}</span>
+            <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(prop,inputted,'literal');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Add</button>
+            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Set</button>
           </span>
         </span>
       </span>
@@ -99,7 +105,7 @@ are required.</small></p>
       <span ng-if="prop.getConstraint().hasReference()">
         <input type="text"
                class="input-xlarge"
-               placeholder="Search"
+               placeholder="Type to search"
                ng-model="selected"
                ng-required="prop.isRequired()"
                ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"

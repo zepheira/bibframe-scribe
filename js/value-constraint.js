@@ -71,6 +71,10 @@ ValueConstraint.prototype.getComplexTypeLabel = function() {
     return this._typeLabel;
 };
 
+ValueConstraint.prototype.hasHint = function() {
+    return (typeof this._typeLabelHint !== "undefined" && this._typeLabelHint !== null && this._typeLabelHint !== "");
+};
+
 ValueConstraint.prototype.getComplexTypeLabelHint = function() {
     return this._typeLabelHint;
 };

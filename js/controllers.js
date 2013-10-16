@@ -132,10 +132,15 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
             var nsProp;
             nsProp = namespacer.extractNamespace(prop);
             angular.forEach(vals, function(val) {
+                console.log(val);
                 if (val.type === "resource") {
                     rdf += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
                 } else {
-                    rdf += '    <' + nsProp.namespace + ':' + nsProp.term + '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                    rdf += '    <'+ nsProp.namespace + ':' + nsProp.term;
+                    if (typeof val.datatype !== "undefined") {
+                        rdf += ' rdf:datatype="' + val.datatype + '"';
+                    }
+                    rdf += '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
                 }
             });
         });
@@ -144,7 +149,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 
     $scope.setTextValue = function(property, newVal, objType) {
-        var propID, seen;
+        var propID, seen, val;
         propID = property.getProperty().getID();
         seen = false;
         angular.forEach($scope.currentWork[propID], function(val) {
@@ -154,7 +159,12 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         });
         if (!seen && newVal !== "") {
             $scope.isDirty = true;
-            $scope.currentWork[propID].push({"label": newVal, "value": newVal, "type": objType});
+            val = {"label": newVal, "value": newVal, "type": objType};
+            console.log(property.getConstraint().hasComplexType());
+            if (property.getConstraint().hasComplexType()) {
+                val.datatype = property.getConstraint().getComplexTypeID();
+            };
+            $scope.currentWork[propID].push(val);
         }
     };
 
