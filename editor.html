@@ -9,6 +9,7 @@
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
     <script src="js/lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="js/profile.js"></script>
     <script src="js/value-constraint.js"></script>
     <script src="js/property.js"></script>
     <script src="js/property-template.js"></script>
@@ -18,7 +19,6 @@
     <script src="js/controllers.js"></script>
     <script src="js/initializer.js"></script>
     <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
-    <link rel="bibframe-profile" href="profiles/vanilla.xml">
   </head>
   <body ng-controller="EditorCtrl">
     <div class="navbar">
@@ -31,18 +31,18 @@
     <div class="container">
       <tabset vertical="true" type="tabs">
         <tab disabled="true">
-          <tab-heading ng-show="!activeProfile"></tab-heading>
+          <tab-heading ng-show="!activeResource"></tab-heading>
           <div class="hero-unit">
             <h2>Hi.</h2>
             <p>Click a class on the left to begin creating a new work of that type.</p>
           </div>
         </tab>
-        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)" disabled="isDirty()">
+        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)" disabled="isDirty()||profile.disabled">
           <tab-heading>{{profile.label}}</tab-heading>
-          <form class="form-inline well" ng-show="activeProfile!=null" ng-submit="exportRDF()">
+          <form class="form-inline well" ng-show="activeResource!=null" ng-submit="exportRDF()">
             <p><small>Properties marked with <span class="required">*</span> 
 are required.</small></p>
-            <div ng-repeat="prop in activeProfile.getPropertyTemplates()">
+            <div ng-repeat="prop in activeResource.getPropertyTemplates()">
               <p>
                 <label for="{{ profile.uri }}-{{ prop.getProperty().getID() }}" class="property-label">{{ prop.getProperty().getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
                 <span ng-switch="" on="prop.getType()">
