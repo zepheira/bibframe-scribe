@@ -37,12 +37,12 @@
             <p>Click a class on the left to begin creating a new work of that type.</p>
           </div>
         </tab>
-        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)" disabled="isDirty()||profile.disabled">
+        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)" disabled="isDirty||profile.disabled">
           <tab-heading>{{profile.label}}</tab-heading>
-          <form class="form-inline well" ng-show="activeResource!=null" ng-submit="exportRDF()">
+          <form class="form-inline well" ng-show="activeResource&&activeResource.getClassID()==profile.uri" ng-submit="exportRDF()">
             <p><small>Properties marked with <span class="required">*</span> 
 are required.</small></p>
-            <div ng-repeat="prop in activeResource.getPropertyTemplates()">
+            <div ng-repeat="prop in resourceTemplates[profile.uri].getPropertyTemplates()">
               <p>
                 <label for="{{ profile.uri }}-{{ prop.getProperty().getID() }}" class="property-label">{{ prop.getProperty().getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
                 <span ng-switch="" on="prop.getType()">
@@ -59,8 +59,8 @@ are required.</small></p>
               </ul>
             </div>
             <div class="form-actions">
-              <button class="btn" type="button" ng-click="reset()" ng-disabled="!isDirty()">Clear</button>
-              <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF()" ng-disabled="!isDirty()">Export</button>
+              <button class="btn" type="button" ng-click="reset()" ng-disabled="!isDirty">Clear</button>
+              <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF()" ng-disabled="!isDirty">Export</button>
             </div>
           </form>
         </tab>

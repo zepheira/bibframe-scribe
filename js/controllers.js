@@ -16,6 +16,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     $scope.dataTypes = {};
 
     $scope.currentWork = {};
+    $scope.isDirty = false;
     $scope.activeResoure = null;
     $scope.showExport = false;
     $scope.exportedRDF = "";
@@ -71,9 +72,12 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 
     $scope.newEdit = function(profile) {
+        var props;
+        $scope.isDirty = false;
         $scope.currentWork = {};
         $scope.activeResource = $scope.resourceTemplates[profile.uri];
-        angular.forEach($scope.activeResource.getPropertyTemplates(), function(prop) {
+        props = $scope.activeResource.getPropertyTemplates();
+        angular.forEach(props, function(prop) {
             $scope.initializeProperty(prop);
         });
     };
@@ -104,6 +108,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 
     $scope.reset = function() {
+        $scope.isDirty = false;
         angular.forEach($scope.currentWork, function(p, key) {
             $scope.currentWork[key] = [];
         });
@@ -147,6 +152,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
             }
         });
         if (!seen && newVal !== "") {
+            $scope.isDirty = true;
             $scope.currentWork[propID].push({"label": newVal, "value": newVal, "type": objType});
         }
     };
@@ -162,6 +168,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
             }
         });
         if (!seen) {
+            $scope.isDirty = true;
             $scope.currentWork[prop].push({"label": selection.label, "value": selection.uri, "type": objType});
         }
     };
@@ -175,8 +182,9 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 
     $scope.removeValue = function(property, value) {
+        var prop = property.getProperty().getID();
         angular.forEach($scope.currentWork, function(objs, currentProp) {
-            if (currentProp === property.getProperty().getID()) {
+            if (currentProp === prop) {
                 var rmIdx = -1;
                 angular.forEach(objs, function(obj, idx) {
                     if (obj.value === value.value) {
@@ -188,16 +196,6 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
                 }
             }
         });
-    };
-
-    $scope.isDirty = function() {
-        var dirty = false;
-        angular.forEach($scope.currentWork, function(vals, prop) {
-            if (vals.length > 0) {
-                dirty = true;
-            }
-        });
-        return dirty;
     };
 };
 
