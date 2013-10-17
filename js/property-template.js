@@ -59,6 +59,10 @@ PropertyTemplate.prototype.getProperty = function() {
     return this._property;
 };
 
+PropertyTemplate.prototype.hasConstraint = function() {
+    return this._constraint !== null;
+};
+
 PropertyTemplate.prototype.getConstraint = function() {
     return this._constraint;
 };
