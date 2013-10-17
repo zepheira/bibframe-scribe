@@ -256,6 +256,28 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         return "http://example.org/" + Math.floor(Math.random()*1000000);
     };
 
+    $scope.submit = function() {
+        if ($scope.validate()) {
+            $scope.exportRDF();
+            $scope.showRDF();
+        } else {
+            alert("Please fill out all required properties before exporting.");
+        }
+    };
+
+    $scope.validate = function() {
+        var active, props, valid;
+        active = $scope.activeResource.getClassID();
+        props = $scope.resourceTemplates[active].getPropertyTemplates();
+        valid = true;
+        angular.forEach(props, function(prop) {
+            if (prop.isRequired() && $scope.currentWork[prop.getProperty().getID()].length === 0) {
+                valid = false;
+            }
+        });
+        return valid;
+    };
+
     $scope.exportRDF = function() {
         // @@@ may want a basic triple API library for this instead
         //     of generating strings
