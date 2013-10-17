@@ -232,7 +232,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         var prop, empty, objs, rmIdx;
         empty = true;
         prop = property.getProperty().getID();
-        objs = $scope.currentWork[currentProp];
+        objs = $scope.currentWork[prop];
         rmIdx = -1;
         angular.forEach(objs, function(obj, idx) {
             if (obj.value === value.value) {
