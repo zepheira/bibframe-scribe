@@ -48,7 +48,7 @@
         <tab ng-repeat="profile in profileOptions | orderBy:'sortKey'" select="newEdit(profile)" disabled="isDirty||profile.disabled">
           <tab-heading><span ng-show="!profile.disabled"><i class="icon-chevron-right"></i> </span>{{profile.label}}<span ng-show="profile.disabled">:</span></tab-heading>
           <form class="form-inline well" ng-show="activeResource&&activeResource.getClassID()==profile.uri" ng-submit="exportRDF()">
-            <p><small>Properties marked with <span class="required">*</span> 
+            <p ng-show="hasRequired"><small>Properties marked with <span class="required">*</span> 
 are required.</small></p>
             <div ng-repeat="prop in resourceTemplates[profile.uri].getPropertyTemplates()">
               <p>

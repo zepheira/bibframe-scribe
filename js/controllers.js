@@ -13,6 +13,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         "Languages": Languages,
         "Providers": Providers
     };
+    $scope.hasRequired = false;
     $scope.dataTypes = {};
 
     $scope.currentWork = {};
@@ -90,6 +91,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.newEdit = function(profile) {
         var props;
         $scope.isDirty = false;
+        $scope.hasRequired = false;
         $scope.currentWork = {};
         $scope.activeResource = $scope.resourceTemplates[profile.uri];
         props = $scope.activeResource.getPropertyTemplates();
@@ -222,6 +224,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         namespacer.extractNamespace(prop);
         if (typeof $scope.currentWork[prop] === "undefined") {
             $scope.currentWork[prop] = [];
+        }
+        if (!$scope.hasRequired && property.isRequired()) {
+            $scope.hasRequired = true;
         }
     };
 
