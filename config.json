@@ -1,4 +1,8 @@
 {
+    "profiles": [
+        "book",
+        "article"
+    ],
     "useWorks": [
         "http://bibframe.org/vocab/Book",
         "http://bibframe.org/vocab/Article"
