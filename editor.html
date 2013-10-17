@@ -37,6 +37,7 @@
           <div class="hero-unit" ng-show="initialized">
             <h2>Hi.</h2>
             <p>Click an instance on the left to begin cataloging that type.</p>
+            <br><br>
           </div>
           <div class="hero-unit" ng-show="!initialized">
             <h2>Hey! Listen!</h2>
@@ -78,7 +79,7 @@ are required.</small></p>
     <div class="container" id="export" ng-show="showExport">
       <div class="hero-unit">
         <h2>It's Dangerous To Go Alone! Take This.</h2>
-        <p><textarea rows="10" class="span10">{{exportedRDF}}</textarea></p>
+        <p><textarea rows="10">{{exportedRDF}}</textarea></p>
         <p class="text-center"><button class="btn" ng-click="showExport=false">Close</button></p>
       </div>
     </div>

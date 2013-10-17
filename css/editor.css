@@ -21,6 +21,12 @@
     padding: 0.5em 0 0.5em 1em;
 }
 
+.nav .disabled {
+    background: transparent;
+    border-radius: 0;
+    border: 0;
+}
+
 .nav .active {
     background: #eee;
     border-radius: 4px;
@@ -29,11 +35,11 @@
     border-left: 1px solid #e3e3e3;
 }
 
-.nav .disabled {
+.nav li:first-child {
     background: transparent;
-    border-radius: 0;
     border: 0;
 }
+
 
 .nav .active a {
     color: black;
@@ -51,6 +57,7 @@
 }
 
 .badge {
+    margin-bottom: 5px;
     margin-left: 5px;
 }
 
@@ -75,4 +82,5 @@
 
 #export textarea {
     font-family: monospace;
+    width: 100%;
 }
