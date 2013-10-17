@@ -22,11 +22,24 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.showExport = false;
     $scope.exportedRDF = "";
 
-    var namespacer, exportModalCtrl;
+    var namespacer, ExportModalCtrl, EditLiteralCtrl;
+
     namespacer = new Namespace();
+
     ExportModalCtrl = function($scope, $modalInstance, rdf) {
         $scope.rdf = rdf;
         $scope.close = function() {
+            $modalInstance.dismiss();
+        };
+    };
+
+    EditLiteralCtrl = function($scope, $modalInstance, property, literal) {
+        $scope.property = property;
+        $scope.editLiteral = { "value": literal };
+        $scope.save = function() {
+            $modalInstance.close($scope.editLiteral.value);
+        };
+        $scope.cancel = function() {
             $modalInstance.dismiss();
         };
     };
@@ -88,6 +101,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         return opts;
     };
 
+    $scope.initializeProperty = function(property) {
+        var prop;
+        prop = property.getProperty().getID();
+        namespacer.extractNamespace(prop);
+        if (typeof $scope.currentWork[prop] === "undefined") {
+            $scope.currentWork[prop] = [];
+        }
+        if (!$scope.hasRequired && property.isRequired()) {
+            $scope.hasRequired = true;
+        }
+    };
+
     $scope.newEdit = function(profile) {
         var props;
         $scope.isDirty = false;
@@ -129,49 +154,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         $scope.isDirty = false;
         angular.forEach($scope.currentWork, function(p, key) {
             $scope.currentWork[key] = [];
-        });
-    };
-
-    $scope.randomRDFID = function() {
-        return "http://example.org/" + Math.floor(Math.random()*1000000);
-    };
-
-    $scope.exportRDF = function() {
-        // @@@ may want a basic triple API library for this instead
-        //     of generating strings
-        var subj, rdf, tail;
-        subj = $scope.randomRDFID(); // @@@ should be a service
-        rdf = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n  <rdf:Description rdf:about="' + subj + '">\n';
-        tail = '  </rdf:Description>\n</rdf:RDF>\n';
-        rdf += '    <rdf:type rdf:resource="' + $scope.activeResource.getClassID() + '"/>\n';
-        angular.forEach($scope.currentWork, function(vals, prop) {
-            var nsProp;
-            nsProp = namespacer.extractNamespace(prop);
-            angular.forEach(vals, function(val) {
-                if (val.type === "resource") {
-                    rdf += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
-                } else {
-                    rdf += '    <'+ nsProp.namespace + ':' + nsProp.term;
-                    if (typeof val.datatype !== "undefined") {
-                        rdf += ' rdf:datatype="' + val.datatype + '"';
-                    }
-                    rdf += '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
-                }
-            });
-        });
-        $scope.exportedRDF = rdf + tail;
-    };
-
-    $scope.showRDF = function() {
-        $modal.open({
-            templateUrl: "export.html",
-            controller: ExportModalCtrl,
-            windowClass: "export",
-            resolve: {
-                rdf: function() {
-                    return $scope.exportedRDF;
-                }
-            }
         });
     };
 
@@ -218,40 +200,96 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         }
     };
 
-    $scope.initializeProperty = function(property) {
-        var prop;
-        prop = property.getProperty().getID();
-        namespacer.extractNamespace(prop);
-        if (typeof $scope.currentWork[prop] === "undefined") {
-            $scope.currentWork[prop] = [];
-        }
-        if (!$scope.hasRequired && property.isRequired()) {
-            $scope.hasRequired = true;
-        }
+    $scope.editLiteral = function(property, value) {
+        var modal = $modal.open({
+            templateUrl: "edit-literal.html",
+            controller: EditLiteralCtrl,
+            resolve: {
+                literal: function() {
+                    return value.value;
+                },
+                property: function() {
+                    return property.getProperty().getLabel();
+                }
+            }
+        });
+
+        modal.result.then(function(newValue) {
+            var objs, target, mod;
+            objs = $scope.currentWork[property.getProperty().getID()];
+            angular.forEach(objs, function(obj, idx) {
+                if (obj.value === value.value) {
+                    target = idx;
+                };
+            })
+            mod = objs[target];
+            mod.label = newValue;
+            mod.value = newValue;
+        });
     };
 
     $scope.removeValue = function(property, value) {
-        var prop, empty;
+        var prop, empty, objs, rmIdx;
         empty = true;
         prop = property.getProperty().getID();
-        angular.forEach($scope.currentWork, function(objs, currentProp) {
-            if (currentProp === prop) {
-                var rmIdx = -1;
-                angular.forEach(objs, function(obj, idx) {
-                    if (obj.value === value.value) {
-                        rmIdx = idx;
+        objs = $scope.currentWork[currentProp];
+        rmIdx = -1;
+        angular.forEach(objs, function(obj, idx) {
+            if (obj.value === value.value) {
+                rmIdx = idx;
+            }
+        });
+        if (rmIdx >= 0) {
+            objs.splice(rmIdx, 1);
+            angular.forEach($scope.currentWork, function(vals) {
+                if (vals.length > 0) {
+                    empty = false;
+                }
+            });
+            if (empty) {
+                $scope.isDirty = false;
+            }
+        }
+    };
+
+    $scope.randomRDFID = function() {
+        return "http://example.org/" + Math.floor(Math.random()*1000000);
+    };
+
+    $scope.exportRDF = function() {
+        // @@@ may want a basic triple API library for this instead
+        //     of generating strings
+        var subj, rdf, tail;
+        subj = $scope.randomRDFID(); // @@@ should be a service
+        rdf = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n  <rdf:Description rdf:about="' + subj + '">\n';
+        tail = '  </rdf:Description>\n</rdf:RDF>\n';
+        rdf += '    <rdf:type rdf:resource="' + $scope.activeResource.getClassID() + '"/>\n';
+        angular.forEach($scope.currentWork, function(vals, prop) {
+            var nsProp;
+            nsProp = namespacer.extractNamespace(prop);
+            angular.forEach(vals, function(val) {
+                if (val.type === "resource") {
+                    rdf += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
+                } else {
+                    rdf += '    <'+ nsProp.namespace + ':' + nsProp.term;
+                    if (typeof val.datatype !== "undefined") {
+                        rdf += ' rdf:datatype="' + val.datatype + '"';
                     }
-                });
-                if (rmIdx >= 0) {
-                    objs.splice(rmIdx, 1);
-                    angular.forEach($scope.currentWork, function(vals) {
-                        if (vals.length > 0) {
-                            empty = false;
-                        }
-                    });
-                    if (empty) {
-                        $scope.isDirty = false;
-                    }
+                    rdf += '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                }
+            });
+        });
+        $scope.exportedRDF = rdf + tail;
+    };
+
+    $scope.showRDF = function() {
+        $modal.open({
+            templateUrl: "export.html",
+            controller: ExportModalCtrl,
+            windowClass: "export",
+            resolve: {
+                rdf: function() {
+                    return $scope.exportedRDF;
                 }
             }
         });
@@ -259,4 +297,3 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 };
 
 EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Subjects", "Agents", "Languages", "Providers"];
-
