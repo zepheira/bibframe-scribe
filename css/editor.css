@@ -61,28 +61,19 @@
     margin-left: 5px;
 }
 
-#blackout {
-    background: #333;
-    height: 100%;
-    left: 0;
-    opacity: 0.6;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 500;
-}
-
-#export {
-    left: 10%;
-    position: absolute;
-    top: 2em;
+.export {
     width: 80%;
-    z-index: 1000;
+    left: 10%;
+    margin-left: 0;
 }
 
-#export textarea {
+.export p {
+    padding: 0;
+}
+
+.export textarea {
     font-family: monospace;
-    width: 100%;
+    width: 99%;
 }
 
 ul .btn-group .btn-info {

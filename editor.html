@@ -67,22 +67,24 @@ are required.</small></p>
             </div>
             <div class="form-actions">
               <button class="btn" type="button" ng-click="reset()" ng-disabled="!isDirty">Clear</button>
-              <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF()" ng-disabled="!isDirty">Export</button>
+              <button class="btn btn-primary btn-large" type="button" ng-click="exportRDF();showRDF()" ng-disabled="!isDirty">Export</button>
             </div>
           </form>
         </tab>
       </tabset>
     </div>
 
-    <div id="blackout" ng-show="showExport">&#160;</div>
-
-    <div class="container" id="export" ng-show="showExport">
-      <div class="hero-unit">
+    <script type="text/ng-template" id="export.html">
+      <div class="modal-header">
         <h2>It's Dangerous To Go Alone! Take This.</h2>
-        <p><textarea rows="10">{{exportedRDF}}</textarea></p>
-        <p class="text-center"><button class="btn" ng-click="showExport=false">Close</button></p>
       </div>
-    </div>
+      <div class="modal-body">
+        <p><textarea rows="10" readonly>{{rdf}}</textarea></p>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center"><button class="btn" ng-click="close()">Close</button></p>
+      </div>
+    </script>
 
 
     <script type="text/ng-template" id="basic.html">

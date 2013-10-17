@@ -1,4 +1,4 @@
-var EditorCtrl = function($scope, $q, Configuration, Profiles, Subjects, Agents, Languages, Providers) {
+var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects, Agents, Languages, Providers) {
     $scope.initialized = false;
     $scope.config = {};
     $scope.profiles = {};
@@ -21,7 +21,14 @@ var EditorCtrl = function($scope, $q, Configuration, Profiles, Subjects, Agents,
     $scope.showExport = false;
     $scope.exportedRDF = "";
 
-    var namespacer = new Namespace();
+    var namespacer, exportModalCtrl;
+    namespacer = new Namespace();
+    ExportModalCtrl = function($scope, $modalInstance, rdf) {
+        $scope.rdf = rdf;
+        $scope.close = function() {
+            $modalInstance.dismiss();
+        };
+    };
 
     // initialize by retrieving configuration and profiles
     Configuration.get(null, null).$promise.then(function(config) {
@@ -151,7 +158,19 @@ var EditorCtrl = function($scope, $q, Configuration, Profiles, Subjects, Agents,
             });
         });
         $scope.exportedRDF = rdf + tail;
-        $scope.showExport = true;
+    };
+
+    $scope.showRDF = function() {
+        $modal.open({
+            templateUrl: "export.html",
+            controller: ExportModalCtrl,
+            windowClass: "export",
+            resolve: {
+                rdf: function() {
+                    return $scope.exportedRDF;
+                }
+            }
+        });
     };
 
     $scope.setDateValue = function(property, newVal, objType) {
@@ -234,4 +253,5 @@ var EditorCtrl = function($scope, $q, Configuration, Profiles, Subjects, Agents,
     };
 };
 
-EditorCtrl.$inject = ["$scope", "$q", "Configuration", "Profiles", "Subjects", "Agents", "Languages", "Providers"];
+EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Subjects", "Agents", "Languages", "Providers"];
+
