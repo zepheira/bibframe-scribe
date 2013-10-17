@@ -154,6 +154,14 @@ var EditorCtrl = function($scope, $q, Configuration, Profiles, Subjects, Agents,
         $scope.showExport = true;
     };
 
+    $scope.setDateValue = function(property, newVal, objType) {
+        if (typeof newVal === "object" && typeof newVal.toISOString !== "undefined") {
+            $scope.setTextValue(property, newVal.toISOString().split("T")[0], objType);
+        } else {
+            $scope.setTextValue(property, newVal, objType);
+        }
+    };
+
     $scope.setTextValue = function(property, newVal, objType) {
         var propID, seen, val;
         propID = property.getProperty().getID();

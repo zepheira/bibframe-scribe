@@ -88,8 +88,19 @@ are required.</small></p>
     <script type="text/ng-template" id="basic.html">
       <span ng-if="prop.getConstraint().hasComplexType()">
         <span ng-switch="" on="dataTypes[prop.getConstraint().getComplexTypeID()]">
-          <span ng-switch-when="date">
-            <input type="text" id="{{profile.uri}}-{{prop.getProperty().getID()}}"  ng-required="prop.isRequired()" datepicker-popup="yyyy-MM-dd" show-weeks="false" month-format="MM" ng-model="dt" class="input-xlarge" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+          <span ng-switch-when="date" class="input-prepend input-append">
+            <span class="add-on"><i class="icon-calendar"></i></span>
+            <!-- datepicker-popup should provide the format but doesn't -->
+            <input type="text"
+                   class="input-xlarge" 
+                   id="{{profile.uri}}-{{prop.getProperty().getID()}}"
+                   datepicker-popup="yyyy-MM-dd"
+                   show-weeks="false"
+                   ng-model="inputted"
+                   ng-enter="setDateValue(prop,inputted,'literal');inputted=''"
+                   ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(prop,inputted,'literal');inputted=''">Add</button>
+            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(prop,inputted,'literal');inputted=''">Set</button>
           </span>
           <span ng-switch-default class="input-prepend input-append">
             <span class="add-on" ng-show="prop.getConstraint().hasHint()">{{prop.getConstraint().getComplexTypeLabelHint()}}</span>

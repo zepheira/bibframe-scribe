@@ -84,3 +84,7 @@
     font-family: monospace;
     width: 100%;
 }
+
+ul .btn-group .btn-info {
+    display: none;
+}
