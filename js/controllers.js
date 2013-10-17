@@ -1,7 +1,7 @@
-var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Languages, Providers) {
+var EditorCtrl = function($scope, $q, Configuration, Profiles, Subjects, Agents, Languages, Providers) {
+    $scope.initialized = false;
     $scope.config = {};
     $scope.profiles = {};
-    $scope.profileOptions = {};
     $scope.resourceTemplates = {};
     $scope.resourceServices = {};
     $scope.idToTemplate = {};
@@ -24,23 +24,28 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     var namespacer = new Namespace();
 
     // initialize by retrieving configuration and profiles
-    Configuration.get(null, null, function(response) {
-        angular.forEach(["book", "article"], function(profile) {
-        Profiles.get(
-            {},
-            {"profile": profile, "format": "json"},
-            function(resp) {
+    Configuration.get(null, null).$promise.then(function(config) {
+        $scope.config = config;
+        return $q.all(config.profiles.map(function(p) {
+            return Profiles.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
                 var prof;
-                prof = new Profile(profile, resp.Profile);
-                $scope.profiles[prof.getID()] = prof;
-                $scope.initialize(prof);
-            }
-        )});
-        $scope.config = response;
+                prof = new Profile(p, resp.Profile);
+                return $scope.initialize(prof);
+            });
+        })).then(function(responses) {
+            var profiles = [];
+            responses.map(function(curr) {
+                profiles = profiles.concat(curr);
+                return curr;
+            });
+            $scope.initialized = true;
+            $scope.profileOptions = profiles;
+        });
     });
 
     $scope.initialize = function(profile) {
-        var workTemplate, instanceIDs, instanceTemplate;
+        var workTemplate, instanceIDs, instanceTemplate, opts;
+        opts = [];
         // interpret configuration for labels and classes to use out of profile
         angular.forEach($scope.config.useWorks, function(work) {
             workTemplate = profile.getResourceTemplate(work);
@@ -50,9 +55,9 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
                     instanceTemplate = profile.getTemplateByID(id);
                     instanceTemplate.mergeWork(workTemplate);
                     $scope.resourceTemplates[instanceTemplate.getClassID()] = instanceTemplate;
-                    $scope.profileOptions[instanceTemplate.getClassID()] = {"uri": instanceTemplate.getClassID(), "label": instanceTemplate.getLabel(), "parent": workTemplate.getClassID(), "disabled": false};
+                    opts.push({"uri": instanceTemplate.getClassID(), "label": instanceTemplate.getLabel(), "sortKey": workTemplate.getLabel() + "-" + instanceTemplate.getLabel(), "disabled": false});
                 });
-                $scope.profileOptions[workTemplate.getClassID()] = {"uri": workTemplate.getClassID(), "label": workTemplate.getLabel(), "disabled": true};
+                opts.push({"uri": workTemplate.getClassID(), "label": workTemplate.getLabel(), "disabled": true, "sortKey": workTemplate.getLabel()});
             }
         });
         profile.registerResourceTemplates($scope.idToTemplate);
@@ -71,6 +76,8 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         angular.forEach($scope.config.dataTypes, function(dataType) {
             $scope.dataTypes[dataType.id] = dataType.handler;
         });
+
+        return opts;
     };
 
     $scope.newEdit = function(profile) {
@@ -132,7 +139,6 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
             var nsProp;
             nsProp = namespacer.extractNamespace(prop);
             angular.forEach(vals, function(val) {
-                console.log(val);
                 if (val.type === "resource") {
                     rdf += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
                 } else {
@@ -160,8 +166,7 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
         if (!seen && newVal !== "") {
             $scope.isDirty = true;
             val = {"label": newVal, "value": newVal, "type": objType};
-            console.log(property.getConstraint().hasComplexType());
-            if (property.getConstraint().hasComplexType()) {
+            if (property.hasConstraint() && property.getConstraint().hasComplexType()) {
                 val.datatype = property.getConstraint().getComplexTypeID();
             };
             $scope.currentWork[propID].push(val);
@@ -221,4 +226,4 @@ var EditorCtrl = function($scope, Configuration, Profiles, Subjects, Agents, Lan
     };
 };
 
-EditorCtrl.$inject = ["$scope", "Configuration", "Profiles", "Subjects", "Agents", "Languages", "Providers"];
+EditorCtrl.$inject = ["$scope", "$q", "Configuration", "Profiles", "Subjects", "Agents", "Languages", "Providers"];

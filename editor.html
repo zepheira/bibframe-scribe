@@ -34,13 +34,17 @@
       <tabset vertical="true" type="tabs">
         <tab disabled="true">
           <tab-heading ng-show="!activeResource"></tab-heading>
-          <div class="hero-unit">
+          <div class="hero-unit" ng-show="initialized">
             <h2>Hi.</h2>
-            <p>Click a class on the left to begin creating a new work of that type.</p>
+            <p>Click an instance on the left to begin cataloging that type.</p>
+          </div>
+          <div class="hero-unit" ng-show="!initialized">
+            <h2>Hey! Listen!</h2>
+            <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
           </div>
         </tab>
-        <tab ng-repeat="profile in profileOptions" select="newEdit(profile)" disabled="isDirty||profile.disabled">
-          <tab-heading>{{profile.label}}</tab-heading>
+        <tab ng-repeat="profile in profileOptions | orderBy:'sortKey'" select="newEdit(profile)" disabled="isDirty||profile.disabled">
+          <tab-heading><span ng-show="!profile.disabled"><i class="icon-chevron-right"></i> </span>{{profile.label}}<span ng-show="profile.disabled">:</span></tab-heading>
           <form class="form-inline well" ng-show="activeResource&&activeResource.getClassID()==profile.uri" ng-submit="exportRDF()">
             <p><small>Properties marked with <span class="required">*</span> 
 are required.</small></p>
