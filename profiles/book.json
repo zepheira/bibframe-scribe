@@ -45,7 +45,7 @@
                                 "valueDataType": {
                                     "id": "http://example.org/vocab/CurrencyDataType",
                                     "valueLabel": "Currency",
-                                    "valueLabelHint": "yen"
+                                    "valueLabelHint": "¥"
                                 }
                             }
                         },
