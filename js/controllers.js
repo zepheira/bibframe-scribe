@@ -71,9 +71,8 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         angular.forEach($scope.config.useWorks, function(work) {
             workTemplate = profile.getResourceTemplate(work);
             if (workTemplate !== null && workTemplate.isWork()) {
-                instanceIDs = workTemplate.getInstancesID();
-                angular.forEach(instanceIDs, function(id) {
-                    instanceTemplate = profile.getTemplateByID(id);
+                instances = profile.getWorkInstances(work);
+                angular.forEach(instances, function(instanceTemplate) {
                     instanceTemplate.mergeWork(workTemplate);
                     $scope.resourceTemplates[instanceTemplate.getClassID()] = instanceTemplate;
                     opts.push({"uri": instanceTemplate.getClassID(), "label": instanceTemplate.getLabel(), "sortKey": workTemplate.getLabel() + "-" + instanceTemplate.getLabel(), "disabled": false});

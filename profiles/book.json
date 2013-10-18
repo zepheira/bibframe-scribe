@@ -92,17 +92,6 @@
                             "valueConstraint": {
                                 "descriptionTemplateRef": "agent"
                             }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/hasInstance",
-                                "propertyLabel": "Has Instance"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": ["ebook","paperback","hardcover"]
-                            }
                         }
                     ]
                 }
@@ -112,6 +101,7 @@
                 "class": {
                     "classLabel": "Electronic Book",
                     "id": "http://bibframe.org/vocab/proposed/EBook",
+                    "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -153,6 +143,7 @@
                 "class": {
                     "classLabel": "Paperback Book",
                     "id": "http://bibframe.org/vocab/proposed/PaperBackBook",
+                    "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -194,6 +185,7 @@
                 "class": {
                     "classLabel": "Hardcover Book",
                     "id": "http://bibframe.org/vocab/proposed/HardCoverBook",
+                    "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
                             "property": {
