@@ -1,5 +1,6 @@
 {
     "Profile": {
+        "title": "Language Materials",
         "resourceTemplate": [
             {
                 "id": "work",
@@ -31,6 +32,20 @@
                                     "id": "http://example.org/vocab/CurrencyDataType",
                                     "valueLabel": "Currency",
                                     "valueLabelHint": "$"
+                                }
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://example.org/vocab/costy",
+                                "propertyLabel": "Cost (Yen)"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://example.org/vocab/CurrencyDataType",
+                                    "valueLabel": "Currency",
+                                    "valueLabelHint": "yen"
                                 }
                             }
                         },
@@ -100,46 +115,13 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "Publisher"
+                                "id": "http://bibframe.org/vocab/provider",
+                                "propertyLabel": "Provider"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "Distributor"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/producer",
-                                "propertyLabel": "Producer"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/manufacturer",
-                                "propertyLabel": "Manufacturer"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
+                                "descriptionTemplateRef": [ "publishEvent", "distributeEvent", "manufactureEvent", "producerEvent" ]
                             }
                         },
                         {
@@ -174,46 +156,13 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "Publisher"
+                                "id": "http://bibframe.org/vocab/provider",
+                                "propertyLabel": "Provider"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "Distributor"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/producer",
-                                "propertyLabel": "Producer"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/manufacturer",
-                                "propertyLabel": "Manufacturer"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
+                                "descriptionTemplateRef": [ "publishEvent", "distributeEvent", "manufactureEvent", "producerEvent" ]
                             }
                         },
                         {
@@ -248,46 +197,13 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/publisher",
-                                "propertyLabel": "Publisher"
+                                "id": "http://bibframe.org/vocab/provider",
+                                "propertyLabel": "Provider"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/distributor",
-                                "propertyLabel": "Distributor"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/producer",
-                                "propertyLabel": "Producer"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/manufacturer",
-                                "propertyLabel": "Manufacturer"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "provider"
+                                "descriptionTemplateRef": [ "publishEvent", "distributeEvent", "manufactureEvent", "producerEvent" ]
                             }
                         },
                         {
@@ -376,57 +292,6 @@
                     ]
                 },
                 "id": "authority"
-            },
-            {
-                "class": {
-                    "classLabel": "Provider",
-                    "id": "http://bibframe.org/vocab/Provider",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerDate",
-                                "propertyLabel": "Provider Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerName",
-                                "propertyLabel": "Provider Name"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerPlace",
-                                "propertyLabel": "Provider Place"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                },
-                "id": "provider"
             }
         ]
     }

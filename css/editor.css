@@ -1,33 +1,46 @@
+/* BIBFRAME Editor default style */
+
+/* Header */
+
+.application-logo {
+background-image:url('/img/bibframe-logo-s.png');
+background-repeat:no-repeat;
+background-position: -10px -10px;
+padding-left: 40px;
+}
+
+/* Editor */
+
 .click {
     cursor: pointer;
 }
 
-.property-label {
+.editor .property-label {
     width: 20%;
     font-weight: bold;
 }
 
-.required {
+.editor .required {
     color: red;
 }
 
-.nav {
+.editor .nav {
     float: left;
     width: 20%;
 }
 
-.nav a {
+.editor .nav a {
     cursor: pointer;
     padding: 0.5em 0 0.5em 1em;
 }
 
-.nav .disabled {
+.editor .nav .disabled {
     background: transparent;
     border-radius: 0;
     border: 0;
 }
 
-.nav .active {
+.editor .nav .active {
     background: #eee;
     border-radius: 4px;
     border-top: 1px solid #e3e3e3;
@@ -35,47 +48,47 @@
     border-left: 1px solid #e3e3e3;
 }
 
-.nav li:first-child {
+.editor .nav li:first-child {
     background: transparent;
     border: 0;
 }
 
 
-.nav .active a {
+.editor .nav .active a {
     color: black;
     cursor: text;
     font-weight: bold;
 }
 
-.tab-content {
+.editor .tab-content {
     float: left;
     width: 80%;
 }
 
-.values {
+.editor .values {
     margin-left: 20%;
 }
 
-.badge {
+.editor .badge {
     margin-bottom: 5px;
     margin-left: 5px;
 }
 
-.export {
+.editor .export {
     width: 80%;
     left: 10%;
     margin-left: 0;
 }
 
-.export p {
+.editor .export p {
     padding: 0;
 }
 
-.export textarea {
+.editor .export textarea {
     font-family: monospace;
     width: 99%;
 }
 
-ul .btn-group .btn-info {
+.editor ul .btn-group .btn-info {
     display: none;
 }

@@ -21,17 +21,38 @@
     <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/initializer.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+
     <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
   </head>
   <body ng-controller="EditorCtrl">
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <h3>BIBFRAME Editor</h3>
+	  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+	  </a>
+
+          <a class="brand" href="/"><span class="application-logo"></span>BIBFRAME Editor</a>
+
+	  <div class="nav-collapse collapse">
+	    <ul class="nav pull-right">	  
+	      <li class="active"><a href="#"><i class="icon-home"></i> Sally</a></li>
+	      <li class="divider-vertical"></li>
+	      <li><a href="#">Notices <span class="badge badge-info">3</span></a></li>
+	      <li><a href="#">Settings</a></li>
+	      <li><a href="#">Help</a></li>
+	      <li class="divider-vertical"></li>
+	      <li><a href="#">Logout</a></li>
+	    </ul>
+	  </div>
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container editor">
       <tabset vertical="true" type="tabs">
         <tab disabled="true">
           <tab-heading ng-show="!activeResource"></tab-heading>
@@ -48,8 +69,12 @@
         <tab ng-repeat="profile in profileOptions | orderBy:'sortKey'" select="newEdit(profile)" disabled="isDirty||profile.disabled">
           <tab-heading><span ng-show="!profile.disabled"><i class="icon-chevron-right"></i> </span>{{profile.label}}<span ng-show="profile.disabled">:</span></tab-heading>
           <form class="form-inline well" ng-show="activeResource&&activeResource.getClassID()==profile.uri" ng-submit="submit()">
-            <p ng-show="hasRequired"><small>Properties marked with <span class="required">*</span> 
-are required.</small></p>
+            <p ng-show="hasRequired">
+	      <div class="alert alert-info">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>  
+		Properties marked with <span class="required">*</span> 
+	      </div>
+	    </p>
             <div ng-repeat="prop in resourceTemplates[profile.uri].getPropertyTemplates()">
               <p>
                 <label for="{{ profile.uri }}-{{ prop.getProperty().getID() }}" class="property-label">{{ prop.getProperty().getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
