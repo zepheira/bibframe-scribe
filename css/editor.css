@@ -1,24 +1,31 @@
-/* BIBFRAME Editor default style */
-
-/* Header */
+/*
+ * Header
+ */
 
 .application-logo {
-background-image:url('/img/bibframe-logo-s.png');
-background-repeat:no-repeat;
-background-position: -10px -10px;
-padding-left: 40px;
+    background-image: url("../img/bibframe-logo-s.png");
+    background-repeat: no-repeat;
+    background-position: -10px -10px;
+    padding-left: 40px;
 }
 
-/* Editor */
+
+/*
+ * General
+ */
 
 .click {
     cursor: pointer;
 }
 
-.editor .property-label {
+.property-label {
     width: 20%;
     font-weight: bold;
 }
+
+/*
+ * Editor
+ */
 
 .editor .required {
     color: red;
@@ -53,7 +60,6 @@ padding-left: 40px;
     border: 0;
 }
 
-
 .editor .nav .active a {
     color: black;
     cursor: text;
@@ -74,21 +80,26 @@ padding-left: 40px;
     margin-left: 5px;
 }
 
-.editor .export {
+.editor ul .btn-group .btn-info {
+    display: none;
+}
+
+/*
+ * Export
+ */
+
+.export {
     width: 80%;
     left: 10%;
     margin-left: 0;
 }
 
-.editor .export p {
+.export p {
     padding: 0;
 }
 
-.editor .export textarea {
+.export textarea {
     font-family: monospace;
     width: 99%;
 }
 
-.editor ul .btn-group .btn-info {
-    display: none;
-}
