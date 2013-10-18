@@ -147,7 +147,7 @@
     </script>
 
     <script type="text/ng-template" id="advanced.html">
-      <span ng-if="prop.getConstraint().hasReference()">
+      <span ng-if="prop.getConstraint().hasReference()" class="input-append">
         <input type="text"
                class="input-xlarge"
                placeholder="Type to search"
@@ -159,6 +159,7 @@
                typeahead-min-length="1"
                typeahead-editable="false"
                id="{{profile.uri}}-{{prop.getProperty().getID()}}">
+        <button class="btn" type="button"><i class="icon-plus"></i></button>
       </span>
     </script>
 
