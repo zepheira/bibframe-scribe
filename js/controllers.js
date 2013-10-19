@@ -127,6 +127,10 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.autocomplete = function(property, typed) {
         var classID, services, completer;
         completer = property.getConstraint().getReference();
+        // @@@ just take the first, not dealing with combining mock services
+        if (typeof completer === "object") {
+            completer = completer[0];
+        }
         classID = $scope.idToTemplate[completer].getClassID();
         services = $scope.resourceServices[classID];
         // @@@ handle multiple services - or maybe have a proxied

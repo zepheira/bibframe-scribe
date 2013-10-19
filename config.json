@@ -22,9 +22,21 @@
             "services": ["Languages"]
         },
         {
-            "resource": "http://bibframe.org/vocab/Provider",
+            "resource": "http://bibframe.org/vocab/PublisherEvent",
             "services": ["Providers"]
-        }        
+        },
+        {
+            "resource": "http://bibframe.org/vocab/ManufactureEvent",
+            "services": ["Providers"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/ProducerEvent",
+            "services": ["Providers"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/DistributeEvent",
+            "services": ["Providers"]
+        }
     ],
     "dataTypes": [
         {
