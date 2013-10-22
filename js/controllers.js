@@ -1,12 +1,10 @@
 var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects, Agents, Languages, Providers) {
     $scope.initialized = false;
     $scope.config = {};
-    $scope.profiles = {};
+    $scope.profiles = [];
     $scope.resourceTemplates = {};
     $scope.resourceServices = {};
     $scope.idToTemplate = {};
-    $scope.autocompleteLoading = {};
-    $scope.autocompletes = {};
     $scope.services = {
         "Subjects": Subjects,
         "Agents": Agents,
@@ -18,11 +16,13 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 
     $scope.currentWork = {};
     $scope.isDirty = false;
+    $scope.pivoting = false;
+    $scope.created = []; // @@@ new resources created in this session, TBD
     $scope.activeResoure = null;
     $scope.showExport = false;
     $scope.exportedRDF = "";
-
-    var namespacer, ExportModalCtrl, EditLiteralCtrl;
+    
+    var namespacer, ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
 
     namespacer = new Namespace();
 
@@ -44,6 +44,44 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
     };
 
+    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue) {
+        $scope.initializeProperty = initProp;
+        $scope.setTextValue = setTextValue;
+        $scope.setDateValue = setDateValue;
+        $scope.resourceTemplates = templates;
+        $scope.dataTypes = dataTypes;
+        $scope.typeLabel = templates[res].getLabel();
+        $scope.profile = {
+            'uri': res,
+            'label': templates[res].getLabel(),
+            'disabled': false
+        };
+        $scope.currentWork = {};
+        $scope.isDirty = false;
+        $scope.pivoting = true;
+
+        var flags;
+        flags = { "hasRequired": false };
+        angular.forEach(templates[res].getPropertyTemplates(), function(prop) {
+            initProp($scope.currentWork, prop, flags);
+        });
+        $scope.hasRequired = flags.hasRequired;
+
+        $scope.cancel = function() {
+            $modalInstance.dismiss();
+        };
+
+        $scope.save = function() {
+            $scope.currentWork.type = [
+                {
+                    "type": "resource",
+                    "value": templates[res].getClassID()
+                }
+            ];
+            $modalInstance.close($scope.currentWork);
+        };
+    };
+
     // initialize by retrieving configuration and profiles
     Configuration.get(null, null).$promise.then(function(config) {
         $scope.config = config;
@@ -51,6 +89,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             return Profiles.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
                 var prof;
                 prof = new Profile(p, resp.Profile);
+                $scope.profiles.push(prof);
                 return $scope.initialize(prof);
             });
         })).then(function(responses) {
@@ -100,28 +139,30 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         return opts;
     };
 
-    $scope.initializeProperty = function(property) {
+    $scope.initializeProperty = function(work, property, flags) {
         var prop;
         prop = property.getProperty().getID();
         namespacer.extractNamespace(prop);
-        if (typeof $scope.currentWork[prop] === "undefined") {
-            $scope.currentWork[prop] = [];
+        if (typeof work[prop] === "undefined") {
+            work[prop] = [];
         }
-        if (!$scope.hasRequired && property.isRequired()) {
-            $scope.hasRequired = true;
+        if (!flags.hasRequired && property.isRequired()) {
+            flags.hasRequired = true;
         }
     };
 
     $scope.newEdit = function(profile) {
-        var props;
+        var props, flags;
         $scope.isDirty = false;
         $scope.hasRequired = false;
         $scope.currentWork = {};
         $scope.activeResource = $scope.resourceTemplates[profile.uri];
         props = $scope.activeResource.getPropertyTemplates();
+        flags = { "hasRequired": false };
         angular.forEach(props, function(prop) {
-            $scope.initializeProperty(prop);
+            $scope.initializeProperty($scope.currentWork, prop, flags);
         });
+        $scope.hasRequired = flags.hasRequired;
     };
 
     $scope.autocomplete = function(property, typed) {
@@ -149,10 +190,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         });
     };
 
-    $scope.completeLoading = function(prop) {
-        return $scope.autocompleteLoading[prop.getProperty().getID()];
-    };
-
     $scope.reset = function() {
         $scope.isDirty = false;
         angular.forEach($scope.currentWork, function(p, key) {
@@ -160,19 +197,19 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         });
     };
 
-    $scope.setDateValue = function(property, newVal, objType) {
+    $scope.setDateValue = function(work, property, newVal, objType) {
         if (typeof newVal === "object" && typeof newVal.toISOString !== "undefined") {
-            $scope.setTextValue(property, newVal.toISOString().split("T")[0], objType);
+            $scope.setTextValue(work, property, newVal.toISOString().split("T")[0], objType);
         } else {
-            $scope.setTextValue(property, newVal, objType);
+            $scope.setTextValue(work, property, newVal, objType);
         }
     };
 
-    $scope.setTextValue = function(property, newVal, objType) {
+    $scope.setTextValue = function(work, property, newVal, objType) {
         var propID, seen, val;
         propID = property.getProperty().getID();
         seen = false;
-        angular.forEach($scope.currentWork[propID], function(val) {
+        angular.forEach(work[propID], function(val) {
             if (val.value === newVal) {
                 seen = true;
             }
@@ -183,14 +220,12 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             if (property.hasConstraint() && property.getConstraint().hasComplexType()) {
                 val.datatype = property.getConstraint().getComplexTypeID();
             };
-            $scope.currentWork[propID].push(val);
+            work[propID].push(val);
         }
     };
 
     $scope.selectValue = function(property, selection, objType) {
         var seen = false;
-        $scope.autocompletes = {};
-        $scope.complete = {};
         prop = property.getProperty().getID();
         angular.forEach($scope.currentWork[prop], function(val) {
             if (selection.uri === val.value) {
@@ -255,6 +290,47 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         }
     };
 
+    $scope.pivot = function(property, ref) {
+        var modal, ref, res, tmpls;
+        if (typeof ref === "undefined") {
+            ref = property.getConstraint().getReference()
+        }
+        res = $scope.idToTemplate[ref];
+        tmpls = {};
+        tmpls[res.getClassID()] = res;
+        modal = $modal.open({
+            templateUrl: "pivot.html",
+            controller: SubResourceCtrl,
+            windowClass: "pivot",
+            resolve: {
+                templates: function() {
+                    return tmpls;
+                },
+                res: function() {
+                    return res.getClassID();
+                },
+                initProp: function() {
+                    return $scope.initializeProperty;
+                },
+                setTextValue: function() {
+                    return $scope.setTextValue;
+                },
+                setDateValue: function() {
+                    return $scope.setDateValue;
+                },
+                dataTypes: function() {
+                    return $scope.dataTypes;
+                }
+            }
+        });
+
+        modal.result.then(function(newResource) {
+            newResource.id = [$scope.randomRDFID()];
+            $scope.created.push(newResource);
+            $scope.selectValue(property, {"label": "Created", "uri": newResource.id}, "resource");
+        });
+    };
+
     $scope.randomRDFID = function() {
         return "http://example.org/" + Math.floor(Math.random()*1000000);
     };
@@ -286,25 +362,39 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         //     of generating strings
         var subj, rdf, tail;
         subj = $scope.randomRDFID(); // @@@ should be a service
-        rdf = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n  <rdf:Description rdf:about="' + subj + '">\n';
-        tail = '  </rdf:Description>\n</rdf:RDF>\n';
-        rdf += '    <rdf:type rdf:resource="' + $scope.activeResource.getClassID() + '"/>\n';
-        angular.forEach($scope.currentWork, function(vals, prop) {
-            var nsProp;
-            nsProp = namespacer.extractNamespace(prop);
-            angular.forEach(vals, function(val) {
-                if (val.type === "resource") {
-                    rdf += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
-                } else {
-                    rdf += '    <'+ nsProp.namespace + ':' + nsProp.term;
-                    if (typeof val.datatype !== "undefined") {
-                        rdf += ' rdf:datatype="' + val.datatype + '"';
-                    }
-                    rdf += '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
-                }
-            });
+        rdf = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n';
+        tail = '</rdf:RDF>\n';
+        rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource.getClassID());
+        angular.forEach($scope.created, function(res) {
+            rdf += $scope.exportResource(res);
         });
         $scope.exportedRDF = rdf + tail;
+    };
+
+    $scope.exportResource = function(res, id, type) {
+        var frag = "";
+        angular.forEach(res, function(vals, prop) {
+            var nsProp;
+            if (prop === "id" && typeof id === "undefined") {
+                id = vals[0];
+            } else if (prop === "type" && typeof type === "undefined") {
+                type = vals[0].value;
+            } else {
+                nsProp = namespacer.extractNamespace(prop);
+                angular.forEach(vals, function(val) {
+                    if (val.type === "resource") {
+                        frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
+                    } else {
+                        frag += '    <'+ nsProp.namespace + ':' + nsProp.term;
+                        if (typeof val.datatype !== "undefined") {
+                            frag += ' rdf:datatype="' + val.datatype + '"';
+                        }
+                        frag += '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                    }
+                });
+            }
+        });
+        return '  <rdf:Description rdf:about="' + id + '">\n    <rdf:type rdf:resource="' + type + '"/>\n' + frag + '  </rdf:Description>\n';;
     };
 
     $scope.showRDF = function() {

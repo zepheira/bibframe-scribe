@@ -58,33 +58,7 @@
         </tab>
         <tab ng-repeat="profile in profileOptions | orderBy:'sortKey'" select="newEdit(profile)" disabled="isDirty||profile.disabled">
           <tab-heading><span ng-show="!profile.disabled"><i class="icon-chevron-right"></i> </span>{{profile.label}}<span ng-show="profile.disabled">:</span></tab-heading>
-          <form class="form-inline well" ng-show="activeResource&&activeResource.getClassID()==profile.uri" ng-submit="submit()">
-            <p ng-show="hasRequired">Properties marked with <span class="required">*</span> are required.</p>
-            <div ng-repeat="prop in resourceTemplates[profile.uri].getPropertyTemplates()">
-              <p>
-                <label for="{{ profile.uri }}-{{ prop.getProperty().getID() }}" class="property-label">{{ prop.getProperty().getLabel() }}<span ng-show="prop.isRequired()" class="required">*</span></label>
-                <span ng-switch="" on="prop.getType()">
-                  <span ng-switch-when="literal">
-                    <span ng-include="'basic.html'"></span>
-                  </span>
-                  <span ng-switch-when="resource">
-                    <span ng-include="'advanced.html'"></span>
-                  </span>
-                </span>
-              </p>
-              <ul class="values">
-                <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
-                  <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.label}}</span>
-                  <span ng-show="!prop.isLiteral()">{{val.label}}</span>
-                  <i title="Remove" class="icon-remove icon-white click" ng-click="removeValue(prop,val)"></i>
-                </li>
-              </ul>
-            </div>
-            <div class="form-actions">
-              <button class="btn" type="button" ng-click="reset()" ng-disabled="!isDirty">Clear</button>
-              <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!isDirty">Export</button>
-            </div>
-          </form>
+          <div ng-show="activeResource&&activeResource.getClassID()==profile.uri" ng-include="'resource.html'"></div>
         </tab>
       </tabset>
     </div>
@@ -114,6 +88,18 @@
       </div>
     </script>
 
+    <script type="text/ng-template" id="pivot.html">
+      <div class="modal-header">
+        <h3>New {{typeLabel}}</h3>
+      </div>
+      <div class="modal-body" ng-include="'resource.html'">
+      </div>
+      <div class="modal-footer">
+        <button class="btn" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" ng-click="save()">Save</button>
+      </div>
+    </script>
+
     <script type="text/ng-template" id="basic.html">
       <span ng-if="prop.getConstraint().hasComplexType()">
         <span ng-switch="" on="dataTypes[prop.getConstraint().getComplexTypeID()]">
@@ -126,23 +112,23 @@
                    datepicker-popup="yyyy-MM-dd"
                    show-weeks="false"
                    ng-model="inputted"
-                   ng-enter="setDateValue(prop,inputted,'literal');inputted=''"
+                   ng-enter="setDateValue(currentWork,prop,inputted,'literal');inputted=''"
                    ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(prop,inputted,'literal');inputted=''">Add</button>
-            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(prop,inputted,'literal');inputted=''">Set</button>
+            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(currentWork,prop,inputted,'literal');inputted=''">Add</button>
+            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(currentWork,prop,inputted,'literal');inputted=''">Set</button>
           </span>
           <span ng-switch-default class="input-prepend input-append">
             <span class="add-on" ng-show="prop.getConstraint().hasHint()">{{prop.getConstraint().getComplexTypeLabelHint()}}</span>
-            <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(prop,inputted,'literal');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Add</button>
-            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Set</button>
+            <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted,'literal');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'literal');inputted=''">Add</button>
+            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'literal');inputted=''">Set</button>
           </span>
         </span>
       </span>
       <span ng-if="!prop.getConstraint().hasComplexType()" class="input-append">
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(prop,inputted,'literal');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-        <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Add</button>
-        <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(prop,inputted,'literal');inputted=''">Set</button>
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted,'literal');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+        <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted,'literal');inputted=''">Add</button>
+        <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted,'literal');inputted=''">Set</button>
       </span>
     </script>
 
@@ -159,8 +145,63 @@
                typeahead-min-length="1"
                typeahead-editable="false"
                id="{{profile.uri}}-{{prop.getProperty().getID()}}">
-        <button class="btn" type="button"><i class="icon-plus"></i></button>
+        <!-- @@@ disabled except when active and matches are empty -->
+        <!-- @@@ take value as typed and use as label -->
+        <!-- @@@ ...distinguish which property is a label -->
+        <span ng-if="!prop.getConstraint().hasManyReferences()">
+          <button class="btn"
+                type="button"
+                tooltip="Click to create a new resource"
+                tooltip-placement="right"
+                ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
+                ng-click="pivot(prop,prop.getConstraint().getReference(),idToTemplate[prop.getConstraint().getReference()].getLabel())"><i class="icon-plus"></i></button>
+        </span>
+        <span ng-if="prop.getConstraint().hasManyReferences()" class="dropdown">
+          <a class="dropdown-toggle">
+            <button class="btn"
+                  type="button"
+                  tooltip="Click to create a new resource"
+                  tooltip-placement="right">
+              <i class="icon-plus"></i><b class="caret"></b>
+            </button>
+          </a>
+          <ul class="dropdown-menu">
+            <li ng-repeat="ref in prop.getConstraint().getReference()">
+              <a ng-click="pivot(prop,ref,idToTemplate[ref].getLabel())" class="click">{{idToTemplate[ref].getLabel()}}</a>
+            </li>
+          </ul>
+        </span>
       </span>
+    </script>
+
+    <script type="text/ng-template" id="resource.html">
+      <form class="form-inline well" ng-submit="submit()">
+        <p ng-show="hasRequired">Properties marked with <span class="required">*</span> are required.</p>
+        <div ng-repeat="prop in resourceTemplates[profile.uri].getPropertyTemplates()">
+          <p>
+            <label for="{{profile.uri}}-{{prop.getProperty().getID()}}" class="property-label">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
+            <span ng-switch="" on="prop.getType()">
+              <span ng-switch-when="literal">
+                <span ng-include="'basic.html'"></span>
+              </span>
+              <span ng-switch-when="resource">
+                <span ng-include="'advanced.html'"></span>
+              </span>
+            </span>
+          </p>
+          <ul class="values">
+            <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
+              <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.label}}</span>
+              <span ng-show="!prop.isLiteral()">{{val.label}}</span>
+              <i title="Remove" class="icon-remove click" ng-click="removeValue(prop,val)"></i>
+            </li>
+          </ul>
+        </div>
+        <div class="form-actions" ng-if="!pivoting">
+          <button class="btn" type="button" ng-click="reset()" ng-disabled="!isDirty">Clear</button>
+          <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!isDirty">Export</button>
+        </div>
+      </form>
     </script>
 
   </body>

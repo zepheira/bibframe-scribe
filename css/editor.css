@@ -85,6 +85,16 @@
 }
 
 /*
+ * Pivot
+ */
+
+.pivot {
+    width: 65%;
+    left: 17%;
+    margin-left: 0;
+}
+
+/*
  * Export
  */
 
