@@ -67,7 +67,7 @@
       <div class="modal-body">
         <form class="form-inline" ng-submit="save()">
           <label class="property-label" for="literal">{{property}}</label>
-          <input id="literal" class="input-xlarge" ng-model="editLiteral.value" type="text">
+          <input id="literal" class="input-xlarge" ng-model="editing.value" type="text">
         </form>
       </div>
       <div class="modal-footer">
@@ -191,9 +191,9 @@
           </p>
           <ul class="values">
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
-              <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.label}}</span>
+              <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.label}}</span>
               <span ng-show="!prop.isLiteral()">{{val.label}}</span>
-              <i title="Remove" class="icon-remove click" ng-click="removeValue(prop,val)"></i>
+              <i title="Remove" class="icon-remove click" ng-click="removeValue(currentWork,prop,val)"></i>
             </li>
           </ul>
         </div>

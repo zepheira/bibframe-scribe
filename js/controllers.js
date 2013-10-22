@@ -35,19 +35,21 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 
     EditLiteralCtrl = function($scope, $modalInstance, property, literal) {
         $scope.property = property;
-        $scope.editLiteral = { "value": literal };
+        $scope.editing = { "value": literal };
         $scope.save = function() {
-            $modalInstance.close($scope.editLiteral.value);
+            $modalInstance.close($scope.editing.value);
         };
         $scope.cancel = function() {
             $modalInstance.dismiss();
         };
     };
 
-    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue) {
+    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral) {
         $scope.initializeProperty = initProp;
         $scope.setTextValue = setTextValue;
         $scope.setDateValue = setDateValue;
+        $scope.removeValue = removeValue;
+        $scope.editLiteral = editLiteral;
         $scope.resourceTemplates = templates;
         $scope.dataTypes = dataTypes;
         $scope.typeLabel = templates[res].getLabel();
@@ -238,7 +240,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         }
     };
 
-    $scope.editLiteral = function(property, value) {
+    $scope.editLiteral = function(work, property, value) {
         var modal = $modal.open({
             templateUrl: "edit-literal.html",
             controller: EditLiteralCtrl,
@@ -254,7 +256,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 
         modal.result.then(function(newValue) {
             var objs, target, mod;
-            objs = $scope.currentWork[property.getProperty().getID()];
+            objs = work[property.getProperty().getID()];
             angular.forEach(objs, function(obj, idx) {
                 if (obj.value === value.value) {
                     target = idx;
@@ -266,11 +268,11 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         });
     };
 
-    $scope.removeValue = function(property, value) {
+    $scope.removeValue = function(work, property, value) {
         var prop, empty, objs, rmIdx;
         empty = true;
         prop = property.getProperty().getID();
-        objs = $scope.currentWork[prop];
+        objs = work[prop];
         rmIdx = -1;
         angular.forEach(objs, function(obj, idx) {
             if (obj.value === value.value) {
@@ -279,7 +281,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         });
         if (rmIdx >= 0) {
             objs.splice(rmIdx, 1);
-            angular.forEach($scope.currentWork, function(vals) {
+            angular.forEach(work, function(vals) {
                 if (vals.length > 0) {
                     empty = false;
                 }
@@ -317,6 +319,12 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 },
                 setDateValue: function() {
                     return $scope.setDateValue;
+                },
+                removeValue: function() {
+                    return $scope.removeValue;
+                },
+                editLiteral: function() {
+                    return $scope.editLiteral;
                 },
                 dataTypes: function() {
                     return $scope.dataTypes;
