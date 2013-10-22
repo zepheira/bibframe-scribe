@@ -11,13 +11,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
                                 }
                             },
                             "type": "literal"
@@ -25,13 +25,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Publish Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
+                                "propertyLabel": "Publish Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
                                 }
                             },
                             "type": "literal"
@@ -62,13 +62,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
                                         "valueLabelHint": "ISO"
-                                    }
                                 }
                             },
                             "type": "literal"
@@ -76,13 +76,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Manufacture Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
+                                "propertyLabel": "Manufacture Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
                                 }
                             },
                             "type": "literal"
@@ -113,13 +113,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
                                 }
                             },
                             "type": "literal"
@@ -127,13 +127,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Date of Production",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
+                                "propertyLabel": "Date of Production"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
                                 }
                             },
                             "type": "literal"
@@ -164,13 +164,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
                                 }
                             },
                             "type": "literal"
@@ -178,13 +178,13 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Distribution Date",
-                                "valueConstraint": {
-                                    "valueDataType": {
-                                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                        "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                    }
+                                "propertyLabel": "Distribution Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
                                 }
                             },
                             "type": "literal"
