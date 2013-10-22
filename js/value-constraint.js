@@ -8,6 +8,13 @@ var ValueConstraint = function(obj) {
 
     if (typeof obj.descriptionTemplateRef !== "undefined") {
         this._ref = obj.descriptionTemplateRef;
+        if (typeof this._ref === "object") {
+            if (this._ref.length === 1) {
+                this._ref = this._ref[0];
+            } else if (this._ref.length === 0) {
+                this._ref = null;
+            }
+        }
     }
 
     if (typeof obj.valueLang !== "undefined") {
@@ -37,6 +44,10 @@ var ValueConstraint = function(obj) {
 
 ValueConstraint.prototype.hasReference = function() {
     return (this._ref !== null && this._ref !== "");
+};
+
+ValueConstraint.prototype.hasManyReferences = function() {
+    return (this._ref !== null && this._ref !== "" && typeof this._ref === "object" && this._ref.length > 1);
 };
 
 ValueConstraint.prototype.getReference = function() {
