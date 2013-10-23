@@ -90,7 +90,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "agent"
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family", "bfp:Agent:Meeting", "bfp:Agent:Jursidiction" ]
                             }
                         },
                         {
@@ -331,37 +331,6 @@
                         }
                     ]
                 }
-            },
-            {
-                "class": {
-                    "classLabel": "Agent",
-                    "id": "http://bibframe.org/vocab/Agent",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/fName",
-                                "propertyLabel": "First Name"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/lName",
-                                "propertyLabel": "Last Name"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                },
-                "id": "agent",
-                "mandatory": "true"
             },
             {
                 "class": {

@@ -55,7 +55,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "agent"
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization" ]
                             }
                         },
                         {
@@ -176,42 +176,6 @@
                         }
                     ]
                 }
-            },
-            {
-                "class": {
-                    "id": "http://bibframe.org/vocab/Agent",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/fName",
-                                "propertyLabel": "First Name"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/lName",
-                                "propertyLabel": "Last Name"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/affiliation",
-                                "propertyLabel": "Affiliation"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                },
-                "id": "agent"
             },
             {
                 "class": {
