@@ -6,7 +6,6 @@
     <link href="css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="css/font-awesome.css" rel="stylesheet">
     <link href="css/editor.css" rel="stylesheet">
-    <script src="js/lib/jquery.min.js"></script>
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
     <script src="js/lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
@@ -133,6 +132,13 @@
     </script>
 
     <script type="text/ng-template" id="advanced.html">
+      <span ng-if="!prop.getConstraint().hasReference()" class="input-prepend input-append">
+        <span class="add-on">URL</span>
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted,'resource');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+        <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'resource');inputted=''">Add</button>
+        <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'resource');inputted=''">Set</button>
+      </span>
+
       <span ng-if="prop.getConstraint().hasReference()">
         <input type="text"
                class="input-xlarge"
