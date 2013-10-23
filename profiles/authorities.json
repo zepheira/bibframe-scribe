@@ -1,0 +1,100 @@
+{
+    "Profile": {
+        "id": "bfp:Subject",
+        "title": "BIBFRAME Subjects",
+        "resourceTemplate": [    	       
+            {
+	         "id": "bfp:Authority:Topic",
+		 "class": {
+                    "classLabel": "Topic",
+                    "id": "http://bibframe.org/vocab/Topic",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/description",
+                                "propertyLabel": "Description"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+	         "id": "bfp:Authority:Place",
+		 "class": {
+                    "classLabel": "Place",
+                    "id": "http://bibframe.org/vocab/Place",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/description",
+                                "propertyLabel": "Description"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+	         "id": "bfp:Authority:TemporalConcept",
+		 "class": {
+                    "classLabel": "Time",
+                    "id": "http://bibframe.org/vocab/TemporalConcept",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/description",
+                                "propertyLabel": "Description"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+	         "id": "bfp:Authority:ClassificationEntity",
+		 "class": {
+                    "classLabel": "Classification Entity",
+                    "id": "http://bibframe.org/vocab/ClassificationEntity",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/description",
+                                "propertyLabel": "Description"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

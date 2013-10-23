@@ -5,7 +5,7 @@
             {
                 "id": "publishEvent",
                 "class": {
-                    "classLabel": "PublisherEvent",
+                    "classLabel": "Publisher",
                     "id": "http://bibframe.org/vocab/PublisherEvent",
                     "propertyTemplate": [
                         {
@@ -39,7 +39,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/providerName",
-                                "propertyLabel": "Publisher"
+                                "propertyLabel": "Name of Publisher"
                             },
                             "type": "literal"
                         },
@@ -56,7 +56,7 @@
             {
                 "id": "manufactureEvent",
                 "class": {
-                    "classLabel": "ManufactureEvent",
+                    "classLabel": "Manufacturer",
                     "id": "http://bibframe.org/vocab/ManufactureEvent",
                     "propertyTemplate": [
                         {
@@ -107,7 +107,7 @@
             {
                 "id": "producerEvent",
                 "class": {
-                    "classLabel": "ProducerEvent",
+                    "classLabel": "Producer",
                     "id": "http://bibframe.org/vocab/ProducerEvent",
                     "propertyTemplate": [
                         {
@@ -158,7 +158,7 @@
             {
                 "id": "distributeEvent",
                 "class": {
-                    "classLabel": "DistributeEvent",
+                    "classLabel": "Distributor",
                     "id": "http://bibframe.org/vocab/DistributeEvent",
                     "propertyTemplate": [
                         {

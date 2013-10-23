@@ -1,5 +1,7 @@
 {
     "profiles": [
+        "authorities",
+        "agents",
         "events",
         "book",
         "article"
