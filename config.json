@@ -4,11 +4,13 @@
         "agents",
         "events",
         "book",
-        "article"
+        "article",
+        "vra/vra"
     ],
     "useWorks": [
         "http://bibframe.org/vocab/Book",
-        "http://bibframe.org/vocab/Article"
+        "http://bibframe.org/vocab/Article",
+        "http://bibframe.org/vocab/Work"
     ],
     "resourceServiceMap": [
         {
@@ -44,6 +46,10 @@
         {
             "id": "http://bibframe.org/vocab/proposed/ISO8601",
             "handler": "date"
+        },
+        {
+            "id": "http://example.org/vocab/bfp/Image",
+            "handler": "image"
         }
     ]
 }
