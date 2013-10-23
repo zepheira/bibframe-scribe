@@ -45,7 +45,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "language"
+                                "descriptionTemplateRef": "bp:language"
                             }
                         },
                         {
@@ -55,7 +55,17 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "agent"
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization" ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/related",
+                                "propertyLabel": "Related"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
                             }
                         }
                     ]
@@ -166,42 +176,6 @@
                         }
                     ]
                 }
-            },
-            {
-                "class": {
-                    "id": "http://bibframe.org/vocab/Agent",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/fName",
-                                "propertyLabel": "First Name"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/lName",
-                                "propertyLabel": "Last Name"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/affiliation",
-                                "propertyLabel": "Affiliation"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                },
-                "id": "agent"
             },
             {
                 "class": {

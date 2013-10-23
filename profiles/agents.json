@@ -1,0 +1,179 @@
+{
+    "Profile": {
+        "id": "bfp:Agent",
+        "title": "BIBFRAME Agents",
+        "resourceTemplate": [    	       
+            {
+	         "id": "bfp:Agent:Family",
+		 "class": {
+                    "classLabel": "Family",
+                    "id": "http://bibframe.org/vocab/Family",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISNI",
+                                "propertyLabel": "ISNI"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/VIAF",
+                                "propertyLabel": "VIAF"
+                            },
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ORCID",
+                                "propertyLabel": "ORCID"
+                            },
+                            "type": "resource"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Agent:Jurisdiction",
+                "class": {
+                    "classLabel": "Jurisdiction",
+                    "id": "http://bibframe.org/vocab/Jurisdiction",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISNI",
+                                "propertyLabel": "ISNI"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/VIAF",
+                                "propertyLabel": "VIAF"
+                            },
+                            "type": "resource"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Agent:Meeting",
+                "class": {
+                    "classLabel": "Meeting",
+                    "id": "http://bibframe.org/vocab/Meeting",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISNI",
+                                "propertyLabel": "ISNI"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/VIAF",
+                                "propertyLabel": "VIAF"
+                            },
+                            "type": "resource"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Agent:Organization",
+                "class": {
+                    "classLabel": "Organization",
+                    "id": "http://bibframe.org/vocab/Organization",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/homePage",
+                                "propertyLabel": "Home Page"
+                            },
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/VIAF",
+                                "propertyLabel": "VIAF"
+                            },
+                            "type": "resource"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Agent:Person",
+                "class": {
+                    "classLabel": "Person",
+                    "id": "http://bibframe.org/vocab/Person",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/fname",
+                                "propertyLabel": "First Name"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/lname",
+                                "propertyLabel": "Last Name"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ISNI",
+                                "propertyLabel": "ISNI"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/VIAF",
+                                "propertyLabel": "VIAF"
+                            },
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/ORCID",
+                                "propertyLabel": "ORCID"
+                            },
+                            "type": "resource"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
