@@ -67,7 +67,7 @@
       <div class="modal-body">
         <form class="form-inline" ng-submit="save()">
           <label class="property-label" for="literal">{{property}}</label>
-          <input id="literal" class="input-xlarge" ng-model="editLiteral.value" type="text">
+          <input id="literal" class="input-xlarge" ng-model="editing.value" type="text">
         </form>
       </div>
       <div class="modal-footer">
@@ -133,7 +133,7 @@
     </script>
 
     <script type="text/ng-template" id="advanced.html">
-      <span ng-if="prop.getConstraint().hasReference()" class="input-append">
+      <span ng-if="prop.getConstraint().hasReference()">
         <input type="text"
                class="input-xlarge"
                placeholder="Type to search"
@@ -144,10 +144,10 @@
                typeahead-on-select="selectValue(prop,$item,'resource');selected=null"
                typeahead-min-length="1"
                typeahead-editable="false"
+               typeahead-loading="loading[prop.getProperty().getID()]"
                id="{{profile.uri}}-{{prop.getProperty().getID()}}">
         <!-- @@@ disabled except when active and matches are empty -->
         <!-- @@@ take value as typed and use as label -->
-        <!-- @@@ ...distinguish which property is a label -->
         <span ng-if="!prop.getConstraint().hasManyReferences()">
           <button class="btn"
                 type="button"
@@ -160,7 +160,7 @@
           <a class="dropdown-toggle">
             <button class="btn"
                   type="button"
-                  tooltip="Click to create a new resource"
+                  tooltip="Select resource to create"
                   tooltip-placement="right">
               <i class="icon-plus"></i><b class="caret"></b>
             </button>
@@ -172,6 +172,7 @@
           </ul>
         </span>
       </span>
+      <span ng-show="loading[prop.getProperty().getID()]"><img src="img/spinner.gif"></span>
     </script>
 
     <script type="text/ng-template" id="resource.html">
@@ -191,9 +192,9 @@
           </p>
           <ul class="values">
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
-              <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.label}}</span>
+              <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.label}}</span>
               <span ng-show="!prop.isLiteral()">{{val.label}}</span>
-              <i title="Remove" class="icon-remove click" ng-click="removeValue(prop,val)"></i>
+              <i title="Remove" class="icon-remove click" ng-click="removeValue(currentWork,prop,val)"></i>
             </li>
           </ul>
         </div>
@@ -202,6 +203,17 @@
           <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!isDirty">Export</button>
         </div>
       </form>
+    </script>
+
+    <!-- forked typeahead template -->
+    <script type="text/ng-template" id="template/typeahead/typeahead-popup.html">
+      <ul class="typeahead dropdown-menu" ng-style="{display: isOpen()&&'block' || 'none', top: position.top+'px', left: position.left+'px'}">
+        <!-- @@@ make this work -->
+        <!-- <li style="border-bottom: 1px solid #eee;"><a>Create new</a></li> -->
+        <li ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
+          <typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></typeahead-match>
+        </li>
+      </ul>
     </script>
 
   </body>
