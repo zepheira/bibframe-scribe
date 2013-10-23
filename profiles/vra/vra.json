@@ -72,7 +72,7 @@
                             "type": "literal",
                             "valueConstraint": {
                                 "valueDataType": {
-                                    "id": "http://example.org/vocab/ISO8601",
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
                                     "valueLabel": "ISO 8601",
                                     "valueLabelHint": "ISO"
                                 }
@@ -86,7 +86,7 @@
                             "type": "literal",
                             "valueConstraint": {
                                 "valueDataType": {
-                                    "id": "http://example.org/vocab/ISO8601",
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
                                     "valueLabel": "ISO 8601",
                                     "valueLabelHint": "ISO"
                                 }
@@ -142,17 +142,6 @@
                                 "propertyLabel": "Measurement"
                             },
                             "type": "literal",
-                            "valueConstraint": {
-                                "valueDataType": "",
-                                "valueLang": ""
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/relation",
-                                "propertyLabel": "Measurement"
-                            },
-                            "type": "",
                             "valueConstraint": {
                                 "valueDataType": "",
                                 "valueLang": ""
@@ -289,8 +278,8 @@
                             },
                             "type": "literal"
                         }
-		    ]
-		}
+		            ]
+                }
             },		    
             {
                 "id": "bfp:ULAN:Agent",
@@ -305,7 +294,7 @@
                             },
                             "type": "literal"
                         }
-  		    ]
+                    ]
                 }
             },
             {
@@ -321,7 +310,7 @@
                             },
                             "type": "literal"
                         }
-  		    ]
+                    ]
                 }
             },
             {
@@ -337,7 +326,7 @@
                             },
                             "type": "literal"
                         }
-  		    ]
+                    ]
                 }
             },
             {
@@ -353,7 +342,7 @@
                             },
                             "type": "literal"
                         }
-  		    ]
+                    ]
                 }
             },
             {
@@ -369,7 +358,7 @@
                             },
                             "type": "literal"
                         }
-  		    ]
+                    ]
                 }
             },
             {
@@ -385,7 +374,7 @@
                             },
                             "type": "literal"
                         }
-  		    ]
+                    ]
                 }
             },
             {
