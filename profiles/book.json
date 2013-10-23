@@ -1,9 +1,10 @@
 {
     "Profile": {
         "title": "Language Materials",
+        "id": "bfp:Work",
         "resourceTemplate": [
             {
-                "id": "work",
+                "id": "bfp:Work:Book",
                 "class": {
                     "classLabel": "Book",
                     "id": "http://bibframe.org/vocab/Book",
@@ -15,11 +16,7 @@
                                 "propertyLabel": "Title"
                             },
                             "repeatable": "false",
-                            "type": "literal",
-                            "valueConstraint": {
-                                "valueDataType": "",
-                                "valueLang": ""
-                            }
+                            "type": "literal"
                         },
                         {
                             "property": {
@@ -68,7 +65,11 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "authority"
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", 
+							    "bfp:Agent:Organization", 
+							    "bfp:Authority:Place", 
+							    "bfp:Authority:ClassificationEntity", 
+							    "bfp:Authority:Topic" ]
                             }
                         },
                         {
@@ -101,7 +102,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -112,7 +113,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -123,7 +124,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -134,7 +135,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -145,7 +146,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -156,7 +157,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -167,7 +168,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -178,7 +179,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -189,7 +190,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
@@ -200,7 +201,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         }
                     ]
@@ -347,22 +348,6 @@
                     ]
                 },
                 "id": "language"
-            },
-            {
-                "class": {
-                    "classLabel": "Authority",
-                    "id": "http://bibframe.org/vocab/Authority",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                },
-                "id": "authority"
             }
         ]
     }
