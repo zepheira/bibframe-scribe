@@ -84,6 +84,13 @@
     display: none;
 }
 
+.editor .match-info {
+    border-bottom: 1px solid #ddd;
+    line-height: 20px;
+    padding: 3px 15px 4px;
+    white-space: nowrap;
+}
+
 /*
  * Pivot
  */
