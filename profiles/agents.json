@@ -5,7 +5,7 @@
         "resourceTemplate": [    	       
             {
 	         "id": "bfp:Agent:Family",
-		 "class": {
+                "class": {
                     "classLabel": "Family",
                     "id": "http://bibframe.org/vocab/Family",
                     "propertyTemplate": [

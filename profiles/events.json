@@ -150,7 +150,7 @@
                                 "id": "http://bibframe.org/vocab/providerPlace",
                                 "propertyLabel": "Location"
                             },
-                            "type": "place"
+                            "type": "literal"
                         }
                     ]
                 }
