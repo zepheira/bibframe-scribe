@@ -15,6 +15,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.dataTypes = {};
 
     $scope.currentWork = {};
+    $scope.loading = {};
     $scope.isDirty = false;
     $scope.pivoting = false;
     $scope.created = []; // @@@ new resources created in this session, TBD
@@ -61,11 +62,12 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         $scope.currentWork = {};
         $scope.isDirty = false;
         $scope.pivoting = true;
+        $scope.loading = {};
 
         var flags;
-        flags = { "hasRequired": false };
+        flags = { "hasRequired": false, "loading": $scope.loading };
         angular.forEach(templates[res].getPropertyTemplates(), function(prop) {
-            initProp($scope.currentWork, prop, flags);
+            $scope.initializeProperty($scope.currentWork, prop, flags);
         });
         $scope.hasRequired = flags.hasRequired;
 
@@ -151,6 +153,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         if (!flags.hasRequired && property.isRequired()) {
             flags.hasRequired = true;
         }
+        flags.loading[prop] = false;
     };
 
     $scope.newEdit = function(profile) {
@@ -158,9 +161,10 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         $scope.isDirty = false;
         $scope.hasRequired = false;
         $scope.currentWork = {};
+        $scope.loading = {};
         $scope.activeResource = $scope.resourceTemplates[profile.uri];
         props = $scope.activeResource.getPropertyTemplates();
-        flags = { "hasRequired": false };
+        flags = { "hasRequired": false, "loading": $scope.loading };
         angular.forEach(props, function(prop) {
             $scope.initializeProperty($scope.currentWork, prop, flags);
         });
