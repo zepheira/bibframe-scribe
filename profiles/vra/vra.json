@@ -1,0 +1,409 @@
+{
+    "Profile": {
+        "title": "Architecture and Architecture Models",
+        "resourceTemplate": [
+            {
+                "id": "bfp:work",
+                "class": {
+                    "classLabel": "Work",
+                    "id": "http://bibframe.org/vocab/Work",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/title",
+                                "propertyLabel": "Title"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/alternativeTitle",
+                                "propertyLabel": "Alternative Title"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/architect",
+                                "propertyLabel": "A:Architect"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:ULAN:Agent"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/painter",
+                                "propertyLabel": "A:Painter"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:ULAN:Agent"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/carver",
+                                "propertyLabel": "A:Carver"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:ULAN:Agent"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/culturalConcext",
+                                "propertyLabel": "Language"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bp:language"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://example.org/vocab/vra/beginDate",
+                                "propertyLabel": "Begin Date"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://example.org/vocab/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://example.org/vocab/vra/consecratedDate",
+                                "propertyLabel": "Consecrated Date"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://example.org/vocab/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/description",
+                                "propertyLabel": "Description"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/inscription",
+                                "propertyLabel": "Inscription"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/location",
+                                "propertyLabel": "Location"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:TGN:Place"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/material",
+                                "propertyLabel": "Material"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:AAT:Authority"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/measurement",
+                                "propertyLabel": "Measurement"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/relation",
+                                "propertyLabel": "Measurement"
+                            },
+                            "type": "",
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/relation",
+                                "propertyLabel": "Relation"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bf:work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/rights",
+                                "propertyLabel": "Rights"
+                            },
+                            "type": "",
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/source",
+                                "propertyLabel": "Source"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:WebResource"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/stateEdition",
+                                "propertyLabel": "State Edition"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": "",
+                                "valueLang": ""
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/stylePeriod",
+                                "propertyLabel": "Style / Period"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:AAT:Period"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/subject",
+                                "propertyLabel": "Subject"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "LCSAF:Topic"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/technique",
+                                "propertyLabel": "Technique"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:AAT:Technique"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/textref",
+                                "propertyLabel": "Reference"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/vra/workType",
+                                "propertyLabel": "Work Type"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "bfp:AAT:WorkType"
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:depicts",
+                "class": {
+                    "classLabel": "Image",
+                    "id": "http://bibframe.org/vocab/Image",
+                    "instanceOf": "http://bibframe.org/vocab/Work",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/image",
+                                "propertyLabel": "Image"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://example.org/vocab/bfp/Image",
+                                    "valueLabel": "Image Drop Zone",
+                                    "valueLabelHint": "I"
+                                }
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/width",
+                                "propertyLabel": "Width"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/height",
+                                "propertyLabel": "Height"
+                            },
+                            "type": "literal"
+                        }
+		    ]
+		}
+            },		    
+            {
+                "id": "bfp:ULAN:Agent",
+                "class": {
+                    "classLabel": "Agent",
+                    "id": "http://bibframe.org/vocab/rda/Agent",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+  		    ]
+                }
+            },
+            {
+                "id": "bfp:AAT:Authority",
+                "class": {
+                    "classLabel": "Authority",
+                    "id": "http://bibframe.org/vocab/rda/Authority",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+  		    ]
+                }
+            },
+            {
+                "id": "bfp:AAT:Period",
+                "class": {
+                    "classLabel": "Period",
+                    "id": "http://bibframe.org/vocab/rda/Period",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+  		    ]
+                }
+            },
+            {
+                "id": "bfp:AAT:Technique",
+                "class": {
+                    "classLabel": "Technique",
+                    "id": "http://bibframe.org/vocab/rda/Technique",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+  		    ]
+                }
+            },
+            {
+                "id": "bfp:AAT:WorkType",
+                "class": {
+                    "classLabel": "Type of Work",
+                    "id": "http://bibframe.org/vocab/rda/WorkType",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+  		    ]
+                }
+            },
+            {
+                "id": "bfp:TGN:Place",
+                "class": {
+                    "classLabel": "Place",
+                    "id": "http://bibframe.org/vocab/rda/Place",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+  		    ]
+                }
+            },
+            {
+                "id": "language",
+                "class": {
+                    "id": "http://bibframe.org/vocab/LanguageEntity",
+                    "propertyTemplate": [
+                        {
+                            "mandatory": "true",
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
