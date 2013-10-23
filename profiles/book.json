@@ -79,7 +79,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "language"
+                                "descriptionTemplateRef": "bp:language"
                             }
                         },
                         {
@@ -91,6 +91,116 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": "agent"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/isVersionOf",
+                                "propertyLabel": "Is Version Of"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/hasVersion",
+                                "propertyLabel": "Has Version"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/isVariantOf",
+                                "propertyLabel": "Is Variant Of"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/hasVariant",
+                                "propertyLabel": "Has Variant"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/isBasedOn",
+                                "propertyLabel": "Is Based On"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/isBasisFor",
+                                "propertyLabel": "Is Basis For"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/requires",
+                                "propertyLabel": "Requires"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/isRequiredBy",
+                                "propertyLabel": "Is Required By"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/isTranslationOf",
+                                "propertyLabel": "Is Translation Of"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/hasTranslation",
+                                "propertyLabel": "Has Translation"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": "work"
                             }
                         }
                     ]
