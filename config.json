@@ -14,11 +14,39 @@
     ],
     "resourceServiceMap": [
         {
-            "resource": "http://bibframe.org/vocab/Authority",
+            "resource": "http://bibframe.org/vocab/Topic",
             "services": ["Subjects"]
         },
         {
-            "resource": "http://bibframe.org/vocab/Agent",
+            "resource": "http://bibframe.org/vocab/Place",
+            "services": ["Subjects"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/TemporalConcept",
+            "services": ["Subjects"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/ClassificationEntity",
+            "services": ["Subjects"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Family",
+            "services": ["Agents"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Jursdiction",
+            "services": ["Agents"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Meeting",
+            "services": ["Agents"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Organization",
+            "services": ["Agents"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Person",
             "services": ["Agents"]
         },
         {
@@ -40,6 +68,30 @@
         {
             "resource": "http://bibframe.org/vocab/DistributeEvent",
             "services": ["Providers"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/rda/Agent",
+            "services": ["Agents"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/rda/Place",
+            "services": ["Agents"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/rda/Authority",
+            "services": ["Subjects"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/rda/Period",
+            "services": ["Subjects"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/rda/Technique",
+            "services": ["Subjects"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/rda/WorkType",
+            "services": ["Subjects"]
         }
     ],
     "dataTypes": [
