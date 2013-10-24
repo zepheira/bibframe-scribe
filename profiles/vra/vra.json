@@ -378,7 +378,7 @@
                 }
             },
             {
-                "id": "language",
+                "id": "bp:language",
                 "class": {
                     "id": "http://bibframe.org/vocab/LanguageEntity",
                     "propertyTemplate": [

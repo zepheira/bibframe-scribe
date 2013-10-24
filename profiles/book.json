@@ -347,7 +347,7 @@
                         }
                     ]
                 },
-                "id": "language"
+                "id": "bp:language"
             }
         ]
     }
