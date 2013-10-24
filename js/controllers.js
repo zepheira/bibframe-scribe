@@ -22,6 +22,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.activeResoure = null;
     $scope.showExport = false;
     $scope.exportedRDF = "";
+    $scope.dz = null;
     
     var namespacer, ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
 
@@ -157,7 +158,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     };
 
     $scope.newEdit = function(profile) {
-        var props, flags;
+        var props, flags, dz;
         $scope.isDirty = false;
         $scope.hasRequired = false;
         $scope.currentWork = {};
@@ -169,6 +170,34 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             $scope.initializeProperty($scope.currentWork, prop, flags);
         });
         $scope.hasRequired = flags.hasRequired;
+        if ($scope.dz !== null) {
+            $scope.dz.destroy();
+            $scope.dz = null;
+        }
+        try {
+            // @@@ may want this on the form instead?  behaves correctly
+            //     UI-wise, but probably incorrectly on upload
+            $scope.dz = new Dropzone("div.active div.dropzone", {
+                "url": "/upload/image",
+                "autoProcessQueue": false,
+                "uploadMultiple": true,
+                "parallelUploads": 100,
+                "maxFiles": 100,
+                "init": function() {
+                    var self = this;
+                    // @@@instead of submitting form, call self.processQueue()
+                    // @@@want the URLs back for use in RDF
+                    this.on("sendingmultiple", function() {
+                    });
+                    this.on("successmultiple", function(files, response) {
+                    });
+                    this.on("errormultiple", function(files, response) {
+                    });
+                }
+            });
+        } catch(ex) {
+            // ignore errors dealing with failing selector - that's the goal
+        }
     };
 
     $scope.autocomplete = function(property, typed) {
@@ -203,17 +232,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         });
     };
 
-    $scope.setDateValue = function(work, property, newVal, objType) {
+    $scope.setDateValue = function(work, property, newVal) {
         if (typeof newVal === "object" && typeof newVal.toISOString !== "undefined") {
-            $scope.setTextValue(work, property, newVal.toISOString().split("T")[0], objType);
+            $scope.setTextValue(work, property, newVal.toISOString().split("T")[0]);
         } else {
-            $scope.setTextValue(work, property, newVal, objType);
+            $scope.setTextValue(work, property, newVal);
         }
     };
 
-    $scope.setTextValue = function(work, property, newVal, objType) {
+    $scope.setTextValue = function(work, property, newVal) {
         var propID, seen, val;
         propID = property.getProperty().getID();
+        objType = property.getType();
         seen = false;
         angular.forEach(work[propID], function(val) {
             if (val.value === newVal) {
@@ -230,9 +260,10 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         }
     };
 
-    $scope.selectValue = function(property, selection, objType) {
+    $scope.selectValue = function(property, selection) {
         var seen = false;
         prop = property.getProperty().getID();
+        objType = property.getType();
         angular.forEach($scope.currentWork[prop], function(val) {
             if (selection.uri === val.value) {
                 seen = true;
@@ -339,7 +370,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         modal.result.then(function(newResource) {
             newResource.id = [$scope.randomRDFID()];
             $scope.created.push(newResource);
-            $scope.selectValue(property, {"label": "Created", "uri": newResource.id}, "resource");
+            $scope.selectValue(property, {"label": "Created", "uri": newResource.id});
         });
     };
 

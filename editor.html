@@ -9,6 +9,8 @@
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
     <script src="js/lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="js/lib/dropzone.min.js"></script>
+    <script>Dropzone.autoDiscover = false;</script>
     <script src="js/profile.js"></script>
     <script src="js/value-constraint.js"></script>
     <script src="js/property.js"></script>
@@ -111,32 +113,35 @@
                    datepicker-popup="yyyy-MM-dd"
                    show-weeks="false"
                    ng-model="inputted"
-                   ng-enter="setDateValue(currentWork,prop,inputted,'literal');inputted=''"
+                   ng-enter="setDateValue(currentWork,prop,inputted);inputted=''"
                    ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(currentWork,prop,inputted,'literal');inputted=''">Add</button>
-            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(currentWork,prop,inputted,'literal');inputted=''">Set</button>
+            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(currentWork,prop,inputted);inputted=''">Add</button>
+            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(currentWork,prop,inputted);inputted=''">Set</button>
+          </span>
+          <span ng-switch-when="image">
+            <div class="dropzone"></div>
           </span>
           <span ng-switch-default class="input-prepend input-append">
             <span class="add-on" ng-show="prop.getConstraint().hasHint()">{{prop.getConstraint().getComplexTypeLabelHint()}}</span>
-            <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted,'literal');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'literal');inputted=''">Add</button>
-            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'literal');inputted=''">Set</button>
+            <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+            <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Add</button>
+            <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Set</button>
           </span>
         </span>
       </span>
       <span ng-if="!prop.getConstraint().hasComplexType()" class="input-append">
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted,'literal');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-        <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted,'literal');inputted=''">Add</button>
-        <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted,'literal');inputted=''">Set</button>
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+        <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted);inputted=''">Add</button>
+        <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted);inputted=''">Set</button>
       </span>
     </script>
 
     <script type="text/ng-template" id="advanced.html">
       <span ng-if="!prop.getConstraint().hasReference()" class="input-prepend input-append">
         <span class="add-on">URL</span>
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted,'resource');inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-        <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'resource');inputted=''">Add</button>
-        <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted,'resource');inputted=''">Set</button>
+        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+        <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Add</button>
+        <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Set</button>
       </span>
 
       <span ng-if="prop.getConstraint().hasReference()">
@@ -147,7 +152,7 @@
                ng-required="prop.isRequired()"
                ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
-               typeahead-on-select="selectValue(prop,$item,'resource');selected=null"
+               typeahead-on-select="selectValue(prop,$item);selected=null"
                typeahead-min-length="1"
                typeahead-editable="false"
                typeahead-loading="loading[prop.getProperty().getID()]"
@@ -188,11 +193,11 @@
           <p>
             <label for="{{profile.uri}}-{{prop.getProperty().getID()}}" class="property-label">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
             <span ng-switch="" on="prop.getType()">
-              <span ng-switch-when="literal">
-                <span ng-include="'basic.html'"></span>
-              </span>
               <span ng-switch-when="resource">
                 <span ng-include="'advanced.html'"></span>
+              </span>
+              <span ng-switch-default>
+                <span ng-include="'basic.html'"></span>
               </span>
             </span>
           </p>

@@ -120,3 +120,19 @@
     width: 99%;
 }
 
+/*
+ *
+ */
+
+.dropzone, .dz-clickable, .dz-default, .dz-message {
+    display: inline;
+}
+
+.dz-preview {
+    width: 80%;
+    margin-left: 20%;
+}
+
+.dz-success-mark, .dz-error-mark, .dz-error-message {
+    display: none; /* hide for now */
+}
