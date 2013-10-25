@@ -46,12 +46,13 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
     };
 
-    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral, currentWork) {
+    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral, editResource, currentWork, created) {
         $scope.initializeProperty = initProp;
         $scope.setTextValue = setTextValue;
         $scope.setDateValue = setDateValue;
         $scope.removeValue = removeValue;
         $scope.editLiteral = editLiteral;
+        $scope.editResource = editResource;
         $scope.resourceTemplates = templates;
         $scope.dataTypes = dataTypes;
         $scope.typeLabel = templates[res].getLabel();
@@ -61,6 +62,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             'disabled': false
         };
         $scope.currentWork = currentWork;
+        $scope.created = created;
         $scope.isDirty = false;
         $scope.pivoting = true;
         $scope.loading = {};
@@ -301,7 +303,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         });
     };
 
-    $scope.editResource = function(work, property, value) {
+    $scope.editResource = function(property, value) {
         var toEdit, ref;
         angular.forEach($scope.created, function(val) {
             if (val.id === value.getValue()) {
@@ -377,11 +379,17 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 editLiteral: function() {
                     return $scope.editLiteral;
                 },
+                editResource: function() {
+                    return $scope.editResource;
+                },
                 dataTypes: function() {
                     return $scope.dataTypes;
                 },
                 currentWork: function() {
                     return toEdit;
+                },
+                created: function() {
+                    return $scope.created;
                 }
             }
         });

@@ -206,7 +206,7 @@
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
               <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <!-- @@@ handle complex resource -->
-              <span ng-show="!prop.isLiteral()&&val.isCreated()" class="click" ng-click="editResource(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
+              <span ng-show="!prop.isLiteral()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&!val.isCreated()">{{val.getLabel()}}</span>
               <i title="Remove" class="icon-remove click" ng-click="removeValue(currentWork,prop,val)"></i>
             </li>
