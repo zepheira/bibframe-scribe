@@ -55,7 +55,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         $scope.resourceTemplates = templates;
         $scope.dataTypes = dataTypes;
         $scope.typeLabel = templates[res].getLabel();
-        $scope.profile = {
+        $scope.resource = {
             'uri': res,
             'label': templates[res].getLabel(),
             'disabled': false
@@ -77,12 +77,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
 
         $scope.save = function() {
-            $scope.currentWork.type = [
-                {
-                    "type": "resource",
-                    "value": templates[res].getClassID()
-                }
-            ];
+            $scope.currentWork.type = [new PredObject(templates[res].getClassID(), templates[res].getClassID(), "resource", false)];
             $modalInstance.close($scope.currentWork);
         };
     };
@@ -98,13 +93,14 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 return $scope.initialize(prof);
             });
         })).then(function(responses) {
-            var profiles = [];
+            var resources = [];
             responses.map(function(curr) {
-                profiles = profiles.concat(curr);
+                resources = resources.concat(curr);
                 return curr;
             });
             $scope.initialized = true;
-            $scope.profileOptions = profiles;
+            $scope.resourceOptions = resources;
+            console.log(resources);
         });
     });
 
@@ -157,13 +153,13 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         flags.loading[prop] = false;
     };
 
-    $scope.newEdit = function(profile) {
+    $scope.newEdit = function(resource) {
         var props, flags, dz;
         $scope.isDirty = false;
         $scope.hasRequired = false;
         $scope.currentWork = {};
         $scope.loading = {};
-        $scope.activeResource = $scope.resourceTemplates[profile.uri];
+        $scope.activeResource = $scope.resourceTemplates[resource.uri];
         props = $scope.activeResource.getPropertyTemplates();
         flags = { "hasRequired": false, "loading": $scope.loading };
         angular.forEach(props, function(prop) {
@@ -190,7 +186,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                     imguri = $scope.randomRDFID() + "/" + file.name;
                     $scope.$apply(function() {
                         $scope.isDirty = true;
-                        $scope.currentWork[prop].push({"label": file.name, "value": imguri, "type": "resource"});
+                        $scope.currentWork[prop].push(new PredObject(file.name, imguri, "resource", true));
                     });
                     done("Uploading not enabled in this prototype.");
                 }
@@ -246,32 +242,35 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         objType = property.getType();
         seen = false;
         angular.forEach(work[propID], function(val) {
-            if (val.value === newVal) {
+            if (val.getValue() === newVal) {
                 seen = true;
             }
         });
         if (!seen && newVal !== "") {
             $scope.isDirty = true;
-            val = {"label": newVal, "value": newVal, "type": objType};
+            val = new PredObject(newVal, newVal, objType, true);
             if (property.hasConstraint() && property.getConstraint().hasComplexType()) {
-                val.datatype = property.getConstraint().getComplexTypeID();
+                val.setDatatype(property.getConstraint().getComplexTypeID());
             };
             work[propID].push(val);
         }
     };
 
-    $scope.selectValue = function(property, selection) {
+    $scope.selectValue = function(property, selection, created) {
         var seen = false;
         prop = property.getProperty().getID();
         objType = property.getType();
         angular.forEach($scope.currentWork[prop], function(val) {
-            if (selection.uri === val.value) {
+            if (selection.uri === val.getValue()) {
                 seen = true;
             }
         });
+        if (typeof created === "undefined") {
+            created = false;
+        }
         if (!seen) {
             $scope.isDirty = true;
-            $scope.currentWork[prop].push({"label": selection.label, "value": selection.uri, "type": objType});
+            $scope.currentWork[prop].push(new PredObject(selection.label, selection.uri, objType, created));
         }
     };
 
@@ -281,7 +280,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             controller: EditLiteralCtrl,
             resolve: {
                 literal: function() {
-                    return value.value;
+                    return value.getValue();
                 },
                 property: function() {
                     return property.getProperty().getLabel();
@@ -293,14 +292,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             var objs, target, mod;
             objs = work[property.getProperty().getID()];
             angular.forEach(objs, function(obj, idx) {
-                if (obj.value === value.value) {
+                if (obj.getValue() === value.getValue()) {
                     target = idx;
                 };
             })
             mod = objs[target];
-            mod.label = newValue;
-            mod.value = newValue;
+            mod.setLabel(newValue);
+            mod.setValue(newValue);
         });
+    };
+
+    $scope.editResource = function(work, property, value) {
+        
     };
 
     $scope.removeValue = function(work, property, value) {
@@ -310,7 +313,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         objs = work[prop];
         rmIdx = -1;
         angular.forEach(objs, function(obj, idx) {
-            if (obj.value === value.value) {
+            if (obj.getValue() === value.getValue()) {
                 rmIdx = idx;
             }
         });
@@ -370,7 +373,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         modal.result.then(function(newResource) {
             newResource.id = [$scope.randomRDFID()];
             $scope.created.push(newResource);
-            $scope.selectValue(property, {"label": "Created", "uri": newResource.id});
+            $scope.selectValue(property, {"label": "[created]", "uri": newResource.id}, true);
         });
     };
 
@@ -424,21 +427,21 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             if (prop === "id" && typeof id === "undefined") {
                 id = vals[0];
             } else if (prop === "type" && typeof type === "undefined") {
-                type = vals[0].value;
+                type = vals[0].getValue();
             } else {
                 nsProp = namespacer.extractNamespace(prop);
                 angular.forEach(vals, function(val) {
-                    if (val.type === "resource") {
-                        frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
+                    if (val.isResource()) {
+                        frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
                         if (typeof refs !== "undefined") {
-                            refs.push(val.value);
+                            refs.push(val.getValue());
                         }
                     } else {
                         frag += '    <'+ nsProp.namespace + ':' + nsProp.term;
-                        if (typeof val.datatype !== "undefined") {
-                            frag += ' rdf:datatype="' + val.datatype + '"';
+                        if (val.hasDatatype()) {
+                            frag += ' rdf:datatype="' + val.getDatatype() + '"';
                         }
-                        frag += '>' + val.value + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                        frag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
                     }
                 });
             }

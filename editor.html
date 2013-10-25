@@ -18,6 +18,7 @@
     <script src="js/property-template.js"></script>
     <script src="js/resource-template.js"></script>
 
+    <script src="js/pred-object.js"></script>
     <script src="js/namespace.js"></script>
 
     <script src="js/services.js"></script>
@@ -58,9 +59,9 @@
             <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
           </div>
         </tab>
-        <tab ng-repeat="profile in profileOptions | orderBy:'sortKey'" select="newEdit(profile)" disabled="isDirty||profile.disabled">
-          <tab-heading><span ng-show="!profile.disabled"><i class="icon-chevron-right"></i> </span>{{profile.label}}<span ng-show="profile.disabled">:</span></tab-heading>
-          <div ng-show="activeResource&&activeResource.getClassID()==profile.uri" ng-include="'resource.html'"></div>
+        <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="isDirty||resource.disabled">
+          <tab-heading><span ng-show="!resource.disabled"><i class="icon-chevron-right"></i> </span>{{resource.label}}<span ng-show="resource.disabled">:</span></tab-heading>
+          <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>
         </tab>
       </tabset>
     </div>
@@ -110,7 +111,7 @@
             <!-- datepicker-popup should provide the format but doesn't -->
             <input type="text"
                    class="input-xlarge" 
-                   id="{{profile.uri}}-{{prop.getProperty().getID()}}"
+                   id="{{resource.uri}}-{{prop.getProperty().getID()}}"
                    datepicker-popup="yyyy-MM-dd"
                    show-weeks="false"
                    ng-model="inputted"
@@ -124,14 +125,14 @@
           </span>
           <span ng-switch-default class="input-prepend input-append">
             <span class="add-on" ng-show="prop.getConstraint().hasHint()">{{prop.getConstraint().getComplexTypeLabelHint()}}</span>
-            <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+            <input type="text" class="input-xlarge" id="{{resource.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
             <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Add</button>
             <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Set</button>
           </span>
         </span>
       </span>
       <span ng-if="!prop.getConstraint().hasComplexType()" class="input-append">
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+        <input type="text" class="input-xlarge" id="{{resource.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
         <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted);inputted=''">Add</button>
         <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork, prop,inputted);inputted=''">Set</button>
       </span>
@@ -140,7 +141,7 @@
     <script type="text/ng-template" id="advanced.html">
       <span ng-if="!prop.getConstraint().hasReference()" class="input-prepend input-append">
         <span class="add-on">URL</span>
-        <input type="text" class="input-xlarge" id="{{profile.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
+        <input type="text" class="input-xlarge" id="{{resource.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted" ng-enter="setTextValue(currentWork,prop,inputted);inputted=''" ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
         <button ng-show="prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Add</button>
         <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setTextValue(currentWork,prop,inputted);inputted=''">Set</button>
       </span>
@@ -157,7 +158,7 @@
                typeahead-min-length="1"
                typeahead-editable="false"
                typeahead-loading="loading[prop.getProperty().getID()]"
-               id="{{profile.uri}}-{{prop.getProperty().getID()}}">
+               id="{{resource.uri}}-{{prop.getProperty().getID()}}">
         <!-- @@@ take value as typed and use as label? -->
         <span ng-if="!prop.getConstraint().hasManyReferences()">
           <button class="btn"
@@ -189,9 +190,9 @@
     <script type="text/ng-template" id="resource.html">
       <form class="form-inline well" ng-submit="submit()">
         <p ng-show="hasRequired">Properties marked with <span class="required">*</span> are required.</p>
-        <div ng-repeat="prop in resourceTemplates[profile.uri].getPropertyTemplates()">
+        <div ng-repeat="prop in resourceTemplates[resource.uri].getPropertyTemplates()">
           <p>
-            <label for="{{profile.uri}}-{{prop.getProperty().getID()}}" class="property-label">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
+            <label for="{{resource.uri}}-{{prop.getProperty().getID()}}" class="property-label">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
             <span ng-switch="" on="prop.getType()">
               <span ng-switch-when="resource">
                 <span ng-include="'advanced.html'"></span>
@@ -203,8 +204,10 @@
           </p>
           <ul class="values">
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
-              <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.label}}</span>
-              <span ng-show="!prop.isLiteral()">{{val.label}}</span>
+              <span ng-show="prop.isLiteral()" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
+              <!-- @@@ handle complex resource -->
+              <span ng-show="!prop.isLiteral()&&val.isCreated()" class="click" ng-click="editResource(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
+              <span ng-show="!prop.isLiteral()&&!val.isCreated()">{{val.getLabel()}}</span>
               <i title="Remove" class="icon-remove click" ng-click="removeValue(currentWork,prop,val)"></i>
             </li>
           </ul>
