@@ -163,7 +163,7 @@
                                 "id": "http://bibframe.org/vocab/vra/rights",
                                 "propertyLabel": "Rights"
                             },
-                            "type": "",
+                            "type": "literal",
                             "valueConstraint": {
                                 "valueDataType": "",
                                 "valueLang": ""
