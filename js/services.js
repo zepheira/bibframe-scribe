@@ -52,7 +52,7 @@ angular.module("agentServices", ["ngResource"]).
 angular.module("languageServices", ["ngResource"]).
     factory("Languages", function($resource) {
         return $resource(
-            "./authority/languages.json",
+            "./authority/iso639-2.en.json",
             {},
             {
                 "get": { "method": "GET", "isArray": false }
