@@ -23,13 +23,13 @@
     font-weight: bold;
 }
 
+.required {
+    color: red;
+}
+
 /*
  * Editor
  */
-
-.editor .required {
-    color: red;
-}
 
 .editor .nav {
     float: left;
