@@ -120,7 +120,7 @@
             <button ng-show="!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted" ng-click="setDateValue(currentWork,prop,inputted);inputted=''">Set</button>
           </span>
           <span ng-switch-when="image">
-            <div class="dropzone"></div>
+            <div class="dropzone" data-prop-uri="{{prop.getProperty().getID()}}"></div>
           </span>
           <span ng-switch-default class="input-prepend input-append">
             <span class="add-on" ng-show="prop.getConstraint().hasHint()">{{prop.getConstraint().getComplexTypeLabelHint()}}</span>
@@ -158,8 +158,7 @@
                typeahead-editable="false"
                typeahead-loading="loading[prop.getProperty().getID()]"
                id="{{profile.uri}}-{{prop.getProperty().getID()}}">
-        <!-- @@@ disabled except when active and matches are empty -->
-        <!-- @@@ take value as typed and use as label -->
+        <!-- @@@ take value as typed and use as label? -->
         <span ng-if="!prop.getConstraint().hasManyReferences()">
           <button class="btn"
                 type="button"

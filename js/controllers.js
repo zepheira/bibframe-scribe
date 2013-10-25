@@ -175,24 +175,24 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             $scope.dz = null;
         }
         try {
-            // @@@ may want this on the form instead?  behaves correctly
-            //     UI-wise, but probably incorrectly on upload
+            // assumes one dropzone per profile
             $scope.dz = new Dropzone("div.active div.dropzone", {
+                // @@@ provide this service - receives, stores, returns URI
                 "url": "/upload/image",
-                "autoProcessQueue": false,
+                "autoProcessQueue": true,
                 "uploadMultiple": true,
                 "parallelUploads": 100,
                 "maxFiles": 100,
-                "init": function() {
-                    var self = this;
-                    // @@@instead of submitting form, call self.processQueue()
-                    // @@@want the URLs back for use in RDF
-                    this.on("sendingmultiple", function() {
+                // @@@ for demo purposes; when real, hook into success event
+                "accept": function(file, done) {
+                    var imguri, prop;
+                    prop = this.element.dataset.propUri;
+                    imguri = $scope.randomRDFID() + "/" + file.name;
+                    $scope.$apply(function() {
+                        $scope.isDirty = true;
+                        $scope.currentWork[prop].push({"label": file.name, "value": imguri, "type": "resource"});
                     });
-                    this.on("successmultiple", function(files, response) {
-                    });
-                    this.on("errormultiple", function(files, response) {
-                    });
+                    done("Uploading not enabled in this prototype.");
                 }
             });
         } catch(ex) {
