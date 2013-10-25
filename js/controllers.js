@@ -403,18 +403,21 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.exportRDF = function() {
         // @@@ may want a basic triple API library for this instead
         //     of generating strings
-        var subj, rdf, tail;
+        var subj, rdf, tail, refs;
         subj = $scope.randomRDFID(); // @@@ should be a service
         rdf = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n';
         tail = '</rdf:RDF>\n';
-        rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource.getClassID());
+        refs = [];
+        rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource.getClassID(), refs);
         angular.forEach($scope.created, function(res) {
-            rdf += $scope.exportResource(res);
+            if (refs.indexOf(res.id) >= 0) {
+                rdf += $scope.exportResource(res);
+            }
         });
         $scope.exportedRDF = rdf + tail;
     };
 
-    $scope.exportResource = function(res, id, type) {
+    $scope.exportResource = function(res, id, type, refs) {
         var frag = "";
         angular.forEach(res, function(vals, prop) {
             var nsProp;
@@ -427,6 +430,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 angular.forEach(vals, function(val) {
                     if (val.type === "resource") {
                         frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.value + '"/>\n';
+                        if (typeof refs !== "undefined") {
+                            refs.push(val.value);
+                        }
                     } else {
                         frag += '    <'+ nsProp.namespace + ':' + nsProp.term;
                         if (typeof val.datatype !== "undefined") {
