@@ -13,11 +13,13 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     };
     $scope.hasRequired = false;
     $scope.dataTypes = {};
+    $scope.inputted = {};
 
     $scope.currentWork = {};
     $scope.loading = {};
     $scope.isDirty = false;
     $scope.pivoting = false;
+    $scope.editExisting = false;
     $scope.created = []; // @@@ new resources created in this session, TBD
     $scope.activeResoure = null;
     $scope.showExport = false;
@@ -35,11 +37,20 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
     };
 
-    EditLiteralCtrl = function($scope, $modalInstance, property, literal) {
-        $scope.property = property;
-        $scope.editing = { "value": literal };
+    EditLiteralCtrl = function($scope, $modalInstance, property, literal, dataTypes, resource, setDateValue, setTextValue, currentWork) {
+        $scope.property = property.getProperty().getLabel();
+        $scope.prop = property;
+        $scope.dataTypes = dataTypes;
+        $scope.resource = resource;
+        $scope.setDateValue = setDateValue;
+        $scope.setTextValue = setTextValue;
+        $scope.currentWork = currentWork;
+        $scope.inputted = {};
+        $scope.inputted[$scope.prop.getProperty().getID()] = literal;
+        $scope.editExisting = true;
+        $scope.pivoting = false;
         $scope.save = function() {
-            $modalInstance.close($scope.editing.value);
+            $modalInstance.close($scope.inputted[$scope.prop.getProperty().getID()]);
         };
         $scope.cancel = function() {
             $modalInstance.dismiss();
@@ -65,7 +76,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         $scope.created = created;
         $scope.isDirty = false;
         $scope.pivoting = true;
+        $scope.editExisting = false;
         $scope.loading = {};
+        $scope.inputted = {};
 
         var flags;
         flags = { "hasRequired": false, "loading": $scope.loading };
@@ -284,7 +297,22 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                     return value.getValue();
                 },
                 property: function() {
-                    return property.getProperty().getLabel();
+                    return property;
+                },
+                dataTypes: function() {
+                    return $scope.dataTypes;
+                },
+                resource: function() {
+                    return {"uri": "noop"};
+                },
+                setDateValue: function() {
+                    return $scope.setDateValue;
+                },
+                setTextValue: function() {
+                    return $scope.setTextValue;
+                },
+                currentWork: function() {
+                    return work;
                 }
             }
         });
