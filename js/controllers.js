@@ -46,7 +46,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
     };
 
-    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral) {
+    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral, currentWork) {
         $scope.initializeProperty = initProp;
         $scope.setTextValue = setTextValue;
         $scope.setDateValue = setDateValue;
@@ -60,7 +60,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             'label': templates[res].getLabel(),
             'disabled': false
         };
-        $scope.currentWork = {};
+        $scope.currentWork = currentWork;
         $scope.isDirty = false;
         $scope.pivoting = true;
         $scope.loading = {};
@@ -77,7 +77,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
 
         $scope.save = function() {
-            $scope.currentWork.type = [new PredObject(templates[res].getClassID(), templates[res].getClassID(), "resource", false)];
+            $scope.currentWork.type = new PredObject(templates[res].getClassID(), templates[res].getClassID(), "resource", false);
             $modalInstance.close($scope.currentWork);
         };
     };
@@ -100,7 +100,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             });
             $scope.initialized = true;
             $scope.resourceOptions = resources;
-            console.log(resources);
         });
     });
 
@@ -303,7 +302,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     };
 
     $scope.editResource = function(work, property, value) {
-        
+        var toEdit, ref;
+        angular.forEach($scope.created, function(val) {
+            if (val.id === value.getValue()) {
+                toEdit = val;
+            }
+        });
+        angular.forEach($scope.idToTemplate, function(tmpl, key) {
+            if (tmpl.getClassID() === toEdit.type.getValue()) {
+                ref = key;
+            }
+        });
+        $scope.pivot(property, ref, toEdit);
     };
 
     $scope.removeValue = function(work, property, value) {
@@ -330,10 +340,13 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         }
     };
 
-    $scope.pivot = function(property, ref) {
+    $scope.pivot = function(property, ref, toEdit) {
         var modal, ref, res, tmpls;
         if (typeof ref === "undefined") {
-            ref = property.getConstraint().getReference()
+            ref = property.getConstraint().getReference();
+        }
+        if (typeof toEdit === "undefined") {
+            toEdit = {};
         }
         res = $scope.idToTemplate[ref];
         tmpls = {};
@@ -366,14 +379,19 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 },
                 dataTypes: function() {
                     return $scope.dataTypes;
+                },
+                currentWork: function() {
+                    return toEdit;
                 }
             }
         });
 
         modal.result.then(function(newResource) {
-            newResource.id = [$scope.randomRDFID()];
-            $scope.created.push(newResource);
-            $scope.selectValue(property, {"label": "[created]", "uri": newResource.id}, true);
+            if (typeof newResource.id === "undefined") {
+                newResource.id = $scope.randomRDFID();
+                $scope.created.push(newResource);
+                $scope.selectValue(property, {"label": "[created]", "uri": newResource.id}, true);
+            }
         });
     };
 
@@ -425,9 +443,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         angular.forEach(res, function(vals, prop) {
             var nsProp;
             if (prop === "id" && typeof id === "undefined") {
-                id = vals[0];
+                id = vals;
             } else if (prop === "type" && typeof type === "undefined") {
-                type = vals[0].getValue();
+                type = vals.getValue();
             } else {
                 nsProp = namespacer.extractNamespace(prop);
                 angular.forEach(vals, function(val) {

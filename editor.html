@@ -159,14 +159,13 @@
                typeahead-editable="false"
                typeahead-loading="loading[prop.getProperty().getID()]"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}">
-        <!-- @@@ take value as typed and use as label? -->
         <span ng-if="!prop.getConstraint().hasManyReferences()">
           <button class="btn"
                 type="button"
                 tooltip="Click to create a new resource"
                 tooltip-placement="right"
                 ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
-                ng-click="pivot(prop,prop.getConstraint().getReference(),idToTemplate[prop.getConstraint().getReference()].getLabel())"><i class="icon-plus"></i></button>
+                ng-click="pivot(prop,prop.getConstraint().getReference())"><i class="icon-plus"></i></button>
         </span>
         <span ng-if="prop.getConstraint().hasManyReferences()" class="dropdown">
           <a class="dropdown-toggle">
@@ -179,7 +178,7 @@
           </a>
           <ul class="dropdown-menu">
             <li ng-repeat="ref in prop.getConstraint().getReference()">
-              <a ng-click="pivot(prop,ref,idToTemplate[ref].getLabel())" class="click">{{idToTemplate[ref].getLabel()}}</a>
+              <a ng-click="pivot(prop,ref)" class="click">{{idToTemplate[ref].getLabel()}}</a>
             </li>
           </ul>
         </span>
@@ -197,6 +196,7 @@
               <span ng-switch-when="resource">
                 <span ng-include="'advanced.html'"></span>
               </span>
+              <!-- @@@ introduced resource-complex since it doesn't fit well with basic/advanced distinction - but not a good idea, needs more fine-grained answer -->
               <span ng-switch-default>
                 <span ng-include="'basic.html'"></span>
               </span>
