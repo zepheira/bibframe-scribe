@@ -173,7 +173,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                         "uploadMultiple": true,
                         "addRemoveLinks": true,
                         "parallelUploads": 100,
-                        // max accepted files; for demo, all files are rejected due to no place to upload them
+                        // max accepted files: for demo, all files are rejected due to no place to upload them to, and rejected files don't count towards total
                         "maxFiles": property.isRepeatable() ? 100 : 1,
                         // @@@ for demo purposes; when real, hook into success event
                         "accept": function(file, done) {
@@ -189,8 +189,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                         "init": function() {
                             var dz = this;
                             this.on("maxfilesexceeded", function(file) {
-                                console.log(file);
+                                // @@@ may need more notice than this
                                 dz.removeFile(file);
+                            });
+                            this.on("removedfile", function(file) {
+                                var prop = dz.element.dataset.propUri;
+                                angular.forEach(work[prop], function(val) {
+                                    if (val.getValue().endsWith(file.name)) {
+                                        $scope.$apply(function() {
+                                            $scope.removeValue(work, prop, val);
+                                        });
+                                    }
+                                });;
                             });
                         }
                     });
@@ -366,7 +376,11 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.removeValue = function(work, property, value) {
         var prop, empty, objs, rmIdx;
         empty = true;
-        prop = property.getProperty().getID();
+        if (typeof property === "string") {
+            prop = property;
+        } else {
+            prop = property.getProperty().getID();
+        }
         objs = work[prop];
         rmIdx = -1;
         angular.forEach(objs, function(obj, idx) {

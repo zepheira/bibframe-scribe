@@ -212,7 +212,7 @@
               </span>
             </span>
           </p>
-          <ul class="values">
+          <ul class="values" ng-hide="prop.hasConstraint()&&prop.getConstraint().hasComplexType()&&dataTypes[prop.getConstraint().getComplexTypeID()]&&dataTypes[prop.getConstraint().getComplexTypeID()]=='image'">
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
               <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
