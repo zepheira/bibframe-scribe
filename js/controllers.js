@@ -155,11 +155,49 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     };
 
     $scope.initializeProperty = function(work, property, flags) {
-        var prop;
+        var prop, constraint;
         prop = property.getProperty().getID();
         namespacer.extractNamespace(prop);
         if (typeof work[prop] === "undefined") {
             work[prop] = [];
+        }
+        if (property.hasConstraint() && property.getConstraint().hasComplexType()) {
+            constraint = property.getConstraint().getComplexTypeID();
+            if (typeof $scope.dataTypes[constraint] !== "undefined" && $scope.dataTypes[constraint] === "image") {
+                try {
+                    // assumes one dropzone per profile
+                    $scope.dz = new Dropzone("div.active div.dropzone", {
+                        // @@@ provide this service - receives, stores, returns URI
+                        "url": "/upload/image",
+                        "autoProcessQueue": true,
+                        "uploadMultiple": true,
+                        "addRemoveLinks": true,
+                        "parallelUploads": 100,
+                        // max accepted files; for demo, all files are rejected due to no place to upload them
+                        "maxFiles": property.isRepeatable() ? 100 : 1,
+                        // @@@ for demo purposes; when real, hook into success event
+                        "accept": function(file, done) {
+                            var imguri, prop;
+                            prop = this.element.dataset.propUri;
+                            imguri = $scope.randomRDFID() + "/" + file.name;
+                            $scope.$apply(function() {
+                                $scope.isDirty = true;
+                                $scope.currentWork[prop].push(new PredObject(file.name, imguri, "resource", true));
+                            });
+                            done("Uploading not enabled in this prototype.");
+                        },
+                        "init": function() {
+                            var dz = this;
+                            this.on("maxfilesexceeded", function(file) {
+                                console.log(file);
+                                dz.removeFile(file);
+                            });
+                        }
+                    });
+                } catch(ex) {
+                    // ignore errors dealing with failing selector - that's the goal
+                }
+            }
         }
         if (!flags.hasRequired && property.isRequired()) {
             flags.hasRequired = true;
@@ -173,6 +211,10 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         $scope.hasRequired = false;
         $scope.currentWork = {};
         $scope.loading = {};
+        if ($scope.dz !== null) {
+            $scope.dz.destroy();
+            $scope.dz = null;
+        }
         $scope.activeResource = $scope.resourceTemplates[resource.uri];
         props = $scope.activeResource.getPropertyTemplates();
         flags = { "hasRequired": false, "loading": $scope.loading };
@@ -180,34 +222,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             $scope.initializeProperty($scope.currentWork, prop, flags);
         });
         $scope.hasRequired = flags.hasRequired;
-        if ($scope.dz !== null) {
-            $scope.dz.destroy();
-            $scope.dz = null;
-        }
-        try {
-            // assumes one dropzone per profile
-            $scope.dz = new Dropzone("div.active div.dropzone", {
-                // @@@ provide this service - receives, stores, returns URI
-                "url": "/upload/image",
-                "autoProcessQueue": true,
-                "uploadMultiple": true,
-                "parallelUploads": 100,
-                "maxFiles": 100,
-                // @@@ for demo purposes; when real, hook into success event
-                "accept": function(file, done) {
-                    var imguri, prop;
-                    prop = this.element.dataset.propUri;
-                    imguri = $scope.randomRDFID() + "/" + file.name;
-                    $scope.$apply(function() {
-                        $scope.isDirty = true;
-                        $scope.currentWork[prop].push(new PredObject(file.name, imguri, "resource", true));
-                    });
-                    done("Uploading not enabled in this prototype.");
-                }
-            });
-        } catch(ex) {
-            // ignore errors dealing with failing selector - that's the goal
-        }
     };
 
     $scope.autocomplete = function(property, typed) {
@@ -237,6 +251,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 
     $scope.reset = function() {
         $scope.isDirty = false;
+        if ($scope.dz) {
+            $scope.dz.removeAllFiles();
+        }
         angular.forEach($scope.currentWork, function(p, key) {
             $scope.currentWork[key] = [];
         });
