@@ -171,13 +171,14 @@
                 type="button"
                 tooltip="Click to create a new resource"
                 tooltip-placement="right"
-                ng-disabled="!editExisting&&!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
+                ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                 ng-click="pivot(prop,prop.getConstraint().getReference())"><i class="icon-plus"></i></button>
           <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) -->
         </span>
         <span ng-if="!editExisting&&prop.getConstraint().hasManyReferences()" class="dropdown">
           <a class="dropdown-toggle">
             <button class="btn"
+                  ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                   type="button"
                   tooltip="Select resource to create"
                   tooltip-placement="right">
