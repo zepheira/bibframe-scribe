@@ -59,7 +59,7 @@
             <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
           </div>
         </tab>
-        <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="isDirty||resource.disabled">
+        <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty||resource.disabled">
           <tab-heading><span ng-show="!resource.disabled"><i class="icon-chevron-right"></i> </span>{{resource.label}}<span ng-show="resource.disabled">:</span></tab-heading>
           <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>
         </tab>
@@ -127,9 +127,6 @@
             <button ng-show="!editExisting&&prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted[prop.getProperty().getID()]" ng-click="setDateValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
             <button ng-show="!editExisting&&!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted[prop.getProperty().getID()]" ng-click="setDateValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
           </span>
-          <span ng-switch-when="image">
-            <div class="dropzone" data-prop-uri="{{prop.getProperty().getID()}}"></div>
-          </span>
           <span ng-switch-default class="input-prepend input-append">
             <span class="add-on" ng-show="prop.getConstraint().hasHint()">{{prop.getConstraint().getComplexTypeLabelHint()}}</span>
             <input type="text" class="input-xlarge" id="{{resource.uri}}-{{prop.getProperty().getID()}}" ng-model="inputted[prop.getProperty().getID()]" ng-enter="setTextValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''" ng-disabled="!editExisting&&!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
@@ -154,7 +151,11 @@
       </span>
 
       <span ng-if="prop.getConstraint().hasReference()">
-        <input type="text"
+        <span ng-if="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
+          <div dropzone class="dropzone" dz-property="{{prop.getProperty().getID()}}" dz-repeatable="{{prop.isRepeatable()}}" dz-resource="{{resource.uri}}"></div>
+        </span>
+        <span ng-show="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]!='dropzone'">
+          <input type="text"
                class="input-xlarge"
                placeholder="Type to search"
                ng-model="selected"
@@ -166,34 +167,35 @@
                typeahead-editable="false"
                typeahead-loading="loading[prop.getProperty().getID()]"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}">
-        <span ng-if="!editExisting&&!prop.getConstraint().hasManyReferences()">
-          <button class="btn"
+          <span ng-if="!editExisting&&!prop.getConstraint().hasManyReferences()">
+            <button class="btn"
                 type="button"
                 tooltip="Click to create a new resource"
                 tooltip-placement="right"
                 ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                 ng-click="pivot(prop,prop.getConstraint().getReference())"><i class="icon-plus"></i></button>
-          <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) -->
-        </span>
-        <span ng-if="!editExisting&&prop.getConstraint().hasManyReferences()" class="dropdown">
-          <a class="dropdown-toggle">
-            <button class="btn"
+            <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) -->
+          </span>
+          <span ng-if="!editExisting&&prop.getConstraint().hasManyReferences()" class="dropdown">
+            <a class="dropdown-toggle">
+              <button class="btn"
                   ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                   type="button"
                   tooltip="Select resource to create"
                   tooltip-placement="right">
-              <i class="icon-plus"></i><b class="caret"></b>
-            </button>
-          </a>
-          <ul class="dropdown-menu">
-            <li ng-repeat="ref in prop.getConstraint().getReference()">
-              <a ng-click="pivot(prop,ref)" class="click">{{idToTemplate[ref].getLabel()}}</a>
-              <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) to pass already typed material into new resource, when appropriate label vocab is set -->
-            </li>
-          </ul>
+                <i class="icon-plus"></i><b class="caret"></b>
+              </button>
+            </a>
+            <ul class="dropdown-menu">
+              <li ng-repeat="ref in prop.getConstraint().getReference()">
+                <a ng-click="pivot(prop,ref)" class="click">{{idToTemplate[ref].getLabel()}}</a>
+                <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) to pass already typed material into new resource, when appropriate label vocab is set -->
+              </li>
+            </ul>
+          </span>
         </span>
+        <span ng-show="loading[prop.getProperty().getID()]"><img src="img/spinner.gif"></span>
       </span>
-      <span ng-show="loading[prop.getProperty().getID()]"><img src="img/spinner.gif"></span>
     </script>
 
     <script type="text/ng-template" id="resource.html">
@@ -206,13 +208,12 @@
               <span ng-switch-when="resource">
                 <span ng-include="'advanced.html'"></span>
               </span>
-              <!-- @@@ introduced resource-complex since it doesn't fit well with basic/advanced distinction - but not a good idea, needs more fine-grained answer -->
               <span ng-switch-default>
                 <span ng-include="'basic.html'"></span>
               </span>
             </span>
           </p>
-          <ul class="values" ng-hide="prop.hasConstraint()&&prop.getConstraint().hasComplexType()&&dataTypes[prop.getConstraint().getComplexTypeID()]&&dataTypes[prop.getConstraint().getComplexTypeID()]=='image'">
+          <ul class="values" ng-hide="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
               <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
@@ -222,8 +223,8 @@
           </ul>
         </div>
         <div class="form-actions" ng-if="!editExisting&&!pivoting">
-          <button class="btn" type="button" ng-click="reset()" ng-disabled="!isDirty">Clear</button>
-          <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!isDirty">Export</button>
+          <button class="btn" type="button" ng-click="reset()" ng-disabled="!flags.isDirty">Clear</button>
+          <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!flags.isDirty">Export</button>
         </div>
       </form>
     </script>

@@ -92,16 +92,20 @@
         {
             "resource": "http://bibframe.org/vocab/rda/WorkType",
             "services": ["Subjects"]
+        },
+        {
+            "resource": "http://example.org/vocab/bfp/Image",
+            "type": "dropzone",
+            "propertyMap": {
+                "width": "http://bibframe.org/vocab/width",
+                "height": "http://bibframe.org/vocab/height"
+            }
         }
     ],
     "dataTypes": [
         {
             "id": "http://bibframe.org/vocab/proposed/ISO8601",
             "handler": "date"
-        },
-        {
-            "id": "http://example.org/vocab/bfp/Image",
-            "handler": "image"
         }
     ]
 }

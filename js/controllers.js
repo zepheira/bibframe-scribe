@@ -4,6 +4,8 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.profiles = [];
     $scope.resourceTemplates = {};
     $scope.resourceServices = {};
+    $scope.resourceTypes = {};
+    $scope.typeMap = {};
     $scope.idToTemplate = {};
     $scope.services = {
         "Subjects": Subjects,
@@ -17,14 +19,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 
     $scope.currentWork = {};
     $scope.loading = {};
-    $scope.isDirty = false;
+    $scope.flags = {
+        isDirty: false
+    };
     $scope.pivoting = false;
     $scope.editExisting = false;
     $scope.created = []; // @@@ new resources created in this session, TBD
     $scope.activeResoure = null;
     $scope.showExport = false;
     $scope.exportedRDF = "";
-    $scope.dz = null;
+    $scope.cache = {
+        dz: null
+    };
     
     var namespacer, ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
 
@@ -76,7 +82,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
         $scope.currentWork = currentWork;
         $scope.created = created;
-        $scope.isDirty = false;
+        $scope.flags = {
+            isDirty: false
+        };
         $scope.pivoting = true;
         $scope.editExisting = false;
         $scope.loading = {};
@@ -140,13 +148,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 
         // interpret configuration for resource types to lookup services
         angular.forEach($scope.config.resourceServiceMap, function(item) {
-            angular.forEach(item.services, function(service) {
-                if (typeof $scope.resourceServices[item.resource] !== "undefined") {
-                    $scope.resourceServices[item.resource].push($scope.services[service]);
-                } else {
-                    $scope.resourceServices[item.resource] = [$scope.services[service]];
-                }
-            });
+            if (item.services) {
+                angular.forEach(item.services, function(service) {
+                    if (typeof $scope.resourceServices[item.resource] !== "undefined") {
+                        $scope.resourceServices[item.resource].push($scope.services[service]);
+                    } else {
+                        $scope.resourceServices[item.resource] = [$scope.services[service]];
+                    }
+                });
+            } else if (item.type) {
+                $scope.resourceTypes[item.resource] = item.type;
+                $scope.typeMap[item.type] = item.propertyMap;
+            }
         });
 
         angular.forEach($scope.config.dataTypes, function(dataType) {
@@ -163,54 +176,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         if (typeof work[prop] === "undefined") {
             work[prop] = [];
         }
-        if (property.hasConstraint() && property.getConstraint().hasComplexType()) {
-            constraint = property.getConstraint().getComplexTypeID();
-            if (typeof $scope.dataTypes[constraint] !== "undefined" && $scope.dataTypes[constraint] === "image") {
-                try {
-                    // assumes one dropzone per profile
-                    $scope.dz = new Dropzone("div.active div.dropzone", {
-                        // @@@ provide this service - receives, stores, returns URI
-                        "url": "/upload/image",
-                        "autoProcessQueue": true,
-                        "uploadMultiple": true,
-                        "addRemoveLinks": true,
-                        "parallelUploads": 100,
-                        // max accepted files: for demo, all files are rejected due to no place to upload them to, and rejected files don't count towards total
-                        "maxFiles": property.isRepeatable() ? 100 : 1,
-                        // @@@ for demo purposes; when real, hook into success event
-                        "accept": function(file, done) {
-                            var imguri, prop;
-                            prop = this.element.dataset.propUri;
-                            imguri = $scope.randomRDFID() + "/" + file.name;
-                            $scope.$apply(function() {
-                                $scope.isDirty = true;
-                                $scope.currentWork[prop].push(new PredObject(file.name, imguri, "resource", true));
-                            });
-                            done("Uploading not enabled in this prototype.");
-                        },
-                        "init": function() {
-                            var dz = this;
-                            this.on("maxfilesexceeded", function(file) {
-                                // @@@ may need more notice than this
-                                dz.removeFile(file);
-                            });
-                            this.on("removedfile", function(file) {
-                                var prop = dz.element.dataset.propUri;
-                                angular.forEach(work[prop], function(val) {
-                                    if (val.getValue().endsWith(file.name)) {
-                                        $scope.$apply(function() {
-                                            $scope.removeValue(work, prop, val);
-                                        });
-                                    }
-                                });;
-                            });
-                        }
-                    });
-                } catch(ex) {
-                    // ignore errors dealing with failing selector - that's the goal
-                }
-            }
-        }
         if (!flags.hasRequired && property.isRequired()) {
             flags.hasRequired = true;
         }
@@ -219,13 +184,15 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
 
     $scope.newEdit = function(resource) {
         var props, flags, dz;
-        $scope.isDirty = false;
+        $scope.flags = {
+            isDirty: false
+        };
         $scope.hasRequired = false;
         $scope.currentWork = {};
         $scope.loading = {};
-        if ($scope.dz !== null) {
-            $scope.dz.destroy();
-            $scope.dz = null;
+        if ($scope.cache.dz !== null) {
+            $scope.cache.dz.destroy();
+            $scope.cache.dz = null;
         }
         $scope.activeResource = $scope.resourceTemplates[resource.uri];
         props = $scope.activeResource.getPropertyTemplates();
@@ -262,9 +229,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     };
 
     $scope.reset = function() {
-        $scope.isDirty = false;
-        if ($scope.dz) {
-            $scope.dz.removeAllFiles();
+        $scope.flags.isDirty = false;
+        if ($scope.cache.dz) {
+            $scope.cache.dz.removeAllFiles();
         }
         angular.forEach($scope.currentWork, function(p, key) {
             $scope.currentWork[key] = [];
@@ -290,7 +257,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             }
         });
         if (!seen && newVal !== "") {
-            $scope.isDirty = true;
+            $scope.flags.isDirty = true;
             val = new PredObject(newVal, newVal, objType, true);
             if (property.hasConstraint() && property.getConstraint().hasComplexType()) {
                 val.setDatatype(property.getConstraint().getComplexTypeID());
@@ -312,7 +279,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
             created = false;
         }
         if (!seen) {
-            $scope.isDirty = true;
+            $scope.flags.isDirty = true;
             $scope.currentWork[prop].push(new PredObject(selection.label, selection.uri, objType, created));
         }
     };
@@ -398,7 +365,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 }
             });
             if (empty) {
-                $scope.isDirty = false;
+                $scope.flags.isDirty = false;
             }
         }
     };

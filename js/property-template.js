@@ -26,10 +26,6 @@ var PropertyTemplate = function(obj) {
     if (typeof obj.valueConstraint !== "undefined") {
         this._constraint = new ValueConstraint(obj.valueConstraint);
     }
-
-    if (this.isResource() && this.hasConstraint() && this.getConstraint().hasComplexType()) {
-        this._type = "resource-complex";
-    }
 };
 
 PropertyTemplate.LITERAL = "literal";
