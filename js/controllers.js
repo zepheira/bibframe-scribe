@@ -57,16 +57,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         };
     };
 
-    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral, editResource, currentWork, created) {
+    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral, editResource, currentWork, created, idToTemplate, pivot) {
         $scope.initializeProperty = initProp;
         $scope.setTextValue = setTextValue;
         $scope.setDateValue = setDateValue;
         $scope.removeValue = removeValue;
         $scope.editLiteral = editLiteral;
         $scope.editResource = editResource;
+        $scope.pivot = pivot;
         $scope.resourceTemplates = templates;
         $scope.dataTypes = dataTypes;
         $scope.typeLabel = templates[res].getLabel();
+        $scope.idToTemplate = idToTemplate;
         $scope.resource = {
             'uri': res,
             'label': templates[res].getLabel(),
@@ -447,8 +449,14 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 currentWork: function() {
                     return toEdit;
                 },
+                idToTemplate: function() {
+                    return $scope.idToTemplate;
+                },
                 created: function() {
                     return $scope.created;
+                },
+                pivot: function() {
+                    return $scope.pivot;
                 }
             }
         });
