@@ -257,13 +257,18 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://example.org/vocab/bfp/Image",
-                                    "valueLabel": "Image Drop Zone",
-                                    "valueLabelHint": "I"
-                                }
+                                "descriptionTemplateRef": "e:Image"
                             }
-                        },
+                        }
+		            ]
+                }
+            },
+            {
+                "id": "e:Image",
+                "class": {
+                    "classLabel": "Image",
+                    "id": "http://example.org/vocab/bfp/Image",
+                    "propertyTemplate": [
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/width",
@@ -278,9 +283,9 @@
                             },
                             "type": "literal"
                         }
-		            ]
+                    ]
                 }
-            },		    
+            },
             {
                 "id": "bfp:ULAN:Agent",
                 "class": {
