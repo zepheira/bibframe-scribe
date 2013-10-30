@@ -46,28 +46,28 @@ angular.module("bibframeEditor", [
                         });
                         done("Uploading not enabled in this prototype.");
                     },
-                    "thumbnail": function(file) {
-                        var props, resource;
-                        props = scope.typeMap["dropzone"];
-                        angular.forEach(scope.created, function(res) {
-                            if (res.id.endsWith(file.name)) {
-                                resource = res;
-                            }
-                        });
-                        angular.forEach(props, function(val, prop) {
-                            if (prop === "width") {
-                                scope.$apply(function() {
-                                    resource[val] = [new PredObject(file.width, file.width, "literal")];
-                                });
-                            } if (prop === "height") {
-                                scope.$apply(function() {
-                                    resource[val] = [new PredObject(file.height, file.height, "literal")];
-                                });
-                            }
-                        });
-                    },
                     "init": function() {
                         var dz = this;
+                        this.on("thumbnail", function(file) {
+                            var props, resource;
+                            props = scope.typeMap["dropzone"];
+                            angular.forEach(scope.created, function(res) {
+                                if (res.id.endsWith(file.name)) {
+                                    resource = res;
+                                }
+                            });
+                            angular.forEach(props, function(val, prop) {
+                                if (prop === "width") {
+                                    scope.$apply(function() {
+                                        resource[val] = [new PredObject(file.width, file.width, "literal")];
+                                    });
+                                } if (prop === "height") {
+                                    scope.$apply(function() {
+                                        resource[val] = [new PredObject(file.height, file.height, "literal")];
+                                    });
+                                }
+                            });
+                        });
                         this.on("maxfilesexceeded", function(file) {
                             // @@@ may need more notice than this
                             dz.removeFile(file);
