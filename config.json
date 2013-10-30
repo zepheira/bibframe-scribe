@@ -97,6 +97,8 @@
             "resource": "http://example.org/vocab/bfp/Image",
             "type": "dropzone",
             "propertyMap": {
+                "filename": "http://example.org/vocab/bfp/filename",
+                "mimetype": "http://example.org/vocab/bfp/mimetype",
                 "width": "http://bibframe.org/vocab/width",
                 "height": "http://bibframe.org/vocab/height"
             }

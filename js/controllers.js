@@ -466,9 +466,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.exportRDF = function() {
         // @@@ may want a basic triple API library for this instead
         //     of generating strings
-        var subj, rdf, tail, refs;
+        var subj, rdf, head, tail, refs;
         subj = $scope.randomRDFID(); // @@@ should be a service
-        rdf = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n';
+        rdf = '';
         tail = '</rdf:RDF>\n';
         refs = [];
         rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource.getClassID(), refs);
@@ -477,7 +477,8 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
                 rdf += $scope.exportResource(res);
             }
         });
-        $scope.exportedRDF = rdf + tail;
+        head = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n';
+        $scope.exportedRDF = head + rdf + tail;
     };
 
     $scope.exportResource = function(res, id, type, refs) {

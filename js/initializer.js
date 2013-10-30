@@ -100,11 +100,19 @@ angular.module("bibframeEditor", [
                                 }
                             });
                             angular.forEach(props, function(val, prop) {
-                                if (prop === "width") {
+                                if (prop === "filename") {
+                                    scope.$apply(function() {
+                                        resource[val] = [new PredObject(file.name, file.name, "literal")];
+                                    });
+                                } else if (prop === "mimetype") {
+                                    scope.$apply(function() {
+                                        resource[val] = [new PredObject(file.type, file.type, "literal")];
+                                    });
+                                } else if (prop === "width") {
                                     scope.$apply(function() {
                                         resource[val] = [new PredObject(file.width, file.width, "literal")];
                                     });
-                                } if (prop === "height") {
+                                } else if (prop === "height") {
                                     scope.$apply(function() {
                                         resource[val] = [new PredObject(file.height, file.height, "literal")];
                                     });
