@@ -2,12 +2,13 @@
     "Profile": {
         "id": "bfp:Subject",
         "title": "BIBFRAME Subjects",
-        "resourceTemplate": [    	       
+        "resourceTemplate": [
             {
-	         "id": "bfp:Authority:Topic",
-		 "class": {
+                "id": "bfp:Authority:Topic",
+                "class": {
                     "classLabel": "Topic",
                     "id": "http://bibframe.org/vocab/Topic",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -27,10 +28,11 @@
                 }
             },
             {
-	         "id": "bfp:Authority:Place",
-		 "class": {
+                "id": "bfp:Authority:Place",
+                "class": {
                     "classLabel": "Place",
                     "id": "http://bibframe.org/vocab/Place",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -50,10 +52,11 @@
                 }
             },
             {
-	         "id": "bfp:Authority:TemporalConcept",
-		 "class": {
+                "id": "bfp:Authority:TemporalConcept",
+                "class": {
                     "classLabel": "Time",
                     "id": "http://bibframe.org/vocab/TemporalConcept",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -73,10 +76,11 @@
                 }
             },
             {
-	         "id": "bfp:Authority:ClassificationEntity",
-		 "class": {
+                "id": "bfp:Authority:ClassificationEntity",
+                "class": {
                     "classLabel": "Classification Entity",
                     "id": "http://bibframe.org/vocab/ClassificationEntity",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {

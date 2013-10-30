@@ -8,6 +8,7 @@
                 "class": {
                     "classLabel": "Family",
                     "id": "http://bibframe.org/vocab/Family",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -45,6 +46,7 @@
                 "class": {
                     "classLabel": "Jurisdiction",
                     "id": "http://bibframe.org/vocab/Jurisdiction",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -75,6 +77,7 @@
                 "class": {
                     "classLabel": "Meeting",
                     "id": "http://bibframe.org/vocab/Meeting",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -105,6 +108,7 @@
                 "class": {
                     "classLabel": "Organization",
                     "id": "http://bibframe.org/vocab/Organization",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -135,6 +139,7 @@
                 "class": {
                     "classLabel": "Person",
                     "id": "http://bibframe.org/vocab/Person",
+                    "labelProperty": "http://bibframe.org/vocab/lname",
                     "propertyTemplate": [
                         {
                             "property": {

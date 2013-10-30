@@ -7,6 +7,7 @@
                 "class": {
                     "classLabel": "Work",
                     "id": "http://bibframe.org/vocab/Work",
+                    "labelProperty": "http://bibframe.org/vocab/title",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -268,7 +269,22 @@
                 "class": {
                     "classLabel": "Image",
                     "id": "http://example.org/vocab/bfp/Image",
+                    "labelProperty": "http://example.org/vocab/bfp/filename",
                     "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://example.org/vocab/bfp/filename",
+                                "propertyLabel": "File Name"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://example.org/vocab/bfp/mimetype",
+                                "propertyLabel": "MIME-Type"
+                            },
+                            "type": "literal"
+                        },
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/width",
@@ -291,6 +307,7 @@
                 "class": {
                     "classLabel": "Agent",
                     "id": "http://bibframe.org/vocab/rda/Agent",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -306,6 +323,7 @@
                 "id": "bfp:AAT:Authority",
                 "class": {
                     "classLabel": "Authority",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "id": "http://bibframe.org/vocab/rda/Authority",
                     "propertyTemplate": [
                         {
@@ -323,6 +341,7 @@
                 "class": {
                     "classLabel": "Period",
                     "id": "http://bibframe.org/vocab/rda/Period",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -339,6 +358,7 @@
                 "class": {
                     "classLabel": "Technique",
                     "id": "http://bibframe.org/vocab/rda/Technique",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -355,6 +375,7 @@
                 "class": {
                     "classLabel": "Type of Work",
                     "id": "http://bibframe.org/vocab/rda/WorkType",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -371,6 +392,7 @@
                 "class": {
                     "classLabel": "Place",
                     "id": "http://bibframe.org/vocab/rda/Place",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -386,6 +408,7 @@
                 "id": "bp:language",
                 "class": {
                     "id": "http://bibframe.org/vocab/LanguageEntity",
+                    "labelProperty": "http://bibframe.org/vocab/label",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",

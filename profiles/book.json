@@ -8,6 +8,7 @@
                 "class": {
                     "classLabel": "Book",
                     "id": "http://bibframe.org/vocab/Book",
+                    "labelProperty": "http://bibframe.org/vocab/preferredTitle",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
