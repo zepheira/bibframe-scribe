@@ -152,7 +152,7 @@
 
       <span ng-if="prop.getConstraint().hasReference()">
         <span ng-if="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
-          <div dropzone class="dropzone" dz-property="{{prop.getProperty().getID()}}" dz-repeatable="{{prop.isRepeatable()}}" dz-resource="{{resource.uri}}"></div>
+          <div dropzone class="dropzone" dz-property="{{prop.getProperty().getID()}}" dz-repeatable="{{prop.isRepeatable()}}" dz-resource="{{resource.uri}}" dz-type="{{idToTemplate[prop.getConstraint().getReference()].getClassID()}}"></div>
         </span>
         <span ng-show="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]!='dropzone'">
           <input type="text"

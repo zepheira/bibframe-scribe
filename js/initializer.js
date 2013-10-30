@@ -21,7 +21,7 @@ angular.module("bibframeEditor", [
 }).directive("dropzone", function() {
     return function(scope, element, attrs) {
         scope.$watch('activeResource', function(newValue, oldValue) {
-            if (typeof newValue !== "undefined" && newValue.getClassID() === attrs.dzResource) {
+            if (newValue !== null && newValue.getClassID() === attrs.dzResource) {
                 scope.cache.dz = new Dropzone("div.active div.dropzone", {
                     // @@@ provide this service - receives, stores, returns URI
                     "url": "/upload/image",
@@ -39,7 +39,10 @@ angular.module("bibframeEditor", [
                         scope.$apply(function() {
                             scope.flags.isDirty = true;
                             scope.currentWork[prop].push(new PredObject(file.name, imguri, "resource", true));
-                            scope.created.push({"id": imguri});
+                            scope.created.push({
+                                "id": imguri,
+                                "type": new PredObject("", attrs.dzType, "resource", false)
+                            });
                         });
                         done("Uploading not enabled in this prototype.");
                     },
