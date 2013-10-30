@@ -46,6 +46,49 @@ angular.module("bibframeEditor", [
                         });
                         done("Uploading not enabled in this prototype.");
                     },
+                    // @@@ hack. need to start an $apply cycle when clicked,
+                    // otherwise using $apply in the removedfile listener
+                    // conflicts between click-usage and reset usage, which
+                    // already takes place in an $apply cycle.
+                    "addedfile": function(file) {
+                        var _this = this, ret;
+                        file.previewElement = Dropzone.createElement(this.options.previewTemplate);
+                        file.previewTemplate = file.previewElement;
+                        this.previewsContainer.appendChild(file.previewElement);
+                        file.previewElement.querySelector("[data-dz-name]").textContent = file.name;
+                        file.previewElement.querySelector("[data-dz-size]").innerHTML = this.filesize(file.size);
+                        if (this.options.addRemoveLinks) {
+                            file._removeLink = Dropzone.createElement("<a class=\"dz-remove\" href=\"javascript:undefined;\">" + this.options.dictRemoveFile + "</a>");
+                            file._removeLink.addEventListener("click", function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                if (file.status === Dropzone.UPLOADING) {
+                                    return Dropzone.confirm(_this.options.dictCancelUploadConfirmation, function() {
+                                        scope.$apply(function() {
+                                            ret = _this.removeFile(file);
+                                        });
+                                        return ret;
+                                    });
+                                } else {
+                                    if (_this.options.dictRemoveFileConfirmation) {
+                                        return Dropzone.confirm(_this.options.dictRemoveFileConfirmation, function() {
+                                            scope.$apply(function() {
+                                                ret = _this.removeFile(file);
+                                            });
+                                            return ret;
+                                        });
+                                    } else {
+                                        scope.$apply(function() {
+                                            ret = _this.removeFile(file);
+                                        });
+                                        return ret;
+                                    }
+                                }
+                            });
+                            file.previewElement.appendChild(file._removeLink);
+                        }
+                        return this._updateMaxFilesReachedClass();
+                    },
                     "init": function() {
                         var dz = this;
                         this.on("thumbnail", function(file) {
@@ -73,13 +116,10 @@ angular.module("bibframeEditor", [
                             dz.removeFile(file);
                         });
                         this.on("removedfile", function(file) {
-                            // @@@ works fine for removal, fails for removeAll
                             var prop = attrs.dzProperty;
                             angular.forEach(scope.currentWork[prop], function(val) {
                                 if (val.getValue().endsWith(file.name)) {
-                                    scope.$apply(function() {
-                                        scope.removeValue(scope.currentWork, prop, val);
-                                    });
+                                    scope.removeValue(scope.currentWork, prop, val);
                                 }
                             });
                         });
