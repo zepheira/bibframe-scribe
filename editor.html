@@ -9,7 +9,7 @@
     <link href="css/dropzone-basic.css" rel="stylesheet">
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
-    <script src="js/lib/ui-bootstrap-tpls-0.6.0.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.7.0-SNAPSHOT.min.js"></script>
     <script src="js/lib/dropzone.min.js"></script>
     <script>Dropzone.autoDiscover = false;</script>
     <script src="js/profile.js"></script>
@@ -158,11 +158,11 @@
           <input type="text"
                class="input-xlarge"
                placeholder="Type to search"
-               ng-model="selected"
+               ng-model="inputted[prop.getProperty().getID()]"
                ng-required="prop.isRequired()"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
-               typeahead-on-select="selectValue(prop,$item);selected=null"
+               typeahead-on-select="selectValue(prop,$item);inputted[prop.getProperty().getID()]=null"
                typeahead-min-length="1"
                typeahead-editable="false"
                typeahead-loading="loading[prop.getProperty().getID()]"
@@ -199,7 +199,7 @@
     </script>
 
     <script type="text/ng-template" id="resource.html">
-      <form class="form-inline well" ng-submit="submit()">
+      <form class="form-inline well" ng-submit="submit()" name="form-resource">
         <p ng-show="hasRequired">Properties marked with <span class="required">*</span> are required.</p>
         <div ng-repeat="prop in resourceTemplates[resource.uri].getPropertyTemplates()">
           <p>
@@ -223,7 +223,7 @@
           </ul>
         </div>
         <div class="form-actions" ng-if="!editExisting&&!pivoting">
-          <button class="btn" type="button" ng-click="reset()" ng-disabled="!flags.isDirty">Clear</button>
+          <button class="btn" type="button" ng-click="reset(this, 'form-resource')">Clear</button>
           <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!flags.isDirty">Export</button>
         </div>
       </form>

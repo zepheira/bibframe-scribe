@@ -91,6 +91,10 @@
     white-space: nowrap;
 }
 
+input[type="text"].typeahead-no-matches {
+    background-color: #f2dede;
+}
+
 /*
  * Pivot
  */

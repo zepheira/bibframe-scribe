@@ -129,7 +129,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     });
 
     $scope.initialize = function(profile) {
-        var workTemplate, instanceIDs, instanceTemplate, opts;
+        var workTemplate, instances, instanceTemplate, opts;
         opts = [];
         // interpret configuration for labels and classes to use out of profile
         angular.forEach($scope.config.useWorks, function(work) {
@@ -228,7 +228,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         });
     };
 
-    $scope.reset = function() {
+    $scope.reset = function(formScope, formName) {
         $scope.flags.isDirty = false;
         if ($scope.cache.dz) {
             $scope.cache.dz.removeAllFiles();
@@ -236,6 +236,8 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
         angular.forEach($scope.currentWork, function(p, key) {
             $scope.currentWork[key] = [];
         });
+        $scope.inputted = {};
+        formScope[formName].$setPristine();
     };
 
     $scope.setDateValue = function(work, property, newVal) {
