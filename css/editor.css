@@ -80,7 +80,7 @@
     margin-left: 5px;
 }
 
-.editor ul .btn-group .btn-info {
+.editor ul.ng-valid-date .btn-group {
     display: none;
 }
 
