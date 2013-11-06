@@ -123,7 +123,7 @@
                    ng-model="inputted[prop.getProperty().getID()]"
                    ng-enter="setDateValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
                    ng-disabled="!editExisting&&!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
-            <button ng-show="!editExisting&&prop.isRepeatable()" class="btn" type="button" ng-click="setDateValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+            <button ng-show="!editExisting&&prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted[prop.getProperty().getID()]" ng-click="setDateValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
             <button ng-show="!editExisting&&!prop.isRepeatable()" class="btn" type="button" ng-disabled="!inputted[prop.getProperty().getID()]" ng-click="setDateValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
           </span>
           <span ng-switch-default class="input-prepend input-append">
@@ -256,7 +256,7 @@
           <tr ng-repeat="row in rows">
             <td ng-show="showWeekNumbers" class="text-center"><em>{{ getWeekNumber(row) }}</em></td>
             <td ng-repeat="dt in row" class="text-center">
-              <button type="button" style="width:100%;" class="btn" ng-class="{'btn-info': dt.selected}" ng-click="$parent.$parent.$parent.setDateValue($parent.$parent.$parent.currentWork,$parent.$parent.$parent.prop,dt.date);$parent.$parent.$parent.dateSelection()" ng-disabled="dt.disabled"><span ng-class="{muted: dt.secondary}">{{dt.label}}</span></button>
+              <button type="button" style="width:100%;" class="btn" ng-class="{'btn-info': dt.selected}" ng-click="$parent.$parent.$parent.setDateValue($parent.$parent.$parent.currentWork,$parent.$parent.$parent.prop,dt.date);$parent.$parent.$parent.dateSelection();$parent.$parent.$parent.inputted[$parent.$parent.$parent.prop.getProperty().getID()]=''" ng-disabled="dt.disabled"><span ng-class="{muted: dt.secondary}">{{dt.label}}</span></button>
             </td>
           </tr>
         </tbody>
