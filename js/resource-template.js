@@ -3,6 +3,7 @@ var ResourceTemplate = function(obj) {
 
     this._id = null;
     this._classLabel = null;
+    this._labelProperty = null;
     this._classID = null;
     this._propertyTemplates = [];
     this._work = true;
@@ -19,6 +20,10 @@ var ResourceTemplate = function(obj) {
 
         if (typeof obj.class.classLabel !== "undefined") {
             this._classLabel = obj.class.classLabel;
+        }
+
+        if (typeof obj.class.labelProperty !== "undefined") {
+            this._labelProperty = obj.class.labelProperty;
         }
 
         if (typeof obj.class.instanceOf !== "undefined") {
@@ -45,6 +50,10 @@ ResourceTemplate.prototype.getClassID = function() {
 
 ResourceTemplate.prototype.getLabel = function() {
     return this._classLabel;
+};
+
+ResourceTemplate.prototype.getLabelProperty = function() {
+    return this._labelProperty;
 };
 
 ResourceTemplate.prototype.isWork = function() {
