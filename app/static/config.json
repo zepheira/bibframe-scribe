@@ -5,7 +5,7 @@
         "events",
         "book",
         "article",
-        "vra/vra"
+        "vra"
     ],
     "useWorks": [
         "http://bibframe.org/vocab/Book",
