@@ -19,8 +19,21 @@ db = new rdfstore.Store({
     store.node('http://www.example.org/people#fred', function(success, graph) {
 
     });
+    
+    server.put('/resource/new', function newResource(req, res, next) {
+        return next();
+    });
 });
 
+server.post('/resource/id', function newIdentifier(req, res, next) {
+    var num, id;
+    num = Math.round(Math.random() * 1000000);
+    id = "http://example.org/id" + num.toString();
+    res.send(200, {"id": id});
+    return next();
+});
+
+// Static file handling
 server.get(/\/static\/?.*/, restify.serveStatic({
     'directory': './static',
     'default': 'index.html'

@@ -1,4 +1,4 @@
-var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects, Agents, Languages, Providers) {
+var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Identifier, Subjects, Agents, Languages, Providers) {
     $scope.initialized = false;
     $scope.config = {};
     $scope.profiles = [];
@@ -446,7 +446,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     $scope.submit = function() {
         if ($scope.validate()) {
             $scope.exportRDF();
-            $scope.showRDF();
         } else {
             alert("Please fill out all required properties before exporting.");
         }
@@ -466,23 +465,26 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     };
 
     $scope.exportRDF = function() {
-        // @@@ may want a basic triple API library for this instead
-        //     of generating strings
-        var subj, rdf, head, tail, refs;
-        subj = $scope.randomRDFID(); // @@@ should be a service
-        rdf = '';
-        tail = '</rdf:RDF>\n';
-        refs = [];
-        rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource.getClassID(), refs);
-        angular.forEach($scope.created, function(res) {
-            if (refs.indexOf(res.id) >= 0) {
-                rdf += $scope.exportResource(res);
-            }
+        Identifier.new(null, null).$promise.then(function(resp) {
+            // @@@ may want a basic triple API library for this instead
+            //     of generating strings
+            var subj, rdf, head, tail, refs;
+            subj = resp.id;
+            rdf = '';
+            tail = '</rdf:RDF>\n';
+            refs = [];
+            rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource.getClassID(), refs);
+            angular.forEach($scope.created, function(res) {
+                if (refs.indexOf(res.id) >= 0) {
+                    rdf += $scope.exportResource(res);
+                }
+            });
+            head = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n';
+            $scope.exportedRDF = head + rdf + tail;
+            $scope.showRDF();
         });
-        head = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n';
-        $scope.exportedRDF = head + rdf + tail;
     };
-
+    
     $scope.exportResource = function(res, id, type, refs) {
         var frag = "";
         angular.forEach(res, function(vals, prop) {
@@ -526,4 +528,4 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Subjects,
     };
 };
 
-EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Subjects", "Agents", "Languages", "Providers"];
+EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Identifier", "Subjects", "Agents", "Languages", "Providers"];

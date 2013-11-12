@@ -25,6 +25,19 @@ angular.module("configurationServices", ["ngResource"]).
     }
 );
 
+angular.module("identifierService", ["ngResource"]).
+    factory("Identifier", function($resource) {
+        return $resource(
+            "/resource/id",
+            {},
+            {
+                "new": { "method": "POST", "isArray": false }
+            }
+        );
+    }
+);
+
+// Faked authority services
 angular.module("subjectServices", ["ngResource"]).
     factory("Subjects", function($resource) {
         return $resource(
