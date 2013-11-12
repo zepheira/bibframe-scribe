@@ -1,7 +1,8 @@
-var rdfstore, restify, db, server;
+var rdfstore, restify, uuid, db, server;
 
 rdfstore = require('rdfstore');
 restify = require('restify');
+uuid = require('uuid');
 
 server = restify.createServer();
 
@@ -27,8 +28,8 @@ db = new rdfstore.Store({
 
 server.post('/resource/id', function newIdentifier(req, res, next) {
     var num, id;
-    num = Math.round(Math.random() * 1000000);
-    id = "http://example.org/id" + num.toString();
+    num = uuid.v4();
+    id = "http://example.org/id" + num;
     res.send(200, {"id": id});
     return next();
 });
