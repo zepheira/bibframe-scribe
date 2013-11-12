@@ -1,0 +1,10 @@
+{
+    "name": "bibframe-editor",
+    "description": "",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "rdfstore": "*",
+        "restify": "*"
+    }
+}
