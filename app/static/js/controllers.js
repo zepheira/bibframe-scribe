@@ -1,4 +1,4 @@
-var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Identifier, Subjects, Agents, Languages, Providers) {
+var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Subjects, Agents, Languages, Providers) {
     $scope.initialized = false;
     $scope.config = {};
     $scope.profiles = [];
@@ -445,7 +445,8 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Identifie
 
     $scope.submit = function() {
         if ($scope.validate()) {
-            $scope.exportRDF();
+            //$scope.exportRDF();
+            $scope.exportN3($scope.persist);
         } else {
             alert("Please fill out all required properties before exporting.");
         }
@@ -464,8 +465,61 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Identifie
         return valid;
     };
 
+    $scope.persist = function(n3) {
+        Store.new(null, {"n3": n3}).$promise.then(function(resp) {
+            console.log(resp);
+        });
+    };
+
+    $scope.exportN3 = function(next) {
+        Store.id(null, null).$promise.then(function(resp) {
+            // @@@ may want a basic triple API library for this instead
+            //     of generating strings
+            var subj, rdf, refs;
+            subj = resp.id;
+            rdf = '@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n';
+            refs = [];
+            rdf += $scope.exportResourceN3($scope.currentWork, subj, $scope.activeResource.getClassID(), refs);
+            angular.forEach($scope.created, function(res) {
+                if (refs.indexOf(res.id) >= 0) {
+                    rdf += $scope.exportResourceN3(res);
+                }
+            });
+
+            $scope.exportedRDF = rdf;
+            next(rdf);
+        });        
+    };
+
+    $scope.exportResourceN3 = function(res, id, type, refs) {
+        var frag = '';
+        angular.forEach(res, function(vals, prop) {
+            if (prop === "id" && typeof id === "undefined") {
+                id = vals;
+            } else if (prop === "type" && typeof type === "undefined") {
+                type = vals.getValue();
+            } else {
+                angular.forEach(vals, function(val) {
+                    if (val.isResource()) {
+                        frag += '  <' + prop + '> <' + val.getValue() + '>;\n';
+                        if (typeof refs !== "undefined") {
+                            refs.push(val.getValue());
+                        }
+                    } else {
+                        frag += '  <' + prop + '> \"' + val.getValue() + '\"';
+                        if (val.hasDatatype()) {
+                            frag += '^^<' + val.getDatatype() + '>';
+                        }
+                        frag += ';';
+                    }
+                });
+            }
+        });
+        return '<' + id + '>\n' + frag + ' rdf:type <' + type + '> .\n';
+    };
+
     $scope.exportRDF = function() {
-        Identifier.new(null, null).$promise.then(function(resp) {
+        Store.id(null, null).$promise.then(function(resp) {
             // @@@ may want a basic triple API library for this instead
             //     of generating strings
             var subj, rdf, head, tail, refs;
@@ -528,4 +582,4 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Identifie
     };
 };
 
-EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Identifier", "Subjects", "Agents", "Languages", "Providers"];
+EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Subjects", "Agents", "Languages", "Providers"];

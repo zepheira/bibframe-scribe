@@ -2,7 +2,7 @@ angular.module("bibframeEditor", [
     "ui.bootstrap",
     "profileServices",
     "configurationServices",
-    "identifierService",
+    "storeService",
     "subjectServices",
     "agentServices",
     "languageServices",
