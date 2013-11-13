@@ -19,9 +19,10 @@ Until then.  With `nodeenv` and `mongod` binaries available:
 % cd [env]
 % . bin/activate
 % git clone [this repo]
-% npm install bibframe-editor
+% cd bibframe-editor
+% npm install
 % mongod -rest &
-% cd bibframe-editor/app
+% cd app
 % node index.js
 ```
 
@@ -30,6 +31,26 @@ There is a bug in the restify library.  You will need to either download
 [the pull request](https://github.com/mcavage/node-restify/pull/451) and modify
 or replace `node_modules/restify/lib/plugins/static.js` until
 the patch makes it into a release
+
+Load Data
+=========
+
+You can pre-load RDF into the store.  Unfortunately, you can't use RDF/XML
+yet.  Turtle/N3 or JSON-LD are your options.  You might use `rapper` from the
+Raptor library to manipulate your existing serialization into something
+this software can read immediately.  It also only reads HTTP[S] from the
+command line easily, so you may want to publish your data to this software's
+static directory and load from the locally hosted URL:
+
+```
+% cp graph.n3 [env]/bibframe-editor/app/static/
+% cd [env]/bibframe-editor/app/
+% node index.js &
+% rdfstorejs load http://localhost:8888/static/graph.n3 --store-engine mongodb --store-mongo-domain localhost --store-name bfstore
+```
+
+Use `--store-overwrite true` if you want to obliterate your existing store
+and write the contents of graph.n3 into it instead.
 
 More
 ====
