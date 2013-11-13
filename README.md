@@ -15,12 +15,12 @@ be a Chef cookbook coming soon to cover Linux server installs.
 Until then.  With `nodeenv` and `mongod` binaries available:
 
 ```
-% nodeenv -c [env]
+% git clone [this repo]
+% nodeenv -c -r bibframe-editor/requirements.txt [env]
+% mv bibframe-editor [env]/
 % cd [env]
 % . bin/activate
-% git clone [this repo]
 % cd bibframe-editor
-% npm install
 % mongod -rest &
 % cd app
 % node index.js
