@@ -30,7 +30,7 @@ There is a bug in the restify library.  You will need to either download
 [the file](https://github.com/JasonGhent/node-restify/blob/bd3747da7db82507daaf9bc9d6110407063ae462/lib/plugins/static.js) as described in
 [the pull request](https://github.com/mcavage/node-restify/pull/451) and modify
 or replace `node_modules/restify/lib/plugins/static.js` until
-the patch makes it into a release
+the patch makes it into a release.
 
 Load Data
 =========
