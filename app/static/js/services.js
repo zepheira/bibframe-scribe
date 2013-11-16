@@ -51,6 +51,18 @@ angular.module("storeService", ["ngResource"]).
     }
 );
 
+angular.module("queryService", ["ngResource"]).
+    factory("Query", function($resource) {
+        return $resource(
+            "/suggest/local?q=:q",
+            {},
+            {
+                "get": { "method": "GET", "isArray": true }
+            }
+        );
+    }
+);
+
 // Faked authority services
 angular.module("subjectServices", ["ngResource"]).
     factory("Subjects", function($resource) {

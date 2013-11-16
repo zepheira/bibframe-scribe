@@ -3,6 +3,7 @@ angular.module("bibframeEditor", [
     "profileServices",
     "configurationServices",
     "storeService",
+    "queryService",
     "subjectServices",
     "agentServices",
     "languageServices",

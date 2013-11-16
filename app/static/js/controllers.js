@@ -1,4 +1,4 @@
-var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Subjects, Agents, Languages, Providers) {
+var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Query, Subjects, Agents, Languages, Providers) {
     $scope.initialized = false;
     $scope.config = {};
     $scope.profiles = [];
@@ -8,6 +8,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Su
     $scope.typeMap = {};
     $scope.idToTemplate = {};
     $scope.services = {
+        "Query": Query,
         "Subjects": Subjects,
         "Agents": Agents,
         "Languages": Languages,
@@ -215,7 +216,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Su
         // @@@ handle multiple services - or maybe have a proxied
         //     endpoint local to this host that does all the service
         //     handling, with arguments for which services to query
-        return services[0].get({"search": typed}).$promise.then(function(response) {
+        return services[0].get({"q": typed}).$promise;
+        /**
+        return services[0].get({"q": typed}).$promise.then(function(response) {
             // @@@ matching should be handled by the service, just
             //     use response when it's implemented
             var matches = [];
@@ -226,6 +229,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Su
             });
             return matches;
         });
+        */
     };
 
     $scope.reset = function(formScope, formName) {
@@ -582,4 +586,4 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Su
     };
 };
 
-EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Subjects", "Agents", "Languages", "Providers"];
+EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Query", "Subjects", "Agents", "Languages", "Providers"];

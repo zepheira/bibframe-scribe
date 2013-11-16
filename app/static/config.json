@@ -47,7 +47,7 @@
         },
         {
             "resource": "http://bibframe.org/vocab/Person",
-            "services": ["Agents"]
+            "services": ["Query", "Agents"]
         },
         {
             "resource": "http://bibframe.org/vocab/LanguageEntity",
