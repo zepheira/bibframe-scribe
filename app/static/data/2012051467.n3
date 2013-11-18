@@ -1,0 +1,103 @@
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/isbn10> "0415524709" .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/relatedInstance> <http://www.lookupbyisbn.com/Lookup/Book/0415524709/0415524709/1> .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/isbn13> "9780415524704" .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/title> "China's regional development : review and prospect (hbk)" .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/physicalForm> "hardback" .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/contributor> <http://bibframe.org/resources/pvh1384803664/17621453person30> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ProviderEntity> .
+_:genid1 <http://bibframe.org/vocab/providerName> "Routledge, Taylor & Francis Group" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "London" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "2013." .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/derivedFromLccn> <http://id.loc.gov/authorities/identifiers/lccn/2012051467> .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/mediaType> <http://www.loc.gov/standards/valuelist/carriers/convert-me/unmediated> .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/carrierType> <http://www.loc.gov/standards/valuelist/marcsmd/convert-me/volume> .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/illustrativeContentNote> "illustrations" .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/note> "Translation of: Zhongguo qu yu jing ji fa zhan. Shanghai : Ge zhi chu ban she : Shanghai ren min chu ban she, 2011." .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/supplementaryContentNote> "Includes bibliographical references and index." .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17621453> .
+<http://bibframe.org/resources/pvh1384803664/17621453instance23> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/pvh1384803664/17621453> .
+<http://bibframe.org/resources/pvh1384803664/17621453holding40> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Holding> .
+<http://bibframe.org/resources/pvh1384803664/17621453holding40> <http://bibframe.org/vocab/label> "HC427.92.Z47844813 2013" .
+<http://bibframe.org/resources/pvh1384803664/17621453holding40> <http://bibframe.org/vocab/callno-lcc> "HC427.92.Z47844813 2013" .
+<http://bibframe.org/resources/pvh1384803664/17621453holding40> <http://bibframe.org/vocab/holds> <http://bibframe.org/resources/pvh1384803664/17621453instance23> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageMaterial> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/authorizedAccessPoint> "Zhongguo qu yu jing ji fa zhan. English" .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/label> "Zhongguo qu yu jing ji fa zhan. English." .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/uniformTitle> "Zhongguo qu yu jing ji fa zhan. English." .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Zhongguo qu yu jing ji fa zhan. English." .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#MainTitleElement> .
+_:genid3 <http://www.loc.gov/mads/rdf/v1#elementValue> "Zhongguo qu yu jing ji fa zhan." .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid5 .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid6 .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#LanguageElement> .
+_:genid5 <http://www.loc.gov/mads/rdf/v1#elementValue> "English." .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#elementList> _:genid4 .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/hasAuthority> _:genid2 .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/translationOf> <http://bibframe.org/resources/pvh1384803664/17621453work8> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/title> "China's regional development : review and prospect" .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/primaryLanguage> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/language> <http://bibframe.org/resources/pvh1384803664/17621453languageentity11> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/language> <http://bibframe.org/resources/pvh1384803664/17621453languageentity12> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/pvh1384803664/17621453place13> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/pvh1384803664/17621453place14> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/pvh1384803664/17621453place15> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/pvh1384803664/17621453place16> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/a-cc> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/class-lcc> <http://id.loc.gov/authorities/classification/HC427> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/class> <http://bibframe.org/resources/pvh1384803664/17621453classificationentity19> .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/note> "Translation of: Zhongguo qu yu jing ji fa zhan. Shanghai : Ge zhi chu ban she : Shanghai ren min chu ban she, 2011." .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/contentNature> "text" .
+<http://bibframe.org/resources/pvh1384803664/17621453> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17621453> .
+<http://bibframe.org/resources/pvh1384803664/17621453work8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/pvh1384803664/17621453work8> <http://bibframe.org/vocab/title> "Zhongguo qu yu jing ji fa zhan." .
+<http://bibframe.org/resources/pvh1384803664/17621453work8> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Zhongguo qu yu jing ji fa zhan." .
+<http://bibframe.org/resources/pvh1384803664/17621453languageentity11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageEntity> .
+<http://bibframe.org/resources/pvh1384803664/17621453languageentity11> <http://bibframe.org/vocab/resourcePart> "text" .
+<http://bibframe.org/resources/pvh1384803664/17621453languageentity11> <http://bibframe.org/vocab/languageOfPart> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/pvh1384803664/17621453languageentity12> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageEntity> .
+<http://bibframe.org/resources/pvh1384803664/17621453languageentity12> <http://bibframe.org/vocab/resourcePart> "original" .
+<http://bibframe.org/resources/pvh1384803664/17621453languageentity12> <http://bibframe.org/vocab/languageOfPart> <http://id.loc.gov/vocabulary/languages/chi> .
+<http://bibframe.org/resources/pvh1384803664/17621453place13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Place> .
+<http://bibframe.org/resources/pvh1384803664/17621453place13> <http://bibframe.org/vocab/authorizedAccessPoint> "China--Economic conditions--1976-2000" .
+<http://bibframe.org/resources/pvh1384803664/17621453place13> <http://bibframe.org/vocab/label> "China--Economic conditions--1976-2000" .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid7 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "China--Economic conditions--1976-2000"@en .
+<http://bibframe.org/resources/pvh1384803664/17621453place13> <http://bibframe.org/vocab/hasAuthority> _:genid7 .
+<http://bibframe.org/resources/pvh1384803664/17621453place14> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Place> .
+<http://bibframe.org/resources/pvh1384803664/17621453place14> <http://bibframe.org/vocab/authorizedAccessPoint> "China--Economic conditions--2000-" .
+<http://bibframe.org/resources/pvh1384803664/17621453place14> <http://bibframe.org/vocab/label> "China--Economic conditions--2000-" .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid8 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "China--Economic conditions--2000-"@en .
+<http://bibframe.org/resources/pvh1384803664/17621453place14> <http://bibframe.org/vocab/hasAuthority> _:genid8 .
+<http://bibframe.org/resources/pvh1384803664/17621453place15> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Place> .
+<http://bibframe.org/resources/pvh1384803664/17621453place15> <http://bibframe.org/vocab/authorizedAccessPoint> "China--Economic conditions--1976-2000--Regional disparities" .
+<http://bibframe.org/resources/pvh1384803664/17621453place15> <http://bibframe.org/vocab/label> "China--Economic conditions--1976-2000--Regional disparities" .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid9 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "China--Economic conditions--1976-2000--Regional disparities"@en .
+<http://bibframe.org/resources/pvh1384803664/17621453place15> <http://bibframe.org/vocab/hasAuthority> _:genid9 .
+<http://bibframe.org/resources/pvh1384803664/17621453place16> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Place> .
+<http://bibframe.org/resources/pvh1384803664/17621453place16> <http://bibframe.org/vocab/authorizedAccessPoint> "China--Economic conditions--2000---Regional disparities" .
+<http://bibframe.org/resources/pvh1384803664/17621453place16> <http://bibframe.org/vocab/label> "China--Economic conditions--2000---Regional disparities" .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid10 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "China--Economic conditions--2000---Regional disparities"@en .
+<http://bibframe.org/resources/pvh1384803664/17621453place16> <http://bibframe.org/vocab/hasAuthority> _:genid10 .
+<http://bibframe.org/resources/pvh1384803664/17621453classificationentity19> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ClassificationEntity> .
+<http://bibframe.org/resources/pvh1384803664/17621453classificationentity19> <http://bibframe.org/vocab/classScheme> "ddc" .
+<http://bibframe.org/resources/pvh1384803664/17621453classificationentity19> <http://bibframe.org/vocab/classNumber> "338.951" .
+<http://bibframe.org/resources/pvh1384803664/17621453classificationentity19> <http://bibframe.org/vocab/label> "338.951" .
+<http://bibframe.org/resources/pvh1384803664/17621453classificationentity19> <http://bibframe.org/vocab/classEdition> "full" .
+<http://bibframe.org/resources/pvh1384803664/17621453person30> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/pvh1384803664/17621453person30> <http://bibframe.org/vocab/label> "Lu, Ming, 1973-" .
+<http://bibframe.org/resources/pvh1384803664/17621453person30> <http://bibframe.org/vocab/authorizedAccessPoint> "Lu, Ming, 1973-" .
+<http://bibframe.org/resources/pvh1384803664/17621453person30> <http://bibframe.org/vocab/resourceRole> "editor of compilation." .
+<http://bibframe.org/resources/pvh1384803664/17621453person30> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/no2004088139> .

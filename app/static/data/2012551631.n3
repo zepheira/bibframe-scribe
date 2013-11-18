@@ -1,0 +1,93 @@
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/isbn10> "1905622457" .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/relatedInstance> <http://www.lookupbyisbn.com/Lookup/Book/1905622457/1905622457/1> .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/isbn13> "9781905622450" .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/title> "Placing politics" .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/title> "Placing politics" .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ProviderEntity> .
+_:genid1 <http://bibframe.org/vocab/providerName> "The Bardwell Press" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "Cumnor, Oxford" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "2012." .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/derivedFromLccn> <http://id.loc.gov/authorities/identifiers/lccn/2012551631> .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/extent> "vi, 264 pages ;" .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/mediaType> <http://www.loc.gov/standards/valuelist/carriers/convert-me/unmediated> .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/carrierType> <http://www.loc.gov/standards/valuelist/marcsmd/convert-me/volume> .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/supplementaryContentNote> "Includes bibliographical references (pages 257-258) and index." .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17611558> .
+<http://bibframe.org/resources/RDB1384803819/17611558instance23> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/RDB1384803819/17611558> .
+<http://bibframe.org/resources/RDB1384803819/17611558holding38> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Holding> .
+<http://bibframe.org/resources/RDB1384803819/17611558holding38> <http://bibframe.org/vocab/label> "DT380.4.O23A2413 2012" .
+<http://bibframe.org/resources/RDB1384803819/17611558holding38> <http://bibframe.org/vocab/callno-lcc> "DT380.4.O23A2413 2012" .
+<http://bibframe.org/resources/RDB1384803819/17611558holding38> <http://bibframe.org/vocab/holds> <http://bibframe.org/resources/RDB1384803819/17611558instance23> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageMaterial> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/authorizedAccessPoint> "Abe\u0301le\u0300s, Marc Lieu du politique . English" .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/label> "Lieu du politique . English" .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/uniformTitle> "Lieu du politique . English" .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lieu du politique . English" .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#MainTitleElement> .
+_:genid3 <http://www.loc.gov/mads/rdf/v1#elementValue> "Lieu du politique ." .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid5 .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid6 .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#LanguageElement> .
+_:genid5 <http://www.loc.gov/mads/rdf/v1#elementValue> "English" .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#elementList> _:genid4 .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/hasAuthority> _:genid2 .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/translationOf> <http://bibframe.org/resources/RDB1384803819/17611558work8> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/title> "Placing politics" .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/RDB1384803819/17611558person10> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/primaryLanguage> <http://id.loc.gov/vocabulary/languages/fre> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/language> <http://bibframe.org/resources/RDB1384803819/17611558languageentity12> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/language> <http://bibframe.org/resources/RDB1384803819/17611558languageentity13> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/RDB1384803819/17611558topic14> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/f-et> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/fe> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/class-lcc> <http://id.loc.gov/authorities/classification/DT380> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/contentNature> "text" .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/relatedResource> <http://bibframe.org/resources/RDB1384803819/17611558work19> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/inSeries> <http://bibframe.org/resources/RDB1384803819/17611558work20> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/series> <http://bibframe.org/resources/RDB1384803819/17611558work21> .
+<http://bibframe.org/resources/RDB1384803819/17611558> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17611558> .
+<http://bibframe.org/resources/RDB1384803819/17611558work8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/RDB1384803819/17611558work8> <http://bibframe.org/vocab/title> "Lieu du politique ." .
+<http://bibframe.org/resources/RDB1384803819/17611558work8> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Lieu du politique ." .
+<http://bibframe.org/resources/RDB1384803819/17611558work8> <http://bibframe.org/vocab/creator> "Abe\u0301le\u0300s, Marc," .
+<http://bibframe.org/resources/RDB1384803819/17611558person10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/RDB1384803819/17611558person10> <http://bibframe.org/vocab/label> "Abe\u0301le\u0300s, Marc" .
+<http://bibframe.org/resources/RDB1384803819/17611558person10> <http://bibframe.org/vocab/authorizedAccessPoint> "Abe\u0301le\u0300s, Marc" .
+<http://bibframe.org/resources/RDB1384803819/17611558person10> <http://bibframe.org/vocab/resourceRole> "author." .
+<http://bibframe.org/resources/RDB1384803819/17611558person10> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n79101313> .
+<http://bibframe.org/resources/RDB1384803819/17611558languageentity12> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageEntity> .
+<http://bibframe.org/resources/RDB1384803819/17611558languageentity12> <http://bibframe.org/vocab/resourcePart> "text" .
+<http://bibframe.org/resources/RDB1384803819/17611558languageentity12> <http://bibframe.org/vocab/languageOfPart> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/RDB1384803819/17611558languageentity13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageEntity> .
+<http://bibframe.org/resources/RDB1384803819/17611558languageentity13> <http://bibframe.org/vocab/resourcePart> "original" .
+<http://bibframe.org/resources/RDB1384803819/17611558languageentity13> <http://bibframe.org/vocab/languageOfPart> <http://id.loc.gov/vocabulary/languages/fre> .
+<http://bibframe.org/resources/RDB1384803819/17611558topic14> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/RDB1384803819/17611558topic14> <http://bibframe.org/vocab/authorizedAccessPoint> "Ochollo (African people)--Politics and government" .
+<http://bibframe.org/resources/RDB1384803819/17611558topic14> <http://bibframe.org/vocab/label> "Ochollo (African people)--Politics and government" .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid7 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Ochollo (African people)--Politics and government"@en .
+<http://bibframe.org/resources/RDB1384803819/17611558topic14> <http://bibframe.org/vocab/hasAuthority> _:genid7 .
+<http://bibframe.org/resources/RDB1384803819/17611558work19> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/RDB1384803819/17611558work19> <http://bibframe.org/vocab/label> "Lieu du politique." .
+<http://bibframe.org/resources/RDB1384803819/17611558work19> <http://bibframe.org/vocab/authorizedAccessPoint> "Abe\u0301le\u0300s, Marc. Lieu du politique." .
+<http://bibframe.org/resources/RDB1384803819/17611558work19> <http://bibframe.org/vocab/title> "Lieu du politique." .
+<http://bibframe.org/resources/RDB1384803819/17611558work19> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/RDB1384803819/17611558person24> .
+<http://bibframe.org/resources/RDB1384803819/17611558person24> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/RDB1384803819/17611558person24> <http://bibframe.org/vocab/label> "Abe\u0301le\u0300s, Marc." .
+<http://bibframe.org/resources/RDB1384803819/17611558person24> <http://bibframe.org/vocab/authorizedAccessPoint> "Abe\u0301le\u0300s, Marc." .
+<http://bibframe.org/resources/RDB1384803819/17611558person24> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n79101313> .
+<http://bibframe.org/resources/RDB1384803819/17611558work20> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/RDB1384803819/17611558work20> <http://bibframe.org/vocab/label> "Studies in the African Rift Valley" .
+<http://bibframe.org/resources/RDB1384803819/17611558work20> <http://bibframe.org/vocab/authorizedAccessPoint> "Studies in the African Rift Valley" .
+<http://bibframe.org/resources/RDB1384803819/17611558work20> <http://bibframe.org/vocab/title> "Studies in the African Rift Valley" .
+<http://bibframe.org/resources/RDB1384803819/17611558work21> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/RDB1384803819/17611558work21> <http://bibframe.org/vocab/label> "Studies in the African Rift Valley" .
+<http://bibframe.org/resources/RDB1384803819/17611558work21> <http://bibframe.org/vocab/authorizedAccessPoint> "Studies in the African Rift Valley" .
+<http://bibframe.org/resources/RDB1384803819/17611558work21> <http://bibframe.org/vocab/title> "Studies in the African Rift Valley" .

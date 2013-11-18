@@ -1,0 +1,108 @@
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/isbn10> "9989652856" .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/relatedInstance> <http://www.lookupbyisbn.com/Lookup/Book/9989652856/9989652856/1> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/isbn13> "9789989652851" .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/title> "Desert" .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/title> "Desert" .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/contributor> <http://bibframe.org/resources/XRP1384803746/17768185person29> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/contributor> <http://bibframe.org/resources/XRP1384803746/17768185organization30> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ProviderEntity> .
+_:genid1 <http://bibframe.org/vocab/providerName> "St. Clement of Ohrid, National and University Library" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "Skopje" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "2011." .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/derivedFromLccn> <http://id.loc.gov/authorities/identifiers/lccn/2013390872> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/oclc-number> "ocn806387566" .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/relatedInstance> <http://www.worldcat.org/oclc/806387566> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/extent> "127 pages ;" .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/mediaType> <http://www.loc.gov/standards/valuelist/carriers/convert-me/unmediated> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/carrierType> <http://www.loc.gov/standards/valuelist/marcsmd/convert-me/volume> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/note> "On leaf preceding title page: Translation Project \"Macedonian Literature in English,\" Government of the Republic of Macedonia, Ministry of Culture of the Republic of Macedonia." .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17768185> .
+<http://bibframe.org/resources/XRP1384803746/17768185instance22> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/XRP1384803746/17768185> .
+<http://bibframe.org/resources/XRP1384803746/17768185holding41> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Holding> .
+<http://bibframe.org/resources/XRP1384803746/17768185holding41> <http://bibframe.org/vocab/label> "PG1195.A33P8713 2011" .
+<http://bibframe.org/resources/XRP1384803746/17768185holding41> <http://bibframe.org/vocab/callno-lcc> "PG1195.A33P8713 2011" .
+<http://bibframe.org/resources/XRP1384803746/17768185holding41> <http://bibframe.org/vocab/holds> <http://bibframe.org/resources/XRP1384803746/17768185instance22> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageMaterial> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/authorizedAccessPoint> "Abadz\u030Ciev, G\u0301org\u0301i, 1910-1963 Pustina. English" .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/label> "Pustina. English" .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/uniformTitle> "Pustina. English" .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Pustina. English" .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#TitleElement> .
+_:genid3 <http://www.loc.gov/mads/rdf/v1#elementValue> "880-02" .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid5 .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid6 .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#MainTitleElement> .
+_:genid5 <http://www.loc.gov/mads/rdf/v1#elementValue> "Pustina." .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid7 .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid8 .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#LanguageElement> .
+_:genid7 <http://www.loc.gov/mads/rdf/v1#elementValue> "English" .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#elementList> _:genid4 .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/hasAuthority> _:genid2 .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/translationOf> <http://bibframe.org/resources/XRP1384803746/17768185work8> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/title> "Desert" .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/XRP1384803746/17768185person10> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/primaryLanguage> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/language> <http://bibframe.org/resources/XRP1384803746/17768185languageentity12> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/language> <http://bibframe.org/resources/XRP1384803746/17768185languageentity13> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/class-lcc> <http://id.loc.gov/authorities/classification/PG1195> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/note> "On leaf preceding title page: Translation Project \"Macedonian Literature in English,\" Government of the Republic of Macedonia, Ministry of Culture of the Republic of Macedonia." .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/contentNature> "text" .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/relatedResource> <http://bibframe.org/resources/XRP1384803746/17768185work17> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/inSeries> <http://bibframe.org/resources/XRP1384803746/17768185work18> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/series> <http://bibframe.org/resources/XRP1384803746/17768185work19> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/series> <http://bibframe.org/resources/XRP1384803746/17768185work20> .
+<http://bibframe.org/resources/XRP1384803746/17768185> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17768185> .
+<http://bibframe.org/resources/XRP1384803746/17768185work8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/XRP1384803746/17768185work8> <http://bibframe.org/vocab/title> "Pustina." .
+<http://bibframe.org/resources/XRP1384803746/17768185work8> <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Pustina." .
+<http://bibframe.org/resources/XRP1384803746/17768185work8> <http://bibframe.org/vocab/creator> "Abadz\u030Ciev, G\u0301org\u0301i," .
+<http://bibframe.org/resources/XRP1384803746/17768185person10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/XRP1384803746/17768185person10> <http://bibframe.org/vocab/label> "Abadz\u030Ciev, G\u0301org\u0301i, 1910-1963" .
+<http://bibframe.org/resources/XRP1384803746/17768185person10> <http://bibframe.org/vocab/authorizedAccessPoint> "Abadz\u030Ciev, G\u0301org\u0301i, 1910-1963" .
+<http://bibframe.org/resources/XRP1384803746/17768185person10> <http://bibframe.org/vocab/authorizedAccessPoint> "\u0410\u0431\u0430\u045F\u0438\u0435\u0432, \u0403\u043E\u0440\u0453\u0438, 1910-1963"@en .
+<http://bibframe.org/resources/XRP1384803746/17768185person10> <http://bibframe.org/vocab/resourceRole> "author." .
+<http://bibframe.org/resources/XRP1384803746/17768185person10> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n85123408> .
+<http://bibframe.org/resources/XRP1384803746/17768185languageentity12> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageEntity> .
+<http://bibframe.org/resources/XRP1384803746/17768185languageentity12> <http://bibframe.org/vocab/resourcePart> "text" .
+<http://bibframe.org/resources/XRP1384803746/17768185languageentity12> <http://bibframe.org/vocab/languageOfPart> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/XRP1384803746/17768185languageentity13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageEntity> .
+<http://bibframe.org/resources/XRP1384803746/17768185languageentity13> <http://bibframe.org/vocab/resourcePart> "original" .
+<http://bibframe.org/resources/XRP1384803746/17768185languageentity13> <http://bibframe.org/vocab/languageOfPart> <http://id.loc.gov/vocabulary/languages/mac> .
+<http://bibframe.org/resources/XRP1384803746/17768185work17> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/XRP1384803746/17768185work17> <http://bibframe.org/vocab/label> "Pustina." .
+<http://bibframe.org/resources/XRP1384803746/17768185work17> <http://bibframe.org/vocab/authorizedAccessPoint> "Abadz\u030Ciev, G\u0301org\u0301i, 1910-1963. Pustina." .
+<http://bibframe.org/resources/XRP1384803746/17768185work17> <http://bibframe.org/vocab/title> "Pustina." .
+<http://bibframe.org/resources/XRP1384803746/17768185work17> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/XRP1384803746/17768185person22> .
+<http://bibframe.org/resources/XRP1384803746/17768185person22> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/XRP1384803746/17768185person22> <http://bibframe.org/vocab/label> "Abadz\u030Ciev, G\u0301org\u0301i, 1910-1963." .
+<http://bibframe.org/resources/XRP1384803746/17768185person22> <http://bibframe.org/vocab/authorizedAccessPoint> "Abadz\u030Ciev, G\u0301org\u0301i, 1910-1963." .
+<http://bibframe.org/resources/XRP1384803746/17768185person22> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n85123408> .
+<http://bibframe.org/resources/XRP1384803746/17768185work18> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/XRP1384803746/17768185work18> <http://bibframe.org/vocab/label> "Macedonian literature ; 10" .
+<http://bibframe.org/resources/XRP1384803746/17768185work18> <http://bibframe.org/vocab/authorizedAccessPoint> "Macedonian literature ; 10" .
+<http://bibframe.org/resources/XRP1384803746/17768185work18> <http://bibframe.org/vocab/title> "Macedonian literature ; 10" .
+<http://bibframe.org/resources/XRP1384803746/17768185work19> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/XRP1384803746/17768185work19> <http://bibframe.org/vocab/label> "Macedonian literature ; 10" .
+<http://bibframe.org/resources/XRP1384803746/17768185work19> <http://bibframe.org/vocab/authorizedAccessPoint> "Macedonian literature ; 10" .
+<http://bibframe.org/resources/XRP1384803746/17768185work19> <http://bibframe.org/vocab/title> "Macedonian literature ; 10" .
+<http://bibframe.org/resources/XRP1384803746/17768185work20> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/XRP1384803746/17768185work20> <http://bibframe.org/vocab/label> "Macedonian literature ; 10." .
+<http://bibframe.org/resources/XRP1384803746/17768185work20> <http://bibframe.org/vocab/authorizedAccessPoint> "Macedonian literature ; 10." .
+<http://bibframe.org/resources/XRP1384803746/17768185work20> <http://bibframe.org/vocab/title> "Macedonian literature ; 10." .
+<http://bibframe.org/resources/XRP1384803746/17768185person29> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/XRP1384803746/17768185person29> <http://bibframe.org/vocab/label> "Burazer, Mirjana" .
+<http://bibframe.org/resources/XRP1384803746/17768185person29> <http://bibframe.org/vocab/authorizedAccessPoint> "Burazer, Mirjana" .
+<http://bibframe.org/resources/XRP1384803746/17768185person29> <http://bibframe.org/vocab/authorizedAccessPoint> "\u0411\u0443\u0440\u0430\u0437\u0435\u0440, \u041C\u0438\u0440\u0458\u0430\u043D\u0430"@en .
+<http://bibframe.org/resources/XRP1384803746/17768185person29> <http://bibframe.org/vocab/resourceRole> "translator." .
+<http://bibframe.org/resources/XRP1384803746/17768185person29> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/no2012127006> .
+<http://bibframe.org/resources/XRP1384803746/17768185organization30> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Organization> .
+<http://bibframe.org/resources/XRP1384803746/17768185organization30> <http://bibframe.org/vocab/label> "Macedonia (Republic). Ministerstvo za kultura." .
+<http://bibframe.org/resources/XRP1384803746/17768185organization30> <http://bibframe.org/vocab/authorizedAccessPoint> "Macedonia (Republic). Ministerstvo za kultura." .
+<http://bibframe.org/resources/XRP1384803746/17768185organization30> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/nr2004031326> .

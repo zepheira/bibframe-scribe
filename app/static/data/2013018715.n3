@@ -1,0 +1,120 @@
+<http://bibframe.org/resources/vOC1384801281/17751712annotation8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Annotation> .
+<http://bibframe.org/resources/vOC1384801281/17751712annotation8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Summary> .
+<http://bibframe.org/resources/vOC1384801281/17751712annotation8> <http://bibframe.org/vocab/label> "Summary" .
+<http://bibframe.org/resources/vOC1384801281/17751712annotation8> <http://bibframe.org/vocab/annotationAssertedBy> "Provided by publisher." .
+<http://bibframe.org/resources/vOC1384801281/17751712annotation8> <http://bibframe.org/vocab/annotationBodyLiteral> "\"Bringing together characters from Oryx and Crake and The Year of the Flood,  this thrilling conclusion to Margaret Atwood's speculative fiction  trilogy confirms the ultimate endurance of humanity, community, and  love.  Months after the Waterless Flood pandemic has wiped  out most of humanity, Toby and Ren have rescued their friend Amanda from  the vicious Painballers. They return to the MaddAddamite cob house,  which is being fortified against man and giant Pigoon alike.  Accompanying them are the Crakers, the gentle, quasihuman species  engineered by the brilliant but deceased Crake. While their reluctant  prophet, Jimmy--Crake's one-time friend--recovers from a debilitating  fever, it's left to Toby to narrate the Craker theology, with Crake as  Creator. She must also deal with cultural misunderstandings, terrible  coffee, and her jealousy over her lover, Zeb. Meanwhile, Zeb searches  for Adam One, founder of the God's Gardeners, the pacifist green  religion from which Zeb broke years ago to lead the MaddAddamites in  active resistance against the destructive CorpSeCorps. Now, under threat  of an imminent Painballer attack, the MaddAddamites must fight back  with the aid of their newfound allies, some of whom have four trotters.  At the center is the extraordinary story of Zeb's past, which involves a  lost brother, a hidden murder, a bear, and a bizarre act of revenge.  Combining adventure, humor, romance, superb storytelling, and an  imagination that is at once dazzlingly inventive and grounded in a  recognizable world, MaddAddam is vintage Margaret Atwood, and a moving and dramatic conclusion to her internationally celebrated dystopian trilogy\"--" .
+<http://bibframe.org/resources/vOC1384801281/17751712annotation8> <http://bibframe.org/vocab/annotates> <http://bibframe.org/resources/vOC1384801281/17751712> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/isbn10> "0385528787" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/relatedInstance> <http://www.lookupbyisbn.com/Lookup/Book/0385528787/0385528787/1> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/isbn13> "9780385528788" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/title> "MaddAddam : a novel (hardback)" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/physicalForm> "hardback" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/edition> "First United States Edition." .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ProviderEntity> .
+_:genid1 <http://bibframe.org/vocab/providerName> "Nan A. Talese/Doubleday" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "New York" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "2013" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/derivedFromLccn> <http://id.loc.gov/authorities/identifiers/lccn/2013018715> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/mediaType> <http://www.loc.gov/standards/valuelist/carriers/convert-me/unmediated> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/carrierType> <http://www.loc.gov/standards/valuelist/marcsmd/convert-me/volume> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/note> "Originally published in Canada by McClelland & Stewart Ltd., Toronto." .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17751712> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance21> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/vOC1384801281/17751712> .
+<http://bibframe.org/resources/vOC1384801281/17751712holding36> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Holding> .
+<http://bibframe.org/resources/vOC1384801281/17751712holding36> <http://bibframe.org/vocab/label> "PR9199.3.A8M34 2013" .
+<http://bibframe.org/resources/vOC1384801281/17751712holding36> <http://bibframe.org/vocab/callno-lcc> "PR9199.3.A8M34 2013" .
+<http://bibframe.org/resources/vOC1384801281/17751712holding36> <http://bibframe.org/vocab/holds> <http://bibframe.org/resources/vOC1384801281/17751712instance21> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/isbn10> "0385538421" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/relatedInstance> <http://www.lookupbyisbn.com/Lookup/Book/0385538421/0385538421/1> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/isbn13> "9780385538428" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/title> "MaddAddam : a novel (hardback)" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/physicalForm> "hardback" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/edition> "First United States Edition." .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ProviderEntity> .
+_:genid2 <http://bibframe.org/vocab/providerName> "Nan A. Talese/Doubleday" .
+_:genid2 <http://bibframe.org/vocab/providerPlace> "New York" .
+_:genid2 <http://bibframe.org/vocab/providerDate> "2013" .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/publication> _:genid2 .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/derivedFromLccn> <http://id.loc.gov/authorities/identifiers/lccn/2013018715> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/mediaType> <http://www.loc.gov/standards/valuelist/carriers/convert-me/unmediated> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/carrierType> <http://www.loc.gov/standards/valuelist/marcsmd/convert-me/volume> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/note> "Originally published in Canada by McClelland & Stewart Ltd., Toronto." .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17751712> .
+<http://bibframe.org/resources/vOC1384801281/17751712instance22> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/vOC1384801281/17751712> .
+<http://bibframe.org/resources/vOC1384801281/17751712holding37> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Holding> .
+<http://bibframe.org/resources/vOC1384801281/17751712holding37> <http://bibframe.org/vocab/label> "PR9199.3.A8M34 2013" .
+<http://bibframe.org/resources/vOC1384801281/17751712holding37> <http://bibframe.org/vocab/callno-lcc> "PR9199.3.A8M34 2013" .
+<http://bibframe.org/resources/vOC1384801281/17751712holding37> <http://bibframe.org/vocab/holds> <http://bibframe.org/resources/vOC1384801281/17751712instance22> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageMaterial> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/authorizedAccessPoint> "Atwood, Margaret, 1939- MaddAddam : a novel" .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/title> "MaddAddam : a novel" .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/vOC1384801281/17751712person6> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/primaryLanguage> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/vOC1384801281/17751712genre9> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/vOC1384801281/17751712genre10> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/vOC1384801281/17751712genre11> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/vOC1384801281/17751712topic12> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/vOC1384801281/17751712topic13> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/class-lcc> <http://id.loc.gov/authorities/classification/PR9199> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/class> <http://bibframe.org/resources/vOC1384801281/17751712classificationentity15> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/class> <http://bibframe.org/resources/vOC1384801281/17751712classificationentity16> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/class> <http://bibframe.org/resources/vOC1384801281/17751712classificationentity17> .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/note> "Originally published in Canada by McClelland & Stewart Ltd., Toronto." .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/contentNature> "text" .
+<http://bibframe.org/resources/vOC1384801281/17751712> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17751712> .
+<http://bibframe.org/resources/vOC1384801281/17751712person6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/vOC1384801281/17751712person6> <http://bibframe.org/vocab/label> "Atwood, Margaret, 1939-" .
+<http://bibframe.org/resources/vOC1384801281/17751712person6> <http://bibframe.org/vocab/authorizedAccessPoint> "Atwood, Margaret, 1939-" .
+<http://bibframe.org/resources/vOC1384801281/17751712person6> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n79102766> .
+<http://bibframe.org/resources/vOC1384801281/17751712genre9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Genre> .
+<http://bibframe.org/resources/vOC1384801281/17751712genre9> <http://bibframe.org/vocab/authorizedAccessPoint> "Science fiction" .
+<http://bibframe.org/resources/vOC1384801281/17751712genre9> <http://bibframe.org/vocab/label> "Science fiction" .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:genid3 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Science fiction"@en .
+<http://bibframe.org/resources/vOC1384801281/17751712genre9> <http://bibframe.org/vocab/hasAuthority> _:genid3 .
+<http://bibframe.org/resources/vOC1384801281/17751712genre10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Genre> .
+<http://bibframe.org/resources/vOC1384801281/17751712genre10> <http://bibframe.org/vocab/authorizedAccessPoint> "Adventure fiction" .
+<http://bibframe.org/resources/vOC1384801281/17751712genre10> <http://bibframe.org/vocab/label> "Adventure fiction" .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:genid4 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Adventure fiction"@en .
+<http://bibframe.org/resources/vOC1384801281/17751712genre10> <http://bibframe.org/vocab/hasAuthority> _:genid4 .
+<http://bibframe.org/resources/vOC1384801281/17751712genre11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Genre> .
+<http://bibframe.org/resources/vOC1384801281/17751712genre11> <http://bibframe.org/vocab/authorizedAccessPoint> "Humorous fiction" .
+<http://bibframe.org/resources/vOC1384801281/17751712genre11> <http://bibframe.org/vocab/label> "Humorous fiction" .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#GenreForm> .
+_:genid5 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Humorous fiction"@en .
+<http://bibframe.org/resources/vOC1384801281/17751712genre11> <http://bibframe.org/vocab/hasAuthority> _:genid5 .
+<http://bibframe.org/resources/vOC1384801281/17751712topic12> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/vOC1384801281/17751712topic12> <http://bibframe.org/vocab/authorizedAccessPoint> "FICTION / Science Fiction / Adventure" .
+<http://bibframe.org/resources/vOC1384801281/17751712topic12> <http://bibframe.org/vocab/label> "FICTION / Science Fiction / Adventure" .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+_:genid6 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "FICTION / Science Fiction / Adventure"@en .
+<http://bibframe.org/resources/vOC1384801281/17751712topic12> <http://bibframe.org/vocab/hasAuthority> _:genid6 .
+<http://bibframe.org/resources/vOC1384801281/17751712topic13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/vOC1384801281/17751712topic13> <http://bibframe.org/vocab/authorizedAccessPoint> "FICTION / Humorous" .
+<http://bibframe.org/resources/vOC1384801281/17751712topic13> <http://bibframe.org/vocab/label> "FICTION / Humorous" .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Topic> .
+_:genid7 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "FICTION / Humorous"@en .
+<http://bibframe.org/resources/vOC1384801281/17751712topic13> <http://bibframe.org/vocab/hasAuthority> _:genid7 .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity15> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ClassificationEntity> .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity15> <http://bibframe.org/vocab/classScheme> "ddc" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity15> <http://bibframe.org/vocab/classNumber> "813/.54" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity15> <http://bibframe.org/vocab/label> "813/.54" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity15> <http://bibframe.org/vocab/classEdition> "full" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity16> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ClassificationEntity> .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity16> <http://bibframe.org/vocab/classScheme> "bisacsh" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity16> <http://bibframe.org/vocab/classNumber> "FIC028010" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity16> <http://bibframe.org/vocab/label> "FIC028010" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity17> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ClassificationEntity> .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity17> <http://bibframe.org/vocab/classScheme> "bisacsh" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity17> <http://bibframe.org/vocab/classNumber> "FIC016000" .
+<http://bibframe.org/resources/vOC1384801281/17751712classificationentity17> <http://bibframe.org/vocab/label> "FIC016000" .

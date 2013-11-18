@@ -1,0 +1,97 @@
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/isbn10> "0838911447" .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/relatedInstance> <http://www.lookupbyisbn.com/Lookup/Book/0838911447/0838911447/1> .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/isbn13> "9780838911440" .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/title> "Picture books for children : fiction, folktales, and poetry (alk. paper)" .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/physicalForm> "acid free" .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ProviderEntity> .
+_:genid1 <http://bibframe.org/vocab/providerName> "American Library Association" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "Chicago" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "2012." .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/derivedFromLccn> <http://id.loc.gov/authorities/identifiers/lccn/2011044734> .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/oclc-number> "ocn764312268" .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/relatedInstance> <http://www.worldcat.org/oclc/764312268> .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/mediaType> <http://www.loc.gov/standards/valuelist/carriers/convert-me/unmediated> .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/carrierType> <http://www.loc.gov/standards/valuelist/marcsmd/convert-me/volume> .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/illustrativeContentNote> "illustrations" .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/note> "Revised edition of: Picture books for children / Patricia J. Cianciolo. Fourth edition. 1997." .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/supplementaryContentNote> "Includes bibliographical references and index." .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17060391> .
+<http://bibframe.org/resources/eyb1384803599/17060391instance24> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/eyb1384803599/17060391> .
+<http://bibframe.org/resources/eyb1384803599/17060391holding42> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Holding> .
+<http://bibframe.org/resources/eyb1384803599/17060391holding42> <http://bibframe.org/vocab/label> "Z1037.C565 2012" .
+<http://bibframe.org/resources/eyb1384803599/17060391holding42> <http://bibframe.org/vocab/callno-lcc> "Z1037.C565 2012" .
+<http://bibframe.org/resources/eyb1384803599/17060391holding42> <http://bibframe.org/vocab/holds> <http://bibframe.org/resources/eyb1384803599/17060391instance24> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageMaterial> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/authorizedAccessPoint> "Northrup, Mary Picture books for children : fiction, folktales, and poetry" .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/title> "Picture books for children : fiction, folktales, and poetry" .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/eyb1384803599/17060391person6> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/primaryLanguage> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/eyb1384803599/17060391topic8> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/eyb1384803599/17060391topic9> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/eyb1384803599/17060391topic10> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/n-us> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/class-lcc> <http://id.loc.gov/authorities/classification/Z1037> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/class> <http://bibframe.org/resources/eyb1384803599/17060391classificationentity13> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/note> "Revised edition of: Picture books for children / Patricia J. Cianciolo. Fourth edition. 1997." .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/contentNature> "text" .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/contains> <http://bibframe.org/resources/eyb1384803599/17060391work16> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/contains> <http://bibframe.org/resources/eyb1384803599/17060391work17> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/contains> <http://bibframe.org/resources/eyb1384803599/17060391work18> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/contains> <http://bibframe.org/resources/eyb1384803599/17060391work19> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/contains> <http://bibframe.org/resources/eyb1384803599/17060391work20> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/contains> <http://bibframe.org/resources/eyb1384803599/17060391work21> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/relatedResource> <http://bibframe.org/resources/eyb1384803599/17060391work22> .
+<http://bibframe.org/resources/eyb1384803599/17060391> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17060391> .
+<http://bibframe.org/resources/eyb1384803599/17060391person6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/eyb1384803599/17060391person6> <http://bibframe.org/vocab/label> "Northrup, Mary" .
+<http://bibframe.org/resources/eyb1384803599/17060391person6> <http://bibframe.org/vocab/authorizedAccessPoint> "Northrup, Mary" .
+<http://bibframe.org/resources/eyb1384803599/17060391person6> <http://bibframe.org/vocab/resourceRole> "author." .
+<http://bibframe.org/resources/eyb1384803599/17060391person6> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n97068671> .
+<http://bibframe.org/resources/eyb1384803599/17060391topic8> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/eyb1384803599/17060391topic8> <http://bibframe.org/vocab/authorizedAccessPoint> "Picture books for children--Bibliography" .
+<http://bibframe.org/resources/eyb1384803599/17060391topic8> <http://bibframe.org/vocab/label> "Picture books for children--Bibliography" .
+<http://bibframe.org/resources/eyb1384803599/17060391topic8> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh2010106399> .
+<http://bibframe.org/resources/eyb1384803599/17060391topic9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/eyb1384803599/17060391topic9> <http://bibframe.org/vocab/authorizedAccessPoint> "Illustrated children's books--Bibliography" .
+<http://bibframe.org/resources/eyb1384803599/17060391topic9> <http://bibframe.org/vocab/label> "Illustrated children's books--Bibliography" .
+<http://bibframe.org/resources/eyb1384803599/17060391topic9> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh2008123020> .
+<http://bibframe.org/resources/eyb1384803599/17060391topic10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/eyb1384803599/17060391topic10> <http://bibframe.org/vocab/authorizedAccessPoint> "Children--Books and reading--United States" .
+<http://bibframe.org/resources/eyb1384803599/17060391topic10> <http://bibframe.org/vocab/label> "Children--Books and reading--United States" .
+<http://bibframe.org/resources/eyb1384803599/17060391topic10> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh2008100254> .
+<http://bibframe.org/resources/eyb1384803599/17060391classificationentity13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ClassificationEntity> .
+<http://bibframe.org/resources/eyb1384803599/17060391classificationentity13> <http://bibframe.org/vocab/classScheme> "ddc" .
+<http://bibframe.org/resources/eyb1384803599/17060391classificationentity13> <http://bibframe.org/vocab/classNumber> "011.62" .
+<http://bibframe.org/resources/eyb1384803599/17060391classificationentity13> <http://bibframe.org/vocab/label> "011.62" .
+<http://bibframe.org/resources/eyb1384803599/17060391classificationentity13> <http://bibframe.org/vocab/classEdition> "full" .
+<http://bibframe.org/resources/eyb1384803599/17060391work16> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391work16> <http://bibframe.org/vocab/authorizedAccessPoint> "picture book : where words and art come together --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work16> <http://bibframe.org/vocab/title> "picture book : where words and art come together --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work17> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391work17> <http://bibframe.org/vocab/authorizedAccessPoint> "My family and myself --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work17> <http://bibframe.org/vocab/title> "My family and myself --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work18> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391work18> <http://bibframe.org/vocab/authorizedAccessPoint> "In my community --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work18> <http://bibframe.org/vocab/title> "In my community --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work19> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391work19> <http://bibframe.org/vocab/authorizedAccessPoint> "Out in the world --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work19> <http://bibframe.org/vocab/title> "Out in the world --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work19> <http://bibframe.org/vocab/note> "The" .
+<http://bibframe.org/resources/eyb1384803599/17060391work20> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391work20> <http://bibframe.org/vocab/authorizedAccessPoint> "world of imagination --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work20> <http://bibframe.org/vocab/title> "world of imagination --" .
+<http://bibframe.org/resources/eyb1384803599/17060391work21> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391work21> <http://bibframe.org/vocab/authorizedAccessPoint> "Folktales and fairy tales." .
+<http://bibframe.org/resources/eyb1384803599/17060391work21> <http://bibframe.org/vocab/title> "Folktales and fairy tales." .
+<http://bibframe.org/resources/eyb1384803599/17060391work22> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/eyb1384803599/17060391work22> <http://bibframe.org/vocab/label> "Picture books for children." .
+<http://bibframe.org/resources/eyb1384803599/17060391work22> <http://bibframe.org/vocab/authorizedAccessPoint> "Cianciolo, Patricia J. Picture books for children." .
+<http://bibframe.org/resources/eyb1384803599/17060391work22> <http://bibframe.org/vocab/title> "Picture books for children." .
+<http://bibframe.org/resources/eyb1384803599/17060391work22> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/eyb1384803599/17060391person27> .
+<http://bibframe.org/resources/eyb1384803599/17060391person27> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/eyb1384803599/17060391person27> <http://bibframe.org/vocab/label> "Cianciolo, Patricia J." .
+<http://bibframe.org/resources/eyb1384803599/17060391person27> <http://bibframe.org/vocab/authorizedAccessPoint> "Cianciolo, Patricia J." .
+<http://bibframe.org/resources/eyb1384803599/17060391person27> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n50041190> .

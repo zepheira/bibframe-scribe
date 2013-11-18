@@ -1,0 +1,104 @@
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/isbn10> "1848843097" .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/relatedInstance> <http://www.lookupbyisbn.com/Lookup/Book/1848843097/1848843097/1> .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/isbn13> "9781848843097" .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/title> "British 6th Airborne Division landings in Normandy D-Day 6th June 1944 (vol. 1)" .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/edition> "Revised and updated edition." .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/ProviderEntity> .
+_:genid1 <http://bibframe.org/vocab/providerName> "Pen & Sword Military" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "Barnsley, South Yorkshire" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "2010-2011" .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/derivedFromLccn> <http://id.loc.gov/authorities/identifiers/lccn/2012371134> .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/mediaType> <http://www.loc.gov/standards/valuelist/carriers/convert-me/unmediated> .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/carrierType> <http://www.loc.gov/standards/valuelist/marcsmd/convert-me/volume> .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/illustrativeContentNote> "illustrations, maps" .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/note> "Originally published in one volume under title Pegasus Bridge & Merville Battery by L. Cooper, Barnsley, South Yorkshire, 1999." .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/supplementaryContentNote> "Includes bibliographical references and indexes." .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17259733> .
+<http://bibframe.org/resources/CaF1384803365/17259733instance27> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/CaF1384803365/17259733> .
+<http://bibframe.org/resources/CaF1384803365/17259733holding43> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Holding> .
+<http://bibframe.org/resources/CaF1384803365/17259733holding43> <http://bibframe.org/vocab/label> "D756.5.N6S485 2010" .
+<http://bibframe.org/resources/CaF1384803365/17259733holding43> <http://bibframe.org/vocab/callno-lcc> "D756.5.N6S485 2010" .
+<http://bibframe.org/resources/CaF1384803365/17259733holding43> <http://bibframe.org/vocab/holds> <http://bibframe.org/resources/CaF1384803365/17259733instance27> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/LanguageMaterial> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/authorizedAccessPoint> "Shilleto, Carl. Pegasus Bridge & Merville Battery" .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/label> "Pegasus Bridge & Merville Battery" .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/uniformTitle> "Pegasus Bridge & Merville Battery" .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Pegasus Bridge & Merville Battery" .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> _:genid3 .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#MainTitleElement> .
+_:genid3 <http://www.loc.gov/mads/rdf/v1#elementValue> "Pegasus Bridge & Merville Battery" .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#elementList> _:genid4 .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/hasAuthority> _:genid2 .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/title> "British 6th Airborne Division landings in Normandy D-Day 6th June 1944" .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/CaF1384803365/17259733person9> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/primaryLanguage> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/CaF1384803365/17259733topic11> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/CaF1384803365/17259733topic12> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/CaF1384803365/17259733place13> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/CaF1384803365/17259733organization14> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/CaF1384803365/17259733topic15> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/e-fr> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/e-uk> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/class-lcc> <http://id.loc.gov/authorities/classification/D756> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/contents> "[1] Pegasus Bridge & Horsa Bridge -- [2] Merville battery & the Dives Bridges." .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/note> "Originally published in one volume under title Pegasus Bridge & Merville Battery by L. Cooper, Barnsley, South Yorkshire, 1999." .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/contentNature> "text" .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/inSeries> <http://bibframe.org/resources/CaF1384803365/17259733work22> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/inSeries> <http://bibframe.org/resources/CaF1384803365/17259733work23> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/series> <http://bibframe.org/resources/CaF1384803365/17259733work24> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/series> <http://bibframe.org/resources/CaF1384803365/17259733work25> .
+<http://bibframe.org/resources/CaF1384803365/17259733> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/17259733> .
+<http://bibframe.org/resources/CaF1384803365/17259733person9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/CaF1384803365/17259733person9> <http://bibframe.org/vocab/label> "Shilleto, Carl." .
+<http://bibframe.org/resources/CaF1384803365/17259733person9> <http://bibframe.org/vocab/authorizedAccessPoint> "Shilleto, Carl." .
+<http://bibframe.org/resources/CaF1384803365/17259733person9> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/no00014468> .
+<http://bibframe.org/resources/CaF1384803365/17259733topic11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/CaF1384803365/17259733topic11> <http://bibframe.org/vocab/authorizedAccessPoint> "World War, 1939-1945--Campaigns--France--Normandy" .
+<http://bibframe.org/resources/CaF1384803365/17259733topic11> <http://bibframe.org/vocab/label> "World War, 1939-1945--Campaigns--France--Normandy" .
+<http://bibframe.org/resources/CaF1384803365/17259733topic11> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh85148319> .
+<http://bibframe.org/resources/CaF1384803365/17259733topic12> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/CaF1384803365/17259733topic12> <http://bibframe.org/vocab/authorizedAccessPoint> "Operation Overlord" .
+<http://bibframe.org/resources/CaF1384803365/17259733topic12> <http://bibframe.org/vocab/label> "Operation Overlord" .
+<http://bibframe.org/resources/CaF1384803365/17259733topic12> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh85095004> .
+<http://bibframe.org/resources/CaF1384803365/17259733place13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Place> .
+<http://bibframe.org/resources/CaF1384803365/17259733place13> <http://bibframe.org/vocab/authorizedAccessPoint> "Normandy (France)--History, Military" .
+<http://bibframe.org/resources/CaF1384803365/17259733place13> <http://bibframe.org/vocab/label> "Normandy (France)--History, Military" .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid5 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Normandy (France)--History, Military"@en .
+<http://bibframe.org/resources/CaF1384803365/17259733place13> <http://bibframe.org/vocab/hasAuthority> _:genid5 .
+<http://bibframe.org/resources/CaF1384803365/17259733organization14> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Organization> .
+<http://bibframe.org/resources/CaF1384803365/17259733organization14> <http://bibframe.org/vocab/authorizedAccessPoint> "Great Britain. Army. Airborne Division, 6th--History." .
+<http://bibframe.org/resources/CaF1384803365/17259733organization14> <http://bibframe.org/vocab/label> "Great Britain. Army. Airborne Division, 6th--History." .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid6 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Great Britain. Army. Airborne Division, 6th--History."@en .
+<http://bibframe.org/resources/CaF1384803365/17259733organization14> <http://bibframe.org/vocab/hasAuthority> _:genid6 .
+<http://bibframe.org/resources/CaF1384803365/17259733topic15> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/CaF1384803365/17259733topic15> <http://bibframe.org/vocab/authorizedAccessPoint> "World War, 1939-1945--Battlefields--France--Normandy--Guidebooks" .
+<http://bibframe.org/resources/CaF1384803365/17259733topic15> <http://bibframe.org/vocab/label> "World War, 1939-1945--Battlefields--France--Normandy--Guidebooks" .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid7 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "World War, 1939-1945--Battlefields--France--Normandy--Guidebooks"@en .
+<http://bibframe.org/resources/CaF1384803365/17259733topic15> <http://bibframe.org/vocab/hasAuthority> _:genid7 .
+<http://bibframe.org/resources/CaF1384803365/17259733work22> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/CaF1384803365/17259733work22> <http://bibframe.org/vocab/label> "Battleground Europe" .
+<http://bibframe.org/resources/CaF1384803365/17259733work22> <http://bibframe.org/vocab/authorizedAccessPoint> "Battleground Europe" .
+<http://bibframe.org/resources/CaF1384803365/17259733work22> <http://bibframe.org/vocab/title> "Battleground Europe" .
+<http://bibframe.org/resources/CaF1384803365/17259733work23> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/CaF1384803365/17259733work23> <http://bibframe.org/vocab/label> "Battleground Normandy" .
+<http://bibframe.org/resources/CaF1384803365/17259733work23> <http://bibframe.org/vocab/authorizedAccessPoint> "Battleground Normandy" .
+<http://bibframe.org/resources/CaF1384803365/17259733work23> <http://bibframe.org/vocab/title> "Battleground Normandy" .
+<http://bibframe.org/resources/CaF1384803365/17259733work24> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/CaF1384803365/17259733work24> <http://bibframe.org/vocab/label> "Battleground Europe" .
+<http://bibframe.org/resources/CaF1384803365/17259733work24> <http://bibframe.org/vocab/authorizedAccessPoint> "Battleground Europe" .
+<http://bibframe.org/resources/CaF1384803365/17259733work24> <http://bibframe.org/vocab/title> "Battleground Europe" .
+<http://bibframe.org/resources/CaF1384803365/17259733work25> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/CaF1384803365/17259733work25> <http://bibframe.org/vocab/label> "Battleground Normandy" .
+<http://bibframe.org/resources/CaF1384803365/17259733work25> <http://bibframe.org/vocab/authorizedAccessPoint> "Battleground Normandy" .
+<http://bibframe.org/resources/CaF1384803365/17259733work25> <http://bibframe.org/vocab/title> "Battleground Normandy" .
