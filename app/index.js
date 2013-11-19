@@ -1,4 +1,4 @@
-var rdfstore, restify, uuid, http, url, db, server, doProxy;
+var rdfstore, restify, uuid, http, url, db, server, doProxy, IDBASE, config;
 
 rdfstore = require('rdfstore');
 restify = require('restify');
@@ -6,17 +6,27 @@ uuid = require('uuid');
 http = require('http');
 url = require('url');
 
+IDBASE = "http://example.org/id";
+
 server = restify.createServer();
 server.use(restify.bodyParser({ mapParams: false }));
 
-db = new rdfstore.Store({
-    'persistent': true,
-    'engine': 'mongodb',
-    'name': 'bfstore',
-    'overwrite': false,
-    'mongoDomain': 'localhost',
-    'mongoPort': 27017
-}, function(store) {
+try {
+    config = require('./config');
+} catch (ex) {
+    config = {
+        'store': {
+            'persistent': true,
+            'engine': 'mongodb',
+            'name': 'bfstore',
+            'overwrite': false,
+            'mongoDomain': 'localhost',
+            'mongoPort': 27017
+        }
+    }
+}
+
+db = new rdfstore.Store(config.store, function(store) {
     // Store the n3 propety of an incoming JSON object, because just
     // getting the raw body is apparently more difficult; may come in
     // handy, possibly also pass a list of IDs to save, and delete
@@ -38,7 +48,10 @@ db = new rdfstore.Store({
         store.execute(query, function(success, results) {
             if (success) {
                 for (i = 0; i < results.length; i++) {
-                    answer.push({'uri': results[i].s.value, 'label': results[i].o.value});
+                    answer.push({
+                        'uri': results[i].s.value,
+                        'label': results[i].o.value
+                    });
                 }
                 res.send(200, answer);
             } else {
@@ -52,7 +65,7 @@ db = new rdfstore.Store({
 server.post('/resource/id', function newIdentifier(req, res, next) {
     var num, id;
     num = uuid.v4();
-    id = "http://example.org/id" + num;
+    id = IDBASE + num;
     res.send(200, {"id": id});
     return next();
 });
