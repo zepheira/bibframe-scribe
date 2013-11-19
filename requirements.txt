@@ -1,3 +1,4 @@
 rdfstore@0.8.1
 restify@2.6.0
 uuid@1.4.1
+forever@0.10.9
