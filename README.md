@@ -32,6 +32,8 @@ There is a bug in the restify library.  You will need to either download
 or replace `node_modules/restify/lib/plugins/static.js` until
 the patch makes it into a release.
 
+You can also use `static.js` provided as a sibling file for deployment.
+
 Load Data
 =========
 
