@@ -22,7 +22,8 @@ try {
             'overwrite': false,
             'mongoDomain': 'localhost',
             'mongoPort': 27017
-        }
+        },
+        'listen': 8888
     }
 }
 
@@ -124,6 +125,6 @@ server.get('/suggest/agrovoc', function getFast(req, res, next) {
     // @@@ would prefer to unwrap callback
 });
 
-server.listen(8888, function() {
+server.listen(config.listen, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
