@@ -157,6 +157,34 @@
                         },
                         {
                             "property": {
+                                "id": "http://bibframe.org/vocab/auth/birthDate",
+                                "propertyLabel": "Birth Date"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/auth/eathDate",
+                                "propertyLabel": "Date of Death"
+                            },
+                            "type": "literal",
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            }
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibframe.org/vocab/ISNI",
                                 "propertyLabel": "ISNI"
                             },

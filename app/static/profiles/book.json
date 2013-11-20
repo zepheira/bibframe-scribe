@@ -13,7 +13,7 @@
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibframe.org/vocab/proposed/title",
+                                "id": "http://bibframe.org/vocab/workTitle",
                                 "propertyLabel": "Title"
                             },
                             "repeatable": "false",
@@ -21,42 +21,31 @@
                         },
                         {
                             "property": {
-                                "id": "http://example.org/vocab/cost",
-                                "propertyLabel": "Cost"
+                                "id": "http://bibframe.org/vocab/workTitleRemained",
+                                "propertyLabel": "Title Remainder"
                             },
-                            "type": "literal",
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://example.org/vocab/CurrencyDataType",
-                                    "valueLabel": "Currency",
-                                    "valueLabelHint": "$"
-                                }
-                            }
+                            "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://example.org/vocab/costy",
-                                "propertyLabel": "Cost (Yen)"
+                                "id": "http://bibframe.org/vocab/lccn",
+                                "propertyLabel": "LC Classification"
                             },
-                            "type": "literal",
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://example.org/vocab/CurrencyDataType",
-                                    "valueLabel": "Currency",
-                                    "valueLabelHint": "¥"
-                                }
-                            }
+                            "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/preferredTitle",
-                                "propertyLabel": "Preferred Title"
+                                "id": "http://bibframe.org/vocab/ddc",
+                                "propertyLabel": "Dewey Class no."
                             },
-                            "type": "literal",
-                            "valueConstraint": {
-                                "valueDataType": "",
-                                "valueLang": ""
-                            }
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/description",
+                                "propertyLabel": "Description"
+                            },
+                            "type": "literal"
                         },
                         {
                             "property": {
@@ -86,7 +75,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/proposed/author",
+                                "id": "http://bibframe.org/vocab/rel/author",
                                 "propertyLabel": "Author"
                             },
                             "repeatable": "true",
@@ -94,6 +83,24 @@
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family", "bfp:Agent:Meeting", "bfp:Agent:Jursidiction" ]
                             }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/rel/editor",
+                                "propertyLabel": "Editor"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/notes",
+                                "propertyLabel": "Notes"
+                            },
+                            "type": "literal"
                         },
                         {
                             "property": {
@@ -251,52 +258,10 @@
                 }
             },
             {
-                "id": "paperback",
+                "id": "physicalBook",
                 "class": {
-                    "classLabel": "Paperback Book",
-                    "id": "http://bibframe.org/vocab/proposed/PaperBackBook",
-                    "instanceOf": "http://bibframe.org/vocab/Book",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Provider"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "publishEvent", "distributeEvent", "manufactureEvent", "producerEvent" ]
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/dimensions",
-                                "propertyLabel": "Dimensions"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISBN10",
-                                "propertyLabel": "ISBN 10"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISBN13",
-                                "propertyLabel": "ISBN 13"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                }
-            },
-            {
-                "id": "hardcover",
-                "class": {
-                    "classLabel": "Hardcover Book",
-                    "id": "http://bibframe.org/vocab/proposed/HardCoverBook",
+                    "classLabel": "Physical Book",
+                    "id": "http://bibframe.org/vocab/proposed/PhysicalBook",
                     "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
