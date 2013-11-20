@@ -23,7 +23,8 @@ try {
             'mongoDomain': 'localhost',
             'mongoPort': 27017
         },
-        'listen': 8888
+        'listen': 8888,
+        'staticDir': './static'
     }
 }
 
@@ -73,7 +74,7 @@ server.post('/resource/id', function newIdentifier(req, res, next) {
 
 // Static file handling
 server.get(/\/static\/?.*/, restify.serveStatic({
-    'directory': './static',
+    'directory': config.staticDir,
     'default': 'index.html'
 }));
 
