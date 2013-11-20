@@ -436,30 +436,32 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
 
         modal.result.then(function(newResource) {
             if (typeof newResource.id === "undefined") {
-                newResource.id = $scope.randomRDFID();
-                $scope.created.push(newResource);
-                $scope.selectValue(property, {"label": "[created]", "uri": newResource.id}, true);
+                Store.id(null, null).$promise.then(function(resp) {
+                    newResource.id = resp.id;
+                    $scope.created.push(newResource);
+                    $scope.selectValue(property, {"label": "[created]", "uri": newResource.id}, true);
+                });
             }
         });
     };
 
-    $scope.randomRDFID = function() {
-        return "http://example.org/" + Math.floor(Math.random()*1000000);
-    };
-
     $scope.export = function() {
-        if ($scope.validate()) {
-            $scope.exportRDF();
-        } else {
-            alert("Please fill out all required properties before exporting.");
-        }
+        $scope.transmit("export");
     };
 
     $scope.submit = function() {
+        $scope.transmit("save");
+    };
+
+    $scope.transmit = function(flag) {
         if ($scope.validate()) {
-            $scope.exportN3($scope.persist);
+            if (flag === "export") {
+                $scope.exportRDF();
+            } else if (flag === "save") {
+                $scope.exportN3($scope.persist);
+            }
         } else {
-            alert("Please fill out all required properties before saving.");
+            alert("Please fill out all required properties before " + (flag === "save") ? "saving" : "exporting" + ".");
         }
     };
 
