@@ -1,10 +1,11 @@
-var rdfstore, restify, uuid, http, url, db, server, doProxy, IDBASE, config;
+var rdfstore, restify, uuid, http, url, db, server, doProxy, config, tr, IDBASE;
 
 rdfstore = require('rdfstore');
 restify = require('restify');
 uuid = require('uuid');
 http = require('http');
 url = require('url');
+tr = require('./translate');
 
 IDBASE = "http://example.org/id";
 
@@ -52,7 +53,8 @@ db = new rdfstore.Store(config.store, function(store) {
                 for (i = 0; i < results.length; i++) {
                     answer.push({
                         'uri': results[i].s.value,
-                        'label': results[i].o.value
+                        'label': results[i].o.value,
+                        'source': 'local'
                     });
                 }
                 res.send(200, answer);
@@ -78,21 +80,24 @@ server.get(/\/static\/?.*/, restify.serveStatic({
     'default': 'index.html'
 }));
 
-doProxy = function(req, res, host, path, args) {
+doProxy = function(req, res, host, path, args, queryParam, source, next) {
     // @@@ where does next() fit into using things this way?
-    var proxy, request, parts;
+    var proxy, request, parts, answer, jsonOut;
     parts = url.parse(req.url, true);
     request = http.request({
         'hostname': host,
         'method': 'GET',
-        'path': path + parts.search + args
+        'path': path + '?' + queryParam + '=' + parts.query.q + args
     });
+    answer = "";
     request.addListener('response', function(proxy_response) {
         proxy_response.addListener('data', function(chunk) {
-            res.write(chunk, 'binary');
+            answer += chunk;
         });
         proxy_response.addListener('end', function() {
-            res.end();
+            jsonOut = tr[source](answer);
+            res.end(jsonOut);
+            next();
         });
         res.writeHead(proxy_response.statusCode, proxy_response.headers);
     });
@@ -102,28 +107,23 @@ doProxy = function(req, res, host, path, args) {
 // Proxy third-party auto-suggests
 server.get('/suggest/viaf', function getViaf(req, res, next) {
     // www.oclc.org/developer/documentation/virtual-international-authority-file-viaf/request-types#autosuggest
-    // ask for ?query=
-    doProxy(req, res, 'viaf.org', '/viaf/AutoSuggest', '');
+    doProxy(req, res, 'viaf.org', '/viaf/AutoSuggest', '', 'query', 'viaf', next);
 });
 
 server.get('/suggest/fast', function getFast(req, res, next) {
     // www.oclc.org/developer/documentation/assignfast/using-api
-    // ask for ?query=
-    doProxy(req, res, 'fast.oclc.org', '/searchfast/fastsuggest', '&queryIndex=suggestall&queryReturn=suggestall%2Cidroot%2Cauth%2Ctag%2Ctype%2Craw%2Cbreaker%2Cindicator&rows=10');
+    doProxy(req, res, 'fast.oclc.org', '/searchfast/fastsuggest', '&queryIndex=suggestall&queryReturn=suggestall%2Cidroot%2Cauth%2Ctag%2Ctype%2Craw%2Cbreaker%2Cindicator&rows=10', 'query', 'fast', next);
 });
 
 server.get('/suggest/lc', function getFast(req, res, next) {
     // (no formal documentation)
     // may use more specific URL hierarchy, e.g., /authorities/subjects/suggest
-    // ask for ?q=
-    doProxy(req, res, 'id.loc.gov', '/suggest/', '');
+    doProxy(req, res, 'id.loc.gov', '/suggest/', '', 'q', 'lc', next);
 });
 
 server.get('/suggest/agrovoc', function getFast(req, res, next) {
     // foris.fao.org/agrovoc/
-    // ask for ?q=
-    doProxy(req, res, 'foris.fao.org', '/agrovoc/term/find', '&hits=8&match=freeText&suggestions=20&language=EN&relationshipType[]=alternative&relationshipType[]=broader&callback=');
-    // @@@ would prefer to unwrap callback
+    doProxy(req, res, 'foris.fao.org', '/agrovoc/term/find', '&hits=8&match=freeText&suggestions=20&language=EN&relationshipType[]=alternative&relationshipType[]=broader&callback=', 'q', 'agrovoc', next);
 });
 
 server.listen(config.listen, function() {
