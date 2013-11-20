@@ -223,7 +223,8 @@
         </div>
         <div class="form-actions" ng-if="!editExisting&&!pivoting">
           <button class="btn" type="button" ng-click="reset(this, 'form-resource')">Clear</button>
-          <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!flags.isDirty">Export</button>
+          <button class="btn btn-primary btn-large" type="button" ng-click="submit()" ng-disabled="!flags.isDirty">Save</button>
+          <button class="btn btn-primary btn-large" type="button" ng-click="export()" ng-disabled="!flags.isDirty">Export</button>
         </div>
       </form>
     </script>

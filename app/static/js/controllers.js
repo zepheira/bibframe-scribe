@@ -447,12 +447,19 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         return "http://example.org/" + Math.floor(Math.random()*1000000);
     };
 
-    $scope.submit = function() {
+    $scope.export = function() {
         if ($scope.validate()) {
-            //$scope.exportRDF();
-            $scope.exportN3($scope.persist);
+            $scope.exportRDF();
         } else {
             alert("Please fill out all required properties before exporting.");
+        }
+    };
+
+    $scope.submit = function() {
+        if ($scope.validate()) {
+            $scope.exportN3($scope.persist);
+        } else {
+            alert("Please fill out all required properties before saving.");
         }
     };
 
