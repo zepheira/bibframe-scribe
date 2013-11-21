@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="bibframeEditor">
+  <head>
+    <meta charset="utf-8">
+    <title>BIBFRAME Editor</title>
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/editor.css" rel="stylesheet">
+    <link href="css/dropzone-basic.css" rel="stylesheet">
+    <script src="js/lib/angular.min.js"></script>
+    <script src="js/lib/angular-resource.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.7.0-SNAPSHOT.min.js"></script>
+    <script src="js/lib/dropzone.min.js"></script>
+    <script>Dropzone.autoDiscover = false;</script>
+    <script src="js/profile.js"></script>
+    <script src="js/value-constraint.js"></script>
+    <script src="js/property.js"></script>
+    <script src="js/property-template.js"></script>
+    <script src="js/resource-template.js"></script>
+
+    <script src="js/pred-object.js"></script>
+    <script src="js/namespace.js"></script>
+
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/initializer.js"></script>
+
+    <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
+
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet" />
+
+    <style type="text/css">
+      .activity ul li {
+      display: block;
+      list-style: none;
+      text-decoration: none;
+      width: 100%;
+      margin: 0;
+      padding-bottom: 15px;
+      font-size: 110%;
+      }
+      .red {
+      color: red;
+      } 
+      .green {
+      color: green;
+      }
+      .yellow {
+      color: orange;
+      }
+      .action-text {
+      padding-left: 5px;
+      }
+    </style>
+  </head>
+  <body ng-controller="EditorCtrl">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#"><span class="application-logo"></span>BIBFRAME Editor</a>
+
+          <ul class="nav pull-right">
+            <li><a href="./index.html"><i class="icon-home"></i> Eric</a></li>
+            <li class="divider-vertical"></li>
+            <li class="active"><a href="#">Activity <span class="badge badge-info">3</span></a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Help</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container activity">
+
+      <div class="row">
+	<div class="alert">
+	  <button type="button" class="close" data-dismiss="alert">&times;</button>
+	  <a href = "http://bibfra.me/editor/release-0.7.1/">Bibframe Editor 0.7.1</a> is available! Please <a href="">update now</a>.
+	</div>
+      </div>
+
+      <div class="row">
+	
+	<h3>Current Activity (Combined Editing and Linking)</h3>
+	<img src = "./tmp/activity.png" />
+      </div>
+
+
+      <div class="row">
+	<div class="span12 well">
+	  <h3>Actions</h3>
+	  
+	  <ul>
+	    <li><i class="fa fa-circle fa-lg green"></i> <span class="action-text">Tue Nov 20 17:23:55 EST 2013 - Your cataloging resource <span class="resource"><a href = "">Fighter Pilot</a></span> has an incoming <span class="linktype"><b>is Variant of</b></span> link from </a> <span class="resource"><a href = "">Battle of Britian pilot: the selt portrait of an RAF fighter pilot and escaper</a></span>. Suggested ACTION: <a href = "">Add reciprical link</a> </span></li>
+	    <li><i class="fa fa-circle fa-lg green"></i> <span class="action-text">Mon Nov 20 17:23:55 EST 2013 - Your cataloging resource <span class="resource"><a href = "">Le lieu de politique</a></span> has an incoming <span class="linktype"><b>is Translation of</b></span> link from </a> <span class="resource"><a href = "">Placing politics</a></span>. Suggested ACTION: <a href = "">Add reciprical link</a> </span></li>
+	    <li><i class="fa fa-circle fa-lg green"></i> <span class="action-text">Mon Nov 20 12:21:55 EST 2013 - Your cataloging resource <span class="resource"><a href = "">Fighter Pilot</a></span> has an incoming <span class="linktype"><b>is Based On</b></span> link from </a> <span class="resource"><a href = "">Battle of Britian - the Movie</a></span>. Suggested ACTION: <a href = "">Add reciprical link</a> </span></li>
+	  </ul>
+	  
+	</div>
+      </div>
+
+      <div class="row">
+	<div class="span12 well">
+	  <h3>Notices</h3>
+
+	  <ul>
+	    <li><i class="fa fa-circle fa-lg green"></i> <span class="action-text">Wed Nov 20 17:23:55 EST 2013 - Link integrety report completed. Status 100%. <a href = "">(report)</a></span></li>
+	    <li><i class="fa fa-circle fa-lg green"></i> <span class="action-text">Tue Nov 20 17:23:55 EST 2013 - Link integrety report completed. Status 100%. <a href = "">(report)</a></span></li>
+	    <li><i class="fa fa-circle fa-lg yellow"></i> <span class="action-text"><b>Warning:</b> Mon Nov 20 17:23:55 EST 2013 - Link integrety report detected unresolved links. Status 90%. <a href = "">(report) </a></span></li>
+	  </ul>
+
+	</div>
+      </div>
+
+    </div>
+
+  </body>
+</html>

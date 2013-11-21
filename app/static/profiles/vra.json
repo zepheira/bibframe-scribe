@@ -1,12 +1,12 @@
 {
     "Profile": {
-        "title": "Architecture and Architecture Models",
+        "title": "VRA Painting",
         "resourceTemplate": [
             {
                 "id": "bfp:Work",
                 "class": {
-                    "classLabel": "Work",
-                    "id": "http://bibframe.org/vocab/Work",
+                    "classLabel": "Painting",
+                    "id": "http://bibframe.org/vocab/Painting",
                     "labelProperty": "http://bibframe.org/vocab/title",
                     "propertyTemplate": [
                         {
@@ -21,32 +21,10 @@
                                 "propertyLabel": "Alternative Title"
                             }
                         },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/architect",
-                                "propertyLabel": "A:Architect"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:ULAN:Agent"
-                            }
-                        },
-                        {
+			{
                             "property": {
                                 "id": "http://bibframe.org/vocab/painter",
-                                "propertyLabel": "A:Painter"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:ULAN:Agent"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/carver",
-                                "propertyLabel": "A:Carver"
+                                "propertyLabel": "Painter"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -249,7 +227,7 @@
                 "class": {
                     "classLabel": "Image",
                     "id": "http://bibframe.org/vocab/Image",
-                    "instanceOf": "http://bibframe.org/vocab/Work",
+                    "instanceOf": "http://bibframe.org/vocab/Painting",
                     "propertyTemplate": [
                         {
                             "property": {
