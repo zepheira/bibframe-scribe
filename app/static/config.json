@@ -5,20 +5,14 @@
         "events",
         "book",
         "article",
-        "vra",
-	"audio"
+        "vra"
     ],
     "useWorks": [
         "http://bibframe.org/vocab/Book",
         "http://bibframe.org/vocab/Article",
-        "http://bibframe.org/vocab/Painting",
-        "http://bibframe.org/vocab/Audio"
+        "http://bibframe.org/vocab/Painting"
     ],
     "resourceServiceMap": [
-        {
-            "resource": "http://bibframe.org/vocab/Work",
-            "services": ["Query"]
-        },
         {
             "resource": "http://bibframe.org/vocab/Book",
             "services": ["Query"]
