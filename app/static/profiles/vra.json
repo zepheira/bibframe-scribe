@@ -3,7 +3,7 @@
         "title": "VRA Painting",
         "resourceTemplate": [
             {
-                "id": "bfp:Work",
+                "id": "bfp:work",
                 "class": {
                     "classLabel": "Painting",
                     "id": "http://bibframe.org/vocab/Painting",
