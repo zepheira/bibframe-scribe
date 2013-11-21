@@ -7,7 +7,7 @@ http = require('http');
 url = require('url');
 tr = require('./translate');
 
-IDBASE = "http://example.org/id";
+IDBASE = 'http://example.org/id';
 
 server = restify.createServer();
 server.use(restify.bodyParser({ mapParams: false }));
@@ -36,7 +36,7 @@ db = new rdfstore.Store(config.store, function(store) {
     // existing nodes with those IDs before saving.
     server.put('/resource/new', function newResource(req, res, next) {
         store.load('text/n3', req.body.n3, function(success, graph) {
-            res.send(201, {"success": success});
+            res.send(201, {'success': success});
         });
         return next();
     });
@@ -59,7 +59,7 @@ db = new rdfstore.Store(config.store, function(store) {
                 }
                 res.send(200, answer);
             } else {
-                res.send(500, {"success": false});
+                res.send(500, {'success': false});
             }
             return next();
         });
@@ -70,7 +70,7 @@ server.post('/resource/id', function newIdentifier(req, res, next) {
     var num, id;
     num = uuid.v4();
     id = IDBASE + num;
-    res.send(200, {"id": id});
+    res.send(200, {'id': id});
     return next();
 });
 
@@ -81,25 +81,26 @@ server.get(/\/static\/?.*/, restify.serveStatic({
 }));
 
 doProxy = function(req, res, host, path, args, queryParam, source, next) {
-    // @@@ where does next() fit into using things this way?
-    var proxy, request, parts, answer, jsonOut;
+    var proxy, request, parts, answer;
     parts = url.parse(req.url, true);
+    if (typeof parts.query.branch !== 'undefined' && parts.query.branch !== '') {
+        path = decodeURIComponent(parts.query.branch) + path;
+    }
     request = http.request({
         'hostname': host,
         'method': 'GET',
         'path': path + '?' + queryParam + '=' + parts.query.q + args
     });
-    answer = "";
+    answer = '';
     request.addListener('response', function(proxy_response) {
         proxy_response.addListener('data', function(chunk) {
             answer += chunk;
         });
         proxy_response.addListener('end', function() {
-            jsonOut = tr[source](answer);
-            res.end(jsonOut);
+            res.end(tr[source](answer));
             next();
         });
-        res.writeHead(proxy_response.statusCode, proxy_response.headers);
+        res.writeHead(proxy_response.statusCode, {"Content-Type": "application/json"});
     });
     request.end();
 };
