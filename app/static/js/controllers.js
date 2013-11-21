@@ -436,6 +436,10 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         });
     };
 
+    $scope.randomRDFID = function() {
+        return "http://example.org/" + Math.floor(Math.random()*1000000);
+    };
+
     $scope.export = function() {
         $scope.transmit("export");
     };
