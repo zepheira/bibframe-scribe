@@ -1,7 +1,6 @@
 {
     "Profile": {
         "title": "Language Materials",
-        "id": "bfp:Work",
         "resourceTemplate": [
             {
                 "id": "bfp:Work:Book",

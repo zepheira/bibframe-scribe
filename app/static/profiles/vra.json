@@ -3,7 +3,7 @@
         "title": "Architecture and Architecture Models",
         "resourceTemplate": [
             {
-                "id": "bfp:work",
+                "id": "bfp:Work",
                 "class": {
                     "classLabel": "Work",
                     "id": "http://bibframe.org/vocab/Work",
@@ -156,7 +156,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bf:work"
+                                "descriptionTemplateRef": "bfp:Work"
                             }
                         },
                         {
