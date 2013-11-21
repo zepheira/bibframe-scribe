@@ -31,7 +31,6 @@ module.exports = {
         var i, answer, json;
         answer = [];
         json = JSON.parse(res);
-        console.log(json);
         for (i = 0; i < json[1].length; i++) {
             answer.push({
                 'uri': json[3][i],
