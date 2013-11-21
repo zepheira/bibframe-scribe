@@ -1,4 +1,4 @@
-var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Query, Subjects, Agents, Languages, Providers) {
+var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Query, Authorities) {
     $scope.initialized = false;
     $scope.config = {};
     $scope.profiles = [];
@@ -8,11 +8,12 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     $scope.typeMap = {};
     $scope.idToTemplate = {};
     $scope.services = {
-        "Query": Query,
-        "Subjects": Subjects,
-        "Agents": Agents,
-        "Languages": Languages,
-        "Providers": Providers
+        "Query": { "service": Query, "args": { } },
+        "Subjects": { "service": Authorities, "args": { "service": "fast" } },
+        "Agents": { "service": Authorities, "args": { "service": "viaf" } },
+        "Languages": { "service": Authorities, "args": { "service": "lc", "branch": "/vocabulary/iso639-2" } },
+        "Providers": { "service": Authorities, "args": { "service": "lc", "branch": "/authorities/names" } },
+        "Places": { "service": Authorities, "args": { "service": "lc", "branch": "/vocabulary/geographicAreas" } }
     };
     $scope.hasRequired = false;
     $scope.dataTypes = {};
@@ -211,25 +212,15 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         if (typeof completer === "object") {
             completer = completer[0];
         }
+        console.log(completer);
+        console.log($scope.idToTemplate);
         classID = $scope.idToTemplate[completer].getClassID();
+        console.log(classID);
         services = $scope.resourceServices[classID];
         // @@@ handle multiple services - or maybe have a proxied
         //     endpoint local to this host that does all the service
         //     handling, with arguments for which services to query
-        return services[0].get({"q": typed}).$promise;
-        /**
-        return services[0].get({"q": typed}).$promise.then(function(response) {
-            // @@@ matching should be handled by the service, just
-            //     use response when it's implemented
-            var matches = [];
-            angular.forEach(response.values, function(val) {
-                if (val.label.toLowerCase().indexOf(typed.toLowerCase()) >= 0) {
-                    matches.push(val);
-                }
-            });
-            return matches;
-        });
-        */
+        return services[0].service.suggest({"q": typed}, services[0].args).$promise;
     };
 
     $scope.reset = function(formScope, formName) {
@@ -595,4 +586,4 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     };
 };
 
-EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Query", "Subjects", "Agents", "Languages", "Providers"];
+EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Query", "Authorities"];

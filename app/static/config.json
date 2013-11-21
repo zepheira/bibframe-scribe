@@ -14,12 +14,24 @@
     ],
     "resourceServiceMap": [
         {
+            "resource": "http://bibframe.org/vocab/Work",
+            "services": ["Query"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Book",
+            "services": ["Query"]
+        },
+        {
+            "resource": "http://bibframe.org/vocab/Article",
+            "services": ["Query"]
+        },
+        {
             "resource": "http://bibframe.org/vocab/Topic",
             "services": ["Subjects"]
         },
         {
             "resource": "http://bibframe.org/vocab/Place",
-            "services": ["Subjects"]
+            "services": ["Places"]
         },
         {
             "resource": "http://bibframe.org/vocab/TemporalConcept",
@@ -47,7 +59,7 @@
         },
         {
             "resource": "http://bibframe.org/vocab/Person",
-            "services": ["Query", "Agents"]
+            "services": ["Agents"]
         },
         {
             "resource": "http://bibframe.org/vocab/LanguageEntity",
@@ -75,7 +87,7 @@
         },
         {
             "resource": "http://bibframe.org/vocab/rda/Place",
-            "services": ["Agents"]
+            "services": ["Places"]
         },
         {
             "resource": "http://bibframe.org/vocab/rda/Authority",

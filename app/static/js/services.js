@@ -57,56 +57,24 @@ angular.module("queryService", ["ngResource"]).
             "/suggest/local?q=:q",
             {},
             {
-                "get": { "method": "GET", "isArray": true }
+                "suggest": { "method": "GET", "isArray": true }
             }
         );
     }
 );
 
-// Faked authority services
-angular.module("subjectServices", ["ngResource"]).
-    factory("Subjects", function($resource) {
+// Raw authority services, not meant to be ultimately utilized in this fashion
+// Combine with Query above
+angular.module("authorityServices", ["ngResource"]).
+    factory("Authorities", function($resource) {
         return $resource(
-            "./authority/subjects.json",
-            {},
+            "/suggest/:service?q=:q&branch=:branch",
             {
-                "get": { "method": "GET", "isArray": false }
-            }
-        );
-    }
-);
-
-angular.module("agentServices", ["ngResource"]).
-    factory("Agents", function($resource) {
-        return $resource(
-            "./authority/agents.json",
-            {},
+                "service": "@service",
+                "branch": "@branch"
+            },
             {
-                "get": { "method": "GET", "isArray": false }
-            }
-        );
-    }
-);
-
-angular.module("languageServices", ["ngResource"]).
-    factory("Languages", function($resource) {
-        return $resource(
-            "./authority/iso639-2.en.json",
-            {},
-            {
-                "get": { "method": "GET", "isArray": false }
-            }
-        );
-    }
-);
-
-angular.module("providerServices", ["ngResource"]).
-    factory("Providers", function($resource) {
-        return $resource(
-            "./authority/providers.json",
-            {},
-            {
-                "get": { "method": "GET", "isArray": false }
+                "suggest": { "method": "GET", "isArray": true }
             }
         );
     }
