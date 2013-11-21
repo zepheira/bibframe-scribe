@@ -49,6 +49,13 @@
                         },
                         {
                             "property": {
+                                "id": "http://bibframe.org/vocab/notes",
+                                "propertyLabel": "Notes"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibframe.org/vocab/subject",
                                 "propertyLabel": "Subject"
                             },
@@ -97,13 +104,6 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/notes",
-                                "propertyLabel": "Notes"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
                                 "id": "http://bibframe.org/vocab/isVersionOf",
                                 "propertyLabel": "Is Version Of"
                             },
@@ -121,7 +121,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -132,7 +132,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -143,7 +143,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -154,7 +154,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -165,7 +165,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -176,7 +176,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -187,7 +187,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -198,7 +198,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         },
                         {
@@ -209,7 +209,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         }
                     ]
