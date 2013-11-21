@@ -46,7 +46,7 @@ db = new rdfstore.Store(config.store, function(store) {
         var q, parts, query, answer, i;
         parts = url.parse(req.url, true);
         q = parts.query.q;
-        query = 'SELECT * { ?s ?p ?o . FILTER regex(?o, "' + q + '", "i") }';
+        query = 'SELECT * { ?s <http://bibframe.org/vocab/title> ?o . FILTER regex(?o, "' + q + '", "i") }';
         answer = [];
         store.execute(query, function(success, results) {
             if (success) {
