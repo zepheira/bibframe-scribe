@@ -3,7 +3,7 @@
         "title": "VRA Painting",
         "resourceTemplate": [
             {
-                "id": "bfp:work",
+                "id": "bfp:Painting",
                 "class": {
                     "classLabel": "Painting",
                     "id": "http://bibframe.org/vocab/Painting",
@@ -134,7 +134,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Work"
+                                "descriptionTemplateRef": "bfp:Painting"
                             }
                         },
                         {
@@ -154,10 +154,7 @@
                                 "propertyLabel": "Source"
                             },
                             "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:WebResource"
-                            }
+                            "type": "resource"
                         },
                         {
                             "property": {
@@ -188,7 +185,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "LCSAF:Topic"
+                                "descriptionTemplateRef": "bfp:Authority:Topic"
                             }
                         },
                         {
