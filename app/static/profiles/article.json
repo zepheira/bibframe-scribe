@@ -71,7 +71,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfo:Work:Article" ]
+                                "descriptionTemplateRef": [ "bfp:Work:Book", "bfp:Work:Article" ]
                             }
                         }
                     ]

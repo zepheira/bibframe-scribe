@@ -87,7 +87,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family", "bfp:Agent:Meeting", "bfp:Agent:Jursidiction" ]
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family", "bfp:Agent:Meeting", "bfp:Agent:Jurisdiction" ]
                             }
                         },
                         {
