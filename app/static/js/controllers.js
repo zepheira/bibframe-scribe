@@ -9,6 +9,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     $scope.hasRequired = false;
     $scope.dataTypes = {};
     $scope.inputted = {};
+    $scope.useServices = {};
 
     $scope.currentWork = {};
     $scope.loading = {};
@@ -191,10 +192,12 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     };
 
     $scope.autocomplete = function(property, typed) {
-        var i, classes, single, refs, services;
+        var i, classes, single, refs, services, idx, srv, filtered;
         classes = [];
         services = [];
+        filtered = [];
         refs = property.getConstraint().getReference();
+
         if (typeof refs === "object") {
             for (i = 0; i < refs.length; i++) {
                 single = $scope.config.resourceServiceMap[$scope.idToTemplate[refs[i]].getClassID()];
@@ -205,14 +208,27 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         } else {
             classes.push($scope.config.resourceServiceMap[$scope.idToTemplate[refs].getClassID()]);
         }
-        console.log(classes);
+
         for (i = 0; i < classes.length; i++) {
             services = services.concat($scope.config.serviceProviderMap[classes[i]]);
         }
 
-        // @@@ filter services list based on external services checkboxes
+        angular.forEach(services, function(service, i) {
+            // unclear what would happen if index was 0, do not handle
+            idx = service.indexOf(":");
+            if (idx > 0) {
+                srv = service.substr(0, idx);
+            } else {
+                srv = service;
+            }
+            if ($scope.useServices[srv] && filtered.indexOf(service) < 0) {
+                filtered.push(service);
+            }
+        });
+
         // @@@ pass services list to new AngularJS service that connects
         //     to backend
+        // "q": typed, "services": filtered
         // return ....$promise;
     };
 
@@ -474,8 +490,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
 
     $scope.exportN3 = function(next) {
         Store.id(null, null).$promise.then(function(resp) {
-            // @@@ may want a basic triple API library for this instead
-            //     of generating strings
             var subj, rdf, refs;
             subj = resp.id;
             rdf = '@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n';

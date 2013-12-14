@@ -73,7 +73,8 @@
             <div ng-repeat="(provider, pnames) in config.providerList">
               <input type="checkbox"
                      id="services-{{provider}}"
-                     checked="checked">
+                     ng-model="useServices[provider]"
+                     ng-init="useServices[provider]=true">
               <label for="services-{{provider}}"
                      title="{{pnames.full}}">
                 <small>{{pnames.short}}</small>
