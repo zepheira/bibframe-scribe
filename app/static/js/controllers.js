@@ -3,18 +3,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     $scope.config = {};
     $scope.profiles = [];
     $scope.resourceTemplates = {};
-    $scope.resourceServices = {};
     $scope.resourceTypes = {};
     $scope.typeMap = {};
     $scope.idToTemplate = {};
-    $scope.services = {
-        "Query": { "service": Query, "args": { } },
-        "Subjects": { "service": Authorities, "args": { "service": "fast" } },
-        "Agents": { "service": Authorities, "args": { "service": "viaf" } },
-        "Languages": { "service": Authorities, "args": { "service": "lc", "branch": "/vocabulary/iso639-2" } },
-        "Providers": { "service": Authorities, "args": { "service": "lc", "branch": "/authorities/names" } },
-        "Places": { "service": Authorities, "args": { "service": "lc", "branch": "/vocabulary/geographicAreas" } }
-    };
     $scope.hasRequired = false;
     $scope.dataTypes = {};
     $scope.inputted = {};
@@ -149,18 +140,12 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         profile.registerResourceTemplates($scope.idToTemplate);
 
         // interpret configuration for resource types to lookup services
-        angular.forEach($scope.config.resourceServiceMap, function(item) {
-            if (item.services) {
-                angular.forEach(item.services, function(service) {
-                    if (typeof $scope.resourceServices[item.resource] !== "undefined") {
-                        $scope.resourceServices[item.resource].push($scope.services[service]);
-                    } else {
-                        $scope.resourceServices[item.resource] = [$scope.services[service]];
-                    }
-                });
-            } else if (item.type) {
-                $scope.resourceTypes[item.resource] = item.type;
+        angular.forEach($scope.config.resourceServiceMap, function(item, key) {
+            if (item.type) {
+                $scope.resourceTypes[key] = item.type;
                 $scope.typeMap[item.type] = item.propertyMap;
+            } else {
+                $scope.resourceTypes[key] = item;
             }
         });
 
@@ -206,21 +191,29 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     };
 
     $scope.autocomplete = function(property, typed) {
-        var classID, services, completer;
-        completer = property.getConstraint().getReference();
-        // @@@ just take the first, not dealing with combining mock services
-        if (typeof completer === "object") {
-            completer = completer[0];
+        var i, classes, single, refs, services;
+        classes = [];
+        services = [];
+        refs = property.getConstraint().getReference();
+        if (typeof refs === "object") {
+            for (i = 0; i < refs.length; i++) {
+                single = $scope.config.resourceServiceMap[$scope.idToTemplate[refs[i]].getClassID()];
+                if (classes.indexOf(single) < 0) {
+                    classes.push(single);
+                }
+            }
+        } else {
+            classes.push($scope.config.resourceServiceMap[$scope.idToTemplate[refs].getClassID()]);
         }
-        console.log(completer);
-        console.log($scope.idToTemplate);
-        classID = $scope.idToTemplate[completer].getClassID();
-        console.log(classID);
-        services = $scope.resourceServices[classID];
-        // @@@ handle multiple services - or maybe have a proxied
-        //     endpoint local to this host that does all the service
-        //     handling, with arguments for which services to query
-        return services[0].service.suggest({"q": typed}, services[0].args).$promise;
+        console.log(classes);
+        for (i = 0; i < classes.length; i++) {
+            services = services.concat($scope.config.serviceProviderMap[classes[i]]);
+        }
+
+        // @@@ filter services list based on external services checkboxes
+        // @@@ pass services list to new AngularJS service that connects
+        //     to backend
+        // return ....$promise;
     };
 
     $scope.reset = function(formScope, formName) {

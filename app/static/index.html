@@ -46,24 +46,42 @@
       </div>
     </div>
     <div class="container editor">
-      <tabset vertical="true" type="tabs">
-        <tab disabled="true">
-          <tab-heading ng-show="!activeResource"></tab-heading>
-          <div class="hero-unit" ng-show="initialized">
-            <h2>Hi.</h2>
-            <p>Click an instance on the left to begin cataloging that type.</p>
-            <br><br>
-          </div>
-          <div class="hero-unit" ng-show="!initialized">
-            <h2>Hey! Listen!</h2>
-            <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
-          </div>
-        </tab>
-        <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty||resource.disabled">
-          <tab-heading><span ng-show="!resource.disabled"><i class="icon-chevron-right"></i> </span>{{resource.label}}<span ng-show="resource.disabled">:</span></tab-heading>
-          <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>
-        </tab>
-      </tabset>
+      <div class="row">
+        <tabset vertical="true" type="tabs" class="span10">
+          <tab disabled="true">
+            <tab-heading ng-show="!activeResource"></tab-heading>
+            <div class="hero-unit" ng-show="initialized">
+              <h2>Hi.</h2>
+              <p>Click an instance on the left to begin cataloging that type.</p>
+              <br><br>
+            </div>
+            <div class="hero-unit" ng-show="!initialized">
+              <h2>Hey! Listen!</h2>
+              <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
+            </div>
+          </tab>
+          <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty||resource.disabled">
+            <tab-heading><span ng-show="!resource.disabled"><i class="icon-chevron-right"></i> </span>{{resource.label}}<span ng-show="resource.disabled">:</span></tab-heading>
+            <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>
+          </tab>
+        </tabset>
+        
+        <div class="span2 muted">
+          <h4 tooltip="Disable an external service if you're not interested in seeing its results come up in a typeahead search."
+              tooltip-placement="top">External Services</h4>
+          <form class="form-inline">
+            <div ng-repeat="(provider, pnames) in config.providerList">
+              <input type="checkbox"
+                     id="services-{{provider}}"
+                     checked="checked">
+              <label for="services-{{provider}}"
+                     title="{{pnames.full}}">
+                <small>{{pnames.short}}</small>
+              </label>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
 
     <script type="text/ng-template" id="edit-literal.html">
@@ -153,7 +171,7 @@
         <span ng-if="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
           <div dropzone class="dropzone" dz-property="{{prop.getProperty().getID()}}" dz-repeatable="{{prop.isRepeatable()}}" dz-resource="{{resource.uri}}" dz-type="{{idToTemplate[prop.getConstraint().getReference()].getClassID()}}"></div>
         </span>
-        <span ng-show="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]!='dropzone'">
+        <span ng-if="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]!='dropzone'">
           <input type="text"
                class="input-xlarge"
                placeholder="Type to search"

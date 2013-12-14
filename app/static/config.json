@@ -12,97 +12,31 @@
         "http://bibframe.org/vocab/Article",
         "http://bibframe.org/vocab/Painting"
     ],
-    "resourceServiceMap": [
-        {
-            "resource": "http://bibframe.org/vocab/Book",
-            "services": ["Query"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Article",
-            "services": ["Query"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Topic",
-            "services": ["Subjects"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Place",
-            "services": ["Places"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/TemporalConcept",
-            "services": ["Subjects"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/ClassificationEntity",
-            "services": ["Subjects"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Family",
-            "services": ["Agents"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Jursdiction",
-            "services": ["Agents"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Meeting",
-            "services": ["Agents"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Organization",
-            "services": ["Agents"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/Person",
-            "services": ["Agents"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/LanguageEntity",
-            "services": ["Languages"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/PublisherEvent",
-            "services": ["Providers"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/ManufactureEvent",
-            "services": ["Providers"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/ProducerEvent",
-            "services": ["Providers"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/DistributeEvent",
-            "services": ["Providers"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/rda/Agent",
-            "services": ["Agents"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/rda/Place",
-            "services": ["Places"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/rda/Authority",
-            "services": ["Subjects"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/rda/Period",
-            "services": ["Subjects"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/rda/Technique",
-            "services": ["Subjects"]
-        },
-        {
-            "resource": "http://bibframe.org/vocab/rda/WorkType",
-            "services": ["Subjects"]
-        },
-        {
-            "resource": "http://example.org/vocab/bfp/Image",
+    "resourceServiceMap": {
+        "http://bibframe.org/vocab/Book": "Works",
+        "http://bibframe.org/vocab/Article": "Works",
+        "http://bibframe.org/vocab/Painting": "Works",
+        "http://bibframe.org/vocab/Topic": "Subjects",
+        "http://bibframe.org/vocab/Place": "Places",
+        "http://bibframe.org/vocab/TemporalConcept": "Subjects",
+        "http://bibframe.org/vocab/ClassificationEntity": "Subjects",
+        "http://bibframe.org/vocab/Family": "Agents",
+        "http://bibframe.org/vocab/Jurisdiction": "Agents",
+        "http://bibframe.org/vocab/Meeting": "Agents",
+        "http://bibframe.org/vocab/Organization": "Agents",
+        "http://bibframe.org/vocab/Person": "Agents",
+        "http://bibframe.org/vocab/LanguageEntity": "Languages",
+        "http://bibframe.org/vocab/PublisherEvent": "Providers",
+        "http://bibframe.org/vocab/ManufactureEvent": "Providers",
+        "http://bibframe.org/vocab/ProducerEvent": "Providers",
+        "http://bibframe.org/vocab/DistributeEvent": "Providers",
+        "http://bibframe.org/vocab/rda/Agent": "Agents",
+        "http://bibframe.org/vocab/rda/Place": "Places",
+        "http://bibframe.org/vocab/rda/Authority": "Subjects",
+        "http://bibframe.org/vocab/rda/Period": "Subjects",
+        "http://bibframe.org/vocab/rda/Technique": "Subjects",
+        "http://bibframe.org/vocab/rda/WorkType": "Subjects",
+        "http://example.org/vocab/bfp/Image": {
             "type": "dropzone",
             "propertyMap": {
                 "filename": "http://example.org/vocab/bfp/filename",
@@ -111,7 +45,60 @@
                 "height": "http://bibframe.org/vocab/height"
             }
         }
-    ],
+    },
+    "serviceProviderMap": {
+        "Subjects": [
+            "viaf",
+            "lc:subjects",
+            "fast",
+            "agrovoc",
+            "local:subjects"
+        ],
+        "Places": [
+            "lc:geo",
+            "local:geo"
+        ],
+        "Providers": [
+            "lc:names",
+            "viaf",
+            "local:providers"
+        ],
+        "Languages": [
+            "lc:lang",
+            "local:lang"
+        ],
+        "Agents": [
+            "lc:names",
+            "viaf",
+            "local:agents"
+        ],
+        "Works": [
+            "lc:works",
+            "local:works"
+        ]
+    },
+    "providerList": {
+        "local": {
+            "short": "Local",
+            "full": "Local Database"
+        },
+        "viaf": {
+            "short": "VIAF",
+            "full": "VIAF"
+        },
+        "fast": {
+            "short": "FAST",
+            "full": "assignFAST"
+        },
+        "lc": {
+            "short": "LC",
+            "full": "Library of Congress"
+        },
+        "agrovoc": {
+            "short": "AgroVoc",
+            "agrovoc": "Agricultural Vocabulary"
+        }
+    },
     "dataTypes": [
         {
             "id": "http://bibframe.org/vocab/proposed/ISO8601",
