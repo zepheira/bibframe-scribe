@@ -54,25 +54,8 @@ angular.module("storeService", ["ngResource"]).
 angular.module("queryService", ["ngResource"]).
     factory("Query", function($resource) {
         return $resource(
-            "/suggest/local?q=:q",
+            "/suggest/master?q=:q&services=:services",
             {},
-            {
-                "suggest": { "method": "GET", "isArray": true }
-            }
-        );
-    }
-);
-
-// Raw authority services, not meant to be ultimately utilized in this fashion
-// Combine with Query above
-angular.module("authorityServices", ["ngResource"]).
-    factory("Authorities", function($resource) {
-        return $resource(
-            "/suggest/:service?q=:q&branch=:branch",
-            {
-                "service": "@service",
-                "branch": "@branch"
-            },
             {
                 "suggest": { "method": "GET", "isArray": true }
             }

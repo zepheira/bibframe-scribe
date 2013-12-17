@@ -3,8 +3,7 @@ angular.module("bibframeEditor", [
     "profileServices",
     "configurationServices",
     "storeService",
-    "queryService",
-    "authorityServices"
+    "queryService"
 ]).directive("ngEnter", function() {
     return function(scope, element, attrs) {
         element.bind("keydown keypress", function(event) {

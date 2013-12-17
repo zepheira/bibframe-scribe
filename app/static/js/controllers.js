@@ -1,4 +1,4 @@
-var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Query, Authorities) {
+var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Query) {
     $scope.initialized = false;
     $scope.config = {};
     $scope.profiles = [];
@@ -226,10 +226,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
             }
         });
 
-        // @@@ pass services list to new AngularJS service that connects
-        //     to backend
-        // "q": typed, "services": filtered
-        // return ....$promise;
+        return Query.suggest({"q": typed, "services": JSON.stringify(filtered.sort())}).$promise;
     };
 
     $scope.reset = function(formScope, formName) {
@@ -597,4 +594,4 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     };
 };
 
-EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Query", "Authorities"];
+EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Query"];
