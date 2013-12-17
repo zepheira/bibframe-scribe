@@ -1,10 +1,11 @@
-var rdfstore, restify, uuid, http, url, db, server, doProxy, config, tr, IDBASE;
+var rdfstore, restify, uuid, http, url, Q, db, server, doProxy, proxyHelper, config, tr, serviceConfig, localSuggestHelper, IDBASE;
 
 rdfstore = require('rdfstore');
 restify = require('restify');
 uuid = require('uuid');
 http = require('http');
 url = require('url');
+Q = require('q');
 tr = require('./translate');
 
 IDBASE = 'http://example.org/id';
@@ -12,6 +13,10 @@ IDBASE = 'http://example.org/id';
 server = restify.createServer();
 server.use(restify.bodyParser({ mapParams: false }));
 
+/**
+ * To configure using a separate file, create config.js in this
+ * directory.  See below for what attributes module.exports can take.
+ */
 try {
     config = require('./config');
 } catch (ex) {
@@ -29,6 +34,86 @@ try {
     }
 }
 
+serviceConfig = {
+    "agrovoc": {
+    },
+    "fast": {
+    },
+    "lc": {
+        "subjects": {
+            "branch": "/authorities/subjects"
+        },
+        "geo": {
+            "branch": "/vocabulary/geographicAreas"
+        },
+        "names": {
+            "branch": "/authorities/names"
+        },
+        "lang": {
+            "branch": "/vocabulary/iso639-2"
+        },
+        "works": {
+            "branch": "/authorities/names"
+        }
+    },
+    "local": {
+        "works": {
+            "types": [
+                "http://bibframe.org/vocab/Work",
+                "http://bibframe.org/vocab/Book",
+                "http://bibframe.org/vocab/proposed/EBook",
+                "http://bibframe.org/vocab/proposed/PhysicalBook",
+                "http://bibframe.org/vocab/Article",
+                "http://bibframe.org/vocab/proposed/EArticle",
+                "http://bibframe.org/vocab/proposed/PhysicalArticle",
+                "http://bibframe.org/vocab/Painting"
+            ]
+        },
+        "agents": {
+            "types": [
+                "http://bibframe.org/vocab/Family",
+                "http://bibframe.org/vocab/Jurisdiction",
+                "http://bibframe.org/vocab/Meeting",
+                "http://bibframe.org/vocab/Organization",
+                "http://bibframe.org/vocab/Person",
+                "http://bibframe.org/vocab/rda/Agent"
+            ]
+        },
+        "lang": {
+            "types": [
+                "http://bibframe.org/vocab/LanguageEntity"
+            ]
+        },
+        "providers": {
+            "types": [
+                "http://bibframe.org/vocab/PublisherEvent",
+                "http://bibframe.org/vocab/ManufactureEvent",
+                "http://bibframe.org/vocab/ProducerEvent",
+                "http://bibframe.org/vocab/DistributeEvent"
+            ]
+        },
+        "geo": {
+            "types": [
+                "http://bibframe.org/vocab/rda/Place",
+                "http://bibframe.org/vocab/Place"
+            ]
+        },
+        "subjects": {
+            "types": [
+                "http://bibframe.org/vocab/Topic",
+                "http://bibframe.org/vocab/TemporalConcept",
+                "http://bibframe.org/vocab/ClassificationEntity",
+                "http://bibframe.org/vocab/rda/Authority",
+                "http://bibframe.org/vocab/rda/Period",
+                "http://bibframe.org/vocab/rda/Technique",
+                "http://bibframe.org/vocab/rda/WorkType"
+            ]
+        }
+    },
+    "viaf": {
+    }
+};
+
 db = new rdfstore.Store(config.store, function(store) {
     // Store the n3 propety of an incoming JSON object, because just
     // getting the raw body is apparently more difficult; may come in
@@ -41,13 +126,20 @@ db = new rdfstore.Store(config.store, function(store) {
         return next();
     });
 
-    // Query the store for matching suggestions
-    server.get('/suggest/local', function suggestLocal(req, res, next) {
-        var q, parts, query, answer, i;
-        parts = url.parse(req.url, true);
-        q = parts.query.q;
-        query = 'SELECT * { ?s <http://bibframe.org/vocab/title> ?o . FILTER regex(?o, "' + q + '", "i") }';
+    localSuggestHelper = function(qin, types) {
+        var i, query, qtypes, deferred, answer;
         answer = [];
+        deferred = Q.defer();
+        query = 'SELECT * { ?s ?p ?o . FILTER regex(?o, "' + qin + '", "i") . FILTER(?p IN (<http://bibframe.org/vocab/title>,<http://bibframe.org/vocab/label>)) ';
+        if (typeof types !== "undefined" && types !== null && types.length > 0) {
+            qtypes = [];
+            for (i = 0; i < types.length; i++) {
+                qtypes.push('<' + types[i] + '>');
+            }
+            query += ' . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?v . FILTER(?v IN (' + qtypes.join(", ") + ')) . }';
+        } else {
+            query += ' }';
+        }
         store.execute(query, function(success, results) {
             if (success) {
                 for (i = 0; i < results.length; i++) {
@@ -57,12 +149,61 @@ db = new rdfstore.Store(config.store, function(store) {
                         'source': 'local'
                     });
                 }
-                res.send(200, answer);
+                deferred.resolve(answer);
             } else {
-                res.send(500, {'success': false});
+                deferred.reject();
             }
-            return next();
         });
+        return deferred.promise;
+    };
+
+    // Query the store for matching suggestions
+    server.get('/suggest/local', function suggestLocal(req, res, next) {
+        var qin, parts, query, i;
+        parts = url.parse(req.url, true);
+        qin = parts.query.q;
+        localSuggestHelper(qin, null, answer).then(
+            function(data) {
+                res.send(200, data);
+            },
+            function(err) {
+                res.send(500, {"success": false});
+            }
+        ).fin(function() {
+            next();
+        });
+    });
+
+    // Aggregate queries to different services
+    server.get('/suggest/master', function suggestMaster(req, res, next) {
+        var i, query, services, s, conf, sub, answer;
+        answer = [];
+        parts = url.parse(req.url, true);
+        services = JSON.parse(parts.query.services);
+        query = parts.query.q;
+        for (i  = 0; i < services.length; i++) {
+            s = services[i];
+            if (s.indexOf(":") > 0) {
+                conf = s.substr(0, s.indexOf(":"));
+                sub = serviceConfig[conf][s.substr(s.indexOf(":") + 1)];
+            } else {
+                // not really doing anything useful with this info if no sub
+                conf = serviceConfig[s];
+                sub = null;
+            }
+            if (conf === "local") {
+                localSuggestHelper(query, (sub !== null) ? sub.types : null).then(
+                    function(data) {
+                        answer = answer.concat(data);
+                    }
+                ).fin(function() {
+                    res.send(200, answer);
+                    next();
+                });
+            } else {
+                // answer = answer.concat();
+            }
+        }
     });
 });
 
@@ -79,6 +220,12 @@ server.get(/\/static\/?.*/, restify.serveStatic({
     'directory': config.staticDir,
     'default': 'index.html'
 }));
+
+proxyHelper = function(qin, branch, answer) {
+    var flag;
+    //@@@
+    return flag;
+};
 
 doProxy = function(req, res, host, path, args, queryParam, source, next) {
     var proxy, request, parts, answer;
