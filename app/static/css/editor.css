@@ -27,6 +27,10 @@
     color: red;
 }
 
+.match-source {
+    padding-left: 1em;
+}
+
 /*
  * Editor
  */

@@ -184,6 +184,7 @@
                typeahead-min-length="1"
                typeahead-editable="false"
                typeahead-loading="loading[prop.getProperty().getID()]"
+               typeahead-template-url="typeahead-match.html"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}">
           <span ng-if="!editExisting&&!prop.getConstraint().hasManyReferences()">
             <button class="btn"
@@ -246,6 +247,14 @@
           <button class="btn btn-primary btn-large" type="button" ng-click="export()" ng-disabled="!flags.isDirty">Export</button>
         </div>
       </form>
+    </script>
+
+    <!-- explicitly called in typeahead -->
+    <script type="text/ng-template" id="typeahead-match.html">
+      <a tabindex="-1">
+        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
+        <small class="muted match-source" bind-html-unsafe="match.model.source | uppercase"></small>
+      </a>
     </script>
 
     <!-- forked typeahead template -->
