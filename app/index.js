@@ -3,9 +3,9 @@ var rdfstore, restify, uuid, http, url, Q, db, server, doProxy, proxyHelper, con
 rdfstore = require('rdfstore');
 restify = require('restify');
 uuid = require('uuid');
-http = require('http');
 url = require('url');
 Q = require('q');
+http = require('q-io/http');
 tr = require('./translate');
 
 IDBASE = 'http://example.org/id';
@@ -35,82 +35,106 @@ try {
 }
 
 serviceConfig = {
-    "agrovoc": {
-    },
-    "fast": {
-    },
-    "lc": {
-        "subjects": {
-            "branch": "/authorities/subjects"
-        },
-        "geo": {
-            "branch": "/vocabulary/geographicAreas"
-        },
-        "names": {
-            "branch": "/authorities/names"
-        },
-        "lang": {
-            "branch": "/vocabulary/iso639-2"
-        },
-        "works": {
-            "branch": "/authorities/names"
+    'agrovoc': {
+        'config': {
+            'host': 'foris.fao.org',
+            'path': '/agrovoc/term/find',
+            'queryArgs': '&hits=8&match=freeText&suggestions=20&language=EN&relationshipType[]=alternative&relationshipType[]=broader&callback=',
+            'arg': 'q'
         }
     },
-    "local": {
-        "works": {
-            "types": [
-                "http://bibframe.org/vocab/Work",
-                "http://bibframe.org/vocab/Book",
-                "http://bibframe.org/vocab/proposed/EBook",
-                "http://bibframe.org/vocab/proposed/PhysicalBook",
-                "http://bibframe.org/vocab/Article",
-                "http://bibframe.org/vocab/proposed/EArticle",
-                "http://bibframe.org/vocab/proposed/PhysicalArticle",
-                "http://bibframe.org/vocab/Painting"
-            ]
-        },
-        "agents": {
-            "types": [
-                "http://bibframe.org/vocab/Family",
-                "http://bibframe.org/vocab/Jurisdiction",
-                "http://bibframe.org/vocab/Meeting",
-                "http://bibframe.org/vocab/Organization",
-                "http://bibframe.org/vocab/Person",
-                "http://bibframe.org/vocab/rda/Agent"
-            ]
-        },
-        "lang": {
-            "types": [
-                "http://bibframe.org/vocab/LanguageEntity"
-            ]
-        },
-        "providers": {
-            "types": [
-                "http://bibframe.org/vocab/PublisherEvent",
-                "http://bibframe.org/vocab/ManufactureEvent",
-                "http://bibframe.org/vocab/ProducerEvent",
-                "http://bibframe.org/vocab/DistributeEvent"
-            ]
-        },
-        "geo": {
-            "types": [
-                "http://bibframe.org/vocab/rda/Place",
-                "http://bibframe.org/vocab/Place"
-            ]
-        },
-        "subjects": {
-            "types": [
-                "http://bibframe.org/vocab/Topic",
-                "http://bibframe.org/vocab/TemporalConcept",
-                "http://bibframe.org/vocab/ClassificationEntity",
-                "http://bibframe.org/vocab/rda/Authority",
-                "http://bibframe.org/vocab/rda/Period",
-                "http://bibframe.org/vocab/rda/Technique",
-                "http://bibframe.org/vocab/rda/WorkType"
-            ]
+    'fast': {
+        'config': {
+            'host': 'fast.oclc.org',
+            'path': '/searchfast/fastsuggest',
+            'queryArgs': '&queryIndex=suggestall&queryReturn=suggestall%2Cidroot%2Cauth%2Ctag%2Ctype%2Craw%2Cbreaker%2Cindicator&rows=10',
+            'arg': 'query'
         }
     },
-    "viaf": {
+    'viaf': {
+        'config': {
+            'host': 'viaf.org',
+            'path': '/viaf/AutoSuggest',
+            'queryArgs': '',
+            'arg': 'query'
+        }
+    },
+    'lc': {
+        'config': {
+            'host': 'id.loc.gov',
+            'path': '/suggest/',
+            'queryArgs': '',
+            'arg': 'q'
+        },
+        'subjects': {
+            'branch': '/authorities/subjects'
+        },
+        'geo': {
+            'branch': '/vocabulary/geographicAreas'
+        },
+        'names': {
+            'branch': '/authorities/names'
+        },
+        'lang': {
+            'branch': '/vocabulary/iso639-2'
+        },
+        'works': {
+            'branch': '/authorities/names'
+        }
+    },
+    'local': {
+        'works': {
+            'types': [
+                'http://bibframe.org/vocab/Work',
+                'http://bibframe.org/vocab/Book',
+                'http://bibframe.org/vocab/proposed/EBook',
+                'http://bibframe.org/vocab/proposed/PhysicalBook',
+                'http://bibframe.org/vocab/Article',
+                'http://bibframe.org/vocab/proposed/EArticle',
+                'http://bibframe.org/vocab/proposed/PhysicalArticle',
+                'http://bibframe.org/vocab/Painting'
+            ]
+        },
+        'agents': {
+            'types': [
+                'http://bibframe.org/vocab/Family',
+                'http://bibframe.org/vocab/Jurisdiction',
+                'http://bibframe.org/vocab/Meeting',
+                'http://bibframe.org/vocab/Organization',
+                'http://bibframe.org/vocab/Person',
+                'http://bibframe.org/vocab/rda/Agent'
+            ]
+        },
+        'lang': {
+            'types': [
+                'http://bibframe.org/vocab/LanguageEntity'
+            ]
+        },
+        'providers': {
+            'types': [
+                'http://bibframe.org/vocab/PublisherEvent',
+                'http://bibframe.org/vocab/ManufactureEvent',
+                'http://bibframe.org/vocab/ProducerEvent',
+                'http://bibframe.org/vocab/DistributeEvent'
+            ]
+        },
+        'geo': {
+            'types': [
+                'http://bibframe.org/vocab/rda/Place',
+                'http://bibframe.org/vocab/Place'
+            ]
+        },
+        'subjects': {
+            'types': [
+                'http://bibframe.org/vocab/Topic',
+                'http://bibframe.org/vocab/TemporalConcept',
+                'http://bibframe.org/vocab/ClassificationEntity',
+                'http://bibframe.org/vocab/rda/Authority',
+                'http://bibframe.org/vocab/rda/Period',
+                'http://bibframe.org/vocab/rda/Technique',
+                'http://bibframe.org/vocab/rda/WorkType'
+            ]
+        }
     }
 };
 
@@ -131,12 +155,12 @@ db = new rdfstore.Store(config.store, function(store) {
         answer = [];
         deferred = Q.defer();
         query = 'SELECT * { ?s ?p ?o . FILTER regex(?o, "' + qin + '", "i") . FILTER(?p IN (<http://bibframe.org/vocab/title>,<http://bibframe.org/vocab/label>)) ';
-        if (typeof types !== "undefined" && types !== null && types.length > 0) {
+        if (typeof types !== 'undefined' && types !== null && types.length > 0) {
             qtypes = [];
             for (i = 0; i < types.length; i++) {
                 qtypes.push('<' + types[i] + '>');
             }
-            query += ' . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?v . FILTER(?v IN (' + qtypes.join(", ") + ')) . }';
+            query += ' . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?v . FILTER(?v IN (' + qtypes.join(', ') + ')) . }';
         } else {
             query += ' }';
         }
@@ -167,7 +191,7 @@ db = new rdfstore.Store(config.store, function(store) {
                 res.send(200, data);
             },
             function(err) {
-                res.send(500, {"success": false});
+                res.send(500, {'success': false});
             }
         ).fin(function() {
             next();
@@ -176,34 +200,35 @@ db = new rdfstore.Store(config.store, function(store) {
 
     // Aggregate queries to different services
     server.get('/suggest/master', function suggestMaster(req, res, next) {
-        var i, query, services, s, conf, sub, answer;
+        var i, query, services, s, conf, sub, answer, queue;
         answer = [];
+        queue = [];
         parts = url.parse(req.url, true);
         services = JSON.parse(parts.query.services);
         query = parts.query.q;
         for (i  = 0; i < services.length; i++) {
             s = services[i];
-            if (s.indexOf(":") > 0) {
-                conf = s.substr(0, s.indexOf(":"));
-                sub = serviceConfig[conf][s.substr(s.indexOf(":") + 1)];
+            if (s.indexOf(':') > 0) {
+                conf = s.substr(0, s.indexOf(':'));
+                sub = serviceConfig[conf][s.substr(s.indexOf(':') + 1)];
             } else {
-                // not really doing anything useful with this info if no sub
-                conf = serviceConfig[s];
+                conf = s;
                 sub = null;
             }
-            if (conf === "local") {
-                localSuggestHelper(query, (sub !== null) ? sub.types : null).then(
-                    function(data) {
-                        answer = answer.concat(data);
-                    }
-                ).fin(function() {
-                    res.send(200, answer);
-                    next();
-                });
+            if (conf === 'local') {
+                queue.push(localSuggestHelper(query, (sub !== null) ? sub.types : null));
             } else {
-                // answer = answer.concat();
+                queue.push(proxyHelper(query, serviceConfig[conf].config, conf, (sub !== null) ? sub.branch : null));
             }
         }
+        Q.allSettled(queue).then(function(results) {
+            results.forEach(function(result) {
+                if (result.state === 'fulfilled') {
+                    answer = answer.concat(result.value);
+                }
+            });
+            res.send(200, answer);
+        });
     });
 });
 
@@ -221,57 +246,47 @@ server.get(/\/static\/?.*/, restify.serveStatic({
     'default': 'index.html'
 }));
 
-proxyHelper = function(qin, branch, answer) {
-    var flag;
-    //@@@
-    return flag;
+proxyHelper = function(qin, conf, source, branch) {
+    var request, a;
+    request = http.request('http://' + conf.host + ((branch !== null) ? branch : '') + conf.path +  '?' + conf.arg + '=' + qin + conf.queryArgs);
+    return request.then(function(response) {
+        return response.body.read().then(function(answer) {
+            return tr[source](answer);
+        });
+    });
 };
 
-doProxy = function(req, res, host, path, args, queryParam, source, next) {
-    var proxy, request, parts, answer;
+doProxy = function(req, res, conf, source, branch, next) {
+    var parts, answer;
     parts = url.parse(req.url, true);
-    if (typeof parts.query.branch !== 'undefined' && parts.query.branch !== '') {
-        path = decodeURIComponent(parts.query.branch) + path;
-    }
-    request = http.request({
-        'hostname': host,
-        'method': 'GET',
-        'path': path + '?' + queryParam + '=' + parts.query.q + args
-    });
-    answer = '';
-    request.addListener('response', function(proxy_response) {
-        proxy_response.addListener('data', function(chunk) {
-            answer += chunk;
-        });
-        proxy_response.addListener('end', function() {
-            res.end(tr[source](answer));
-            next();
-        });
-        res.writeHead(proxy_response.statusCode, {"Content-Type": "application/json"});
-    });
-    request.end();
+    proxyHelper(parts.query.q, conf, source, branch).then(
+        function(data) {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify(data));
+        }
+    );
 };
 
-// Proxy third-party auto-suggests
+// Proxy external auto-suggests
 server.get('/suggest/viaf', function getViaf(req, res, next) {
     // www.oclc.org/developer/documentation/virtual-international-authority-file-viaf/request-types#autosuggest
-    doProxy(req, res, 'viaf.org', '/viaf/AutoSuggest', '', 'query', 'viaf', next);
+    doProxy(req, res, serviceConfig['viaf'].config, 'viaf', null, next);
 });
 
 server.get('/suggest/fast', function getFast(req, res, next) {
     // www.oclc.org/developer/documentation/assignfast/using-api
-    doProxy(req, res, 'fast.oclc.org', '/searchfast/fastsuggest', '&queryIndex=suggestall&queryReturn=suggestall%2Cidroot%2Cauth%2Ctag%2Ctype%2Craw%2Cbreaker%2Cindicator&rows=10', 'query', 'fast', next);
+    doProxy(req, res, serviceConfig['fast'].config, 'fast', null, next);
 });
 
 server.get('/suggest/lc', function getFast(req, res, next) {
     // (no formal documentation)
     // may use more specific URL hierarchy, e.g., /authorities/subjects/suggest
-    doProxy(req, res, 'id.loc.gov', '/suggest/', '', 'q', 'lc', next);
+    doProxy(req, res, serviceConfig['lc'].config, 'lc', null, next);
 });
 
 server.get('/suggest/agrovoc', function getFast(req, res, next) {
     // foris.fao.org/agrovoc/
-    doProxy(req, res, 'foris.fao.org', '/agrovoc/term/find', '&hits=8&match=freeText&suggestions=20&language=EN&relationshipType[]=alternative&relationshipType[]=broader&callback=', 'q', 'agrovoc', next);
+    doProxy(req, res, serviceConfig['agrovoc'].config, 'agrovoc', null, next);
 });
 
 server.listen(config.listen, function() {

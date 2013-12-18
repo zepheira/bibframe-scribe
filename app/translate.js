@@ -1,7 +1,7 @@
 module.exports = {
     agrovoc: function(res) {
         var i, answer, json;
-        json = JSON.parse(res.substring(9).slice(0, -1));
+        json = JSON.parse(res.toString().substring(9).slice(0, -1));
         answer = [];
         for (i = 0; i < json.results.length; i++) {
             answer.push({
@@ -10,7 +10,7 @@ module.exports = {
                 'source': 'agrovoc'
             });
         }
-        return JSON.stringify(answer);
+        return answer;
     },
     fast: function(res) {
         var i, answer, json, term;
@@ -25,7 +25,7 @@ module.exports = {
                 });
             }
         }
-        return JSON.stringify(answer);
+        return answer;
     },
     lc: function(res) {
         var i, answer, json;
@@ -38,7 +38,7 @@ module.exports = {
                 'source': 'lc'
             });
         }
-        return JSON.stringify(answer);
+        return answer;
     },
     viaf: function(res) {
         var i, answer, json;
@@ -51,6 +51,6 @@ module.exports = {
                 'source': 'viaf'
             });
         }
-        return JSON.stringify(answer);
+        return answer;
     }
 };
