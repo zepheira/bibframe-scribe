@@ -1,0 +1,62 @@
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/workCategory> <http://id.loc.gov/test/workCategories/text> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/authorizedAccessPoint> "Abe\u0301le\u0300s, Marc. Le lieu du politique" .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/title> "Le lieu du politique" .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/title> "lieu du politique"@en-us-bf .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/mkR1389995776/1903891person7> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/modeOfIssuance> "monographic" .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/language> <http://id.loc.gov/vocabulary/languages/fre> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/mkR1389995776/1903891topic10> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/f-et> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/fe> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/classificationLcc> <http://id.loc.gov/authorities/classification/DT380> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/classification> <http://bibframe.org/resources/mkR1389995776/1903891classification14> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/series> <http://bibframe.org/resources/mkR1389995776/1903891work15> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/1903891> .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/changeDate> "transform-tool:2013-11-20-T14:00" .
+<http://bibframe.org/resources/mkR1389995776/1903891> <http://bibframe.org/vocab/changeDate> "data:1991-03-15T07:48" .
+<http://bibframe.org/resources/mkR1389995776/1903891work15> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/mkR1389995776/1903891work15> <http://bibframe.org/vocab/label> "Histoire et civilisations de l'Afrique orientale ; 4" .
+<http://bibframe.org/resources/mkR1389995776/1903891work15> <http://bibframe.org/vocab/authorizedAccessPoint> "Histoire et civilisations de l'Afrique orientale ; 4" .
+<http://bibframe.org/resources/mkR1389995776/1903891work15> <http://bibframe.org/vocab/title> "Histoire et civilisations de l'Afrique orientale ; 4" .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/isbn10> "2901161235" .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/relatedInstance> <http://isbn.example.org/2901161235> .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/isbn13> "9782901161233" .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/title> "Le lieu du politique" .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/title> "lieu du politique"@en-us-bf .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/title> "Le lieu du politique" .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/title> "lieu du politique"@en-us-bf .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Provider> .
+_:genid1 <http://bibframe.org/vocab/providerName> "Socie\u0301te\u0301 d'ethnographie" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "Paris" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "1983." .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/lccn> <http://id.loc.gov/authorities/identifiers/lccn/84161459> .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/extent> "239 p., [8] p. of plates :" .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/illustrationNote> "ill. ;" .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/dimensions> "24 cm." .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/illustrationNote> "ill." .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/supplementaryContentNote> "Bibliography: p. 237-238." .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/1903891> .
+<http://bibframe.org/resources/mkR1389995776/1903891instance19> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/mkR1389995776/1903891> .
+<http://bibframe.org/resources/mkR1389995776/1903891helditem37> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/HeldItem> .
+<http://bibframe.org/resources/mkR1389995776/1903891helditem37> <http://bibframe.org/vocab/label> "DT380.4.O23 A24 1983" .
+<http://bibframe.org/resources/mkR1389995776/1903891helditem37> <http://bibframe.org/vocab/shelfMarkLcc> "DT380.4.O23 A24 1983" .
+<http://bibframe.org/resources/mkR1389995776/1903891helditem37> <http://bibframe.org/vocab/holdingFor> <http://bibframe.org/resources/mkR1389995776/1903891instance19> .
+<http://bibframe.org/resources/mkR1389995776/1903891person7> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/mkR1389995776/1903891person7> <http://bibframe.org/vocab/label> "Abe\u0301le\u0300s, Marc." .
+<http://bibframe.org/resources/mkR1389995776/1903891person7> <http://bibframe.org/vocab/authorizedAccessPoint> "Abe\u0301le\u0300s, Marc." .
+<http://bibframe.org/resources/mkR1389995776/1903891person7> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n79101313> .
+<http://bibframe.org/resources/mkR1389995776/1903891topic10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/mkR1389995776/1903891topic10> <http://bibframe.org/vocab/authorizedAccessPoint> "Ochollo (African people)--Politics and government" .
+<http://bibframe.org/resources/mkR1389995776/1903891topic10> <http://bibframe.org/vocab/label> "Ochollo (African people)--Politics and government" .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Ochollo (African people)--Politics and government"@en .
+<http://bibframe.org/resources/mkR1389995776/1903891topic10> <http://bibframe.org/vocab/hasAuthority> _:genid2 .
+<http://bibframe.org/resources/mkR1389995776/1903891classification14> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Classification> .
+<http://bibframe.org/resources/mkR1389995776/1903891classification14> <http://bibframe.org/vocab/classificationScheme> "ddc" .
+<http://bibframe.org/resources/mkR1389995776/1903891classification14> <http://bibframe.org/vocab/classificationNumber> "306/.0963/3" .
+<http://bibframe.org/resources/mkR1389995776/1903891classification14> <http://bibframe.org/vocab/label> "306/.0963/3" .
+<http://bibframe.org/resources/mkR1389995776/1903891classification14> <http://bibframe.org/vocab/classificationEdition> "full" .

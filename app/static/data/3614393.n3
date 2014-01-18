@@ -1,0 +1,58 @@
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/workCategory> <http://id.loc.gov/test/workCategories/text> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/authorizedAccessPoint> "Cianciolo, Patricia J. Picture books for children" .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/title> "Picture books for children" .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/RXk1389995595/3614393person6> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/modeOfIssuance> "monographic" .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/language> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/RXk1389995595/3614393topic9> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/RXk1389995595/3614393topic10> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/RXk1389995595/3614393topic11> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/classificationLcc> <http://id.loc.gov/authorities/classification/Z1037> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/classificationDdc> "028.52" .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/3614393> .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/changeDate> "transform-tool:2013-11-20-T14:00" .
+<http://bibframe.org/resources/RXk1389995595/3614393> <http://bibframe.org/vocab/changeDate> "data:2003-04-11T11:34" .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/isbn10> "0838901573" .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/relatedInstance> <http://isbn.example.org/0838901573> .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/isbn13> "9780838901571" .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/title> "Picture books for children" .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/title> "Picture books for children" .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/contributor> <http://bibframe.org/resources/RXk1389995595/3614393organization24> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Provider> .
+_:genid1 <http://bibframe.org/vocab/providerName> "American Library Association" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "Chicago" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "1973." .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/lccn> <http://id.loc.gov/authorities/identifiers/lccn/73017430> .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/extent> "xiii, 159 p." .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/illustrationNote> "illus." .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/dimensions> "25 cm." .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/illustrationNote> "illus." .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/3614393> .
+<http://bibframe.org/resources/RXk1389995595/3614393instance17> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/RXk1389995595/3614393> .
+<http://bibframe.org/resources/RXk1389995595/3614393helditem33> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/HeldItem> .
+<http://bibframe.org/resources/RXk1389995595/3614393helditem33> <http://bibframe.org/vocab/label> "Z1037 .C565" .
+<http://bibframe.org/resources/RXk1389995595/3614393helditem33> <http://bibframe.org/vocab/shelfMarkLcc> "Z1037 .C565" .
+<http://bibframe.org/resources/RXk1389995595/3614393helditem33> <http://bibframe.org/vocab/holdingFor> <http://bibframe.org/resources/RXk1389995595/3614393instance17> .
+<http://bibframe.org/resources/RXk1389995595/3614393person6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/RXk1389995595/3614393person6> <http://bibframe.org/vocab/label> "Cianciolo, Patricia J." .
+<http://bibframe.org/resources/RXk1389995595/3614393person6> <http://bibframe.org/vocab/authorizedAccessPoint> "Cianciolo, Patricia J." .
+<http://bibframe.org/resources/RXk1389995595/3614393person6> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n50041190> .
+<http://bibframe.org/resources/RXk1389995595/3614393topic9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/RXk1389995595/3614393topic9> <http://bibframe.org/vocab/authorizedAccessPoint> "Picture books for children--Bibliography" .
+<http://bibframe.org/resources/RXk1389995595/3614393topic9> <http://bibframe.org/vocab/label> "Picture books for children--Bibliography" .
+<http://bibframe.org/resources/RXk1389995595/3614393topic9> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh2010106399> .
+<http://bibframe.org/resources/RXk1389995595/3614393topic10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/RXk1389995595/3614393topic10> <http://bibframe.org/vocab/authorizedAccessPoint> "Illustrated Children's books--Bibliography" .
+<http://bibframe.org/resources/RXk1389995595/3614393topic10> <http://bibframe.org/vocab/label> "Illustrated Children's books--Bibliography" .
+<http://bibframe.org/resources/RXk1389995595/3614393topic10> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh2008123020> .
+<http://bibframe.org/resources/RXk1389995595/3614393topic11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/RXk1389995595/3614393topic11> <http://bibframe.org/vocab/authorizedAccessPoint> "Children--Books and reading--United States" .
+<http://bibframe.org/resources/RXk1389995595/3614393topic11> <http://bibframe.org/vocab/label> "Children--Books and reading--United States" .
+<http://bibframe.org/resources/RXk1389995595/3614393topic11> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh2008100254> .
+<http://bibframe.org/resources/RXk1389995595/3614393organization24> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Organization> .
+<http://bibframe.org/resources/RXk1389995595/3614393organization24> <http://bibframe.org/vocab/label> "National Council of Teachers of English. Picture Book Committee." .
+<http://bibframe.org/resources/RXk1389995595/3614393organization24> <http://bibframe.org/vocab/authorizedAccessPoint> "National Council of Teachers of English. Picture Book Committee." .
+<http://bibframe.org/resources/RXk1389995595/3614393organization24> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/no2008044577> .

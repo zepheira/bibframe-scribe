@@ -1,0 +1,86 @@
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Work> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/workCategory> <http://id.loc.gov/test/workCategories/text> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/authorizedAccessPoint> "Barclay, George, 1919-1942. Fighter pilot : a self-portrait" .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/title> "Fighter pilot : a self-portrait" .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/creator> <http://bibframe.org/resources/cCV1389995292/4143249person6> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/modeOfIssuance> "monographic" .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/language> <http://id.loc.gov/vocabulary/languages/eng> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/cCV1389995292/4143249person9> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/cCV1389995292/4143249topic10> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/cCV1389995292/4143249topic11> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/cCV1389995292/4143249topic12> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/cCV1389995292/4143249topic13> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/subject> <http://bibframe.org/resources/cCV1389995292/4143249organization14> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/subject> <http://id.loc.gov/vocabulary/geographicAreas/e-uk> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/classificationLcc> <http://id.loc.gov/authorities/classification/D786> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/classificationDdc> "940.54/49/410924" .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/note> "Includes index." .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/4143249> .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/changeDate> "transform-tool:2013-11-20-T14:00" .
+<http://bibframe.org/resources/cCV1389995292/4143249> <http://bibframe.org/vocab/changeDate> "data:2013-05-15T11:50" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Instance> .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/isbn10> "071830294X" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/relatedInstance> <http://isbn.example.org/071830294X> .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/isbn13> "9780718302948" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/title> "Fighter pilot : a self-portrait" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/title> "Fighter pilot : a self-portrait" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/contributor> <http://bibframe.org/resources/cCV1389995292/4143249person29> .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Provider> .
+_:genid1 <http://bibframe.org/vocab/providerName> "Kimber" .
+_:genid1 <http://bibframe.org/vocab/providerPlace> "London" .
+_:genid1 <http://bibframe.org/vocab/providerDate> "1976." .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/publication> _:genid1 .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/lccn> <http://id.loc.gov/authorities/identifiers/lccn/77353533> .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/nbn> "GB76-23078" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/extent> "224 p. :" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/illustrationNote> "ill., facsims., maps, ports. ;" .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/dimensions> "24 cm." .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/illustrationNote> "ill., facsims., maps, ports." .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/note> "Includes index." .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/derivedFrom> <http://id.loc.gov/resources/bibs/4143249> .
+<http://bibframe.org/resources/cCV1389995292/4143249instance22> <http://bibframe.org/vocab/instanceOf> <http://bibframe.org/resources/cCV1389995292/4143249> .
+<http://bibframe.org/resources/cCV1389995292/4143249helditem40> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/HeldItem> .
+<http://bibframe.org/resources/cCV1389995292/4143249helditem40> <http://bibframe.org/vocab/label> "D786 .B258 1976" .
+<http://bibframe.org/resources/cCV1389995292/4143249helditem40> <http://bibframe.org/vocab/shelfMarkLcc> "D786 .B258 1976" .
+<http://bibframe.org/resources/cCV1389995292/4143249helditem40> <http://bibframe.org/vocab/holdingFor> <http://bibframe.org/resources/cCV1389995292/4143249instance22> .
+<http://bibframe.org/resources/cCV1389995292/4143249person6> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/cCV1389995292/4143249person6> <http://bibframe.org/vocab/label> "Barclay, George, 1919-1942." .
+<http://bibframe.org/resources/cCV1389995292/4143249person6> <http://bibframe.org/vocab/authorizedAccessPoint> "Barclay, George, 1919-1942." .
+<http://bibframe.org/resources/cCV1389995292/4143249person6> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n50021124> .
+<http://bibframe.org/resources/cCV1389995292/4143249person9> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/cCV1389995292/4143249person9> <http://bibframe.org/vocab/authorizedAccessPoint> "Barclay, George, 1919-1942--Diaries." .
+<http://bibframe.org/resources/cCV1389995292/4143249person9> <http://bibframe.org/vocab/label> "Barclay, George, 1919-1942--Diaries." .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid2 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Barclay, George, 1919-1942--Diaries."@en .
+<http://bibframe.org/resources/cCV1389995292/4143249person9> <http://bibframe.org/vocab/hasAuthority> _:genid2 .
+<http://bibframe.org/resources/cCV1389995292/4143249topic10> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/cCV1389995292/4143249topic10> <http://bibframe.org/vocab/authorizedAccessPoint> "World War, 1939-1945--Personal narratives, British" .
+<http://bibframe.org/resources/cCV1389995292/4143249topic10> <http://bibframe.org/vocab/label> "World War, 1939-1945--Personal narratives, British" .
+<http://bibframe.org/resources/cCV1389995292/4143249topic10> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh88005501> .
+<http://bibframe.org/resources/cCV1389995292/4143249topic11> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/cCV1389995292/4143249topic11> <http://bibframe.org/vocab/authorizedAccessPoint> "World War, 1939-1945--Aerial operations, British" .
+<http://bibframe.org/resources/cCV1389995292/4143249topic11> <http://bibframe.org/vocab/label> "World War, 1939-1945--Aerial operations, British" .
+<http://bibframe.org/resources/cCV1389995292/4143249topic11> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh85148277> .
+<http://bibframe.org/resources/cCV1389995292/4143249topic12> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/cCV1389995292/4143249topic12> <http://bibframe.org/vocab/authorizedAccessPoint> "Britain, Battle of, Great Britain, 1940--Personal narratives, British" .
+<http://bibframe.org/resources/cCV1389995292/4143249topic12> <http://bibframe.org/vocab/label> "Britain, Battle of, Great Britain, 1940--Personal narratives, British" .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid3 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Britain, Battle of, Great Britain, 1940--Personal narratives, British"@en .
+<http://bibframe.org/resources/cCV1389995292/4143249topic12> <http://bibframe.org/vocab/hasAuthority> _:genid3 .
+<http://bibframe.org/resources/cCV1389995292/4143249topic13> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Topic> .
+<http://bibframe.org/resources/cCV1389995292/4143249topic13> <http://bibframe.org/vocab/authorizedAccessPoint> "Air pilots--Great Britain--Biography" .
+<http://bibframe.org/resources/cCV1389995292/4143249topic13> <http://bibframe.org/vocab/label> "Air pilots--Great Britain--Biography" .
+<http://bibframe.org/resources/cCV1389995292/4143249topic13> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/subjects/sh2009114551> .
+<http://bibframe.org/resources/cCV1389995292/4143249organization14> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Organization> .
+<http://bibframe.org/resources/cCV1389995292/4143249organization14> <http://bibframe.org/vocab/authorizedAccessPoint> "Great Britain. Royal Air Force--Biography." .
+<http://bibframe.org/resources/cCV1389995292/4143249organization14> <http://bibframe.org/vocab/label> "Great Britain. Royal Air Force--Biography." .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#Authority> .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.loc.gov/mads/rdf/v1#ComplexSubject> .
+_:genid4 <http://www.loc.gov/mads/rdf/v1#authoritativeLabel> "Great Britain. Royal Air Force--Biography."@en .
+<http://bibframe.org/resources/cCV1389995292/4143249organization14> <http://bibframe.org/vocab/hasAuthority> _:genid4 .
+<http://bibframe.org/resources/cCV1389995292/4143249person29> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://bibframe.org/vocab/Person> .
+<http://bibframe.org/resources/cCV1389995292/4143249person29> <http://bibframe.org/vocab/label> "Wynn, Humphrey." .
+<http://bibframe.org/resources/cCV1389995292/4143249person29> <http://bibframe.org/vocab/authorizedAccessPoint> "Wynn, Humphrey." .
+<http://bibframe.org/resources/cCV1389995292/4143249person29> <http://bibframe.org/vocab/hasAuthority> <http://id.loc.gov/authorities/names/n83174946> .
