@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>About the BIBFRAME Editor prototype</title>
+    <link href="css/bootstrap-combined.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/editor.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#"><span class="application-logo"></span>BIBFRAME Editor</a>
+
+          <ul class="nav pull-right">
+            <li class="active"><a href="#"><i class="icon-home"></i> Eric</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="./activity.html">Activity <span class="badge badge-info">3</span></a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Help</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="divider-vertical"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <h3>About the BIBFRAME Editor prototype</h3>
+        <div class="hero-unit">
+          <h2>Overview</h2>
+          <p>The BIBFRAME editor prototype is a tool that demonstrates how to catalog various materials in native BIBFRAME.  As a linked data framework on the web, BIBFRAME is designed to integrate with and engage in the wider information community while also serving the very specific needs of local implementation.</p>
+          <p>This prototype is designed to demonstrate how one would catalog entities in BIBFRAME, how the workflow is integrated with web services, and how to move between multiple types of entities in a single tool. BIBFRAME is designed to work with existing standards (RDA, DACS, VRA, etc.) and yet-to-be-developed community vocabularies.  For demonstration purposes, this prototype uses initial drafts for a small set of material types.</p>
+        </div>
+        <h3>Status: Pre-release demonstration</h3>
+        <h4>Objectives</h4>
+        <ul>
+          <li>Demonstrate how components of the BIBFRAME framework come together in an editing platform.</li>
+          <li>Provide a method to examine workflows for cataloging in native BIBFRAME.</li>
+          <li>Explore common relationships between Works such as translations, derivative works, etc.</li>
+          <li>Demonstrate how different vocabularies are accommodated in a single interface.</li>
+          <li>Explore the ability to link to external services that are needed in workflows, such as VIAF, Library of Congress.</li>
+          <li>Demonstrate unique data entry features such as “look ahead” searches of remote services and a drag and drop image zone for images.</li>
+          <li>Show possible future functionality such as user activity dashboard via mock-up pages.</li>
+        </ul>
+
+        <h4>Prototype Functionality Facts</h4>
+        <ul>
+          <li>Seeded with 15 records converted from MARCXML.</li>
+          <li>Interface reflects a subset of the BIBFRAME vocabulary.  The interface guides you to the particular instance and brings up only fields that are pertinent to that instance type.</li>
+          <li>Local search for instances and all other resources</li>
+          <li>Uses remote search services:
+            <ul>
+              <li><a href="http://id.loc.gov/">Library of Congress Linked Data Service</a> (names, subjects, languages, places</li>
+              <li><a href="http://oclc.org/research/activities/assignfast.html">assignFAST</a> (subjects)</li>
+              <li><a href="http://viaf.org/">VIAF</a> (names, subjects)</li>
+              <li><a href="http://aims.fao.org/standards/agrovoc/about">AGROVOC</a> (subjects)</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="text-right"><em>Last updated</em>: January 23, 2014</p>
+      </div>
+    </div>
+  </body>
+</html>
