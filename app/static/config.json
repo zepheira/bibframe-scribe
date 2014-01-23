@@ -1,13 +1,13 @@
 {
     "profiles": [
-        "shared/authorities",
-        "shared/agents",
-        "shared/events",
-        "shared/language",
-        "monograph/book",
-        "monograph/dissertation",
-        "monograph/bibliography",
-        "audio/record",
+        "authorities",
+        "agents",
+        "events",
+        "language",
+        "book",
+        "dissertation",
+        "bibliography",
+        "record",
         "vra"
     ],
     "useWorks": [
