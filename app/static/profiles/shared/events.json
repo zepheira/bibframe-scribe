@@ -1,0 +1,215 @@
+{
+    "Profile": {
+        "title": "Events",
+        "resourceTemplate": [    	       
+            {
+                "id": "bfp:Event:PublishEvent",
+                "class": {
+                    "classLabel": "Publisher",
+                    "id": "http://bibframe.org/vocab/PublisherEvent",
+                    "labelProperty": "http://bibframe.org/vocab/providerName",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/copyrightDate",
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/date",
+                                "propertyLabel": "Publish Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerName",
+                                "propertyLabel": "Name of Publisher"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerPlace",
+                                "propertyLabel": "Location"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Event:ManufactureEvent",
+                "class": {
+                    "classLabel": "Manufacturer",
+                    "labelProperty": "http://bibframe.org/vocab/providerName",
+                    "id": "http://bibframe.org/vocab/ManufactureEvent",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/copyrightDate",
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                        "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/date",
+                                "propertyLabel": "Manufacture Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerName",
+                                "propertyLabel": "Manufacturer"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerPlace",
+                                "propertyLabel": "Location"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Event:ProducerEvent",
+                "class": {
+                    "classLabel": "Producer",
+                    "labelProperty": "http://bibframe.org/vocab/providerName",
+                    "id": "http://bibframe.org/vocab/ProducerEvent",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/copyrightDate",
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/date",
+                                "propertyLabel": "Date of Production"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerName",
+                                "propertyLabel": "Producer"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerPlace",
+                                "propertyLabel": "Location"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Event:DistributeEvent",
+                "class": {
+                    "classLabel": "Distributor",
+                    "labelProperty": "http://bibframe.org/vocab/providerName",
+                    "id": "http://bibframe.org/vocab/DistributeEvent",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/copyrightDate",
+                                "propertyLabel": "Copyright Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/date",
+                                "propertyLabel": "Distribution Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerName",
+                                "propertyLabel": "Distributor"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerPlace",
+                                "propertyLabel": "Location"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

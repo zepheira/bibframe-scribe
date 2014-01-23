@@ -1,0 +1,22 @@
+{
+    "Profile": {
+        "title": "Language",
+        "resourceTemplate": [
+            {
+                "id": "bfp:Language",
+                "class": {
+                    "id": "http://bibframe.org/vocab/LanguageEntity",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
