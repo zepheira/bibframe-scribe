@@ -1,19 +1,26 @@
 {
     "profiles": [
-        "authorities",
-        "agents",
-        "events",
-        "book",
-        "article",
+        "shared/authorities",
+        "shared/agents",
+        "shared/events",
+        "shared/language",
+        "monograph/book",
+        "monograph/dissertation",
+        "monograph/bibliography",
+        "audio/record",
         "vra"
     ],
     "useWorks": [
         "http://bibframe.org/vocab/Book",
-        "http://bibframe.org/vocab/Article",
+        "http://bibframe.org/vocab/Dissertation",
+        "http://bibframe.org/vocab/Bibliography",
+        "http://bibframe.org/vocab/Audio",
         "http://bibframe.org/vocab/Painting"
     ],
     "resourceServiceMap": {
         "http://bibframe.org/vocab/Book": "Works",
+        "http://bibframe.org/vocab/Dissertation": "Works",
+        "http://bibframe.org/vocab/Bibliography": "Works",
         "http://bibframe.org/vocab/Article": "Works",
         "http://bibframe.org/vocab/Painting": "Works",
         "http://bibframe.org/vocab/Topic": "Subjects",
