@@ -3,7 +3,7 @@
         "title": "Events",
         "resourceTemplate": [    	       
             {
-                "id": "publishEvent",
+                "id": "bfp:Event:PublishEvent",
                 "class": {
                     "classLabel": "Publisher",
                     "id": "http://bibframe.org/vocab/PublisherEvent",
@@ -55,7 +55,7 @@
                 }
             },
             {
-                "id": "manufactureEvent",
+                "id": "bfp:Event:ManufactureEvent",
                 "class": {
                     "classLabel": "Manufacturer",
                     "labelProperty": "http://bibframe.org/vocab/providerName",
@@ -107,7 +107,7 @@
                 }
             },
             {
-                "id": "producerEvent",
+                "id": "bfp:Event:ProducerEvent",
                 "class": {
                     "classLabel": "Producer",
                     "labelProperty": "http://bibframe.org/vocab/providerName",
@@ -159,7 +159,7 @@
                 }
             },
             {
-                "id": "distributeEvent",
+                "id": "bfp:Event:DistributeEvent",
                 "class": {
                     "classLabel": "Distributor",
                     "labelProperty": "http://bibframe.org/vocab/providerName",
