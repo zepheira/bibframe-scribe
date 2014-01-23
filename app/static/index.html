@@ -61,7 +61,6 @@
               <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
             </div>
           </tab>
-	  <img class="image img-responsive img-thumbnail" src ="/img/bibframe-newlogo-m.png" /><hr />
           <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty||resource.disabled">
             <tab-heading><span ng-show="!resource.disabled"><i class="icon-chevron-right"></i> </span>{{resource.label}}<span ng-show="resource.disabled">:</span></tab-heading>
             <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>

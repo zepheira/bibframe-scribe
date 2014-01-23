@@ -2,14 +2,12 @@
  * Header
  */
 
-/*
 .application-logo {
-    background-image: url("../img/bf-newlogo-s.png");
+    background-image: url("../img/bibframe-newlogo-s.png");
     background-repeat: no-repeat;
-    background-position: -10px -10px;
-    padding-left: 40px;
+    padding-left: 60px;
+    padding-right: 10px;
 }
-*/
 
 /*
  * General
