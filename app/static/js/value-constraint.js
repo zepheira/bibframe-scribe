@@ -5,6 +5,9 @@ var ValueConstraint = function(obj) {
     this._typeID = null;
     this._typeLabel = null;
     this._typeLabelHint = null;
+    this._editable = true;
+    this._defaultURI = null;
+    this._defaultLiteral = null;
 
     if (typeof obj.descriptionTemplateRef !== "undefined") {
         this._ref = obj.descriptionTemplateRef;
@@ -39,6 +42,18 @@ var ValueConstraint = function(obj) {
                 this._typeLabelHint = obj.valueDataType.valueLabelHint;
             }
         }
+    }
+
+    if (typeof obj.editable !== "undefined") {
+        this._editable = (obj.editable.toLowerCase() === "true");
+    }
+
+    if (typeof obj.defaultURI !== "undefined") {
+        this._defaultURI = obj.defaultURI;
+    }
+
+    if (typeof obj.defaultLiteral !== "undefined") {
+        this._defaultLiteral = obj.defaultLiteral;
     }
 };
 
@@ -88,4 +103,28 @@ ValueConstraint.prototype.hasHint = function() {
 
 ValueConstraint.prototype.getComplexTypeLabelHint = function() {
     return this._typeLabelHint;
+};
+
+ValueConstraint.prototype.hasDefaultURI = function() {
+    return this._defaultURI !== null;
+};
+
+ValueConstraint.prototype.hasDefaultLiteral = function() {
+    return this._defaultLiteral !== null;
+};
+
+ValueConstraint.prototype.isEditable = function() {
+    // Possibly further use this to validate vocab usage by
+    // checking if defaultURI matches to type / defaultLiteral matches
+    // to type. But right now just check if editable is false but no
+    // default provided.
+    return (this._editable || !this._editable && (!this.hasDefaultURI() || !this.hasDefaultLiteral()));
+};
+
+ValueConstraint.prototype.getDefaultURI = function() {
+    return this._defaultURI;
+};
+
+ValueConstraint.prototype.getDefaultLiteral = function() {
+    return this._defaultLiteral;
 };
