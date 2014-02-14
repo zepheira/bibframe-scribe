@@ -95,7 +95,8 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-                                "value": "http://id.loc.gov/contentCategory/text"
+                                "defaultURI": "http://id.loc.gov/vocabulary/contentTypes/txt",
+                                "defaultLiteral": "text"
                             }
 
                         },
@@ -295,7 +296,8 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-                                "value": "http://id.loc.gov/contentCategory/online-resource"
+                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
+                                "defaultLiteral": "online resource"
                             }
 
                         },
@@ -307,7 +309,9 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-                                "value": "http://id.loc.gov/contentCategory/unmediated"
+                                "editable": "true",
+                                "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
+                                "defaultText": "unmediated"
                             }
 
                         },
@@ -393,7 +397,8 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-                                "value": "http://id.loc.gov/contentCategory/online-resource"
+                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
+                                "defaultLiteral": "volume"
                             }
 
                         },
@@ -405,7 +410,8 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-                                "value": "http://id.loc.gov/contentCategory/unmediated"
+                                "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
+                                "defaultText": "unmediated"
                             }
 
                         },
