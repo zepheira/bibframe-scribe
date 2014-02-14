@@ -28,10 +28,11 @@
                                 "propertyLabel": "Author"
                             },
                             "type": "resource",
+                            "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Agent:Meeting" ]
+                                                            "bfp:Agent:Organization", 
+                                                            "bfp:Agent:Meeting" ]
                             }
                         },
                         {
@@ -40,10 +41,11 @@
                                 "propertyLabel": "Editor"
                             },
                             "type": "resource",
+                            "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Agent:Meeting" ]
+                                                            "bfp:Agent:Organization", 
+                                                            "bfp:Agent:Meeting" ]
                             }
                         },
                         {
@@ -52,10 +54,11 @@
                                 "propertyLabel": "Contributor"
                             },
                             "type": "resource",
+                            "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Agent:Meeting" ]
+                                                            "bfp:Agent:Organization", 
+                                                            "bfp:Agent:Meeting" ]
                             }
                         },
                         {
@@ -64,10 +67,11 @@
                                 "propertyLabel": "Translator"
                             },
                             "type": "resource",
+                            "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Agent:Meeting" ]
+                                                            "bfp:Agent:Organization", 
+                                                            "bfp:Agent:Meeting" ]
                             }
                         },
                         {
@@ -76,10 +80,11 @@
                                 "propertyLabel": "Illustrator"
                             },
                             "type": "resource",
+                            "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Agent:Meeting" ]
+                                                            "bfp:Agent:Organization", 
+                                                            "bfp:Agent:Meeting" ]
                             }
                         },
                         {
@@ -90,7 +95,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/text"
+                                "value": "http://id.loc.gov/contentCategory/text"
                             }
 
                         },
@@ -99,7 +104,7 @@
                                 "id": "http://bibframe.org/vocab/contentsNote",
                                 "propertyLabel": "Contents"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -117,7 +122,7 @@
                                 "id": "http://bibframe.org/vocab/notes",
                                 "propertyLabel": "Notes"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -135,10 +140,10 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Authority:Place", 
-							    "bfp:Authority:ClassificationEntity", 
-							    "bfp:Authority:Topic" ]
+                                                            "bfp:Agent:Organization", 
+                                                            "bfp:Authority:Place", 
+                                                            "bfp:Authority:ClassificationEntity", 
+                                                            "bfp:Authority:Topic" ]
                             }
                         },
                         {
@@ -257,8 +262,8 @@
                 "id": "bfp:Instance:ElectronicBook",
                 "class": {
                     "classLabel": "Electronic",
-		    "id": "http://bibframe.org/vocab/ElectronicBook",
-		    "instanceOf": "http://bibframe.org/vocab/Book",
+                    "id": "http://bibframe.org/vocab/ElectronicBook",
+                    "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -268,7 +273,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
- 			         "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                  "descriptionTemplateRef": [ "bfp:Work:Book" ]
                             }
                         },
                         {
@@ -290,7 +295,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/online-resource"
+                                "value": "http://id.loc.gov/contentCategory/online-resource"
                             }
 
                         },
@@ -302,7 +307,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/unmediated"
+                                "value": "http://id.loc.gov/contentCategory/unmediated"
                             }
 
                         },
@@ -356,7 +361,7 @@
                 "class": {
                     "classLabel": "Print",
                     "id": "http://bibframe.org/vocab/PrintBook",
-		    "instanceOf": "http://bibframe.org/vocab/Book",
+                    "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -366,7 +371,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
- 			         "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                  "descriptionTemplateRef": [ "bfp:Work:Book" ]
                             }
                         },
                         {
@@ -388,7 +393,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/online-resource"
+                                "value": "http://id.loc.gov/contentCategory/online-resource"
                             }
 
                         },
@@ -400,7 +405,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/unmediated"
+                                "value": "http://id.loc.gov/contentCategory/unmediated"
                             }
 
                         },
@@ -409,7 +414,7 @@
                                 "id": "http://bibframe.org/vocab/dimensions",
                                 "propertyLabel": "Dimensions"
                             },
-			    "repeatable": "true",			    
+                            "repeatable": "true",    
                             "type": "literal"
                         },
                         {
