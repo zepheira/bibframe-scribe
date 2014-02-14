@@ -90,13 +90,18 @@
       <div class="modal-body">
         <form class="form-inline" ng-submit="save()">
           <label class="property-label" for="literal">{{property}}</label>
-          <span ng-switch="" on="prop.getType()">
-            <span ng-switch-when="resource">
-              <span ng-include="'advanced.html'"></span>
+          <span ng-if="!prop.hasConstraint()||(prop.hasConstraint()&&prop.getConstraint().isEditable())">
+            <span ng-switch="" on="prop.getType()">
+              <span ng-switch-when="resource">
+                <span ng-include="'advanced.html'"></span>
+              </span>
+              <span ng-switch-default>
+                <span ng-include="'basic.html'"></span>
+              </span>
             </span>
-            <span ng-switch-default>
-              <span ng-include="'basic.html'"></span>
-            </span>
+          </span>
+          <span ng-if="prop.hasConstraint()&&!prop.getConstraint().isEditable()">
+            <span ng-include="'ineditable.html'"></span>
           </span>
         </form>
       </div>
@@ -128,6 +133,25 @@
         <button class="btn" ng-click="cancel()">Cancel</button>
         <button class="btn btn-primary" ng-click="save()">Save</button>
       </div>
+    </script>
+
+    <script type="text/ng-template" id="ineditable.html">
+      <span class="muted">Profile default value</span>
+      <ul class="values">
+        <li class="badge badge-info">
+          <span ng-if="prop.getConstraint().hasDefaultLiteral()">
+            <span ng-if="prop.getConstraint().hasDefaultURI()">
+              <span title="{{prop.getConstraint().getDefaultURI()}}">{{prop.getConstraint().getDefaultLiteral()}}</span>
+            </span>
+            <span ng-if="!prop.getConstraint().hasDefaultURI()">
+              {{prop.getConstraint().getDefaultLiteral()}}
+            </span>
+          </span>
+          <span ng-if="!prop.getConstraint().hasDefaultLiteral()&&prop.getConstraint.hasDefaultURI()">
+            {{prop.getConstraint().getDefaultURI()}}
+          </span>
+        </li>
+      </ul>
     </script>
 
     <script type="text/ng-template" id="basic.html">
@@ -224,13 +248,18 @@
         <div ng-repeat="prop in resourceTemplates[resource.uri].getPropertyTemplates()">
           <p>
             <label for="{{resource.uri}}-{{prop.getProperty().getID()}}" class="property-label">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
-            <span ng-switch="" on="prop.getType()">
-              <span ng-switch-when="resource">
-                <span ng-include="'advanced.html'"></span>
+            <span ng-if="!prop.hasConstraint()||(prop.hasConstraint()&&prop.getConstraint().isEditable())">
+              <span ng-switch="" on="prop.getType()">
+                <span ng-switch-when="resource">
+                  <span ng-include="'advanced.html'"></span>
+                </span>
+                <span ng-switch-default>
+                  <span ng-include="'basic.html'"></span>
+                </span>
               </span>
-              <span ng-switch-default>
-                <span ng-include="'basic.html'"></span>
-              </span>
+            </span>
+            <span ng-if="prop.hasConstraint()&&!prop.getConstraint().isEditable()">
+              <span ng-include="'ineditable.html'"></span>
             </span>
           </p>
           <ul class="values" ng-hide="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
