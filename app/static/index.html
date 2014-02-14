@@ -136,7 +136,7 @@
     </script>
 
     <script type="text/ng-template" id="ineditable.html">
-      <span class="muted">Profile default value</span>
+      <span class="muted" title="This value was set by the profile designer and cannot be modified">Profile default value</span>
       <ul class="values">
         <li class="badge badge-info">
           <span ng-if="prop.getConstraint().hasDefaultLiteral()">
@@ -262,7 +262,7 @@
               <span ng-include="'ineditable.html'"></span>
             </span>
           </p>
-          <ul class="values" ng-hide="resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
+          <ul class="values" ng-hide="(prop.hasConstraint()&&!prop.getConstraint().isEditable())||resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
               <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>

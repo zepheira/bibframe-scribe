@@ -158,11 +158,25 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     };
 
     $scope.initializeProperty = function(work, property, flags) {
-        var prop, constraint;
+        var prop, constraint, defaultVal;
         prop = property.getProperty().getID();
         namespacer.extractNamespace(prop);
         if (typeof work[prop] === "undefined") {
             work[prop] = [];
+        }
+        if (property.hasConstraint()) {
+            constraint = property.getConstraint();
+            if (constraint.hasDefaultURI()) {
+                if (constraint.hasDefaultLiteral()) {
+                    defaultVal = new PredObject(constraint.getDefaultLiteral(), constraint.getDefaultURI(), property.getType(), false);
+                } else {
+                    defaultVal = new PredObject(constraint.getDefaultURI(), constraint.getDefaultURI(), property.getType(), false);
+                }
+                work[prop].push(defaultVal);
+            } else if (property.getConstraint().hasDefaultLiteral()) {
+                defaultVal = new PredObject(constraint.getDefaultLiteral(), null, property.getType(), false);
+                work[prop].push(defaultVal);
+            }
         }
         if (!flags.hasRequired && property.isRequired()) {
             flags.hasRequired = true;
