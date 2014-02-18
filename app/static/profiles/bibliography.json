@@ -254,7 +254,9 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/online-resource"
+                                "editable": "false",
+                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
+                                "defaultLiteral": "volume"
                             }
 
                         },
@@ -266,7 +268,9 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/unmediated"
+                                "editable": "false",
+                                "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
+                                "defaultLiteral": "unmediated"
                             }
 
                         },
