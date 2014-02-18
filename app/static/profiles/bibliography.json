@@ -59,7 +59,9 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/text"
+                                "editable": "false",
+                                "defaultURI": "http://id.loc.gov/vocabulary/contentTypes/txt",
+                                "defaultLiteral": "text"
                             }
 
                         },
@@ -161,7 +163,9 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/online-resource"
+                                "editable": "false",
+                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
+                                "defaultLiteral": "online resource"
                             }
 
                         },
@@ -173,7 +177,9 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ],
-				"value": "http://id.loc.gov/contentCategory/unmediated"
+                                "editable": "false",
+                                "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
+                                "defaultLiteral": "unmediated"
                             }
 
                         },
