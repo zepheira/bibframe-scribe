@@ -26,9 +26,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         dz: null
     };
     
-    var namespacer, ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
-
-    namespacer = new Namespace();
+    var ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
 
     ExportModalCtrl = function($scope, $modalInstance, rdf) {
         $scope.rdf = rdf;
@@ -160,7 +158,6 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     $scope.initializeProperty = function(work, property, flags) {
         var prop, constraint, defaultVal;
         prop = property.getProperty().getID();
-        namespacer.extractNamespace(prop);
         if (typeof work[prop] === "undefined") {
             work[prop] = [];
         }
@@ -471,7 +468,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     $scope.transmit = function(flag) {
         if ($scope.validate()) {
             if (flag === "export") {
-                $scope.exportRDF();
+                $scope.exportN3($scope.persistAndShow);
             } else if (flag === "save") {
                 $scope.exportN3($scope.persist);
             }
@@ -493,9 +490,18 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         return valid;
     };
 
+    $scope.persistAndShow = function(n3, id) {
+        Store.new(null, {"n3": n3}).$promise.then(function(resp) {
+            Store.hack(null, {"id": id}).$promise.then(function(resp) {
+                $scope.exportedRDF = resp.rdf;
+                $scope.showRDF();
+            });
+        });
+    };
+
     $scope.persist = function(n3) {
         Store.new(null, {"n3": n3}).$promise.then(function(resp) {
-            console.log(resp);
+            // console.log(resp);
         });
     };
 
@@ -513,7 +519,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
             });
 
             $scope.exportedRDF = rdf;
-            next(rdf);
+            next(rdf, subj);
         });        
     };
 
@@ -544,6 +550,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         return '<' + id + '>\n' + frag + ' rdf:type <' + type + '> .\n';
     };
 
+    /**
+     * @deprecated
+     */
     $scope.exportRDF = function() {
         Store.id(null, null).$promise.then(function(resp) {
             // @@@ may want a basic triple API library for this instead
@@ -565,6 +574,9 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
         });
     };
     
+    /**
+     * @deprecated
+     */
     $scope.exportResource = function(res, id, type, refs) {
         var frag = "";
         angular.forEach(res, function(vals, prop) {

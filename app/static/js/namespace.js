@@ -1,3 +1,8 @@
+/**
+ * Deprecated.  See app/hacks.js, which will eventually be folded into a more
+ * appropriate export mechanism than a hack.
+ */
+
 var Namespace = function() {
     this._tracker = 0;
     this._map = {};
