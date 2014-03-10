@@ -40,10 +40,14 @@ module.exports = {
                 answer += '    </rdf:Description>\n';
 
                 store.execute(queryWork, function(success, workResp) {
-                    var j, answerWork, workId;
+                    var j, answerWork, workId, prop;
                     workId = "http://example.org/work" + id.split(/\/id/)[1].substr(0, 8);
                     answerWork = '\n    <rdf:Description rdf:about="' + workId + '">\n';
-                    answerWork += '        <rdf:type rdf:about="' + instanceWork[type] + '"/>\n';
+                    if (typeof instanceWork[type] !== "undefined") {
+                        answerWork += '        <rdf:type rdf:about="' + instanceWork[type] + '"/>\n';
+                    }
+                    prop = namespacer.extractNamespace("http://bibframe.org/vocab/hasInstance");
+                    answerWork += '        <' + prop.namespace + ':' + prop.term + ' rdf:about="' + id + '"/>\n';
                     if (success) {
                         for (j = 0; j < workResp.length; j++) {
                             nsProp = namespacer.extractNamespace(workResp[j].p.value);
