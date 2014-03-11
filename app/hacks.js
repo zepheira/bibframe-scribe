@@ -13,62 +13,100 @@ var instanceWork = {
 
 module.exports = {
     split: function(id, store) {
-        var queryInstance, queryWork, deferred;
+        var queryInstance, queryWork, deferred, answer, namespacer, head, tail, subs, subquery, queue;
         deferred = Q.defer();
 
         queryInstance = 'SELECT * { <' + id + '> ?p ?o . FILTER(?p IN(<http://bibframe.org/vocab/ISBN10>,<http://bibframe.org/vocab/ISBN13>,<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>,<http://bibframe.org/vocab/isInstanceOf>,<http://bibframe.org/vocab/provider>,<http://bibframe.org/vocab/carrierCategory>,<http://bibframe.org/vocab/mediaCategory>,<http://bibframe.org/vocab/edition>,<http://bibframe.org/vocab/editionResponsibility>,<http://bibframe.org/vocab/lccn>,<http://bibframe.org/vocab/link>,<http://bibframe.org/vocab/dimensions>)) . }';
         queryWork = 'SELECT * { <' + id + '> ?p ?o . FILTER(?p IN(<http://bibframe.org/vocab/titleStatement>,<http://bibframe.org/vocab/workTitleRemained>,<http://bibframe.org/vocab/proposed/author>,<http://bibframe.org/vocab/proposed/editor>,<http://bibframe.org/vocab/proposed/contributor>,<http://bibframe.org/vocab/proposed/translator>,<http://bibframe.org/vocab/proposed/illustrator>,<http://bibframe.org/vocab/contentCategory>,<http://bibframe.org/vocab/contentsNote>,<http://bibframe.org/vocab/language>,<http://bibframe.org/vocab/notes>,<http://bibframe.org/vocab/subject>,<http://bibframe.org/vocab/otherEdition>,<http://bibframe.org/vocab/isEditionOf>,<http://bibframe.org/vocab/isTranslationOf>,<http://bibframe.org/vocab/hasTranslation>,<http://bibframe.org/vocab/isVersionOf>,<http://bibframe.org/vocab/hasVersion>,<http://bibframe.org/vocab/isVariantOf>,<http://bibframe.org/vocab/hasVariant>,<http://bibframe.org/vocab/isBasedOn>,<http://bibframe.org/vocab/isBasisFor>)) . }';
 
-        store.execute(queryInstance, function(success, results) {
-            var i, namespacer, nsProp, answer, head, tail, type;
-            namespacer = new Namespace();
-            head = '<?xml version="1.0"?>\n\n';
-            tail = '</rdf:RDF>\n';
-            answer = '    <rdf:Description rdf:about="' + id + '">\n';
-            if (success) {
-                for (i = 0; i < results.length; i++) {
-                    nsProp = namespacer.extractNamespace(results[i].p.value);
-                    if (nsProp.term === "type") {
-                        type = results[i].o.value;
-                    }
-                    if (results[i].o.token === "uri") {
-                        answer += '        <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + results[i].o.value + '"/>\n';
+        namespacer = new Namespace();
+        head = '<?xml version="1.0"?>\n\n';
+        tail = '</rdf:RDF>\n';
+        answer = '';
+        subs = [];
+        queue = [];
+
+        queryResource(store, queryInstance).then(function(results) {
+            var i, prop, type;
+            answer += '    <rdf:Description rdf:about="' + id + '">\n';
+            for (i = 0; i < results.length; i++) {
+                prop = namespacer.extractNamespace(results[i].p.value);
+                if (prop.term === "type") {
+                    type = results[i].o.value;
+                }
+                if (results[i].o.token === "uri") {
+                    answer += '        <' + prop.namespace + ':' + prop.term + ' rdf:resource="' + results[i].o.value + '"/>\n';
+                } else {
+                    answer += '        <' + prop.namespace + ':' + prop.term + '>' + results[i].o.value + '</' + prop.namespace + ':' + prop.term + '>\n';
+                }
+            }
+            answer += '    </rdf:Description>\n';
+
+            queryResource(store, queryWork).then(function(wresults) {
+                var j, k, l, wid, wprop;
+                wid = "http://example.org/work" + id.split(/\/id/)[1].substr(0, 8);
+                answer += '\n    <rdf:Description rdf:about="' + wid + '">\n';
+                if (typeof instanceWork[type] !== "undefined") {
+                    answer += '        <rdf:type rdf:resource="' + instanceWork[type] + '"/>\n';
+                }
+                wprop = namespacer.extractNamespace("http://bibframe.org/vocab/hasInstance");
+                answer += '        <' + wprop.namespace + ':' + wprop.term + ' rdf:resource="' + id + '"/>\n';
+                for (j = 0; j < wresults.length; j++) {
+                    wprop = namespacer.extractNamespace(wresults[j].p.value);
+                    if (wresults[j].o.token === "uri") {
+                        answer += '        <' + wprop.namespace + ':' + wprop.term + ' rdf:resource="' + wresults[j].o.value + '"/>\n';
+                        subs.push(wresults[j].o.value);
                     } else {
-                        answer += '        <' + nsProp.namespace + ':' + nsProp.term+ '>' + results[i].o.value + '</' + nsProp.namespace + '>\n';
+                        answer += '        <' + wprop.namespace + ':' + wprop.term + '>' + wresults[j].o.value + '</' + wprop.namespace + ':' + wprop.term + '>\n';
                     }
                 }
                 answer += '    </rdf:Description>\n';
 
-                store.execute(queryWork, function(success, workResp) {
-                    var j, answerWork, workId, prop;
-                    workId = "http://example.org/work" + id.split(/\/id/)[1].substr(0, 8);
-                    answerWork = '\n    <rdf:Description rdf:about="' + workId + '">\n';
-                    if (typeof instanceWork[type] !== "undefined") {
-                        answerWork += '        <rdf:type rdf:about="' + instanceWork[type] + '"/>\n';
+                if (subs.length > 0) {
+                    for (k = 0; k < subs.length; k++) {
+                        subquery = "SELECT * { ?s ?p ?o . FILTER(?s IN(<" + subs[k] + ">)) . }";
+                        queue.push(queryResource(store, subquery));
                     }
-                    prop = namespacer.extractNamespace("http://bibframe.org/vocab/hasInstance");
-                    answerWork += '        <' + prop.namespace + ':' + prop.term + ' rdf:about="' + id + '"/>\n';
-                    if (success) {
-                        for (j = 0; j < workResp.length; j++) {
-                            nsProp = namespacer.extractNamespace(workResp[j].p.value);
-                            if (workResp[j].o.token === "uri") {
-                                answerWork += '        <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + workResp[j].o.value + '"/>\n';
-                            } else {
-                                answerWork += '        <' + nsProp.namespace + ':' + nsProp.term+ '>' + workResp[j].o.value + '</' + nsProp.namespace + '>\n';
+                    Q.allSettled(queue).then(function(subResults) {
+                        subResults.forEach(function(sresults) {
+                            var l, sprop;
+                            if (sresults.value.length > 0) {
+                                sresults = sresults.value;
+                                answer += '\n    <rdf:Description rdf:about="' + sresults[0].s.value + '">\n';
+                                for (l = 0; l < sresults.length; l++) {
+                                    sprop = namespacer.extractNamespace(sresults[l].p.value);
+                                    if (sresults[l].o.token === "uri") {
+                                        answer += '        <' + sprop.namespace + ':' + sprop.term + ' rdf:resource="' + sresults[l].o.value + '"/>\n';
+                                    } else {
+                                        answer += '        <' + sprop.namespace + ':' + sprop.term + '>' + sresults[l].o.value + '</' + sprop.namespace + ':' + sprop.term + '>\n';
+                                    }
+                                }
+                                answer += '    </rdf:Description>\n';
                             }
-                        }
-                        answerWork += '    </rdf:Description>\n';
-                        deferred.resolve(head + namespacer.buildRDF() + answer + answerWork + tail);
-                    } else {
+                        });
                         deferred.resolve(head + namespacer.buildRDF() + answer + tail);
-                    }
-                });
-            } else {
-                deferred.reject();
-            }
+                    });
+                } else {
+                    deferred.resolve(head + namespacer.buildRDF() + answer + tail);
+                }
+            });
         });
+        
         return deferred.promise;
     }
+};
+
+var queryResource = function(store, query) {
+    var query, deferred, i;
+    deferred = Q.defer();
+    store.execute(query, function(success, result) {
+        if (success) {
+            deferred.resolve(result);
+        } else {
+            deferred.reject();
+        }
+    });
+    return deferred.promise;
 };
 
 var Namespace = function() {
