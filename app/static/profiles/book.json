@@ -1,6 +1,10 @@
 {
     "Profile": {
-        "title": "Monograph",
+        "id": "bfp:Monograph:Book",
+        "title": "Monograph -- Book",
+        "description": "An example monograph (Book) profile reflecting the cataloging practices of example public library",
+        "date": "2013-05-01",
+        "contact": "Example Public Library cataloging help desk, info@examplelib.org",
         "resourceTemplate": [
             {
                 "id": "bfp:Work:Book",
@@ -264,29 +268,29 @@
                 "id": "bfp:Instance:ElectronicBook",
                 "class": {
                     "classLabel": "Electronic",
-                    "id": "http://bibframe.org/vocab/ElectronicBook",
+                    "id": "http://bibframe.org/vocab/Electronic",
                     "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/isInstanceOf",
-                                "propertyLabel": "Is Instance Of"
+                                "id": "http://bibframe.org/vocab/publication",
+                                "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                  "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Provider"
+                                "id": "http://bibframe.org/vocab/distribution",
+                                "propertyLabel": "Distribution"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:PublishEvent", "bfp:Event:DistributeEvent", "bfp:Event:ManufactureEvent", "bfp:Event:ProducerEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {
@@ -366,29 +370,29 @@
                 "id": "bfp:Instance:PrintBook",
                 "class": {
                     "classLabel": "Print",
-                    "id": "http://bibframe.org/vocab/PrintBook",
+                    "id": "http://bibframe.org/vocab/Print",
                     "instanceOf": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/isInstanceOf",
-                                "propertyLabel": "Is Instance Of"
+                                "id": "http://bibframe.org/vocab/publication",
+                                "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                  "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Provider"
+                                "id": "http://bibframe.org/vocab/distribution",
+                                "propertyLabel": "Distribution"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:PublishEvent", "bfp:Event:DistributeEvent", "bfp:Event:ManufactureEvent", "bfp:Event:ProducerEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {

@@ -147,28 +147,6 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/isBasisFor",
-                                "propertyLabel": "Is Basis For"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Dissertation" ]
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/isTranslationOf",
-                                "propertyLabel": "Is Translation Of"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Dissertation" ]
-                            }
-                        },
-                        {
-                            "property": {
                                 "id": "http://bibframe.org/vocab/hasTranslation",
                                 "propertyLabel": "Has Translation"
                             },
@@ -190,13 +168,13 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Provider"
+                                "id": "http://bibframe.org/vocab/publication",
+                                "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:PublishEvent", "bfp:Event:DistributeEvent", "bfp:Event:ManufactureEvent", "bfp:Event:ProducerEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {
@@ -237,7 +215,7 @@
                         {
                             "property": {
                                 "id": "http://bibframe.org/vocab/link",
-                                "propertyLabel": "uri"
+                                "propertyLabel": "URL"
                             },
                             "type": "literal"
                         }
@@ -253,13 +231,13 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Provider"
+                                "id": "http://bibframe.org/vocab/publication",
+                                "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:PublishEvent", "bfp:Event:DistributeEvent", "bfp:Event:ManufactureEvent", "bfp:Event:ProducerEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {

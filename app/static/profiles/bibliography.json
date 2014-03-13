@@ -146,13 +146,13 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Provider"
+                                "id": "http://bibframe.org/vocab/publication",
+                                "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:PublishEvent", "bfp:Event:DistributeEvent", "bfp:Event:ManufactureEvent", "bfp:Event:ProducerEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {
@@ -237,13 +237,13 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Provider"
+                                "id": "http://bibframe.org/vocab/publication",
+                                "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:PublishEvent", "bfp:Event:DistributeEvent", "bfp:Event:ManufactureEvent", "bfp:Event:ProducerEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
                         {

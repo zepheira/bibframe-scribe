@@ -3,6 +3,58 @@
         "title": "Events",
         "resourceTemplate": [    	       
             {
+                "id": "bfp:Event:ProviderEvent",
+                "class": {
+                    "classLabel": "Provider",
+                    "id": "http://bibframe.org/vocab/Provider",
+                    "labelProperty": "Provider Event",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerName",
+                                "propertyLabel": "Provider Agent"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", 
+							    "bfp:Agent:Organization" ]
+			    }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerPlace",
+                                "propertyLabel": "Provider Place"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Authority:Place" ]
+			    }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerDate",
+                                "propertyLabel": "Provider Date"
+                            },
+                            "valueConstraint": {
+                                "valueDataType": {
+                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
+                                    "valueLabel": "ISO 8601",
+                                    "valueLabelHint": "ISO"
+                                }
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/providerStatement",
+                                "propertyLabel": "Provider Statement"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
                 "id": "bfp:Event:PublishEvent",
                 "class": {
                     "classLabel": "Publisher",
