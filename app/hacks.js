@@ -11,13 +11,58 @@ var instanceWork = {
     "http://bibframe.org/vocab/Painting": "http://bibframe.org/vocab/Image",
 };
 
+var domainWork = '<http://bibframe.org/vocab/titleStatement>,' + 
+    '<http://bibframe.org/vocab/workTitleRemained>,' + 
+    '<http://bibframe.org/vocab/proposed/author>,' + 
+    '<http://bibframe.org/vocab/proposed/editor>,' + 
+    '<http://bibframe.org/vocab/proposed/contributor>,' + 
+    '<http://bibframe.org/vocab/proposed/translator>,' + 
+    '<http://bibframe.org/vocab/proposed/illustrator>,' + 
+    '<http://bibframe.org/vocab/contentCategory>,' + 
+    '<http://bibframe.org/vocab/contentsNote>,' + 
+    '<http://bibframe.org/vocab/language>,' + 
+    '<http://bibframe.org/vocab/notes>,' + 
+    '<http://bibframe.org/vocab/subject>,' + 
+    '<http://bibframe.org/vocab/otherEdition>,' + 
+    '<http://bibframe.org/vocab/isEditionOf>,' + 
+    '<http://bibframe.org/vocab/isTranslationOf>,' + 
+    '<http://bibframe.org/vocab/hasTranslation>,' + 
+    '<http://bibframe.org/vocab/isVersionOf>,' + 
+    '<http://bibframe.org/vocab/hasVersion>,' + 
+    '<http://bibframe.org/vocab/isVariantOf>,' + 
+    '<http://bibframe.org/vocab/hasVariant>,' + 
+    '<http://bibframe.org/vocab/isBasedOn>,' + 
+    '<http://bibframe.org/vocab/isBasisFor>' +
+    '<http://bibframe.org/vocab/classificationDdc>' +
+    '<http://bibframe.org/vocab/classificationLcc>' +
+    '<http://bibframe.org/vocab/classificationNlm>' +
+    '<http://bibframe.org/vocab/classificationUdc>';
+
+var domainInstance = '<http://bibframe.org/vocab/ISBN10>,' + 
+    '<http://bibframe.org/vocab/ISBN13>,' + 
+    '<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>,' +
+    '<http://bibframe.org/vocab/isInstanceOf>,' + 
+    '<http://bibframe.org/vocab/provider>,' + 
+    '<http://bibframe.org/vocab/publisher>,' + 
+    '<http://bibframe.org/vocab/manufacturer>,' + 
+    '<http://bibframe.org/vocab/producer>,' + 
+    '<http://bibframe.org/vocab/distributor>,' + 
+    '<http://bibframe.org/vocab/carrierCategory>,' + 
+    '<http://bibframe.org/vocab/mediaCategory>,' + 
+    '<http://bibframe.org/vocab/edition>,' + 
+    '<http://bibframe.org/vocab/editionResponsibility>,' + 
+    '<http://bibframe.org/vocab/lccn>,' + 
+    '<http://bibframe.org/vocab/link>,' + 
+    '<http://bibframe.org/vocab/dimensions>,' + 
+    '<http://bibframe.org/vocab/extent>';
+
 module.exports = {
     split: function(id, store) {
         var queryInstance, queryWork, deferred, answer, namespacer, head, tail, subs, subquery, queue;
         deferred = Q.defer();
 
-        queryInstance = 'SELECT * { <' + id + '> ?p ?o . FILTER(?p IN(<http://bibframe.org/vocab/ISBN10>,<http://bibframe.org/vocab/ISBN13>,<http://www.w3.org/1999/02/22-rdf-syntax-ns#type>,<http://bibframe.org/vocab/isInstanceOf>,<http://bibframe.org/vocab/provider>,<http://bibframe.org/vocab/carrierCategory>,<http://bibframe.org/vocab/mediaCategory>,<http://bibframe.org/vocab/edition>,<http://bibframe.org/vocab/editionResponsibility>,<http://bibframe.org/vocab/lccn>,<http://bibframe.org/vocab/link>,<http://bibframe.org/vocab/dimensions>)) . }';
-        queryWork = 'SELECT * { <' + id + '> ?p ?o . FILTER(?p IN(<http://bibframe.org/vocab/titleStatement>,<http://bibframe.org/vocab/workTitleRemained>,<http://bibframe.org/vocab/proposed/author>,<http://bibframe.org/vocab/proposed/editor>,<http://bibframe.org/vocab/proposed/contributor>,<http://bibframe.org/vocab/proposed/translator>,<http://bibframe.org/vocab/proposed/illustrator>,<http://bibframe.org/vocab/contentCategory>,<http://bibframe.org/vocab/contentsNote>,<http://bibframe.org/vocab/language>,<http://bibframe.org/vocab/notes>,<http://bibframe.org/vocab/subject>,<http://bibframe.org/vocab/otherEdition>,<http://bibframe.org/vocab/isEditionOf>,<http://bibframe.org/vocab/isTranslationOf>,<http://bibframe.org/vocab/hasTranslation>,<http://bibframe.org/vocab/isVersionOf>,<http://bibframe.org/vocab/hasVersion>,<http://bibframe.org/vocab/isVariantOf>,<http://bibframe.org/vocab/hasVariant>,<http://bibframe.org/vocab/isBasedOn>,<http://bibframe.org/vocab/isBasisFor>)) . }';
+        queryInstance = 'SELECT * { <' + id + '> ?p ?o . FILTER(?p IN(' + domainInstance + ')) . }';
+        queryWork = 'SELECT * { <' + id + '> ?p ?o . FILTER(?p IN(' + domainWork + ')) . }';
 
         namespacer = new Namespace();
         head = '<?xml version="1.0"?>\n\n';
