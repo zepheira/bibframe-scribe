@@ -81,6 +81,15 @@ serviceConfig = {
         },
         'works': {
             'branch': '/authorities/names'
+        },
+        'mediaTypes': {
+            'branch': '/vocabulary/mediaTypes'
+        },
+        'contentTypes': {
+            'branch': '/vocabulary/contentTypes'
+        },
+        'carrier': {
+            'branch': '/vocabulary/carriers'
         }
     },
     'local': {
