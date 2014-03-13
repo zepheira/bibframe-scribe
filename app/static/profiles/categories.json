@@ -1,0 +1,54 @@
+{
+    "Profile": {
+        "id": "bfp:Categories",
+        "title": "BIBFRAME Categories",
+        "description": "RDA categories for BIBFRAME description",
+        "resourceTemplate": [
+            {
+                "id": "bfp:Category:Content",
+                "class": {
+                    "id": "http://bibframe.org/vocab/ContentCategory",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Category:Carrier",
+                "class": {
+                    "id": "http://bibframe.org/vocab/CarrierCategory",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Category:Media",
+                "class": {
+                    "id": "http://bibframe.org/vocab/MediaCategory",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
