@@ -1,6 +1,10 @@
 {
     "Profile": {
+        "id": "bfp:Monograph:Dissertation",
         "title": "Monograph -- Dissertation",
+        "description": "An example monograph (Disertation) profile reflecting the cataloging practices of example academic library",
+        "date": "2013-05-01",
+        "contact": "Example Academic Library cataloging help desk, info@academiclib.org",
         "resourceTemplate": [
             {
                 "id": "bfp:Work:Dissertation",
