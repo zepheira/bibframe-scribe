@@ -32,10 +32,10 @@ var domainWork = '<http://bibframe.org/vocab/titleStatement>,' +
     '<http://bibframe.org/vocab/isVariantOf>,' + 
     '<http://bibframe.org/vocab/hasVariant>,' + 
     '<http://bibframe.org/vocab/isBasedOn>,' + 
-    '<http://bibframe.org/vocab/isBasisFor>' +
-    '<http://bibframe.org/vocab/classificationDdc>' +
-    '<http://bibframe.org/vocab/classificationLcc>' +
-    '<http://bibframe.org/vocab/classificationNlm>' +
+    '<http://bibframe.org/vocab/isBasisFor>,' +
+    '<http://bibframe.org/vocab/classificationDdc>,' +
+    '<http://bibframe.org/vocab/classificationLcc>,' +
+    '<http://bibframe.org/vocab/classificationNlm>,' +
     '<http://bibframe.org/vocab/classificationUdc>';
 
 var domainInstance = '<http://bibframe.org/vocab/ISBN10>,' + 
