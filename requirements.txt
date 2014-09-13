@@ -1,5 +1,5 @@
 rdfstore@0.8.1
-restify@2.6.0
+restify@2.8.2
 uuid@1.4.1
 forever@0.10.9
 q@0.9.7

@@ -26,13 +26,12 @@ Until then.  With `nodeenv` and `mongod` binaries available:
 % node index.js
 ```
 
-There is a bug in the restify library.  You will need to either download
-[the file](https://github.com/JasonGhent/node-restify/blob/bd3747da7db82507daaf9bc9d6110407063ae462/lib/plugins/static.js) as described in
-[the pull request](https://github.com/mcavage/node-restify/pull/451) and modify
-or replace `node_modules/restify/lib/plugins/static.js` until
-the patch makes it into a release.
+There is still a bug in the restify library.  The static.js plugin fails to
+evaluate a normalized path correctly and so will always return a 403
+regardless of which directory it is configured to use.  The patch is minor.
+You can use the `static.js` provided as a sibling file for deployment.
 
-You can also use `static.js` provided as a sibling file for deployment.
+Issue described here: https://github.com/mcavage/node-restify/issues/549
 
 Load Data
 =========

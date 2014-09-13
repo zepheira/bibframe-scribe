@@ -31,7 +31,7 @@ try {
             'mongoPort': 27017
         },
         'listen': 8888,
-        'staticDir': './static'
+        'staticDir': '.'
     }
 }
 
