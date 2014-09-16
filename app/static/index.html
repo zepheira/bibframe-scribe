@@ -242,7 +242,6 @@
             </ul>
           </span>
         </span>
-        <span ng-show="loading[prop.getProperty().getID()]"><img src="img/spinner.gif"></span>
       </span>
     </script>
 
@@ -265,6 +264,7 @@
             <span ng-if="prop.hasConstraint()&&!prop.getConstraint().isEditable()">
               <span ng-include="'ineditable.html'"></span>
             </span>
+            <span class="col-md-1" ng-show="loading[prop.getProperty().getID()]"><img src="img/spinner.gif"></span>
           </p>
           <ul class="values" ng-hide="(prop.hasConstraint()&&!prop.getConstraint().isEditable())||resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
@@ -294,7 +294,7 @@
     <!-- forked typeahead template -->
     <script type="text/ng-template" id="template/typeahead/typeahead-popup.html">
       <ul class="typeahead dropdown-menu" ng-style="{display: isOpen()&&'block' || 'none', top: position.top+'px', left: position.left+'px'}">
-        <li class="bg-info"><span class="text-muted">Not the right match? Use the <i class="icon-plus"></i> button to create a new resource</span></li>
+        <li class="match-info"><span class="text-muted">Not the right match? Use the <i class="icon-plus"></i> button to create a new resource</span></li>
         <li ng-repeat="match in matches" ng-class="{active: isActive($index) }" ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)">
           <typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></typeahead-match>
         </li>
