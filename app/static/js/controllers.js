@@ -473,7 +473,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
                 $scope.exportN3($scope.persist);
             }
         } else {
-            alert("Please fill out all required properties before " + (flag === "save") ? "saving" : "exporting" + ".");
+            alert("Please fill out all required properties before " + ((flag === "save") ? "saving" : "exporting") + ".");
         }
     };
 
