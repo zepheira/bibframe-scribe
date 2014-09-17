@@ -42,6 +42,7 @@
         <li><a href="#">Logout</a></li>
       </ul>
     </nav>
+
     <div class="container editor">
       <div class="row">
         <tabset vertical="true" type="tabs" class="col-md-10">
@@ -224,17 +225,18 @@
                 ng-click="pivot(prop,prop.getConstraint().getReference())"><i class="icon-plus"></i></button>
             <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) -->
           </span>
-          <span ng-if="!editExisting&&prop.getConstraint().hasManyReferences()" class="dropdown input-group-btn">
-            <a class="dropdown-toggle">
-              <button class="btn btn-default"
+          <span ng-if="!editExisting&&prop.getConstraint().hasManyReferences()" class="dropdown input-group-btn" dropdown>
+            <button class="btn btn-default dropdown-toggle"
+                  dropdown-toggle
                   ng-disabled="!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                   type="button"
                   tooltip="Select resource to create"
                   tooltip-placement="right">
-                <i class="icon-plus"></i><b class="caret"></b>
-              </button>
-            </a>
-            <ul class="dropdown-menu">
+              <i class="icon-plus"></i><b class="caret"></b>
+            </button>
+            <ul class="dropdown-menu" role="menu">
               <li ng-repeat="ref in prop.getConstraint().getReference()">
                 <a ng-click="pivot(prop,ref)" class="click">{{idToTemplate[ref].getLabel()}}</a>
                 <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) to pass already typed material into new resource, when appropriate label vocab is set -->
