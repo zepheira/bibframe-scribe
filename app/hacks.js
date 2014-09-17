@@ -36,7 +36,12 @@ var domainWork = '<http://bibframe.org/vocab/titleStatement>,' +
     '<http://bibframe.org/vocab/classificationDdc>,' +
     '<http://bibframe.org/vocab/classificationLcc>,' +
     '<http://bibframe.org/vocab/classificationNlm>,' +
-    '<http://bibframe.org/vocab/classificationUdc>';
+    '<http://bibframe.org/vocab/classificationUdc>,' + 
+    '<http://bibframe.org/vocab/workTitle>,' + 
+    '<http://bibframe.org/vocab/rel/artist>,' + 
+    '<http://bibframe.org/vocab/description>,' + 
+    '<http://bibframe.org/vocab/rel/recordingArtist>,' + 
+    '<http://bibframe.org/vocab/av/track>';
 
 var domainInstance = '<http://bibframe.org/vocab/ISBN10>,' + 
     '<http://bibframe.org/vocab/ISBN13>,' + 
@@ -54,6 +59,8 @@ var domainInstance = '<http://bibframe.org/vocab/ISBN10>,' +
     '<http://bibframe.org/vocab/lccn>,' + 
     '<http://bibframe.org/vocab/link>,' + 
     '<http://bibframe.org/vocab/dimensions>,' + 
+    '<http://bibframe.org/vocab/image>,' + 
+    '<http://bibframe.org/vocab/duration>,' + 
     '<http://bibframe.org/vocab/extent>';
 
 module.exports = {
