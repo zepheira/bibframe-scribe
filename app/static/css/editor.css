@@ -105,10 +105,6 @@
     background-color: #3a87ad
 }
 
-.editor ul.ng-valid-date .btn-group {
-    display: none;
-}
-
 .editor .match-info {
     border-bottom: 1px solid #ddd;
     line-height: 20px;

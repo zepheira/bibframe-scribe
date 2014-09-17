@@ -9,7 +9,7 @@
     <link href="css/dropzone-basic.css" rel="stylesheet">
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
-    <script src="js/lib/ui-bootstrap-tpls-0.12.0-SNAPSHOT.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.12.0-SNAPSHOT.js"></script>
     <script src="js/lib/dropzone.min.js"></script>
     <script>Dropzone.autoDiscover = false;</script>
     <script src="js/profile.js"></script>
@@ -160,7 +160,10 @@
                    class="form-control"
                    id="{{resource.uri}}-{{prop.getProperty().getID()}}"
                    datepicker-popup="yyyy-MM-dd"
-                   show-weeks="false"
+                   datepicker-options="{'show-weeks': false}"
+                   show-button-bar="false"
+                   is-open="opened"
+                   ng-focus="opened=true"
                    ng-model="inputted[prop.getProperty().getID()]"
                    ng-enter="setDateValue(currentWork,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
                    ng-disabled="!editExisting&&!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0">
@@ -301,31 +304,6 @@
           <typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></typeahead-match>
         </li>
       </ul>
-    </script>
-
-    <!-- forked datepicker template -->
-    <script type="text/ng-template" id="template/datepicker/datepicker.html">
-      <table>
-        <thead>
-          <tr class="text-center">
-            <th><button type="button" class="btn btn-default pull-left" ng-click="move(-1)"><i class="icon-chevron-left"></i></button></th>
-            <th colspan="{{rows[0].length - 2 + showWeekNumbers}}"><button type="button" class="btn btn-block" ng-click="toggleMode()"><strong>{{title}}</strong></button></th>
-            <th><button type="button" class="btn btn-default pull-right" ng-click="move(1)"><i class="icon-chevron-right"></i></button></th>
-          </tr>
-          <tr class="text-center" ng-show="labels.length > 0">
-            <th ng-show="showWeekNumbers">#</th>
-            <th ng-repeat="label in labels">{{label}}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="row in rows">
-            <td ng-show="showWeekNumbers" class="text-center"><em>{{ getWeekNumber(row) }}</em></td>
-            <td ng-repeat="dt in row" class="text-center">
-              <button type="button" style="width:100%;" class="btn btn-default" ng-class="{'bg-info': dt.selected}" ng-click="$parent.$parent.$parent.setDateValue($parent.$parent.$parent.currentWork,$parent.$parent.$parent.prop,dt.date);$parent.$parent.$parent.dateSelection();$parent.$parent.$parent.inputted[$parent.$parent.$parent.prop.getProperty().getID()]=''" ng-disabled="dt.disabled"><span ng-class="{text-muted: dt.secondary}">{{dt.label}}</span></button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </script>
 
   </body>
