@@ -12,6 +12,7 @@
     <script src="js/lib/ui-bootstrap-tpls-0.12.0-SNAPSHOT.min.js"></script>
     <script src="js/lib/dropzone.min.js"></script>
     <script>Dropzone.autoDiscover = false;</script>
+    <script src="js/lib/rdf_store_min.js"></script>
     <script src="js/profile.js"></script>
     <script src="js/value-constraint.js"></script>
     <script src="js/property.js"></script>
@@ -44,6 +45,15 @@
     </nav>
 
     <div class="container editor">
+      <div id="messages">
+        <alert
+             ng-repeat="msg in messages"
+             type="{{msg.severity}}"
+             close="closeMsg($index)">
+           {{msg.message}}
+        </alert>
+      </div>
+
       <div class="row">
         <tabset vertical="true" type="tabs" class="col-md-10">
           <tab disabled="true">
@@ -56,6 +66,7 @@
             <div class="jumbotron" ng-show="!initialized">
               <h2>Hey! Listen!</h2>
               <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
+              <progressbar value="progress" class="active progress-striped">{{progress}}%</progressbar>
             </div>
           </tab>
           <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty||resource.disabled">

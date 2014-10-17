@@ -5,18 +5,29 @@
         "events",
         "language",
         "categories",
+        "held",
         "book",
         "dissertation",
         "bibliography",
         "record",
         "vra"
     ],
+    "schemas": [
+        "vocab.n3",
+        "augment.n3"
+    ],
+    "firstClass": [
+        "http://bibframe.org/vocab/Work",
+        "http://bibframe.org/vocab/Instance",
+        "http://bibframe.org/vocab/HeldItem"
+    ],
     "useWorks": [
         "http://bibframe.org/vocab/Book",
         "http://bibframe.org/vocab/Dissertation",
         "http://bibframe.org/vocab/Bibliography",
         "http://bibframe.org/vocab/Audio",
-        "http://bibframe.org/vocab/Painting"
+        "http://bibframe.org/vocab/Painting",
+        "http://bibframe.org/vocab/HeldItem"
     ],
     "resourceServiceMap": {
         "http://bibframe.org/vocab/Book": "Works",

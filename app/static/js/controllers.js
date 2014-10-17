@@ -1,6 +1,9 @@
-var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Query) {
+var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, Store, Query, Message) {
     $scope.initialized = false;
+    $scope.progress = 0;
     $scope.config = {};
+    $scope.firstClass = [];
+    $scope.resourceToFirstClassMap = {};
     $scope.profiles = [];
     $scope.resourceTemplates = {};
     $scope.resourceTypes = {};
@@ -11,6 +14,7 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     $scope.inputted = {};
     $scope.useServices = {};
 
+    $scope.store = rdfstore.create();
     $scope.currentWork = {};
     $scope.loading = {};
     $scope.flags = {
@@ -24,6 +28,10 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     $scope.exportedRDF = "";
     $scope.cache = {
         dz: null
+    };
+    $scope.messages = Message.messages();
+    $scope.closeMsg = function(idx) {
+        Message.removeMessage(idx);
     };
     
     var ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
@@ -101,28 +109,68 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
 
     // initialize by retrieving configuration and profiles
     Configuration.get(null, null).$promise.then(function(config) {
+        var total, current, incrementProgress;
+        
         $scope.config = config;
-        return $q.all(config.profiles.map(function(p) {
-            return Profiles.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
-                var prof;
-                prof = new Profile(p, resp.Profile);
-                $scope.profiles.push(prof);
-                return $scope.initialize(prof);
+
+        $scope.firstClass = config.firstClass;
+
+        total = (config.schemas.length * 2) + config.profiles.length;
+        current = 0;
+        incrementProgress = function() {
+            $scope.progress = Math.round((++current / total) * 100);
+        };
+
+        return $q.all(config.schemas.map(function(s) {
+            incrementProgress();
+            return $http.get('schema/' + s);
+        })).then(function(httpResponses) {
+            httpResponses.map(function(response) {
+                $scope.store.load('text/turtle', response.data, 'urn:schemas', function(success) {
+                    incrementProgress();
+                    $scope.$apply();
+                    if (!success) {
+                        Message.addMessage("Error loading schema " + response.config.url + ", please check for RDF validity", "danger");
+                    } else {
+                        angular.forEach($scope.firstClass, function(fc) {
+                            $scope.store.execute("SELECT ?s { ?s <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + fc + "> }", ["urn:schemas"], [], function(success, results) {
+                                angular.forEach(results, function(r) {
+                                    $scope.resourceToFirstClassMap[r.s.value] = fc;
+                                });
+                            });
+                        });
+                    }
+                });
             });
-        })).then(function(responses) {
-            var resources = [];
-            responses.map(function(curr) {
-                resources = resources.concat(curr);
-                return curr;
+        }, function(fail) {
+            Message.addMessage('Failed to load schema ' + fail.config.url + ': HTTP ' + fail.status + ' - ' + fail.statusText, 'danger');
+        }).then(function() {
+            $q.all(config.profiles.map(function(p) {
+                return Profiles.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
+                    var prof;
+                    incrementProgress();
+                    prof = new Profile(p, resp.Profile);
+                    $scope.profiles.push(prof);
+                    return $scope.initialize(prof);
+                });
+            })).then(function(responses) {
+                var resources = [];
+                responses.map(function(curr) {
+                    resources = resources.concat(curr);
+                    return curr;
+                });
+                $scope.initialized = true;
+                $scope.resourceOptions = resources;
+                console.log($scope.resourceToFirstClassMap);
+                console.log($scope.resourceTemplates);
             });
-            $scope.initialized = true;
-            $scope.resourceOptions = resources;
         });
     });
 
     $scope.initialize = function(profile) {
         var workTemplate, instances, instanceTemplate, opts;
         opts = [];
+
         // interpret configuration for labels and classes to use out of profile
         angular.forEach($scope.config.useWorks, function(work) {
             workTemplate = profile.getResourceTemplate(work);
@@ -620,4 +668,4 @@ var EditorCtrl = function($scope, $q, $modal, Configuration, Profiles, Store, Qu
     };
 };
 
-EditorCtrl.$inject = ["$scope", "$q", "$modal", "Configuration", "Profiles", "Store", "Query"];
+EditorCtrl.$inject = ["$scope", "$q", "$modal", "$http", "Configuration", "Profiles", "Store", "Query", "Message"];
