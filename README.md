@@ -59,8 +59,8 @@ More
 
 Scribe developement has been supported in part by the Library of Congress, BIBFLOW (an IMLS project of the UC Davis library) and Zepheira
 
-[Bibframe](http://bibframe.org/)
-[Zepheira](http://zepheira.com/)
-[Library of Congress](http://loc.gov/)
-[BIBFLOW](http://www.lib.ucdavis.edu/bibflow/)
+* [Bibframe](http://bibframe.org/)
+* [Zepheira](http://zepheira.com/)
+* [Library of Congress](http://loc.gov/)
+* [BIBFLOW](http://www.lib.ucdavis.edu/bibflow/)
 
