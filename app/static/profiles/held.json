@@ -9,6 +9,7 @@
                 "class": {
                     "classLabel": "Holding",
                     "id": "http://bibframe.org/vocab/HeldItem",
+                    "holdingFor": "http://bibframe.org/vocab/Instance",
                     "propertyTemplate": [
                         {
                             "property": {

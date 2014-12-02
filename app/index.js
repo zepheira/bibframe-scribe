@@ -7,7 +7,6 @@ url = require('url');
 Q = require('q');
 http = require('q-io/http');
 tr = require('./translate');
-hacks = require('./hacks');
 
 IDBASE = 'http://example.org/id';
 
@@ -238,15 +237,6 @@ db = new rdfstore.Store(config.store, function(store) {
                 }
             });
             res.send(200, answer);
-        });
-    });
-
-    // This is a hack.
-    server.get('/resource/hack', function hacketyHack(req, res, next) {
-        var id, answer = "";
-        id = url.parse(req.url, true).query.id;
-        hacks.split(id, store).then(function(results) {
-            res.send(200, { "rdf": results });
         });
     });
 });

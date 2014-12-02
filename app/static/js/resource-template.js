@@ -1,4 +1,4 @@
-var ResourceTemplate = function(obj) {
+var ResourceTemplate = function(obj, config) {
     var i, pt;
 
     this._id = null;
@@ -6,8 +6,7 @@ var ResourceTemplate = function(obj) {
     this._labelProperty = null;
     this._classID = null;
     this._propertyTemplates = [];
-    this._work = true;
-    this._instanceOfRef = null;
+    this._relation = null;
 
     if (typeof obj.id !== "undefined") {
         this._id = obj.id;
@@ -26,9 +25,14 @@ var ResourceTemplate = function(obj) {
             this._labelProperty = obj.class.labelProperty;
         }
 
-        if (typeof obj.class.instanceOf !== "undefined") {
-            this._instanceOfRef = obj.class.instanceOf;
-            this._work = false;
+        // @@@There could probably be a complex type around relations
+        if (typeof config.relations !== "undefined") {
+            for (i in config.relations) {
+                if (typeof obj.class[i] !== "undefined") {
+                    this._relation = obj.class[i];
+                    break;
+                }
+            }
         }
 
         if (typeof obj.class.propertyTemplate !== "undefined") {
@@ -56,18 +60,36 @@ ResourceTemplate.prototype.getLabelProperty = function() {
     return this._labelProperty;
 };
 
-ResourceTemplate.prototype.isWork = function() {
-    return this._work;
-};
-
-ResourceTemplate.prototype.getParentID = function() {
-    return this._instanceOfRef;
+ResourceTemplate.prototype.getFirstClass = function(classes, superClass) {
+    if (classes.indexOf(superClass) >= 0) {
+        return superClass;
+    } else if (classes.indexOf(this.getClassID()) >= 0) {
+        return this.getClassID();
+    } else {
+        return null;
+    }
 };
 
 ResourceTemplate.prototype.getPropertyTemplates = function() {
     return this._propertyTemplates;
 };
 
-ResourceTemplate.prototype.mergeWork = function(work) {
-    this._propertyTemplates = work.getPropertyTemplates().concat(this._propertyTemplates);
+ResourceTemplate.prototype.hasProperty = function(prop) {
+    var i, iprop, result = false;
+    for (i = 0; i < this._propertyTemplates.length; i++) {
+        iprop = this._propertyTemplates[i];
+        if (prop === iprop.getProperty()) {
+            result = true;
+            break;
+        }
+    }
+    return result;
+};
+
+ResourceTemplate.prototype.getRelation = function() {
+    return this._relation;
+};
+
+ResourceTemplate.prototype.mergeTemplate = function(tmpl) {
+    this._propertyTemplates = tmpl.getPropertyTemplates().concat(this._propertyTemplates);
 };

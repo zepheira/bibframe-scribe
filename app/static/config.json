@@ -21,14 +21,10 @@
         "http://bibframe.org/vocab/Instance",
         "http://bibframe.org/vocab/HeldItem"
     ],
-    "useWorks": [
-        "http://bibframe.org/vocab/Book",
-        "http://bibframe.org/vocab/Dissertation",
-        "http://bibframe.org/vocab/Bibliography",
-        "http://bibframe.org/vocab/Audio",
-        "http://bibframe.org/vocab/Painting",
-        "http://bibframe.org/vocab/HeldItem"
-    ],
+    "relations": {
+        "instanceOf": "include",
+        "holdingFor": "include"
+    },
     "resourceServiceMap": {
         "http://bibframe.org/vocab/Book": "Works",
         "http://bibframe.org/vocab/Dissertation": "Works",

@@ -69,8 +69,8 @@
               <progressbar value="progress" class="active progress-striped">{{progress}}%</progressbar>
             </div>
           </tab>
-          <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty||resource.disabled">
-            <tab-heading><span ng-show="!resource.disabled"><i class="icon-chevron-right"></i> </span>{{resource.label}}<span ng-show="resource.disabled">:</span></tab-heading>
+          <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty">
+            <tab-heading><span ng-show="resource.child"><i class="icon-chevron-right"></i> </span>{{resource.label}}</tab-heading>
             <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>
           </tab>
         </tabset>

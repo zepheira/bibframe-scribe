@@ -45,14 +45,6 @@ angular.module("storeService", ["ngResource"]).
                         "action": "new",
                         "n3": "@n3"
                     }
-                },
-                "hack": { // @@@ hack, remove later
-                    "method": "GET",
-                    "isArray": false,
-                    "params": {
-                        "action": "hack",
-                        "id": "@id"
-                    }
                 }
             }
         );

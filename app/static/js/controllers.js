@@ -1,4 +1,6 @@
 var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, Store, Query, Message) {
+    var SCHEMAS = "urn:schemas";
+
     $scope.initialized = false;
     $scope.progress = 0;
     $scope.config = {};
@@ -34,7 +36,9 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
         Message.removeMessage(idx);
     };
     
-    var ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
+    var namespacer, ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
+
+    namespacer = new Namespace();
 
     ExportModalCtrl = function($scope, $modalInstance, rdf) {
         $scope.rdf = rdf;
@@ -133,7 +137,7 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
                         Message.addMessage("Error loading schema " + response.config.url + ", please check for RDF validity", "danger");
                     } else {
                         angular.forEach($scope.firstClass, function(fc) {
-                            $scope.store.execute("SELECT ?s { ?s <http://www.w3.org/2000/01/rdf-schema#subClassOf> <" + fc + "> }", ["urn:schemas"], [], function(success, results) {
+                            $scope.store.execute("SELECT ?s { ?s rdfs:subClassOf <" + fc + "> }", [SCHEMAS], [], function(success, results) {
                                 angular.forEach(results, function(r) {
                                     $scope.resourceToFirstClassMap[r.s.value] = fc;
                                 });
@@ -145,43 +149,74 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
         }, function(fail) {
             Message.addMessage('Failed to load schema ' + fail.config.url + ': HTTP ' + fail.status + ' - ' + fail.statusText, 'danger');
         }).then(function() {
+            $scope.store.registerDefaultProfileNamespaces();
             $q.all(config.profiles.map(function(p) {
                 return Profiles.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
-                    var prof;
+                    var prof, promises;
                     incrementProgress();
-                    prof = new Profile(p, resp.Profile);
-                    $scope.profiles.push(prof);
-                    return $scope.initialize(prof);
+                    prof = new Profile(p);
+                    promises = prof.init(resp.Profile, $scope.config, function(res, query) {
+                        var deferred = $q.defer();
+                        $scope.store.execute(
+                            query,
+                            [SCHEMAS],
+                            [],
+                            function(success, results) {
+                                if (success) {
+                                    deferred.resolve([res, results]);
+                                } else {
+                                    deferred.reject('Query failed: ' + query);
+                                }
+                            }
+                        );
+                        return deferred.promise;
+                    });
+                    return $q.all(promises).then(function(results) {
+                        results.map(function(r) {
+                            prof._processQuery($scope.firstClass, r);
+                        });
+                        $scope.profiles.push(prof);
+                        return $scope.initialize(prof);
+                    });
                 });
             })).then(function(responses) {
-                var resources = [];
+                // After all resources are registered, generate options
+                var resources, relation;
+                resources = [];
                 responses.map(function(curr) {
-                    resources = resources.concat(curr);
-                    return curr;
+                    angular.forEach(curr, function(template) {
+                        relation = null;
+                        if (typeof $scope.resourceTemplates[template.getRelation()] !== "undefined") {
+                            relation = $scope.resourceTemplates[template.getRelation()];
+                            template.mergeTemplate(relation);
+                        }
+                        resources.push({
+                            "uri": template.getClassID(),
+                            "label": template.getLabel(),
+                            "sortKey": ((relation !== null) ? relation.getLabel() + "-" : "") + template.getLabel(),
+                            "child": relation !== null
+                        });
+                        return template;
+                    });
                 });
                 $scope.initialized = true;
                 $scope.resourceOptions = resources;
-                console.log($scope.resourceToFirstClassMap);
-                console.log($scope.resourceTemplates);
             });
         });
     });
 
     $scope.initialize = function(profile) {
-        var workTemplate, instances, instanceTemplate, opts;
-        opts = [];
+        var instances, instanceTemplate, resources;
+        resources = [];
 
-        // interpret configuration for labels and classes to use out of profile
-        angular.forEach($scope.config.useWorks, function(work) {
-            workTemplate = profile.getResourceTemplate(work);
-            if (workTemplate !== null && workTemplate.isWork()) {
-                instances = profile.getWorkInstances(work);
-                angular.forEach(instances, function(instanceTemplate) {
-                    instanceTemplate.mergeWork(workTemplate);
-                    $scope.resourceTemplates[instanceTemplate.getClassID()] = instanceTemplate;
-                    opts.push({"uri": instanceTemplate.getClassID(), "label": instanceTemplate.getLabel(), "sortKey": workTemplate.getLabel() + "-" + instanceTemplate.getLabel(), "disabled": false});
+        angular.forEach($scope.firstClass, function(fc) {
+            var templates;
+            templates = profile.getClassTemplates(fc);
+            if (templates !== null) {
+                angular.forEach(templates, function(template) {
+                    resources.push(template);
+                    $scope.resourceTemplates[template.getClassID()] = template;
                 });
-                opts.push({"uri": workTemplate.getClassID(), "label": workTemplate.getLabel(), "disabled": true, "sortKey": workTemplate.getLabel()});
             }
         });
         profile.registerResourceTemplates($scope.idToTemplate);
@@ -200,7 +235,7 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
             $scope.dataTypes[dataType.id] = dataType.handler;
         });
 
-        return opts;
+        return resources;
     };
 
     $scope.initializeProperty = function(work, property, flags) {
@@ -516,7 +551,7 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
     $scope.transmit = function(flag) {
         if ($scope.validate()) {
             if (flag === "export") {
-                $scope.exportN3($scope.persistAndShow);
+                $scope.exportRDF();
             } else if (flag === "save") {
                 $scope.exportN3($scope.persist);
             }
@@ -536,15 +571,6 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
             }
         });
         return valid;
-    };
-
-    $scope.persistAndShow = function(n3, id) {
-        Store.new(null, {"n3": n3}).$promise.then(function(resp) {
-            Store.hack(null, {"id": id}).$promise.then(function(resp) {
-                $scope.exportedRDF = resp.rdf;
-                $scope.showRDF();
-            });
-        });
     };
 
     $scope.persist = function(n3) {
@@ -567,7 +593,7 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
             });
 
             $scope.exportedRDF = rdf;
-            next(rdf, subj);
+            next(rdf);
         });        
     };
 
@@ -598,10 +624,8 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
         return '<' + id + '>\n' + frag + ' rdf:type <' + type + '> .\n';
     };
 
-    /**
-     * @deprecated
-     */
     $scope.exportRDF = function() {
+        // @@@ generate something that can be inserted into the triplestore
         Store.id(null, null).$promise.then(function(resp) {
             // @@@ may want a basic triple API library for this instead
             //     of generating strings
@@ -610,7 +634,7 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
             rdf = '';
             tail = '</rdf:RDF>\n';
             refs = [];
-            rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource.getClassID(), refs);
+            rdf += $scope.exportResource($scope.currentWork, subj, $scope.activeResource, refs);
             angular.forEach($scope.created, function(res) {
                 if (refs.indexOf(res.id) >= 0) {
                     rdf += $scope.exportResource(res);
@@ -622,36 +646,64 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
         });
     };
     
-    /**
-     * @deprecated
-     */
-    $scope.exportResource = function(res, id, type, refs) {
-        var frag = "";
+    $scope.exportResource = function(res, id, resourceTemplate, refs) {
+        var frag = "", result = "", relFrag = "", type = null, split = false, relation, nsProp;
+
+        if (typeof resourceTemplate !== "undefined" && resourceTemplate !== null) {
+            type = resourceTemplate.getClassID();
+            relation = resourceTemplate.getRelation();
+            if (resourceTemplate.getRelation() !== null) {
+                split = true;
+            }
+        }
         angular.forEach(res, function(vals, prop) {
             var nsProp;
             if (prop === "id" && typeof id === "undefined") {
                 id = vals;
-            } else if (prop === "type" && typeof type === "undefined") {
+            } else if (prop === "type" && type === null) {
                 type = vals.getValue();
             } else {
                 nsProp = namespacer.extractNamespace(prop);
-                angular.forEach(vals, function(val) {
-                    if (val.isResource()) {
-                        frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
-                        if (typeof refs !== "undefined") {
-                            refs.push(val.getValue());
+                if ((split && resourceTemplate.hasProperty(prop)) || !split) {
+                    angular.forEach(vals, function(val) {
+                        if (val.isResource()) {
+                            frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
+                            if (typeof refs !== "undefined") {
+                                refs.push(val.getValue());
+                            }
+                        } else {
+                            frag += '    <'+ nsProp.namespace + ':' + nsProp.term;
+                            if (val.hasDatatype()) {
+                                frag += ' rdf:datatype="' + val.getDatatype() + '"';
+                            }
+                            frag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
                         }
-                    } else {
-                        frag += '    <'+ nsProp.namespace + ':' + nsProp.term;
-                        if (val.hasDatatype()) {
-                            frag += ' rdf:datatype="' + val.getDatatype() + '"';
+                    });
+                } else {
+                    angular.forEach(vals, function(val) {
+                        if (val.isResource()) {
+                            relFrag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
+                            if (typeof refs !== "undefined") {
+                                refs.push(val.getValue());
+                            }
+                        } else {
+                            relFrag += '    <'+ nsProp.namespace + ':' + nsProp.term;
+                            if (val.hasDatatype()) {
+                                relFrag += ' rdf:datatype="' + val.getDatatype() + '"';
+                            }
+                            relFrag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
                         }
-                        frag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
-                    }
-                });
+                    });
+                }
             }
         });
-        return '  <rdf:Description rdf:about="' + id + '">\n    <rdf:type rdf:resource="' + type + '"/>\n' + frag + '  </rdf:Description>\n';;
+        if (split) {
+            nsProp = namespacer.extractNamespace('http://bibframe.org/vocab/instanceOf'); // @@@ faking it
+            frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + id + '-work" />\n';
+            result += '  <rdf:Description rdf:about="' + id + '-work">\n    <rdf:type rdf:resource="' + relation + '"/>\n' + relFrag + '  </rdf:Description>\n';
+        }
+        result += '  <rdf:Description rdf:about="' + id + '">\n    <rdf:type rdf:resource="' + type + '"/>\n' + frag + '  </rdf:Description>\n';
+        return result;
     };
 
     $scope.showRDF = function() {
