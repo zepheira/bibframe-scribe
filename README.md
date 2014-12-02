@@ -1,4 +1,4 @@
-BIBFRAME Editor
+BIBFRAME Scribe
 ===============
 
 There are two pieces to this software.  The UI can be run locally without
@@ -16,11 +16,11 @@ Until then.  With `nodeenv` and `mongod` binaries available:
 
 ```
 % git clone [this repo]
-% nodeenv -c -r bibframe-editor/requirements.txt [env]
-% mv bibframe-editor [env]/
+% nodeenv -c -r bibframe-scribe/requirements.txt [env]
+% mv bibframe-scribe [env]/
 % cd [env]
 % . bin/activate
-% cd bibframe-editor
+% cd bibframe-scribe
 % mongod -rest &
 % cd app
 % node index.js
@@ -45,8 +45,8 @@ command line easily, so you may want to publish your data to this software's
 static directory and load from the locally hosted URL:
 
 ```
-% cp graph.n3 [env]/bibframe-editor/app/static/
-% cd [env]/bibframe-editor/app/
+% cp graph.n3 [env]/bibframe-scribe/app/static/
+% cd [env]/bibframe-scribe/app/
 % node index.js &
 % rdfstorejs load http://localhost:8888/static/graph.n3 --store-engine mongodb --store-mongo-domain localhost --store-name bfstore
 ```
@@ -57,6 +57,10 @@ and write the contents of graph.n3 into it instead.
 More
 ====
 
-See http://bibframe.org/ for more.
+Scribe developement has been supported in part by the Library of Congress, BIBFLOW (an IMLS project of the UC Davis library) and Zepheira
 
-[Zepheira](http://zepheira.com/)
+* [Bibframe](http://bibframe.org/)
+* [Zepheira](http://zepheira.com/)
+* [Library of Congress](http://loc.gov/)
+* [BIBFLOW](http://www.lib.ucdavis.edu/bibflow/)
+
