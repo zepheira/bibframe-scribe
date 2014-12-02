@@ -54,6 +54,11 @@ static directory and load from the locally hosted URL:
 Use `--store-overwrite true` if you want to obliterate your existing store
 and write the contents of graph.n3 into it instead.
 
+License
+=======
+
+This project is licensed under the Apache 2.0 license.  See the file LICENSE in this directory.
+
 More
 ====
 
