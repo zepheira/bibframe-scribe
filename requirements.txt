@@ -1,6 +1,6 @@
 rdfstore@0.8.2
 restify@2.8.2
 uuid@1.4.1
-forever@0.11.1
+forever@0.13.0
 q@1.0.1
 q-io@1.11.5
