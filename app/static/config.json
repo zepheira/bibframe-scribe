@@ -41,6 +41,7 @@
         "http://bibframe.org/vocab/Organization": "Agents",
         "http://bibframe.org/vocab/Person": "Agents",
         "http://bibframe.org/vocab/LanguageEntity": "Languages",
+        "http://bibframe.org/vocab/Provider": "Providers",
         "http://bibframe.org/vocab/PublisherEvent": "Providers",
         "http://bibframe.org/vocab/ManufactureEvent": "Providers",
         "http://bibframe.org/vocab/ProducerEvent": "Providers",
