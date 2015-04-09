@@ -28,7 +28,7 @@ angular.module("configurationServices", ["ngResource"]).
 angular.module("storeService", ["ngResource"]).
     factory("Store", function($resource) {
         return $resource(
-            "/resource/:action",
+            "../resource/:action",
             {},
             {
                 "id": {
@@ -54,7 +54,7 @@ angular.module("storeService", ["ngResource"]).
 angular.module("queryService", ["ngResource"]).
     factory("Query", function($resource) {
         return $resource(
-            "/suggest/master?q=:q&services=:services",
+            "../suggest/master?q=:q&services=:services",
             {},
             {
                 "suggest": { "method": "GET", "isArray": true }
