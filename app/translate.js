@@ -40,6 +40,19 @@ module.exports = {
         }
         return answer;
     },
+    mesh: function(res) {
+        var i, answer, json;
+        answer = [];
+        json = JSON.parse(res);
+        for (i = 0; i < json.hits.hits.length; i++) {
+            answer.push({
+                'uri': json.hits.hits[i].fields.about[0],
+                'label': json.hits.hits[i].fields.label[0],
+                'source': 'mesh'
+            });
+        }
+        return answer;
+    },
     viaf: function(res) {
         var i, answer, json;
         answer = [];

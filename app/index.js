@@ -60,6 +60,14 @@ serviceConfig = {
             'arg': 'query'
         }
     },
+    'mesh': {
+        'config': {
+            'host': 'localhost:9200',
+            'path': '/mesh/descriptor/_search',
+            'queryArgs': '&df=label&fields=about,label&size=10',
+            'arg': 'q'
+        }
+    },
     'lc': {
         'config': {
             'host': 'id.loc.gov',
@@ -295,6 +303,11 @@ server.get('/suggest/viaf', function getViaf(req, res, next) {
 server.get('/suggest/fast', function getFast(req, res, next) {
     // www.oclc.org/developer/documentation/assignfast/using-api
     doProxy(req, res, serviceConfig['fast'].config, 'fast', null, next);
+});
+
+server.get('/suggest/mesh', function getFast(req, res, next) {
+    // wrote it ourselves! elasticsearch
+    doProxy(req, res, serviceConfig['mesh'].config, 'mesh', null, next);
 });
 
 server.get('/suggest/lc', function getFast(req, res, next) {

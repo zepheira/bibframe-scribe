@@ -64,7 +64,8 @@
             "lc:subjects",
             "fast",
             "agrovoc",
-            "local:subjects"
+            "local:subjects",
+            "mesh"
         ],
         "Places": [
             "lc:geo",
@@ -114,6 +115,10 @@
         "lc": {
             "short": "LC",
             "full": "Library of Congress"
+        },
+        "mesh": {
+            "short": "MESH",
+            "full": "NLM Medical Subject Headings"
         },
         "agrovoc": {
             "short": "AgroVoc",
