@@ -62,11 +62,12 @@ serviceConfig = {
     },
     'mesh': {
         'config': {
-            'host': 'localhost:9200',
-            'path': '/mesh/descriptor/_search',
-            'queryArgs': '&df=label&fields=about,label&size=10',
-            'arg': 'q'
-        }
+            'host': 'id.nlm.nih.gov',
+            'path': '/mesh/sparql',
+            'queryArgs': '&format=JSON&limit=10&inference=false',
+            'arg': 'query',
+        },
+	'sparql': 'PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> SELECT ?concept ?label WHERE { ?concept rdfs:label ?label . FILTER regex(str(?label), "^%s", "i") . }'
     },
     'lc': {
         'config': {
@@ -235,6 +236,8 @@ db = new rdfstore.Store(config.store, function(store) {
             }
             if (conf === 'local') {
                 queue.push(localSuggestHelper(query, (sub !== null) ? sub.types : null));
+	    } else if (conf == 'mesh') {
+		queue.push(sparqlProxyHelper(query, serviceConfig[conf].sparql, serviceConfig[conf].config, conf, (sub !== null) ? sub.branch : null));
             } else {
                 queue.push(proxyHelper(query, serviceConfig[conf].config, conf, (sub !== null) ? sub.branch : null));
             }
@@ -283,10 +286,32 @@ proxyHelper = function(qin, conf, source, branch) {
     });
 };
 
+sparqlProxyHelper = function(qin, query, conf, source, branch) {
+    var request, a, fullQuery;
+    fullQuery = encodeURIComponent(query.replace("%s", qin));
+    request = http.request('http://' + conf.host + ((branch !== null) ? branch : '') + conf.path +  '?' + conf.arg + '=' + fullQuery + conf.queryArgs);
+    return request.then(function(response) {
+        return response.body.read().then(function(answer) {
+            return tr[source](answer);
+        });
+    });
+}
+
 doProxy = function(req, res, conf, source, branch, next) {
     var parts, answer;
     parts = url.parse(req.url, true);
     proxyHelper(parts.query.q, conf, source, branch).then(
+        function(data) {
+            res.writeHead(200, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify(data));
+        }
+    );
+};
+
+doSparqlProxy = function(req, res, conf, source, branch, sparql, next) {
+    var parts, answer;
+    parts = url.parse(req.url, true);
+    sparqlProxyHelper(parts.query.q, conf.sparql, conf, source, branch).then(
         function(data) {
             res.writeHead(200, {'Content-Type': 'application/json'});
             res.end(JSON.stringify(data));
@@ -305,18 +330,18 @@ server.get('/suggest/fast', function getFast(req, res, next) {
     doProxy(req, res, serviceConfig['fast'].config, 'fast', null, next);
 });
 
-server.get('/suggest/mesh', function getFast(req, res, next) {
-    // wrote it ourselves! elasticsearch
-    doProxy(req, res, serviceConfig['mesh'].config, 'mesh', null, next);
+server.get('/suggest/mesh', function getMesh(req, res, next) {
+    // manipulating SPARQL endpoint output
+    doSparqlProxy(req, res, serviceConfig['mesh'].config, 'mesh', null, next);
 });
 
-server.get('/suggest/lc', function getFast(req, res, next) {
+server.get('/suggest/lc', function getLC(req, res, next) {
     // (no formal documentation)
     // may use more specific URL hierarchy, e.g., /authorities/subjects/suggest
     doProxy(req, res, serviceConfig['lc'].config, 'lc', null, next);
 });
 
-server.get('/suggest/agrovoc', function getFast(req, res, next) {
+server.get('/suggest/agrovoc', function getAgrovoc(req, res, next) {
     // foris.fao.org/agrovoc/
     doProxy(req, res, serviceConfig['agrovoc'].config, 'agrovoc', null, next);
 });

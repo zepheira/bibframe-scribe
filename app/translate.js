@@ -44,10 +44,10 @@ module.exports = {
         var i, answer, json;
         answer = [];
         json = JSON.parse(res);
-        for (i = 0; i < json.hits.hits.length; i++) {
+        for (i = 0; i < json.results.bindings.length; i++) {
             answer.push({
-                'uri': json.hits.hits[i].fields.about[0],
-                'label': json.hits.hits[i].fields.label[0],
+                'uri': json.results.bindings[i].concept.value,
+                'label': json.results.bindings[i].label.value,
                 'source': 'mesh'
             });
         }
