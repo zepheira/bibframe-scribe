@@ -1,6 +1,8 @@
-var rdfstore, restify, uuid, http, url, Q, db, server, doProxy, proxyHelper, config, tr, serviceConfig, localSuggestHelper, IDBASE;
+var levelgraph, levelgraphN3, restify, uuid, http, url, Q, db, server, doProxy, proxyHelper, config, tr, serviceConfig, localSuggestHelper, IDBASE;
 
-rdfstore = require('rdfstore');
+levelup = require ('level');
+levelgraph = require('levelgraph');
+levelgraphN3 = require('levelgraph-n3');
 restify = require('restify');
 uuid = require('uuid');
 url = require('url');
@@ -22,12 +24,7 @@ try {
 } catch (ex) {
     config = {
         'store': {
-            'persistent': true,
-            'engine': 'mongodb',
-            'name': 'bfstore',
-            'overwrite': false,
-            'mongoDomain': 'localhost',
-            'mongoPort': 27017
+            'path': './bfstore'
         },
         'listen': 8888,
         'staticDir': '.'
@@ -147,99 +144,128 @@ serviceConfig = {
     }
 };
 
-db = new rdfstore.Store(config.store, function(store) {
-    // Store the n3 propety of an incoming JSON object, because just
-    // getting the raw body is apparently more difficult; may come in
-    // handy, possibly also pass a list of IDs to save, and delete
-    // existing nodes with those IDs before saving.
-    server.put('/resource/new', function newResource(req, res, next) {
-        store.load('text/n3', req.body.n3, function(success, graph) {
-            res.send(201, {'success': success});
-        });
-        return next();
-    });
+db = levelgraphN3(levelgraph(levelup(config.store.path, {
+    createIfMissing: true,
+    errorIfExists: false,
+    compression: true
+})));
 
-    localSuggestHelper = function(qin, types) {
-        var i, query, qtypes, deferred, answer;
-        answer = [];
-        deferred = Q.defer();
-        query = 'SELECT * { ?s ?p ?o . FILTER regex(?o, "' + qin + '", "i") . FILTER(?p IN (<http://bibframe.org/vocab/title>,<http://bibframe.org/vocab/label>)) ';
-        if (typeof types !== 'undefined' && types !== null && types.length > 0) {
-            qtypes = [];
-            for (i = 0; i < types.length; i++) {
-                qtypes.push('<' + types[i] + '>');
+// Store the n3 propety of an incoming JSON object, because just
+// getting the raw body is apparently more difficult; may come in
+// handy, possibly also pass a list of IDs to save, and delete
+// existing nodes with those IDs before saving.
+server.put('/resource/new', function newResource(req, res, next) {
+    db.n3.put(req.body.n3, function(err) {
+        var success = (typeof err === "undefined" || err === null) ? true : false;
+        res.send(201, {'success': success});
+    });
+    return next();
+});
+
+localSuggestHelper = function(qin, types) {
+    var i, query, deferred, answer;
+    answer = [];
+    deferred = Q.defer();
+
+    query = [{
+        subject: db.v("s"),
+        predicate: db.v("p"),
+        object: db.v("o"),
+        filter: function predFilter(triple) {
+            return triple.predicate === "http://bibframe.org/vocab/title" || triple.predicate === "http://bibframe.org/vocab/label";
+        }
+    }];
+
+    if (typeof types !== 'undefined' && types !== null && types.length > 0) {
+        query.push({
+            subject: db.v("s"),
+            predicate: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            object: db.v("v"),
+            filter: function typeFilter(triple) {
+                return types.indexOf(triple.object) > -1;
             }
-            query += ' . ?s <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?v . FILTER(?v IN (' + qtypes.join(', ') + ')) . }';
+        });
+    }
+
+    db.search(query, {
+        filter: function searchFilter(solution, callback) {
+            var re = new RegExp("^" + qin, "i");
+            if (re.test(solution.o)) {
+                callback(null, solution);
+            } else {
+                callback();
+            }
+        }
+    }, function processResults(err, results) {
+        if (typeof err === "undefined" || err === null) {
+            for (i = 0; i < results.length; i++) {
+                answer.push({
+                    'uri': results[i].s,
+                    'label': results[i].o,
+                    'source': 'local'
+                });
+            }
+            deferred.resolve(answer);
         } else {
-            query += ' }';
+            deferred.reject();
         }
-        store.execute(query, function(success, results) {
-            if (success) {
-                for (i = 0; i < results.length; i++) {
-                    answer.push({
-                        'uri': results[i].s.value,
-                        'label': results[i].o.value,
-                        'source': 'local'
-                    });
-                }
-                deferred.resolve(answer);
-            } else {
-                deferred.reject();
-            }
-        });
-        return deferred.promise;
-    };
-
-    // Query the store for matching suggestions
-    server.get('/suggest/local', function suggestLocal(req, res, next) {
-        var qin, parts, query, i;
-        parts = url.parse(req.url, true);
-        qin = parts.query.q;
-        localSuggestHelper(qin, null, answer).then(
-            function(data) {
-                res.send(200, data);
-            },
-            function(err) {
-                res.send(500, {'success': false});
-            }
-        ).fin(function() {
-            next();
-        });
     });
 
-    // Aggregate queries to different services
-    server.get('/suggest/master', function suggestMaster(req, res, next) {
-        var i, query, services, s, conf, sub, answer, queue;
-        answer = [];
-        queue = [];
-        parts = url.parse(req.url, true);
-        services = JSON.parse(parts.query.services);
-        query = parts.query.q;
-        for (i  = 0; i < services.length; i++) {
-            s = services[i];
-            if (s.indexOf(':') > 0) {
-                conf = s.substr(0, s.indexOf(':'));
-                sub = serviceConfig[conf][s.substr(s.indexOf(':') + 1)];
-            } else {
-                conf = s;
-                sub = null;
-            }
-            if (conf === 'local') {
-                queue.push(localSuggestHelper(query, (sub !== null) ? sub.types : null));
-            } else {
-                queue.push(proxyHelper(query, serviceConfig[conf].config, conf, (sub !== null) ? sub.branch : null));
-            }
+    return deferred.promise;
+};
+
+// Query the store for matching suggestions
+server.get('/suggest/local', function suggestLocal(req, res, next) {
+    var qin, parts, query, i;
+    parts = url.parse(req.url, true);
+    qin = parts.query.q;
+    localSuggestHelper(qin, null).then(
+        function(data) {
+            res.send(200, data);
+        },
+        function(err) {
+            res.send(500, {'success': false});
         }
-        Q.allSettled(queue).then(function(results) {
-            results.forEach(function(result) {
-                if (result.state === 'fulfilled') {
-                    answer = answer.concat(result.value);
-                }
-            });
-            res.send(200, answer);
-        });
+    ).fin(function() {
+        next();
     });
 });
+
+// Aggregate queries to different services
+server.get('/suggest/master', function suggestMaster(req, res, next) {
+    var i, query, services, s, conf, sub, answer, queue;
+    answer = [];
+    queue = [];
+    parts = url.parse(req.url, true);
+    services = JSON.parse(parts.query.services);
+    query = parts.query.q;
+    for (i  = 0; i < services.length; i++) {
+        s = services[i];
+        if (s.indexOf(':') > 0) {
+            conf = s.substr(0, s.indexOf(':'));
+            sub = serviceConfig[conf][s.substr(s.indexOf(':') + 1)];
+        } else {
+            conf = s;
+            sub = null;
+        }
+        if (conf === 'local') {
+            queue.push(localSuggestHelper(query, (sub !== null) ? sub.types : null));
+        } else {
+            queue.push(proxyHelper(query, serviceConfig[conf].config, conf, (sub !== null) ? sub.branch : null));
+        }
+    }
+
+    Q.allSettled(queue).then(function(results) {
+        results.forEach(function(result) {
+            if (result.state === 'fulfilled') {
+                answer = answer.concat(result.value);
+            }
+        });
+        res.send(200, answer);
+    });
+});
+
+// what follows is unrelated to the DB
 
 server.post('/resource/id', function newIdentifier(req, res, next) {
     var num, id;
