@@ -144,18 +144,21 @@ serviceConfig = {
     }
 };
 
-db = levelgraphN3(levelgraph(levelup(config.store.path, {
-    createIfMissing: true,
-    errorIfExists: false,
-    compression: true
-})));
+db = levelgraphN3(levelgraph(
+    levelup(config.store.path, {
+        createIfMissing: true,
+        errorIfExists: false,
+        compression: true
+    }),
+    { joinAlgorithm: "basic" }
+));
 
 // Store the n3 propety of an incoming JSON object, because just
 // getting the raw body is apparently more difficult; may come in
 // handy, possibly also pass a list of IDs to save, and delete
 // existing nodes with those IDs before saving.
 server.put('/resource/new', function newResource(req, res, next) {
-    db.n3.put(req.body.n3, function(err) {
+    db.n3.put(req.body.n3, function putResult(err) {
         var success = (typeof err === "undefined" || err === null) ? true : false;
         res.send(201, {'success': success});
     });
@@ -180,7 +183,6 @@ localSuggestHelper = function(qin, types) {
         query.push({
             subject: db.v("s"),
             predicate: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
-            object: db.v("v"),
             filter: function typeFilter(triple) {
                 return types.indexOf(triple.object) > -1;
             }
