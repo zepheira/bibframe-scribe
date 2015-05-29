@@ -3,6 +3,7 @@ var levelgraph, levelgraphN3, restify, uuid, http, url, Q, db, server, doProxy, 
 levelup = require ('level');
 levelgraph = require('levelgraph');
 levelgraphN3 = require('levelgraph-n3');
+N3 = require('n3');
 restify = require('restify');
 uuid = require('uuid');
 url = require('url');
@@ -192,7 +193,7 @@ localSuggestHelper = function(qin, types) {
     db.search(query, {
         filter: function searchFilter(solution, callback) {
             var re = new RegExp("^" + qin, "i");
-            if (re.test(solution.o)) {
+            if (re.test(N3.Util.getLiteralValue(solution.o))) {
                 callback(null, solution);
             } else {
                 callback();
@@ -203,7 +204,7 @@ localSuggestHelper = function(qin, types) {
             for (i = 0; i < results.length; i++) {
                 answer.push({
                     'uri': results[i].s,
-                    'label': results[i].o,
+                    'label': N3.Util.getLiteralValue(results[i].o),
                     'source': 'local'
                 });
             }
