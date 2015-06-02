@@ -10,6 +10,9 @@ url = require('url');
 Q = require('q');
 http = require('q-io/http');
 tr = require('./translate');
+// sort of silence Node warnings, appears to be a levelgraph usage that
+// triggers too many listeners warnings.
+require('events').EventEmitter.prototype._maxListeners = 20;
 
 IDBASE = 'http://example.org/id';
 
@@ -160,9 +163,16 @@ db = levelgraphN3(levelgraph(
 // existing nodes with those IDs before saving.
 server.put('/resource/new', function newResource(req, res, next) {
     db.n3.put(req.body.n3, function putResult(err) {
-        var success = (typeof err === "undefined" || err === null) ? true : false;
-        res.send(201, {'success': success});
+        if (typeof err === "undefined" || err === null) {
+            res.send(201, {'success': true});
+        } else {
+            console.log(err);
+            res.send(500, {'success': false});
+        }
     });
+    // This would allow things to proceed as it appears the put() call
+    // doesn't ever call its callback.
+    // res.send(201, {'success': true});
     return next();
 });
 
