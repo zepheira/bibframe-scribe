@@ -2,3 +2,4 @@ app/config.js
 TODO
 *~
 app/bfstore
+app/static/js/lib/angular.js

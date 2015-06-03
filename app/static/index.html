@@ -10,6 +10,7 @@
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
     <script src="js/lib/ui-bootstrap-tpls-0.13.1-SNAPSHOT.min.js"></script>
+    <script src="js/lib/http-throttler.js"></script>
     <script src="js/lib/dropzone.min.js"></script>
     <script>Dropzone.autoDiscover = false;</script>
     <script src="js/lib/rdf_store_min.js"></script>
@@ -66,7 +67,7 @@
             <div class="jumbotron" ng-show="!initialized">
               <h2>Hey! Listen!</h2>
               <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
-              <progressbar value="progress" class="active progress-striped">{{progress}}%</progressbar>
+              <progressbar value="progress" class="active progress-striped"></progressbar>
             </div>
           </tab>
           <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disable="flags.isDirty">
@@ -221,6 +222,7 @@
                class="form-control"
                placeholder="Type to search"
                ng-model="inputted[prop.getProperty().getID()]"
+               ng-model-options="{debounce: 1000}"
                ng-required="prop.isRequired()"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
