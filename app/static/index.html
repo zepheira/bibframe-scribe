@@ -221,6 +221,7 @@
                class="form-control"
                placeholder="Type to search"
                ng-model="inputted[prop.getProperty().getID()]"
+               ng-model-options="{debounce: 1000}"
                ng-required="prop.isRequired()"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&currentWork[prop.getProperty().getID()]&&currentWork[prop.getProperty().getID()].length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
