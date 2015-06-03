@@ -21,7 +21,7 @@ angular.module("bibframeEditor", [
     return function(scope, element, attrs) {
         scope.$watch('activeResource', function(newValue, oldValue) {
             if (newValue !== null && newValue.getClassID() === attrs.dzResource) {
-                scope.cache.dz = new Dropzone("div.active div.dropzone", {
+                scope.cache.dz = new Dropzone(element[0], {
                     // @@@ provide this service - receives, stores, returns URI
                     "url": "/upload/image",
                     "autoProcessQueue": true,
