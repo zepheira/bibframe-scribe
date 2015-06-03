@@ -126,13 +126,12 @@ bibframeEditorApp.controller("EditorCtrl", ["$scope", "$q", "$modal", "$http", "
         };
 
         return $q.all(config.schemas.map(function(s) {
-            incrementProgress();
+            $scope.$evalAsync(incrementProgress);
             return $http.get('schema/' + s);
         })).then(function(httpResponses) {
             httpResponses.map(function(response) {
                 $scope.store.load('text/turtle', response.data, 'urn:schemas', function(success) {
-                    incrementProgress();
-                    $scope.$apply();
+                    $scope.$evalAsync(incrementProgress);
                     if (!success) {
                         Message.addMessage("Error loading schema " + response.config.url + ", please check for RDF validity", "danger");
                     } else {
@@ -153,7 +152,6 @@ bibframeEditorApp.controller("EditorCtrl", ["$scope", "$q", "$modal", "$http", "
             $q.all(config.profiles.map(function(p) {
                 return Profiles.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
                     var prof, promises;
-                    incrementProgress();
                     prof = new Profile(p);
                     promises = prof.init(resp.Profile, $scope.config, function(res, query) {
                         var deferred = $q.defer();
@@ -176,6 +174,7 @@ bibframeEditorApp.controller("EditorCtrl", ["$scope", "$q", "$modal", "$http", "
                             prof._processQuery($scope.firstClass, r);
                         });
                         $scope.profiles.push(prof);
+                        $scope.$evalAsync(incrementProgress);
                         return $scope.initialize(prof);
                     });
                 });
