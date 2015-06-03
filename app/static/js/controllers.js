@@ -1,4 +1,4 @@
-var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, Store, Query, Message) {
+bibframeEditorApp.controller("EditorCtrl", ["$scope", "$q", "$modal", "$http", "Configuration", "Profiles", "Store", "Query", "Message", function($scope, $q, $modal, $http, Configuration, Profiles, Store, Query, Message) {
     var SCHEMAS = "urn:schemas";
 
     $scope.initialized = false;
@@ -718,6 +718,4 @@ var EditorCtrl = function($scope, $q, $modal, $http, Configuration, Profiles, St
             }
         });
     };
-};
-
-EditorCtrl.$inject = ["$scope", "$q", "$modal", "$http", "Configuration", "Profiles", "Store", "Query", "Message"];
+}]);
