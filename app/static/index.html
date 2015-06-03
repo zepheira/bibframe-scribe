@@ -9,7 +9,7 @@
     <link href="css/dropzone-basic.css" rel="stylesheet">
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
-    <script src="js/lib/ui-bootstrap-tpls-0.12.0-SNAPSHOT.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.13.1-SNAPSHOT.min.js"></script>
     <script src="js/lib/dropzone.min.js"></script>
     <script>Dropzone.autoDiscover = false;</script>
     <script src="js/lib/rdf_store_min.js"></script>
@@ -23,8 +23,8 @@
     <script src="js/namespace.js"></script>
 
     <script src="js/services.js"></script>
-    <script src="js/controllers.js"></script>
     <script src="js/initializer.js"></script>
+    <script src="js/controllers.js"></script>
 
     <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
   </head>
@@ -56,7 +56,7 @@
 
       <div class="row">
         <tabset vertical="true" type="tabs" class="col-md-10">
-          <tab disabled="true">
+          <tab disable="true">
             <tab-heading ng-show="!activeResource"></tab-heading>
             <div class="jumbotron" ng-show="initialized">
               <h2>Hi.</h2>
@@ -69,7 +69,7 @@
               <progressbar value="progress" class="active progress-striped">{{progress}}%</progressbar>
             </div>
           </tab>
-          <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disabled="flags.isDirty">
+          <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disable="flags.isDirty">
             <tab-heading><span ng-show="resource.child"><i class="icon-chevron-right"></i> </span>{{resource.label}}</tab-heading>
             <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>
           </tab>
