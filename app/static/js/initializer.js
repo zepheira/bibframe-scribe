@@ -4,8 +4,11 @@ var bibframeEditorApp = angular.module("bibframeEditor", [
     "configurationServices",
     "storeService",
     "queryService",
-    "messageService"
-]).directive("ngEnter", function() {
+    "messageService",
+    "http-throttler"
+]).config(["$httpProvider", function($httpProvider) {
+    $httpProvider.interceptors.push("httpThrottler");
+}]).directive("ngEnter", function() {
     return function(scope, element, attrs) {
         element.bind("keydown keypress", function(event) {
             if (event.which === 13) {
