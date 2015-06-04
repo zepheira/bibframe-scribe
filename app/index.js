@@ -337,6 +337,33 @@ server.get('/suggest/agrovoc', function getFast(req, res, next) {
     doProxy(req, res, serviceConfig['agrovoc'].config, 'agrovoc', null, next);
 });
 
+server.get('/resolver', function resolveResource(req, res, next) {
+    var parts, resource, request, acceptable;
+    acceptable = [
+        "application/rdf+xml",
+        "text/rdf+n3"
+    ];
+    parts = url.parse(req.url, true);
+    resource = url.parse(parts.query.r);
+    resource["headers"] = {
+        "Accept": acceptable.join(",")
+    };
+    request = http.request(resource);
+    return request.then(function(response) {
+        return response.body.read().then(function(answer) {
+            if (response.status === 200 && acceptable.indexOf(response.headers["content-type"]) >= 0) {
+                res.writeHead(200, {
+                    'Content-Type': response.headers["content-type"]
+                });
+                res.end(answer);
+            } else {
+                res.writeHead(503);
+                res.end();
+            }
+        });
+    });
+});
+
 server.listen(config.listen, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
