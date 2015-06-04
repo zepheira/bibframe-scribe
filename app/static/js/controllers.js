@@ -1,4 +1,6 @@
-bibframeEditorApp.controller("EditorCtrl", ["$scope", "$q", "$modal", "$http", "Configuration", "Profiles", "Store", "Query", "Message", function($scope, $q, $modal, $http, Configuration, Profiles, Store, Query, Message) {
+bibframeEditorApp.controller("EditorCtrl", [
+    "$scope", "$q", "$modal", "$http", "Configuration", "Profiles", "Store", "Query", "Message", "Resolver",
+    function($scope, $q, $modal, $http, Configuration, Profiles, Store, Query, Message, Resolver) {
     var SCHEMAS = "urn:schemas";
 
     $scope.initialized = false;
@@ -718,3 +720,4 @@ bibframeEditorApp.controller("EditorCtrl", ["$scope", "$q", "$modal", "$http", "
         });
     };
 }]);
+
