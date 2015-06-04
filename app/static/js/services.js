@@ -63,6 +63,18 @@ angular.module("queryService", ["ngResource"]).
     }
 );
 
+angular.module("resolverService", ["ngResource"]).
+    factory("Resolve", function($resource) {
+        return $resource(
+            "../resolver?r=:uri",
+            {},
+            {
+                "resolve": { "method": "GET", "isArray:" false }
+            }
+        );
+    }
+);
+
 angular.module("messageService", [])
     .factory("Message", function() {
         var Msg = function(msg, severity) {
