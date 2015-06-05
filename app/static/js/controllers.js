@@ -1,6 +1,6 @@
 bibframeEditorApp.controller("EditorCtrl", [
-    "$scope", "$q", "$modal", "$http", "Configuration", "Profiles", "Store", "Query", "Message", "Resolver",
-    function($scope, $q, $modal, $http, Configuration, Profiles, Store, Query, Message, Resolver) {
+    "$scope", "$q", "$modal", "$http", "$log", "Configuration", "Profiles", "Store", "Query", "Message", "Resolver",
+    function($scope, $q, $modal, $http, $log, Configuration, Profiles, Store, Query, Message, Resolver) {
     var SCHEMAS = "urn:schemas";
 
     $scope.initialized = false;
@@ -38,12 +38,21 @@ bibframeEditorApp.controller("EditorCtrl", [
         Message.removeMessage(idx);
     };
     
-    var namespacer, ExportModalCtrl, EditLiteralCtrl, SubResourceCtrl;
+    var namespacer, ExportModalCtrl, ShowResourceCtrl, EditLiteralCtrl, SubResourceCtrl;
 
     namespacer = new Namespace();
 
     ExportModalCtrl = function($scope, $modalInstance, rdf) {
         $scope.rdf = rdf;
+        $scope.close = function() {
+            $modalInstance.dismiss();
+        };
+    };
+
+    ShowResourceCtrl = function($scope, $modalInstance, rdf, label, uri) {
+        $scope.rdf = rdf;
+        $scope.label = label;
+        $scope.uri = uri;
         $scope.close = function() {
             $modalInstance.dismiss();
         };
@@ -438,6 +447,33 @@ bibframeEditorApp.controller("EditorCtrl", [
             }
         });
         $scope.pivot(property, ref, toEdit);
+    };
+
+    $scope.showResource = function(val) {
+        if (val.isResource()) {
+            Resolver.resolve({"uri": val.getValue()}).$promise.then(function(data) {
+                $modal.open({
+                    templateUrl: "show-resource.html",
+                    controller: ShowResourceCtrl,
+                    windowClass: "show-resource",
+                    resolve: {
+                        rdf: function() {
+                            return data.raw;
+                        },
+                        label: function() {
+                            $log.info(val.getLabel());
+                            return val.getLabel();
+                        },
+                        uri: function() {
+                            $log.info(val.getValue());
+                            return val.getValue();
+                        }
+                    }
+                });
+            }).catch(function(data) {
+                // handle 503 error
+            });
+        }
     };
 
     $scope.removeValue = function(work, property, value) {

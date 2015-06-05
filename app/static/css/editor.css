@@ -144,3 +144,23 @@ input[type="text"].typeahead-no-matches {
     font-family: monospace;
     width: 99%;
 }
+
+/*
+ * Show Resource
+ */
+
+.show-resource {
+    width: 80%;
+    left: 10%;
+    margin-left: 0;
+}
+
+.show-resource p {
+    padding: 0;
+}
+
+.show-resource textarea {
+    font-family: monospace;
+    font-size: 85%;
+    width: 99%;
+}
