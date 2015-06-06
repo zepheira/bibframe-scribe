@@ -303,7 +303,13 @@
 
     <!-- explicitly called in typeahead -->
     <script type="text/ng-template" id="typeahead-match.html">
-      <a tabindex="-1">
+      <a tabindex="-1"
+         popover-template="'popover-resource.html'"
+         popover-trigger="mouseenter"
+         popover-placement="right"
+         popover-popup-delay="1500"
+         popover-title="{{match.model.uri}}"
+         popover-class="resource">
         <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
         <small class="text-muted match-source" bind-html-unsafe="match.model.source | uppercase"></small>
       </a>
@@ -330,6 +336,15 @@
       <div class="modal-footer">
         <p class="text-center"><button class="btn btn-default" ng-click="close()">Close</button></p>
       </div>      
+    </script>
+
+    <script type="text/ng-template" id="popover-resource.html">
+      <!-- $parent is incredibly undesirable, but there's no way to access
+           the parent scopes from inside the Angular UI-Bootstrap directives
+           (as they're currently designed) other than directly through
+           $parent -->
+      <span>{{$parent.$parent.$parent.$parent.popoverResource(match.model.uri)}}</span>
+      <pre>{{$parent.$parent.$parent.$parent.popover.data}}</pre>
     </script>
 
   </body>

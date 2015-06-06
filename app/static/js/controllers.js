@@ -37,6 +37,10 @@ bibframeEditorApp.controller("EditorCtrl", [
     $scope.closeMsg = function(idx) {
         Message.removeMessage(idx);
     };
+    $scope.popover = {
+        "uri": null,
+        "data": null
+    };
     
     var namespacer, ExportModalCtrl, ShowResourceCtrl, EditLiteralCtrl, SubResourceCtrl;
 
@@ -449,6 +453,18 @@ bibframeEditorApp.controller("EditorCtrl", [
         $scope.pivot(property, ref, toEdit);
     };
 
+    $scope.popoverResource = function(uri) {
+        if ($scope.popover.uri !== uri) {
+            $scope.popover.uri = uri;
+            $scope.popover.data = "Loading...";
+            Resolver.resolve({"uri": uri}).$promise.then(function(data) {
+                $scope.popover.data = data.raw;
+            }).catch(function(data) {
+                $scope.popover.data = "No additional data could be found.";
+            });
+        }
+    };
+
     $scope.showResource = function(val) {
         if (val.isResource()) {
             Resolver.resolve({"uri": val.getValue()}).$promise.then(function(data) {
@@ -461,17 +477,30 @@ bibframeEditorApp.controller("EditorCtrl", [
                             return data.raw;
                         },
                         label: function() {
-                            $log.info(val.getLabel());
                             return val.getLabel();
                         },
                         uri: function() {
-                            $log.info(val.getValue());
                             return val.getValue();
                         }
                     }
                 });
             }).catch(function(data) {
-                // handle 503 error
+                $modal.open({
+                    templateUrl: "show-resource.html",
+                    controller: ShowResourceCtrl,
+                    windowClass: "show-resource",
+                    resolve: {
+                        rdf: function() {
+                            return "No additional data could be found.";
+                        },
+                        label: function() {
+                            return val.getLabel();
+                        },
+                        uri: function() {
+                            return val.getValue();
+                        }
+                    }
+                });
             });
         }
     };
