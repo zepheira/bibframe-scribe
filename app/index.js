@@ -37,10 +37,10 @@ try {
 serviceConfig = {
     'agrovoc': {
         'config': {
-            'host': 'foris.fao.org',
-            'path': '/agrovoc/term/find',
-            'queryArgs': '&hits=8&match=freeText&suggestions=20&language=EN&relationshipType[]=alternative&relationshipType[]=broader&callback=',
-            'arg': 'q'
+            'host': 'aims.fao.org',
+            'path': '/skosmos/rest/v1/search',
+            'queryArgs': '*&vocab=agrovoc&lang=en&labellang=en',
+            'arg': 'query'
         }
     },
     'fast': {
