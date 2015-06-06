@@ -38,10 +38,10 @@ try {
 serviceConfig = {
     'agrovoc': {
         'config': {
-            'host': 'foris.fao.org',
-            'path': '/agrovoc/term/find',
-            'queryArgs': '&hits=8&match=freeText&suggestions=20&language=EN&relationshipType[]=alternative&relationshipType[]=broader&callback=',
-            'arg': 'q'
+            'host': 'aims.fao.org',
+            'path': '/skosmos/rest/v1/search',
+            'queryArgs': '*&vocab=agrovoc&lang=en&labellang=en',
+            'arg': 'query'
         }
     },
     'fast': {
@@ -349,19 +349,44 @@ server.get('/resolver', function resolveResource(req, res, next) {
         "Accept": acceptable.join(",")
     };
     request = http.request(resource);
-    return request.then(function(response) {
-        return response.body.read().then(function(answer) {
+    request.then(function(response) {
+        response.body.read().then(function(answer) {
+            var res2, req2;
             if (response.status === 200 && acceptable.indexOf(response.headers["content-type"]) >= 0) {
                 res.writeHead(200, {
                     'Content-Type': response.headers["content-type"]
                 });
                 res.end(answer);
+            } else if (response.status >= 300 && response.status < 400 && typeof response.headers["location"] !== "undefined") {
+                res2 = url.parse(url.resolve(parts.query.r, response.headers["location"]));
+                res2["headers"] = {
+                    "Accept": acceptable.join(",")
+                };
+                req2 = http.request(res2);
+                req2.then(function(resp2) {
+                    resp2.body.read().then(function(ans2) {
+                        if (resp2.status === 200 && acceptable.indexOf(resp2.headers["content-type"]) >= 0) {
+                            res.writeHead(200, {
+                                'Content-Type': resp2.headers["content-type"]
+                            });
+                            res.end(ans2)
+                        } else {
+                            res.writeHead(503);
+                            res.end();
+                            console.log(resp2.status);
+                            console.log(ans2);
+                        };
+                    });
+                });
             } else {
                 res.writeHead(503);
                 res.end();
+                console.log(response.status);
+                console.log(answer);
             }
         });
     });
+    return next();
 });
 
 server.listen(config.listen, function() {

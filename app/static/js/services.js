@@ -64,12 +64,19 @@ angular.module("queryService", ["ngResource"]).
 );
 
 angular.module("resolverService", ["ngResource"]).
-    factory("Resolve", function($resource) {
+    factory("Resolver", function($resource) {
         return $resource(
             "../resolver?r=:uri",
             {},
             {
-                "resolve": { "method": "GET", "isArray:" false }
+                "resolve": {
+                    "method": "GET",
+                    "headers": { "Accept": "application/rdf+xml,text/rdf+n3" },
+                    "transformResponse": function(data) {
+                        return { "raw": data }; 
+                    },
+                    "isArray": false
+                }
             }
         );
     }

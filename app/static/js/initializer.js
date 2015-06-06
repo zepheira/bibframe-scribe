@@ -5,7 +5,8 @@ var bibframeEditorApp = angular.module("bibframeEditor", [
     "storeService",
     "queryService",
     "messageService",
-    "http-throttler"
+    "http-throttler",
+    "resolverService"
 ]).config(["$httpProvider", function($httpProvider) {
     $httpProvider.interceptors.push("httpThrottler");
 }]).directive("ngEnter", function() {

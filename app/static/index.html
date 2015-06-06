@@ -288,7 +288,7 @@
             <li ng-repeat="val in currentWork[prop.getProperty().getID()]" class="badge badge-info">
               <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
-              <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&!val.isCreated()">{{val.getLabel()}}</span>
+              <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&!val.isCreated()" class="click" ng-click="showResource(val)" title="View details"><i class="icon-info-sign"></i> {{val.getLabel()}}</span>
               <i title="Remove" class="icon-remove click" ng-click="removeValue(currentWork,prop,val)"></i>
             </li>
           </ul>
@@ -303,7 +303,13 @@
 
     <!-- explicitly called in typeahead -->
     <script type="text/ng-template" id="typeahead-match.html">
-      <a tabindex="-1">
+      <a tabindex="-1"
+         popover-template="'popover-resource.html'"
+         popover-trigger="mouseenter"
+         popover-placement="right"
+         popover-popup-delay="1500"
+         popover-title="{{match.model.uri}}"
+         popover-class="resource">
         <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
         <small class="text-muted match-source" bind-html-unsafe="match.model.source | uppercase"></small>
       </a>
@@ -317,6 +323,28 @@
           <typeahead-match index="$index" match="match" query="query" template-url="templateUrl"></typeahead-match>
         </li>
       </ul>
+    </script>
+
+    <script type="text/ng-template" id="show-resource.html">
+      <div class="modal-header">
+        <h2>{{label}}</h2>
+        <code>&lt;{{uri}}&gt;</code>
+      </div>
+      <div class="modal-body">
+        <p><textarea rows="10" readonly>{{rdf}}</textarea></p>
+      </div>
+      <div class="modal-footer">
+        <p class="text-center"><button class="btn btn-default" ng-click="close()">Close</button></p>
+      </div>      
+    </script>
+
+    <script type="text/ng-template" id="popover-resource.html">
+      <!-- $parent is incredibly undesirable, but there's no way to access
+           the parent scopes from inside the Angular UI-Bootstrap directives
+           (as they're currently designed) other than directly through
+           $parent -->
+      <span>{{$parent.$parent.$parent.$parent.popoverResource(match.model.uri)}}</span>
+      <pre>{{$parent.$parent.$parent.$parent.popover.data}}</pre>
     </script>
 
   </body>
