@@ -1,4 +1,4 @@
-level@1.0.0
+level@0.19.1
 levelgraph@0.10.5
 levelgraph-n3@0.5.0
 n3@0.4.3
