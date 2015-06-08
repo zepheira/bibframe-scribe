@@ -93,7 +93,7 @@ function serveStatic(opts) {
     }
 
     function serve(req, res, next) {
-        var file = path.join(opts.directory,
+        var file = "./" + path.join(opts.directory,
             decodeURIComponent(req.path()));
 
         if (req.method !== 'GET' && req.method !== 'HEAD') {

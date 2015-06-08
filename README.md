@@ -5,14 +5,15 @@ There are two pieces to this software.  The UI can be run locally without
 a webserver out of the box.  Just visit the file `app/static/index.html`
 in a browser.
 
-The backend is based on Node.js and MongoDB.  In order to avoid a confused
+The backend is based on Node.js.  In order to avoid a confused
 Node.js installation, consider using a virtual environment as provided by
 [nodeenv](https://github.com/ekalinin/nodeenv), which provides `npm` and `node`
-per environment and can be easily installed using `pip`.  You'll also need
-to install MongoDB, which can be done with `brew` on a Mac.  There will
-be a Chef cookbook coming soon to cover Linux server installs.
+per environment and can be easily installed using `pip`.  This branch uses
+LevelDB, which needs a directory to store its data.  The default supplied is
+`./bfstore`, relative to the `app/` directory; you can change this by supplying
+a `config.js` in the `app/` directory.
 
-Until then.  With `nodeenv` and `mongod` binaries available:
+With the `nodeenv` binary available:
 
 ```
 % git clone [this repo]
@@ -21,7 +22,6 @@ Until then.  With `nodeenv` and `mongod` binaries available:
 % cd [env]
 % . bin/activate
 % cd bibframe-scribe
-% mongod -rest &
 % cd app
 % node index.js
 ```
@@ -35,6 +35,8 @@ Issue described here: https://github.com/mcavage/node-restify/issues/549
 
 Load Data
 =========
+
+*(This section doesn't pertain to the levelgraph branch; you could probably install levelgraph-n3-import through npm to accomplish a Turtle/N3 import into your configured LevelDB location).*
 
 You can pre-load RDF into the store.  Unfortunately, you can't use RDF/XML
 yet.  Turtle/N3 or JSON-LD are your options.  You might use `rapper` from the
@@ -67,4 +69,3 @@ Scribe developement has been supported in part by the Library of Congress, BIBFL
 * [Zepheira](http://zepheira.com/)
 * [Library of Congress](http://loc.gov/)
 * [BIBFLOW](http://www.lib.ucdavis.edu/bibflow/)
-
