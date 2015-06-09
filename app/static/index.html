@@ -309,7 +309,8 @@
          popover-placement="right"
          popover-popup-delay="1500"
          popover-title="{{match.model.uri}}"
-         popover-class="resource">
+         popover-class="resource"
+         title="{{match.model.fullLabel}}">
         <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
         <small class="text-muted match-source" bind-html-unsafe="match.model.source | uppercase"></small>
       </a>
