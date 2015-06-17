@@ -7,19 +7,19 @@
                 "id": "bfp:Authority:Topic",
                 "class": {
                     "classLabel": "Topic",
-                    "id": "http://bibframe.org/vocab/Topic",
-                    "labelProperty": "http://bibframe.org/vocab/label",
+                    "id": "http://bibfra.me/vocab/lite/Topic",
+                    "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
+                                "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/description",
+                                "id": "http://bibfra.me/vocab/lite/description",
                                 "propertyLabel": "Description"
                             },
                             "type": "literal"
@@ -31,19 +31,19 @@
                 "id": "bfp:Authority:Place",
                 "class": {
                     "classLabel": "Place",
-                    "id": "http://bibframe.org/vocab/Place",
-                    "labelProperty": "http://bibframe.org/vocab/label",
+                    "id": "http://bibfra.me/vocab/lite/Place",
+                    "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
+                                "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/description",
+                                "id": "http://bibfra.me/vocab/lite/description",
                                 "propertyLabel": "Description"
                             },
                             "type": "literal"
