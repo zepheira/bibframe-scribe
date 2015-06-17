@@ -1,17 +1,17 @@
 {
     "Profile": {
-        "title": "Audio",
+        "title": "Music",
         "resourceTemplate": [
             {
-                "id": "bfp:Work:Audio",
+                "id": "bfp:Work:Music",
                 "class": {
-                    "classLabel": "Audio",
-                    "id": "http://bibframe.org/vocab/Audio",
+                    "classLabel": "Music",
+                    "id": "http://bibfra.me/vocab/marc/Music",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibframe.org/vocab/workTitle",
+                                "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Album name"
                             },
                             "repeatable": "false",
@@ -19,8 +19,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/rel/artist",
-                                "propertyLabel": "Artist"
+                                "id": "http://bibfra.me/vocab/relation/creator",
+                                "propertyLabel": "Creator"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -30,14 +30,14 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/description",
+                                "id": "http://bibfra.me/vocab/lite/description",
                                 "propertyLabel": "Description"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/subject",
+                                "id": "http://bibfra.me/vocab/lite/subject",
                                 "propertyLabel": "Subject"
                             },
                             "repeatable": "true",
@@ -50,7 +50,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/language",
+                                "id": "http://bibfra.me/vocab/lite/language",
                                 "propertyLabel": "Language"
                             },
                             "repeatable": "true",
@@ -61,7 +61,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/rel/recordingArtist",
+                                "id": "http://bibfra.me/vocab/relation/recordingengineer",
                                 "propertyLabel": "Recording Engineer"
                             },
                             "repeatable": "true",
@@ -89,7 +89,7 @@
                 "class": {
                     "classLabel": "Vinyl Record",
                     "id": "http://bibframe.org/vocab/proposed/Vinyl",
-                    "instanceOf": "http://bibframe.org/vocab/Audio",
+                    "instantiates": "http://bibfra.me/vocab/marc/Music",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -104,7 +104,7 @@
                         },
 			{
                             "property": {
-                                "id": "http://bibframe.org/vocab/image",
+                                "id": "http://bibfra.me/vocab/lite/image",
                                 "propertyLabel": "Album Cover"
                             },
                             "type": "resource",
@@ -123,15 +123,15 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
+                                "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Name"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/rel/artist",
-                                "propertyLabel": "Artist"
+                                "id": "http://bibfra.me/vocab/relation/creator",
+                                "propertyLabel": "Creator"
                             },
                             "repeatable": "true",
                             "type": "resource",
