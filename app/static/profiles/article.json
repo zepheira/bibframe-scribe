@@ -82,7 +82,7 @@
                 "class": {
                     "classLabel": "Electronic Article",
                     "id": "http://bibframe.org/vocab/proposed/EArticle",
-                    "instanceOf": "http://bibframe.org/vocab/Article",
+                    "instantiates": "http://bibframe.org/vocab/Article",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -124,7 +124,7 @@
                 "class": {
                     "classLabel": "Physical Article",
                     "id": "http://bibframe.org/vocab/proposed/PhysicalArticle",
-                    "instanceOf": "http://bibframe.org/vocab/Article",
+                    "instantiates": "http://bibframe.org/vocab/Article",
                     "propertyTemplate": [
                         {
                             "property": {

@@ -3,7 +3,7 @@
         "id": "bfp:Monograph:Bibliography",
         "title": "Monograph -- Bibliography",
         "description": "An example monograph (Bibliography) profile reflecting the cataloging practices of example academic library",
-        "date": "2013-05-01",
+        "date": "2015-06-16",
         "contact": "Example Academic Library cataloging help desk, info@academiclib.org",
         "resourceTemplate": [
             {
@@ -146,7 +146,7 @@
                 "class": {
                     "classLabel": "Electronic",
                     "id": "http://bibframe.org/vocab/ElectronicBibliography",
-                    "instanceOf": "http://bibframe.org/vocab/Bibliography",
+                    "instantiates": "http://bibframe.org/vocab/Bibliography",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -237,7 +237,7 @@
                 "class": {
                     "classLabel": "Print",
                     "id": "http://bibframe.org/vocab/PrintBibliography",
-                    "instanceOf": "http://bibframe.org/vocab/Bibliography",
+                    "instantiates": "http://bibframe.org/vocab/Bibliography",
                     "propertyTemplate": [
                         {
                             "property": {

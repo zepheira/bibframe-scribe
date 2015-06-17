@@ -3,7 +3,7 @@
         "id": "bfp:Monograph:Dissertation",
         "title": "Monograph -- Dissertation",
         "description": "An example monograph (Disertation) profile reflecting the cataloging practices of example academic library",
-        "date": "2013-05-01",
+        "date": "2015-06-16",
         "contact": "Example Academic Library cataloging help desk, info@academiclib.org",
         "resourceTemplate": [
             {
@@ -168,7 +168,7 @@
                 "class": {
                     "classLabel": "Electronic",
                     "id": "http://bibframe.org/vocab/ElectronicDissertation",
-                    "instanceOf": "http://bibframe.org/vocab/Dissertation",
+                    "instantiates": "http://bibframe.org/vocab/Dissertation",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -231,7 +231,7 @@
                 "class": {
                     "classLabel": "Print",
                     "id": "http://bibframe.org/vocab/PrintDissertation",
-                    "instanceOf": "http://bibframe.org/vocab/Dissertation",
+                    "instantiates": "http://bibframe.org/vocab/Dissertation",
                     "propertyTemplate": [
                         {
                             "property": {
