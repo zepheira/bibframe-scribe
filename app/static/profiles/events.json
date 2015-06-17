@@ -6,33 +6,33 @@
                 "id": "bfp:Event:ProviderEvent",
                 "class": {
                     "classLabel": "Provider",
-                    "id": "http://bibframe.org/vocab/Provider",
+                    "id": "http://bibfra.me/vocab/lite/ProviderEvent",
                     "labelProperty": "Provider Event",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/providerName",
+                                "id": "http://bibfra.me/vocab/lite/providerAgent",
                                 "propertyLabel": "Provider Agent"
                             },
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
 							    "bfp:Agent:Organization" ]
-			    }
+			                }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/providerPlace",
+                                "id": "http://bibfra.me/vocab/lite/providerPlace",
                                 "propertyLabel": "Provider Place"
                             },
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Authority:Place" ]
-			    }
+                            }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/providerDate",
+                                "id": "http://bibfra.me/vocab/lite/providerDate",
                                 "propertyLabel": "Provider Date"
                             },
                             "valueConstraint": {
@@ -46,8 +46,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/providerStatement",
-                                "propertyLabel": "Provider Statement"
+                                "id": "http://bibfra.me/vocab/lite/providerNote",
+                                "propertyLabel": "Provider Note"
                             },
                             "type": "literal"
                         }
