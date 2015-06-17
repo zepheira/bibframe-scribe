@@ -224,7 +224,7 @@
                 "class": {
                     "classLabel": "Image",
                     "id": "http://bibframe.org/vocab/Image",
-                    "instanceOf": "http://bibframe.org/vocab/Painting",
+                    "instantiates": "http://bibframe.org/vocab/Painting",
                     "propertyTemplate": [
                         {
                             "property": {
