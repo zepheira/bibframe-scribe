@@ -1,4 +1,4 @@
-bibframeEditorApp.controller("EditorCtrl", [
+angular.module("bibframeEditor").controller("EditorCtrl", [
     "$scope", "$q", "$modal", "$http", "$log", "Configuration", "Profiles", "Store", "Query", "Message", "Resolver",
     function($scope, $q, $modal, $http, $log, Configuration, Profiles, Store, Query, Message, Resolver) {
     var SCHEMAS = "urn:schemas";

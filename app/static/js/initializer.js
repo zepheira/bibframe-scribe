@@ -1,4 +1,4 @@
-var bibframeEditorApp = angular.module("bibframeEditor", [
+angular.module("bibframeEditor", [
     "ui.bootstrap",
     "profileServices",
     "configurationServices",
