@@ -60,6 +60,16 @@ License
 
 This project is licensed under the Apache 2.0 license.  See the file LICENSE in this directory.
 
+Testing
+=======
+
+We're working on adding unit tests currently.  To run them, use Karma inside your existing NodeJS installation.
+
+```
+% npm install -g karma
+% karma start
+```
+
 More
 ====
 
