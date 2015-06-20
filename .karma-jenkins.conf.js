@@ -43,7 +43,7 @@ module.exports = function(config) {
 
     singleRun: true,
 
-    junitReporter = {
+    junitReporter: {
       outputFile: 'test-results.xml'
     };
   });
