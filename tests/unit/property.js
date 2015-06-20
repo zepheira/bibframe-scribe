@@ -11,6 +11,6 @@ describe("Property", function() {
     });
 
     it("should have the right label", function() {
-        expect(prop.getID()).toEqual("Test");
+        expect(prop.getLabel()).toEqual("Test");
     });
 });
