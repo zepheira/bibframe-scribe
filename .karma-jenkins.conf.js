@@ -29,9 +29,9 @@ module.exports = function(config) {
       'app/static/js/lib/angular.js'
     ],
 
-    preprocessors: [
-       'app/static/js/*.js'
-    ],
+    preprocessors: {
+       'app/static/js/*.js': 'coverage'
+    },
 
     reporters: ['dots', 'junit', 'coverage'],
 
