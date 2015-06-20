@@ -29,7 +29,11 @@ module.exports = function(config) {
       'app/static/js/lib/angular.js'
     ],
 
-    reporters: ['dots', 'junit'],
+    preprocessors: [
+       'app/static/js/*.js'
+    ],
+
+    reporters: ['dots', 'junit', 'coverage'],
 
     port: 9876,
 
@@ -45,6 +49,11 @@ module.exports = function(config) {
 
     junitReporter: {
       outputFile: 'test-results.xml'
+    },
+
+    coverageReporter: {
+      type: 'cobertura',
+      dir: 'coverage/'
     }
   });
 };
