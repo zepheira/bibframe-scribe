@@ -7,10 +7,10 @@ describe("Property", function() {
     });
     
     it("should have the right ID", function() {
-        expect(prop.getID().toEqual("test");
+        expect(prop.getID()).toEqual("test");
     });
 
     it("should have the right label", function() {
-        expect(prop.getID().toEqual("Test");
+        expect(prop.getID()).toEqual("Test");
     });
 });
