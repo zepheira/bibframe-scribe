@@ -116,4 +116,34 @@ describe("ValueConstraint", function() {
             expect(vc.isEditable()).toEqual(true);
         });
     });
+
+    describe("constructor with pathological arguments", function() {
+        var vc;
+        beforeEach(function() {
+            vc = new ValueConstraint({
+                descriptionTemplateRef: ["testref"],
+                valueDataType: {}
+            });
+        });
+
+        it("should have one reference", function() {
+            expect(vc.hasManyReferences()).toEqual(false);
+        });
+
+        it("should not have any type", function() {
+            expect(vc.hasBasicType()).toEqual(false);
+            expect(vc.hasComplexType()).toEqual(false);
+        });
+    });
+
+    describe("constructor with empty arguments", function() {
+        var vc;
+        beforeEach(function() {
+            vc = new ValueConstraint({});
+        });
+
+        it("should have no reference", function() {
+            expect(vc.hasReference()).toEqual(false);
+        });
+    });
 });
