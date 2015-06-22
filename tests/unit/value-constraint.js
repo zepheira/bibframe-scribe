@@ -82,4 +82,38 @@ describe("ValueConstraint", function() {
             expect(vc.getDefaultLiteral()).toEqual("test");
         });
     });
+
+    describe("constructor with complex reference and basic type", function() {
+        var vc;
+        beforeEach(function() {
+            vc = new ValueConstraint({
+                descriptionTemplateRef: ["testref", "testrefAlt"],
+                valueDataType: "testType"
+            });
+        });
+        
+        it("should have multiple references", function() {
+            expect(vc.hasManyReferences()).toEqual(true);
+        });
+        
+        it("should return its reference", function() {
+            expect(vc.getReference()).toEqual(["testref","testrefAlt"]);
+        });
+        
+        it("should have a basic type", function() {
+            expect(vc.hasBasicType()).toEqual(true);
+        });
+        
+        it("should not have a complex type", function() {
+            expect(vc.hasComplexType()).toEqual(false);
+        });
+        
+        it("should return the type ID", function() {
+            expect(vc.getBasicType()).toEqual("testType");
+        });
+
+        it("should be editable by default", function() {
+            expect(vc.isEditable()).toEqual(true);
+        });
+    });
 });
