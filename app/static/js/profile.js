@@ -50,6 +50,8 @@ Profile.prototype.getResourceTemplate = function(id) {
 Profile.prototype.getTemplateByID = function(id) {
     if (typeof this._idToTemplate[id] !== "undefined") {
         return this._idToTemplate[id];
+    } else {
+        return null;
     }
 };
 
