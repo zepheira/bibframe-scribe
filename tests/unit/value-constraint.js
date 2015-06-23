@@ -88,7 +88,9 @@ describe("ValueConstraint", function() {
         beforeEach(function() {
             vc = new ValueConstraint({
                 descriptionTemplateRef: ["testref", "testrefAlt"],
-                valueDataType: "testType"
+                valueDataType: "testType",
+                editable: "FALSE",
+                defaultLiteral: "test"
             });
         });
         
@@ -112,8 +114,12 @@ describe("ValueConstraint", function() {
             expect(vc.getBasicType()).toEqual("testType");
         });
 
-        it("should be editable by default", function() {
-            expect(vc.isEditable()).toEqual(true);
+        it("should have a default literal", function() {
+            expect(vc.hasDefaultLiteral()).toEqual(true);
+        });
+
+        it("should not be editable", function() {
+            expect(vc.isEditable()).toEqual(false);
         });
     });
 
@@ -122,7 +128,8 @@ describe("ValueConstraint", function() {
         beforeEach(function() {
             vc = new ValueConstraint({
                 descriptionTemplateRef: ["testref"],
-                valueDataType: {}
+                valueDataType: {},
+                editable: "false"
             });
         });
 
@@ -134,6 +141,23 @@ describe("ValueConstraint", function() {
             expect(vc.hasBasicType()).toEqual(false);
             expect(vc.hasComplexType()).toEqual(false);
         });
+
+        it("should be editable", function() {
+            expect(vc.isEditable()).toEqual(true);
+        });
+    });
+
+    describe("constructor with an empty list", function() {
+        var vc;
+        beforeEach(function() {
+            vc = new ValueConstraint({
+                descriptionTemplateRef: []
+            });
+        });
+
+        it("should have no reference", function() {
+            expect(vc.hasReference()).toEqual(false);
+        });
     });
 
     describe("constructor with empty arguments", function() {
@@ -144,6 +168,10 @@ describe("ValueConstraint", function() {
 
         it("should have no reference", function() {
             expect(vc.hasReference()).toEqual(false);
+        });
+
+        it("should be editable by default", function() {
+            expect(vc.isEditable()).toEqual(true);
         });
     });
 });
