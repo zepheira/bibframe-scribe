@@ -57,4 +57,47 @@ describe("PropertyTemplate", function() {
             expect(pt.getConstraint().getReference()).toEqual(vc.getReference());
         });
     });
+
+    describe("empty constructor", function() {
+        var pt;
+        beforeEach(function() {
+            pt = new PropertyTemplate({});
+        });
+        
+        it("should be optional", function() {
+            expect(pt.isOptional()).toEqual(true);
+        });
+        
+        it("should not be mandatory", function() {
+            expect(pt.isRequired()).toEqual(false);
+        });
+        
+        it("should not be repeatable", function() {
+            expect(pt.isRepeatable()).toEqual(false);
+        });
+
+        it("should be a literal property", function() {
+            expect(pt.isLiteral()).toEqual(true);
+        });
+
+        it("should not be a resource property", function() {
+            expect(pt.isResource()).toEqual(false);
+        });
+
+        it("should return literal type", function() {
+            expect(pt.getType()).toEqual(PropertyTemplate.LITERAL);
+        });
+
+        it("should return null property", function() {
+            expect(pt.getProperty()).toEqual(null);
+        });
+
+        it("should not have a value constraint", function() {
+            expect(pt.hasConstraint()).toEqual(false);
+        });
+
+        it("should return null value constraint", function() {
+            expect(pt.getConstraint()).toEqual(null);
+        });
+    });
 });
