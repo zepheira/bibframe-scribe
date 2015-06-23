@@ -96,4 +96,61 @@ describe("ResourceTemplate", function() {
             expect(rt.getPropertyTemplates()).toEqual([morept,pt]);
         });
     });
+
+    describe("empty class constructor and empty config", function() {
+        var rt;
+        beforeEach(function() {
+            rt = new ResourceTemplate({
+                "class": {},
+            }, {});
+        });
+        
+        it("should return null ID", function() {
+            expect(rt.getID()).toBeNull();
+        });
+        
+        it("should return null class ID", function() {
+            expect(rt.getClassID()).toBeNull();
+        });
+        
+        it("should return null class label", function() {
+            expect(rt.getLabel()).toBeNull();
+        });
+        
+        it("should return null class label property", function() {
+            expect(rt.getLabelProperty()).toBeNull();
+        });
+
+        it("should return the relation type", function() {
+            expect(rt.getRelation()).toBeNull();
+        });
+    });
+
+    describe("empty class constructor and unrelated config", function() {
+        var rt;
+        beforeEach(function() {
+            rt = new ResourceTemplate({
+                "class": {},
+            }, {
+                relations: {
+                    "instantiates": "include"
+                }
+            });
+        });
+        
+        it("should return the relation type", function() {
+            expect(rt.getRelation()).toBeNull();
+        });
+    });
+
+    describe("empty constructor", function() {
+        var rt;
+        beforeEach(function() {
+            rt = new ResourceTemplate({}, {});
+        });
+        
+        it("should return null ID", function() {
+            expect(rt.getID()).toBeNull();
+        });
+    });
 });
