@@ -118,7 +118,7 @@ ValueConstraint.prototype.isEditable = function() {
     // checking if defaultURI matches to type / defaultLiteral matches
     // to type. But right now just check if editable is false but no
     // default provided.
-    return (this._editable || !this._editable && (!this.hasDefaultURI() || !this.hasDefaultLiteral()));
+    return (this._editable || (!this._editable && !(this.hasDefaultURI() || this.hasDefaultLiteral())));
 };
 
 ValueConstraint.prototype.getDefaultURI = function() {
