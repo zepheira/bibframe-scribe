@@ -78,7 +78,7 @@ ResourceTemplate.prototype.hasProperty = function(prop) {
     var i, iprop, result = false;
     for (i = 0; i < this._propertyTemplates.length; i++) {
         iprop = this._propertyTemplates[i];
-        if (prop === iprop.getProperty()) {
+        if (prop === iprop.getProperty().getID()) {
             result = true;
             break;
         }
