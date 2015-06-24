@@ -5,19 +5,16 @@
         .module("messageService", [])
         .factory("Message", Message);
 
-    function Msg(msg, severity) {
-        this.message = msg;
-        this.severity = severity;
-    }
-
     function Message() {
-        var service = {
+        var service, _messages;
+
+        service = {
             messages: messages,
             addMessage: addMessage,
             removeMessage: removeMessage
         };
 
-        var _messages = [];
+        _messages = [];
 
         return service;
         
@@ -33,5 +30,10 @@
         function removeMessage(idx) {
             _messages.splice(idx, 1);
         }
+    }
+
+    function Msg(msg, severity) {
+        this.message = msg;
+        this.severity = severity;
     }
 })();

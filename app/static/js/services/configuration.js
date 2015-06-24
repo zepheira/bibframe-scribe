@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module("configurationServices", ["ngResource"])
+        .module("configurationService", ["ngResource"])
         .factory("Configuration", Configuration);
 
     function Configuration($resource) {

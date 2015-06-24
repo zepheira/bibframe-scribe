@@ -2,7 +2,7 @@
     "use strict";
 
     angular
-        .module("profilesServices", ["ngResource"])
+        .module("profilesService", ["ngResource"])
         .factory("Profiles", Profiles);
 
     function Profiles($resource) {

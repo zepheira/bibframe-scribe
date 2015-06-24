@@ -1,10 +1,52 @@
-angular.module("bibframeEditor").controller("EditorCtrl", [
-    "$scope", "$q", "$modal", "$http", "$log", "Configuration", "Profiles", "Store", "Query", "Message", "Resolver",
-    function($scope, $q, $modal, $http, $log, Configuration, Profiles, Store, Query, Message, Resolver) {
+angular
+    .module("bibframeEditor")
+    .controller("EditorCtrl", [
+        "$scope",
+        "$q",
+        "$modal",
+        "$http",
+        "$log",
+        "Configuration",
+        "Profiles",
+        "Store",
+        "Query",
+        "Message",
+        "Resolver",
+        "Namespace",
+        "Progress",
+        "Property",
+        "PredObject",
+        "ValueConstraint",
+        "PropertyTemplate",
+        "ResourceTemplate",
+        "Profile",
+        function(
+            $scope,
+            $q,
+            $modal,
+            $http,
+            $log,
+            Configuration,
+            Profiles,
+            Store,
+            Query,
+            Message,
+            Resolver,
+            Namespace,
+            Progress,
+            Property,
+            PredObject,
+            ValueConstraint,
+            PropertyTemplate,
+            ResourceTemplate,
+            Profile) {
     var SCHEMAS = "urn:schemas";
+    var vm = this;
+
+    //vm.progress = Progress.getCurrent;
+    $scope.progress = Progress.getCurrent;
 
     $scope.initialized = false;
-    $scope.progress = 0;
     $scope.config = {};
     $scope.firstClass = [];
     $scope.resourceToFirstClassMap = {};
@@ -42,9 +84,7 @@ angular.module("bibframeEditor").controller("EditorCtrl", [
         "data": null
     };
     
-    var namespacer, ExportModalCtrl, ShowResourceCtrl, EditLiteralCtrl, SubResourceCtrl;
-
-    namespacer = new Namespace();
+    var ExportModalCtrl, ShowResourceCtrl, EditLiteralCtrl, SubResourceCtrl;
 
     ExportModalCtrl = function($scope, $modalInstance, rdf) {
         $scope.rdf = rdf;
@@ -134,10 +174,9 @@ angular.module("bibframeEditor").controller("EditorCtrl", [
 
         $scope.firstClass = config.firstClass;
 
-        total = (config.schemas.length * 2) + config.profiles.length;
-        current = 0;
+        Progress.setTotal((config.schemas.length*2) + config.profiles.length);
         incrementProgress = function() {
-            $scope.progress = Math.round((++current / total) * 100);
+            Progress.increment();
         };
 
         return $q.all(config.schemas.map(function(s) {
@@ -706,7 +745,7 @@ angular.module("bibframeEditor").controller("EditorCtrl", [
                     rdf += $scope.exportResource(res);
                 }
             });
-            head = '<?xml version="1.0"?>\n\n' + namespacer.buildRDF() + '\n';
+            head = '<?xml version="1.0"?>\n\n' + Namespace.buildRDF() + '\n';
             $scope.exportedRDF = head + rdf + tail;
             $scope.showRDF();
         });
@@ -729,7 +768,7 @@ angular.module("bibframeEditor").controller("EditorCtrl", [
             } else if (prop === "type" && type === null) {
                 type = vals.getValue();
             } else {
-                nsProp = namespacer.extractNamespace(prop);
+                nsProp = Namespace.extractNamespace(prop);
                 if ((split && resourceTemplate.hasProperty(prop)) || !split) {
                     angular.forEach(vals, function(val) {
                         if (val.isResource()) {
@@ -764,7 +803,7 @@ angular.module("bibframeEditor").controller("EditorCtrl", [
             }
         });
         if (split) {
-            nsProp = namespacer.extractNamespace('http://bibframe.org/vocab/instanceOf'); // @@@ faking it
+            nsProp = Namespace.extractNamespace('http://bibframe.org/vocab/instanceOf'); // @@@ faking it
             frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + id + '-work" />\n';
             result += '  <rdf:Description rdf:about="' + id + '-work">\n    <rdf:type rdf:resource="' + relation + '"/>\n' + relFrag + '  </rdf:Description>\n';
         }

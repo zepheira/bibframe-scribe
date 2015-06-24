@@ -12,16 +12,11 @@ module.exports = function(config) {
       'app/static/js/lib/dropzone.min.js',
       'app/static/js/lib/rdf_store_min.js',
       'tests/angular-mocks.js',
-      'app/static/js/profile.js',
-      'app/static/js/value-constraint.js',
-      'app/static/js/property.js',
-      'app/static/js/property-template.js',
-      'app/static/js/resource-template.js',
-      'app/static/js/pred-object.js',
-      'app/static/js/namespace.js',
+      'app/static/js/factories/*.js',
       'app/static/js/services/*.js',
       'app/static/js/initializer.js',
       'app/static/js/controllers.js',
+      'tests/unit/**/*.js',
       'tests/unit/*.js'
     ],
 

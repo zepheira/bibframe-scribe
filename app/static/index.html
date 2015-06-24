@@ -14,21 +14,21 @@
     <script src="js/lib/dropzone.min.js"></script>
     <script>Dropzone.autoDiscover = false;</script>
     <script src="js/lib/rdf_store_min.js"></script>
-    <script src="js/profile.js"></script>
-    <script src="js/value-constraint.js"></script>
-    <script src="js/property.js"></script>
-    <script src="js/property-template.js"></script>
-    <script src="js/resource-template.js"></script>
+    <script src="js/factories/pred-object.js"></script>
+    <script src="js/factories/value-constraint.js"></script>
+    <script src="js/factories/property.js"></script>
+    <script src="js/factories/property-template.js"></script>
+    <script src="js/factories/resource-template.js"></script>
+    <script src="js/factories/profile.js"></script>
 
-    <script src="js/pred-object.js"></script>
-    <script src="js/namespace.js"></script>
-
+    <script src="js/services/namespace.js"></script>
     <script src="js/services/configuration.js"></script>
     <script src="js/services/message.js"></script>
     <script src="js/services/profiles.js"></script>
     <script src="js/services/query.js"></script>
     <script src="js/services/resolver.js"></script>
     <script src="js/services/store.js"></script>
+    <script src="js/services/progress.js"></script>
     <script src="js/initializer.js"></script>
     <script src="js/controllers.js"></script>
 
@@ -72,7 +72,7 @@
             <div class="jumbotron" ng-show="!initialized">
               <h2>Hey! Listen!</h2>
               <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
-              <progressbar value="progress" class="active progress-striped"></progressbar>
+              <progressbar value="progress()" class="active progress-striped"></progressbar>
             </div>
           </tab>
           <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disable="flags.isDirty">
