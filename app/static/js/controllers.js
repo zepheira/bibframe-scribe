@@ -785,4 +785,3 @@ angular.module("bibframeEditor").controller("EditorCtrl", [
         });
     };
 }]);
-

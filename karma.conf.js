@@ -19,7 +19,7 @@ module.exports = function(config) {
       'app/static/js/resource-template.js',
       'app/static/js/pred-object.js',
       'app/static/js/namespace.js',
-      'app/static/js/services.js',
+      'app/static/js/services/*.js',
       'app/static/js/initializer.js',
       'app/static/js/controllers.js',
       'tests/unit/*.js'

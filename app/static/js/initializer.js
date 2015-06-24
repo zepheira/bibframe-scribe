@@ -1,6 +1,6 @@
 angular.module("bibframeEditor", [
     "ui.bootstrap",
-    "profileServices",
+    "profilesServices",
     "configurationServices",
     "storeService",
     "queryService",
