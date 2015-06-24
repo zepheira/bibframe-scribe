@@ -1,6 +1,13 @@
 "use strict";
 
 describe("ResourceTemplate", function() {
+    var ResourceTemplate, PropertyTemplate;
+    beforeEach(module("bibframeEditor"));
+    beforeEach(inject(function($injector) {
+        ResourceTemplate = $injector.get("ResourceTemplate");
+        PropertyTemplate = $injector.get("PropertyTemplate");
+    }));
+
     describe("constructor", function() {
         var rt;
         beforeEach(function() {

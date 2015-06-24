@@ -1,6 +1,12 @@
 "use strict";
 
 describe("Property", function() {
+    var Property;
+    beforeEach(module("bibframeEditor"));
+    beforeEach(inject(function($injector) {
+        Property = $injector.get("Property");
+    }));
+
     describe("constructor", function() {
         var prop;
         beforeEach(function() {

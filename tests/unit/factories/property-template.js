@@ -1,6 +1,13 @@
 "use strict";
 
 describe("PropertyTemplate", function() {
+    var PropertyTemplate, ValueConstraint;
+    beforeEach(module("bibframeEditor"));
+    beforeEach(inject(function($injector) {
+        PropertyTemplate = $injector.get("PropertyTemplate");
+        ValueConstraint = $injector.get("ValueConstraint");
+    }));
+
     describe("constructor", function() {
         var pt;
         beforeEach(function() {

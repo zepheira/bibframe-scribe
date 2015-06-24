@@ -1,6 +1,13 @@
 "use strict";
 
 describe("Profile", function() {
+    var Profile, ResourceTemplate;
+    beforeEach(module("bibframeEditor"));
+    beforeEach(inject(function($injector) {
+        Profile = $injector.get("Profile");
+        ResourceTemplate = $injector.get("ResourceTemplate");
+    }));
+
     describe("near-empty constructor", function() {
         var profile;
         beforeEach(function() {

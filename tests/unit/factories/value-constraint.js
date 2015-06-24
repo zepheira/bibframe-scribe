@@ -1,6 +1,12 @@
 "use strict";
 
 describe("ValueConstraint", function() {
+    var ValueConstraint;
+    beforeEach(module("bibframeEditor"));
+    beforeEach(inject(function($injector) {
+        ValueConstraint = $injector.get("ValueConstraint");
+    }));
+
     describe("constructor with simple reference and complex type", function() {
         var vc;
         beforeEach(function() {

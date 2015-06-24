@@ -1,6 +1,12 @@
 "use strict";
 
 describe("PredObject", function() {
+    var PredObject;
+    beforeEach(module("bibframeEditor"));
+    beforeEach(inject(function($injector) {
+        PredObject = $injector.get("PredObject");
+    }));
+
     describe("constructor literal", function() {
         var po;
         beforeEach(function() {
