@@ -1,5 +1,11 @@
-angular.module("profilesServices", ["ngResource"]).
-    factory("Profiles", function($resource) {
+(function() {
+    "use strict";
+
+    angular
+        .module("profilesServices", ["ngResource"])
+        .factory("Profiles", Profiles);
+
+    function Profiles($resource) {
         return $resource(
             "./profiles/:profile.:format",
             {
@@ -11,4 +17,4 @@ angular.module("profilesServices", ["ngResource"]).
             }
         );
     }
-);
+})();

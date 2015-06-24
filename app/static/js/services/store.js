@@ -1,5 +1,11 @@
-angular.module("storeService", ["ngResource"]).
-    factory("Store", function($resource) {
+(function() {
+    "use strict";
+
+    angular
+        .module("storeService", ["ngResource"])
+        .factory("Store", Store);
+
+    function Store($resource) {
         return $resource(
             "../resource/:action",
             {},
@@ -22,4 +28,4 @@ angular.module("storeService", ["ngResource"]).
             }
         );
     }
-);
+})();

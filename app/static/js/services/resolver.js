@@ -1,5 +1,11 @@
-angular.module("resolverService", ["ngResource"]).
-    factory("Resolver", function($resource) {
+(function() {
+    "use strict";
+
+    angular
+        .module("resolverService", ["ngResource"])
+        .factory("Resolver", Resolver);
+
+    function Resolver($resource) {
         return $resource(
             "../resolver?r=:uri",
             {},
@@ -15,4 +21,4 @@ angular.module("resolverService", ["ngResource"]).
             }
         );
     }
-);
+})();

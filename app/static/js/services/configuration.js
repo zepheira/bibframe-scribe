@@ -1,5 +1,11 @@
-angular.module("configurationServices", ["ngResource"]).
-    factory("Configuration", function($resource) {
+(function() {
+    "use strict";
+
+    angular
+        .module("configurationServices", ["ngResource"])
+        .factory("Configuration", Configuration);
+
+    function Configuration($resource) {
         return $resource(
             "./config.json",
             {},
@@ -8,4 +14,4 @@ angular.module("configurationServices", ["ngResource"]).
             }
         );
     }
-);
+})();
