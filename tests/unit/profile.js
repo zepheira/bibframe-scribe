@@ -65,5 +65,74 @@ describe("Profile", function() {
         it("should return class templates", function() {
             expect(profile.getClassTemplates("fc")).toEqual([res]);
         });
+
+        it("should register and fill out the map", function() {
+            var m = {};
+            profile.registerResourceTemplates(m);
+            expect(m["rt-test"]).not.toBe(undefined);
+            expect(m["rt-class-test"]).toBe(undefined);
+        });
+    });
+
+    describe("constructor with multiple query results", function() {
+        var profile, res;
+        beforeEach(function() {
+            profile = new Profile("test");
+            profile.init({
+                resourceTemplate: [
+                    {
+                        id: "rt-test",
+                        "class": {
+                            id: "rt-class-test"
+                        }
+                    }
+                ]
+            }, {
+            }, function(tmpl, q) {
+                return null;
+            });
+            res = new ResourceTemplate({
+                id: "res-test",
+                "class": {
+                    id: "fc"
+                }
+            }, {});
+            profile._processQuery(["fct"], [res, [{o: {value: "fct"}}, {o: {value: "fct"}}]]);
+        });
+
+        it("should return multiple class templates", function() {
+            expect(profile.getClassTemplates("fct").length).toEqual(2);
+        });
+    });
+
+    describe("constructor with empty query results", function() {
+        var profile, res;
+        beforeEach(function() {
+            profile = new Profile("test");
+            profile.init({
+                resourceTemplate: [
+                    {
+                        id: "rt-test",
+                        "class": {
+                            id: "rt-class-test"
+                        }
+                    }
+                ]
+            }, {
+            }, function(tmpl, q) {
+                return null;
+            });
+            res = new ResourceTemplate({
+                id: "res-test",
+                "class": {
+                    id: "fc"
+                }
+            }, {});
+            profile._processQuery([""], [res, [{o: {value: "fct"}}]]);
+        });
+
+        it("should return null class templates", function() {
+            expect(profile.getClassTemplates("fc")).toEqual(null);
+        });
     });
 });
