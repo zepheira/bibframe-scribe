@@ -84,88 +84,6 @@ angular
         "data": null
     };
     
-    var ExportModalCtrl, ShowResourceCtrl, EditLiteralCtrl, SubResourceCtrl;
-
-    ExportModalCtrl = function($scope, $modalInstance, rdf) {
-        $scope.rdf = rdf;
-        $scope.close = function() {
-            $modalInstance.dismiss();
-        };
-    };
-
-    ShowResourceCtrl = function($scope, $modalInstance, rdf, label, uri) {
-        $scope.rdf = rdf;
-        $scope.label = label;
-        $scope.uri = uri;
-        $scope.close = function() {
-            $modalInstance.dismiss();
-        };
-    };
-
-    EditLiteralCtrl = function($scope, $modalInstance, property, literal, dataTypes, resource, setDateValue, setTextValue, currentWork) {
-        $scope.property = property.getProperty().getLabel();
-        $scope.prop = property;
-        $scope.dataTypes = dataTypes;
-        $scope.resource = resource;
-        $scope.setDateValue = setDateValue;
-        $scope.setTextValue = setTextValue;
-        $scope.currentWork = currentWork;
-        $scope.inputted = {};
-        $scope.inputted[$scope.prop.getProperty().getID()] = literal;
-        $scope.editExisting = true;
-        $scope.pivoting = false;
-        $scope.save = function() {
-            $modalInstance.close($scope.inputted[$scope.prop.getProperty().getID()]);
-        };
-        $scope.cancel = function() {
-            $modalInstance.dismiss();
-        };
-    };
-
-    SubResourceCtrl = function($scope, $modalInstance, templates, dataTypes, res, initProp, setTextValue, setDateValue, removeValue, editLiteral, editResource, currentWork, created, idToTemplate, pivot) {
-        $scope.initializeProperty = initProp;
-        $scope.setTextValue = setTextValue;
-        $scope.setDateValue = setDateValue;
-        $scope.removeValue = removeValue;
-        $scope.editLiteral = editLiteral;
-        $scope.editResource = editResource;
-        $scope.pivot = pivot;
-        $scope.resourceTemplates = templates;
-        $scope.dataTypes = dataTypes;
-        $scope.typeLabel = templates[res].getLabel();
-        $scope.idToTemplate = idToTemplate;
-        $scope.resource = {
-            'uri': res,
-            'label': templates[res].getLabel(),
-            'disabled': false
-        };
-        $scope.currentWork = currentWork;
-        $scope.created = created;
-        $scope.flags = {
-            isDirty: false
-        };
-        $scope.pivoting = true;
-        $scope.editExisting = false;
-        $scope.loading = {};
-        $scope.inputted = {};
-
-        var flags;
-        flags = { "hasRequired": false, "loading": $scope.loading };
-        angular.forEach(templates[res].getPropertyTemplates(), function(prop) {
-            $scope.initializeProperty($scope.currentWork, prop, flags);
-        });
-        $scope.hasRequired = flags.hasRequired;
-
-        $scope.cancel = function() {
-            $modalInstance.dismiss();
-        };
-
-        $scope.save = function() {
-            $scope.currentWork.type = new PredObject(templates[res].getClassID(), templates[res].getClassID(), "resource", false);
-            $modalInstance.close($scope.currentWork);
-        };
-    };
-
     // initialize by retrieving configuration and profiles
     Configuration.get(null, null).$promise.then(function(config) {
         var total, current, incrementProgress;
@@ -437,7 +355,7 @@ angular
     $scope.editLiteral = function(work, property, value) {
         var modal = $modal.open({
             templateUrl: "edit-literal.html",
-            controller: EditLiteralCtrl,
+            controller: "EditLiteralController",
             resolve: {
                 literal: function() {
                     return value.getValue();
@@ -509,7 +427,7 @@ angular
             Resolver.resolve({"uri": val.getValue()}).$promise.then(function(data) {
                 $modal.open({
                     templateUrl: "show-resource.html",
-                    controller: ShowResourceCtrl,
+                    controller: "ShowResourceController",
                     windowClass: "show-resource",
                     resolve: {
                         rdf: function() {
@@ -526,7 +444,7 @@ angular
             }).catch(function(data) {
                 $modal.open({
                     templateUrl: "show-resource.html",
-                    controller: ShowResourceCtrl,
+                    controller: "ShowResourceController",
                     windowClass: "show-resource",
                     resolve: {
                         rdf: function() {
@@ -585,7 +503,7 @@ angular
         tmpls[res.getClassID()] = res;
         modal = $modal.open({
             templateUrl: "pivot.html",
-            controller: SubResourceCtrl,
+            controller: "SubResourceController",
             windowClass: "pivot",
             resolve: {
                 templates: function() {
@@ -814,7 +732,7 @@ angular
     $scope.showRDF = function() {
         $modal.open({
             templateUrl: "export.html",
-            controller: ExportModalCtrl,
+            controller: "ExportController",
             windowClass: "export",
             resolve: {
                 rdf: function() {
