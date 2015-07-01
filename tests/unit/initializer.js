@@ -17,6 +17,101 @@ describe("BIBFRAME Editor application", function() {
         });
     });
 
+    describe("export contoller", function() {
+        var ctrl, modalInstance;
+        beforeEach(inject(
+            function($controller) {
+                modalInstance = {
+                    close: jasmine.createSpy("modalInstance.close"),
+                    dismiss: jasmine.createSpy("modalInstance.dismiss"),
+                    result: {
+                        then: jasmine.createSpy("modalInstance.result.then")
+                    }
+                };
+                ctrl = $controller("ExportController", {
+                    $scope: $scope,
+                    $modalInstance: modalInstance,
+                    rdf: "<rdf:RDF></rdf:RDF>"
+                });
+            }
+        ));
+        it("should exist", function() {
+            expect(ctrl).toBeDefined();
+        });
+        it("should close the modal", function() {
+            $scope.close();
+            expect(modalInstance.dismiss).toHaveBeenCalled();
+        });
+    });
+
+    describe("show resource contoller", function() {
+        var ctrl, modalInstance;
+        beforeEach(inject(
+            function($controller) {
+                modalInstance = {
+                    close: jasmine.createSpy("modalInstance.close"),
+                    dismiss: jasmine.createSpy("modalInstance.dismiss"),
+                    result: {
+                        then: jasmine.createSpy("modalInstance.result.then")
+                    }
+                };
+                ctrl = $controller("ShowResourceController", {
+                    $scope: $scope,
+                    $modalInstance: modalInstance,
+                    rdf: "<rdf:RDF></rdf:RDF>",
+                    label: "Test",
+                    uri: "urn:test"
+                });
+            }
+        ));
+        it("should exist", function() {
+            expect(ctrl).toBeDefined();
+        });
+        it("should close the modal", function() {
+            $scope.close();
+            expect(modalInstance.dismiss).toHaveBeenCalled();
+        });
+    });
+
+    /**
+     * @@@
+     * Tests and the code it tests for this controller need a major overhaul.
+     */
+    describe("sub-resource contoller", function() {
+        var ctrl, modalInstance;
+        beforeEach(inject(
+            function($controller) {
+                modalInstance = {
+                    close: jasmine.createSpy("modalInstance.close"),
+                    dismiss: jasmine.createSpy("modalInstance.dismiss"),
+                    result: {
+                        then: jasmine.createSpy("modalInstance.result.then")
+                    }
+                };
+                ctrl = $controller("SubResourceController", {
+                    $scope: $scope,
+                    $modalInstance: modalInstance,
+                    templates: {test: {getLabel: function(){ return "test" }, getPropertyTemplates: function(){return {}}}},
+                    dataTypes: "",
+                    res: "test",
+                    initProp: "",
+                    setTextValue: "",
+                    setDateValue: "",
+                    removeValue: "",
+                    editLiteral: "",
+                    editResource: "",
+                    currentWork: "",
+                    created: "",
+                    idToTemplate: "",
+                    pivot: ""
+                });
+            }
+        ));
+        it("should exist", function() {
+            expect(ctrl).toBeDefined();
+        });
+    });
+
     describe("ngEnter attribute directive", function() {
         var elm;
         beforeEach(inject(function($compile) {
