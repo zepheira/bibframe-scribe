@@ -29,7 +29,7 @@ describe("BIBFRAME Editor application", function() {
         }));
 
         it("should evaluate on Enter key down", function() {
-            var e, pjs = false;
+            var e;
             expect(elm.text()).toEqual("test{{a}}");
             $scope.$digest();
             expect($scope.a).toEqual(0);
@@ -42,12 +42,9 @@ describe("BIBFRAME Editor application", function() {
             try {
                 e = new KeyboardEvent("keypress", {code: "Enter", key: "Enter", location: 0, which: 13});
             } catch (err) {
-                pjs = true;
-                e = document.createEvent("KeyboardEvent");
-                e.initEvent("keydown", true, false);
-                e.keyCode = 13;
+                e = null;
             }
-            if (typeof e.code !== "undefined" || pjs) {
+            if (e !== null && typeof e.code !== "undefined") {
                 elm[0].dispatchEvent(e);
                 $scope.$digest();
                 expect($scope.a).toEqual(1);
@@ -56,7 +53,7 @@ describe("BIBFRAME Editor application", function() {
         });
 
         it("should evaluate on Enter key press", function() {
-            var e, pjs = false;
+            var e;
             expect(elm.text()).toEqual("test{{a}}");
             $scope.$digest();
             expect($scope.a).toEqual(0);
@@ -69,12 +66,9 @@ describe("BIBFRAME Editor application", function() {
             try {
                 e = new KeyboardEvent("keypress", {code: "Enter", key: "Enter", location: 0, which: 13});
             } catch (err) {
-                pjs = true;
-                e = document.createEvent("KeyboardEvent");
-                e.initEvent("keypress", true, false);
-                e.keyCode = 13;
+                e = null;
             }
-            if (typeof e.code !== "undefined" || pjs) {
+            if (e !== null && typeof e.code !== "undefined") {
                 elm[0].dispatchEvent(e);
                 $scope.$digest();
                 expect($scope.a).toEqual(1);
