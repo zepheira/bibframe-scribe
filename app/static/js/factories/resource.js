@@ -7,11 +7,26 @@
         function Resource(id, tmpl) {
             this._id = id;
             this._template = tmpl;
-            this._type = tmpl.getClassID();
+            this._type = tmpl !== null ? tmpl.getClassID() : null;
             this._properties = {};
             this._pristine = {};
         }
-        
+
+        /**
+         * @@@ add a utility function to load a resource from the
+         *     triple-store
+         */
+        Resource.fromGraph = function(store, uri) {
+            var query = "SELECT *  FROM { <" + uri + "> ?p ?o }", r;
+            r = new Resource(uri, null);
+            store.execute(query, function(success, results) {
+                if (success) {
+                    console.log(results);
+                }
+            });
+            return r;
+        };
+
         /**
          * Return resource URI.
          */
@@ -94,17 +109,22 @@
          * in the model occurred or not.
          */
         Resource.prototype.removePropertyValue = function(property, value) {
-            var prop, empty, objs, rmIdx;
+            var prop, empty, objs, rmIdx, objVal;
             removed = false;
             if (typeof property === "string") {
                 prop = property;
             } else {
                 prop = property.getProperty().getID();
             }
+            if (typeof value === "string") {
+                objVal = value;
+            } else {
+                objVal = value.getValue();
+            }
             objs = this._properties[prop];
             rmIdx = -1;
             angular.forEach(objs, function(obj, idx) {
-                if (obj.getValue() === value.getValue()) {
+                if (objVal === obj.getValue()) {
                     rmIdx = idx;
                 }
             });
@@ -122,12 +142,18 @@
             var empty = true,
             res = this;
             angular.forEach(this._properties, function(vals, prop) {
-                if (empty && res._properties[prop].length === res._pristine[prop].length && res._pristine[prop].length > 0) {
-                    angular.forEach(vals, function(val, i) {
-                        if (res._pristine[prop][i] !== val) {
-                            empty = false;
+                if (empty) {
+                    if (res._properties[prop].length === res._pristine[prop].length) {
+                        if (res._pristine[prop].length > 0) {
+                            angular.forEach(vals, function(val, i) {
+                                if (res._pristine[prop][i] !== val) {
+                                    empty = false;
+                                }
+                            });
                         }
-                    });
+                    } else {
+                        empty = false
+                    }
                 }
             });
             return empty;
@@ -137,8 +163,9 @@
          * Remove all user modifications.
          */
         Resource.prototype.reset = function() {
-            angular.forEach(this._properties, function(vals, prop) {
-                this._properties[prop] = this._pristine[prop];
+            var res = this;
+            angular.forEach(res._properties, function(vals, prop) {
+                res._properties[prop] = res._pristine[prop];
             });
         };
         
@@ -169,7 +196,7 @@
                     type = vals.getValue();
                 } else {
                     nsProp = Namespace.extractNamespace(prop);
-                    if ((split && res._template.hasProperty(prop)) || !split) {
+                    if ((split && (res._template !== null && res._template.hasProperty(prop))) || !split) {
                         angular.forEach(vals, function(val) {
                             if (val.isResource()) {
                                 frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
@@ -222,7 +249,7 @@
                     rdf += res.toRDF([], false);
                 }
             });
-            if (prefixed) {
+            if (typeof prefixed === "undefined" || prefixed === null || prefixed) {
                 head = '<?xml version="1.0"?>\n\n' + Namespace.buildRDF() + '\n';
                 rdf = head + rdf + tail;
             }
@@ -259,11 +286,7 @@
 
         Resource.prototype.toN3 = function(created, prefixed) {
             var rdf, refs, res;
-            if (typeof created === "undefined" || created === null) {
-                created = [];
-            }
-            
-            rdf = prefixed ? '@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n' : "";
+            rdf = (typeof prefixed === "undefined" || prefixed === null || prefixed) ? '@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n' : "";
             refs = [];
             rdf += this._resourceToN3(refs);
             angular.forEach(created, function(res) {
