@@ -20,7 +20,7 @@ angular.module("bibframeEditor", [
 }]).directive("ngEnter", function() {
     return function(scope, element, attrs) {
         element.bind("keydown keypress", function(event) {
-            if (event.which === 13) {
+            if ((event.code && event.code === "Enter") || (event.which && event.which === 13) || (event.keyCode && event.keyCode === 13)) {
                 scope.$apply(function() {
                     scope.$eval(attrs.ngEnter);
                 });
