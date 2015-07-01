@@ -41,7 +41,7 @@ describe("BIBFRAME Editor application", function() {
             // trouble to make the test work cross-browser.
             try {
                 e = new KeyboardEvent("keypress", {code: "Enter", key: "Enter", location: 0, which: 13});
-            } catch (e) {
+            } catch (err) {
                 pjs = true;
                 e = document.createEvent("KeyboardEvent");
                 e.initEvent("keydown", true, false);
@@ -68,7 +68,7 @@ describe("BIBFRAME Editor application", function() {
             // trouble to make the test work cross-browser.
             try {
                 e = new KeyboardEvent("keypress", {code: "Enter", key: "Enter", location: 0, which: 13});
-            } catch (e) {
+            } catch (err) {
                 pjs = true;
                 e = document.createEvent("KeyboardEvent");
                 e.initEvent("keypress", true, false);
