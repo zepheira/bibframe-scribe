@@ -29,16 +29,25 @@ describe("BIBFRAME Editor application", function() {
         }));
 
         it("should evaluate on Enter key down", function() {
+            var e, pjs = false;
             expect(elm.text()).toEqual("test{{a}}");
             $scope.$digest();
             expect($scope.a).toEqual(0);
             expect(elm.text()).toEqual("test0");
-            var e = new KeyboardEvent("keydown", {code: "Enter", key: "Enter", location: 0, which: 13});
             // Keyboard stuff is so jacked up across browsers that this
-            // test will fail in Chrome and Safari; the implementation should
+            // test will fail in Chrome and Safari, and PhantomJS while
+            // running fine in Firefox and IE; the implementation should
             // be sufficient to work cross-browser, but it's not worth the
             // trouble to make the test work cross-browser.
-            if (typeof e.code !== "undefined") {
+            try {
+                e = new KeyboardEvent("keypress", {code: "Enter", key: "Enter", location: 0, which: 13});
+            } catch (e) {
+                pjs = true;
+                e = document.createEvent("KeyboardEvent");
+                e.initEvent("keydown", true, false);
+                e.keyCode = 13;
+            }
+            if (typeof e.code !== "undefined" || pjs) {
                 elm[0].dispatchEvent(e);
                 $scope.$digest();
                 expect($scope.a).toEqual(1);
