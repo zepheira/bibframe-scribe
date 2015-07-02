@@ -19,6 +19,7 @@ angular
         "ValueConstraint",
         "PropertyTemplate",
         "ResourceTemplate",
+        "Resource",
         "Profile",
         function(
             $scope,
@@ -39,6 +40,7 @@ angular
             ValueConstraint,
             PropertyTemplate,
             ResourceTemplate,
+            Resource,
             Profile) {
     var SCHEMAS = "urn:schemas";
     var vm = this;

@@ -14,6 +14,7 @@ angular.module("bibframeEditor", [
     "valueConstraintFactory",
     "propertyTemplateFactory",
     "resourceTemplateFactory",
+    "resourceFactory",
     "profileFactory"
 ]).config(["$httpProvider", function($httpProvider) {
     $httpProvider.interceptors.push("httpThrottler");
