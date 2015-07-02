@@ -8,15 +8,16 @@ describe("Namespace", function() {
     }));
 
     describe("constructor", function() {
-        var a, b, c;
+        var a, b, c, d;
         beforeEach(function() {
             a = "http://example.org/term";
             b = "http://example.org/tc";
             c = "http://example.net/#res";
+            d = "urn:test"
         });
         
         it("should extract namespaces", function() {
-            var an, bn, cn;
+            var an, bn, cn, dn;
             an = Namespace.extractNamespace(a);
             expect(an.term).toEqual("term");
             expect(an.namespace).toEqual("ns0");
@@ -26,12 +27,23 @@ describe("Namespace", function() {
             cn = Namespace.extractNamespace(c);
             expect(cn.term).toEqual("res");
             expect(cn.namespace).toEqual("ns1");
+            dn = Namespace.extractNamespace(d);
+            expect(dn.term).toEqual("test");
+            expect(dn.namespace).toEqual("ns2");
         });
         
         it("should track seen namespaces", function() {
             expect(Namespace.fromNamespace("http://example.org/")).toEqual("ns0");
             expect(Namespace.fromNamespace("http://example.org/")).toEqual("ns0");
             expect(Namespace.fromNamespace("http://example.net/#")).toEqual("ns1");
+            expect(Namespace.fromNamespace("urn:")).toEqual("ns2");
+        });
+
+        it("should not find a namespace to extract", function() {
+            var uri = "slashes\\hashes;colons",
+            extract = Namespace.extractNamespace(uri);
+            expect(extract.namespace).toBeNull();
+            expect(extract.term).toEqual(uri);
         });
         
         it("should return a properly shortened RDF prolog", function() {

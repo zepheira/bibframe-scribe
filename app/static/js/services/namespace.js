@@ -26,17 +26,24 @@
          * @returns {Object}
          */
         function extractNamespace(uri) {
-            var lastSlash, lastHash, protocol, ns, term, extracted;
+            var lastSlash, lastHash, lastColon, prIdx, protocol, ns, term, extracted;
             ns = null;
-            protocol = uri.substr(0, uri.indexOf("://") + 3);
-            uri = uri.substr(uri.indexOf("://") +3);
+            protocol = "";
+            prIdx = uri.indexOf("://");
+            if (prIdx >= 0) {
+                protocol = uri.substr(0, uri.indexOf("://") + 3);
+                uri = uri.substr(uri.indexOf("://") + 3);
+            }
             lastSlash = uri.lastIndexOf("/");
             lastHash = uri.lastIndexOf("#");
-            if (lastSlash > 0 || lastHash > 0) {
-                ns = protocol + uri.substr(0, Math.max(lastSlash, lastHash) + 1);
+            lastColon = uri.lastIndexOf(":");
+            if (lastSlash > 0 || lastHash > 0 || lastColon > 0) {
+                ns = protocol + uri.substr(0, Math.max(lastSlash, lastHash, lastColon) + 1);
+                term = uri.substr(Math.max(lastSlash, lastHash, lastColon) + 1);
+                extracted = {"namespace": fromNamespace(ns), "term": term};
+            } else {
+                extracted = {"namespace": null, "term": uri};
             }
-            term = uri.substr(Math.max(lastSlash, lastHash) + 1);
-            extracted = {"namespace": fromNamespace(ns), "term": term};
             return extracted;
         }
     
