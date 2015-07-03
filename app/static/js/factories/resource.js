@@ -72,6 +72,13 @@
             }
             flags.loading[prop] = false;
         };
+
+        /**
+         * Return property values based on the property URI.
+         */
+        Resource.prototype.getPropertyValues = function(property) {
+            return this._properties[property];
+        }
         
         /**
          * Set work's value of property to String or Date value.
@@ -80,7 +87,11 @@
         Resource.prototype.addPropertyValue = function(property, value) {
             var propID, seen, val, isDirty, textValue;
             isDirty = false;
-            propID = property.getProperty().getID();
+            if (typeof property === "string") {
+                propID = property;
+            } else {
+                propID = property.getProperty().getID();
+            }
             objType = property.getType();
             seen = false;
             if (typeof value === "object" && typeof value.toISOString !== "undefined") {
