@@ -1,12 +1,9 @@
-// @@@ start moving controller.js code into here, working in Resource
-//     currentWork should be a Resource, start from that
 (function() {
     angular
         .module("bibframeEditor")
-        .controller("EditorController", ["$scope", "$q", "$modal", "$http", "$log", "Configuration", "Profiles", "Schemas", "Store", "Query", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", EditorController]);
+        .controller("EditorController", ["$scope", "$modal", "$log", "Store", "Configuration", "Query", "Graph", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", EditorController]);
 
-    function EditorController($scope, $q, $modal, $http, $log, Configuration, Profiles, Schemas, Store, Query, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore) {
-        $scope.initializeProfile = initializeProfile;
+    function EditorController($scope, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore) {
         $scope.newEdit = newEdit;
         $scope.autocomplete = autocomplete;
         $scope.reset = reset;
@@ -23,59 +20,26 @@
         $scope.validate = validate;
         $scope.persist = persist;
         $scope.showRDF = showRDF;
-
-        //initialize();
-
-        /**
-         * Retrieve configuration and profiles, process them and modify $scope.
-         * @@@further abstract into services
-         */
-        function initialize() {
-        }
         
-        /**
-         * WAS initialize, too generic a name
-         * Take a profile object and process it, modifying $scope, returning
-         * list of resource templates.
-         * @@@ service - template mapping service
-         */
-        function initializeProfile(profile) {
-            var instances, instanceTemplate, resources;
-            resources = [];
+        $scope.progress = Progress.getCurrent;
+        $scope.messages = Message.messages;
+        $scope.initialized = Configuration.isInitialized;
+        $scope.resourceOptions = Configuration.getResourceOptions;
+        $scope.activeTemplate = ResourceStore.getActiveTemplate;
+        $scope.config = Configuration.getConfig;
+        $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
+        $scope.hasRequired = ResourceStore.hasRequired;
 
-            angular.forEach($scope.firstClass, function(fc) {
-                var templates;
-                templates = profile.getClassTemplates(fc);
-                if (templates !== null) {
-                    angular.forEach(templates, function(template) {
-                        resources.push(template);
-                        ResourceStore.addResourceTemplate(template);
-                    });
-                }
-            });
-            //@@@ incorporate service into factory
-            profile.registerResourceTemplates($scope.idToTemplate);
-            
-            // interpret configuration for resource types to lookup services
-            angular.forEach($scope.config.resourceServiceMap, function(item, key) {
-                TemplateStore.addResourceType(key, item);
-            });
-            // @@@ service for data types
-            angular.forEach($scope.config.dataTypes, function(dataType) {
-                $scope.dataTypes[dataType.id] = dataType.handler;
-            });
-            
-            return resources;            
-        }
+
+        Configuration.initialize();
 
         /**
          * Wipe out currently displayed resource (in $scope) and replace with
          * pristine $scope model.
-         * @@@ service - created works service
          */
         function newEdit(resource) {
             var props, flags, dz;
-            flags = { "hasRequired": false, "loading": ResourceStore.getLoading() };
+            flags = { "hasRequired": false, "loading": ResourceStore.getAllLoading() };
 
             ResourceStore.clear();
             ResourceStore.setActiveTemplate(TemplateStore.getTemplateByClassID(resource.uri));
@@ -99,18 +63,17 @@
             
             if (typeof refs === "object") {
                 for (i = 0; i < refs.length; i++) {
-                    // @@@ config service
-                    single = $scope.config.resourceServiceMap[TemplateStore.getTemplateByID(refs[i]).getClassID()];
+                    single = Configuration.getConfig().resourceServiceMap[TemplateStore.getTemplateByID(refs[i]).getClassID()];
                     if (classes.indexOf(single) < 0) {
                         classes.push(single);
                     }
                 }
             } else {
-                classes.push($scope.config.resourceServiceMap[TemplateStore.getTemplateByID(refs).getClassID()]);
+                classes.push(Configuration.getConfig().resourceServiceMap[TemplateStore.getTemplateByID(refs).getClassID()]);
             }
             
             for (i = 0; i < classes.length; i++) {
-                services = services.concat($scope.config.serviceProviderMap[classes[i]]);
+                services = services.concat(Configuration.getConfig().serviceProviderMap[classes[i]]);
             }
             
             angular.forEach(services, function(service, i) {

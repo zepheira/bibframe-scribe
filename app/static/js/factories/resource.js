@@ -1,13 +1,13 @@
 (function() {
     angular
-        .module("resourceFactory", ["predObjectFactory", "namespaceService"])
-        .factory("Resource", ResourceFactory);
+        .module("resourceFactory", [])
+        .factory("Resource", ["PredObject", "Namespace", ResourceFactory]);
 
     function ResourceFactory(PredObject, Namespace) {
         function Resource(id, tmpl) {
             this._id = id;
             this._template = tmpl;
-            this._type = tmpl !== null ? tmpl.getClassID() : null;
+            this._type = (typeof tmpl !== "undefined" && tmpl !== null) ? tmpl.getClassID() : null;
             this._properties = {};
             this._pristine = {};
         }
@@ -39,6 +39,11 @@
          */
         Resource.prototype.getType = function() {
             return this._type;
+        };
+
+        Resource.prototype.setTemplate = function(tmpl) {
+            this._template = tmpl;
+            this._type = tmpl.getClassID();
         };
         
         /**

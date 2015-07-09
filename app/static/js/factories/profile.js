@@ -1,9 +1,9 @@
 (function() {
     angular
-        .module("profileFactory", ["resourceTemplateFactory"])
-        .factory("Profile", ProfileFactory);
+        .module("profileFactory", [])
+        .factory("Profile", ["$q", "ResourceTemplate", "Graph", ProfileFactory]);
 
-    function ProfileFactory(ResourceTemplate) {
+    function ProfileFactory($q, ResourceTemplate, Graph) {
 
         function Profile(id) {
             this._id = id;
@@ -12,8 +12,11 @@
             this._classMap = {};
         }
 
-        Profile.prototype.init = function(obj, config, graph) {
-            var rt, i, template, work, query, promises = [];
+        Profile.prototype.init = function(obj, config) {
+            var rt, i, template, work, query,
+            promises = [],
+            prof = this,
+            deferred = $q.defer();
             if (typeof obj.resourceTemplate !== "undefined") {
                 for (i = 0; i < obj.resourceTemplate.length; i++) {
                     template = obj.resourceTemplate[i];
@@ -22,10 +25,16 @@
                     this._idToTemplate[rt.getID()] = rt;
                     
                     query = 'SELECT ?o { <'+rt.getClassID()+'> rdfs:subClassOf ?o }';
-                    promises.push(graph(rt, query));
+                    promises.push(Graph.execute(rt, query));
                 }
             }
-            return promises;
+            $q.all(promises).then(function(results) {
+                results.map(function(r) {
+                    prof._processQuery(config.firstClass, r);
+                });
+                deferred.resolve();
+            });
+            return deferred.promise;
         };
         
         Profile.prototype._processQuery = function(classes, results) {

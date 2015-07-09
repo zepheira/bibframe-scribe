@@ -1,16 +1,16 @@
 "use strict";
 
-describe("Profiles", function() {
-    var Profiles, mockProfileResource, $httpBackend;
+describe("ProfileLoad", function() {
+    var ProfileLoad, mockProfileResource, $httpBackend;
 
     beforeEach(module("bibframeEditor"));
     beforeEach(inject(function($injector) {
         $httpBackend = $injector.get("$httpBackend");
-        mockProfileResource = $injector.get("Profiles");
+        mockProfileResource = $injector.get("ProfileLoad");
     }));
 
     describe("get", function() {
-        it("should call get", inject(function(Profiles) {
+        it("should call get", inject(function(ProfileLoad) {
             $httpBackend.expectGET("./profiles/test.json").respond({
                 "Profile": {
                     "id": "test"

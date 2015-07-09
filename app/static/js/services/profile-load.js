@@ -2,10 +2,10 @@
     "use strict";
 
     angular
-        .module("profilesService", ["ngResource"])
-        .factory("Profiles", Profiles);
+        .module("profileLoadService", ["ngResource"])
+        .factory("ProfileLoad", ProfileLoad);
 
-    function Profiles($resource) {
+    function ProfileLoad($resource) {
         return $resource(
             "./profiles/:profile.:format",
             {

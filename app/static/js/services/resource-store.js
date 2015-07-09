@@ -1,24 +1,33 @@
 (function() {
     angular
-        .module("resourceStoreService", ["resourceFactory"])
-        .factory("ResourceStore", ResourceStore);
+        .module("resourceStoreService", [])
+        .factory("ResourceStore", ["Resource", ResourceStore]);
 
     function ResourceStore(Resource) {
-        var service, _current, _inputted, _created, _loading, _flags, _hasRequired, _cache;
+        var service, _current, _inputted, _created, _loading, _flags, _hasRequired, _cache, _dataTypes;
         service = {
             getCurrent: getCurrent,
             getFlags: getFlags,
             getCreated: getCreated,
+            setActiveTemplate: setActiveTemplate,
             getActiveTemplate: getActiveTemplate,
+            getDataTypes: getDataTypes,
             setLoading: setLoading,
+            getAllLoading: getAllLoading,
             isLoading: isLoading,
-            reset: reset
+            hasRequired: hasRequired,
+            setHasRequired: setHasRequired,
+            setDirty: setDirty,
+            addDataTypeHandler: addDataTypeHandler,
+            newResource: newResource,
+            setResourceTemplate: setResourceTemplate,
+            reset: reset,
+            clear: clear
         };
 
-        return service;
-
-        _current = new Resource(); //@@@ be able to create a resource without and ID or a template...?
+        _current = null;
         _activeTemplate = null;
+        _dataTypes = {};
         _inputted = {};
         _created = [];
         _loading = {};
@@ -29,6 +38,8 @@
         _cache = {
             dz: null
         };
+
+        return service;
 
         function getCurrent() {
             return _current;
@@ -50,15 +61,23 @@
             return _activeTemplate;
         }
 
+        function getDataTypes() {
+            return _dataTypes;
+        }
+
         function setLoading(prop, loading) {
            _loading[prop] = loading;
+        }
+
+        function getAllLoading() {
+            return _loading;
         }
 
         function isLoading(prop) {
             return _loading[prop];
         }
 
-        function getHasRequired() {
+        function hasRequired() {
             return _hasRequired;
         }
 
@@ -74,17 +93,29 @@
             _activeTemplate = tmpl;
         }
 
+        function addDataTypeHandler(id, handler) {
+            _dataTypes[id] = handler;
+        }
+
+        function newResource() {
+            // @@@ ID generating service
+            _current = new Resource("@@@");
+        }
+
+        function setResourceTemplate(tmpl) {
+            _current.setTemplate(tmpl);
+        }
+
         function reset() {
             _current.reset();
             _flags.isDirty = false;
-            if ($scope.cache.dz) {
-                $scope.cache.dz.removeAllFiles();
+            if (_cache.dz) {
+                _cache.dz.removeAllFiles();
             }
             _inputted = {};
         }
 
         function clear() {
-            _currentWork = new Resource();
             _hasRequired = false;
             _flags = {
                 isDirty: false
@@ -94,6 +125,7 @@
                 _cache.dz.destroy();
                 _cache.dz = null;
             }
+            newResource();
         }
     }
 })();

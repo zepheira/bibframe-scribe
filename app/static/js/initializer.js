@@ -1,11 +1,14 @@
 angular.module("bibframeEditor", [
     "ui.bootstrap",
-    "profilesService",
-    "configurationService",
+    "http-throttler",
+    "profileLoadService",
+    "schemasService",
+    "configurationLoadService",
     "storeService",
     "queryService",
+    "graphService",
+    "configurationService",
     "messageService",
-    "http-throttler",
     "resolverService",
     "namespaceService",
     "progressService",
@@ -15,7 +18,9 @@ angular.module("bibframeEditor", [
     "propertyTemplateFactory",
     "resourceTemplateFactory",
     "resourceFactory",
-    "profileFactory"
+    "profileFactory",
+    "resourceStoreService",
+    "templateStoreService"
 ]).config(["$httpProvider", function($httpProvider) {
     $httpProvider.interceptors.push("httpThrottler");
 }]).directive("ngEnter", function() {

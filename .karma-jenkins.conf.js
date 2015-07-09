@@ -16,7 +16,6 @@ module.exports = function(config) {
       'app/static/js/services/*.js',
       'app/static/js/initializer.js',
       'app/static/js/controllers/*.js',
-      'app/static/js/controllers.js',
       'tests/unit/**/*.js',
       'tests/unit/*.js'
     ],

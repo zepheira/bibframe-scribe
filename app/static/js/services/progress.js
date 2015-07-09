@@ -3,31 +3,35 @@
 
     angular
         .module("progressService", [])
-        .factory("Progress", Progress);
+        .factory("Progress", ["$rootScope", Progress]);
 
-    function Progress() {
+    function Progress($scope) {
+        var service, _current, _progress, _total;
+
         var service = {
             setTotal: setTotal,
             getCurrent: getCurrent,
             increment: increment
         };
 
-        this._current = 0;
-        this._progress = 0;
-        this._total = 0;
+        _current = 0;
+        _progress = 0;
+        _total = 0;
 
         return service;
 
         function setTotal(t) {
-            this._total = t;
+            _total = t;
         }
 
         function getCurrent() {
-            return this._progress;
+            return _progress;
         }
 
         function increment() {
-            this._progress = Math.round((++this._current / this._total) * 100);
+            $scope.$evalAsync(function() {
+                _progress = Math.round((++_current / _total) * 100);
+            });
         }
     }
 })();

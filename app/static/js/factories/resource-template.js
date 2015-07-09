@@ -1,7 +1,7 @@
 (function() {
     angular
-        .module("resourceTemplateFactory", ["propertyTemplateFactory"])
-        .factory("ResourceTemplate", ResourceTemplateFactory);
+        .module("resourceTemplateFactory", [])
+        .factory("ResourceTemplate", ["PropertyTemplate", ResourceTemplateFactory]);
 
     function ResourceTemplateFactory(PropertyTemplate) {
 

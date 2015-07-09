@@ -4,7 +4,7 @@
         .factory("TemplateStore", TemplateStore);
 
     function TemplateStore() {
-        var service, _resourceToFirstClassMap, _resourceTemplates, _resourceTypes, _typeMap, _idToTemplate;
+        var service, _resourceToFirstClassMap, _resourceTemplates, _resourceTypes, _typeMap, _idToTemplate, _profiles;
 
         service = {
             addResourceFirstClass: addResourceFirstClass,
@@ -14,15 +14,18 @@
             hasTemplateByID: hasTemplateByID,
             getTemplateByID: getTemplateByID,
             getTemplateIDHash: getTemplateIDHash,
-            addResourceType: addResourceType
+            addResourceType: addResourceType,
+            addProfile: addProfile
         };
-        return service;
 
         _resourceToFirstClassMap = {};
         _resourceTemplates = {};
         _resourceTypes = {};
         _typeMap = {};
         _idToTemplate = {};
+        _profiles = [];
+
+        return service;
 
         function addResourceFirstClass(res, fc) {
             _resourceToFirstClassMap[res] = fc;
@@ -59,6 +62,10 @@
                 _resourceTypes[uri] = type.type;
                 _typeMap[type.type] = type.propertyMap;
             }
+        }
+
+        function addProfile(profile) {
+            _profiles.push(profile);
         }
     }
 

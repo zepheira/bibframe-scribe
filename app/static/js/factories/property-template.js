@@ -1,7 +1,7 @@
 (function() {
     angular
-        .module("propertyTemplateFactory", ["propertyFactory", "valueConstraintFactory"])
-        .factory("PropertyTemplate", PropertyTemplateFactory);
+        .module("propertyTemplateFactory", [])
+        .factory("PropertyTemplate", ["Property", "ValueConstraint", PropertyTemplateFactory]);
 
     function PropertyTemplateFactory(Property, ValueConstraint) {
 

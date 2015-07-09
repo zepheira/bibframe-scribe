@@ -18,8 +18,9 @@ describe("Profile", function() {
             expect(profile.getID()).toEqual("test");
         });
 
-        it("should return an emtpy array", function() {
-            expect(profile.init({}, {}, function() {})).toEqual([]);
+        it("should return a promise", function() {
+            var p = profile.init({}, {});
+            expect(p.then).toBeDefined();
         });
 
         it("should return a null resource template", function() {

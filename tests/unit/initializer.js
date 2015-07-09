@@ -12,7 +12,7 @@ describe("BIBFRAME Editor application", function() {
 
     describe("editor contoller", function() {
         it("should exist", function() {
-            var editorCtrl = $controller("EditorCtrl", {$scope: $scope});
+            var editorCtrl = $controller("EditorController", {$scope: $scope});
             expect(editorCtrl).toBeDefined();
         });
     });
@@ -109,6 +109,10 @@ describe("BIBFRAME Editor application", function() {
         ));
         it("should exist", function() {
             expect(ctrl).toBeDefined();
+        });
+        it("should close the modal", function() {
+            $scope.cancel();
+            expect(modalInstance.dismiss).toHaveBeenCalled();
         });
     });
 

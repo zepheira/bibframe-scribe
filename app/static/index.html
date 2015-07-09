@@ -23,23 +23,28 @@
     <script src="js/factories/profile.js"></script>
 
     <script src="js/services/namespace.js"></script>
-    <script src="js/services/configuration.js"></script>
+    <script src="js/services/configuration-load.js"></script>
+    <script src="js/services/profile-load.js"></script>
+    <script src="js/services/schema-load.js"></script>
     <script src="js/services/message.js"></script>
-    <script src="js/services/profiles.js"></script>
+    <script src="js/services/resource-store.js"></script>
+    <script src="js/services/template-store.js"></script>
     <script src="js/services/query.js"></script>
     <script src="js/services/resolver.js"></script>
+    <script src="js/services/graph.js"></script>
     <script src="js/services/store.js"></script>
     <script src="js/services/progress.js"></script>
+    <script src="js/services/configuration.js"></script>
     <script src="js/initializer.js"></script>
     <script src="js/controllers/show-resource.js"></script>
     <script src="js/controllers/export.js"></script>
     <script src="js/controllers/edit-literal.js"></script>
     <script src="js/controllers/sub-resource.js"></script>
-    <script src="js/controllers.js"></script>
+    <script src="js/controllers/editor.js"></script>
 
     <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
   </head>
-  <body ng-controller="EditorCtrl">
+  <body ng-controller="EditorController">
     <nav class="navbar navbar-default">
       <div class="navbar-header">
         <a class="navbar-brand" href="#"><span class="application-logo"></span>BIBFRAME Scribe</a>
@@ -58,7 +63,7 @@
     <div class="container editor">
       <div id="messages">
         <alert
-             ng-repeat="msg in messages"
+             ng-repeat="msg in messages()"
              type="{{msg.severity}}"
              close="closeMsg($index)">
            {{msg.message}}
@@ -68,21 +73,21 @@
       <div class="row">
         <tabset vertical="true" type="tabs" class="col-md-10">
           <tab disable="true">
-            <tab-heading ng-show="!activeResource"></tab-heading>
-            <div class="jumbotron" ng-show="initialized">
+            <tab-heading ng-show="!activeTemplate()"></tab-heading>
+            <div class="jumbotron" ng-show="initialized()">
               <h2>Hi.</h2>
               <p>Click an instance on the left to begin cataloging that type.</p>
               <br><br>
             </div>
-            <div class="jumbotron" ng-show="!initialized">
+            <div class="jumbotron" ng-show="!initialized()">
               <h2>Hey! Listen!</h2>
               <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
               <progressbar value="progress()" class="active progress-striped"></progressbar>
             </div>
           </tab>
-          <tab ng-repeat="resource in resourceOptions | orderBy:'sortKey'" select="newEdit(resource)" disable="flags.isDirty">
+          <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="flags.isDirty">
             <tab-heading><span ng-show="resource.child"><i class="icon-chevron-right"></i> </span>{{resource.label}}</tab-heading>
-            <div ng-show="activeResource&&activeResource.getClassID()==resource.uri" ng-include="'resource.html'"></div>
+            <div ng-show="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-include="'resource.html'"></div>
           </tab>
         </tabset>
         
@@ -90,7 +95,7 @@
           <h4 tooltip="Disable an external service if you're not interested in seeing its results come up in a typeahead search."
               tooltip-placement="top">External Services</h4>
           <form class="form-horizontal">
-            <div ng-repeat="(provider, pnames) in config.providerList">
+            <div ng-repeat="(provider, pnames) in config().providerList">
               <input type="checkbox"
                      id="services-{{provider}}"
                      ng-model="useServices[provider]"
@@ -275,8 +280,8 @@
 
     <script type="text/ng-template" id="resource.html">
       <form class="form-horizontal well" ng-submit="submit()" name="form-resource">
-        <p ng-show="hasRequired">Properties marked with <span class="required">*</span> are required.</p>
-        <div ng-repeat="prop in resourceTemplates[resource.uri].getPropertyTemplates()">
+        <p ng-show="hasRequired()">Properties marked with <span class="required">*</span> are required.</p>
+        <div ng-repeat="prop in getTemplateByClassID(resource.uri).getPropertyTemplates()">
           <p class="form-group">
             <label for="{{resource.uri}}-{{prop.getProperty().getID()}}" class="property-label control-label col-md-3">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
             <span class="col-md-8" ng-if="!prop.hasConstraint()||(prop.hasConstraint()&&prop.getConstraint().isEditable())">
@@ -292,6 +297,7 @@
             <span ng-if="prop.hasConstraint()&&!prop.getConstraint().isEditable()">
               <span ng-include="'ineditable.html'"></span>
             </span>
+            <!-- @@@pick up here -->
             <span class="col-md-1" ng-show="loading[prop.getProperty().getID()]"><img src="img/spinner.gif"></span>
           </p>
           <ul class="values" ng-hide="(prop.hasConstraint()&&!prop.getConstraint().isEditable())||resourceTypes[idToTemplate[prop.getConstraint().getReference()].getClassID()]=='dropzone'">
