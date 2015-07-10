@@ -107,10 +107,9 @@
          * @@@ service? - with autocomplete?
          */
         function selectValue(property, selection, created) {
-            var seen = false;
-            prop = property.getProperty().getID();
+            var seen = false, objType;
             objType = property.getType();
-            angular.forEach(ResourceStore.getCurrent().getPropertyValues(prop), function(val) {
+            angular.forEach(ResourceStore.getCurrent().getPropertyValues(property), function(val) {
                 if (selection.uri === val.getValue()) {
                     seen = true;
                 }
@@ -119,7 +118,6 @@
                 created = false;
             }
             if (!seen) {
-                ResourceStore.setDirty();
                 ResourceStore.getCurrent().addPropertyValue(property, new PredObject(selection.label, selection.uri, objType, created));
             }
         }

@@ -95,23 +95,29 @@
          */
         Resource.prototype.addPropertyValue = function(property, value) {
             var propID, seen, val, isDirty, textValue;
+            val = null;
             isDirty = false;
             propID = property.getProperty().getID();
             objType = property.getType();
             seen = false;
             if (typeof value === "object" && typeof value.toISOString !== "undefined") {
                 textValue = value.toISOString().split("T")[0];
+            } else if (typeof value ==="object") {
+                val = value;
+                textValue = value.getValue();
             } else {
                 textValue = value;
             }
-            angular.forEach(this._properties[propID], function(val) {
-                if (val.getValue() === textValue) {
+            angular.forEach(this._properties[propID], function(v) {
+                if (v.getValue() === textValue) {
                     seen = true;
                 }
             });
             if (!seen && textValue !== "") {
                 isDirty = true;
-                val = new PredObject(textValue, textValue, objType, true);
+                if (val === null) {
+                    val = new PredObject(textValue, textValue, objType, true);
+                }
                 if (property.hasConstraint() && property.getConstraint().hasComplexType()) {
                     val.setDatatype(property.getConstraint().getComplexTypeID());
                 };
