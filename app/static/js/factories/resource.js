@@ -96,11 +96,7 @@
         Resource.prototype.addPropertyValue = function(property, value) {
             var propID, seen, val, isDirty, textValue;
             isDirty = false;
-            if (typeof property === "string") {
-                propID = property;
-            } else {
-                propID = property.getProperty().getID();
-            }
+            propID = property.getProperty().getID();
             objType = property.getType();
             seen = false;
             if (typeof value === "object" && typeof value.toISOString !== "undefined") {
