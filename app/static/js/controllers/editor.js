@@ -5,6 +5,7 @@
 
     function EditorController($scope, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore) {
         $scope.inputted = {};
+        $scope.useServices = {};
         $scope.editExisting = false; // @@@ redo this
         $scope.pivoting = false;
 
@@ -120,7 +121,7 @@
             }
             if (!seen) {
                 ResourceStore.setDirty();
-                ResourceStore.getCurrent().addPropertyValue(prop, new PredObject(selection.label, selection.uri, objType, created));
+                ResourceStore.getCurrent().addPropertyValue(property, new PredObject(selection.label, selection.uri, objType, created));
             }
         }
 
