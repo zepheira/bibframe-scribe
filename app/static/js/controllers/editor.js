@@ -4,6 +4,10 @@
         .controller("EditorController", ["$scope", "$modal", "$log", "Store", "Configuration", "Query", "Graph", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", EditorController]);
 
     function EditorController($scope, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore) {
+        $scope.inputted = {};
+        $scope.editExisting = false; // @@@ redo this
+        $scope.pivoting = false;
+
         $scope.newEdit = newEdit;
         $scope.autocomplete = autocomplete;
         $scope.reset = reset;
@@ -26,10 +30,14 @@
         $scope.initialized = Configuration.isInitialized;
         $scope.resourceOptions = Configuration.getResourceOptions;
         $scope.activeTemplate = ResourceStore.getActiveTemplate;
+        $scope.currentWork = ResourceStore.getCurrent;
+        $scope.isDirty = ResourceStore.isDirty;
         $scope.config = Configuration.getConfig;
         $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;
-
+        $scope.isLoading = ResourceStore.isLoading;
+        $scope.getReferenceResourceType = TemplateStore.getReferenceResourceType;
+        $scope.dataTypes = ResourceStore.getDataTypeByID;
 
         Configuration.initialize();
 
@@ -41,6 +49,7 @@
             var props, flags, dz;
             flags = { "hasRequired": false, "loading": ResourceStore.getAllLoading() };
 
+            $scope.inputted = {};
             ResourceStore.clear();
             ResourceStore.setActiveTemplate(TemplateStore.getTemplateByClassID(resource.uri));
             props = ResourceStore.getActiveTemplate().getPropertyTemplates();
@@ -121,6 +130,7 @@
          */
         function reset(formScope, formName) {
             ResourceStore.reset();
+            $scope.inputted = {};
             formScope[formName].$setPristine();
         }
 

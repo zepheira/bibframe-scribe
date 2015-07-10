@@ -4,7 +4,7 @@
         .factory("ResourceStore", ["Resource", ResourceStore]);
 
     function ResourceStore(Resource) {
-        var service, _current, _inputted, _created, _loading, _flags, _hasRequired, _cache, _dataTypes;
+        var service, _current, _created, _loading, _flags, _hasRequired, _cache, _dataTypes;
         service = {
             getCurrent: getCurrent,
             getFlags: getFlags,
@@ -28,7 +28,6 @@
         _current = null;
         _activeTemplate = null;
         _dataTypes = {};
-        _inputted = {};
         _created = [];
         _loading = {};
         _flags = {
@@ -45,10 +44,6 @@
             return _current;
         }
 
-        function getInputted() {
-            return _inputted;
-        }
-
         function getFlags() {
             return _flags;
         }
@@ -63,6 +58,10 @@
 
         function getDataTypes() {
             return _dataTypes;
+        }
+
+        function getDataTypeByID(id) {
+            return _dataTypes[id];
         }
 
         function setLoading(prop, loading) {
@@ -112,7 +111,6 @@
             if (_cache.dz) {
                 _cache.dz.removeAllFiles();
             }
-            _inputted = {};
         }
 
         function clear() {

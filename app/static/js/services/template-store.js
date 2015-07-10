@@ -55,6 +55,10 @@
             return _idToTemplate;
         }
 
+        function getReferenceResourceType(ref) {
+            _resourceTypes[_idToTemplate[uri].getClassID()]
+        }
+
         function addResourceType(uri, type) {
             if (typeof type === "string") {
                 _resourceTypes[uri] = type;

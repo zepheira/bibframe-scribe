@@ -82,7 +82,11 @@
          * Return property values based on the property URI.
          */
         Resource.prototype.getPropertyValues = function(property) {
-            return this._properties[property];
+            if (typeof this._properties[property] !== "undefined") {
+                return this._properties[property];
+            } else {
+                return null;
+            }
         }
         
         /**
