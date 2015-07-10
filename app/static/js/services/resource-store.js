@@ -18,6 +18,7 @@
             hasRequired: hasRequired,
             setHasRequired: setHasRequired,
             setDirty: setDirty,
+            isDirty: isDirty,
             addDataTypeHandler: addDataTypeHandler,
             newResource: newResource,
             setResourceTemplate: setResourceTemplate,
@@ -86,7 +87,11 @@
 
         function setDirty() {
             _flags.isDirty = true;
-        };
+        }
+
+        function isDirty() {
+            return _flags.isDirty;
+        }
 
         function setActiveTemplate(tmpl) {
             _activeTemplate = tmpl;
