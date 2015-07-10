@@ -32,7 +32,6 @@
         $scope.resourceOptions = Configuration.getResourceOptions;
         $scope.activeTemplate = ResourceStore.getActiveTemplate;
         $scope.current = ResourceStore.getCurrent;
-        $scope.isDirty = ResourceStore.isDirty;
         $scope.config = Configuration.getConfig;
         $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;

@@ -85,7 +85,7 @@
               <progressbar value="progress()" class="active progress-striped"></progressbar>
             </div>
           </tab>
-          <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="flags.isDirty">
+          <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="!current().isEmpty()">
             <tab-heading><span ng-show="resource.child"><i class="icon-chevron-right"></i> </span>{{resource.label}}</tab-heading>
             <div ng-show="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-include="'resource.html'"></div>
           </tab>
@@ -378,8 +378,8 @@
         </div>
         <div ng-if="!editExisting&&!pivoting">
           <button class="btn btn-default" type="button" ng-click="reset(this, 'form-resource')">Clear</button>
-          <button class="btn btn-primary btn-lg" type="button" ng-click="submit()" ng-disabled="!isDirty()">Save</button>
-          <button class="btn btn-primary btn-lg" type="button" ng-click="export()" ng-disabled="!isDirty()">Export</button>
+          <button class="btn btn-primary btn-lg" type="button" ng-click="submit()" ng-disabled="current().isEmpty()">Save</button>
+          <button class="btn btn-primary btn-lg" type="button" ng-click="export()" ng-disabled="current().isEmpty()">Export</button>
         </div>
       </form>
     </script>

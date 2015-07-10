@@ -17,8 +17,6 @@
             isLoading: isLoading,
             hasRequired: hasRequired,
             setHasRequired: setHasRequired,
-            setDirty: setDirty,
-            isDirty: isDirty,
             addDataTypeHandler: addDataTypeHandler,
             newResource: newResource,
             setResourceTemplate: setResourceTemplate,
@@ -31,9 +29,7 @@
         _dataTypes = {};
         _created = [];
         _loading = {};
-        _flags = {
-            isDirty: false
-        };
+        _flags = {};
         _hasRequired = false;
         _cache = {
             dz: null
@@ -85,10 +81,6 @@
             _hasRequired = req;
         }
 
-        function setDirty() {
-            _flags.isDirty = true;
-        }
-
         function isDirty() {
             return _flags.isDirty;
         }
@@ -112,7 +104,6 @@
 
         function reset() {
             _current.reset();
-            _flags.isDirty = false;
             if (_cache.dz) {
                 _cache.dz.removeAllFiles();
             }
@@ -120,9 +111,7 @@
 
         function clear() {
             _hasRequired = false;
-            _flags = {
-                isDirty: false
-            };
+            _flags = {};
             _loading = {};
             if (_cache.dz !== null) {
                 _cache.dz.destroy();
