@@ -195,21 +195,21 @@
                    is-open="opened"
                    ng-focus="opened=true"
                    ng-model="inputted[prop.getProperty().getID()]"
-                   ng-enter="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
-                   ng-disabled="!editExisting&&!prop.isRepeatable()&&getCurrent().getPropertyValues(prop.getProperty().getID())!=null&&getCurrent().getPropertyValues(prop.getProperty().getID()).length>0">
+                   ng-enter="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+                   ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
             <span class="input-group-btn">
               <button
                  ng-show="!editExisting&&prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
               <button
                  ng-show="!editExisting&&!prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
             </span>
           </span>
           <span ng-switch-default class="input-group">
@@ -219,21 +219,21 @@
                class="form-control"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}"
                ng-model="inputted[prop.getProperty().getID()]"
-               ng-enter="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
-               ng-disabled="!editExisting&&!prop.isRepeatable()&&getCurrent().getPropertyValues(prop.getProperty().getID())!=null&&getCurrent().getPropertyValues().length>0">
+               ng-enter="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues().length>0">
             <span class="input-group-btn">
               <button
                  ng-show="!editExisting&&prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
               <button
                  ng-show="!editExisting&&!prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
             </span>
           </span>
         </span>
@@ -244,21 +244,21 @@
            class="form-control"
            id="{{resource.uri}}-{{prop.getProperty().getID()}}"
            ng-model="inputted[prop.getProperty().getID()]"
-           ng-enter="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
-           ng-disabled="!editExisting&&!prop.isRepeatable()&&getCurrent().getPropertyValues(prop.getProperty().getID())!=null&&getCurrent().getPropertyValues(prop.getProperty().getID()).length>0">
+           ng-enter="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+           ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
         <span class="input-group-btn">
           <button
              ng-show="!editExisting&&prop.isRepeatable()"
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
           <button
              ng-show="!editExisting&&!prop.isRepeatable()"
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
         </span>
       </span>
     </script>
@@ -270,21 +270,21 @@
                class="form-control"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}"
                ng-model="inputted[prop.getProperty().getID()]"
-               ng-enter="getCurrent().addPropertyValue(,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
-               ng-disabled="!editExisting&&!prop.isRepeatable()&&getCurrent().getPropertyValues(prop.getProperty().getID())!=null&&getCurrent().getPropertyValues(prop.getProperty().getID()).length>0">
+               ng-enter="current().addPropertyValue(,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
         <span class="input-group-btn">
           <button
              ng-show="!editExisting&&prop.isRepeatable()"
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
           <button
              ng-show="!editExisting&&!prop.isRepeatable()"
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="getCurrent().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
         </span>
       </span>
 
@@ -305,7 +305,7 @@
                ng-model="inputted[prop.getProperty().getID()]"
                ng-model-options="{debounce: 1000}"
                ng-required="prop.isRequired()"
-               ng-disabled="!editExisting&&!prop.isRepeatable()&&getCurrent().getProprtyValues(prop.getProperty().getID())!=null&&getCurrent().getPropertyValues(prop.getProperty().getID()).length>0"
+               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getProprtyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
                typeahead-on-select="selectValue(prop,$item);inputted[prop.getProperty().getID()]=null"
                typeahead-min-length="1"
@@ -318,7 +318,7 @@
                 type="button"
                 tooltip="Click to create a new resource"
                 tooltip-placement="right"
-                ng-disabled="!prop.isRepeatable()&&getCurrent().getPropertyValues(prop.getProperty().getID())!=null&&getCurrent().getPropertyValues(prop.getProperty().getID()).length>0"
+                ng-disabled="!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0"
                 ng-click="pivot(prop,prop.getConstraint().getReference())"><i class="icon-plus"></i></button>
             <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) -->
           </span>
@@ -326,7 +326,7 @@
             <button
                class="btn btn-default dropdown-toggle"
                dropdown-toggle
-               ng-disabled="!prop.isRepeatable()&&getCurrent().getPropertyValues(prop.getProperty().getID())!=null&&getCurrent().getPropetyValues(rop.getProperty().getID()).length>0"
+               ng-disabled="!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropetyValues(rop.getProperty().getID()).length>0"
                aria-haspopup="true"
                aria-expanded="false"
                type="button"
@@ -368,11 +368,11 @@
             <span class="col-md-1" ng-show="isLoading(prop.getProperty().getID())"><img src="img/spinner.gif"></span>
           </p>
           <ul class="values" ng-hide="(prop.hasConstraint()&&!prop.getConstraint().isEditable())||getReferenceResourceType(prop.getConstraint().getReference())=='dropzone'">
-            <li ng-repeat="val in getCurrent().getPropertyValues(prop.getProperty().getID())" class="badge badge-info">
+            <li ng-repeat="val in current().getPropertyValues(prop.getProperty().getID())" class="badge badge-info">
               <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&!val.isCreated()" class="click" ng-click="showResource(val)" title="View details"><i class="icon-info-sign"></i> {{val.getLabel()}}</span>
-              <i title="Remove" class="icon-remove click" ng-click="getCurrent().removePropertyValue(prop,val)"></i>
+              <i title="Remove" class="icon-remove click" ng-click="current().removePropertyValue(prop,val)"></i>
             </li>
           </ul>
         </div>
