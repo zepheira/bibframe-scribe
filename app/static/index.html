@@ -336,7 +336,7 @@
             </button>
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="ref in prop.getConstraint().getReference()">
-                <a ng-click="pivot(prop,ref)" class="click">{{getTemplateByClassID(ref).getLabel()}}</a>
+                <a ng-click="pivot(prop,ref)" class="click">{{getTemplateByID(ref).getLabel()}}</a>
                 <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) to pass already typed material into new resource, when appropriate label vocab is set -->
               </li>
             </ul>

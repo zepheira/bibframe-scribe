@@ -38,6 +38,7 @@
         $scope.activeTemplate = ResourceStore.getActiveTemplate;
         $scope.current = ResourceStore.getCurrent;
         $scope.config = Configuration.getConfig;
+        $scope.getTemplateByID = TemplateStore.getTemplateByID;
         $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;
         $scope.isLoading = ResourceStore.isLoading;
@@ -281,7 +282,7 @@
             if (typeof toEdit === "undefined") {
                 toEdit = {};
             }
-            res = TemplateStore.getTemplateByClassID(ref);
+            res = TemplateStore.getTemplateByID(ref);
             tmpls = {};
             tmpls[res.getClassID()] = res;
             modal = $modal.open({
