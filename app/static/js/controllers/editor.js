@@ -4,10 +4,15 @@
         .controller("EditorController", ["$scope", "$modal", "$log", "Store", "Configuration", "Query", "Graph", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", EditorController]);
 
     function EditorController($scope, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore) {
+        // @@@ fix any data still on $scope
         $scope.inputted = {};
         $scope.useServices = {};
-        $scope.editExisting = false; // @@@ redo this
+        $scope.editExisting = false; // @@@ redo this, used as a signal
         $scope.pivoting = false;
+        $scope.popover = {
+            "uri": null,
+            "data": null
+        };
 
         $scope.newEdit = newEdit;
         $scope.autocomplete = autocomplete;
@@ -276,7 +281,7 @@
             if (typeof toEdit === "undefined") {
                 toEdit = {};
             }
-            res = $scope.idToTemplate[ref];
+            res = TemplateStore.getTemplateByClassID(ref);
             tmpls = {};
             tmpls[res.getClassID()] = res;
             modal = $modal.open({
