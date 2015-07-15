@@ -3,18 +3,18 @@
         .module("bibframeEditor")
         .controller("EditLiteralController", EditLiteralController);
 
-    function EditLiteralController($scope, $modalInstance, property, literal, dataTypes, resource, setDateValue, setTextValue, currentWork) {
+    function EditLiteralController($scope, $modalInstance, ResourceStore, property, literal) {
+        $scope.resource = {"uri": "noop"}; // @@@ kind of a hack
+        $scope.setValueFromInput = function(a) {}; // @@@ ditto
         $scope.property = property.getProperty().getLabel();
         $scope.prop = property;
-        $scope.dataTypes = dataTypes;
-        $scope.resource = resource;
-        $scope.setDateValue = setDateValue;
-        $scope.setTextValue = setTextValue;
-        $scope.currentWork = currentWork;
         $scope.inputted = {};
         $scope.inputted[property.getProperty().getID()] = literal;
         $scope.editExisting = true;
         $scope.pivoting = false;
+
+        $scope.dataTypes = ResourceStore.getDataTypeByID;
+
         $scope.save = save;
         $scope.cancel = cancel;
 

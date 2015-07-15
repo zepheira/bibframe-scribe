@@ -112,7 +112,6 @@
 
     <script type="text/ng-template" id="edit-literal.html">
       <div class="modal-body">
-        <!-- adapt? -->
         <form class="form-horizontal" ng-submit="save()">
           <label class="property-label control-label col-md-2" for="literal">{{property}}</label>
           <span ng-if="!prop.hasConstraint()||(prop.hasConstraint()&&prop.getConstraint().isEditable())">
@@ -131,7 +130,6 @@
         </form>
       </div>
       <div class="modal-footer">
-        <!-- adapt? -->
         <button class="btn btn-default" ng-click="cancel()">Cancel</button>
         <button class="btn btn-primary" ng-click="save()">Save</button>
       </div>
@@ -195,7 +193,7 @@
                    is-open="opened"
                    ng-focus="opened=true"
                    ng-model="inputted[prop.getProperty().getID()]"
-                   ng-enter="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+                   ng-enter="setValueFromInput(prop)"
                    ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
             <span class="input-group-btn">
               <button
@@ -219,7 +217,7 @@
                class="form-control"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}"
                ng-model="inputted[prop.getProperty().getID()]"
-               ng-enter="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+               ng-enter="setValueFromInput(prop)"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues().length>0">
             <span class="input-group-btn">
               <button
@@ -244,7 +242,7 @@
            class="form-control"
            id="{{resource.uri}}-{{prop.getProperty().getID()}}"
            ng-model="inputted[prop.getProperty().getID()]"
-           ng-enter="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+           ng-enter="setValueFromInput(prop)"
            ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
         <span class="input-group-btn">
           <button
@@ -369,7 +367,7 @@
           </p>
           <ul class="values" ng-hide="(prop.hasConstraint()&&!prop.getConstraint().isEditable())||getReferenceResourceType(prop.getConstraint().getReference())=='dropzone'">
             <li ng-repeat="val in current().getPropertyValues(prop.getProperty().getID())" class="badge badge-info">
-              <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(currentWork,prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
+              <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&!val.isCreated()" class="click" ng-click="showResource(val)" title="View details"><i class="icon-info-sign"></i> {{val.getLabel()}}</span>
               <i title="Remove" class="icon-remove click" ng-click="current().removePropertyValue(prop,val)"></i>

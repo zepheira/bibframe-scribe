@@ -16,6 +16,7 @@
 
         $scope.newEdit = newEdit;
         $scope.autocomplete = autocomplete;
+        $scope.setValueFromInput = setValueFromInput;
         $scope.reset = reset;
         $scope.selectValue = selectValue;
         $scope.editLiteral = editLiteral;
@@ -129,6 +130,17 @@
         }
 
         /**
+         * Convenience method
+         * @@@ rewrite to do without $scope
+         */
+        function setValueFromInput(prop) {
+            if (!$scope.editExisting) {
+                ResourceStore.getCurrent().addPropertyValue(prop, $scope.inputted[prop.getProperty().getID()]);
+                $scope.inputted[prop.getProperty().getID()] = '';
+            }
+        }
+
+        /**
          * Wipe out $scope form data as if no input was made.
          * @@@ service - current work service
          */
@@ -141,8 +153,7 @@
         /**
          * Open a modal dialog for user to change a literal value.
          */
-        function editLiteral(work, property, value) {
-            // @@@ re-work, shouldn't need this resolution material at all
+        function editLiteral(property, value) {
             var modal = $modal.open({
                 templateUrl: "edit-literal.html",
                 controller: "EditLiteralController",
@@ -153,32 +164,20 @@
                     property: function() {
                         return property;
                     },
-                    dataTypes: function() {
-                        return $scope.dataTypes;
-                    },
-                    resource: function() {
-                        return {"uri": "noop"};
-                    },
-                    setDateValue: function() {
-                        return $scope.setDateValue;
-                    },
-                    setTextValue: function() {
-                        return $scope.setTextValue;
-                    },
-                    currentWork: function() {
-                        return work;
+                    ResourceStore: function() {
+                        return ResourceStore;
                     }
                 }
             });
 
             modal.result.then(function(newValue) {
                 var objs, target, mod;
-                objs = work[property.getProperty().getID()];
+                objs = ResourceStore.getCurrent().getPropertyValues(property.getProperty().getID());
                 angular.forEach(objs, function(obj, idx) {
                     if (obj.getValue() === value.getValue()) {
                         target = idx;
                     };
-                })
+                });
                 mod = objs[target];
                 mod.setLabel(newValue);
                 mod.setValue(newValue);
