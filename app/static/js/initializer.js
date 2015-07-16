@@ -5,6 +5,7 @@ angular.module("bibframeEditor", [
     "schemasService",
     "configurationLoadService",
     "storeService",
+    "identifierService",
     "queryService",
     "graphService",
     "configurationService",

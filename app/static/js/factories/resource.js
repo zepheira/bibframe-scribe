@@ -1,11 +1,11 @@
 (function() {
     angular
         .module("resourceFactory", [])
-        .factory("Resource", ["PredObject", "Namespace", ResourceFactory]);
+        .factory("Resource", ["PredObject", "Namespace", "Identifier", ResourceFactory]);
 
-    function ResourceFactory(PredObject, Namespace) {
-        function Resource(id, tmpl) {
-            this._id = id;
+    function ResourceFactory(PredObject, Namespace, Identifier) {
+        function Resource(idBase, tmpl) {
+            this._id = Identifier.newIdentifier(idBase);
             this._template = tmpl;
             this._type = (typeof tmpl !== "undefined" && tmpl !== null) ? tmpl.getClassID() : null;
             this._properties = {};
@@ -203,7 +203,7 @@
             id = this.getID(),
             split = false,
             relation;
-            
+
             if (res._template !== null) {
                 relation = res._template.getRelation();
                 if (relation !== null) {

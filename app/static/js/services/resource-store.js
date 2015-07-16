@@ -4,7 +4,7 @@
         .factory("ResourceStore", ["Resource", ResourceStore]);
 
     function ResourceStore(Resource) {
-        var service, _current, _created, _loading, _flags, _hasRequired, _cache, _dataTypes;
+        var service, _current, _created, _loading, _flags, _hasRequired, _cache, _dataTypes, _idbase;
         service = {
             getCurrent: getCurrent,
             getFlags: getFlags,
@@ -22,7 +22,8 @@
             newResource: newResource,
             setResourceTemplate: setResourceTemplate,
             reset: reset,
-            clear: clear
+            clear: clear,
+            setIDBase: setIDBase
         };
 
         _current = null;
@@ -99,8 +100,7 @@
         }
 
         function newResource() {
-            // @@@ ID generating service
-            _current = new Resource("@@@");
+            _current = new Resource(_idbase);
         }
 
         function setResourceTemplate(tmpl) {
@@ -123,6 +123,10 @@
                 _cache.dz = null;
             }
             newResource();
+        }
+
+        function setIDBase(base) {
+            _idbase = base;
         }
     }
 })();

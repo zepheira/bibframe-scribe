@@ -21,6 +21,7 @@
         "http://bibframe.org/vocab/Instance",
         "http://bibframe.org/vocab/HeldItem"
     ],
+    "idBase": "http://example.org/",
     "relations": {
         "instanceOf": "include",
         "holdingFor": "include"

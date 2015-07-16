@@ -92,6 +92,7 @@
                             });
                         });
                         ResourceStore.clear();
+                        ResourceStore.setIDBase(_config.idBase);
                         _initialized = true;
                         _resourceOptions = resources;
                     });

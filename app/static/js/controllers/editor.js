@@ -24,7 +24,6 @@
         $scope.popoverResource = popoverResource;
         $scope.showResource = showResource;
         $scope.pivot = pivot;
-        $scope.randomRDFID = randomRDFID;
         $scope.display = display;
         $scope.submit = submit;
         $scope.transmit = transmit;
@@ -59,6 +58,7 @@
             $scope.inputted = {};
             ResourceStore.clear();
             ResourceStore.setActiveTemplate(TemplateStore.getTemplateByClassID(resource.uri));
+            ResourceStore.getCurrent().setTemplate(TemplateStore.getTemplateByClassID(resource.uri));
             props = ResourceStore.getActiveTemplate().getPropertyTemplates();
             angular.forEach(props, function(prop) {
                 ResourceStore.getCurrent().initializeProperty(prop, flags);
@@ -284,7 +284,7 @@
             res = TemplateStore.getTemplateByID(ref);
 
             if (typeof toEdit === "undefined") {
-                toEdit = new Resource("@@@", res); // @@@ fix ID generation
+                toEdit = new Resource(res);
             }
 
             modal = $modal.open({
@@ -311,14 +311,6 @@
         }
         
         /**
-         * Generate a random unique URI for a new resource.
-         * @@@ service
-         */
-        function randomRDFID() {
-            return "http://example.org/" + Math.floor(Math.random()*1000000);
-        }
-
-        /**
          * WAS export, but that's a reserved word.
          * Shortcut for displaying.
          */
@@ -330,19 +322,18 @@
          * Shortcut for saving.
          */
         function submit() {
-            $scope.transmit("save");
+            transmit("save");
         }
         
         /**
          * Depending on flag, shows RDF to user or persists N3 to store.
          */
         function transmit(flag) {
-            // @@@ rewire with services
-            if ($scope.validate()) {
+            if (validate()) {
                 if (flag === "export") {
-                    $scope.exportRDF();
+                    showRDF();
                 } else if (flag === "save") {
-                    $scope.exportN3($scope.persist);
+                    persist(ResourceStore.getCurrent().toN3(ResourceStore.getCreated()));
                 }
             } else {
                 alert("Please fill out all required properties before " + ((flag === "save") ? "saving" : "exporting") + ".");
@@ -354,13 +345,11 @@
          * @@@arguments
          */
         function validate() {
-            // @@@ redo with new services, etc.
-            var active, props, valid;
-            active = $scope.activeResource.getClassID();
-            props = $scope.resourceTemplates[active].getPropertyTemplates();
+            var props, valid;
+            props = ResourceStore.getActiveTemplate().getPropertyTemplates();
             valid = true;
             angular.forEach(props, function(prop) {
-                if (prop.isRequired() && $scope.currentWork[prop.getProperty().getID()].length === 0) {
+                if (prop.isRequired() && ResourceStore.getCurrent().getPropertyValues(prop.getProperty().getID()).length === 0) {
                     valid = false;
                 }
             });
@@ -382,14 +371,13 @@
          * @@@arguments, service?
          */
         function showRDF() {
-            // @@@ update
             $modal.open({
                 templateUrl: "export.html",
                 controller: "ExportController",
                 windowClass: "export",
                 resolve: {
                     rdf: function() {
-                        return $scope.exportedRDF;
+                        return ResourceStore.getCurrent().toRDF(ResourceStore.getCreated());
                     }
                 }
             });
