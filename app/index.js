@@ -281,10 +281,18 @@ server.get('/suggest/master', function suggestMaster(req, res, next) {
 // what follows is unrelated to the DB
 
 server.post('/resource/id', function newIdentifier(req, res, next) {
-    var num, id;
-    num = uuid.v4();
-    id = IDBASE + num;
-    res.send(200, {'id': id});
+    var num, id, ids, count, i;
+    ids = [];
+    count = 1;
+    if (req.body.count) {
+        count = req.body.count;
+    }
+    for (i = 0; i < count; i++) {
+        num = uuid.v4();
+        id = IDBASE + num;
+        ids.push(id);
+    }
+    res.send(200, ids);
     return next();
 });
 
