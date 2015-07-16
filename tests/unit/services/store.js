@@ -11,14 +11,16 @@ describe("Store", function() {
 
     describe("id", function() {
         it("should call id", inject(function(Store) {
-            $httpBackend.expectPOST("../resource/id").respond({
-                "id": "testuuid"
-            });
+            $httpBackend.expectPOST("../resource/id").respond([
+                "testuuid0",
+                "testuuid1"
+            ]);
 
             var result = mockStoreResource.id();
             $httpBackend.flush();
                         
-            expect(result.id).toEqual("testuuid");
+            expect(result[0]).toEqual("testuuid0");
+            expect(result[1]).toEqual("testuuid1");
         }));
     });
 
