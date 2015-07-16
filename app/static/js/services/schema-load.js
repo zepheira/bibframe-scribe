@@ -1,9 +1,9 @@
 (function() {
     angular
-        .module("schemasService", ["ngResource"])
-        .factory("Schemas", Schemas);
+        .module("schemasService", [])
+        .factory("Schemas", ["$http", Schemas]);
 
-    function Schemas($resource) {
+    function Schemas($http) {
         var service;
 
         service = {
