@@ -10,7 +10,7 @@
             {
                 "id": {
                     "method": "POST",
-                    "isArray": false,
+                    "isArray": true,
                     "params": {
                         "action": "id"
                     }
