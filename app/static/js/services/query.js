@@ -1,6 +1,4 @@
 (function() {
-    "use strict"
-
     angular
         .module("queryService", ["ngResource"])
         .factory("Query", Query);

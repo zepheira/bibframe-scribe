@@ -1,6 +1,4 @@
 (function() {
-    "use strict";
-
     angular
         .module("storeService", ["ngResource"])
         .factory("Store", Store);

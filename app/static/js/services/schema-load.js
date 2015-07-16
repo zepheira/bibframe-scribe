@@ -1,6 +1,4 @@
 (function() {
-    "use strict";
-
     angular
         .module("schemasService", ["ngResource"])
         .factory("Schemas", Schemas);

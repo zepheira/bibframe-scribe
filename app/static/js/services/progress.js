@@ -1,6 +1,4 @@
 (function() {
-    "use strict";
-
     angular
         .module("progressService", [])
         .factory("Progress", ["$rootScope", Progress]);

@@ -1,6 +1,4 @@
 (function() {
-    "use strict";
-
     angular
         .module("configurationService", [])
         .factory("Configuration", ["$http", "$q", "ConfigurationLoad", "ProfileLoad", "Progress", "Message", "Graph", "ResourceStore", "TemplateStore", "Profile", Configuration]);

@@ -1,6 +1,4 @@
 (function() {
-    "use strict";
-
     angular
         .module("profileLoadService", ["ngResource"])
         .factory("ProfileLoad", ProfileLoad);

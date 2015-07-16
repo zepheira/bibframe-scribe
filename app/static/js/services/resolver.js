@@ -1,6 +1,4 @@
 (function() {
-    "use strict";
-
     angular
         .module("resolverService", ["ngResource"])
         .factory("Resolver", Resolver);
