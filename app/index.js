@@ -287,6 +287,7 @@ server.post('/resource/id', function newIdentifier(req, res, next) {
     if (req.body.count) {
         count = req.body.count;
     }
+    count = Math.min(50, count);
     for (i = 0; i < count; i++) {
         num = uuid.v4();
         id = IDBASE + num;
