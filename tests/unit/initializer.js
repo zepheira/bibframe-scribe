@@ -73,14 +73,12 @@ describe("BIBFRAME Editor application", function() {
         });
     });
 
-    /**
-     * @@@
-     * Tests and the code it tests for this controller need a major overhaul.
-     */
     describe("sub-resource contoller", function() {
-        var ctrl, modalInstance;
+        var ctrl, modalInstance, Resource, ResourceTemplate;
         beforeEach(inject(
-            function($controller) {
+            function($controller, $injector) {
+                Resource = $injector.get("Resource");
+                ResourceTemplate = $injector.get("ResourceTemplate");
                 modalInstance = {
                     close: jasmine.createSpy("modalInstance.close"),
                     dismiss: jasmine.createSpy("modalInstance.dismiss"),
@@ -91,19 +89,37 @@ describe("BIBFRAME Editor application", function() {
                 ctrl = $controller("SubResourceController", {
                     $scope: $scope,
                     $modalInstance: modalInstance,
-                    templates: {test: {getLabel: function(){ return "test" }, getPropertyTemplates: function(){return {}}}},
-                    dataTypes: "",
-                    res: "test",
-                    initProp: "",
-                    setTextValue: "",
-                    setDateValue: "",
-                    removeValue: "",
-                    editLiteral: "",
-                    editResource: "",
-                    currentWork: "",
-                    created: "",
-                    idToTemplate: "",
-                    pivot: ""
+                    current: new Resource("test"),
+                    template: new ResourceTemplate({
+                        id: "test",
+                        "class": {
+                            id: "urn:testclass",
+                            classLabel: "Test Class",
+                            labelProperty: "urn:labelprop",
+                            propertyTemplate: [{
+                                property: {
+                                    id: "urn:testprop"
+                                }
+                            }],
+                            instantiates: "testAlt",
+                        }
+                    }, {
+                        relations: {
+                            instantiates: "include"
+                        }
+                    }),
+                    controller: {
+                        getReferenceResourceType: null,
+                        editLiteral: null,
+                        editResource: null,
+                        showResource: null,
+                        isLoading: null,
+                        reset: null,
+                        autocomplete: null,
+                        pivot: null,
+                        dataTypes: null,
+                        setValueFromInput: null
+                    }
                 });
             }
         ));
