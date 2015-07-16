@@ -149,12 +149,11 @@
 
     <script type="text/ng-template" id="pivot.html">
       <div class="modal-header">
-        <h3>New {{typeLabel}}</h3>
+        <h3>New {{resource.label}}</h3>
       </div>
       <div class="modal-body" ng-include="'resource.html'">
       </div>
       <div class="modal-footer">
-          <!-- adapt? -->
         <button class="btn btn-default" ng-click="cancel()">Cancel</button>
         <button class="btn btn-primary" ng-click="save()">Save</button>
       </div>
@@ -344,7 +343,6 @@
     </script>
 
     <script type="text/ng-template" id="resource.html">
-      <!-- adapt? -->
       <form class="form-horizontal well" ng-submit="submit()" name="form-resource">
         <p ng-show="hasRequired()">Properties marked with <span class="required">*</span> are required.</p>
         <div ng-repeat="prop in getTemplateByClassID(resource.uri).getPropertyTemplates()">

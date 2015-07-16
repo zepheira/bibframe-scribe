@@ -9,6 +9,7 @@
             getCurrent: getCurrent,
             getFlags: getFlags,
             getCreated: getCreated,
+            addCreated: addCreated,
             setActiveTemplate: setActiveTemplate,
             getActiveTemplate: getActiveTemplate,
             getDataTypes: getDataTypes,
@@ -47,6 +48,10 @@
 
         function getCreated() {
             return _created;
+        }
+
+        function addCreated(r) {
+            _created.push(r);
         }
 
         function getActiveTemplate() {

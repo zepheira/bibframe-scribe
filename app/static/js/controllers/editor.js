@@ -192,17 +192,16 @@
         function editResource(property, value) {
             var toEdit, ref;
             angular.forEach(ResourceStore.getCreated(), function(val) {
-                if (val.id === value.getValue()) {
+                if (val.getID() === value.getValue()) {
                     toEdit = val;
                 }
             });
             angular.forEach(TemplateStore.getTemplateIDHash(), function(tmpl, key) {
-                if (tmpl.getClassID() === toEdit.type.getValue()) {
+                if (tmpl.getClassID() === toEdit.getType()) {
                     ref = key;
                 }
             });
-            // @@@re-do this
-            $scope.pivot(property, ref, toEdit);
+            pivot(property, ref, toEdit);
         }
 
         /**
@@ -274,71 +273,40 @@
          * @@@service?
          */
         function pivot(property, ref, toEdit) {
-            var modal, ref, res, tmpls;
+            var modal, res, ctrl;
+
+            ctrl = this;
+
             if (typeof ref === "undefined") {
                 ref = property.getConstraint().getReference();
             }
-            if (typeof toEdit === "undefined") {
-                toEdit = {};
-            }
+
             res = TemplateStore.getTemplateByID(ref);
-            tmpls = {};
-            tmpls[res.getClassID()] = res;
+
+            if (typeof toEdit === "undefined") {
+                toEdit = new Resource("@@@", res); // @@@ fix ID generation
+            }
+
             modal = $modal.open({
                 templateUrl: "pivot.html",
                 controller: "SubResourceController",
                 windowClass: "pivot",
                 resolve: {
-                    templates: function() {
-                        return tmpls;
-                    },
-                    res: function() {
-                        return res.getClassID();
-                    },
-                    initProp: function() {
-                        return $scope.initializeProperty;
-                    },
-                    setTextValue: function() {
-                        return $scope.setTextValue;
-                    },
-                    setDateValue: function() {
-                        return $scope.setDateValue;
-                    },
-                    removeValue: function() {
-                        return $scope.removeValue;
-                    },
-                    editLiteral: function() {
-                        return $scope.editLiteral;
-                    },
-                    editResource: function() {
-                        return $scope.editResource;
-                    },
-                    dataTypes: function() {
-                        return $scope.dataTypes;
-                    },
-                    currentWork: function() {
+                    current: function() {
                         return toEdit;
                     },
-                    idToTemplate: function() {
-                        return $scope.idToTemplate;
+                    template: function() {
+                        return res;
                     },
-                    created: function() {
-                        return $scope.created;
-                    },
-                    pivot: function() {
-                        return $scope.pivot;
+                    controller: function() {
+                        return ctrl;
                     }
                 }
             });
             
             modal.result.then(function(newResource) {
-                if (typeof newResource.id === "undefined") {
-                    Store.id(null, null).$promise.then(function(resp) {
-                        newResource.id = resp.id;
-                        $scope.created.push(newResource);
-                        $scope.selectValue(property, {"label": "[created]", "uri": newResource.id}, true);
-                    });
-                }
+                ResourceStore.addCreated(newResource);
+                selectValue(property, {"label": "[created]", "uri": newResource.getID()}, true);
             });
         }
         

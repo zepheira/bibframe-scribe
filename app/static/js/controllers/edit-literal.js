@@ -16,6 +16,7 @@
         $scope.dataTypes = ResourceStore.getDataTypeByID;
 
         $scope.save = save;
+        $scope.submit = save;
         $scope.cancel = cancel;
 
         function save() {
