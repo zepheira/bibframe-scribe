@@ -26,6 +26,7 @@
         $scope.isLoading = controller.isLoading; // @@@ only works with EditorController
         $scope.reset = controller.reset; // @@@ ditto - not used?
         $scope.autocomplete = controller.autocomplete; // @@@ ditto
+        $scope.selectValue = controller.selectValue; // @@@ ditto
         $scope.pivot = controller.pivot; // @@@ ditto?
         $scope.dataTypes = controller.dataTypes;
         $scope.setValueFromInput = controller.setValueFromInput;
