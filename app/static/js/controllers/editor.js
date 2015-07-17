@@ -360,7 +360,7 @@
          * Takes N3 string and persists it to backing store.
          * @@@error handling
          */
-        function persist() {
+        function persist(n3) {
             Store.new(null, {"n3": n3}).$promise.then(function(resp) {
                 // console.log(resp);
             });
