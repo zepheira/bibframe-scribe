@@ -1,264 +1,284 @@
 {
     "Profile": {
-        "title": "Events",
+        "id": "bfp:Agent",
+        "title": "BIBFRAME Agents",
         "resourceTemplate": [    	       
             {
-                "id": "bfp:Event:ProviderEvent",
+	         "id": "bfp:Agent:Family",
                 "class": {
-                    "classLabel": "Provider",
-                    "id": "http://bibfra.me/vocab/lite/ProviderEvent",
-                    "labelProperty": "Provider Event",
+                    "classLabel": "Family",
+                    "id": "http://bibfra.me/view/lite/Family",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/lite/providerAgent",
-                                "propertyLabel": "Provider Agent"
+                            "mandatory": "true",
+			    "property": {
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
                             },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization" ]
-			                }
+			    "repeatable": "false",
+                            "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/lite/providerPlace",
-                                "propertyLabel": "Provider Place"
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
                             },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Authority:Place" ]
+			    "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link",
+				"remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                            },
+			    "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                        	"property": {
+                                "id": "http://bibfra.me/view/lite/date",
+                                "propertyLabel": "Date"
+                            },
+			    "repeatable": "true",
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Agent:Meeting",
+                "class": {
+                    "classLabel": "Meeting",
+                    "id": "http://bibfra.me/view/lite/Meeting",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
+                    "propertyTemplate": [
+                        {
+                            "mandatory": "true",
+			    "property": {
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
+                            },
+			    "repeatable": "false",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
+                            },
+			    "repeatable": "true",
+                            "type": "literal"
+			    },
+                            {
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/Place",
+                                    "propertyLabel": "Place"
+                                },
+				"repeatable": "true",
+                                "type": "resource"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/authorityLink",
+                                    "propertyLabel": "Identity Service Link (VIAF, Wikipedia, Wikidata, etc.)"
+                                },
+				"repeatable": "true",
+                                "type": "resource"
+                            },
+                            {
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/link",
+                                    "propertyLabel": "Website"
+                                },
+    			    "repeatable": "true",
+                                "type": "resource"
+                            },
+                            {
+                            	"property": {
+                                    "id": "http://bibfra.me/view/lite/date",
+                                    "propertyLabel": "Date"
+                                },
+				"repeatable": "true",
+                                "type": "literal"
+                            },
+			    {
+	                            "property": {
+	                                "id": "http://bibfra.me/view/lite/dateStart",
+	                                "propertyLabel": "Start Date"
+	                            },
+				    "repeatable": "true",
+	                            "type": "literal"
+	                        },
+	    		    {
+	                                "property": {
+	                                    "id": "http://bibfra.me/view/lite/dateEnd",
+	                                    "propertyLabel": "End Date"
+	                                },
+					"repeatable": "true",
+	                                "type": "literal"
+	                            }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Agent:Organization",
+                "class": {
+                    "classLabel": "Organization",
+                    "id": "http://bibfra.me/view/lite/Organization",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
+                    "propertyTemplate": [
+                        {
+                            "mandatory": "true",
+			    "property": {
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
+                            },
+			    "repeatable": "false",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
+                            },
+			    "repeatable": "true",
+                            "type": "literal"
+			    },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/link",
+                                "propertyLabel": "Home Page"
+                            },
+			    "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/emailAddress",
+                                "propertyLabel": "E-mail Address"
+                            },
+			    "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/Place",
+                                "propertyLabel": "Place"
+                            },
+			"repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link",
+				"remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                            },
+			    "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                        	"property": {
+                                "id": "http://bibfra.me/view/lite/date",
+                                "propertyLabel": "Date"
+                            },
+			    "repeatable": "true",
+                            "type": "literal"
+                        },
+		    {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "propertyLabel": "Start Date"
+                            },
+			    "repeatable": "true",
+                            "type": "literal"
+                        },
+    		    {
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/dateEnd",
+                                    "propertyLabel": "End Date"
+                                },
+				"repeatable": "true",
+                                "type": "literal"
                             }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/lite/providerDate",
-                                "propertyLabel": "Provider Date"
-                            },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/lite/providerNote",
-                                "propertyLabel": "Provider Note"
-                            },
-                            "type": "literal"
-                        }
                     ]
                 }
             },
             {
-                "id": "bfp:Event:PublishEvent",
+                "id": "bfp:Agent:Person",
                 "class": {
-                    "classLabel": "Publisher",
-                    "id": "http://bibframe.org/vocab/PublisherEvent",
-                    "labelProperty": "http://bibframe.org/vocab/providerName",
+                    "classLabel": "Person",
+                    "id": "http://bibfra.me/view/lite/Person",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
-                        {
+                       {
+                           "mandatory": "true",
+			   "property": {
+                               "id": "http://bibfra.me/view/lite/name",
+                               "propertyLabel": "Name"
+                           },
+			   "repeatable": "false",
+                           "type": "literal"
+                       },
+                       {
+                           "property": {
+                               "id": "http://bibfra.me/view/lite/nameAlternative",
+                               "propertyLabel": "Alternative Name"
+                           },
+			   "repeatable": "true",
+                           "type": "literal"
+		    },
+		    {
                             "property": {
-                                "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date"
+                                "id": "http://bibfra.me/view/lite/birthDate",
+                                "propertyLabel": "Birth Date"
                             },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            },
+			    "repeatable": "true",
                             "type": "literal"
                         },
-                        {
+    		    {
                             "property": {
-                                "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Publish Date"
+                                "id": "http://bibfra.me/view/lite/deathDate",
+                                "propertyLabel": "Death Date"
                             },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
+                            "repeatable": "true",
+			    "type": "literal"
                             },
-                            "type": "literal"
-                        },
                         {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerName",
-                                "propertyLabel": "Name of Publisher"
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/authorityLink",
+                                    "propertyLabel": "Identity Service Link",
+				    "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                                },
+				"repeatable": "true",
+                                "type": "resource"
                             },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerPlace",
-                                "propertyLabel": "Location"
+                            {
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/link",
+                                    "propertyLabel": "Home Page"
+                                },
+				"repeatable": "true",
+                                "type": "resource"
                             },
-                            "type": "literal"
-                        }
-                    ]
-                }
-            },
-            {
-                "id": "bfp:Event:ManufactureEvent",
-                "class": {
-                    "classLabel": "Manufacturer",
-                    "labelProperty": "http://bibframe.org/vocab/providerName",
-                    "id": "http://bibframe.org/vocab/ManufactureEvent",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date"
+                            {
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/email",
+                                    "propertyLabel": "E-mail Address"
+                                },
+				"repeatable": "true",
+                                "type": "literal"
                             },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                        "valueLabelHint": "ISO"
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Manufacture Date"
-                            },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerName",
-                                "propertyLabel": "Manufacturer"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerPlace",
-                                "propertyLabel": "Location"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                }
-            },
-            {
-                "id": "bfp:Event:ProducerEvent",
-                "class": {
-                    "classLabel": "Producer",
-                    "labelProperty": "http://bibframe.org/vocab/providerName",
-                    "id": "http://bibframe.org/vocab/ProducerEvent",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date"
-                            },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Date of Production"
-                            },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerName",
-                                "propertyLabel": "Producer"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerPlace",
-                                "propertyLabel": "Location"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                }
-            },
-            {
-                "id": "bfp:Event:DistributeEvent",
-                "class": {
-                    "classLabel": "Distributor",
-                    "labelProperty": "http://bibframe.org/vocab/providerName",
-                    "id": "http://bibframe.org/vocab/DistributeEvent",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/copyrightDate",
-                                "propertyLabel": "Copyright Date"
-                            },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/date",
-                                "propertyLabel": "Distribution Date"
-                            },
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerName",
-                                "propertyLabel": "Distributor"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/providerPlace",
-                                "propertyLabel": "Location"
-                            },
-                            "type": "literal"
-                        }
+                            {
+                                "property": {
+                                    "id": "http://bibfra.me/view/lite/address",
+                                    "propertyLabel": "Home Address"
+                                },
+				"repeatable": "true",
+                                "type": "literal"
+                            }
                     ]
                 }
             }
