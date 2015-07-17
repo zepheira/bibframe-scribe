@@ -1,7 +1,7 @@
 "use strict";
 
 describe("Resource", function() {
-    var Resource, ResourceTemplate, PropertyTemplate, Property, PredObject;
+    var Resource, ResourceTemplate, PropertyTemplate, Property, PredObject, $httpBackend;
     beforeEach(module("bibframeEditor"));
     beforeEach(inject(function($injector) {
         Resource = $injector.get("Resource");
@@ -9,11 +9,16 @@ describe("Resource", function() {
         ResourceTemplate = $injector.get("ResourceTemplate");
         Property = $injector.get("Property");
         PredObject = $injector.get("PredObject");
+        $httpBackend = $injector.get("$httpBackend");
     }));
 
     describe("constructor", function() {
         var r, rt, pt;
         beforeEach(function() {
+            $httpBackend.expectPOST("../resource/id").respond([
+                "urn:test/testuuid0",
+                "urn:test/testuuid1"
+            ]);
             rt = new ResourceTemplate({
                 id: "test",
                 "class": {
@@ -44,11 +49,18 @@ describe("Resource", function() {
                     descriptionTemplateRef: "testref"
                 }
             });
-            r = new Resource("urn:test", rt);
+            r = new Resource("", rt);
+            $httpBackend.flush();
+            // Noting why we're doing this. The call to flush the backend
+            // takes place after a synchronous result has already been provided
+            // in such a way as to make the identifier undefined. This isn't
+            // a problem in reality, but in testing world, we need to get
+            // the ID set properly.
+            r = new Resource("", rt);
         });
         
-        it("should return the ID", function() {
-            expect(r.getID()).toEqual("urn:test");
+        it("should return an ID with the correct base", function() {
+            expect(r.getID()).toEqual("urn:test/testuuid0");
         });
         
         it("should return the type", function() {
@@ -104,7 +116,7 @@ describe("Resource", function() {
             expect(rdf).toMatch(/<?xml version="1.0"\?>/);
             expect(rdf).toMatch(/<rdf:RDF/);
             expect(rdf).toMatch(/xmlns:ns0="http:\/\/example.org\/"/);
-            expect(rdf).toMatch(/rdf:about="urn:test-work"/);
+            expect(rdf).toMatch(/rdf:about="urn:test\/testuuid0-work"/);
             expect(rdf).toMatch(/rdf:resource="testAlt"/);
             expect(rdf).toMatch(/ns0:newprop rdf:resource="urn:val"/);
         });
