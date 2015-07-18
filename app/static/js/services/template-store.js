@@ -15,6 +15,7 @@
             getTemplateByID: getTemplateByID,
             getTemplateIDHash: getTemplateIDHash,
             addResourceType: addResourceType,
+            getReferenceResourceType: getReferenceResourceType,
             addProfile: addProfile
         };
 
@@ -56,7 +57,11 @@
         }
 
         function getReferenceResourceType(ref) {
-            _resourceTypes[_idToTemplate[uri].getClassID()]
+            if (hasTemplateByID(ref)) {
+                return _resourceTypes[_idToTemplate[ref].getClassID()];
+            } else {
+                return null;
+            }
         }
 
         function addResourceType(uri, type) {
