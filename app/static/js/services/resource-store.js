@@ -13,6 +13,7 @@
             setActiveTemplate: setActiveTemplate,
             getActiveTemplate: getActiveTemplate,
             getDataTypes: getDataTypes,
+            getDataTypeByID: getDataTypeByID,
             setLoading: setLoading,
             getAllLoading: getAllLoading,
             isLoading: isLoading,
