@@ -283,17 +283,8 @@
                 "class": {
                     "classLabel": "E-book",
                     "id": "http://bibfra.me/vocab/marc/Electronic",
-                    "instanceOf": "http://bibframe.org/vocab/Book",
+                    "instantiates": "http://bibframe.org/vocab/Book",
                     "propertyTemplate": [
-			{
-                            "mandatory": "true",
-			    "property": {
-                            "id": "http://bibfra.me/vocab/lite/instantiates",
-                            "propertyLabel": "Instantiates"
-                        },
-			    "repeatable": "false",
-                            "type": "resource"
-			},
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/edition",
@@ -453,17 +444,8 @@
                 "class": {
                     "classLabel": "Print",
                     "id": "http://bibfra.me/vocab/marc/Print",
-                    "instanceOf": "http://bibfra.me/vocab/marc/Books",
+                    "instantiates": "http://bibfra.me/vocab/marc/Books",
                     "propertyTemplate": [
-			{
-                            "mandatory": "true",
-			    "property": {
-                            "id": "http://bibfra.me/vocab/lite/instantiates",
-                            "propertyLabel": "Instantiates"
-                        },
-			    "repeatable": "false",
-                            "type": "resource"
-			},
 			{
                             "property": {
                                 "id": "http://bibframe.org/vocab/publication",
