@@ -91,6 +91,15 @@
                                 return template;
                             });
                         });
+
+                        angular.forEach(_config.resourceServiceMap, function(item, key) {
+                            TemplateStore.addResourceType(key, item);
+                        });
+
+                        angular.forEach(_config.dataTypes, function(dataType) {
+                            ResourceStore.addDataTypeHandler(dataType.id, dataType.handler);
+                        });
+
                         ResourceStore.clear();
                         ResourceStore.setIDBase(_config.idBase);
                         _initialized = true;
@@ -115,13 +124,6 @@
                 }
             });
             profile.registerResourceTemplates(TemplateStore.getTemplateIDHash());
-            angular.forEach(_config.resourceServiceMap, function(item, key) {
-                TemplateStore.addResourceType(key, item);
-            });
-
-            angular.forEach(_config.dataTypes, function(dataType) {
-                ResourceStore.addDataTypeHandler(dataType.id, dataType.handler);
-            });
 
             return resources;       
         }
