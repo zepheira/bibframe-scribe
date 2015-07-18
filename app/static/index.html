@@ -294,7 +294,7 @@
              dz-property="{{prop.getProperty().getID()}}"
              dz-repeatable="{{prop.isRepeatable()}}"
              dz-resource="{{resource.uri}}"
-             dz-type="{{getTemplateByClassID(prop.getConstraint().getReference()).getClassID()}}"></div>
+             dz-type="{{getTemplateByID(prop.getConstraint().getReference()).getClassID()}}"></div>
         </span>
         <span class="input-group" ng-if="getReferenceResourceType(prop.getConstraint().getReference())!='dropzone'">
           <input type="text"
