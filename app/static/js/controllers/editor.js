@@ -37,12 +37,16 @@
         $scope.resourceOptions = Configuration.getResourceOptions;
         $scope.activeTemplate = ResourceStore.getActiveTemplate;
         $scope.current = ResourceStore.getCurrent;
+        $scope.created = ResourceStore.getCreated;
+        $scope.addCreated = ResourceStore.addCreated;
+        $scope.cacheDropzone = ResourceStore.cacheDropzone;
         $scope.config = Configuration.getConfig;
         $scope.getTemplateByID = TemplateStore.getTemplateByID;
         $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;
         $scope.isLoading = ResourceStore.isLoading;
         $scope.getReferenceResourceType = TemplateStore.getReferenceResourceType;
+        $scope.getTypeProperties = TemplateStore.getTypeProperties;
         $scope.dataTypes = ResourceStore.getDataTypeByID;
 
         Configuration.initialize();

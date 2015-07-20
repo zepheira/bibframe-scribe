@@ -38,11 +38,11 @@ angular.module("bibframeEditor", [
             }
         });
     };
-}).directive("dropzone", function() {
+}).directive("dropzone", ["PredObject", "Resource", function(PredObject, Resource) {
     return function(scope, element, attrs) {
-        scope.$watch('activeResource', function(newValue, oldValue) {
-            if (newValue !== null && newValue.getClassID() === attrs.dzResource) {
-                scope.cache.dz = new Dropzone(element[0], {
+        scope.$watch('activeTemplate()', function(newValue, oldValue) {
+            if (typeof newValue !== "undefined" && newValue !== null && newValue.getClassID() === attrs.dzResource) {
+                scope.cacheDropzone(new Dropzone(element[0], {
                     // @@@ provide this service - receives, stores, returns URI
                     "url": "/upload/image",
                     "autoProcessQueue": true,
@@ -53,16 +53,14 @@ angular.module("bibframeEditor", [
                     "maxFiles": attrs.dzRepeatable ? 100 : 1,
                     // @@@ for demo purposes; when real, hook into success event
                     "accept": function(file, done) {
-                        var imguri, prop;
+                        var prop, imgres;
                         prop = attrs.dzProperty;
-                        imguri = scope.randomRDFID() + "/" + file.name;
+                        imgres = new Resource(scope.config().idBase, null);
+                        imgres.setID(scope.config().idBase + file.name);
+                        imgres.setType(attrs.dzType);
                         scope.$apply(function() {
-                            scope.flags.isDirty = true;
-                            scope.currentWork[prop].push(new PredObject(file.name, imguri, "resource", true));
-                            scope.created.push({
-                                "id": imguri,
-                                "type": new PredObject("", attrs.dzType, "resource", false)
-                            });
+                            scope.current().addTextPropertyValue(prop, "resource", new PredObject(file.name, imgres.getID(), "resource", true));
+                            scope.addCreated(imgres);
                         });
                         done("Uploading not enabled in this prototype.");
                     },
@@ -113,28 +111,28 @@ angular.module("bibframeEditor", [
                         var dz = this;
                         this.on("thumbnail", function(file) {
                             var props, resource;
-                            props = scope.typeMap["dropzone"];
-                            angular.forEach(scope.created, function(res) {
-                                if (res.id.endsWith(file.name)) {
+                            props = scope.getTypeProperties("dropzone");
+                            angular.forEach(scope.created(), function(res) {
+                                if (res.getID().endsWith(file.name)) {
                                     resource = res;
                                 }
                             });
                             angular.forEach(props, function(val, prop) {
                                 if (prop === "filename") {
                                     scope.$apply(function() {
-                                        resource[val] = [new PredObject(file.name, file.name, "literal")];
+                                        resource.addTextPropertyValue(val, "literal", new PredObject(file.name, file.name, "literal"));
                                     });
                                 } else if (prop === "mimetype") {
                                     scope.$apply(function() {
-                                        resource[val] = [new PredObject(file.type, file.type, "literal")];
+                                        resource.addTextPropertyValue(val, "literal", new PredObject(file.type, file.type, "literal"));
                                     });
                                 } else if (prop === "width") {
                                     scope.$apply(function() {
-                                        resource[val] = [new PredObject(file.width, file.width, "literal")];
+                                        resource.addTextPropertyValue(val, "literal", new PredObject(file.width, file.width, "literal"));
                                     });
                                 } else if (prop === "height") {
                                     scope.$apply(function() {
-                                        resource[val] = [new PredObject(file.height, file.height, "literal")];
+                                        resource.addTextPropertyValue(val, "literal", new PredObject(file.height, file.height, "literal"));
                                     });
                                 }
                             });
@@ -145,15 +143,15 @@ angular.module("bibframeEditor", [
                         });
                         this.on("removedfile", function(file) {
                             var prop = attrs.dzProperty;
-                            angular.forEach(scope.currentWork[prop], function(val) {
+                            angular.forEach(scope.current().getPropertyValues(prop), function(val) {
                                 if (val.getValue().endsWith(file.name)) {
-                                    scope.removeValue(scope.currentWork, prop, val);
+                                    scope.current().removeValue(prop, val);
                                 }
                             });
                         });
                     }
-                });
+                }));
             }
         });
     };
-});
+}]);

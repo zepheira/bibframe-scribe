@@ -16,6 +16,7 @@
             getTemplateIDHash: getTemplateIDHash,
             addResourceType: addResourceType,
             getReferenceResourceType: getReferenceResourceType,
+            getTypeProperties: getTypeProperties,
             addProfile: addProfile
         };
 
@@ -71,6 +72,10 @@
                 _resourceTypes[uri] = type.type;
                 _typeMap[type.type] = type.propertyMap;
             }
+        }
+
+        function getTypeProperties(type) {
+            return _typeMap[type];
         }
 
         function addProfile(profile) {

@@ -31,8 +31,15 @@
          * Return resource URI.
          */
         Resource.prototype.getID = function() {
-                return this._id;
+            return this._id;
         };
+
+        /**
+         * Set the ID.
+         */
+        Resource.prototype.setID = function(id) {
+            this._id = id;
+        }
 
         /**
          * Return resource URI.
@@ -41,6 +48,13 @@
             return this._type;
         };
 
+        /**
+         * Set type.
+         */
+        Resource.prototype.setType = function(type) {
+            this._type = type;
+        }
+        
         Resource.prototype.setTemplate = function(tmpl) {
             this._template = tmpl;
             this._type = tmpl.getClassID();
@@ -88,13 +102,51 @@
                 return null;
             }
         }
+
+        /**
+         * Set a work's value of a property when only the name of the
+         * property and its object type are known. Will not set any
+         * further constraints on text values.  This is largely to
+         * facilitate internal additions.
+         */
+        Resource.prototype.addTextPropertyValue = function(property, type, value) {
+            var seen, val, isDirty, textValue;
+            val = null;
+            isDirty = false;
+            seen = false;
+            if (typeof value === "object" && typeof value.toISOString !== "undefined") {
+                textValue = value.toISOString().split("T")[0];
+            } else if (typeof value ==="object") {
+                val = value;
+                textValue = value.getValue();
+            } else {
+                textValue = value;
+            }
+            if (typeof this._properties[property] === "undefined") {
+                this._properties[property] = [];
+            } else {
+                angular.forEach(this._properties[property], function(v) {
+                    if (v.getValue() === textValue) {
+                        seen = true;
+                    }
+                });
+            }
+            if (!seen && textValue !== "") {
+                isDirty = true;
+                if (val === null) {
+                    val = new PredObject(textValue, textValue, type, true);
+                }
+                this._properties[property].push(val);
+            }
+            return isDirty;
+        }
         
         /**
          * Set work's value of property to String or Date value.
          * Returns true if it makes a change in the model, false if not.
          */
         Resource.prototype.addPropertyValue = function(property, value) {
-            var propID, seen, val, isDirty, textValue;
+            var propID, objType, seen, val, isDirty, textValue;
             val = null;
             isDirty = false;
             propID = property.getProperty().getID();
