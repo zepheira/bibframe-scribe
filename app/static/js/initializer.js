@@ -145,7 +145,7 @@ angular.module("bibframeEditor", [
                             var prop = attrs.dzProperty;
                             angular.forEach(scope.current().getPropertyValues(prop), function(val) {
                                 if (val.getValue().endsWith(file.name)) {
-                                    scope.current().removeValue(prop, val);
+                                    scope.current().removePropertyValue(prop, val);
                                 }
                             });
                         });
