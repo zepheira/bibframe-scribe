@@ -15,6 +15,7 @@ module.exports = function(config) {
       'app/static/js/factories/*.js',
       'app/static/js/services/*.js',
       'app/static/js/initializer.js',
+      'app/static/js/directives/*.js',
       'app/static/js/controllers/*.js',
       'tests/unit/**/*.js',
       'tests/unit/*.js'
@@ -25,10 +26,11 @@ module.exports = function(config) {
     ],
 
     preprocessors: {
-       'app/static/js/*.js': 'coverage',
-       'app/static/js/factories/*.js': 'coverage',
-       'app/static/js/controllers/*.js': 'coverage',
-       'app/static/js/services/*.js': 'coverage'
+      'app/static/js/*.js': 'coverage',
+      'app/static/js/factories/*.js': 'coverage',
+      'app/static/js/directives/*.js',
+      'app/static/js/controllers/*.js': 'coverage',
+      'app/static/js/services/*.js': 'coverage'
     },
 
     reporters: ['dots', 'junit', 'coverage'],

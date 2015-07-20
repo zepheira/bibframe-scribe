@@ -132,14 +132,14 @@ describe("BIBFRAME Editor application", function() {
         });
     });
 
-    describe("ngEnter attribute directive", function() {
+    describe("scribeEnter attribute directive", function() {
         var elm;
         beforeEach(inject(function($compile) {
             $scope.a = 0;
             $scope.setIt = function() {
                 ++$scope.a;
             }
-            elm = angular.element("<span ng-enter='setIt()'>test{{a}}</span>");
+            elm = angular.element("<span scribe-enter='setIt()'>test{{a}}</span>");
             $compile(elm)($scope);
         }));
 
