@@ -28,7 +28,7 @@ module.exports = function(config) {
     preprocessors: {
       'app/static/js/*.js': 'coverage',
       'app/static/js/factories/*.js': 'coverage',
-      'app/static/js/directives/*.js',
+      'app/static/js/directives/*.js': 'coverage',
       'app/static/js/controllers/*.js': 'coverage',
       'app/static/js/services/*.js': 'coverage'
     },
