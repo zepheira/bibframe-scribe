@@ -89,7 +89,6 @@ describe("BIBFRAME Editor application", function() {
                 ctrl = $controller("SubResourceController", {
                     $scope: $scope,
                     $modalInstance: modalInstance,
-                    current: new Resource("test"),
                     template: new ResourceTemplate({
                         id: "test",
                         "class": {
@@ -108,18 +107,7 @@ describe("BIBFRAME Editor application", function() {
                             instantiates: "include"
                         }
                     }),
-                    controller: {
-                        getReferenceResourceType: null,
-                        editLiteral: null,
-                        editResource: null,
-                        showResource: null,
-                        isLoading: null,
-                        reset: null,
-                        autocomplete: null,
-                        pivot: null,
-                        dataTypes: null,
-                        setValueFromInput: null
-                    }
+                    doInitialization: false
                 });
             }
         ));

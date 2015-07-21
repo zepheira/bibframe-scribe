@@ -44,6 +44,7 @@
         $scope.getTemplateByID = TemplateStore.getTemplateByID;
         $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;
+        $scope.setHasRequired = ResourceStore.setHasRequired;
         $scope.isLoading = ResourceStore.isLoading;
         $scope.getReferenceResourceType = TemplateStore.getReferenceResourceType;
         $scope.getTypeProperties = TemplateStore.getTypeProperties;
@@ -109,8 +110,12 @@
                     filtered.push(service);
                 }
             });
-            
-            return Query.suggest({"q": typed, "services": JSON.stringify(filtered.sort())}).$promise;
+
+            ResourceStore.setLoading(property.getProperty().getID(), true);
+            return Query.suggest({"q": typed, "services": JSON.stringify(filtered.sort())}).$promise.then(function(res) {
+                ResourceStore.setLoading(property.getProperty().getID(), false);
+                return res;
+            });
         }
 
         /**
@@ -137,10 +142,10 @@
          * Convenience method
          * @@@ rewrite to do without $scope
          */
-        function setValueFromInput(prop) {
+        function setValueFromInput(prop, inputs) {
             if (!$scope.editExisting) {
-                ResourceStore.getCurrent().addPropertyValue(prop, $scope.inputted[prop.getProperty().getID()]);
-                $scope.inputted[prop.getProperty().getID()] = '';
+                ResourceStore.getCurrent().addPropertyValue(prop, inputs[prop.getProperty().getID()]);
+                inputs[prop.getProperty().getID()] = '';
             }
         }
 
@@ -200,12 +205,8 @@
                     toEdit = val;
                 }
             });
-            angular.forEach(TemplateStore.getTemplateIDHash(), function(tmpl, key) {
-                if (tmpl.getClassID() === toEdit.getType()) {
-                    ref = key;
-                }
-            });
-            pivot(property, ref, toEdit);
+
+            pivot(property, null, toEdit);
         }
 
         /**
@@ -277,40 +278,44 @@
          * @@@service?
          */
         function pivot(property, ref, toEdit) {
-            var modal, res, ctrl;
-
-            ctrl = this;
-
-            if (typeof ref === "undefined") {
-                ref = property.getConstraint().getReference();
-            }
-
-            res = TemplateStore.getTemplateByID(ref);
+            var modal, res, doInit;
 
             if (typeof toEdit === "undefined") {
-                toEdit = new Resource(res);
+                if (typeof ref === "undefined") {
+                    ref = property.getConstraint().getReference();
+                }
+
+                res = TemplateStore.getTemplateByID(ref);
+
+                toEdit = new Resource(Configuration.getConfig().idBase, res);
+                doInit = true;
+            } else {
+                res = toEdit.getTemplate();
+                doInit = false;
             }
+
+            ResourceStore.pivot(toEdit);
 
             modal = $modal.open({
                 templateUrl: "pivot.html",
                 controller: "SubResourceController",
                 windowClass: "pivot",
+                scope: $scope,
                 resolve: {
-                    current: function() {
-                        return toEdit;
-                    },
                     template: function() {
                         return res;
                     },
-                    controller: function() {
-                        return ctrl;
+                    doInitialization: function() {
+                        return doInit;
                     }
                 }
             });
             
-            modal.result.then(function(newResource) {
-                ResourceStore.addCreated(newResource);
-                selectValue(property, {"label": "[created]", "uri": newResource.getID()}, true);
+            modal.result.then(function() {
+                var r = ResourceStore.pivotDone();
+                selectValue(property, {"label": "[created]", "uri": r.getID()}, true);
+            }, function() {
+                ResourceStore.pivotDone();
             });
         }
         

@@ -7,6 +7,8 @@
         var service, _current, _created, _loading, _flags, _hasRequired, _cache, _dataTypes, _idbase;
         service = {
             getCurrent: getCurrent,
+            pivot: pivot,
+            pivotDone: pivotDone,
             getFlags: getFlags,
             getCreated: getCreated,
             addCreated: addCreated,
@@ -29,6 +31,12 @@
         };
 
         _current = null;
+        _parents = {
+            current: [],
+            loading: [],
+            flags: [],
+            hasRequired: []
+        };
         _activeTemplate = null;
         _dataTypes = {};
         _created = [];
@@ -43,6 +51,28 @@
 
         function getCurrent() {
             return _current;
+        }
+
+        function pivot(r) {
+            _parents.current.push(_current);
+            _parents.loading.push(_loading);
+            _parents.flags.push(_flags);
+            _parents.hasRequired.push(_hasRequired);
+            _hasRequired = false;
+            _flags = {};
+            _loading = {};
+            _current = r;
+        }
+
+        function pivotDone() {
+            console.log('done');
+            var ret = _current;
+            addCreated(_current);
+            _current = _parents.current.pop();
+            _loading = _parents.loading.pop();
+            _flags = _parents.flags.pop();
+            _hasRequired = _parents.hasRequired.pop();
+            return ret;
         }
 
         function getFlags() {
@@ -78,7 +108,11 @@
         }
 
         function isLoading(prop) {
-            return _loading[prop];
+            if (typeof _loading[prop] !== "undefined") {
+                return _loading[prop];
+            } else {
+                return false;
+            }
         }
 
         function hasRequired() {

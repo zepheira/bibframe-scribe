@@ -59,6 +59,10 @@
             this._template = tmpl;
             this._type = tmpl.getClassID();
         };
+
+        Resource.prototype.getTemplate = function() {
+            return this._template;
+        }
         
         /**
          * Initialize hash for new property in resource.

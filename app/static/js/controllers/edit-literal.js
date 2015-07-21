@@ -5,7 +5,7 @@
 
     function EditLiteralController($scope, $modalInstance, ResourceStore, property, literal) {
         $scope.resource = {"uri": "noop"}; // @@@ kind of a hack
-        $scope.setValueFromInput = function(a) {}; // @@@ ditto
+        $scope.setValueFromInput = function(a, b) {}; // @@@ ditto
         $scope.property = property.getProperty().getLabel();
         $scope.prop = property;
         $scope.inputted = {};

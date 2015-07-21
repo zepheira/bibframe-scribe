@@ -195,7 +195,7 @@
                    is-open="opened"
                    ng-focus="opened=true"
                    ng-model="inputted[prop.getProperty().getID()]"
-                   scribe-enter="setValueFromInput(prop)"
+                   scribe-enter="setValueFromInput(prop, inputted)"
                    ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
             <span class="input-group-btn">
               <button
@@ -219,7 +219,7 @@
                class="form-control"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}"
                ng-model="inputted[prop.getProperty().getID()]"
-               scribe-enter="setValueFromInput(prop)"
+               scribe-enter="setValueFromInput(prop, inputted)"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues().length>0">
             <span class="input-group-btn">
               <button
@@ -244,7 +244,7 @@
            class="form-control"
            id="{{resource.uri}}-{{prop.getProperty().getID()}}"
            ng-model="inputted[prop.getProperty().getID()]"
-           scribe-enter="setValueFromInput(prop)"
+           scribe-enter="setValueFromInput(prop, inputted)"
            ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
         <span class="input-group-btn">
           <button
@@ -270,7 +270,7 @@
                class="form-control"
                id="{{resource.uri}}-{{prop.getProperty().getID()}}"
                ng-model="inputted[prop.getProperty().getID()]"
-               scribe-enter="current().addPropertyValue(,prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''"
+               scribe-enter="setValueFromInput(prop, inputted)"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
         <span class="input-group-btn">
           <button
