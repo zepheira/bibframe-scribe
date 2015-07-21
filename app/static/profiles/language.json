@@ -5,6 +5,7 @@
             {
                 "id": "bfp:Language",
                 "class": {
+                    "classLabel": "Language",
                     "id": "http://bibframe.org/vocab/LanguageEntity",
                     "propertyTemplate": [
                         {
@@ -12,7 +13,8 @@
                                 "id": "http://bibframe.org/vocab/label",
                                 "propertyLabel": "Label"
                             },
-                            "type": "literal"
+                            "type": "literal",
+                            "mandatory": "true"
                         }
                     ]
                 }
