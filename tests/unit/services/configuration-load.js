@@ -24,15 +24,17 @@ describe("ConfigurationLoad", function() {
                 "relations": {
                     "instanceOf": "include"
                 },
-                "resourceServiceMap": {
-                    "http://bibframe.org/vocab/Book": "Works"
+                "resourceMap": {
+                    "Works": {
+                        "classes": [
+                            "http://bibframe.org/vocab/Book"
+                        ],
+                        "services": [
+                            "local:works"
+                        ]
+                    }
                 },
-                "serviceProviderMap": {
-                    "Subjects": [
-                        "local:subjects"
-                    ]
-                },
-                "providerList": {
+                "services": {
                     "local": {
                         "short": "Local",
                         "full": "Local Database"

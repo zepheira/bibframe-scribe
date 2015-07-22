@@ -40,7 +40,7 @@
         $scope.created = ResourceStore.getCreated;
         $scope.addCreated = ResourceStore.addCreated;
         $scope.cacheDropzone = ResourceStore.cacheDropzone;
-        $scope.config = Configuration.getConfig;
+        $scope.config = Configuration;
         $scope.getTemplateByID = TemplateStore.getTemplateByID;
         $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;
@@ -84,17 +84,17 @@
             
             if (typeof refs === "object") {
                 for (i = 0; i < refs.length; i++) {
-                    single = Configuration.getConfig().resourceServiceMap[TemplateStore.getTemplateByID(refs[i]).getClassID()];
+                    single = TemplateStore.getReferenceResourceType(refs[i]);
                     if (classes.indexOf(single) < 0) {
                         classes.push(single);
                     }
                 }
             } else {
-                classes.push(Configuration.getConfig().resourceServiceMap[TemplateStore.getTemplateByID(refs).getClassID()]);
+                classes.push(TemplateStore.getReferenceResourceType(refs));
             }
-            
+
             for (i = 0; i < classes.length; i++) {
-                services = services.concat(Configuration.getConfig().serviceProviderMap[classes[i]]);
+                services = services.concat(Configuration.getConfig().resourceMap[classes[i]].services);
             }
             
             angular.forEach(services, function(service, i) {
@@ -196,7 +196,6 @@
         /**
          * Shortcut for pivot call. Choose created resoure and matching
          * template before pivoting.
-         * @@@service? - created works service
          */
         function editResource(property, value) {
             var toEdit, ref;

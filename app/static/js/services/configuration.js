@@ -9,6 +9,7 @@
         service = {
             getConfig: getConfig,
             getFirstClass: getFirstClass,
+            getSearchServices: getSearchServices,
             getResourceOptions: getResourceOptions,
             initialize: initialize,
             isInitialized: isInitialized
@@ -16,7 +17,6 @@
 
         _initialized = false;
         _resourceOptions = [];
-        // @@@ take out of page and put here?
         _services = {};
 
         return service;
@@ -92,8 +92,16 @@
                             });
                         });
 
-                        angular.forEach(_config.resourceServiceMap, function(item, key) {
-                            TemplateStore.addResourceType(key, item);
+                        angular.forEach(_config.resourceMap, function(info, key) {
+                            angular.forEach(info.classes, function(c) {
+                                TemplateStore.addResourceType(c, key);
+                            });
+                        });
+                        angular.forEach(_config.resourceDefinitions, function(info, key) {
+                            TemplateStore.addResourceType(key, info);
+                        });
+                        angular.forEach(_config.services, function(info, key) {
+                            _services[key] = info;
                         });
 
                         angular.forEach(_config.dataTypes, function(dataType) {

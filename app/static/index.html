@@ -98,7 +98,7 @@
           <h4 tooltip="Disable an external service if you're not interested in seeing its results come up in a typeahead search."
               tooltip-placement="top">External Services</h4>
           <form class="form-horizontal">
-            <div ng-repeat="(provider, pnames) in config().providerList">
+            <div ng-repeat="(provider, pnames) in config.getSearchServices()">
               <input type="checkbox"
                      id="services-{{provider}}"
                      ng-model="useServices[provider]"
