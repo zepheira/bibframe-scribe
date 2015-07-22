@@ -23,7 +23,7 @@
             _store.load("text/turtle", n3, SCHEMAS, function(success) {
                 Progress.increment();
                 if (!success) {
-                    Message.addMessage("Error loading schema " + url + ", please check of RDF validity", "danger");
+                    Message.addMessage("Error loading schema " + url + ", please check RDF validity", "danger");
                 } else {
                     angular.forEach(config.firstClass, function(fc) {
                         var query = "SELECT ?s { ?s rdfs:subClassOf <" + fc + "> }";
