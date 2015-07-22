@@ -13,7 +13,7 @@
         return service;
 
         function get(schema) {
-            return $http.get('./schema/' + s);
+            return $http.get('./schema/' + schema);
         }
     }
 })();

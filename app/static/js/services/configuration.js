@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("configurationService", [])
-        .factory("Configuration", ["$http", "$q", "ConfigurationLoad", "ProfileLoad", "Progress", "Message", "Graph", "ResourceStore", "TemplateStore", "Profile", Configuration]);
+        .factory("Configuration", ["$q", "ConfigurationLoad", "ProfileLoad", "Progress", "Message", "Graph", "ResourceStore", "TemplateStore", "Profile", "Schemas", Configuration]);
 
-    function Configuration($http, $q, ConfigurationLoad, ProfileLoad, Progress, Message, Graph, ResourceStore, TemplateStore, Profile) {
+    function Configuration($q, ConfigurationLoad, ProfileLoad, Progress, Message, Graph, ResourceStore, TemplateStore, Profile, Schemas) {
         var service, _config, _firstClass, _initialized, _resourceOptions, _services;
 
         service = {
@@ -52,7 +52,7 @@
                 
                 return $q.all(_config.schemas.map(function(s) {
                     Progress.increment();
-                    return $http.get('schema/' + s);
+                    return Schemas.get(s);
                 })).then(function(httpResponses) {
                     httpResponses.map(function(response) {
                         Graph.load(_config, response.data, response.config.url);
