@@ -14,37 +14,6 @@ describe("ConfigurationLoad", function() {
             $httpBackend.expectGET("./config.json").respond({
                 "profiles": [
                     "test"
-                ],
-                "schemas": [
-                    "augment.n3"
-                ],
-                "firstClass": [
-                    "http://bibframe.org/vocab/Work"
-                ],
-                "relations": {
-                    "instanceOf": "include"
-                },
-                "resourceMap": {
-                    "Works": {
-                        "classes": [
-                            "http://bibframe.org/vocab/Book"
-                        ],
-                        "services": [
-                            "local:works"
-                        ]
-                    }
-                },
-                "services": {
-                    "local": {
-                        "short": "Local",
-                        "full": "Local Database"
-                    }
-                },
-                "dataTypes": [
-                    {
-                        "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                        "handler": "date"
-                    }
                 ]
             });
 
