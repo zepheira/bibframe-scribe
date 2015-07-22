@@ -11,7 +11,7 @@ Node.js installation, consider using a virtual environment as provided by
 per environment and can be easily installed using `pip`.  This branch uses
 LevelDB, which needs a directory to store its data.  The default supplied is
 `./bfstore`, relative to the `app/` directory; you can change this by supplying
-a `config.js` in the `app/` directory.
+a `backend.json` in the `app/` directory.
 
 With the `nodeenv` binary available:
 
