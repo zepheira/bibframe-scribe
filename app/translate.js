@@ -1,19 +1,18 @@
 var maxMatchLength = 50, generateMatch;
 
-    generateMatch = function(uri, label, source) {
-        var match = {
-            'uri': uri,
-            'source': source,
-            'fullLabel': label
-        };
-        if (label.length > maxMatchLength) {
-            match['label'] = label.substr(0, maxMatchLength) + '...';
-        } else {
-            match['label'] = label;
-        }
-        return match;
+generateMatch = function(uri, label, source) {
+    var match = {
+        'uri': uri,
+        'source': source,
+        'fullLabel': label
     };
-
+    if (label.length > maxMatchLength) {
+        match['label'] = label.substr(0, maxMatchLength) + '...';
+    } else {
+        match['label'] = label;
+    }
+    return match;
+};
 
 module.exports = {
     agrovoc: function(res) {
