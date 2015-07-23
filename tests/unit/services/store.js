@@ -10,7 +10,7 @@ describe("Store", function() {
     }));
 
     describe("id", function() {
-        it("should call id", inject(function(Store) {
+        it("should call id", function() {
             $httpBackend.expectPOST("../resource/id").respond([
                 "testuuid0",
                 "testuuid1"
@@ -21,11 +21,11 @@ describe("Store", function() {
                         
             expect(result[0]).toEqual("testuuid0");
             expect(result[1]).toEqual("testuuid1");
-        }));
+        });
     });
 
     describe("new", function() {
-        it("should call new", inject(function(Store) {
+        it("should call new", function() {
             $httpBackend.expectPUT("../resource/new").respond({
                 "success": true
             });
@@ -34,6 +34,6 @@ describe("Store", function() {
             $httpBackend.flush();
 
             expect(result.success).toEqual(true);
-        }));
+        });
     });
 });
