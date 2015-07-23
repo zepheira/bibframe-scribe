@@ -8,7 +8,6 @@ describe("Schemas", function() {
         $httpBackend = $injector.get("$httpBackend");
         mockSchemasResource = $injector.get("Schemas");
         $httpBackend.expectGET("./schema/bibframe.n3").respond("@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .");
-
     }));
 
     afterEach(function() {
