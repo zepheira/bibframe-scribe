@@ -22,7 +22,6 @@
 
         function addMessage(msg, severity) {
             _messages.push(new Msg(msg, severity));
-            console.log(msg);
         }
 
         function removeMessage(idx) {

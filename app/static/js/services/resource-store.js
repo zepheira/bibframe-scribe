@@ -65,7 +65,6 @@
         }
 
         function pivotDone() {
-            console.log('done');
             var ret = _current;
             addCreated(_current);
             _current = _parents.current.pop();
