@@ -10,31 +10,31 @@ describe("Progress", function() {
         Progress.setTotal(10);
     }));
 
-    it("should start at 0", inject(function() {
+    it("should start at 0", function() {
         expect(Progress.getCurrent()).toEqual(0);
-    }));
+    });
 
-    it("should increment once and reach 10", inject(function() {
+    it("should increment once and reach 10", function() {
         Progress.increment();
         scope.$digest();
         expect(Progress.getCurrent()).toEqual(10);
-    }));
+    });
 
-    it("should increment five times and reach 50", inject(function() {
+    it("should increment five times and reach 50", function() {
         var i;
         for (i = 0; i < 5; i++) {
             Progress.increment();
             scope.$digest();
         }
         expect(Progress.getCurrent()).toEqual(50);
-    }));
+    });
 
-    it("should increment five times and reach 50", inject(function() {
+    it("should increment five times and reach 50", function() {
         var i;
         for (i = 0; i < 10; i++) {
             Progress.increment();
             scope.$digest();
         }
         expect(Progress.getCurrent()).toEqual(100);
-    }));
+    });
 });

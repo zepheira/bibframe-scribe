@@ -15,12 +15,12 @@ describe("Schemas", function() {
     });
 
     describe("get", function() {
-        it("should call get", inject(function() {
+        it("should call get", function() {
             var result = mockSchemasResource.get("bibframe.n3");
 
             result.success(function(r) {
                 expect(r).toMatch(/^@prefix rdf/);
             });
-        }));
+        });
     });
 });
