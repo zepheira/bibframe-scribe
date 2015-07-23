@@ -29,9 +29,9 @@ describe("Identifier", function() {
             $httpBackend.flush();
 
             /**
-             * Timing of flush comes too late to give result an actual
+             * Timing of flush comes too late to give an actual
              * result in these tests.  Skipping the first failed "result"
-             * to check subsequent calls work properly.  Ditto for local call.
+             * to check subsequent calls works properly.  Ditto for local call.
              */
 
             result = mockIdentifierResource.newIdentifier("http://test");
