@@ -1,7 +1,7 @@
 "use strict";
 
 describe("Schemas", function() {
-    var Schemas, mockSchemasResource, $httpBackend;
+    var mockSchemasResource, $httpBackend;
 
     beforeEach(module("bibframeEditor"));
     beforeEach(inject(function($injector) {
