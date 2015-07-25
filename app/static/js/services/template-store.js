@@ -8,6 +8,7 @@
 
         service = {
             addResourceFirstClass: addResourceFirstClass,
+            getResourceFirstClass: getResourceFirstClass,
             addResourceTemplate: addResourceTemplate,
             hasTemplateByClassID: hasTemplateByClassID,
             getTemplateByClassID: getTemplateByClassID,
@@ -31,6 +32,10 @@
 
         function addResourceFirstClass(res, fc) {
             _resourceToFirstClassMap[res] = fc;
+        }
+
+        function getResourceFirstClass(res) {
+            return _resourceToFirstClassMap[res];
         }
 
         function addResourceTemplate(template) {
