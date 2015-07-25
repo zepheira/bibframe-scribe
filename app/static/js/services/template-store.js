@@ -18,7 +18,8 @@
             addResourceType: addResourceType,
             getReferenceResourceType: getReferenceResourceType,
             getTypeProperties: getTypeProperties,
-            addProfile: addProfile
+            addProfile: addProfile,
+            getProfiles: getProfiles
         };
 
         _resourceToFirstClassMap = {};
@@ -86,7 +87,10 @@
         function addProfile(profile) {
             _profiles.push(profile);
         }
-    }
 
+        function getProfiles() {
+            return _profiles;
+        }
+    }
     
 })();
