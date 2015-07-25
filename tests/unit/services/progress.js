@@ -29,9 +29,18 @@ describe("Progress", function() {
         expect(Progress.getCurrent()).toEqual(50);
     });
 
-    it("should increment five times and reach 50", function() {
+    it("should increment ten times and reach 100", function() {
         var i;
         for (i = 0; i < 10; i++) {
+            Progress.increment();
+            scope.$digest();
+        }
+        expect(Progress.getCurrent()).toEqual(100);
+    });
+
+    it("should increment eleven times and reach 100", function() {
+        var i;
+        for (i = 0; i < 11; i++) {
             Progress.increment();
             scope.$digest();
         }
