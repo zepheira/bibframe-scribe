@@ -27,9 +27,11 @@
         }
 
         function increment() {
-            $scope.$evalAsync(function() {
-                _progress = Math.round((++_current / _total) * 100);
-            });
+            if (_current < _total) {
+                $scope.$evalAsync(function() {
+                    _progress = Math.round((++_current / _total) * 100);
+                });
+            }
         }
     }
 })();
