@@ -18,7 +18,7 @@ describe("TemplateStore", function() {
     });
 
     it("should add a resource to first class mapping", function() {
-        expect(typeof TemplateStore.getResourceFirstClass("test")).toEqual("undefined");
+        expect(TemplateStore.getResourceFirstClass("test")).toBeUndefined();
         TemplateStore.addResourceFirstClass("test", "urn:a");
         expect(TemplateStore.getResourceFirstClass("test")).toEqual("urn:a");
     });
@@ -37,7 +37,7 @@ describe("TemplateStore", function() {
 
     it("should return and modify a modifiable ID template hash", function() {
         var h = TemplateStore.getTemplateIDHash();
-        expect(typeof h["test"]).toEqual("undefined");
+        expect(h["test"]).toBeUndefined();
         expect(TemplateStore.hasTemplateByID("test")).toEqual(false);
         h["test"] = {};
         expect(TemplateStore.hasTemplateByID("test")).toEqual(true);
@@ -45,7 +45,7 @@ describe("TemplateStore", function() {
     });
 
     it("should not find a non-existent resource type", function() {
-        expect(typeof TemplateStore.getTypeProperties("test")).toEqual("undefined");
+        expect(TemplateStore.getTypeProperties("test")).toBeUndefined();
     });
 
     it("should add and find a basic resource type", function() {
@@ -62,7 +62,7 @@ describe("TemplateStore", function() {
 
     it("should add and find a complex resource type", function() {
         TemplateStore.addResourceType("urn:test", {type: "test", propertyMap: {}});
-        expect(typeof TemplateStore.getTypeProperties("test")).not.toEqual("undefined");
+        expect(TemplateStore.getTypeProperties("test")).not.toBeUndefined();
         expect(TemplateStore.getTypeProperties("test")).toEqual({});
     });
 });
