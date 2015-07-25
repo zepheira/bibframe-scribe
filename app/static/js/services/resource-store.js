@@ -122,10 +122,6 @@
             _hasRequired = req;
         }
 
-        function isDirty() {
-            return _flags.isDirty;
-        }
-
         function setActiveTemplate(tmpl) {
             _activeTemplate = tmpl;
         }
