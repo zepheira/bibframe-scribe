@@ -55,12 +55,12 @@
                     return Schemas.get(s);
                 })).then(function(httpResponses) {
                     httpResponses.map(function(response) {
+                        // @@@ returns a promise, not doing anything with it...
                         Graph.load(_config, response.data, response.config.url);
                     });
                 }, function(fail) {
                     Message.addMessage('Failed to load schema ' + fail.config.url + ': HTTP ' + fail.status + ' - ' + fail.statusText, 'danger');
                 }).then(function() {
-                    Graph.registerNamespaces();
                     $q.all(_config.profiles.map(function(p) {
                         return ProfileLoad.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
                             var prof, promise;

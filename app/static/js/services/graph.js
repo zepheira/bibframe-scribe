@@ -9,36 +9,45 @@
         SCHEMAS = "urn:schema";
 
         service = {
+            getStore: getStore,
             load: load,
-            registerNamespaces: registerNamespaces,
             execute: execute,
             SCHEMAS: SCHEMAS
         };
 
         _store = rdfstore.create();
+        _store.registerDefaultProfileNamespaces();
 
         return service;
 
-        function load(config, n3, url) {
-            _store.load("text/turtle", n3, SCHEMAS, function(success) {
-                Progress.increment();
-                if (!success) {
-                    Message.addMessage("Error loading schema " + url + ", please check RDF validity", "danger");
-                } else {
-                    angular.forEach(config.firstClass, function(fc) {
-                        var query = "SELECT ?s { ?s rdfs:subClassOf <" + fc + "> }";
-                        _store.execute(query, [SCHEMAS], [], function(success, results) {
-                            angular.forEach(results, function(r) {
-                                TemplateStore.addResourceFirstClass(r.s.value, fc);
-                            });
-                        });
-                    });
-                }
-            });
+        function getStore() {
+            return _store;
         }
 
-        function registerNamespaces() {
-            _store.registerDefaultProfileNamespaces();
+        function load(config, n3, url) {
+            var deferred = $q.defer();
+            _store.load("text/turtle", n3, SCHEMAS, function(success) {
+                if (!success) {
+                    Message.addMessage("Error loading schema " + url + ", please check RDF validity", "danger");
+                    deferred.reject();
+                } else {
+                    angular.forEach(config.firstClass, function(fc) {
+                        var query = "SELECT ?s WHERE { ?s rdfs:subClassOf <" + fc + "> }";
+                        _store.execute(query, [SCHEMAS], [], function(success, results) {
+                            if (success) {
+                                angular.forEach(results, function(r) {
+                                    TemplateStore.addResourceFirstClass(r.s.value, fc);
+                                });
+                                deferred.resolve();
+                            } else {
+                                deferred.reject();
+                            }
+                        });
+                    });
+                    Progress.increment();
+                }
+            });
+            return deferred.promise;
         }
 
         function execute(res, query) {
