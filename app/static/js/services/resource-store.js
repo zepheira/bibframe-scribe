@@ -24,6 +24,7 @@
             addDataTypeHandler: addDataTypeHandler,
             newResource: newResource,
             setResourceTemplate: setResourceTemplate,
+            getDropzone: getDropzone,
             cacheDropzone: cacheDropzone,
             reset: reset,
             clear: clear,
@@ -136,6 +137,10 @@
 
         function setResourceTemplate(tmpl) {
             _current.setTemplate(tmpl);
+        }
+
+        function getDropzone() {
+            return _cache.dz;
         }
 
         function cacheDropzone(dz) {
