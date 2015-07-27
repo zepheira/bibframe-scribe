@@ -50,54 +50,6 @@
                         }
                     ]
                 }
-            },
-            {
-                "id": "bfp:Authority:TemporalConcept",
-                "class": {
-                    "classLabel": "Time",
-                    "id": "http://bibframe.org/vocab/TemporalConcept",
-                    "labelProperty": "http://bibframe.org/vocab/label",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/description",
-                                "propertyLabel": "Description"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                }
-            },
-            {
-                "id": "bfp:Authority:ClassificationEntity",
-                "class": {
-                    "classLabel": "Classification Entity",
-                    "id": "http://bibframe.org/vocab/ClassificationEntity",
-                    "labelProperty": "http://bibframe.org/vocab/label",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/description",
-                                "propertyLabel": "Description"
-                            },
-                            "type": "literal"
-                        }
-                    ]
-                }
             }
         ]
     }
