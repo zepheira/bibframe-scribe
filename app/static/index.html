@@ -90,7 +90,7 @@
           </tab>
           <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="!current().isEmpty()">
             <tab-heading><span ng-show="resource.child"><i class="icon-chevron-right"></i> </span>{{resource.label}}</tab-heading>
-            <div ng-show="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-include="'resource.html'"></div>
+            <div ng-if="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-show="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-include="'resource.html'"></div>
           </tab>
         </tabset>
         
