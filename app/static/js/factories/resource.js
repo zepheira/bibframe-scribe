@@ -268,43 +268,37 @@
             }
             angular.forEach(res._properties, function(vals, prop) {
                 var nsProp;
-                if (prop === "id" && id === null) {
-                    id = vals;
-                } else if (prop === "type" && type === null) {
-                    type = vals.getValue();
+                nsProp = Namespace.extractNamespace(prop);
+                if ((split && (res._template !== null && res._template.hasProperty(prop))) || !split) {
+                    angular.forEach(vals, function(val) {
+                        if (val.isResource()) {
+                            frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
+                            if (typeof refs !== "undefined") {
+                                refs.push(val.getValue());
+                            }
+                        } else {
+                            frag += '    <'+ nsProp.namespace + ':' + nsProp.term;
+                            if (val.hasDatatype()) {
+                                frag += ' rdf:datatype="' + val.getDatatype() + '"';
+                            }
+                            frag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                        }
+                    });
                 } else {
-                    nsProp = Namespace.extractNamespace(prop);
-                    if ((split && (res._template !== null && res._template.hasProperty(prop))) || !split) {
-                        angular.forEach(vals, function(val) {
-                            if (val.isResource()) {
-                                frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
-                                if (typeof refs !== "undefined") {
-                                    refs.push(val.getValue());
-                                }
-                            } else {
-                                frag += '    <'+ nsProp.namespace + ':' + nsProp.term;
-                                if (val.hasDatatype()) {
-                                    frag += ' rdf:datatype="' + val.getDatatype() + '"';
-                                }
-                                frag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                    angular.forEach(vals, function(val) {
+                        if (val.isResource()) {
+                            relFrag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
+                            if (typeof refs !== "undefined") {
+                                refs.push(val.getValue());
                             }
-                        });
-                    } else {
-                        angular.forEach(vals, function(val) {
-                            if (val.isResource()) {
-                                relFrag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + val.getValue() + '"/>\n';
-                                if (typeof refs !== "undefined") {
-                                    refs.push(val.getValue());
-                                }
-                            } else {
-                                relFrag += '    <'+ nsProp.namespace + ':' + nsProp.term;
-                                if (val.hasDatatype()) {
-                                    relFrag += ' rdf:datatype="' + val.getDatatype() + '"';
-                                }
-                                relFrag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                        } else {
+                            relFrag += '    <'+ nsProp.namespace + ':' + nsProp.term;
+                            if (val.hasDatatype()) {
+                                relFrag += ' rdf:datatype="' + val.getDatatype() + '"';
                             }
-                        });
-                    }
+                            relFrag += '>' + val.getValue() + '</' + nsProp.namespace  + ':' + nsProp.term + '>\n';
+                        }
+                    });
                 }
             });
             if (split) {
@@ -338,26 +332,20 @@
             var frag = "",
             res = this;
             angular.forEach(this._properties, function(vals, prop) {
-                if (prop === "id" && typeof res.getID() === "undefined") {
-                    res._id = vals;
-                } else if (prop === "type" && typeof res.getType() === "undefined") {
-                    res._type = vals.getValue();
-                } else {
-                    angular.forEach(vals, function(val) {
-                        if (val.isResource()) {
-                            frag += '  <' + prop + '> <' + val.getValue() + '>;\n';
-                            if (typeof refs !== "undefined") {
-                                refs.push(val.getValue());
-                            }
-                        } else {
-                            frag += '  <' + prop + '> \"' + val.getValue() + '\"';
-                            if (val.hasDatatype()) {
-                                frag += '^^<' + val.getDatatype() + '>';
-                            }
-                            frag += ';';
+                angular.forEach(vals, function(val) {
+                    if (val.isResource()) {
+                        frag += '  <' + prop + '> <' + val.getValue() + '>;\n';
+                        if (typeof refs !== "undefined") {
+                            refs.push(val.getValue());
                         }
-                    });
-                }
+                    } else {
+                        frag += '  <' + prop + '> \"' + val.getValue() + '\"';
+                        if (val.hasDatatype()) {
+                            frag += '^^<' + val.getDatatype() + '>';
+                        }
+                        frag += ';';
+                    }
+                });
             });
             return '<' + this.getID() + '>\n' + frag + ' rdf:type <' + this.getType() + '> .\n';
         };
