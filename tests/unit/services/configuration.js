@@ -19,30 +19,37 @@ describe("Configuration", function() {
             ],
             resourceMap: {},
             resourceDefinitions: {},
-            services: {},
+            services: {
+                "foo": "bar"
+            },
             dataTypes: {},
             idBase: ""
         });
         $httpBackend.whenGET("./profiles/test.json").respond({
-            resourceTemplate: [
-                {
-                    id: "rt-test",
-                    "class": {
-                        id: "rt-class-test"
+            Profile: {
+                resourceTemplate: [
+                    {
+                        id: "rt-test",
+                        "class": {
+                            id: "rt-class-test"
+                        }
                     }
-                }
-            ]
+                ]
+            }
         });
-        $httpBackend.whenGET("./schema/schema.n3").respond("");
+        $httpBackend.whenGET("./schema/schema.n3").respond("<rt-class-test> rdfs:subClassOf <urn:superclass> .");
+        $httpBackend.whenPOST("../resource/id").respond(["0","1","2","3","4"]);
     }));
-    /**
+
     it("should parse configuration", function() {
-        // this might be basically un-testable - flush needs to be called
-        // before Configuration.initialize is completed, and possibly scope
-        // $digest, but there really isn't a way I know of how to get the
-        // required fakery timed correctly.
         Configuration.initialize();
         $httpBackend.flush();
+        expect(Configuration.getConfig()).not.toBeNull();
+        expect(Configuration.getFirstClass()).toEqual(["urn:superclass"]);
+        expect(Configuration.getSearchServices()).toEqual({foo: "bar"});
+        //@@@ should be 1?
+        //expect(Configuration.getResourceOptions().length).toEqual(0);
+        expect(Configuration.isInitialized()).toEqual(true);
     });
-    */
+
 });
