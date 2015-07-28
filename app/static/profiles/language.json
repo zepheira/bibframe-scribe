@@ -5,11 +5,11 @@
             {
                 "id": "bfp:Language",
                 "class": {
-                    "id": "http://bibframe.org/vocab/LanguageEntity",
+                    "id": "http://bibfra.me/view/lite/language",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
+                                "id": "http://bibfra.me/view/lite/label",
                                 "propertyLabel": "Label"
                             },
                             "type": "literal"
