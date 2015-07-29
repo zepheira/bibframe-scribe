@@ -13,6 +13,7 @@
             this._labelProperty = null;
             this._classID = null;
             this._propertyTemplates = [];
+            this._propertyToTemplate = {};
             this._relation = null;
             
             if (typeof obj.id !== "undefined") {
@@ -46,6 +47,7 @@
                     for (i = 0; i < obj.class.propertyTemplate.length; i++) {
                         pt = new PropertyTemplate(obj.class.propertyTemplate[i]);
                         this._propertyTemplates.push(pt);
+                        this._propertyToTemplate[pt.getProperty().getID()] = pt;
                     }
                 }
             }
@@ -82,15 +84,11 @@
         };
         
         ResourceTemplate.prototype.hasProperty = function(prop) {
-            var i, iprop, result = false;
-            for (i = 0; i < this._propertyTemplates.length; i++) {
-                iprop = this._propertyTemplates[i];
-                if (prop === iprop.getProperty().getID()) {
-                    result = true;
-                    break;
-                }
-            }
-            return result;
+            return (typeof this._propertyToTemplate[prop] !== "undefined");
+        };
+
+        ResourceTemplate.prototype.getPropertyByID = function(prop) {
+            return this._propertyToTemplate[prop];
         };
         
         ResourceTemplate.prototype.getRelation = function() {
@@ -98,7 +96,12 @@
         };
         
         ResourceTemplate.prototype.mergeTemplate = function(tmpl) {
-            this._propertyTemplates = tmpl.getPropertyTemplates().concat(this._propertyTemplates);
+            var pts = tmpl.getPropertyTemplates(), rt;
+            rt = this;
+            this._propertyTemplates = pts.concat(this._propertyTemplates);
+            angular.forEach(pts, function(pt) {
+                rt._propertyToTemplate[pt.getProperty().getID()] = pt;  
+            });
         };
 
         return ResourceTemplate;

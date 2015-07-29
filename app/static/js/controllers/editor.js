@@ -1,17 +1,21 @@
 (function() {
     angular
         .module("bibframeEditor")
-        .controller("EditorController", ["$scope", "$modal", "$log", "Store", "Configuration", "Query", "Graph", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", EditorController]);
+        .controller("EditorController", ["$scope", "$modal", "$log", "Store", "Configuration", "Query", "Graph", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", "Store", EditorController]);
 
-    function EditorController($scope, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore) {
+    function EditorController($scope, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore, Store) {
         // @@@ fix any data still on $scope
         $scope.inputted = {};
         $scope.useServices = {};
+        $scope.editURI = "";
         $scope.editExisting = false; // @@@ redo this, used as a signal
         $scope.pivoting = false;
         $scope.popover = {
             "uri": null,
             "data": null
+        };
+        $scope.tabs = {
+            active: null
         };
 
         $scope.newEdit = newEdit;
@@ -30,6 +34,8 @@
         $scope.validate = validate;
         $scope.persist = persist;
         $scope.showRDF = showRDF;
+        $scope.editFromGraph = editFromGraph;
+        $scope.editFromStore = editFromStore;
         
         $scope.progress = Progress.getCurrent;
         $scope.messages = Message.messages;
@@ -387,6 +393,88 @@
                     rdf: function() {
                         return ResourceStore.getCurrent().toRDF(ResourceStore.getCreated());
                     }
+                }
+            });
+        }
+
+        /**
+         * Utility function to fill out a Resource from a local browser store,
+         * only retrieves triples with uri argument as subject.
+         */
+        function editFromGraph(uri) {
+            var typeq = "SELECT ?o FROM { <" + uri + "> rdf:type ?o }",
+                fullq = "SELECT *  FROM { <" + uri + "> ?p ?o }",
+                r,
+                type,
+                tmpl;
+            r = new Resource("shim", null); // fake ID base, set correctly next
+            r.setID(uri);
+            Graph.execute(r, typeq).then(function(typeresp) {
+                console.log(typeresp);
+                type = typeresp[1].o.value;
+                if (TemplateStore.hasTemplateByClassID(type)) {
+                    tmpl = TemplateStore.getTemplateByClassID(type);
+                    r.setTemplate(tmpl);
+                    Graph.execute(r, fullq).then(function(response) {
+                        console.log(response);
+                        angular.forEach(response[1], function(triple) {
+                            if (tmpl.hasProperty(triple.p.value)) {
+                                r.addPropertyValue(tmpl.getPropertyByID(triple.p.value), triple.o.value);
+                            }
+                        });
+                    });
+                    newEdit({uri: type});
+                    ResourceStore.setCurrent(r);
+                } else {
+                    Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
+                }
+            });
+        }
+
+        /**
+         * Utility function to fill out a Resource from a backing store,
+         * only retrieves triples with uri argument as subject.
+         */
+        function editFromStore(uri) {
+            var r, props, flags, type, tmpl;
+            flags = {
+                hasRequired: false,
+                loading: ResourceStore.getAllLoading()
+            };
+            r = ResourceStore.getCurrent();
+            r.setID(uri);
+            Store.query({}, {
+                s: uri,
+                p: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+            }).$promise.then(function(typeresp) {
+                type = typeresp[0].o;
+                if (TemplateStore.hasTemplateByClassID(type)) {
+                    tmpl = TemplateStore.getTemplateByClassID(type);
+                    ResourceStore.setActiveTemplate(tmpl);
+                    $scope.tabs.active = type;
+                    $scope.inputted = {};
+                    r.setTemplate(tmpl);
+                    props = tmpl.getPropertyTemplates();
+                    angular.forEach(props, function(prop) {
+                        r.initializeProperty(prop, flags);
+                    });
+                    ResourceStore.setHasRequired(flags.hasRequired);
+                    Store.query({}, {
+                        s: uri
+                    }).$promise.then(function(response) {
+                        angular.forEach(response, function(triple) {
+                            if (tmpl.hasProperty(triple.p)) {
+                                if (triple.o.startsWith("\"")) {
+                                    r.addPropertyValue(tmpl.getPropertyByID(triple.p), triple.o.slice(1, -1));
+                                } else {
+                                    r.addPropertyValue(tmpl.getPropertyByID(triple.p), triple.o);
+                                }
+                            }
+                        });
+                        ResourceStore.setCurrent(r);
+                    });
+                } else {
+                    Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
                 }
             });
         }

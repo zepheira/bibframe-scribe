@@ -7,6 +7,7 @@
         var service, _current, _created, _loading, _flags, _hasRequired, _cache, _dataTypes, _idbase;
         service = {
             getCurrent: getCurrent,
+            setCurrent: setCurrent,
             pivot: pivot,
             pivotDone: pivotDone,
             getFlags: getFlags,
@@ -52,6 +53,10 @@
 
         function getCurrent() {
             return _current;
+        }
+
+        function setCurrent(r) {
+            _current = r;
         }
 
         function pivot(r) {
