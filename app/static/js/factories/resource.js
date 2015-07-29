@@ -13,21 +13,6 @@
         }
 
         /**
-         * @@@ add a utility function to load a resource from the
-         *     triple-store
-         */
-        Resource.fromGraph = function(store, uri) {
-            var query = "SELECT *  FROM { <" + uri + "> ?p ?o }", r;
-            r = new Resource(uri, null);
-            store.execute(query, function(success, results) {
-                if (success) {
-                    console.log(results);
-                }
-            });
-            return r;
-        };
-
-        /**
          * Return resource URI.
          */
         Resource.prototype.getID = function() {
