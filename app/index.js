@@ -123,6 +123,32 @@ localSuggestHelper = function(qin, types) {
     return deferred.promise;
 };
 
+// Query the store for a resource
+server.get('/resource/query', function retrieveResource(req, res, next) {
+    var subj, pred, parts, query, answer;
+    parts = url.parse(req.url, true);
+    subj = parts.query.s;
+    pred = parts.query.p;
+    answer = [];
+    query = [{
+        subject: subj,
+        predicate: db.v("p"),
+        object: db.v("o")
+    }];
+    if (typeof pred !== "undefined") {
+        query[0].predicate = pred;
+    }
+    db.search(query, {}, function(err, results) {
+        if (typeof err === "undefined" || err === null) {
+            res.send(200, results);
+            next();
+        } else {
+            res.send(500);
+            next();
+        }
+    });
+});
+
 // Query the store for matching suggestions
 server.get('/suggest/local', function suggestLocal(req, res, next) {
     var qin, parts, query, i;
@@ -278,16 +304,12 @@ server.get('/resolver', function resolveResource(req, res, next) {
                         } else {
                             res.writeHead(503);
                             res.end();
-                            console.log(resp2.status);
-                            console.log(ans2);
                         };
                     });
                 });
             } else {
                 res.writeHead(503);
                 res.end();
-                console.log(response.status);
-                console.log(answer);
             }
         });
     });
