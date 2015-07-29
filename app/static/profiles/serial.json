@@ -491,6 +491,13 @@
                         },
                         {
                             "property": {
+                                "id": "http://bibfra.me/vocab/lite/format",
+                                "propertyLabel": "Format"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibfra.me/vocab/marc/sound",
                                 "propertyLabel": "Sound"
                             },
@@ -704,6 +711,13 @@
                                 "propertyLabel": "LCCN"
                             },
                             "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/format",
+                                "propertyLabel": "Format"
+                            },
                             "type": "literal"
                         },
                         {
