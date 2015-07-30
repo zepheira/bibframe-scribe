@@ -283,7 +283,7 @@
                 "class": {
                     "classLabel": "E-book",
                     "id": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibframe.org/vocab/Book",
+                    "instantiates": "http://bibfra.me/vocab/lite/Book",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -448,7 +448,7 @@
                     "propertyTemplate": [
 			{
                             "property": {
-                                "id": "http://bibframe.org/vocab/publication",
+                                "id": "http://bibfra.me/vocab/marc/publication",
                                 "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
@@ -459,7 +459,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/distribution",
+                                "id": "http://bibfra.me/vocab/marc/distribution",
                                 "propertyLabel": "Distribution"
                             },
                             "repeatable": "true",
@@ -470,7 +470,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/carrierCategory",
+                                "id": "http://bibfra.me/vocab/marc/carrierCategory",
                                 "propertyLabel": "Carrier Category"
                             },
                             "type": "resource",
@@ -484,7 +484,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/mediaCategory",
+                                "id": "http://bibfra.me/vocab/marc/mediaCategory",
                                 "propertyLabel": "Media Category"
                             },
                             "type": "resource",
@@ -599,7 +599,7 @@
                         },
 			{
                             "property": {
-                                "id": "http://bibframe.org/vocab/dimensions",
+                                "id": "http://bibfra.me/vocab/lite/dimensions",
                                 "propertyLabel": "Dimensions"
                             },
                             "repeatable": "true",    
