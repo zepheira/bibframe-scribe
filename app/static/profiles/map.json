@@ -182,10 +182,25 @@
                             }
                         },
                         },
-                                                {
+                        {
                             "property": {
                                 "id": "http://bibfra.me/vocab/relation/engraver",
                                 "propertyLabel": "Engraver"
+                            },
+                            "type": "resource",
+                            "repeatable": "true",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Meeting"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/lithographer",
+                                "propertyLabel": "Lithographer"
                             },
                             "type": "resource",
                             "repeatable": "true",
@@ -347,7 +362,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/representationOfRelief",
-                                "propertyLabel": "Presentation Technique"
+                                "propertyLabel": "Representation of Relief"
                             },
                             "type": "literal"
                         },
