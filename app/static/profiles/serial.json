@@ -7,9 +7,9 @@
                 "id": "bfp:Work:Serial",
                 "class": {
                     "classLabel": "Serial",
-                    "id": "http://bibfra.me/vocab/marc/Serial",
+                    "id": "http://bibfra.me/vocab/marc/Serials",
                     "propertyTemplate": [
-                        {
+                        {                   
                             "property": {
                                 "id": "http://bibfra.me/view/library/marc/catalogingSource",
                                 "propertyLabel": "Cataloging Source"
@@ -74,6 +74,20 @@
                             "property": {
                                 "id": "http://bibfra.me/view/lite/date",
                                 "propertyLabel": "Date"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "propertyLabel": "Start Date"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "propertyLabel": "End Date"
                             },
                             "type": "literal"
                         },
@@ -156,7 +170,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/Genre",
-                                "propertyLabel": "Contents"
+                                "propertyLabel": "Genre"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -164,7 +178,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/contentsNote",
-                                "propertyLabel": "Contents"
+                                "propertyLabel": "Contents Note"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -221,7 +235,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Work:Book"
+                                    "bfp:Work:Serial"
                                 ]
                             }
                         },
@@ -280,28 +294,29 @@
                 "class": {
                     "classLabel": "Serial",
                     "id": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Serial",
+                    "instantiates": "http://bibfra.me/vocab/marc/Serials",
                     "propertyTemplate": [
+                        {
+                            "mandatory": "true",
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/title",
+                                "propertyLabel": "Title"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/abbreviatedTitle",
+                                "propertyLabel": "Abbreviated Title"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/dcrmb/keyTitle",
                                 "propertyLabel": "Key Title"
-                            },
-                            "repeatable": "true",
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/dcrmb/titleProper",
-                                "propertyLabel": "Title Proper"
-                            },
-                            "repeatable": "true",
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/marc/originalAlphabetOrScriptOfTitle",
-                                "propertyLabel": "Original Alphabet or Script of Title"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -484,6 +499,14 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/image",
+                                "propertyLabel": "image"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/editionStatement",
                                 "propertyLabel": "Edition Statement"
                             },
                             "repeatable": "true",
@@ -522,16 +545,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/reformattingQuality",
-                                "propertyLabel": "Edition Statement"
-                            },
-                            "repeatable": "true",
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
                                 "id": "http://bibfra.me/vocab/marc/computerFilecharacteristics",
-                                "propertyLabel": "Edition Statement"
+                                "propertyLabel": "Computer File Characteristics"
                             },
                             "repeatable": "true",
                             "type": "literal"
