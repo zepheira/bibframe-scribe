@@ -7,7 +7,7 @@
                 "id": "bfp:Work:Book",
                 "class": {
                     "classLabel": "Book",
-                    "id": "http://bibfra.me/vocab/marc/Books",
+                    "id": "http://bibfra.me/vocab/marc/Book",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
@@ -104,6 +104,14 @@
                                                             "bfp:Agent:Meeting" ]
                             }
                         },
+                       {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/description",
+                                "propertyLabel": "Description"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/contentCategory",
@@ -117,7 +125,6 @@
                                 "defaultURI": "http://id.loc.gov/vocabulary/contentTypes/txt",
                                 "defaultLiteral": "text"
                             }
-
                         },
 			{
                             "property": {
@@ -164,7 +171,7 @@
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
                                                             "bfp:Agent:Organization", 
                                                             "bfp:Authority:Place", 
-                                                            							    "bfp:Authority:ClassificationEntity", 
+                                                            "bfp:Authority:ClassificationEntity", 
                                                             "bfp:Authority:Topic" ]
                             }
                         },
@@ -195,7 +202,7 @@
 			{
                             "property": {
                             "id": "http://bibfra.me/vocab/marc/edition",
-                            "propertyLabel": "Edition"
+                            "propertyLabel": "Edition Statement"
                         },
 			    "repeatable": "true",
                             "type": "literal"
@@ -244,7 +251,6 @@
                                 "descriptionTemplateRef": [ "bfp:Work:Book" ]
                             }
                         },
-                       
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/relation/isBasedOn",
@@ -420,16 +426,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/reformattingQuality",
-                                "propertyLabel": "Edition Statement"
-                            },
-			    "repeatable": "true",
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
                              "id":"http://bibfra.me/vocab/marc/computerFilecharacteristics",
-                                "propertyLabel": "Edition Statement"
+                                "propertyLabel": "Computer File Characteristics"
                             },
 			    "repeatable": "true",
                             "type": "literal"
@@ -444,7 +442,7 @@
                 "class": {
                     "classLabel": "Print",
                     "id": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Books",
+                    "instantiates": "http://bibfra.me/vocab/marc/Book",
                     "propertyTemplate": [
 			{
                             "property": {
@@ -480,7 +478,6 @@
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
                                 "defaultLiteral": "volume"
                             }
-
                         },
                         {
                             "property": {
@@ -616,7 +613,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/image",
-                                "propertyLabel": "Edition Statement"
+                                "propertyLabel": "image"
                             },
 			    "repeatable": "true",
                             "type": "resource"
