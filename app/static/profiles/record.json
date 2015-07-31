@@ -1,18 +1,18 @@
 {
     "Profile": {
-        "title": "Music",
+        "title": "Audio",
         "resourceTemplate": [
             {
-                "id": "bfp:Work:Music",
+                "id": "bfp:Work:Audio",
                 "class": {
-                    "classLabel": "Music",
-                    "id": "http://bibfra.me/vocab/marc/Music",
+                    "classLabel": "Audio",
+                    "id": "http://bibfra.me/vocab/marc/Audio",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
-                                "propertyLabel": "Album name"
+                                "propertyLabel": "Title"
                             },
                             "repeatable": "false",
                             "type": "literal"
@@ -30,9 +30,54 @@
                         },
                         {
                             "property": {
+                                "id": "http://bibfra.me/vocab/relation/artist",
+                                "propertyLabel": "Artist"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/links/relation/musician",
+                                "propertyLabel": "Artist"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/recordingengineer",
+                                "propertyLabel": "Recording Engineer"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization" ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/producer",
+                                "propertyLabel": "Producer"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                            }
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibfra.me/vocab/lite/description",
                                 "propertyLabel": "Description"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -61,18 +106,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/relation/recordingengineer",
-                                "propertyLabel": "Recording Engineer"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization" ]
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/av/track",
+                                "id": "http://bibfra.me/vocab/av/track",
                                 "propertyLabel": "Track"
                             },
                             "repeatable": "true",
@@ -80,26 +114,35 @@
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Audio:Track" ]
                             }
-                        }
+                        },
+                        
                     ]
                 }
             },
             {
-                "id": "vinyl",
+                "id": "bfp:Instance:Vinyl",
                 "class": {
                     "classLabel": "Vinyl Record",
-                    "id": "http://bibframe.org/vocab/proposed/Vinyl",
-                    "instantiates": "http://bibfra.me/vocab/marc/Music",
+                    "id": "http://bibfra.me/vocab/av/vinyl",
+                    "instantiates": "http://bibfra.me/vocab/marc/Audio",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Label"
+                                "id": "http://bibfra.me/vocab/lite/format",
+                                "propertyLabel": "Format"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/provision",
+                                "propertyLabel": "Record Label"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:DistributeEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
 			{
@@ -119,7 +162,7 @@
                 "id": "bfp:Audio:Track",
                 "class": {
                     "classLabel": "Track",
-                    "id": "http://bibframe.org/vocab/av/Track",
+                    "id": "http://bibfra.me/vocab/av/Track",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -141,7 +184,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/duration",
+                                "id": "http://bibfra.me/vocab/av/duration",
                                 "propertyLabel": "Duration"
                             },
                             "type": "literal"
@@ -171,14 +214,14 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/width",
+                                "id": "http://bibfra.me/vocab/av/width",
                                 "propertyLabel": "Width"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/height",
+                                "id": "http://bibfra.me/vocab/av/height",
                                 "propertyLabel": "Height"
                             },
                             "type": "literal"
