@@ -401,33 +401,73 @@
          * Utility function to fill out a Resource from a local browser store,
          * only retrieves triples with uri argument as subject.
          */
-        function editFromGraph(uri) {
-            var typeq = "SELECT ?o FROM { <" + uri + "> rdf:type ?o }",
-                fullq = "SELECT *  FROM { <" + uri + "> ?p ?o }",
+        function editFromGraph(uri, subcall) {
+            var existq = "ASK { <" + uri + "> ?p ?o }",
+                typeq = "SELECT ?o WHERE { <" + uri + "> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o }",
+                fullq = "SELECT * WHERE { <" + uri + "> ?p ?o }",
                 r,
                 type,
-                tmpl;
-            r = new Resource("shim", null); // fake ID base, set correctly next
-            r.setID(uri);
-            Graph.execute(r, typeq).then(function(typeresp) {
-                console.log(typeresp);
-                type = typeresp[1].o.value;
-                if (TemplateStore.hasTemplateByClassID(type)) {
-                    tmpl = TemplateStore.getTemplateByClassID(type);
-                    r.setTemplate(tmpl);
-                    Graph.execute(r, fullq).then(function(response) {
-                        console.log(response);
-                        angular.forEach(response[1], function(triple) {
-                            if (tmpl.hasProperty(triple.p.value)) {
-                                r.addPropertyValue(tmpl.getPropertyByID(triple.p.value), triple.o.value);
-                            }
+                tmpl,
+                flags;
+            if (typeof subcall === "undefined") {
+                subcall = false;
+            }
+            flags = {
+                hasRequired: false,
+                loading: ResourceStore.getAllLoading()
+            };
+            Graph.execute(uri, existq, Graph.DATA).then(function(resp) {
+                return resp[1];
+            }).then(function(inGraph) {
+                if (!inGraph && !subcall) {
+                    // If not in local store, retrieve from backing store
+                    Store.get({}, {s: uri}).$promise.then(function(triples) {
+                        Graph.loadResource(uri, triples.n3).then(function() {
+                            editFromGraph(uri, true);
                         });
                     });
-                    newEdit({uri: type});
-                    ResourceStore.setCurrent(r);
                 } else {
-                    Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
+                    r = new Resource("shim", null);
+                    r.setID(uri);
+                    Graph.execute(uri, typeq, Graph.DATA).then(function(typeresp) {
+                        type = typeresp[1][0].o.value;
+                        if (TemplateStore.hasTemplateByClassID(type)) {
+                            tmpl = TemplateStore.getTemplateByClassID(type);
+                            r.setTemplate(tmpl);
+                            ResourceStore.setActiveTemplate(tmpl);
+                            $scope.inputted = {};
+                            $scope.tabs.active = type;
+                            r.setTemplate(tmpl);
+                            props = tmpl.getPropertyTemplates();
+                            angular.forEach(props, function(prop) {
+                                r.initializeProperty(prop, flags);
+                            });
+                            ResourceStore.setHasRequired(flags.hasRequired);
+                            Graph.execute(r, fullq, Graph.DATA).then(function(response) {
+                                angular.forEach(response[1], function(triple) {
+                                    if (tmpl.hasProperty(triple.p.value)) {
+                                        // @@@ add as 'pristine'
+                                        if (triple.o.value.startsWith("\"")) {
+                                            r.addPropertyValue(tmpl.getPropertyByID(triple.p.value), triple.o.value.slice(1, -1));
+                                        } else {
+                                            r.addPropertyValue(tmpl.getPropertyByID(triple.p.value), triple.o.value);
+                                        }
+                                    }
+                                });
+                                // @@@ blah. timing issue with too many
+                                // promises, perhaps.
+                                setTimeout(function() {
+                                    ResourceStore.setCurrent(r);
+                                }, 300);
+                            });
+                        } else {
+                            Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
+                        }
+                    });
                 }
+            }).catch(function(err) {
+                // warn if not in store either
+                console.log(err);
             });
         }
 
@@ -464,6 +504,7 @@
                     }).$promise.then(function(response) {
                         angular.forEach(response, function(triple) {
                             if (tmpl.hasProperty(triple.p)) {
+                                // @@@ add as 'pristine'
                                 if (triple.o.startsWith("\"")) {
                                     r.addPropertyValue(tmpl.getPropertyByID(triple.p), triple.o.slice(1, -1));
                                 } else {
