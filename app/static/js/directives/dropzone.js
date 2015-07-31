@@ -20,8 +20,8 @@
                         "accept": function(file, done) {
                             var prop, imgres;
                             prop = attrs.dzProperty;
-                            imgres = new Resource(scope.config().idBase, null);
-                            imgres.setID(scope.config().idBase + file.name);
+                            imgres = new Resource(scope.config.getConfig().idBase, null);
+                            imgres.setID(scope.config.getConfig().idBase + file.name);
                             imgres.setType(attrs.dzType);
                             scope.$apply(function() {
                                 scope.current().addTextPropertyValue(prop, "resource", new PredObject(file.name, imgres.getID(), "resource", true));
