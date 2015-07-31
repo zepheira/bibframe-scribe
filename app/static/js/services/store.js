@@ -15,6 +15,14 @@
                         "action": "id"
                     }
                 },
+                "get": {
+                    "method": "GET",
+                    "isArray": false,
+                    "params": {
+                        "action": "get",
+                        "s": "@s"
+                    }
+                },
                 "query": {
                     "method": "GET",
                     "isArray": true,
