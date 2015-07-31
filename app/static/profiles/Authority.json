@@ -23,6 +23,13 @@
                                 "propertyLabel": "Description"
                             },
                             "type": "literal"
+                        },
+                                                {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Authority Link"
+                            },
+                            "type": "literal"
                         }
                     ]
                 }
@@ -45,6 +52,13 @@
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/description",
                                 "propertyLabel": "Description"
+                            },
+                            "type": "literal"
+                        },
+                                                {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Authority Link"
                             },
                             "type": "literal"
                         }
