@@ -48,6 +48,73 @@
                         }
                     ]
                 }
+            },
+            {
+                "id": "bfp:Category:Topic",
+                "class": {
+                    "classLabel": "Topic",
+                    "id": "http://bibfra.me/view/lite/Topic",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
+                    "propertyTemplate": [
+                        {
+                            "mandatory": "true",
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Authority Link"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/date",
+                                "propertyLabel": "Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/description",
+                                "propertyLabel": "Description"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/related",
+                                "propertyLabel": "Related"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/note",
+                                "propertyLabel": "Note"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        }
+                    ]
+                }
             }
         ]
     }
