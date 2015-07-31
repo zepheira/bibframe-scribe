@@ -1,7 +1,7 @@
 {
     "Profile": {
-        "id": "bfp:Subject",
-        "title": "BIBFRAME Subjects",
+        "id": "bfp:Authority",
+        "title": "BIBFRAME Authorities",
         "resourceTemplate": [
             {
                 "id": "bfp:Authority:Topic",
