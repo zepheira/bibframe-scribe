@@ -7,12 +7,15 @@
         var service, _store, SCHEMAS;
 
         SCHEMAS = "urn:schema";
+        DATA = "urn:data";
 
         service = {
             getStore: getStore,
-            load: load,
+            load: loadSchema,
+            loadResource: loadResource,
             execute: execute,
-            SCHEMAS: SCHEMAS
+            SCHEMAS: SCHEMAS,
+            DATA: DATA
         };
 
         _store = rdfstore.create();
@@ -24,7 +27,7 @@
             return _store;
         }
 
-        function load(config, n3, url) {
+        function loadSchema(config, n3, url) {
             var deferred = $q.defer();
             _store.load("text/turtle", n3, SCHEMAS, function(success) {
                 if (!success) {
@@ -50,9 +53,25 @@
             return deferred.promise;
         }
 
-        function execute(res, query) {
+        function loadResource(resource, n3) {
             var deferred = $q.defer();
-            _store.execute(query, [SCHEMAS], [], function(success, results) {
+            _store.load("text/turtle", n3, DATA, function(success) {
+                if (!success) {
+                    Message.addMessage("Error loading data, please check RDF validity", "danger");
+                    deferred.reject();
+                } else {
+                    deferred.resolve();
+                }
+            });
+            return deferred.promise;
+        }
+
+        function execute(res, query, graph) {
+            var deferred = $q.defer();
+            if (typeof graph === "undefined") {
+                graph = SCHEMAS;
+            }
+            _store.execute(query, [graph], [], function(success, results) {
                 if (success) {
                     deferred.resolve([res, results]);
                 } else {
