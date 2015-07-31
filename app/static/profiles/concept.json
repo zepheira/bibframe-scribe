@@ -1,0 +1,48 @@
+{
+    "Profile": {
+        "title": "Concept",
+        "resourceTemplate": [
+            {
+                "id": "bfp:Concept",
+                "class": {
+                    "id": "Concept",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Authority Link"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/focus",
+                                "propertyLabel": "Subject"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Family",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Meeting",
+                                    "bfp:Authority:Topic",
+                                    "bfp:Authority:Place",
+                                    "bfp:Language"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
