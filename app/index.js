@@ -123,6 +123,22 @@ localSuggestHelper = function(qin, types) {
     return deferred.promise;
 };
 
+// Retrieve NTriples of a specific resource
+server.get('/resource/get', function getResource(req, res, next) {
+    var subj, parts;
+    parts = url.parse(req.url, true);
+    subj = parts.query.s;
+    db.n3.get({subject: subj}, function(err, triples) {
+        if (typeof err === "undefined" || err === null) {
+            res.send(200, {n3: triples});
+            next();
+        } else {
+            res.send(500);
+            next();
+        }
+    });
+});
+
 // Query the store for a resource
 server.get('/resource/query', function retrieveResource(req, res, next) {
     var subj, pred, parts, query, answer;
