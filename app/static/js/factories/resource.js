@@ -5,7 +5,7 @@
 
     function ResourceFactory(PredObject, Namespace, Identifier) {
         function Resource(idBase, tmpl) {
-            this._id = Identifier.newIdentifier(idBase);
+            this._id = (idBase !== null) ? Identifier.newIdentifier(idBase) : null;
             this._template = tmpl;
             this._type = (typeof tmpl !== "undefined" && tmpl !== null) ? tmpl.getClassID() : null;
             this._properties = {};
