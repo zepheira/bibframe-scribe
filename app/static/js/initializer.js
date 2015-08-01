@@ -27,5 +27,11 @@
         ])
         .config(["$httpProvider", function($httpProvider) {
             $httpProvider.interceptors.push("httpThrottler");
+        }])
+        .config(["$locationProvider", function($locationProvider) {
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
         }]);
 })();

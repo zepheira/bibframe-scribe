@@ -1,10 +1,10 @@
 (function() {
     angular
         .module("configurationService", [])
-        .factory("Configuration", ["$q", "ConfigurationLoad", "ProfileLoad", "Progress", "Message", "Graph", "ResourceStore", "TemplateStore", "Profile", "Schemas", Configuration]);
+        .factory("Configuration", ["$q", "$location", "ConfigurationLoad", "ProfileLoad", "Progress", "Message", "Graph", "ResourceStore", "TemplateStore", "Profile", "Schemas", Configuration]);
 
-    function Configuration($q, ConfigurationLoad, ProfileLoad, Progress, Message, Graph, ResourceStore, TemplateStore, Profile, Schemas) {
-        var service, _config, _firstClass, _initialized, _resourceOptions, _services;
+    function Configuration($q, $location, ConfigurationLoad, ProfileLoad, Progress, Message, Graph, ResourceStore, TemplateStore, Profile, Schemas) {
+        var service, _config, _firstClass, _initialized, _resourceOptions, _services, _args;
 
         service = {
             getConfig: getConfig,
@@ -12,12 +12,15 @@
             getSearchServices: getSearchServices,
             getResourceOptions: getResourceOptions,
             initialize: initialize,
-            isInitialized: isInitialized
+            isInitialized: isInitialized,
+            editOnLoad: editOnLoad,
+            editResource: editResource
         };
 
         _initialized = false;
         _resourceOptions = [];
         _services = {};
+        _args = {};
 
         return service;
 
@@ -41,8 +44,15 @@
             return _initialized;
         }
 
+        function _parseArgs() {
+            if (typeof $location.search()["edit"] !== "undefined") {
+                _args.edit = $location.search()["edit"];
+            }
+        }
+
         function initialize() {
-            ConfigurationLoad.get(null, null).$promise.then(function(config) {
+            _parseArgs();
+            return ConfigurationLoad.get(null, null).$promise.then(function(config) {
                 var total, current;
                 
                 _config = config;
@@ -134,6 +144,14 @@
             profile.registerResourceTemplates(TemplateStore.getTemplateIDHash());
 
             return resources;       
+        }
+
+        function editOnLoad() {
+            return (typeof _args.edit !== "undefined");
+        }
+
+        function editResource() {
+            return _args.edit;
         }
     }
 })();
