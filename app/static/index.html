@@ -74,8 +74,6 @@
         </alert>
       </div>
 
-      <input type="text" ng-model="editURI" scribe-enter="editFromGraph(editURI)"/>
-
       <div class="row">
         <tabset vertical="true" type="tabs" class="col-md-10">
           <tab disable="true">
@@ -91,7 +89,7 @@
               <progressbar value="progress()" class="active progress-striped"></progressbar>
             </div>
           </tab>
-          <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource);tabs.active=resource.uri" disable="!current().isEmpty()" active="tabs.active==resource.uri">
+          <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="!current().isEmpty()" active="tabs.active[resource.uri]">
             <tab-heading><span ng-show="resource.child"><i class="icon-chevron-right"></i> </span>{{resource.label}}</tab-heading>
             <div ng-if="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-show="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-include="'resource.html'"></div>
           </tab>

@@ -1,13 +1,12 @@
 (function() {
     angular
         .module("bibframeEditor")
-        .controller("EditorController", ["$scope", "$modal", "$log", "Store", "Configuration", "Query", "Graph", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", "Store", EditorController]);
+        .controller("EditorController", ["$scope", "$q", "$modal", "$log", "Store", "Configuration", "Query", "Graph", "Message", "Resolver", "Namespace", "Progress", "Property", "PredObject", "ValueConstraint", "PropertyTemplate", "ResourceTemplate", "Resource", "Profile", "ResourceStore", "TemplateStore", "Store", EditorController]);
 
-    function EditorController($scope, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore, Store) {
+    function EditorController($scope, $q, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore, Store) {
         // @@@ fix any data still on $scope
         $scope.inputted = {};
         $scope.useServices = {};
-        $scope.editURI = "";
         $scope.editExisting = false; // @@@ redo this, used as a signal
         $scope.pivoting = false;
         $scope.popover = {
@@ -15,8 +14,9 @@
             "data": null
         };
         $scope.tabs = {
-            active: null
+            active: {}
         };
+        $scope.editLoaded = false;
 
         $scope.newEdit = newEdit;
         $scope.autocomplete = autocomplete;
@@ -35,7 +35,6 @@
         $scope.persist = persist;
         $scope.showRDF = showRDF;
         $scope.editFromGraph = editFromGraph;
-        $scope.editFromStore = editFromStore;
         
         $scope.progress = Progress.getCurrent;
         $scope.messages = Message.messages;
@@ -56,25 +55,45 @@
         $scope.getTypeProperties = TemplateStore.getTypeProperties;
         $scope.dataTypes = ResourceStore.getDataTypeByID;
 
-        Configuration.initialize();
+        initialize();
+
+        function initialize() {
+            Configuration.initialize().then(function() {
+                if (Configuration.editOnLoad()) {
+                    editFromGraph(Configuration.editResource());
+                }
+            });
+        }
+
+        function _setup(tmpl, res) {
+            var props, flags;
+            flags = {
+                hasRequired: false,
+                loading: ResourceStore.getAllLoading()
+            };
+
+            $scope.inputted = {};
+            ResourceStore.setActiveTemplate(tmpl);
+            res.setTemplate(tmpl);
+            props = tmpl.getPropertyTemplates();
+            angular.forEach(props, function(prop) {
+                res.initializeProperty(prop, flags);
+            });
+            ResourceStore.setHasRequired(flags.hasRequired);
+        }
 
         /**
          * Wipe out currently displayed resource (in $scope) and replace with
          * pristine $scope model.
          */
         function newEdit(resource) {
-            var props, flags, dz;
-            flags = { "hasRequired": false, "loading": ResourceStore.getAllLoading() };
-
-            $scope.inputted = {};
-            ResourceStore.clear();
-            ResourceStore.setActiveTemplate(TemplateStore.getTemplateByClassID(resource.uri));
-            ResourceStore.getCurrent().setTemplate(TemplateStore.getTemplateByClassID(resource.uri));
-            props = ResourceStore.getActiveTemplate().getPropertyTemplates();
-            angular.forEach(props, function(prop) {
-                ResourceStore.getCurrent().initializeProperty(prop, flags);
-            });
-            ResourceStore.setHasRequired(flags.hasRequired);
+            var props, flags;
+            if (!Configuration.editOnLoad() && !$scope.editLoaded) {
+                $scope.tabs.active = {};
+                $scope.tabs.active[resource.uri] = true;
+                ResourceStore.clear();
+                _setup(TemplateStore.getTemplateByClassID(resource.uri), ResourceStore.getCurrent());
+            }
         }
 
         /**
@@ -397,126 +416,78 @@
             });
         }
 
+        function _loadFromGraph(type, res, uri) {
+            var tmpl,
+                deferred = $q.defer(),
+                fullq = "SELECT * WHERE { <" + uri + "> ?p ?o }";
+            if (TemplateStore.hasTemplateByClassID(type)) {
+                tmpl = TemplateStore.getTemplateByClassID(type);
+                _setup(tmpl, res);
+                $scope.tabs.active = type;
+                Graph.execute(res, fullq, Graph.DATA).then(function(response) {
+                    angular.forEach(response[1], function(triple) {
+                        if (tmpl.hasProperty(triple.p.value)) {
+                            if (triple.o.value.startsWith("\"")) {
+                                res.addPropertyValue(
+                                    tmpl.getPropertyByID(triple.p.value),
+                                    triple.o.value.slice(1, -1)
+                                );
+                            } else {
+                                res.addPropertyValue(
+                                    tmpl.getPropertyByID(triple.p.value),
+                                    triple.o.value
+                                );
+                            }
+                        }
+                    });
+                    ResourceStore.setCurrent(res);
+                    $scope.editLoaded = true;
+                    deferred.resolve();
+                });
+            } else {
+                deferred.reject();
+            }
+            return deferred.promise;
+        }
+
         /**
          * Utility function to fill out a Resource from a local browser store,
          * only retrieves triples with uri argument as subject.
          */
-        function editFromGraph(uri, subcall) {
+        function editFromGraph(uri) {
             var existq = "ASK { <" + uri + "> ?p ?o }",
                 typeq = "SELECT ?o WHERE { <" + uri + "> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o }",
-                fullq = "SELECT * WHERE { <" + uri + "> ?p ?o }",
                 r,
                 type,
-                tmpl,
-                flags;
-            if (typeof subcall === "undefined") {
-                subcall = false;
-            }
-            flags = {
-                hasRequired: false,
-                loading: ResourceStore.getAllLoading()
-            };
+                tmpl;
+
             Graph.execute(uri, existq, Graph.DATA).then(function(resp) {
                 return resp[1];
             }).then(function(inGraph) {
-                if (!inGraph && !subcall) {
+                r = new Resource(null, null);
+                r.setID(uri);
+                if (!inGraph) {
                     // If not in local store, retrieve from backing store
                     Store.get({}, {s: uri}).$promise.then(function(triples) {
                         Graph.loadResource(uri, triples.n3).then(function() {
-                            editFromGraph(uri, true);
+                            Graph.execute(uri, typeq, Graph.DATA).then(function(typeresp) {
+                                type = typeresp[1][0].o.value;
+                                _loadFromGraph(type, r, uri).catch(function() {
+                                    Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
+                                });
+                            });
                         });
                     });
                 } else {
-                    r = new Resource("shim", null);
-                    r.setID(uri);
                     Graph.execute(uri, typeq, Graph.DATA).then(function(typeresp) {
                         type = typeresp[1][0].o.value;
-                        if (TemplateStore.hasTemplateByClassID(type)) {
-                            tmpl = TemplateStore.getTemplateByClassID(type);
-                            r.setTemplate(tmpl);
-                            ResourceStore.setActiveTemplate(tmpl);
-                            $scope.inputted = {};
-                            $scope.tabs.active = type;
-                            r.setTemplate(tmpl);
-                            props = tmpl.getPropertyTemplates();
-                            angular.forEach(props, function(prop) {
-                                r.initializeProperty(prop, flags);
-                            });
-                            ResourceStore.setHasRequired(flags.hasRequired);
-                            Graph.execute(r, fullq, Graph.DATA).then(function(response) {
-                                angular.forEach(response[1], function(triple) {
-                                    if (tmpl.hasProperty(triple.p.value)) {
-                                        // @@@ add as 'pristine'
-                                        if (triple.o.value.startsWith("\"")) {
-                                            r.addPropertyValue(tmpl.getPropertyByID(triple.p.value), triple.o.value.slice(1, -1));
-                                        } else {
-                                            r.addPropertyValue(tmpl.getPropertyByID(triple.p.value), triple.o.value);
-                                        }
-                                    }
-                                });
-                                // @@@ blah. timing issue with too many
-                                // promises, perhaps.
-                                setTimeout(function() {
-                                    ResourceStore.setCurrent(r);
-                                }, 300);
-                            });
-                        } else {
+                        _loadFromGraph(type, r, uri).catch(function() {
                             Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
-                        }
-                    });
-                }
-            }).catch(function(err) {
-                // warn if not in store either
-                console.log(err);
-            });
-        }
-
-        /**
-         * Utility function to fill out a Resource from a backing store,
-         * only retrieves triples with uri argument as subject.
-         */
-        function editFromStore(uri) {
-            var r, props, flags, type, tmpl;
-            flags = {
-                hasRequired: false,
-                loading: ResourceStore.getAllLoading()
-            };
-            r = ResourceStore.getCurrent();
-            r.setID(uri);
-            Store.query({}, {
-                s: uri,
-                p: "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
-            }).$promise.then(function(typeresp) {
-                type = typeresp[0].o;
-                if (TemplateStore.hasTemplateByClassID(type)) {
-                    tmpl = TemplateStore.getTemplateByClassID(type);
-                    ResourceStore.setActiveTemplate(tmpl);
-                    $scope.tabs.active = type;
-                    $scope.inputted = {};
-                    r.setTemplate(tmpl);
-                    props = tmpl.getPropertyTemplates();
-                    angular.forEach(props, function(prop) {
-                        r.initializeProperty(prop, flags);
-                    });
-                    ResourceStore.setHasRequired(flags.hasRequired);
-                    Store.query({}, {
-                        s: uri
-                    }).$promise.then(function(response) {
-                        angular.forEach(response, function(triple) {
-                            if (tmpl.hasProperty(triple.p)) {
-                                // @@@ add as 'pristine'
-                                if (triple.o.startsWith("\"")) {
-                                    r.addPropertyValue(tmpl.getPropertyByID(triple.p), triple.o.slice(1, -1));
-                                } else {
-                                    r.addPropertyValue(tmpl.getPropertyByID(triple.p), triple.o);
-                                }
-                            }
                         });
-                        ResourceStore.setCurrent(r);
                     });
-                } else {
-                    Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
                 }
+            }).catch(function() {
+                Message.addMessage("Not in backing store: " + uri, "danger");
             });
         }
     }
