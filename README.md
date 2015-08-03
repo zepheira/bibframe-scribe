@@ -5,14 +5,15 @@ There are two pieces to this software.  The UI can be run locally without
 a webserver out of the box.  Just visit the file `app/static/index.html`
 in a browser.
 
-The backend is based on Node.js and MongoDB.  In order to avoid a confused
+The backend is based on Node.js.  In order to avoid a confused
 Node.js installation, consider using a virtual environment as provided by
 [nodeenv](https://github.com/ekalinin/nodeenv), which provides `npm` and `node`
-per environment and can be easily installed using `pip`.  You'll also need
-to install MongoDB, which can be done with `brew` on a Mac.  There will
-be a Chef cookbook coming soon to cover Linux server installs.
+per environment and can be easily installed using `pip`.  This branch uses
+LevelDB, which needs a directory to store its data.  The default supplied is
+`./bfstore`, relative to the `app/` directory; you can change this by supplying
+a `backend.json` in the `app/` directory.
 
-Until then.  With `nodeenv` and `mongod` binaries available:
+With the `nodeenv` binary available:
 
 ```
 % git clone [this repo]
@@ -21,21 +22,21 @@ Until then.  With `nodeenv` and `mongod` binaries available:
 % cd [env]
 % . bin/activate
 % cd bibframe-scribe
-% mongod -rest &
 % cd app
 % node index.js
 ```
 
-There is a bug in the restify library.  You will need to either download
-[the file](https://github.com/JasonGhent/node-restify/blob/bd3747da7db82507daaf9bc9d6110407063ae462/lib/plugins/static.js) as described in
-[the pull request](https://github.com/mcavage/node-restify/pull/451) and modify
-or replace `node_modules/restify/lib/plugins/static.js` until
-the patch makes it into a release.
+There is still a bug in the restify library.  The static.js plugin fails to
+evaluate a normalized path correctly and so will always return a 403
+regardless of which directory it is configured to use.  The patch is minor.
+You can use the `static.js` provided as a sibling file for deployment.
 
-You can also use `static.js` provided as a sibling file for deployment.
+Issue described here: https://github.com/mcavage/node-restify/issues/549
 
 Load Data
 =========
+
+*(This section doesn't pertain to the levelgraph branch; you could probably install levelgraph-n3-import through npm to accomplish a Turtle/N3 import into your configured LevelDB location).*
 
 You can pre-load RDF into the store.  Unfortunately, you can't use RDF/XML
 yet.  Turtle/N3 or JSON-LD are your options.  You might use `rapper` from the
@@ -59,6 +60,16 @@ License
 
 This project is licensed under the Apache 2.0 license.  See the file LICENSE in this directory.
 
+Testing
+=======
+
+We're working on adding unit tests currently.  To run them, use Karma inside your existing NodeJS installation.
+
+```
+% npm install -g karma
+% karma start
+```
+
 More
 ====
 
@@ -68,4 +79,3 @@ Scribe developement has been supported in part by the Library of Congress, BIBFL
 * [Zepheira](http://zepheira.com/)
 * [Library of Congress](http://loc.gov/)
 * [BIBFLOW](http://www.lib.ucdavis.edu/bibflow/)
-

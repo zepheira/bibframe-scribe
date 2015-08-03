@@ -99,7 +99,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "distributeEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:DistributeEvent" ]
                             }
                         },
 			{

@@ -1,0 +1,170 @@
+{
+    "Profile": {
+        "title": "Item held",
+        "description": "Item holding information",
+        "date": "2014-03-21",
+        "resourceTemplate": [
+            {
+                "id": "bf:HeldItem",
+                "class": {
+                    "classLabel": "Holding",
+                    "id": "http://bibframe.org/vocab/HeldItem",
+                    "holdingFor": "http://bibframe.org/vocab/Instance",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/accessCondition",
+                                "propertyLabel": "Access condition"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/electronicLocator",
+                                "propertyLabel": "Electronic location"
+                            },
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/enumerationAndChronology",
+                                "propertyLabel": "Enumeration and chronology"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/heldBy",
+                                "propertyLabel": "Held by"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Agent:Person", 
+                                                            "bfp:Agent:Organization", 
+                                                            "bfp:Agent:Meeting" ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/holdingFor",
+                                "propertyLabel": "Holding for"
+                            },
+                            "type": "resource",
+                            "repeatable": "true",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bf:Instance"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/lendingPolicy",
+                                "propertyLabel": "Lending policy"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/reproductionPolicy",
+                                "propertyLabel": "Reproduction policy"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/retentionPolicy",
+                                "propertyLabel": "Retention policy"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/subLocation",
+                                "propertyLabel": "Held in sublocation"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/barcode",
+                                "propertyLabel": "Barcode"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/circulationStatus",
+                                "propertyLabel": "Circulation status"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/copyNote",
+                                "propertyLabel": "Copy note"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/itemId",
+                                "propertyLabel": "System item identifier"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMark",
+                                "propertyLabel": "Shelf location"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMarkDdc",
+                                "propertyLabel": "DDC call number"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMarkLcc",
+                                "propertyLabel": "LCC call number"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMarkNlm",
+                                "propertyLabel": "NLM call number"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMarkScheme",
+                                "propertyLabel": "Shelf mark scheme"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMarkUdc",
+                                "propertyLabel": "UDC call number"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
