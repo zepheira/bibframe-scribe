@@ -1,0 +1,173 @@
+{
+    "Profile": {
+        "title": "Item",
+        "description": "Example profile for item holding information",
+        "resourceTemplate": [
+            {
+                "id": "bf:Item",
+                "class": {
+                    "classLabel": "Item",
+                    "id": "http://bibfra.me/vocab/lite/Item",
+                    "holdingFor": "http://bibfra.me/vocab/lite/Instance",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/UsageAndAccessCondition",
+                                "propertyLabel": "Access Condition"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMark",
+                                "propertyLabel": "Shelf Mark"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMarkDdc",
+                                "propertyLabel": "DDC Call Number"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMarkLcc",
+                                "propertyLabel": "LCC Call Number"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMarkNlm",
+                                "propertyLabel": "NLM Call Number"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMarkUdc",
+                                "propertyLabel": "UDC Call Number"
+                            },
+                            "type": "literal"
+                        }, 
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/barcode",
+                                "propertyLabel": "Barcode"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/identifiedBy",
+                                "propertyLabel": "Identified By"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/componentOf",
+                                "propertyLabel": "Component Of"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Item"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/hasComponent",
+                                "propertyLabel": "Has Component"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Item"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/note",
+                                "propertyLabel": "Note"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/UsageAndAccessCondition",
+                                "propertyLabel": "Access condition"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/hasCondition",
+                                "propertyLabel": "Has Condition"
+                            },
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/enumerationAndChronology",
+                                "propertyLabel": "Enumeration and Chronology"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/electronicLocator",
+                                "propertyLabel": "Electronic Locator"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/heldBy",
+                                "propertyLabel": "Held by"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Agent:Organization"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/hasHolder",
+                                "propertyLabel": "Has Holder"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Agent"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/itemOf",
+                                "propertyLabel": "Item Of"
+                            },
+                            "type": "literal"
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Instance"]
+                            }
+                        }, 
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/subLocation",
+                                "propertyLabel": "Held in Sublocation"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
