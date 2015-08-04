@@ -172,7 +172,7 @@
                                 "propertyLabel": "Item Of"
                             },
                             "repeatable": "true",
-                            "type": "literal"
+                            "type": "literal",
                             "valueConstraint": {
                                 "descriptionTemplateRef": ["bfp:Instance"]
                             }
