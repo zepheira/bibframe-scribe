@@ -114,14 +114,6 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/UsageAndAccessCondition",
-                                "propertyLabel": "Access condition"
-                            },
-                            "repeatable": "true",
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
                                 "id": "http://bibfra.me/vocab/marc/hasCondition",
                                 "propertyLabel": "Has Condition"
                             },
