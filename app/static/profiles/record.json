@@ -25,7 +25,11 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {
@@ -36,7 +40,11 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {
@@ -47,7 +55,11 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {
@@ -58,7 +70,10 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization"
+                                ]
                             }
                         },
                         {
@@ -69,7 +84,11 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {
@@ -88,9 +107,11 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Authority:Topic" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person" ,
+                                    "bfp:Agent:Organization", 
+                                    "bfp:Authority:Topic"
+                                ]
                             }
                         },
                         {
@@ -101,7 +122,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bp:language"
+                                "descriptionTemplateRef": [ "bp:language" ]
                             }
                         },
                         {
@@ -145,16 +166,16 @@
                                 "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
-			{
+            {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/image",
                                 "propertyLabel": "Album Cover"
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "e:Image"
+                                "descriptionTemplateRef": [ "e:Image" ]
                             }
-			}
+            }
                     ]
                 }
             },
@@ -179,7 +200,11 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {

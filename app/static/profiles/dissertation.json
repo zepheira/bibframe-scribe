@@ -194,7 +194,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "bfp:Language"
+                                "descriptionTemplateRef": [ "bfp:Language" ]
                             }
                         },
                         {

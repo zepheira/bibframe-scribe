@@ -24,7 +24,7 @@
                             },
                             "type": "literal"
                         },
-                                                {
+                        {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/authorityLink",
                                 "propertyLabel": "Authority Link"
@@ -55,7 +55,7 @@
                             },
                             "type": "literal"
                         },
-                                                {
+                        {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/authorityLink",
                                 "propertyLabel": "Authority Link"

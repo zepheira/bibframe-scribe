@@ -1,7 +1,7 @@
 {
     "Profile": {
         "title": "Events",
-        "resourceTemplate": [    	       
+        "resourceTemplate": [
             {
                 "id": "bfp:Event:ProviderEvent",
                 "class": {
@@ -11,23 +11,25 @@
                     "propertyTemplate": [
                         {
                             "property": {
-			    	"mandatory": "true",
+                                "mandatory": "true",
                                 "id": "http://bibfra.me/vocab/lite/providerAgent",
                                 "propertyLabel": "Provider Agent"
                             },
                             "repeatable": "true",
-			    "type": "resource",
+                            "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization" ]
-			                }
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person", 
+                                    "bfp:Agent:Organization"
+                                ]
+                            }
                         },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/providerPlace",
                                 "propertyLabel": "Provider Place"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Authority:Place" ]
@@ -38,7 +40,7 @@
                                 "id": "http://bibfra.me/vocab/lite/providerDate",
                                 "propertyLabel": "Provider Date"
                             },
-			    "repeatable": "false",
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -53,7 +55,7 @@
                                 "id": "http://bibfra.me/vocab/lite/provision",
                                 "propertyLabel": "Provision"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
@@ -61,7 +63,7 @@
                                 "id": "http://bibfra.me/vocab/marc/distribution",
                                 "propertyLabel": "Distribution"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -69,7 +71,7 @@
                                 "id": "http://bibfra.me/vocab/marc/manufacture",
                                 "propertyLabel": "Manufacture"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -77,7 +79,7 @@
                                 "id": "http://bibfra.me/vocab/marc/production",
                                 "propertyLabel": "Production"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -85,7 +87,7 @@
                                 "id": "http://bibfra.me/vocab/marc/publication",
                                 "propertyLabel": "Production"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
@@ -100,23 +102,23 @@
                     "propertyTemplate": [
                         {
                             "property": {
-			    	"mandatory": "true",
+                                "mandatory": "true",
                                 "id": "http://bibfra.me/vocab/lite/copyrightAgent",
                                 "propertyLabel": "Copyright Agent"
                             },
                             "repeatable": "true",
-			    "type": "resource",
+                            "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization" ]
-			                }
+                                "bfp:Agent:Organization" ]
+                            }
                         },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/copyrightPlace",
                                 "propertyLabel": "Copyright Place"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Authority:Place" ]
@@ -127,7 +129,7 @@
                                 "id": "http://bibfra.me/vocab/lite/copyrightDate",
                                 "propertyLabel": "Copyright Date"
                             },
-			    "repeatable": "false",
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -135,7 +137,7 @@
                                 "id": "http://bibfra.me/vocab/lite/copyrightNote",
                                 "propertyLabel": "Copyright Note"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]

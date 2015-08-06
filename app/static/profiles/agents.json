@@ -2,9 +2,9 @@
     "Profile": {
         "id": "bfp:Agent",
         "title": "BIBFRAME Agents",
-        "resourceTemplate": [    	       
+        "resourceTemplate": [
             {
-	         "id": "bfp:Agent:Family",
+                "id": "bfp:Agent:Family",
                 "class": {
                     "classLabel": "Family",
                     "id": "http://bibfra.me/view/lite/Family",
@@ -12,11 +12,11 @@
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
-			    "property": {
+                            "property": {
                                 "id": "http://bibfra.me/view/lite/name",
                                 "propertyLabel": "Name"
                             },
-			    "repeatable": "false",
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -24,24 +24,24 @@
                                 "id": "http://bibfra.me/view/lite/nameAlternative",
                                 "propertyLabel": "Alternative Name"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/authorityLink",
                                 "propertyLabel": "Identity Service Link",
-				"remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                                "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
-                        	"property": {
+                            "property": {
                                 "id": "http://bibfra.me/view/lite/date",
                                 "propertyLabel": "Date"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
@@ -56,11 +56,11 @@
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
-			    "property": {
+                            "property": {
                                 "id": "http://bibfra.me/view/lite/name",
                                 "propertyLabel": "Name"
                             },
-			    "repeatable": "false",
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -68,57 +68,57 @@
                                 "id": "http://bibfra.me/view/lite/nameAlternative",
                                 "propertyLabel": "Alternative Name"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
-			    },
-                            {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/Place",
-                                    "propertyLabel": "Place"
-                                },
-				"repeatable": "true",
-                                "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/Place",
+                                "propertyLabel": "Place"
                             },
-                            {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/authorityLink",
-                                    "propertyLabel": "Identity Service Link (VIAF, Wikipedia, Wikidata, etc.)"
-                                },
-				"repeatable": "true",
-                                "type": "resource"
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link (VIAF, Wikipedia, Wikidata, etc.)"
                             },
-                            {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/link",
-                                    "propertyLabel": "Website"
-                                },
-    			    "repeatable": "true",
-                                "type": "resource"
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/link",
+                                "propertyLabel": "Website"
                             },
-                            {
-                            	"property": {
-                                    "id": "http://bibfra.me/view/lite/date",
-                                    "propertyLabel": "Date"
-                                },
-				"repeatable": "true",
-                                "type": "literal"
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/date",
+                                "propertyLabel": "Date"
                             },
-			    {
-	                            "property": {
-	                                "id": "http://bibfra.me/view/lite/dateStart",
-	                                "propertyLabel": "Start Date"
-	                            },
-				    "repeatable": "true",
-	                            "type": "literal"
-	                        },
-	    		    {
-	                                "property": {
-	                                    "id": "http://bibfra.me/view/lite/dateEnd",
-	                                    "propertyLabel": "End Date"
-	                                },
-					"repeatable": "true",
-	                                "type": "literal"
-	                            }
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "propertyLabel": "Start Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "propertyLabel": "End Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        }
                     ]
                 }
             },
@@ -131,11 +131,11 @@
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
-			    "property": {
+                            "property": {
                                 "id": "http://bibfra.me/view/lite/name",
                                 "propertyLabel": "Name"
                             },
-			    "repeatable": "false",
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -143,15 +143,15 @@
                                 "id": "http://bibfra.me/view/lite/nameAlternative",
                                 "propertyLabel": "Alternative Name"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
-			    },
+                        },
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/link",
                                 "propertyLabel": "Home Page"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
@@ -159,7 +159,7 @@
                                 "id": "http://bibfra.me/view/lite/emailAddress",
                                 "propertyLabel": "E-mail Address"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -167,42 +167,42 @@
                                 "id": "http://bibfra.me/view/lite/Place",
                                 "propertyLabel": "Place"
                             },
-			"repeatable": "true",
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/authorityLink",
                                 "propertyLabel": "Identity Service Link",
-				"remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                                "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
-                        	"property": {
+                            "property": {
                                 "id": "http://bibfra.me/view/lite/date",
                                 "propertyLabel": "Date"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
-		    {
+                        {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/dateStart",
                                 "propertyLabel": "Start Date"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
-    		    {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/dateEnd",
-                                    "propertyLabel": "End Date"
-                                },
-				"repeatable": "true",
-                                "type": "literal"
-                            }
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "propertyLabel": "End Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        }
                     ]
                 }
             },
@@ -213,72 +213,72 @@
                     "id": "http://bibfra.me/view/lite/Person",
                     "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
-                       {
-                           "mandatory": "true",
-			   "property": {
-                               "id": "http://bibfra.me/view/lite/name",
-                               "propertyLabel": "Name"
-                           },
-			   "repeatable": "false",
-                           "type": "literal"
-                       },
-                       {
-                           "property": {
-                               "id": "http://bibfra.me/view/lite/nameAlternative",
-                               "propertyLabel": "Alternative Name"
-                           },
-			   "repeatable": "true",
-                           "type": "literal"
-		    },
-		    {
+                        {
+                            "mandatory": "true",
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/birthDate",
                                 "propertyLabel": "Birth Date"
                             },
-			    "repeatable": "true",
+                            "repeatable": "true",
                             "type": "literal"
                         },
-    		    {
+                        {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/deathDate",
                                 "propertyLabel": "Death Date"
                             },
                             "repeatable": "true",
-			    "type": "literal"
-                            },
+                            "type": "literal"
+                        },
                         {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/authorityLink",
-                                    "propertyLabel": "Identity Service Link",
-				    "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
-                                },
-				"repeatable": "true",
-                                "type": "resource"
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link",
+                                "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
                             },
-                            {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/link",
-                                    "propertyLabel": "Home Page"
-                                },
-				"repeatable": "true",
-                                "type": "resource"
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/link",
+                                "propertyLabel": "Home Page"
                             },
-                            {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/email",
-                                    "propertyLabel": "E-mail Address"
-                                },
-				"repeatable": "true",
-                                "type": "literal"
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/email",
+                                "propertyLabel": "E-mail Address"
                             },
-                            {
-                                "property": {
-                                    "id": "http://bibfra.me/view/lite/address",
-                                    "propertyLabel": "Home Address"
-                                },
-				"repeatable": "true",
-                                "type": "literal"
-                            }
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/address",
+                                "propertyLabel": "Home Address"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        }
                     ]
                 }
             }
