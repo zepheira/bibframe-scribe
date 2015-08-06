@@ -205,7 +205,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
                             }
                         },
                         {
@@ -216,7 +216,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
                             }
                         },
                         {
@@ -227,7 +227,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
                             }
                         },
                         {
@@ -238,7 +238,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
                             }
                         },
                         {
@@ -249,7 +249,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
                             }
                         },
                         {
@@ -260,7 +260,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Book" ]
+                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
                             }
                         },
                         {
