@@ -5,7 +5,7 @@
             {
                 "id": "bfp:Concept",
                 "class": {
-                    "id": "Concept",
+                    "id": "http://bibfra.me/vocab/lite/Concept",
                     "propertyTemplate": [
                         {
                             "property": {
