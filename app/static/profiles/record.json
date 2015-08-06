@@ -144,7 +144,7 @@
                 "id": "bfp:Instance:Vinyl",
                 "class": {
                     "classLabel": "Vinyl Record",
-                    "id": "http://bibfra.me/vocab/av/vinyl",
+                    "id": "http://bibfra.me/vocab/av/Vinyl",
                     "instantiates": "http://bibfra.me/vocab/marc/Audio",
                     "propertyTemplate": [
                         {
