@@ -300,7 +300,7 @@
                 "id": "bfp:Instance:ElectronicBook",
                 "class": {
                     "classLabel": "E-book",
-                    "id": "http://bibfra.me/vocab/marc/Electronic",
+                    "type": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "http://bibfra.me/vocab/lite/Book",
                     "propertyTemplate": [
                         {
