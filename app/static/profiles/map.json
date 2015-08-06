@@ -274,7 +274,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/Genre",
+                                "id": "http://bibfra.me/view/lite/genre",
                                 "propertyLabel": "Genre"
                             },
                             "repeatable": "true",

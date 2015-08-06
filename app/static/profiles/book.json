@@ -138,8 +138,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/Genre",
-                                "propertyLabel": "Contents"
+                                "id": "http://bibfra.me/view/lite/genre",
+                                "propertyLabel": "Genre"
                             },
                             "repeatable": "true",
                             "type": "literal"
