@@ -11,10 +11,10 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "mandatory": "true",
                                 "id": "http://bibfra.me/vocab/lite/providerAgent",
                                 "propertyLabel": "Provider Agent"
                             },
+                            "mandatory": "true",
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
@@ -102,10 +102,10 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "mandatory": "true",
                                 "id": "http://bibfra.me/vocab/lite/copyrightAgent",
                                 "propertyLabel": "Copyright Agent"
                             },
+                            "mandatory": "true",
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
