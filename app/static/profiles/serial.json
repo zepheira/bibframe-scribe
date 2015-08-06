@@ -11,7 +11,7 @@
                     "propertyTemplate": [
                         {                   
                             "property": {
-                                "id": "http://bibfra.me/view/library/marc/catalogingSource",
+                                "id": "http://bibfra.me/vocab/marc/catalogingSource",
                                 "propertyLabel": "Cataloging Source"
                             },
                             "repeatable": "true",
@@ -19,7 +19,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/marc/lcCallNumber",
+                                "id": "http://bibfra.me/vocab/marc/lcCallNumber",
                                 "propertyLabel": "Library of Congress Call Number"
                             },
                             "repeatable": "true",
@@ -28,7 +28,7 @@
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/title",
+                                "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Title"
                             },
                             "repeatable": "false",
@@ -43,14 +43,14 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/titleAlternative",
+                                "id": "http://bibfra.me/vocab/lite/titleAlternative",
                                 "propertyLabel": "Alternative Title"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/marc/statementOfResponsibility",
+                                "id": "http://bibfra.me/vocab/marc/statementOfResponsibility",
                                 "propertyLabel": "Statement of Responsibility"
                             },
                             "type": "literal"
@@ -72,21 +72,21 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/date",
+                                "id": "http://bibfra.me/vocab/lite/date",
                                 "propertyLabel": "Date"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "id": "http://bibfra.me/vocab/lite/dateStart",
                                 "propertyLabel": "Start Date"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "id": "http://bibfra.me/vocab/lite/dateEnd",
                                 "propertyLabel": "End Date"
                             },
                             "type": "literal"
@@ -169,7 +169,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/genre",
+                                "id": "http://bibfra.me/vocab/lite/genre",
                                 "propertyLabel": "Genre"
                             },
                             "repeatable": "true",
@@ -228,7 +228,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/isTranslationOf",
+                                "id": "http://bibfra.me/vocab/relation/isTranslationOf",
                                 "propertyLabel": "Is Translation Of"
                             },
                             "repeatable": "true",
@@ -241,7 +241,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/hasTranslation",
+                                "id": "http://bibfra.me/vocab/relation/hasTranslation",
                                 "propertyLabel": "Has Translation"
                             },
                             "repeatable": "true",
@@ -299,7 +299,7 @@
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/title",
+                                "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Title"
                             },
                             "repeatable": "false",
@@ -331,7 +331,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/hasEdition",
+                                "id": "http://bibfra.me/vocab/relation/hasEdition",
                                 "propertyLabel": "Has Other Edition"
                             },
                             "repeatable": "true",
@@ -344,7 +344,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/isEditionOf",
+                                "id": "http://bibfra.me/vocab/relation/isEditionOf",
                                 "propertyLabel": "Is Edition Of"
                             },
                             "repeatable": "true",
@@ -420,7 +420,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/lite/extent",
+                                "id": "http://bibfra.me/vocab/lite/extent",
                                 "propertyLabel": "Extent"
                             },
                             "repeatable": "true",
@@ -498,7 +498,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/image",
+                                "id": "http://bibfra.me/vocab/lite/image",
                                 "propertyLabel": "image"
                             },
                             "repeatable": "true",
@@ -506,7 +506,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/editionStatement",
+                                "id": "http://bibfra.me/vocab/lite/editionStatement",
                                 "propertyLabel": "Edition Statement"
                             },
                             "repeatable": "true",
@@ -587,7 +587,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/hasEdition",
+                                "id": "http://bibfra.me/vocab/relation/hasEdition",
                                 "propertyLabel": "Has Other Edition"
                             },
                             "repeatable": "true",
@@ -600,7 +600,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/isEditionOf",
+                                "id": "http://bibfra.me/vocab/relation/isEditionOf",
                                 "propertyLabel": "Is Edition Of"
                             },
                             "repeatable": "true",
@@ -668,7 +668,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/lite/extent",
+                                "id": "http://bibfra.me/vocab/lite/extent",
                                 "propertyLabel": "Extent"
                             },
                             "repeatable": "true",
@@ -753,7 +753,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/image",
+                                "id": "http://bibfra.me/vocab/lite/image",
                                 "propertyLabel": "Edition Statement"
                             },
                             "repeatable": "true",
