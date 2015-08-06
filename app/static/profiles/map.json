@@ -318,7 +318,6 @@
                                     "bfp:Agent:Person",
                                     "bfp:Agent:Organization",
                                     "bfp:Authority:Place",
-                                    "bfp:Authority:ClassificationEntity",
                                     "bfp:Authority:Topic"
                                 ]
                             }
