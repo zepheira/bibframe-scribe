@@ -558,7 +558,7 @@
                 "class": {
                     "classLabel": "Print",
                     "id": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Serial",
+                    "instantiates": "http://bibfra.me/vocab/marc/Serials",
                     "propertyTemplate": [
                         {
                             "property": {
