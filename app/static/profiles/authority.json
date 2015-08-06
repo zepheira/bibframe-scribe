@@ -4,6 +4,22 @@
         "title": "BIBFRAME Authorities",
         "resourceTemplate": [
             {
+                "id": "bfp:Category",
+                "class": {
+                    "classLabel": "Category",
+                    "id": "http://bibfra.me/vocab/lite/category"
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/label",
+                                "propertyLabel": "Label"
+                            },
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
                 "id": "bfp:Authority:Topic",
                 "class": {
                     "classLabel": "Topic",
