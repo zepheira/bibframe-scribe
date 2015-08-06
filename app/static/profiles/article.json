@@ -31,7 +31,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Language" ]
+                                "descriptionTemplateRef": [ "bfp:Category" ]
                             }
                         },
                         {
