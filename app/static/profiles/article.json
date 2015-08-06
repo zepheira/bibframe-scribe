@@ -276,7 +276,7 @@
                 "id": "bfp:Work:PrintArticle",
                 "class": {
                     "classLabel": "Print Article",
-                    "id": "http://bibfra.me/vocab/marc/PrintArticle",
+                    "id": "http://bibfra.me/vocab/marc/Print",
                     "instantiates": "http://bibfra.me/vocab/marc/Article",
                     "propertyTemplate": [
                         {
