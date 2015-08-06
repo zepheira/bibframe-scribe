@@ -5,6 +5,7 @@
             {
                 "id": "bfp:Language",
                 "class": {
+                    "classLabel": "Language",
                     "id": "http://bibfra.me/view/lite/language",
                     "propertyTemplate": [
                         {
