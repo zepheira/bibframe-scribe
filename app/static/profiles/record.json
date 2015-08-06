@@ -135,8 +135,7 @@
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Audio:Track" ]
                             }
-                        },
-                        
+                        }
                     ]
                 }
             },

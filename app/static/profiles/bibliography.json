@@ -270,7 +270,7 @@
                             },
                             "repeatable": "true",
                             "type": "literal"
-                        }
+                        },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/classificationLcc",
