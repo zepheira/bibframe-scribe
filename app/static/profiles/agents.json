@@ -30,8 +30,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/authorityLink",
-                                "propertyLabel": "Identity Service Link",
-                                "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                                "propertyLabel": "Identity Service Link"
                             },
                             "repeatable": "true",
                             "type": "resource"
@@ -173,8 +172,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/authorityLink",
-                                "propertyLabel": "Identity Service Link",
-                                "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                                "propertyLabel": "Identity Service Link"
                             },
                             "repeatable": "true",
                             "type": "resource"
@@ -249,8 +247,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/view/lite/authorityLink",
-                                "propertyLabel": "Identity Service Link",
-                                "remark": "Identity Service Link such as VIAF, LCNAF, Wikipedia, Wikidata, etc."
+                                "propertyLabel": "Identity Service Link"
                             },
                             "repeatable": "true",
                             "type": "resource"
