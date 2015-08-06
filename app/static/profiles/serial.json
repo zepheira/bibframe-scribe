@@ -292,7 +292,7 @@
             {
                 "id": "bfp:Instance:ElectronicSerial",
                 "class": {
-                    "classLabel": "Serial",
+                    "classLabel": "Electronic",
                     "id": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "http://bibfra.me/vocab/marc/Serials",
                     "propertyTemplate": [
