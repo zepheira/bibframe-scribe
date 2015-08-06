@@ -284,8 +284,8 @@
                 "id": "bfp:Instance:ElectronicBibliography",
                 "class": {
                     "classLabel": "Electronic",
-                    "id": "http://bibframe.org/vocab/ElectronicBibliography",
-                    "instantiates": "http://bibframe.org/vocab/Bibliography",
+                    "id": "http://bibfra.me/vocab/marc/Electronic",
+                    "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
                     "propertyTemplate": [
                         
                         {
