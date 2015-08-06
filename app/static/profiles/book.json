@@ -7,7 +7,7 @@
                 "id": "bfp:Work:Book",
                 "class": {
                     "classLabel": "Book",
-                    "id": "http://bibfra.me/vocab/marc/Book",
+                    "type": "http://bibfra.me/vocab/marc/Book",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
@@ -23,6 +23,7 @@
                                 "id": "http://bibfra.me/vocab/marc/titleRemainder",
                                 "propertyLabel": "Title Remainder"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -30,6 +31,7 @@
                                 "id": "http://bibfra.me/view/lite/titleAlternative",
                                 "propertyLabel": "Alternative Title"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -37,6 +39,7 @@
                                 "id": "http://bibfra.me/view/lite/date",
                                 "propertyLabel": "Date"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -157,6 +160,7 @@
                                 "id": "http://bibfra.me/vocab/lite/language",
                                 "propertyLabel": "Language"
                             },
+                            "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [ "bfp:Category" ]
