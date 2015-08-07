@@ -7,7 +7,7 @@
                 "id": "bf:Item",
                 "class": {
                     "classLabel": "Item",
-                    "id": "http://bibfra.me/vocab/lite/Item",
+                    "type": "http://bibfra.me/vocab/lite/Item",
                     "holdingFor": "http://bibfra.me/vocab/lite/Instance",
                     "propertyTemplate": [
                         {
