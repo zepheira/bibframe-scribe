@@ -21,8 +21,8 @@
             }
             
             if (typeof obj.class !== "undefined") {
-                if (typeof obj.class.id !== "undefined") {
-                    this._classID = obj.class.id;
+                if (typeof obj.class.type !== "undefined") {
+                    this._classID = obj.class.type;
                 }
                 
                 if (typeof obj.class.classLabel !== "undefined") {
