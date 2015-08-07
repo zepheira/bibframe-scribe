@@ -6,7 +6,7 @@
                 "id": "bfp:Work:Audio",
                 "class": {
                     "classLabel": "Audio",
-                    "id": "http://bibfra.me/vocab/marc/Audio",
+                    "type": "http://bibfra.me/vocab/marc/Audio",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
@@ -143,7 +143,7 @@
                 "id": "bfp:Instance:Vinyl",
                 "class": {
                     "classLabel": "Vinyl Record",
-                    "id": "http://bibfra.me/vocab/av/Vinyl",
+                    "type": "http://bibfra.me/vocab/av/Vinyl",
                     "instantiates": "http://bibfra.me/vocab/marc/Audio",
                     "propertyTemplate": [
                         {
@@ -182,7 +182,7 @@
                 "id": "bfp:Audio:Track",
                 "class": {
                     "classLabel": "Track",
-                    "id": "http://bibfra.me/vocab/av/Track",
+                    "type": "http://bibfra.me/vocab/av/Track",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -220,7 +220,7 @@
                 "id": "e:Image",
                 "class": {
                     "classLabel": "Image",
-                    "id": "http://example.org/vocab/bfp/Image",
+                    "type": "http://example.org/vocab/bfp/Image",
                     "propertyTemplate": [
                         {
                             "property": {
