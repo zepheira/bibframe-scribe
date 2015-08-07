@@ -7,7 +7,7 @@
             {
                 "id": "bfp:Category:Content",
                 "class": {
-                    "id": "http://bibfra.me/vocab/marc/contentCategory",
+                    "type": "http://bibfra.me/vocab/marc/contentCategory",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -22,7 +22,7 @@
             {
                 "id": "bfp:Category:Carrier",
                 "class": {
-                    "id": "http://bibfra.me/vocab/marc/carrierCategory",
+                    "type": "http://bibfra.me/vocab/marc/carrierCategory",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -37,7 +37,7 @@
             {
                 "id": "bfp:Category:Media",
                 "class": {
-                    "id": "http://bibfra.me/vocab/marc/mediaCategory",
+                    "type": "http://bibfra.me/vocab/marc/mediaCategory",
                     "propertyTemplate": [
                         {
                             "property": {
