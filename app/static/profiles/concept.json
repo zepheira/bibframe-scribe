@@ -5,7 +5,7 @@
             {
                 "id": "bfp:Concept",
                 "class": {
-                    "id": "http://bibfra.me/vocab/lite/Concept",
+                    "type": "http://bibfra.me/vocab/lite/Concept",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -19,7 +19,8 @@
                                 "id": "http://bibfra.me/view/lite/authorityLink",
                                 "propertyLabel": "Authority Link"
                             },
-                            "type": "literal"
+                            "repeatable": "true",
+                            "type": "resource"
                         },
                         {
                             "property": {
