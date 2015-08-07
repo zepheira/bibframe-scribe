@@ -7,7 +7,7 @@
                 "id": "bfp:Agent:Family",
                 "class": {
                     "classLabel": "Family",
-                    "id": "http://bibfra.me/view/lite/Family",
+                    "type": "http://bibfra.me/view/lite/Family",
                     "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
@@ -50,7 +50,7 @@
                 "id": "bfp:Agent:Meeting",
                 "class": {
                     "classLabel": "Meeting",
-                    "id": "http://bibfra.me/view/lite/Meeting",
+                    "type": "http://bibfra.me/view/lite/Meeting",
                     "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
@@ -125,7 +125,7 @@
                 "id": "bfp:Agent:Organization",
                 "class": {
                     "classLabel": "Organization",
-                    "id": "http://bibfra.me/view/lite/Organization",
+                    "type": "http://bibfra.me/view/lite/Organization",
                     "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
@@ -208,7 +208,7 @@
                 "id": "bfp:Agent:Person",
                 "class": {
                     "classLabel": "Person",
-                    "id": "http://bibfra.me/view/lite/Person",
+                    "type": "http://bibfra.me/view/lite/Person",
                     "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
