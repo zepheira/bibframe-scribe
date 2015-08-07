@@ -4,7 +4,7 @@
             {
                 "id": "bfp:Work:Article",
                 "class": {
-                    "id": "http://bibfra.me/vocab/marc/Article",
+                    "type": "http://bibfra.me/vocab/marc/Article",
                     "classLabel": "Article",
                     "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
@@ -57,7 +57,7 @@
                 "id": "bfp:Work:ElectronicArticle",
                 "class": {
                     "classLabel": "Electronic Article",
-                    "id": "http://bibfra.me/vocab/marc/Electronic",
+                    "type": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "http://bibfra.me/vocab/marc/Article",
                     "propertyTemplate": [
                         {
@@ -147,7 +147,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Carrier"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
@@ -162,7 +162,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Media"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
@@ -276,7 +276,7 @@
                 "id": "bfp:Work:PrintArticle",
                 "class": {
                     "classLabel": "Print Article",
-                    "id": "http://bibfra.me/vocab/marc/Print",
+                    "type": "http://bibfra.me/vocab/marc/Print",
                     "instantiates": "http://bibfra.me/vocab/marc/Article",
                     "propertyTemplate": [
                         {
@@ -366,7 +366,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Carrier"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
@@ -381,7 +381,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Media"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
