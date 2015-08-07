@@ -7,13 +7,14 @@
                 "id": "bfp:Category",
                 "class": {
                     "classLabel": "Category",
-                    "id": "http://bibfra.me/vocab/lite/category"
+                    "type": "http://bibfra.me/vocab/lite/category",
                     "propertyTemplate": [
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         }
                     ]
@@ -23,7 +24,7 @@
                 "id": "bfp:Authority:Topic",
                 "class": {
                     "classLabel": "Topic",
-                    "id": "http://bibfra.me/vocab/lite/Topic",
+                    "type": "http://bibfra.me/vocab/lite/Topic",
                     "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
@@ -31,6 +32,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -38,6 +40,7 @@
                                 "id": "http://bibfra.me/vocab/lite/description",
                                 "propertyLabel": "Description"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -45,6 +48,7 @@
                                 "id": "http://bibfra.me/view/lite/authorityLink",
                                 "propertyLabel": "Authority Link"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
@@ -54,7 +58,7 @@
                 "id": "bfp:Authority:Place",
                 "class": {
                     "classLabel": "Place",
-                    "id": "http://bibfra.me/vocab/lite/Place",
+                    "type": "http://bibfra.me/vocab/lite/Place",
                     "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
@@ -62,6 +66,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -69,6 +74,7 @@
                                 "id": "http://bibfra.me/vocab/lite/description",
                                 "propertyLabel": "Description"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -76,6 +82,7 @@
                                 "id": "http://bibfra.me/view/lite/authorityLink",
                                 "propertyLabel": "Authority Link"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
