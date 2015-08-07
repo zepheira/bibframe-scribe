@@ -8,7 +8,7 @@
                 "id": "bfp:Work:Dissertation",
                 "class": {
                     "classLabel": "Dissertation",
-                    "id": "http://bibfra.me/vocab/marc/Dissertation",
+                    "type": "http://bibfra.me/vocab/marc/Dissertation",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
@@ -163,7 +163,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Content"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/contentTypes/txt",
@@ -194,7 +194,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Language" ]
+                                "descriptionTemplateRef": [ "bfp:Category" ]
                             }
                         },
                         {
@@ -346,7 +346,7 @@
                 "id": "bfp:Instance:ElectronicDissertation",
                 "class": {
                     "classLabel": "Electronic Dissertation",
-                    "id": "http://bibfra.me/vocab/marc/Electronic",
+                    "type": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "http://bibfra.me/vocab/marc/Dissertation",
                     "propertyTemplate": [
                         {
@@ -412,7 +412,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Carrier"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
@@ -427,7 +427,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Media"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
@@ -497,7 +497,7 @@
                 "id": "bfp:Instance:PrintDissertation",
                 "class": {
                     "classLabel": "Print Dissertation",
-                    "id": "http://bibfra.me/vocab/marc/Print",
+                    "type": "http://bibfra.me/vocab/marc/Print",
                     "instantiates": "http://bibfra.me/vocab/marc/Dissertation",
                     "propertyTemplate": [
                         {
@@ -542,7 +542,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Carrier"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
@@ -557,7 +557,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Media"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
@@ -627,7 +627,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Carrier"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
@@ -642,7 +642,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Media"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
