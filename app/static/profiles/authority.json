@@ -7,7 +7,7 @@
                 "id": "bfp:Category",
                 "class": {
                     "classLabel": "Category",
-                    "type": "http://bibfra.me/vocab/lite/category",
+                    "type": "http://bibfra.me/vocab/lite/Category",
                     "propertyTemplate": [
                         {
                             "property": {
