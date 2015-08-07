@@ -7,7 +7,7 @@
                 "id": "bfp:Work:Map",
                 "class": {
                     "classLabel": "Map",
-                    "id": "http://bibfra.me/vocab/marc/Map",
+                    "type": "http://bibfra.me/vocab/marc/Map",
                     "propertyTemplate": [
                         {                   
                             "property": {
@@ -265,7 +265,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Content"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/contentTypes/txt",
@@ -303,7 +303,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Language" ]
+                                "descriptionTemplateRef": [ "bfp:Category" ]
                             }
                         },
                         {
@@ -454,8 +454,8 @@
             {
                 "id": "bfp:Instance:ElectronicMap",
                 "class": {
-                    "classLabel": "Electronic",
-                    "id": "http://bibfra.me/vocab/marc/Electronic",
+                    "classLabel": "Electronic Map",
+                    "type": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "http://bibfra.me/vocab/marc/Map",
                     "propertyTemplate": [
                         {
@@ -596,7 +596,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Carrier"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
@@ -611,7 +611,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Media"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
@@ -711,8 +711,8 @@
             {
                 "id": "bfp:Instance:PrintMap",
                 "class": {
-                    "classLabel": "Print",
-                    "id": "http://bibfra.me/vocab/marc/Print",
+                    "classLabel": "Print Map",
+                    "type": "http://bibfra.me/vocab/marc/Print",
                     "instantiates": "http://bibfra.me/vocab/marc/Map",
                     "propertyTemplate": [
                         {
@@ -836,7 +836,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Carrier"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
@@ -851,7 +851,7 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Category:Media"
+                                    "bfp:Category"
                                 ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
