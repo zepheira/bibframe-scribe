@@ -6,7 +6,7 @@
                 "id": "bfp:Event:ProviderEvent",
                 "class": {
                     "classLabel": "Provider",
-                    "id": "http://bibfra.me/vocab/lite/ProviderEvent",
+                    "type": "http://bibfra.me/vocab/lite/ProviderEvent",
                     "labelProperty": "Provider Event",
                     "propertyTemplate": [
                         {
@@ -97,7 +97,7 @@
                 "id": "bfp:Event:CopyrightEvent",
                 "class": {
                     "classLabel": "Copyright",
-                    "id": "http://bibfra.me/vocab/lite/CopyrightEvent",
+                    "type": "http://bibfra.me/vocab/lite/CopyrightEvent",
                     "labelProperty": "Copyright Event",
                     "propertyTemplate": [
                         {
