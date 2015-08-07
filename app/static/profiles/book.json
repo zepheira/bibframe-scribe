@@ -452,7 +452,7 @@
             {
                 "id": "bfp:Instance:PrintBook",
                 "class": {
-                    "classLabel": "Print",
+                    "classLabel": "Print Book",
                     "type": "http://bibfra.me/vocab/marc/Print",
                     "instantiates": "http://bibfra.me/vocab/marc/Books",
                     "propertyTemplate": [
