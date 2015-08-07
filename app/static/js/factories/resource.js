@@ -286,8 +286,9 @@
                     });
                 }
             });
+            // @@@ rewire since instantiates is no longer the only relation
             if (split) {
-                nsProp = Namespace.extractNamespace('http://bibframe.org/vocab/instanceOf'); // @@@ faking it
+                nsProp = Namespace.extractNamespace('http://bibfra.me/vocab/' + relation);
                 frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + id + '-work" />\n';
                 result += '  <rdf:Description rdf:about="' + id + '-work">\n    <rdf:type rdf:resource="' + relation + '"/>\n' + relFrag + '  </rdf:Description>\n';
             }
