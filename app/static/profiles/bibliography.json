@@ -432,7 +432,7 @@
                         {
                             "id": "bfp:Instance:PrintBibliography",
                             "class": {
-                                "classLabel": "Print",
+                                "classLabel": "Print Bibliography",
                                 "type": "http://bibfra.me/vocab/marc/Print",
                                 "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
                                 "propertyTemplate": [
