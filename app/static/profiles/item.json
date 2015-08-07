@@ -1,0 +1,185 @@
+{
+    "Profile": {
+        "title": "Item",
+        "description": "Example profile for item holding information",
+        "resourceTemplate": [
+            {
+                "id": "bf:Item",
+                "class": {
+                    "classLabel": "Item",
+                    "type": "http://bibfra.me/vocab/lite/Item",
+                    "holdingFor": "http://bibfra.me/vocab/lite/Instance",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/label",
+                                "propertyLabel": "Label"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/UsageAndAccessCondition",
+                                "propertyLabel": "Access Condition"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMark",
+                                "propertyLabel": "Shelf Mark"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibframe.org/vocab/shelfMarkDdc",
+                                "propertyLabel": "DDC Call Number"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMarkLcc",
+                                "propertyLabel": "LCC Call Number"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMarkNlm",
+                                "propertyLabel": "NLM Call Number"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/shelfMarkUdc",
+                                "propertyLabel": "UDC Call Number"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        }, 
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/barcode",
+                                "propertyLabel": "Barcode"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/identifiedBy",
+                                "propertyLabel": "Identified By"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/componentOf",
+                                "propertyLabel": "Component Of"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Item"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/hasComponent",
+                                "propertyLabel": "Has Component"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Item"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/note",
+                                "propertyLabel": "Note"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/hasCondition",
+                                "propertyLabel": "Has Condition"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/enumerationAndChronology",
+                                "propertyLabel": "Enumeration and Chronology"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/electronicLocator",
+                                "propertyLabel": "Electronic Locator"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/heldBy",
+                                "propertyLabel": "Held by"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Agent:Organization"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/hasHolder",
+                                "propertyLabel": "Has Holder"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Agent"]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/itemOf",
+                                "propertyLabel": "Item Of"
+                            },
+                            "repeatable": "true",
+                            "type": "literal",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": ["bfp:Instance"]
+                            }
+                        }, 
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/subLocation",
+                                "propertyLabel": "Held in Sublocation"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

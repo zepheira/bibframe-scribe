@@ -1,50 +1,27 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
-<http://bibframe.org/vocab/Article> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Work> .
-
-<http://bibframe.org/vocab/proposed/EArticle> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
-
-<http://bibframe.org/vocab/proposed/PhysicalArticle> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
-
-<http://bibframe.org/vocab/Bibliography> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Work> .
-
-<http://bibframe.org/vocab/ElectronicBibliography> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
-
-<http://bibframe.org/vocab/PrintBibliography> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
-
-<http://bibframe.org/vocab/Book> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Work> .
-
-<http://bibframe.org/vocab/Dissertation> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Work> .
-
-<http://bibframe.org/vocab/ElectronicDissertation> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
-
-<http://bibframe.org/vocab/PrintDissertation> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
-
-<http://bibframe.org/vocab/proposed/Vinyl> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
+<http://bibfra.me/vocab/av/Vinyl> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
 
 <http://bibframe.org/vocab/Painting> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Work> .
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
 
 <http://bibframe.org/vocab/Image> a rdfs:Class;
-    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
 
-#<http://bibframe.org/vocab/Electronic> a rdfs:Class;
-#    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
+<http://bibfra.me/vocab/marc/Serials> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
 
-#<http://bibframe.org/vocab/Print> a rdfs:Class;
-#    rdfs:subClassOf <http://bibframe.org/vocab/Instance> .
+<http://bibfra.me/vocab/marc/Article> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
 
-#<http://bibframe.org/vocab/av/Track> ?
-#<http://example.org/.../Image> ?
+<http://bibfra.me/vocab/marc/Dissertation> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Bibliography> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+# Inference
+<http://bibfra.me/vocab/marc/Audio> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .

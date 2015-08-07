@@ -1,0 +1,2104 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v: <http://bibfra.me/purl/versa/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bibfra.me/vocab/lite/Authority> a rdfs:Class .
+
+<http://bibfra.me/vocab/lite/Form> a rdfs:Class .
+
+<http://bibfra.me/vocab/lite/Instance> a rdfs:Class .
+
+<http://bibfra.me/vocab/lite/Meeting> a rdfs:Class .
+
+<http://bibfra.me/vocab/lite/Organization> a rdfs:Class .
+
+<http://bibfra.me/vocab/lite/Person> a rdfs:Class .
+
+<http://bibfra.me/vocab/lite/Topic> a rdfs:Class .
+
+<http://bibfra.me/vocab/lite/Work> a rdfs:Class .
+
+<http://bibfra.me/vocab/marc/Audio> a rdfs:Class ;
+    rdfs:label "Audio" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work of sound, especially when recorded, transmitted, or reproduced." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/Books> a rdfs:Class ;
+    rdfs:label "Books" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that has bibliographic characterisics." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Cartography> a rdfs:Class ;
+    rdfs:label "Cartography" ;
+    v:remark "Control Code information. Coded data elements relating to cartographic material." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work reflecting the science or practice of drawing maps." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Maps> .
+
+<http://bibfra.me/vocab/marc/ComputerFiles> a rdfs:Class ;
+    rdfs:label "Computer files" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that has characteritics of a computer file." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/ConferencePublication> a rdfs:Class ;
+    rdfs:label "Conference Publication" ;
+    v:remark "Control Code information (recast as type)" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that is a proceedings, reports, or summaries of a conference" ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Books> .
+
+<http://bibfra.me/vocab/marc/ContinuingResources> a rdfs:Class ;
+    rdfs:label "Continuing resources" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that has continuing resource characteristics." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Electronic> a rdfs:Class ;
+    rdfs:label "Electronic Resource" ;
+    v:remark "Readable and manipulable by a computer" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/Electronic> ;
+    rdfs:comment "Item involves a medium intended to be used or processed by a computer." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/Festschrift> a rdfs:Class ;
+    rdfs:label "Festschrift" ;
+    v:remark "Control Code information (recast as type)" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work honoring a respected person, especially an academic, and presented during his or her lifetime." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Books> .
+
+<http://bibfra.me/vocab/marc/Globe> a rdfs:Class ;
+    rdfs:label "Globe" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is a globe which is defined as the model of a celestial body, usually the earth or the celestial sphere, depicted on the surface of a sphere." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/Kit> a rdfs:Class ;
+    rdfs:label "Kit" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A set of equipment needed for a specific purpose.",
+        "Item is a kit, which is defined as a mixture of various components issued as a unit and intended primarily for instructional purposes. No one component is identifiable as the predominant component of the item. Examples are packages of assorted materials, such as a set of K-12 social studies curriculum material (books, workbooks, guides, activities, etc.), or packages of educational test materials (tests, answer sheets, scoring guides, score charts, interpretative manuals, etc.)." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance>,
+        <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/LanguageMaterial> a rdfs:Class ;
+    rdfs:label "Language material" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Books and continuing resources" ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Books> .
+
+<http://bibfra.me/vocab/marc/Manuscript> a rdfs:Class ;
+    rdfs:label "Manuscript" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work written by hand, or manually typewritten, as opposed to being mechanically printed or reproduced in some automated way." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Books> .
+
+<http://bibfra.me/vocab/marc/Map> a rdfs:Class ;
+    rdfs:label "Map" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A diagrammatic representation of an area of land or sea showing physical features, cities, roads, etc." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/Maps> a rdfs:Class ;
+    rdfs:label "Maps" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that has map like characteristics." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Microform> a rdfs:Class ;
+    rdfs:label "Microform" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is a microform. Microform is a generic term for any medium, transparent or opaque, bearing microimages. A microimage is a unit (e.g., a page) of textual, graphic, or computer-generated material that is contained on aperture cards, microfiche, microfilm, micro-opaques, or other microformats and that is too small to be read without magnification. Microforms may be reproductions of existing textual or graphic materials or they may be original publications." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/MixedMaterials> a rdfs:Class ;
+    rdfs:label "Mixed materials" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that has characteristics of mixed material." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/MotionPicture> a rdfs:Class ;
+    rdfs:label "Motion picture" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is a motion picture, which is defined as a series of still pictures on film, with or without sound, designed to be projected in rapid succession to produce the optical effect of motion." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/MovingImage> a rdfs:Class ;
+    rdfs:label "Moving image" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work reflecting a form of entertainment that enacts a story by sound and a sequence of images giving the illusion of continuous movement." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/Multimedia> a rdfs:Class ;
+    rdfs:label "Multimedia" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work using more than one medium of expression or communication." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/Music> a rdfs:Class ;
+    rdfs:label "Music" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that has music characteristics." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Nonmusical> a rdfs:Class ;
+    rdfs:label "Nonmusical" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work produced by noise, as opposed to continuous and regular vibrations." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/NonprojectedGraphic> a rdfs:Class ;
+    rdfs:label "Nonprojected graphic" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is nonprojected graphic material. This is defined generally, as a two-dimensional pictorial representation whether opaque (e.g., print, photoprint, drawing) or transparent, but not intended to be projected for viewing (e.g., a photographic negative)." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/NotatedMusic> a rdfs:Class ;
+    rdfs:label "Notated music" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that visually represents aurally perceived music through the use of written symbols, including ancient or modern musical symbols.",
+        "Item is notated music, which is defined as graphic, non-realized representations of musical works, both in printed and digitized manifestations. It includes musical scores and/or parts, diagrammatic representations, tablature, instructions for chance compositions, pictures or paintings intended as musical compositions, square note notation, klavirskribo, chant notation, neumes, braille, and other ways of representing the four components of musical sound: pitch, duration, timbre, and loudness. Notated music is often the means for communicating to the performer(s) how the musical work notated therein is to be realized in sound." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance>,
+        <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/Print> a rdfs:Class ;
+    rdfs:label "Print" ;
+    v:remark "Generalizes MARC 007 'Text'" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/Print> ;
+    rdfs:comment "Item is text, defined as printed or manuscript language material that is accessible to the naked eye (e.g., a book, a pamphlet, a broadside)." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/ProjectedGraphic> a rdfs:Class ;
+    rdfs:label "Projected graphic" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is projected graphic material which is defined as a two-dimensional representation intended to be projected without motion by means of an optical device, for example, a filmstrip, slide, or transparency (includes x-rays)." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/RemoteSensingImage> a rdfs:Class ;
+    rdfs:label "Remote-sensing image" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is a remote-sensing image or remote-sensing map. This is an image produced by a recording device that is not in physical or intimate contact with the object under study." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/Series> a rdfs:Class ;
+    rdfs:label "Series" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A Series" ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Collection> .
+
+<http://bibfra.me/vocab/marc/Software> a rdfs:Class ;
+    rdfs:label "Software" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A program used to direct the operation of a computer, as well as documentation giving instructions on how to use them." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/ComputerFiles> .
+
+<http://bibfra.me/vocab/marc/SoundRecording> a rdfs:Class ;
+    rdfs:label "Sound recording" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is a sound recording, defined as a disc, tape, film, cylinder, or wire on which sound vibrations have been registered so that the sound may be reproduced, or paper rolls on which the notes of a musical composition are represented by perforations in the paper and from which sound can be mechanically produced." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/Sounds> a rdfs:Class ;
+    rdfs:label "Sounds" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work produced by continuous and regular vibrations, as opposed to noise." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/StillImage> a rdfs:Class ;
+    rdfs:label "Still image" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A single static image, as distinguished from a kinetic image." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/TactileMaterial> a rdfs:Class ;
+    rdfs:label "Tactile material" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is tactile material which is defined as material intended to be read or interpreted by touch." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/ThreeDimensionalObject> a rdfs:Class ;
+    rdfs:label "Three dimensional object" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "An object that has height, width and depth, like any object in the real world." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/Videorecording> a rdfs:Class ;
+    rdfs:label "Videorecording" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Item is a videorecording, defined as a recording on which visual images, usually in motion and accompanied by sound, have been registered. It is designed for playback by means of a television set." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/VisualMaterials> a rdfs:Class ;
+    rdfs:label "Visual materials" ;
+    v:remark "Derived from leader information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "A work that has characteristics of visual materials." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/> v:title "BIBFRAME MARC vocabulary" .
+
+<http://bibfra.me/vocab/marc/abbreviatedTitle> a rdf:Property ;
+    rdfs:label "abbreviated title" ;
+    v:remark "Equivalent to MARC 210 subfield a, abbreviated title." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/abbreviatedTitle> ;
+    v:value "Literal" ;
+    rdfs:comment "Title as abbreviated for indexing or identification." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/accessibilityNote> a rdf:Property ;
+    rdfs:label "accessibility note" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/contentAccessabilityNote> ;
+    v:value "Literal" ;
+    rdfs:comment "Content that assists those with a sensory impairment for greater understanding of content, e.g., labels, captions." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/accompanyingMaterial> a rdf:Property ;
+    rdfs:label "accompanying material" ;
+    v:remark "Equivalent to MARC 300 physical description subfield e, accompanying material." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/accompaniedBy> ;
+    v:value "Literal" ;
+    rdfs:comment "Resource that has an accompanying resource that adds to it." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/accompanyingMatter> a rdf:Property ;
+    rdfs:label "accompanying matter" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the contents of program notes and other accompanying material for sound recording, music manuscripts, or notated music" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/action> a rdf:Property ;
+    rdfs:label "action" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "An act or thing done." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/additionalPhysicalForm> a rdf:Property ;
+    rdfs:label "additional physical form" ;
+    v:remark "A note about a different format (physical or digital) in which the described item is available. Equivalent to MARC 530 subfield a, additional physical form available note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/otherPhysicalFormat> ;
+    v:value "Literal" ;
+    rdfs:comment "Resource that is manifested in another physical carrier." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/altitudeOfSensor> a rdf:Property ;
+    rdfs:label "altitude of sensor" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "General position of the sensor relative to to the object under study." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/RemoteSensingImage> .
+
+<http://bibfra.me/vocab/marc/antecedentSource> a rdf:Property ;
+    rdfs:label "antecedent source" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Information about the source of a digital file important to the creation, use and management of digitally reformatted materials." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic> .
+
+<http://bibfra.me/vocab/marc/arrangement> a rdf:Property ;
+    rdfs:label "arrangement" ;
+    v:remark "Equivalent to arrangement subfield b of MARC field 351." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/Arrangement> ;
+    v:value "Literal" ;
+    rdfs:comment "Information about the organization and arrangement of a collection of items. For instance, for computer files, organization and arrangement information may be the file structure and sort sequence of a file; for visual materials, this information may be how a collection is arranged." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/assigningSource> a rdf:Property ;
+    rdfs:label "assigning source" ;
+    v:remark "Equivalent to assigning source, subfield c of MARC 520 field summary, etc." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Organization code or name of the agency or other source (e.g., journal or newspaper) that supplied the data (summary, review, abstract, content advice statement, etc.) recorded." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/attitudeOfSensor> a rdf:Property ;
+    rdfs:label "attitude of sensor" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "General angle of the device from which the remote-sensing image is made." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/RemoteSensingImage> .
+
+<http://bibfra.me/vocab/marc/authorization> a rdf:Property ;
+    rdfs:label "authorization" ;
+    v:remark "Equivalent to authorization, subfield e of MARC field 506 restrictions on access note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The source of the authority for a restriction." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/authorizedUsers> a rdf:Property ;
+    rdfs:label "authorized users" ;
+    v:remark "Equivalent to authorization, subfield e of MARC field 506 restrictions on access note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The class of users or specific individuals for whom legal, physical or procedural restrictions imposed on use do not apply." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/awardsNote> a rdf:Property ;
+    rdfs:label "awards note" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/awardNote> ;
+    v:value "Literal" ;
+    rdfs:comment "Information on awards associated with the described resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/baseOfEmulsion> a rdf:Property ;
+    rdfs:label "base of emulsion" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Type of material for the base of the emulsion of a photonegative, filmstrip, slide, or transparency." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/ProjectedGraphic> .
+
+<http://bibfra.me/vocab/marc/baseOfFilm> a rdf:Property ;
+    rdfs:label "base of film" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Safety base film is a comparatively nonflammable film base that meets ISO requirements for a safety base. On some film, the phrase safety film appears on the edge of motion pictures. Nitrate film base is a highly flammable film base that does not meet the ISO requirements for safety base film." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Microform>,
+        <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/bibliographyNote> a rdf:Property ;
+    rdfs:label "bibliography note" ;
+    v:remark "Equivalent to bibliography, etc. subfield a of MARC field 504, the bibliography, etc. note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about a bibliography, discography, filmography, webliography, and/or other bibliographic references in an item." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/biographical> a rdf:Property ;
+    rdfs:label "biography type" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates what the biographical characteristics are of the work" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Books> .
+
+<http://bibfra.me/vocab/marc/biographicalOrHistoricalData> a rdf:Property ;
+    rdfs:label "biographical or historical data" ;
+    v:remark "Equivalent to biographical or historical data, subfield a of MARC field 545." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note providing biographical information about an individual or administrative information of an organization." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/brailleMusicFormat> a rdf:Property ;
+    rdfs:label "braille music format" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Three-character code that indicates the braille music format of the item. The music formats are the way measures, sections, parts, and related information, such as words, are presented in relation to each other. Up to three formats may be indicated, left justified in order of predominance. If fewer than three codes are assigned, the codes are left justified and unused positions contain blanks (#)." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/TactileMaterial> .
+
+<http://bibfra.me/vocab/marc/captureAndStorageTechnique> a rdf:Property ;
+    rdfs:label "capture and storage technique" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "How the sound was originally captured and stored. Re-releases of recordings should be coded for the original capture and storage technique, even though such re-releases may have been enhanced using another technique." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/carrierCategory> a rdf:Property ;
+    rdfs:label "carrier category" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/carrierCategory> ;
+    v:value "IRI" ;
+    rdfs:comment "Categorization reflecting the format of the storage medium and housing of a carrier." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/carrierMARCSource> a rdf:Property ;
+    rdfs:label "carrierMARCSource" ;
+    v:remark "Equivalent to subfield 2 of MARC field 338." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "MARC code that identifies the source of the term or code used to record the content type information." .
+
+<http://bibfra.me/vocab/marc/catalogingSource> a rdf:Property ;
+    rdfs:label "cataloging source" ;
+    v:remark "Equivalent to original cataloging agency, subfield a of MARC field 040 cataloging source." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Source or origin of cataloging work." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/characteristic> a rdf:Property ;
+    rdfs:label "characteristic" ;
+    v:remark "property derived from 'typeOf' control code indicators (e.g. typeOfVisualMaterial, typeOfComputerFile, etc.)" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "a feature or quality belonging typically to a person, place, or thing and serving to identify it" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/ComputerFiles>,
+        <http://bibfra.me/vocab/marc/ContinuingResources>,
+        <http://bibfra.me/vocab/marc/Maps>,
+        <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/chronologicalSubdivision> a rdf:Property ;
+    rdfs:label "chronological subdivision" ;
+    v:remark "Equivalent to chronological subdivision, any subfield y found in the MARC 6xx fields." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A chronologicalSubdivision" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Topic> .
+
+<http://bibfra.me/vocab/marc/citationCoverage> a rdf:Property ;
+    rdfs:label "citation coverage" ;
+    v:remark "Equivalent to coverage of source, subfield b of MARC field 510 citation/references note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The dates of the source." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/citationLocationWithinSource> a rdf:Property ;
+    rdfs:label "citation location within source" ;
+    v:remark "Equivalent to location within source, subfield c of MARC field 510 citation/references note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A citationLocationWithinSource" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/citationSource> a rdf:Property ;
+    rdfs:label "citation source" ;
+    v:remark "Equivalent to name of source, subfield a of MARC field 510 citation/references note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Source of citation." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/citationUri> a rdf:Property ;
+    rdfs:label "citationUri" ;
+    v:remark "Equivalent to uniform resource identifier, subfield u of MARC field 510 citation/references note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The Uniform Resource Identifier (URI) that provides electronic access data in a standard syntax to an electronic bibliography cited or to the citation within an electronic bibliography." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/classOfBrailleWriting> a rdf:Property ;
+    rdfs:label "class of braille writing" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Family of braille to which the item belongs. This is not the particular braille code, but the type of braille code used, representing different types of written symbols. Up to two braille types may be indicated, or the cataloging agency can choose to encode only the predominate type. Multiple codes are coded in order of predominance, if any. If fewer than two codes are assigned, the codes are left justified and unused positions contain blanks (#)." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/TactileMaterial> .
+
+<http://bibfra.me/vocab/marc/cloudCover> a rdf:Property ;
+    rdfs:label "cloud cover" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Amount of cloud cover that was present when a remote-sensing image was made." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/RemoteSensingImage> .
+
+<http://bibfra.me/vocab/marc/color> a rdf:Property ;
+    rdfs:label "color" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Color characteristics" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic>,
+        <http://bibfra.me/vocab/marc/Globe>,
+        <http://bibfra.me/vocab/marc/Map>,
+        <http://bibfra.me/vocab/marc/Microform>,
+        <http://bibfra.me/vocab/marc/MotionPicture>,
+        <http://bibfra.me/vocab/marc/NonprojectedGraphic>,
+        <http://bibfra.me/vocab/marc/ProjectedGraphic>,
+        <http://bibfra.me/vocab/marc/Videorecording> .
+
+<http://bibfra.me/vocab/marc/completeness> a rdf:Property ;
+    rdfs:label "completeness" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Whether the film is part of a complete production or is a preliminary or post-production element." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/computerFilecharacteristics> a rdf:Property ;
+    rdfs:label "computer file characteristics" ;
+    v:remark "Equivalent to computer file characteristics, subfield a of MARC field 256." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Computer file characteristics that include the type of file (e.g., software, text file) and the number of records, statements, etc. (e.g., 1300 records, 5821 bytes)." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/configurationOfPlaybackChannels> a rdf:Property ;
+    rdfs:label "configuration of playback channels" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Configuration of playback channels for the sound portion of a motion picture." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture>,
+        <http://bibfra.me/vocab/marc/SoundRecording>,
+        <http://bibfra.me/vocab/marc/Videorecording> .
+
+<http://bibfra.me/vocab/marc/contentCategory> a rdf:Property ;
+    rdfs:label "content category" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/contentCategory> ;
+    v:value "IRI" ;
+    rdfs:comment "Categorization reflecting the fundamental form of communication in which the content is expressed and the human sense through which it is intended to be perceived." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/contentsNote> a rdf:Property ;
+    rdfs:label "contents note" ;
+    v:remark "Equivalent to formatted contents note, subfield a of MARC field 505." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/contentsNote> ;
+    v:value "Literal" ;
+    rdfs:comment "List of resources contents or subunits.",
+        "List of subunits of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/copyrightDate> a rdf:Property ;
+    rdfs:label "copyright date" ;
+    v:remark "Equivalent to date of production, publication, distribution, manufacture, or copyright notice, subfield c of MARC field 264 (with 2nd indicator 4)." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/copyrightDate> ;
+    v:value "Literal" ;
+    rdfs:comment "Date associated with a claim of protection under copyright or a similar regime." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/creditsNote> a rdf:Property ;
+    rdfs:label "credits note" ;
+    v:remark "Equivalent to MARC field 508, creation/production credits note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/creditsNote> ;
+    v:value "Literal" ;
+    rdfs:comment "Credits for persons or organizations who have participated in the creation and/or production of the resource.",
+        "Credits for persons or organizations, other than members of the cast, who have participated in the creation and/or production of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance>,
+        <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/cumulativeIndexFindingAids> a rdf:Property ;
+    rdfs:label "cumulative index finding aids" ;
+    v:remark "Equivalent to cumulative index/finding aids note, subfield a of MARC field 555." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note identifying the availability of cumulative indexes or finding aids whose primary focus is the described material." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/dataQuality> a rdf:Property ;
+    rdfs:label "data quality" ;
+    v:remark "Equivalent to MARC field 514, data quality note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note on the general assessment of the quality of the data set constituting the item. Used primarily for cartographic materials." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/dataType> a rdf:Property ;
+    rdfs:label "data Type" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Spectral, acoustic, or magnetic characteristics of the data received by the device producing the remote-sensing image. It can be used to indicate both the wave length of radiation measured and the type of sensor used to measure it." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/RemoteSensingImage> .
+
+<http://bibfra.me/vocab/marc/dateOfEvent> a rdf:Property ;
+    rdfs:label "date of event" ;
+    v:remark """Equivalent to subfield d of MARC field 518, date/time and place of an event note. 
+  refines:""" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/eventDate> ;
+    v:value "Literal" ;
+    rdfs:comment "Date, time or period of an event." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/dateTimePlace> a rdf:Property ;
+    rdfs:label "date time place" ;
+    v:remark "Equivalent to subfield a of MARC field 518, date/time and place of an event note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note on the date, time, or place of an event." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/degree> a rdf:Property ;
+    rdfs:label "degree" ;
+    v:remark "Equivalent to degree type, subfield b of MARC field 502." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/dissertationDegree> ;
+    v:value "Literal" ;
+    rdfs:comment "Degree the author was awarded." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/deteriorationStage> a rdf:Property ;
+    rdfs:label "deterioration stage" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Level of deterioration of the motion picture film." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/deweyNumber> a rdf:Property ;
+    rdfs:label "dewey number" ;
+    v:remark "Equivalent to subfield a of MARC field 082, Dewey Classification Number." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/classificationDdc> ;
+    v:value "Literal" ;
+    rdfs:comment "Dewey Decimal Classification number used for subject access." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/dimensions> a rdf:Property ;
+    rdfs:label "dimensions" ;
+    v:remark "Control code information",
+        "Equivalent to dimensions, subfield c of MARC field 300 physical description." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/dimensions> ;
+    v:value "Literal" ;
+    rdfs:comment "Measurements of the carrier or carriers and/or the container of a resource.",
+        "Width of a motion picture." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance>,
+        <http://bibfra.me/vocab/marc/Electronic>,
+        <http://bibfra.me/vocab/marc/Microform>,
+        <http://bibfra.me/vocab/marc/MotionPicture>,
+        <http://bibfra.me/vocab/marc/ProjectedGraphic>,
+        <http://bibfra.me/vocab/marc/SoundRecording>,
+        <http://bibfra.me/vocab/marc/Videorecording> .
+
+<http://bibfra.me/vocab/marc/dissertationID> a rdf:Property ;
+    rdfs:label "dissertation ID" ;
+    v:remark "Equivalent to dissertation identifier, subfield o of MARC field 502 dissertation note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/dissertationIdentifier> ;
+    v:value "Literal" ;
+    rdfs:comment "Identifier assigned to a dissertation for identification purposes." .
+
+<http://bibfra.me/vocab/marc/dissertationNote> a rdf:Property ;
+    rdfs:label "dissertation note" ;
+    v:remark "Equivalent to subfield g of MARC field 502 dissertation note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/dissertationNote> ;
+    v:value "Literal" ;
+    rdfs:comment "Textual information about the dissertation." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/dissertationYear> a rdf:Property ;
+    rdfs:label "dissertation year" ;
+    v:remark "Equivalent to subfield d of MARC field 502 dissertation note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/dissertationYear> ;
+    v:value "Literal" ;
+    rdfs:comment "Year degree awarded." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/date> .
+
+<http://bibfra.me/vocab/marc/distribution> a rdf:Property ;
+    rdfs:label "distribution" ;
+    v:remark "Equivalent to MARC field 264 with 2nd indicator 2." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/distribution> ;
+    v:value "Literal" ;
+    rdfs:comment "Information relating to distribution of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/provision> .
+
+<http://bibfra.me/vocab/marc/doi> a rdf:Property ;
+    rdfs:label "doi" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/doi> ;
+    v:value "Literal" ;
+    rdfs:comment "A DOI (Digital Object Identifier) associated with an Instance" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/controlCode> .
+
+<http://bibfra.me/vocab/marc/edition> a rdf:Property ;
+    rdfs:label "edition" ;
+    v:remark "Equivalent to edition statement, MARC field 250." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/edition> ;
+    v:value "Literal" ;
+    rdfs:comment "Edition statement, information identifying the edition or version of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/emulsionOnFilm> a rdf:Property ;
+    rdfs:label "emulsion on film" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Type of light-sensitive material on the film." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Microform> .
+
+<http://bibfra.me/vocab/marc/entityAndAttributeInformation> a rdf:Property ;
+    rdfs:label "entity attribute information" ;
+    v:remark "Equivalent to MARC field 552, entity and attribute information note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about the information content of the data set, including the entity types, their attributes, and the domains from which the attribute values may be assigned." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/entryConvention> a rdf:Property ;
+    rdfs:label "entry convention" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the type of entry convention." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/ContinuingResources> .
+
+<http://bibfra.me/vocab/marc/fileFormats> a rdf:Property ;
+    rdfs:label "file formats" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Whether the file(s) which comprise the electronic resource are of the same format or type for digitally reformatted materials." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic> .
+
+<http://bibfra.me/vocab/marc/filmInspectionDate> a rdf:Property ;
+    rdfs:label "filmInspectionDate" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Six characters that indicate the most recent film inspection date; the date is recorded in the pattern ccyymm (century/year/month). A hyphen is used for any unknown portion of the date. Six fill characters (||||||) are used if no attempt is made to code these character positions." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/form> a rdf:Property ;
+    rdfs:label "form" ;
+    v:remark "Equivalent to subfield k, form subheading, used with MARC fields 240, 243 and 700." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Standardized terms used to group certain kinds of materials." .
+
+<http://bibfra.me/vocab/marc/formDesignation> a rdf:Property ;
+    rdfs:label "form designation" ;
+    v:remark "Equivalent to form subheading subfield k of MARC field 245." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/formDesignation> ;
+    v:value "Literal" ;
+    rdfs:comment "Class or genre to which a Work or Instance belongs. Used for archival materials." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/formOfComposition> a rdf:Property ;
+    rdfs:label "form of composition" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the form of the conposition" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/formOfItem> a rdf:Property ;
+    rdfs:label "form of item" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Form of mterial for the item" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/formSubdivision> a rdf:Property ;
+    rdfs:label "form subdivision" ;
+    v:remark "Equivalent to form subdivision, subfield v used with the MARC 6xx fields." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A specific kind or genre of material defined by the thesaurus being used." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Topic> .
+
+<http://bibfra.me/vocab/marc/formatOfMusic> a rdf:Property ;
+    rdfs:label "format of music" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the format of the Music" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/formerTitle> a rdf:Property ;
+    rdfs:label "former title" ;
+    v:remark "Equivalent to MARC field 247, former title." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A former title proper used to represent all former titles proper of a continuing resource (serial or integrating resource)." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/formerTitleComplexity> a rdf:Property ;
+    rdfs:label "former title complexity" ;
+    v:remark "Equivalent to MARC field 547, former title complexity note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note that expresses a complex relationship between varying titles." .
+
+<http://bibfra.me/vocab/marc/frequency> a rdf:Property ;
+    rdfs:label "frequency" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the frequency of a work" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/ContinuingResources> .
+
+<http://bibfra.me/vocab/marc/fundingInformation> a rdf:Property ;
+    rdfs:label "funding information" ;
+    v:remark "Equivalent to MARC field 536, funding information note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about the contract, grant and project numbers when the material results from a funded project." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/generalSubdivision> a rdf:Property ;
+    rdfs:label "general subdivision" ;
+    v:remark "Equivalent to general subdivision, subfield x in the MARC 6xx fields." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A generalSubdivision" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Topic> .
+
+<http://bibfra.me/vocab/marc/generation> a rdf:Property ;
+    rdfs:label "generation" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "How far away from the original material the item is (e.g., the actual negative film or original videotape in the camera). Generation data is used to evaluate the quality of available copies, to make preservation decisions, and to identify materials available for viewing and research." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Microform>,
+        <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/geographicCoverage> a rdf:Property ;
+    rdfs:label "geographic coverage" ;
+    v:remark "Equivalent to geographic coverage MARC field 522." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/geographicCoverageNote> ;
+    v:value "Literal" ;
+    rdfs:comment "Geographic entities covered by the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/geographicSubdivision> a rdf:Property ;
+    rdfs:label "geographic subdivision" ;
+    v:remark "Equivalent to geographical subdivision, subfield z used with the MARC 6xx fields." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A geographicSubdivision" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Topic> .
+
+<http://bibfra.me/vocab/marc/governingAccessNote> a rdf:Property ;
+    rdfs:label "governing access note" ;
+    v:remark "Equivalent to MARC field 506 restrictions on access note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about the restrictions imposed on access to the described materials. For example, limited distribution for published works or restricted sections of archival collections." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/governmentPublication> a rdf:Property ;
+    rdfs:label "government publication" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates whether or not the item is published or produced by or for an international, national, state, provincial, or local government agency, or by any subdivision of such a body." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Books>,
+        <http://bibfra.me/vocab/marc/ComputerFiles>,
+        <http://bibfra.me/vocab/marc/ContinuingResources>,
+        <http://bibfra.me/vocab/marc/Maps>,
+        <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/grantingInstitution> a rdf:Property ;
+    rdfs:label "granting institution" ;
+    v:remark "Equivalent to subfield c of MARC field 502, dissertation note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/dissertationInstitution> ;
+    v:value "Literal" ;
+    rdfs:comment "Name of degree granting institution." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/grooveWidthPitch> a rdf:Property ;
+    rdfs:label "groove width / pitch" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Width of the groove of the recording for discs or the pitch of the groove for cylinders." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/hierarchy> a rdf:Property ;
+    rdfs:label "hierarchy" ;
+    v:remark "Equivalent to hierarchical level, subfield c of MARC field 351 organization and arrangement of materials." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The hierarchical position of the resources relative to each other." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/illustrations> a rdf:Property ;
+    rdfs:label "illustrations" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the presence of types of illustrations in the work" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Books> .
+
+<http://bibfra.me/vocab/marc/imageBitDepth> a rdf:Property ;
+    rdfs:label "image bit depth" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Exact bit depth of the scanned image(s) that comprise the electronic resource, or a three-character alphabetic code which indicates that the exact bit depth cannot be recorded. Since only exact bit depth is useful, coding should not include missing digits represented by hyphens (-)." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic> .
+
+<http://bibfra.me/vocab/marc/immediateSourceOfAcquisition> a rdf:Property ;
+    rdfs:label "immediate source of acquisition" ;
+    v:remark "Equivalent to subfield a of MARC field 541." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/immediateAcquisition> ;
+    v:value "Literal" ;
+    rdfs:comment "Information about the circumstances (e.g., source, date, method) under which the resource was directly acquired." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/inclusiveDates> a rdf:Property ;
+    rdfs:label "inclusive dates" ;
+    v:remark "Equivalent to inclusive dates subfield f of MARC 245 title statement." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The time period during which the described materials were created. Often used for archival materials." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/index> a rdf:Property ;
+    rdfs:label "index" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Information for this data element is derived from mention of an index in another part of the bibliographic record" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Books>,
+        <http://bibfra.me/vocab/marc/Maps> .
+
+<http://bibfra.me/vocab/marc/informationAboutDocumentation> a rdf:Property ;
+    rdfs:label "information about documentation" ;
+    v:remark "Equivalent to subfield a of MARC 556 information about documentation note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note on the documentation of the described materials, such as code or field books that describe a dataset." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/informationRelatingToCopyrightStatus> a rdf:Property ;
+    rdfs:label "information relating to copyright status" ;
+    v:remark "Equivalent to subfield a of MARC field 542 information relating to copyright status." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Information about the item that can be used to determine copyright status." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/intendedAudience> a rdf:Property ;
+    rdfs:label "intended audience" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/IntendedAudience> ;
+    v:value "Literal" ;
+    rdfs:comment "Information that identifies the specific intended or target audience or intellectual level for which the content described item is considered appropriate. Used to record interest and motivation levels and special learner characteristics." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/intendedAudienceSource> a rdf:Property ;
+    rdfs:label "intended audience source" ;
+    v:remark "Equivalent to source subfield b of MARC field 521 target audience note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The name or abbreviation of the agency or entity assigning the target audience note." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/interestLevel> a rdf:Property ;
+    rdfs:label "interest level" ;
+    v:remark "Equivalent to interest level, subfield b of MARC field 526 study program information note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The interest level of the work. For example, high school interest level." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/isbn> a rdf:Property ;
+    rdfs:label "isbn" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/isbn>,
+        <http://bibframe.org/vocab/issn> ;
+    v:value "Literal" ;
+    rdfs:comment "An issn number associated with an instance",
+        "International Standard Book Number." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/controlCode> .
+
+<http://bibfra.me/vocab/marc/issn> a rdf:Property ;
+    rdfs:label "issn" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/issn> ;
+    v:value "Literal" ;
+    rdfs:comment "An issn number associated with an instance",
+        "International Standard Serial Number identifier." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/controlCode> .
+
+<http://bibfra.me/vocab/marc/issueNumber> a rdf:Property ;
+    rdfs:label "issue number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/issueNumber> ;
+    v:value "Literal" ;
+    rdfs:comment "Number used to identify the issue designation or serial identification, assigned by a publisher to a sound recording." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/issuingBody> a rdf:Property ;
+    rdfs:label "issuing body" ;
+    v:remark "Equivalent to MARC field 550 issuing body note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note referring to current and former issuing bodies, including notes containing compiling, editing, or translating information that involves an issuing body." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/jurisdictionNote> a rdf:Property ;
+    rdfs:label "jurisdiction note" ;
+    v:remark "Equivalent to jurisdiction subfield b of MARC field 506 restrictions on access note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/Jurisdiction> ;
+    v:value "Literal" ;
+    rdfs:comment "The name of a person, an institution or a function or position within the institution by whom or which the terms governing access are imposed and/or enforced and to whom the restriction may be appealed." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/keyTitle> a rdf:Property ;
+    rdfs:label "key title" ;
+    v:remark "Equivalent to MARC field 222 key title." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/keyTitle> ;
+    v:value "Literal" ;
+    rdfs:comment "Unique title for a continuing resource that is assigned by the ISSN International Center in conjunction with an ISSN." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/kindOfColorStockOrPrint> a rdf:Property ;
+    rdfs:label "kind of color stock or print" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Type of color film stock or color print the item represents." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/kindOfCutting> a rdf:Property ;
+    rdfs:label "kind of cutting" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Kind of cutting of the grooves used on a disc." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/kindOfDiscCylinderOrTape> a rdf:Property ;
+    rdfs:label "kind of disc cylinder or tape" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "kind of disc cylinder or tape" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/kindOfMaterial> a rdf:Property ;
+    rdfs:label "kind of material" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Kind of material used in the manufacture of sound recordings (both instantaneous and mass-produced)." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/languageNote> a rdf:Property ;
+    rdfs:label "language note" ;
+    v:remark "Equivalent to MARC field 546 language note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/languageNote> ;
+    v:value "Literal" ;
+    rdfs:comment "Note concerning the language of the material or its parts." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/lcCallNumber> a rdf:Property ;
+    rdfs:label "LC call number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Library of Congress Call Number." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/lcItemNumber> a rdf:Property ;
+    rdfs:label "LC item number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Library of Congress Item Number." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/lcOverseasAcq> a rdf:Property ;
+    rdfs:label "LC acquisition program" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/lcOverseasAcq> ;
+    v:value "Literal" ;
+    rdfs:comment "Identification number assigned by the Library of Congress to works acquired through one of its overseas acquisition programs." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/lccn> a rdf:Property ;
+    rdfs:label "lccn" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/lccn> ;
+    v:value "Literal" ;
+    rdfs:comment "Library of Congress Control Number, which identifies the instance.",
+        "Library of Congress Control Number, which identifies the resource description." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/controlCode> .
+
+<http://bibfra.me/vocab/marc/legalDate> a rdf:Property ;
+    rdfs:label "legal date" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/legalDate> ;
+    v:value "Literal" ;
+    rdfs:comment "Date of legal work or promulgation of a law, or signing of a treaty." .
+
+<http://bibfra.me/vocab/marc/legalDeposit> a rdf:Property ;
+    rdfs:label "legal deposit" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/legalDeposit> ;
+    v:value "Literal" ;
+    rdfs:comment "Number assigned to a copyright or legal deposit, which Identifies a resource description." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/levelOfCompression> a rdf:Property ;
+    rdfs:label "level of compression" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Kind of compression the electronic resource has been subjected to." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic> .
+
+<http://bibfra.me/vocab/marc/levelOfContraction> a rdf:Property ;
+    rdfs:label "level of contraction" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Whether contractions are used." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/TactileMaterial> ;
+    rdfs:range <http://bibfra.me/vocab/marc/Liteal> .
+
+<http://bibfra.me/vocab/marc/literaryForm> a rdf:Property ;
+    rdfs:label "literary form" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the literary form of an item" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Books> .
+
+<http://bibfra.me/vocab/marc/literaryTextForSoundRecordings> a rdf:Property ;
+    rdfs:label "literary text for sound recordings" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the type of literary text contained in a nonmusical sound recording" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/locationOfEvent> a rdf:Property ;
+    rdfs:label "location of event" ;
+    v:remark "Equivalent to location of event subfield c of MARC fields 610, 611 and 650." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The location at which an event occurred." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Meeting> .
+
+<http://bibfra.me/vocab/marc/locationOfOriginalsDuplicates> a rdf:Property ;
+    rdfs:label "location of originals duplicates" ;
+    v:remark "Equivalent to MARC field 535 location of originals/duplicates note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The note about the repository that has custody over the originals or duplicates of the described materials. Used to point users to originals or duplicates located in off-site locations." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/locationOfOtherArchivalMaterial> a rdf:Property ;
+    rdfs:label "location of other archival material" ;
+    v:remark "Equivalent to MARC field 544 location of other archival materials note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note for the name and address of the custodian of the archival materials related to the described materials by provenance, specifically by having been, at a previous time, a part of the same collection or record group. Used to point users to related archival materials in other repositories." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/manufacture> a rdf:Property ;
+    rdfs:label "manufacture" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/manufacture> ;
+    v:value "Literal" ;
+    rdfs:comment "Information relating to manufacture of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/provision> .
+
+<http://bibfra.me/vocab/marc/materials> a rdf:Property ;
+    rdfs:label "materials" ;
+    v:remark "Equivalent to subfield 3 of MARC field 300 physical description." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The part of the described materials to which the field applies." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/materialsApplied> a rdf:Property ;
+    rdfs:label "materials applied" ;
+    v:remark "Equivalent to materials applied to surface subfield c of MARC field 340." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The physical substance applied to the material base (e.g., ink, oil, paint, tempera or a specific photographic emulsion such as albumen)." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/materialsSpec> a rdf:Property ;
+    rdfs:label "materials spec" ;
+    v:remark "Equivalent to materials specified, subfield 3 of MARC field 351 organization and arrangement of materials." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Distinguishes a subset of the described materials." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/mediaCategory> a rdf:Property ;
+    rdfs:label "media category" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/mediaCategory> ;
+    v:value "IRI" ;
+    rdfs:comment "Categorization reflecting the general type of intermediation device required to view, play, run, etc., the content of a resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/medium> a rdf:Property ;
+    rdfs:label "medium" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The particular form of storage for digitized information, such as magnetic tape or disc." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/mediumForSound> a rdf:Property ;
+    rdfs:label "medium for sound" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Specific medium used to carry the sound of an item (whether the sound is on the projected graphic or separate) and the type of sound playback required for the item." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture>,
+        <http://bibfra.me/vocab/marc/ProjectedGraphic>,
+        <http://bibfra.me/vocab/marc/Videorecording> .
+
+<http://bibfra.me/vocab/marc/motionPicturePresentationFormat> a rdf:Property ;
+    rdfs:label "motion picture presentation format" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Presentation format for motion pictures." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/musicParts> a rdf:Property ;
+    rdfs:label "music parts" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates whether the work being cataloged is, or contains parts." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/musicalPresentation> a rdf:Property ;
+    rdfs:label "musicalPresentation" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The title and statement of responsibility of a musical presentation." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/nalCallNumber> a rdf:Property ;
+    rdfs:label "NAL call number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "NAL Call Number." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/nalCopyStatement> a rdf:Property ;
+    rdfs:label "NAL copy statement" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "NAL Copy Statement." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/nalItemNumber> a rdf:Property ;
+    rdfs:label "NAL item number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "NAL Item Number" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/nameOfPart> a rdf:Property ;
+    rdfs:label "name of part" ;
+    v:remark "Equivalent to subfield p of MARC field 630 subject added entry uniform title." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The name designation of a part/section of a work." .
+
+<http://bibfra.me/vocab/marc/natureOfContents> a rdf:Property ;
+    rdfs:label "nature of contents" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates whether a significant part of the item is or contains certain types of material" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Books>,
+        <http://bibfra.me/vocab/marc/ContinuingResources> .
+
+<http://bibfra.me/vocab/marc/natureOfEntireWork> a rdf:Property ;
+    rdfs:label "nature of entire work" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the nature of the work" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/ContinuingResources> .
+
+<http://bibfra.me/vocab/marc/nlmCallNumber> a rdf:Property ;
+    rdfs:label "NLM call number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "NLM Call Number." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/nlmCopyStatement> a rdf:Property ;
+    rdfs:label "NLM copy statement" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "NLM Copy Statement." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/nlmItemNumber> a rdf:Property ;
+    rdfs:label "NLM item number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "NLM Item Number." .
+
+<http://bibfra.me/vocab/marc/numeration> a rdf:Property ;
+    rdfs:label "numeration" ;
+    v:remark "Equivalent to numeration subfield b of MARC fields 100, 600 and 700." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A Roman numeral alone or a Roman numeral and a subsequent part of a forename." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Person>,
+        <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/organizationMethod> a rdf:Property ;
+    rdfs:label "organization method" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/materialArrangement> ;
+    v:value "Literal" ;
+    rdfs:comment "Pattern of organization or arrangement of materials within a unit." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/originalAlphabetOrScriptOfTitle> a rdf:Property ;
+    rdfs:label "original alphabet or script of title" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the original alphabet or script of the language of the title on the source item upon which the key title" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/ContinuingResources> .
+
+<http://bibfra.me/vocab/marc/originalVersionNote> a rdf:Property ;
+    rdfs:label "original version note" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/originalVersion> ;
+    v:value "Literal" ;
+    rdfs:comment "A note that describes the original production of a work." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/otherControlNumber> a rdf:Property ;
+    rdfs:label "other control number" ;
+    v:remark "Equivalent to MARC field 024 other standard identifier." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Standard numbers or codes published on an item that cannot be accommodated by other control number terms." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/otherEventInformation> a rdf:Property ;
+    rdfs:label "other event information" ;
+    v:remark "Equivalent to other event information, subfield o of MARC field 518 date/time and place of an event note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Other information related to the date or place of the event." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/otherPhysicalDetails> a rdf:Property ;
+    rdfs:label "other physical details" ;
+    v:remark "Equivalent to other physical details, subfield b of MARC field 300 physical description." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Further characteristics of an item." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/ownership> a rdf:Property ;
+    rdfs:label "ownership" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/custodialHistory.html> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about the ownership and custodial history of the described materials from the time of their creation to the time of their accession" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/performerNote> a rdf:Property ;
+    rdfs:label "performerNote" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/performerNote> ;
+    v:value "Literal" ;
+    rdfs:comment "Information about the participants, players, narrators, presenters, or performers." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/periodCovered> a rdf:Property ;
+    rdfs:label "period covered" ;
+    v:remark "Equivalent to period covered subfield b of MARC field 513 type of report and period covered note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The time period covered by the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/physicalAccess> a rdf:Property ;
+    rdfs:label "physical access" ;
+    v:remark "Equivalent to physical access provisions subfield c of MARC field 506 restrictions on access note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Any current arrangements required for physical access. Arrangements may change." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/physicalMedium> a rdf:Property ;
+    rdfs:label "physical medium" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Material out of which the cartographic item is made." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Globe>,
+        <http://bibfra.me/vocab/marc/Map> .
+
+<http://bibfra.me/vocab/marc/physicalSubstance> a rdf:Property ;
+    rdfs:label "physical substance" ;
+    v:remark "Equivalent to material base and configuration subfield a of MARC field 340 physical medium." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Physical description information for an item that requires technical equipment for its use or an item that has special conservation or storage needs." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/physicalSupport> a rdf:Property ;
+    rdfs:label "physical support" ;
+    v:remark "Equivalent to support subfield e of MARC field 340 physical medium." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The physical material on which or in which records are mounted, bound or otherwise supported." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/placeOfEvent> a rdf:Property ;
+    rdfs:label "place of event" ;
+    v:remark "Equivalent to place of an event subfield p MARC field 518 date/time and place of an event." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Place of an event." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/plateNumber> a rdf:Property ;
+    rdfs:label "plate number" ;
+    v:remark "Equivalent to 1st indicator 2 in MARC field 028 publisher number." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/musicPlate> ;
+    v:value "Literal" ;
+    rdfs:comment "The plate number assigned by the publisher. Often the plate number is at the bottom of each page of music or on the title page." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/platformConstructionType> a rdf:Property ;
+    rdfs:label "platform construction type" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Type of construction of the platform serving as the base for the remote-sensing device. For the purposes of this data element, \"platform\" refers to any structure that serves as a base, not only flat surfaces." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/RemoteSensingImage> .
+
+<http://bibfra.me/vocab/marc/platformUseCategory> a rdf:Property ;
+    rdfs:label "platform use category" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Primary use intended for the platform specified in platform construction type." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/RemoteSensingImage> .
+
+<http://bibfra.me/vocab/marc/positiveNegativeAspect> a rdf:Property ;
+    rdfs:label "positive negative aspect" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Positive/negative aspect of the photocopy or film of the cartographic item.",
+        "Whether the film is positive or negative." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Map>,
+        <http://bibfra.me/vocab/marc/Microform>,
+        <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/primarySupportMaterial> a rdf:Property ;
+    rdfs:label "primary support material" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Type of material used for the support or base on which an image is printed or executed." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/NonprojectedGraphic> .
+
+<http://bibfra.me/vocab/marc/production> a rdf:Property ;
+    rdfs:label "production" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/production> ;
+    v:value "Literal" ;
+    rdfs:comment "Information relating to production of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/provision> .
+
+<http://bibfra.me/vocab/marc/productionElements> a rdf:Property ;
+    rdfs:label "production elements" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Whether the film is part of a complete production or is a preliminary or post-production element." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/productionReproductionDetails> a rdf:Property ;
+    rdfs:label "production reproduction details" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Photographic technique used to produce the cartographic item." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Map> .
+
+<http://bibfra.me/vocab/marc/projection> a rdf:Property ;
+    rdfs:label "projection" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the projection used in producing the work." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Maps> .
+
+<http://bibfra.me/vocab/marc/publication> a rdf:Property ;
+    rdfs:label "publication" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/publication>,
+        <http://purl.org/dc/terms/publisher> ;
+    v:value "Literal" ;
+    rdfs:comment "Information relating to publication of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/provision> .
+
+<http://bibfra.me/vocab/marc/publicationDateFrequency> a rdf:Property ;
+    rdfs:label "publication date frequency" ;
+    v:remark "Equivalent to date of current publication frequency subfield b of MARC field 310 current publication frequency." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Date of current publication frequency." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/publicationDesignation> a rdf:Property ;
+    rdfs:label "publication designation" ;
+    v:remark "Equivalent to dates of publication and/or sequential designation subfield a of MARC field 362." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The sequential designation and/or dates of publication. May consist of edition number, issue number, volume number, series of volume numbers or other sequential designations according to the usage of the publisher." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/publicationFrequency> a rdf:Property ;
+    rdfs:label "publication frequency" ;
+    v:remark "Equivalent to current publication frequency subfield a of MARC field 310." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/frequency> ;
+    v:value "Literal" ;
+    rdfs:comment "A note that describes the frequency of the continuing resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/publisherNumber> a rdf:Property ;
+    rdfs:label "publisher number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/publisherNumber> ;
+    v:value "Literal" ;
+    rdfs:comment "Number assigned by a publisher that is not one of the specific defined types." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/qualityAssuranceTargets> a rdf:Property ;
+    rdfs:label "quality assurance targets" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Whether quality assurance targets have been included appropriately at the time of reformatting/creation of the electronic resource." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic> .
+
+<http://bibfra.me/vocab/marc/readingLevel> a rdf:Property ;
+    rdfs:label "reading level" ;
+    v:remark "Equivalent to reading level subfield c of MARC field 526 study program information note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The assigned reading level of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/recordingTechnique> a rdf:Property ;
+    rdfs:label "recording technique" ;
+    v:remark "Equivalent to information recording technique subfield d of MARC field 340 physical medium." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The means or technique used to record the information in or on the material base (e.g., cut, embossed, molded, pressed, punched, thermofax and x-ray)." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/reductionRatioRange> a rdf:Property ;
+    rdfs:label "reductionRatioRange" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "reductionRatioRange" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Microform> .
+
+<http://bibfra.me/vocab/marc/reductionRation> a rdf:Property ;
+    rdfs:label "reductionRation" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "reductionRation" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Microform> .
+
+<http://bibfra.me/vocab/marc/refinedCategoriesOfColor> a rdf:Property ;
+    rdfs:label "refined categories of color" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "More specific color characteristics of the moving image" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture> .
+
+<http://bibfra.me/vocab/marc/reformattingQuality> a rdf:Property ;
+    rdfs:label "reformatting quality" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Reformatting quality of the electronic resource; an overall assessment of the physical quality of the electronic resource in relation to its intended use. It can be used to judge the level of quality of a file, and an institution's commitment to maintain its availability over time." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic> .
+
+<http://bibfra.me/vocab/marc/regularity> a rdf:Property ;
+    rdfs:label "regularity" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the regularity of a work" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/ContinuingResources> .
+
+<http://bibfra.me/vocab/marc/relief> a rdf:Property ;
+    rdfs:label "relief" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the relief type specified" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Maps> .
+
+<http://bibfra.me/vocab/marc/remainderOfScale> a rdf:Property ;
+    rdfs:label "remainder of scale" ;
+    v:remark "Equivalent to remainder of scale note subfield b of MARC field 507 scale note for graphic material." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The remainder of the scale note. If the still image or three-dimensional form is not to scale, and this fact is considered important for identification or selection, record that information." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/representativeFractionOfScale> a rdf:Property ;
+    rdfs:label "representative fraction of scale" ;
+    v:remark "Equivalent to representative fraction of scale note subfield b of MARC field 507 scale note for graphic." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note on the representative fraction of scale." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/reproductionNote> a rdf:Property ;
+    rdfs:label "reproduction note" ;
+    v:remark "Equivalent to type of reproduction subfield a of MARC field 533 reproduction note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note that identifies the type of reproduction being described." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/runtime> a rdf:Property ;
+    rdfs:label "runtime" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the runtime of the moving pictures or videorecordings." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/secondarySupportMaterial> a rdf:Property ;
+    rdfs:label "secondary support material" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Type of material (other than normal museum matting) to which the primary support (007/04) is attached." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/NonprojectedGraphic>,
+        <http://bibfra.me/vocab/marc/ProjectedGraphic> .
+
+<http://bibfra.me/vocab/marc/sensorType> a rdf:Property ;
+    rdfs:label "sensor type" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "For the recording mode of the remote-sensing device, specifically, whether the sensor is involved in the creation of the transmission it eventually measures." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/RemoteSensingImage> .
+
+<http://bibfra.me/vocab/marc/seriesStatement> a rdf:Property ;
+    rdfs:label "series statement" ;
+    v:remark "Equivalent to series statement subfield a of MARC field 490 series statement." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The title proper of the series." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/seriesVolume> a rdf:Property ;
+    rdfs:label "series volume" ;
+    v:remark "Equivalent to volume number/sequential designation subfield v of MARC field 490 series statement." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The volume number or other sequential designation used in conjunction with the series statement." .
+
+<http://bibfra.me/vocab/marc/size> a rdf:Property ;
+    rdfs:label "size" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The size of the Instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/sound> a rdf:Property ;
+    rdfs:label "sound" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Whether the production of sound is an integral part of an electronic resource." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic> .
+
+<http://bibfra.me/vocab/marc/soundOnMediumOrSeparate> a rdf:Property ;
+    rdfs:label "sound on medium or separate" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Whether the sound is on or is separate from the projected graphic (i.e., on the accompanying material)." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/MotionPicture>,
+        <http://bibfra.me/vocab/marc/ProjectedGraphic>,
+        <http://bibfra.me/vocab/marc/Videorecording> .
+
+<http://bibfra.me/vocab/marc/source> a rdf:Property ;
+    rdfs:label "source" ;
+    v:remark "Equivalent to source of term subfield 2 of MARC field 655 index term genre/form." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A MARC code that identifies the source list from which the index term was assigned." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Form>,
+        <http://bibfra.me/vocab/lite/Topic> .
+
+<http://bibfra.me/vocab/marc/specialFormatCharacteristics> a rdf:Property ;
+    rdfs:label "special format characteristics" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the special format characteristics of the map." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Maps> .
+
+<http://bibfra.me/vocab/marc/specialPhysicalCharacteristics> a rdf:Property ;
+    rdfs:label "special physical characteristics" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Other special physical characteristics about the braille." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/TactileMaterial> .
+
+<http://bibfra.me/vocab/marc/specialPlaybackCharacteristics> a rdf:Property ;
+    rdfs:label "special playback characteristics" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Playback characteristics for sound recordings, including special equipment or equalization necessary for proper playback. This code is not used to indicate special processes used during recording unless those processes must be applied during playback." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/specificMaterialDesignation> a rdf:Property ;
+    rdfs:label "specific material designation" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Special class of tactile materialspecific material to which the item belongs." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Electronic>,
+        <http://bibfra.me/vocab/marc/Globe>,
+        <http://bibfra.me/vocab/marc/Kit>,
+        <http://bibfra.me/vocab/marc/Map>,
+        <http://bibfra.me/vocab/marc/Microform>,
+        <http://bibfra.me/vocab/marc/MotionPicture>,
+        <http://bibfra.me/vocab/marc/NonprojectedGraphic>,
+        <http://bibfra.me/vocab/marc/NotatedMusic>,
+        <http://bibfra.me/vocab/marc/Print>,
+        <http://bibfra.me/vocab/marc/ProjectedGraphic>,
+        <http://bibfra.me/vocab/marc/RemoteSensingImage>,
+        <http://bibfra.me/vocab/marc/SoundRecording>,
+        <http://bibfra.me/vocab/marc/TactileMaterial>,
+        <http://bibfra.me/vocab/marc/Videorecording> .
+
+<http://bibfra.me/vocab/marc/speed> a rdf:Property ;
+    rdfs:label "speed" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Playback speed of the sound recording." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/statementOfResponsibility> a rdf:Property ;
+    rdfs:label "statement of responsibility" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/titleStatement> ;
+    v:value "Literal" ;
+    rdfs:comment "Transcribed information from the resource identifying the names and possibly functions of Agents responsible for or contributing to the creation of the intellectual or artistic content of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/stockNumber> a rdf:Property ;
+    rdfs:label "stock number" ;
+    v:remark "Equivalent to stock number subfield a of MARC field 037 source of acquisition." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/stockNumber> ;
+    v:value "Literal" ;
+    rdfs:comment "Identification number such as distributor, publisher, or vendor number." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/studyProgramName> a rdf:Property ;
+    rdfs:label "study program name" ;
+    v:remark "Equivalent to program name subfield a of MARC 526 program of study information note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The name of the study program that uses the title described." .
+
+<http://bibfra.me/vocab/marc/subordinateUnit> a rdf:Property ;
+    rdfs:label "subordinate unit" ;
+    v:remark "Equivalent to subordinate unit subfield b of MARC fields 110, 610 and 710." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Corporate names or corporate subheadings that follow the name of the highest hierarchical unit." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Organization> .
+
+<http://bibfra.me/vocab/marc/summary> a rdf:Property ;
+    rdfs:label "summary" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/summary> ;
+    v:value "Literal" ;
+    rdfs:comment "Description of the content of a resource, such as an abstract, summary, etc.." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/description> .
+
+<http://bibfra.me/vocab/marc/summaryExpansion> a rdf:Property ;
+    rdfs:label "summary expansion" ;
+    v:remark "Equivalent to summary, etc. subfield a of MARC field 520." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The text of the abstract, review, summary, etc." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/summaryURI> a rdf:Property ;
+    rdfs:label "summary URI" ;
+    v:remark "Equivalent to subfield u of MARC field 520 summary, etc." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A Uniform Resource Identifier that links to an abstract, review, summary, etc." .
+
+<http://bibfra.me/vocab/marc/supplement> a rdf:Property ;
+    rdfs:label "supplement" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/supplement> ;
+    v:value "Literal" ;
+    rdfs:comment "Work that updates or otherwise complements the predominant work." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/systemControlNumber> a rdf:Property ;
+    rdfs:label "system control number" ;
+    v:remark "Equivalent to MARC field 035 system control number." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Contains local control numbers that identify the same bibliographic record. Numbers may include local system, accession, or serial control numbers." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/systemDetails> a rdf:Property ;
+    rdfs:label "system details" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about the technical information for the item." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/tapeConfiguration> a rdf:Property ;
+    rdfs:label "tape configuration" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Configuration of the tape." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/tapeWidth> a rdf:Property ;
+    rdfs:label "Tape width" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "width of the tape." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/SoundRecording> .
+
+<http://bibfra.me/vocab/marc/targetAudience> a rdf:Property ;
+    rdfs:label "target audience" ;
+    v:remark "Control Code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    rdfs:comment "Target audience of the Work" ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Books>,
+        <http://bibfra.me/vocab/marc/ComputerFiles>,
+        <http://bibfra.me/vocab/marc/Music>,
+        <http://bibfra.me/vocab/marc/VisualMaterials> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/audience> .
+
+<http://bibfra.me/vocab/marc/technique> a rdf:Property ;
+    rdfs:label "technique" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates the technique used in creating motion in motion pictures or videorecordings." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/VisualMaterials> .
+
+<http://bibfra.me/vocab/marc/termsGoverningUse> a rdf:Property ;
+    rdfs:label "terms governing use" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about terms governing the use of the materials after access has been provided. Use for copyrights, film rights, trade restrictions, etc., that restrict the right to exhibit, fictionalize, quote or reproduce." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/titleNumber> a rdf:Property ;
+    rdfs:label "title number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The number designations of a part/section of an item." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/titlePart> a rdf:Property ;
+    rdfs:label "title part" ;
+    v:remark "Equivalent to name of part/section of a work subfield p of MARC fields 240, 243 and 245." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The name designation of the part or section of a work." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/titleRemainder> a rdf:Property ;
+    rdfs:label "title remainder" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Word, character, or group of words and/or characters that contains the remainder of the title information after the main title." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/titleVariation> a rdf:Property ;
+    rdfs:label "title variation" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/titleVariation> ;
+    v:value "Literal" ;
+    rdfs:comment "Title associated with the resource that is different from the main title." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/titleVariationDate> a rdf:Property ;
+    rdfs:label "title variation date" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/titleVariationDate> ;
+    v:value "Literal" ;
+    rdfs:comment "Date or sequential designation of title variation." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/titleVariationRemainder> a rdf:Property ;
+    rdfs:label "titleVariationRemainder" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/titleVariationDate> ;
+    v:value "Literal" ;
+    rdfs:comment "Date or sequential designation of title variation." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/marc/titles> a rdf:Property ;
+    rdfs:label "titles" ;
+    v:remark "Dr, etc.",
+        "Equivalent to subfield c of MARC field 100 main entry personal name." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Titles and other words associated with a name." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Person>,
+        <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/transpositionAndArrangement> a rdf:Property ;
+    rdfs:label "transposition and arrangement" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Indicates whether all or part of the item being cataloged is a transposition and/or arrangement of another work." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Music> .
+
+<http://bibfra.me/vocab/marc/typeOfComputerFile> a rdf:Property ;
+    rdfs:label "type of computer file" ;
+    v:remark "Equivalent to MARC field 516 type of computer file or data note." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note that characterizes the computer file." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/typeOfReport> a rdf:Property ;
+    rdfs:label "type of report" ;
+    v:remark "Equivalent to MARC field 513." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note about the type of report and the period covered." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/typeOfReproduction> a rdf:Property ;
+    rdfs:label "type of reproduction" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Whether the cartographic item is a facsimile or other type of reproduction." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Globe>,
+        <http://bibfra.me/vocab/marc/Map> .
+
+<http://bibfra.me/vocab/marc/typeOfunit> a rdf:Property ;
+    rdfs:label "type of unit" ;
+    v:remark "Equivalent to type of unit subfield f of MARC field 300 physical description." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The type of unit (e.g., box, cubic feet, linear feet, page, or volume) to which the extent of an item relates. Use to identify the configuration of material and how it is stored. Use for archival and rare materials only." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/upc> a rdf:Property ;
+    rdfs:label "upc" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/upc> ;
+    v:value "Literal" ;
+    rdfs:comment "Universal Product Code." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/uriNote> a rdf:Property ;
+    rdfs:label "uri note" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "A note on the Uniform Resource Identifier." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/marc/version> a rdf:Property ;
+    rdfs:label "version" ;
+    v:remark "Equivalent to subfield s of MARC fields 240 and 243." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The version, editions, etc., information." .
+
+<http://bibfra.me/vocab/marc/videoRecordingNumber> a rdf:Property ;
+    rdfs:label "video recording number" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:synonyms <http://bibframe.org/vocab/videorecordingNumber> ;
+    v:value "Literal" ;
+    rdfs:comment "Number assigned by a publisher to a video recording." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/videorecordingFormat> a rdf:Property ;
+    rdfs:label "videorecording format" ;
+    v:remark "Control code information" ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "Videotape or videodisc recording format." ;
+    rdfs:domain <http://bibfra.me/vocab/marc/Videorecording> .
+
+<http://bibfra.me/vocab/marc/volume> a rdf:Property ;
+    rdfs:label "volume" ;
+    v:remark "Equivalent to volume subfield v of MARC field 830 series added entry uniform title." ;
+    v:scope <http://bibfra.me/vocab/marc> ;
+    v:value "Literal" ;
+    rdfs:comment "The volume number or other sequential designation used in conjunction with the series statement." .
+

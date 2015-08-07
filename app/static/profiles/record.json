@@ -6,73 +6,128 @@
                 "id": "bfp:Work:Audio",
                 "class": {
                     "classLabel": "Audio",
-                    "id": "http://bibframe.org/vocab/Audio",
+                    "type": "http://bibfra.me/vocab/marc/Audio",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibframe.org/vocab/workTitle",
-                                "propertyLabel": "Album name"
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Title"
                             },
                             "repeatable": "false",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/rel/artist",
+                                "id": "http://bibfra.me/vocab/relation/creator",
+                                "propertyLabel": "Creator"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/artist",
                                 "propertyLabel": "Artist"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/description",
-                                "propertyLabel": "Description"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/subject",
-                                "propertyLabel": "Subject"
+                                "id": "http://bibfra.me/view/links/relation/musician",
+                                "propertyLabel": "Artist"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", 
-							    "bfp:Agent:Organization", 
-							    "bfp:Authority:Topic" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/language",
-                                "propertyLabel": "Language"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": "bp:language"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/rel/recordingArtist",
+                                "id": "http://bibfra.me/vocab/relation/recordingengineer",
                                 "propertyLabel": "Recording Engineer"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization"
+                                ]
                             }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/av/track",
+                                "id": "http://bibfra.me/vocab/relation/producer",
+                                "propertyLabel": "Producer"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/description",
+                                "propertyLabel": "Description"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/subject",
+                                "propertyLabel": "Subject"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person" ,
+                                    "bfp:Agent:Organization", 
+                                    "bfp:Authority:Topic"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/language",
+                                "propertyLabel": "Language"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [ "bfp:Category" ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/av/track",
                                 "propertyLabel": "Track"
                             },
                             "repeatable": "true",
@@ -85,33 +140,41 @@
                 }
             },
             {
-                "id": "vinyl",
+                "id": "bfp:Instance:Vinyl",
                 "class": {
                     "classLabel": "Vinyl Record",
-                    "id": "http://bibframe.org/vocab/proposed/Vinyl",
-                    "instanceOf": "http://bibframe.org/vocab/Audio",
+                    "type": "http://bibfra.me/vocab/av/Vinyl",
+                    "instantiates": "http://bibfra.me/vocab/marc/Audio",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/provider",
-                                "propertyLabel": "Label"
+                                "id": "http://bibfra.me/vocab/lite/format",
+                                "propertyLabel": "Format"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/provision",
+                                "propertyLabel": "Record Label"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:DistributeEvent" ]
+                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
                             }
                         },
-			{
+            {
                             "property": {
-                                "id": "http://bibframe.org/vocab/image",
+                                "id": "http://bibfra.me/vocab/lite/image",
                                 "propertyLabel": "Album Cover"
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": "e:Image"
+                                "descriptionTemplateRef": [ "e:Image" ]
                             }
-			}
+            }
                     ]
                 }
             },
@@ -119,29 +182,33 @@
                 "id": "bfp:Audio:Track",
                 "class": {
                     "classLabel": "Track",
-                    "id": "http://bibframe.org/vocab/av/Track",
+                    "type": "http://bibfra.me/vocab/av/Track",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
+                                "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Name"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/rel/artist",
-                                "propertyLabel": "Artist"
+                                "id": "http://bibfra.me/vocab/relation/creator",
+                                "propertyLabel": "Creator"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Agent:Person", "bfp:Agent:Organization", "bfp:Agent:Family" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Family"
+                                ]
                             }
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/duration",
+                                "id": "http://bibfra.me/vocab/av/duration",
                                 "propertyLabel": "Duration"
                             },
                             "type": "literal"
@@ -153,7 +220,7 @@
                 "id": "e:Image",
                 "class": {
                     "classLabel": "Image",
-                    "id": "http://example.org/vocab/bfp/Image",
+                    "type": "http://example.org/vocab/bfp/Image",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -171,14 +238,14 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/width",
+                                "id": "http://bibfra.me/vocab/av/width",
                                 "propertyLabel": "Width"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/height",
+                                "id": "http://bibfra.me/vocab/av/height",
                                 "propertyLabel": "Height"
                             },
                             "type": "literal"

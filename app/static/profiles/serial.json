@@ -1,19 +1,34 @@
 {
     "Profile": {
-        "id": "bfp:Monograph:Bibliography",
-        "title": "Monograph -- Bibliography",
-        "description": "An example monograph (Bibliography) profile reflecting the cataloging practices of example academic library",
+        "id": "bfp:Serial",
+        "title": "Serial",
         "resourceTemplate": [
             {
-                "id": "bfp:Work:Bibliography",
+                "id": "bfp:Work:Serial",
                 "class": {
-                    "classLabel": "Bibliography",
-                    "type": "http://bibfra.me/vocab/marc/Bibliography",
+                    "classLabel": "Serial",
+                    "type": "http://bibfra.me/vocab/marc/Serials",
                     "propertyTemplate": [
+                        {                   
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/catalogingSource",
+                                "propertyLabel": "Cataloging Source"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/lcCallNumber",
+                                "propertyLabel": "Library of Congress Call Number"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/title",
+                                "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Title"
                             },
                             "repeatable": "false",
@@ -28,15 +43,15 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/titleAlternative",
+                                "id": "http://bibfra.me/vocab/lite/titleAlternative",
                                 "propertyLabel": "Alternative Title"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/date",
-                                "propertyLabel": "Date"
+                                "id": "http://bibfra.me/vocab/marc/statementOfResponsibility",
+                                "propertyLabel": "Statement of Responsibility"
                             },
                             "type": "literal"
                         },
@@ -45,15 +60,36 @@
                                 "id": "http://bibfra.me/vocab/relation/author",
                                 "propertyLabel": "Author"
                             },
-                            "type": "resource", 
+                            "type": "resource",
                             "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Agent:Person", 
-                                    "bfp:Agent:Organization", 
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
                                     "bfp:Agent:Meeting"
                                 ]
                             }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/date",
+                                "propertyLabel": "Date"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/dateStart",
+                                "propertyLabel": "Start Date"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/dateEnd",
+                                "propertyLabel": "End Date"
+                            },
+                            "type": "literal"
                         },
                         {
                             "property": {
@@ -64,8 +100,8 @@
                             "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Agent:Person", 
-                                    "bfp:Agent:Organization", 
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
                                     "bfp:Agent:Meeting"
                                 ]
                             }
@@ -79,8 +115,8 @@
                             "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Agent:Person", 
-                                    "bfp:Agent:Organization", 
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
                                     "bfp:Agent:Meeting"
                                 ]
                             }
@@ -94,7 +130,7 @@
                             "repeatable": "true",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Agent:Person", 
+                                    "bfp:Agent:Person",
                                     "bfp:Agent:Organization",
                                     "bfp:Agent:Meeting"
                                 ]
@@ -102,11 +138,18 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/description",
-                                "propertyLabel": "Description"
+                                "id": "http://bibfra.me/vocab/relation/illustrator",
+                                "propertyLabel": "Illustrator"
                             },
+                            "type": "resource",
                             "repeatable": "true",
-                            "type": "literal"
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Agent:Meeting"
+                                ]
+                            }
                         },
                         {
                             "property": {
@@ -116,7 +159,9 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
+                                "descriptionTemplateRef": [
+                                    "bfp:Category"
+                                ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/contentTypes/txt",
                                 "defaultLiteral": "text"
@@ -124,7 +169,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/genre",
+                                "id": "http://bibfra.me/vocab/lite/genre",
                                 "propertyLabel": "Genre"
                             },
                             "repeatable": "true",
@@ -133,7 +178,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/contentsNote",
-                                "propertyLabel": "Contents"
+                                "propertyLabel": "Contents Note"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -150,14 +195,6 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/lite/audience",
-                                "propertyLabel": "Audience"
-                            },
-                            "repeatable": "true",
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
                                 "id": "http://bibfra.me/vocab/lite/subject",
                                 "propertyLabel": "Subject"
                             },
@@ -165,9 +202,9 @@
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
-                                    "bfp:Agent:Person", 
-                                    "bfp:Agent:Organization", 
-                                    "bfp:Authority:Place", 
+                                    "bfp:Agent:Person",
+                                    "bfp:Agent:Organization",
+                                    "bfp:Authority:Place",
                                     "bfp:Authority:Topic"
                                 ]
                             }
@@ -182,62 +219,36 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/version",
-                                "propertyLabel": "Version"
+                                "id": "http://bibfra.me/vocab/marc/frequency",
+                                "propertyLabel": "Frequency"
                             },
                             "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/edition",
-                                "propertyLabel": "Edition Statement"
-                            },
-                            "repeatable": "true",
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/view/links/relation/hasEdition",
-                                "propertyLabel": "Has Other Edition"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/view/links/relation/isEditionOf",
-                                "propertyLabel": "Is Edition Of"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/view/links/relation/isTranslationOf",
+                                "id": "http://bibfra.me/vocab/relation/isTranslationOf",
                                 "propertyLabel": "Is Translation Of"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Serial"
+                                ]
                             }
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/hasTranslation",
+                                "id": "http://bibfra.me/vocab/relation/hasTranslation",
                                 "propertyLabel": "Has Translation"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Book"
+                                ]
                             }
                         },
                         {
@@ -248,7 +259,9 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Book"
+                                ]
                             }
                         },
                         {
@@ -259,7 +272,9 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Work:Bibliography" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Book"
+                                ]
                             }
                         },
                         {
@@ -269,42 +284,108 @@
                             },
                             "repeatable": "true",
                             "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/classificationLcc",
-                                "propertyLabel": "LCC Classification"
-                            },
-                            "type": "literal"
                         }
                     ]
                 }
             },
             {
-                "id": "bfp:Instance:ElectronicBibliography",
+                "id": "bfp:Instance:ElectronicSerial",
                 "class": {
-                    "classLabel": "Electronic",
+                    "classLabel": "Electronic Serial",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
+                    "instantiates": "http://bibfra.me/vocab/marc/Serials",
                     "propertyTemplate": [
-                        
+                        {
+                            "mandatory": "true",
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Title"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/edition",
-                                "propertyLabel": "Edition Statement"
+                                "id": "http://bibfra.me/vocab/marc/abbreviatedTitle",
+                                "propertyLabel": "Abbreviated Title"
                             },
                             "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/publication",
+                                "id": "http://bibfra.me/vocab/dcrmb/keyTitle",
+                                "propertyLabel": "Key Title"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/edition",
+                                "propertyLabel": "Edition"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/hasEdition",
+                                "propertyLabel": "Has Other Edition"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Serial"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/isEditionOf",
+                                "propertyLabel": "Is Edition Of"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Serial"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://publication/vocab/publication",
                                 "propertyLabel": "Publication"
                             },
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Event:ProviderEvent"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/governmentPublication",
+                                "propertyLabel": "Government Publication"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/distribution",
+                                "propertyLabel": "Distribution"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Event:ProviderEvent"
+                                ]
                             }
                         },
                         {
@@ -315,18 +396,9 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:CopyrightEvent" ]
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/marc/distribution",
-                                "propertyLabel": "Distribution"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
+                                "descriptionTemplateRef": [
+                                    "bfp:Event:CopyrightEvent"
+                                ]
                             }
                         },
                         {
@@ -339,17 +411,34 @@
                         },
                         {
                             "property": {
+                                "id": "http://bibfra.me/vocab/marc/governingAccessNote",
+                                "propertyLabel": "Governing Access Note"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/extent",
+                                "propertyLabel": "Extent"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibfra.me/vocab/marc/carrierCategory",
                                 "propertyLabel": "Carrier Category"
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
+                                "descriptionTemplateRef": [
+                                    "bfp:Category"
+                                ],
                                 "editable": "true",
-                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
-                                "defaultLiteral": "online resource"
+                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
+                                "defaultLiteral": "volume"
                             }
-                            
                         },
                         {
                             "property": {
@@ -358,12 +447,13 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
+                                "descriptionTemplateRef": [
+                                    "bfp:Category"
+                                ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
                                 "defaultLiteral": "unmediated"
                             }
-                            
                         },
                         {
                             "property": {
@@ -375,8 +465,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/isbn",
-                                "propertyLabel": "ISBN"
+                                "id": "http://bibfra.me/vocab/marc/issn",
+                                "propertyLabel": "ISSN"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -391,10 +481,41 @@
                         },
                         {
                             "property": {
+                                "id": "http://bibfra.me/vocab/lite/dimensions",
+                                "propertyLabel": "Dimensions"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
                                 "propertyLabel": "uri"
                             },
                             "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/image",
+                                "propertyLabel": "image"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/editionStatement",
+                                "propertyLabel": "Edition Statement"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/format",
+                                "propertyLabel": "Format"
+                            },
                             "type": "literal"
                         },
                         {
@@ -423,7 +544,7 @@
                         },
                         {
                             "property": {
-                                "id":"http://bibfra.me/vocab/marc/computerFilecharacteristics",
+                                "id": "http://bibfra.me/vocab/marc/computerFilecharacteristics",
                                 "propertyLabel": "Computer File Characteristics"
                             },
                             "repeatable": "true",
@@ -433,24 +554,79 @@
                 }
             },
             {
-                "id": "bfp:Instance:PrintBibliography",
+                "id": "bfp:Instance:PrintSerial",
                 "class": {
-                    "classLabel": "Print Bibliography",
+                    "classLabel": "Print Serial",
                     "type": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
+                    "instantiates": "http://bibfra.me/vocab/marc/Serials",
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/edition",
-                                "propertyLabel": "Edition Statement"
+                                "id": "http://bibfra.me/vocab/dcrmb/keyTitle",
+                                "propertyLabel": "Key Title"
                             },
                             "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
+                                "id": "http://bibfra.me/vocab/dcrmb/titleProper",
+                                "propertyLabel": "Title Proper"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/edition",
+                                "propertyLabel": "Edition"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/hasEdition",
+                                "propertyLabel": "Has Other Edition"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Serial"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/relation/isEditionOf",
+                                "propertyLabel": "Is Edition Of"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Work:Serial"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibfra.me/vocab/marc/publication",
                                 "propertyLabel": "Publication"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Event:ProviderEvent"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/distribution",
+                                "propertyLabel": "Distribution"
                             },
                             "repeatable": "true",
                             "type": "resource",
@@ -475,21 +651,24 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/distribution",
-                                "propertyLabel": "Distribution"
+                                "id": "http://bibfra.me/vocab/lite/rightsStatement",
+                                "propertyLabel": "Rights Statement"
                             },
                             "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [
-                                    "bfp:Event:ProviderEvent"
-                                ]
-                            }
+                            "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/lite/rightsStatement",
-                                "propertyLabel": "Rights Statement"
+                                "id": "http://bibfra.me/vocab/marc/governingAccessNote",
+                                "propertyLabel": "Governing Access Note"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/extent",
+                                "propertyLabel": "Extent"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -505,8 +684,8 @@
                                     "bfp:Category"
                                 ],
                                 "editable": "true",
-                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
-                                "defaultLiteral": "online resource"
+                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
+                                "defaultLiteral": "volume"
                             }
                         },
                         {
@@ -534,8 +713,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/isbn",
-                                "propertyLabel": "ISBN"
+                                "id": "http://bibfra.me/vocab/marc/issn",
+                                "propertyLabel": "ISSN"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -550,11 +729,34 @@
                         },
                         {
                             "property": {
+                                "id": "http://bibfra.me/vocab/lite/format",
+                                "propertyLabel": "Format"
+                            },
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/dimensions",
+                                "propertyLabel": "Dimensions"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
                                 "propertyLabel": "uri"
                             },
                             "repeatable": "true",
                             "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/image",
+                                "propertyLabel": "Edition Statement"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
                         }
                     ]
                 }

@@ -1,0 +1,3701 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v: <http://bibfra.me/purl/versa/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bibfra.me/vocab/relation/> v:title "BIBFRAME RELATION vocabulary" .
+
+<http://bibfra.me/vocab/relation/abridger> a rdf:Property ;
+    rdfs:label "abridger" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/abr> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by shortening or condensing the original work but leaving the nature and content of the original work substantially unchanged. For substantial modifications that result in the creation of a new work, see author" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/absorbed> a rdf:Property ;
+    rdfs:label "absorbed",
+        "absorbedInPartBy" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/absorbed>,
+        <http://bibframe.org/vocab/absorbedInPartBy> ;
+    rdfs:comment "Work that has been incorporated into another Work",
+        "Work that has been partially incorporated into another work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/absorbedBy> a rdf:Property ;
+    rdfs:label "absorbed by" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/absorbedBy> ;
+    rdfs:comment "Work that incorporates another work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/absorbedInPart> a rdf:Property ;
+    rdfs:label "absorbed in part" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/absorbedInPart> ;
+    rdfs:comment "Work that has been partially incorporated into another work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/actor> a rdf:Property ;
+    rdfs:label "actor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/act> ;
+    rdfs:comment "A performer contributing to an expression of a work by acting as a cast member or player in a musical or dramatic presentation, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/adapter> a rdf:Property ;
+    rdfs:label "adapter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/adp> ;
+    rdfs:comment "A person or organization who 1) reworks a musical composition, usually for a different medium, or 2) rewrites novels or stories for motion pictures or other audiovisual medium." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/addressee> a rdf:Property ;
+    rdfs:label "addressee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rcp> ;
+    rdfs:comment "A person, family, or organization to whom the correspondence in a work is addressed" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/analyst> a rdf:Property ;
+    rdfs:label "analyst" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/anl> ;
+    rdfs:comment "A person or organization that reviews, examines and interprets data or information in a specific area" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/animator> a rdf:Property ;
+    rdfs:label "animator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/anm> ;
+    rdfs:comment "A person contributing to a moving image work or computer program by giving apparent movement to inanimate objects or drawings. For the creator of the drawings that are animated, see artist" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/annotator> a rdf:Property ;
+    rdfs:label "annotator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ann> ;
+    rdfs:comment "A person who makes manuscript annotations on an item" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/appellant> a rdf:Property ;
+    rdfs:label "appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/apl> ;
+    rdfs:comment "A person or organization who appeals a lower court's decision" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/appellee> a rdf:Property ;
+    rdfs:label "appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ape> ;
+    rdfs:comment "A person or organization against whom an appeal is taken" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/applicant> a rdf:Property ;
+    rdfs:label "applicant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/app> ;
+    rdfs:comment "A  person or organization responsible for the submission of an application or who is named as eligible for the results of the processing of the application (e.g., bestowing of rights, reward, title, position)" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/appraiser> a rdf:Property ;
+    rdfs:label "appraiser" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/architect> a rdf:Property ;
+    rdfs:label "architect" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/arc> ;
+    rdfs:comment "A person, family, or organization responsible for creating an architectural design, including a pictorial representation intended to show how a building, etc., will look when completed. It also oversees the construction of structures" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/arranger> a rdf:Property ;
+    rdfs:label "arranger" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/arr> ;
+    rdfs:comment "A person, family, or organization contributing to a musical work by rewriting the composition for a medium of performance different from that for which the work was originally intended, or modifying the work for the same medium of performance, etc., such that the musical substance of the original composition remains essentially unchanged. For extensive modification that effectively results in the creation of a new musical work, see composer" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/arrangerofmusic> a rdf:Property ;
+    rdfs:label "arranger of music" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/artcopyist> a rdf:Property ;
+    rdfs:label "art copyist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/acp> ;
+    rdfs:comment "A person (e.g., a painter or sculptor) who makes copies of works of visual art" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/artdirector> a rdf:Property ;
+    rdfs:label "art director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/adi> ;
+    rdfs:comment "A person contributing to a motion picture or television production by overseeing the artists and craftspeople who build the sets" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/artist> a rdf:Property ;
+    rdfs:label "artist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/art> ;
+    rdfs:comment "A person, family, or organization responsible for creating a work by conceiving, and implementing, an original graphic design, drawing, painting, etc. For book illustrators, prefer Illustrator [ill]" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/artisticdirector> a rdf:Property ;
+    rdfs:label "artistic director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ard> ;
+    rdfs:comment "A person responsible for controlling the development of the artistic style of an entire production, including the choice of works to be presented and selection of senior production staff" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/assignee> a rdf:Property ;
+    rdfs:label "assignee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/asg> ;
+    rdfs:comment "A person or organization to whom a license for printing or publishing has been transferred" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/associatedname> a rdf:Property ;
+    rdfs:label "associated name" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/asn> ;
+    rdfs:comment "A person or organization associated with or found in an item or collection, which cannot be determined to be that of a Former owner [fmo] or other designated relationship indicative of provenance" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/attributedname> a rdf:Property ;
+    rdfs:label "attributed name" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/att> ;
+    rdfs:comment "An author, artist, etc., relating him/her to a resource for which there is or once was substantial authority for designating that person as author, creator, etc. of the work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/auctioneer> a rdf:Property ;
+    rdfs:label "auctioneer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/auc> ;
+    rdfs:comment "A person or organization in charge of the estimation and public auctioning of goods, particularly books, artistic works, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/author> a rdf:Property ;
+    rdfs:label "author" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/aut> ;
+    rdfs:comment "A person, family, or organization responsible for creating a work that is primarily textual in content, regardless of media type (e.g., printed text, spoken word, electronic text, tactile text) or genre (e.g., poems, novels, screenplays, blogs). Use also for persons, etc., creating a new work by paraphrasing, rewriting, or adapting works by another creator such that the modification has substantially changed the nature and content of the original or changed the medium of expression" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/authorinquotationsortextabstracts> a rdf:Property ;
+    rdfs:label "author in quotations or text abstracts" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/aqt> ;
+    rdfs:comment "A person or organization whose work is largely quoted or extracted in works to which he or she did not contribute directly. Such quotations are found particularly in exhibition catalogs, collections of photographs, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/authorofafterwordcolophonetc> a rdf:Property ;
+    rdfs:label "author of afterword, colophon, etc." ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/aft> ;
+    rdfs:comment "A person or organization responsible for an afterword, postface, colophon, etc. but who is not the chief author of a work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/authorofdialog> a rdf:Property ;
+    rdfs:label "author of dialog" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/aud> ;
+    rdfs:comment "A person or organization responsible for the dialog or spoken commentary for a screenplay or sound recording" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/authorofintroductionetc> a rdf:Property ;
+    rdfs:label "author of introduction, etc." ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/aui> ;
+    rdfs:comment "A person or organization responsible for an introduction, preface, foreword, or other critical introductory matter, but who is not the chief author" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/authorofscreenplayetc> a rdf:Property ;
+    rdfs:label "author of screenplay, etc." ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/autographer> a rdf:Property ;
+    rdfs:label "autographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ato> ;
+    rdfs:comment "A person whose manuscript signature appears on an item" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bibliographicantecedent> a rdf:Property ;
+    rdfs:label "bibliographic antecedent" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ant> ;
+    rdfs:comment "A person or organization responsible for a resource upon which the resource represented by the bibliographic description is based. This may be appropriate for adaptations, sequels, continuations, indexes, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/binder> a rdf:Property ;
+    rdfs:label "binder" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/bnd> ;
+    rdfs:comment "A person who binds an item" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bindingdesigner> a rdf:Property ;
+    rdfs:label "binding designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/bdd> ;
+    rdfs:comment "A person or organization responsible for the binding design of a book, including the type of binding, the type of materials used, and any decorative aspects of the binding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/blurbwriter> a rdf:Property ;
+    rdfs:label "blurb writer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/blw> ;
+    rdfs:comment "A person or organization responsible for writing a commendation or testimonial for a work, which appears on or within the publication itself, frequently on the back or dust jacket of print publications or on advertising material for all media" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bookdesigner> a rdf:Property ;
+    rdfs:label "book designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/bkd> ;
+    rdfs:comment "A person or organization involved in manufacturing a manifestation by being responsible for the entire graphic design of a book, including arrangement of type and illustration, choice of materials, and process used" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bookjacketdesigner> a rdf:Property ;
+    rdfs:label "bookjacket designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/bjd> ;
+    rdfs:comment "A person or organization responsible for the design of flexible covers designed for or published with a book, including the type of materials used, and any decorative aspects of the bookjacket" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bookplatedesigner> a rdf:Property ;
+    rdfs:label "bookplate designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/bpd> ;
+    rdfs:comment "A person or organization responsible for the design of a book owner's identification label that is most commonly pasted to the inside front cover of a book" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bookproducer> a rdf:Property ;
+    rdfs:label "book producer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/bkp> ;
+    rdfs:comment "A person or organization responsible for the production of books and other print media" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bookseller> a rdf:Property ;
+    rdfs:label "bookseller" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/bsl> ;
+    rdfs:comment "A person or organization who makes books and other bibliographic materials available for purchase. Interest in the materials is primarily lucrative" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bowdlerizer> a rdf:Property ;
+    rdfs:label "bowdlerizer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/brailleembosser> a rdf:Property ;
+    rdfs:label "braille embosser" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/brl> ;
+    rdfs:comment "A person, family, or organization involved in manufacturing a resource by embossing Braille cells using a stylus, special embossing printer, or other device" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/broadcaster> a rdf:Property ;
+    rdfs:label "broadcaster" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/brd> ;
+    rdfs:comment "A person, family, or organization involved in broadcasting a resource to an audience via radio, television, webcast, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/calligrapher> a rdf:Property ;
+    rdfs:label "calligrapher" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cll> ;
+    rdfs:comment "A person or organization who writes in an artistic hand, usually as a copyist and or engrosser" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cartographer> a rdf:Property ;
+    rdfs:label "cartographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ctg> ;
+    rdfs:comment "A person, family, or organization responsible for creating a map, atlas, globe, or other cartographic work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/caster> a rdf:Property ;
+    rdfs:label "caster" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cas> ;
+    rdfs:comment "A person, family, or organization involved in manufacturing a resource by pouring a liquid or molten substance into a mold and leaving it to solidify to take the shape of the mold" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/censor> a rdf:Property ;
+    rdfs:label "censor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cns> ;
+    rdfs:comment "A person or organization who examines bibliographic resources for the purpose of suppressing parts deemed objectionable on moral, political, military, or other grounds" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/changedBackTo> a rdf:Property ;
+    rdfs:label "changed back to" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/> ;
+    rdfs:comment "Work that has been changed back into another work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/chiefelectrician> a rdf:Property ;
+    rdfs:label "chief electrician" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/choreographer> a rdf:Property ;
+    rdfs:label "choreographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/chr> ;
+    rdfs:comment "A person responsible for creating or contributing to a work of movement" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cinematographer> a rdf:Property ;
+    rdfs:label "cinematographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cng> ;
+    rdfs:comment "A person in charge of photographing a motion picture, who plans the technical aspets of lighting and photographing of scenes, and often assists the director in the choice of angles, camera setups, and lighting moods. He or she may also supervise the further processing of filmed material up to the completion of the work print. Cinematographer is also referred to as director of photography. Do not confuse with videographer" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/client> a rdf:Property ;
+    rdfs:label "client" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cli> ;
+    rdfs:comment "A person or organization for whom another person or organization is acting" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/collaborator> a rdf:Property ;
+    rdfs:label "collaborator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/collectionregistrar> a rdf:Property ;
+    rdfs:label "collection registrar" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cor> ;
+    rdfs:comment "A curator who lists or inventories the items in an aggregate work such as a collection of items or works" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/collector> a rdf:Property ;
+    rdfs:label "collector" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/col> ;
+    rdfs:comment "A curator who brings together items from various sources that are then arranged, described, and cataloged as a collection. A collector is neither the creator of the material nor a person to whom manuscripts in the collection may have been addressed" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/collotyper> a rdf:Property ;
+    rdfs:label "collotyper" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/clt> ;
+    rdfs:comment "A person, family, or organization involved in manufacturing a manifestation of photographic prints from film or other colloid that has ink-receptive and ink-repellent surfaces" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/colorist> a rdf:Property ;
+    rdfs:label "colorist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/clr> ;
+    rdfs:comment "A person or organization responsible for applying color to drawings, prints, photographs, maps, moving images, etc" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/commentator> a rdf:Property ;
+    rdfs:label "commentator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cmm> ;
+    rdfs:comment "A performer contributing to a work by providing interpretation, analysis, or a discussion of the subject matter on a recording, film, or other audiovisual medium" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/commentatorforwrittentext> a rdf:Property ;
+    rdfs:label "commentator for written text" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cwt> ;
+    rdfs:comment "A person or organization responsible for the commentary or explanatory notes about a text. For the writer of manuscript annotations in a printed book, use Annotator" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/compiler> a rdf:Property ;
+    rdfs:label "compiler" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/com> ;
+    rdfs:comment "A person, family, or organization responsible for creating a new work (e.g., a bibliography, a directory) through the act of compilation, e.g., selecting, arranging, aggregating, and editing data, information, etc" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/complainant> a rdf:Property ;
+    rdfs:label "complainant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cpl> ;
+    rdfs:comment "A person or organization who applies to the courts for redress, usually in an equity proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/complainant-appellant> a rdf:Property ;
+    rdfs:label "complainant-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cpt> ;
+    rdfs:comment "A complainant who takes an appeal from one court or jurisdiction to another to reverse the judgment, usually in an equity proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/complainant-appellee> a rdf:Property ;
+    rdfs:label "complainant-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cpe> ;
+    rdfs:comment "A complainant against whom an appeal is taken from one court or jurisdiction to another to reverse the judgment, usually in an equity proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/composer> a rdf:Property ;
+    rdfs:label "composer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cmp> ;
+    rdfs:comment "A person, family, or organization responsible for creating or contributing to a musical resource by adding music to a work that originally lacked it or supplements it" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/compositor> a rdf:Property ;
+    rdfs:label "compositor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cmt> ;
+    rdfs:comment "A person or organization responsible for the creation of metal slug, or molds made of other materials, used to produce the text and images in printed matter" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/conceptor> a rdf:Property ;
+    rdfs:label "conceptor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ccp> ;
+    rdfs:comment "A person or organization responsible for the original idea on which a work is based, this includes the scientific author of an audio-visual item and the conceptor of an advertisement" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/conductor> a rdf:Property ;
+    rdfs:label "conductor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cnd> ;
+    rdfs:comment "A performer contributing to a musical resource by leading a performing group (orchestra, chorus, opera, etc.) in a musical or dramatic presentation, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/conservator> a rdf:Property ;
+    rdfs:label "conservator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/con> ;
+    rdfs:comment "A person or organization responsible for documenting, preserving, or treating printed or manuscript material, works of art, artifacts, or other media" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/consultant> a rdf:Property ;
+    rdfs:label "consultant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/csl> ;
+    rdfs:comment "A person or organization relevant to a resource, who is called upon for professional advice or services in a specialized field of knowledge or training" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/consultanttoaproject> a rdf:Property ;
+    rdfs:label "consultant to a project" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/csp> ;
+    rdfs:comment "A person or organization relevant to a resource, who is engaged specifically to provide an intellectual overview of a strategic or operational task and by analysis, specification, or instruction, to create or propose a cost-effective course of action or solution" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/contestant> a rdf:Property ;
+    rdfs:label "contestant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cos> ;
+    rdfs:comment "A person(s) or organization who opposes, resists, or disputes, in a court of law, a claim, decision, result, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/contestant-appellant> a rdf:Property ;
+    rdfs:label "contestant-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cot> ;
+    rdfs:comment "A contestant who takes an appeal from one court of law or jurisdiction to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/contestant-appellee> a rdf:Property ;
+    rdfs:label "contestant-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/coe> ;
+    rdfs:comment "A contestant against whom an appeal is taken from one court of law or jurisdiction to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/contestee> a rdf:Property ;
+    rdfs:label "contestee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cts> ;
+    rdfs:comment "A person(s) or organization defending a claim, decision, result, etc. being opposed, resisted, or disputed in a court of law" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/contestee-appellant> a rdf:Property ;
+    rdfs:label "contestee-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ctt> ;
+    rdfs:comment "A contestee who takes an appeal from one court or jurisdiction to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/contestee-appellee> a rdf:Property ;
+    rdfs:label "contestee-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cte> ;
+    rdfs:comment "A contestee against whom an appeal is taken from one court or jurisdiction to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/continueBy> a rdf:Property ;
+    rdfs:label "continue by" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/continueBy> ;
+    rdfs:comment "Work whose content continues an earlier work under a new title." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/continuedInPartBy> a rdf:Property ;
+    rdfs:label "continued in part by" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/continuedInPartBy> ;
+    rdfs:comment "Work part of whose content separated from an earlier work to form a new work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/continues> a rdf:Property ;
+    rdfs:label "continues" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/continues> ;
+    rdfs:comment "Work that is continued by the content of a later work under a new title." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/continuesInPart> a rdf:Property ;
+    rdfs:label "continues in part" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/continuesInPart> ;
+    rdfs:comment "Work that split into two or more separate works with new titles." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/contractor> a rdf:Property ;
+    rdfs:label "contractor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ctr> ;
+    rdfs:comment "A person or organization relevant to a resource, who enters into a contract with another person or organization to perform a specific" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/contributor> a rdf:Property ;
+    rdfs:label "contributor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ctb> ;
+    rdfs:comment "A person, family or organization responsible for making contributions to the resource. This includes those whose work has been contributed to a larger work, such as an anthology, serial publication, or other compilation of individual works. If a more specific role is available, prefer that, e.g. editor, compiler, illustrator" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/copier> a rdf:Property ;
+    rdfs:label "copier" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/copyrightclaimant> a rdf:Property ;
+    rdfs:label "copyright claimant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cpc> ;
+    rdfs:comment "A person or organization listed as a copyright owner at the time of registration. Copyright can be granted or later transferred to another person or organization, at which time the claimant becomes the copyright holder" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/copyrightholder> a rdf:Property ;
+    rdfs:label "copyright holder" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cph> ;
+    rdfs:comment "A person or organization to whom copy and legal rights have been granted or transferred for the intellectual content of a work. The copyright holder, although not necessarily the creator of the work, usually has the exclusive right to benefit financially from the sale and use of the work to which the associated copyright protection applies" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/corrector> a rdf:Property ;
+    rdfs:label "corrector" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/crr> ;
+    rdfs:comment "A person or organization who is a corrector of manuscripts, such as the scriptorium official who corrected the work of a scribe. For printed matter, use Proofreader" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/correspondent> a rdf:Property ;
+    rdfs:label "correspondent" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/crp> ;
+    rdfs:comment "A person or organization who was either the writer or recipient of a letter or other communication" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/costumedesigner> a rdf:Property ;
+    rdfs:label "costume designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cst> ;
+    rdfs:comment "A person, family, or organization that designs the costumes for a moving image production or for a musical or dramatic presentation or entertainment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/counterfeiter> a rdf:Property ;
+    rdfs:label "counterfeiter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/courtgoverned> a rdf:Property ;
+    rdfs:label "court governed" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cou> ;
+    rdfs:comment "A court governed by court rules, regardless of their official nature (e.g., laws, administrative regulations)" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/courtreporter> a rdf:Property ;
+    rdfs:label "court reporter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/crt> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by preparing a court's opinions for publication" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/coverdesigner> a rdf:Property ;
+    rdfs:label "cover designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cov> ;
+    rdfs:comment "A person or organization responsible for the graphic design of a book cover, album cover, slipcase, box, container, etc. For a person or organization responsible for the graphic design of an entire book, use Book designer; for book jackets, use Bookjacket designer" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/creator> a rdf:Property ;
+    rdfs:label "creator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cre> ;
+    rdfs:comment "A person or organization responsible for the intellectual or artistic content of a resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/creator> .
+
+<http://bibfra.me/vocab/relation/curator> a rdf:Property ;
+    rdfs:label "curator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/cur> ;
+    rdfs:comment "A person, family, or organization conceiving, aggregating, and/or organizing an exhibition, collection, or other item" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/curatorofanexhibition> a rdf:Property ;
+    rdfs:label "curator of an exhibition" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/currentowner> a rdf:Property ;
+    rdfs:label "current owner" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dancer> a rdf:Property ;
+    rdfs:label "dancer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dnc> ;
+    rdfs:comment "A performer who dances in a musical, dramatic, etc., presentation" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/datacontributor> a rdf:Property ;
+    rdfs:label "data contributor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dtc> ;
+    rdfs:comment "A person or organization that submits data for inclusion in a database or other collection of data" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/datamanager> a rdf:Property ;
+    rdfs:label "data manager" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dtm> ;
+    rdfs:comment "A person or organization responsible for managing databases or other data sources" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dedicatee> a rdf:Property ;
+    rdfs:label "dedicatee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dte> ;
+    rdfs:comment "A person, family, or organization to whom a resource is dedicated" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dedicateeofitem> a rdf:Property ;
+    rdfs:label "dedicatee of item" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dedicator> a rdf:Property ;
+    rdfs:label "dedicator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dto> ;
+    rdfs:comment "A person who writes a dedication, which may be a formal statement or in epistolary or verse form" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/defendant> a rdf:Property ;
+    rdfs:label "defendant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dfd> ;
+    rdfs:comment "A person or organization who is accused in a criminal proceeding or sued in a civil proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/defendant-appellant> a rdf:Property ;
+    rdfs:label "defendant-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dft> ;
+    rdfs:comment "A defendant who takes an appeal from one court or jurisdiction to another to reverse the judgment, usually in a legal action" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/defendant-appellee> a rdf:Property ;
+    rdfs:label "defendant-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dfe> ;
+    rdfs:comment "A defendant against whom an appeal is taken from one court or jurisdiction to another to reverse the judgment, usually in a legal action" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/degreegrantinginstitution> a rdf:Property ;
+    rdfs:label "degree granting institution" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dgg> ;
+    rdfs:comment "A organization granting an academic degree" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/degreegrantor> a rdf:Property ;
+    rdfs:label "degree grantor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/degreesupervisor> a rdf:Property ;
+    rdfs:label "degree supervisor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dgs> ;
+    rdfs:comment "A person overseeing a higher level academic degree" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/delineator> a rdf:Property ;
+    rdfs:label "delineator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dln> ;
+    rdfs:comment "A person or organization executing technical drawings from others' designs" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/depicted> a rdf:Property ;
+    rdfs:label "depicted" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dpc> ;
+    rdfs:comment "An entity depicted or portrayed in a work, particularly in a work of art" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/deponent> a rdf:Property ;
+    rdfs:label "deponent" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/depositor> a rdf:Property ;
+    rdfs:label "depositor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dpt> ;
+    rdfs:comment "A current owner of an item who deposited the item into the custody of another person, family, or organization, while still retaining ownership" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/designer> a rdf:Property ;
+    rdfs:label "designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dsr> ;
+    rdfs:comment "A person, family, or organization responsible for creating a design for an object" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/designerofbinding> a rdf:Property ;
+    rdfs:label "designer of binding" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/designerofbook> a rdf:Property ;
+    rdfs:label "designer of book" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/designerofbookjacket> a rdf:Property ;
+    rdfs:label "designer of bookjacket" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/designerofcover> a rdf:Property ;
+    rdfs:label "designer of cover" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/designerofe-book> a rdf:Property ;
+    rdfs:label "designer of e-book" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/designeroftype> a rdf:Property ;
+    rdfs:label "designer of type" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/director> a rdf:Property ;
+    rdfs:label "director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/drt> ;
+    rdfs:comment "A person responsible for the general management and supervision of a filmed performance, a radio or television program, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/directorofphotography> a rdf:Property ;
+    rdfs:label "director of photography" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dissertant> a rdf:Property ;
+    rdfs:label "dissertant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dis> ;
+    rdfs:comment "A person who presents a thesis for a university or higher-level educational degree" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/distributionplace> a rdf:Property ;
+    rdfs:label "distribution place" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dbp> ;
+    rdfs:comment "A place from which a resource, e.g., a serial, is distributed" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/distributor> a rdf:Property ;
+    rdfs:label "distributor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dst> ;
+    rdfs:comment "A person or organization that has exclusive or shared marketing rights for a resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/donor> a rdf:Property ;
+    rdfs:label "donor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dnr> ;
+    rdfs:comment "A former owner of an item who donated that item to another owner" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/draftsman> a rdf:Property ;
+    rdfs:label "draftsman" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/drm> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by an architect, inventor, etc., by making detailed plans or drawings for buildings, ships, aircraft, machines, objects, etc" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dubiousauthor> a rdf:Property ;
+    rdfs:label "dubious author" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/dub> ;
+    rdfs:comment "A person or organization to which authorship has been dubiously or incorrectly ascribed" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/editor> a rdf:Property ;
+    rdfs:label "editor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/edt> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by revising or elucidating the content, e.g., adding an introduction, notes, or other critical matter. An editor may also prepare a resource for production, publication, or distribution. For major revisions, adaptations, etc., that substantially change the nature and content of the original work, resulting in a new work, see author" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/editorofcompilation> a rdf:Property ;
+    rdfs:label "editor of compilation" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/edc> ;
+    rdfs:comment "A person, family, or organization contributing to a collective or aggregate work by selecting and putting together works, or parts of works, by one or more creators. For compilations of data, information, etc., that result in new works, see compiler" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/editorofmovingimagework> a rdf:Property ;
+    rdfs:label "editor of moving image work" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/edm> ;
+    rdfs:comment "A person, family, or organization responsible for assembling, arranging, and trimming film, video, or other moving image formats, including both visual and audio aspects" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/electrician> a rdf:Property ;
+    rdfs:label "electrician" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/elg> ;
+    rdfs:comment "A person responsible for setting up a lighting rig and focusing the lights for a production, and running the lighting at a performance" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/electrotyper> a rdf:Property ;
+    rdfs:label "electrotyper" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/elt> ;
+    rdfs:comment "A person or organization who creates a duplicate printing surface by pressure molding and electrodepositing of metal that is then backed up with lead for printing" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/enactingjurisdiction> a rdf:Property ;
+    rdfs:label "enacting jurisdiction" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/enj> ;
+    rdfs:comment "A jurisdiction enacting a law, regulation, constitution, court rule, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/encoder> a rdf:Property ;
+    rdfs:label "encoder" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/engineer> a rdf:Property ;
+    rdfs:label "engineer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/eng> ;
+    rdfs:comment "A person or organization that is responsible for technical planning and design, particularly with construction" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/engraver> a rdf:Property ;
+    rdfs:label "engraver" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/egr> ;
+    rdfs:comment "A person or organization who cuts letters, figures, etc. on a surface, such as a wooden or metal plate used for printing" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/etcher> a rdf:Property ;
+    rdfs:label "etcher" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/etr> ;
+    rdfs:comment "A person or organization who produces text or images for printing by subjecting metal, glass, or some other surface to acid or the corrosive action of some other substance" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/eventplace> a rdf:Property ;
+    rdfs:label "event place" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/evp> ;
+    rdfs:comment "A place where an event such as a conference or a concert took place" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/expert> a rdf:Property ;
+    rdfs:label "expert" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/exp> ;
+    rdfs:comment "A person or organization in charge of the description and appraisal of the value of goods, particularly rare items, works of art, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/expurgator> a rdf:Property ;
+    rdfs:label "expurgator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/eyewitness> a rdf:Property ;
+    rdfs:label "eyewitness" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/facsimilist> a rdf:Property ;
+    rdfs:label "facsimilist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fac> ;
+    rdfs:comment "A person or organization that executed the facsimile" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fielddirector> a rdf:Property ;
+    rdfs:label "field director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fld> ;
+    rdfs:comment "A person or organization that manages or supervises the work done to collect raw data or do research in an actual setting or environment (typically applies to the natural and social sciences)" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/filmdirector> a rdf:Property ;
+    rdfs:label "film director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fmd> ;
+    rdfs:comment "A director responsible for the general management and supervision of a filmed performance" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/filmdistributor> a rdf:Property ;
+    rdfs:label "film distributor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fds> ;
+    rdfs:comment "A person, family, or organization involved in distributing a moving image resource to theatres or other distribution channels" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/filmeditor> a rdf:Property ;
+    rdfs:label "film editor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/flm> ;
+    rdfs:comment "A person who, following the script and in creative cooperation with the Director, selects, arranges, and assembles the filmed material, controls the synchronization of picture and sound, and participates in other post-production tasks such as sound mixing and visual effects processing.  Today, picture editing is often performed digitally." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/filmmaker> a rdf:Property ;
+    rdfs:label "filmmaker" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fmk> ;
+    rdfs:comment "A person, family or organization responsible for creating an independent or personal film. A filmmaker is individually responsible for the conception and execution of all aspects of the film" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/filmproducer> a rdf:Property ;
+    rdfs:label "film producer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fmp> ;
+    rdfs:comment "A producer responsible for most of the business aspects of a film" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/firstparty> a rdf:Property ;
+    rdfs:label "first party" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fpy> ;
+    rdfs:comment "A person or organization who is identified as the only party or the party of the first party. In the case of transfer of rights, this is the assignor, transferor, licensor, grantor, etc. Multiple parties can be named jointly as the first party" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/forger> a rdf:Property ;
+    rdfs:label "forger" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/frg> ;
+    rdfs:comment "A person or organization who makes or imitates something of value or importance, especially with the intent to defraud" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/formerowner> a rdf:Property ;
+    rdfs:label "former owner" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fmo> ;
+    rdfs:comment "A person, family, or organization formerly having legal possession of an item" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/funder> a rdf:Property ;
+    rdfs:label "funder" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/fnd> ;
+    rdfs:comment "A person or organization that furnished financial support for the production of the work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/geographicinformationspecialist> a rdf:Property ;
+    rdfs:label "geographic information specialist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/gis> ;
+    rdfs:comment "A person responsible for geographic information system (GIS) development and integration with global positioning system data" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/geospatialinformationspecialist> a rdf:Property ;
+    rdfs:label "geospatial information specialist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/graphictechnician> a rdf:Property ;
+    rdfs:label "graphic technician" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/hasAdaptation> a rdf:Property ;
+    rdfs:label "has adaptation" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:comment "Trarget resource is an adaptation of the source resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/hasDerivative> .
+
+<http://bibfra.me/vocab/relation/hasBasis> a rdf:Property ;
+    rdfs:label "has basis" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:comment "Trarget resource is the basis of the source resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/hasDerivative> .
+
+<http://bibfra.me/vocab/relation/hasEdition> a rdf:Property ;
+    rdfs:label "has edition" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/otherEdition> ;
+    rdfs:comment "Target resource is a particular version of a source resource that has been revised or created." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/hasDerivative> .
+
+<http://bibfra.me/vocab/relation/hasEquivalent> a rdf:Property ;
+    rdfs:label "equivalence" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/hasEquivalent> ;
+    rdfs:comment "Eembodies the same as the resource being described." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/hasExpression> a rdf:Property ;
+    rdfs:label "has expression" ;
+    v:remark "For use to connect Works under FRBR/RDA rules." ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/hasExpression> ;
+    rdfs:comment "Resource has a related expression." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/hasPart> a rdf:Property ;
+    rdfs:label "has part" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/hasPart> ;
+    rdfs:comment "Resource that is included either physically or logically contained in the described resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/hasTranslation> a rdf:Property ;
+    rdfs:label "has translation" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/translation>,
+        <http://schema.org/vocab/hasTranslation> ;
+    rdfs:comment "Work that translates the text of the source entity into a language different from that of the original." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/hasDerivative> .
+
+<http://bibfra.me/vocab/relation/honouree> a rdf:Property ;
+    rdfs:label "honouree" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/honoree> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/honoureeofitem> a rdf:Property ;
+    rdfs:label "honouree of item" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/host> a rdf:Property ;
+    rdfs:label "host" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/hst> ;
+    rdfs:comment "A performer contributing to a resource by leading a program (often broadcast) that includes other guests, performers, etc. (e.g., talk show host)" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/hosthouseelectrician> a rdf:Property ;
+    rdfs:label "house electrician" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/hostinstitution> a rdf:Property ;
+    rdfs:label "host institution" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/his> ;
+    rdfs:comment "An organization hosting the event, exhibit, conference, etc., which gave rise to a resource, but having little or no responsibility for the content of the resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/illuminator> a rdf:Property ;
+    rdfs:label "illuminator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ilu> ;
+    rdfs:comment "A person providing decoration to a specific item using precious metals or color, often with elaborate designs and motifs" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/illustrator> a rdf:Property ;
+    rdfs:label "illustrator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ill> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by supplementing the primary content with drawings, diagrams, photographs, etc. If the work is primarily the artistic content created by this entity, use artist or photographer" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/imprimatur> a rdf:Property ;
+    rdfs:label "imprimatur" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/inscriber> a rdf:Property ;
+    rdfs:label "inscriber" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ins> ;
+    rdfs:comment "A person who has written a statement of dedication or gift" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/instructor> a rdf:Property ;
+    rdfs:label "instructor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/instrumentalist> a rdf:Property ;
+    rdfs:label "instrumentalist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/itr> ;
+    rdfs:comment "A performer contributing to a resource by playing a musical instrument" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/interviewee> a rdf:Property ;
+    rdfs:label "interviewee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ive> ;
+    rdfs:comment "A person, family or organization responsible for creating or contributing to a resource by responding to an interviewer, usually a reporter, pollster, or some other information gathering agent" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/interviewer> a rdf:Property ;
+    rdfs:label "interviewer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ivr> ;
+    rdfs:comment "A person, family, or organization responsible for creating or contributing to a resource by acting as an interviewer, reporter, pollster, or some other information gathering agent" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/inventor> a rdf:Property ;
+    rdfs:label "inventor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/inv> ;
+    rdfs:comment "A person, family, or organization responsible for creating a new device or process" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/isAdaptationOf> a rdf:Property ;
+    rdfs:label "is adaptation of" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://schema.org/vocab/adaptationOf> ;
+    rdfs:comment "Source resource is an adaptation of the target resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/isDerivativeOf> .
+
+<http://bibfra.me/vocab/relation/isBasedOn> a rdf:Property ;
+    rdfs:label "is based on" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://schema.org/vocab/basedOn> ;
+    rdfs:comment "Source resource is based on the target resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/isDerivativeOf> .
+
+<http://bibfra.me/vocab/relation/isEditionOf> a rdf:Property ;
+    rdfs:label "is edition of" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:comment "Source resource is a particular version of a target resource that has been revised or created." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/isDerivativeOf> .
+
+<http://bibfra.me/vocab/relation/isPartOf> a rdf:Property ;
+    rdfs:label "is part of" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/partOf> ;
+    rdfs:comment "Resource in which the described resource is physically or logically contained." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/isTranslationOf> a rdf:Property ;
+    rdfs:label "is translation of" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/translationOf> ;
+    rdfs:comment "Work that has been translated, i.e., the text expressed in a language different from that of the original work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/relation/isDerivativeOf> .
+
+<http://bibfra.me/vocab/relation/issuingbody> a rdf:Property ;
+    rdfs:label "issuing body" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/isb> ;
+    rdfs:comment "A person, family or organization issuing a work, such as an official organ of the body" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/jointauthor> a rdf:Property ;
+    rdfs:label "joint author" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/judge> a rdf:Property ;
+    rdfs:label "judge" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/jud> ;
+    rdfs:comment "A person who hears and decides on legal matters in court." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/jurisdictiongoverned> a rdf:Property ;
+    rdfs:label "jurisdiction governed" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/jug> ;
+    rdfs:comment "A jurisdiction governed by a law, regulation, etc., that was enacted by another jurisdiction" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/labdirector> a rdf:Property ;
+    rdfs:label "lab director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/laboratory> a rdf:Property ;
+    rdfs:label "laboratory" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lbr> ;
+    rdfs:comment "An organization that provides scientific analyses of material samples" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/laboratorydirector> a rdf:Property ;
+    rdfs:label "laboratory director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ldr> ;
+    rdfs:comment "A person or organization that manages or supervises work done in a controlled setting or environment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/landscapearchitect> a rdf:Property ;
+    rdfs:label "landscape architect" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lsa> ;
+    rdfs:comment "An architect responsible for creating landscape works. This work involves coordinating the arrangement of existing and proposed land features and structures" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lead> a rdf:Property ;
+    rdfs:label "lead" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/led> ;
+    rdfs:comment "A person or organization that takes primary responsibility for a particular activity or endeavor. May be combined with another relator term or code to show the greater importance this person or organization has regarding that particular role. If more than one relator is assigned to a heading, use the Lead relator only if it applies to all the relators" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lender> a rdf:Property ;
+    rdfs:label "lender" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/len> ;
+    rdfs:comment "A person or organization permitting the temporary use of a book, manuscript, etc., such as for photocopying or microfilming" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/libelant> a rdf:Property ;
+    rdfs:label "libelant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lil> ;
+    rdfs:comment "A person or organization who files a libel in an ecclesiastical or admiralty case" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/libelant-appellant> a rdf:Property ;
+    rdfs:label "libelant-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lit> ;
+    rdfs:comment "A libelant who takes an appeal from one ecclesiastical court or admiralty to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/libelant-appellee> a rdf:Property ;
+    rdfs:label "libelant-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lie> ;
+    rdfs:comment "A libelant against whom an appeal is taken from one ecclesiastical court or admiralty to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/libelee> a rdf:Property ;
+    rdfs:label "libelee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lel> ;
+    rdfs:comment "A person or organization against whom a libel has been filed in an ecclesiastical court or admiralty" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/libelee-appellant> a rdf:Property ;
+    rdfs:label "libelee-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/let> ;
+    rdfs:comment "A libelee who takes an appeal from one ecclesiastical court or admiralty to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/libelee-appellee> a rdf:Property ;
+    rdfs:label "libelee-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lee> ;
+    rdfs:comment "A libelee against whom an appeal is taken from one ecclesiastical court or admiralty to another to reverse the judgment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/librettist> a rdf:Property ;
+    rdfs:label "librettist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lbt> ;
+    rdfs:comment "An author of a libretto of an opera or other stage work, or an oratorio" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/licensee> a rdf:Property ;
+    rdfs:label "licensee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lse> ;
+    rdfs:comment "A person or organization who is an original recipient of the right to print or publish" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/licensor> a rdf:Property ;
+    rdfs:label "licensor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lso> ;
+    rdfs:comment "A person or organization who is a signer of the license, imprimatur, etc" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lightingdesigner> a rdf:Property ;
+    rdfs:label "lighting designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lgd> ;
+    rdfs:comment "A person or organization who designs the lighting scheme for a theatrical presentation, entertainment, motion picture, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lithographer> a rdf:Property ;
+    rdfs:label "lithographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ltg> ;
+    rdfs:comment "A person or organization who prepares the stone or plate for lithographic printing, including a graphic artist creating a design directly on the surface from which printing will be done." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lyricist> a rdf:Property ;
+    rdfs:label "lyricist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/lyr> ;
+    rdfs:comment "An author of the words of a non-dramatic musical work (e.g. the text of a song), except for oratorios" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/manufactureplace> a rdf:Property ;
+    rdfs:label "manufacture place" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mfp> ;
+    rdfs:comment "The place of manufacture (e.g., printing, duplicating, casting, etc.) of a resource in a published form" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/manufacturer> a rdf:Property ;
+    rdfs:label "manufacturer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mfr> ;
+    rdfs:comment "A person or organization responsible for printing, duplicating, casting, etc. a resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/marbler> a rdf:Property ;
+    rdfs:label "marbler" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mrb> ;
+    rdfs:comment "The entity responsible for marbling paper, cloth, leather, etc. used in construction of a resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/markupeditor> a rdf:Property ;
+    rdfs:label "markup editor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mrk> ;
+    rdfs:comment "A person or organization performing the coding of SGML, HTML, or XML markup of metadata, text, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/masterelectrician> a rdf:Property ;
+    rdfs:label "master electrician" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/medium> a rdf:Property ;
+    rdfs:label "medium" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/med> ;
+    rdfs:comment "A person held to be a channel of communication between the earthly world and a world" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mergedWith> a rdf:Property ;
+    rdfs:label "merged with" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/mergedToForm> ;
+    rdfs:comment "One of two or more works that come together to form a new work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/metadatacontact> a rdf:Property ;
+    rdfs:label "metadata contact" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mdc> ;
+    rdfs:comment "A person or organization primarily responsible for compiling and maintaining the original description of a metadata set (e.g., geospatial metadata set)" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/metal-engraver> a rdf:Property ;
+    rdfs:label "metal-engraver" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mte> ;
+    rdfs:comment "An engraver responsible for decorations, illustrations, letters, etc. cut on a metal surface for printing or decoration" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/minutetaker> a rdf:Property ;
+    rdfs:label "minute taker" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mtk> ;
+    rdfs:comment "A person, family, or organization responsible for recording the minutes of a meeting" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/moderator> a rdf:Property ;
+    rdfs:label "moderator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mod> ;
+    rdfs:comment "A performer contributing to a resource by leading a program (often broadcast) where topics are discussed, usually with participation of experts in fields related to the discussion" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/monitor> a rdf:Property ;
+    rdfs:label "monitor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mon> ;
+    rdfs:comment "A person or organization that supervises compliance with the contract and is responsible for the report and controls its distribution. Sometimes referred to as the grantee, or controlling agency" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/motionpictureeditor> a rdf:Property ;
+    rdfs:label "motion picture editor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/movingimageworkeditor> a rdf:Property ;
+    rdfs:label "moving image work editor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/musicaldirector> a rdf:Property ;
+    rdfs:label "musical director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/msd> ;
+    rdfs:comment "A person who coordinates the activities of the composer, the sound editor, and sound mixers for a moving image production or for a musical or dramatic presentation or entertainment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/musiccopyist> a rdf:Property ;
+    rdfs:label "music copyist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mcp> ;
+    rdfs:comment "A person who transcribes or copies musical notation" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/musician> a rdf:Property ;
+    rdfs:label "musician" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/mus> ;
+    rdfs:comment "A person or organization who performs music or contributes to the musical content of a work when it is not possible or desirable to identify the function more precisely" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/narrator> a rdf:Property ;
+    rdfs:label "narrator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/nrt> ;
+    rdfs:comment "A performer contributing to a resource by reading or speaking in order to give an account of an act, occurrence, course of events, etc" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/observer> a rdf:Property ;
+    rdfs:label "observer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/onlooker> a rdf:Property ;
+    rdfs:label "onlooker" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/onscreenpresenter> a rdf:Property ;
+    rdfs:label "onscreen presenter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/osp> ;
+    rdfs:comment "A performer contributing to an expression of a work by appearing on screen in nonfiction moving image materials or introductions to fiction moving image materials to provide contextual or background information. Use when another term (e.g., narrator, host) is either not applicable or not desired" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/opponent> a rdf:Property ;
+    rdfs:label "opponent" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/opn> ;
+    rdfs:comment "A person or organization responsible for opposing a thesis or dissertation" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/organizer> a rdf:Property ;
+    rdfs:label "organizer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/orm> ;
+    rdfs:comment "A person, family, or organization organizing the exhibit, event, conference, etc., which gave rise to a resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/organizerofmeeting> a rdf:Property ;
+    rdfs:label "organizer of meeting" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/originator> a rdf:Property ;
+    rdfs:label "originator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/org> ;
+    rdfs:comment "A person or organization performing the work, i.e., the name of a person or organization associated with the intellectual content of the work. This category does not include the publisher or personal affiliation, or sponsor except where it is also the corporate author" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/other> a rdf:Property ;
+    rdfs:label "other" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/oth> ;
+    rdfs:comment "A role that has no equivalent in the MARC list." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/owner> a rdf:Property ;
+    rdfs:label "owner" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/own> ;
+    rdfs:comment "A person, family, or organization that currently owns an item or collection, i.e.has legal possession of a resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/panelist> a rdf:Property ;
+    rdfs:label "panelist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pan> ;
+    rdfs:comment "A performer contributing to a resource by participating in a program (often broadcast) where topics are discussed, usually with participation of experts in fields related to the discussion" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/papermaker> a rdf:Property ;
+    rdfs:label "papermaker" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ppm> ;
+    rdfs:comment "A person or organization responsible for the production of paper, usually from wood, cloth, or other fibrous material" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/patentapplicant> a rdf:Property ;
+    rdfs:label "patent applicant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pta> ;
+    rdfs:comment "A person or organization that applied for a patent" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/patentee> a rdf:Property ;
+    rdfs:label "patentee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/patentholder> a rdf:Property ;
+    rdfs:label "patent holder" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pth> ;
+    rdfs:comment "A person or organization that was granted the patent referred to by the item" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/patentinventor> a rdf:Property ;
+    rdfs:label "patent inventor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/patron> a rdf:Property ;
+    rdfs:label "patron" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pat> ;
+    rdfs:comment "A person or organization responsible for commissioning a work. Usually a patron uses his or her means or influence to support the work of artists, writers, etc. This includes those who commission and pay for individual works" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/performer> a rdf:Property ;
+    rdfs:label "performer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prf> ;
+    rdfs:comment "A person contributing to a resource by performing music, acting, dancing, speaking, etc., often in a musical or dramatic presentation, etc. If specific codes are used, [prf] is used for a person whose principal skill is not known or specified" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/performerofresearch> a rdf:Property ;
+    rdfs:label "performer of research" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/permittingagency> a rdf:Property ;
+    rdfs:label "permitting agency" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pma> ;
+    rdfs:comment "An organization (usually a government agency) that issues permits under which work is accomplished" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/photographer> a rdf:Property ;
+    rdfs:label "photographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pht> ;
+    rdfs:comment "A person, family, or organization responsible for creating a photographic work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/plaintiff> a rdf:Property ;
+    rdfs:label "plaintiff" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ptf> ;
+    rdfs:comment "A person or organization who brings a suit in a civil proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/plaintiff-appellant> a rdf:Property ;
+    rdfs:label "plaintiff-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ptt> ;
+    rdfs:comment "A plaintiff who takes an appeal from one court or jurisdiction to another to reverse the judgment, usually in a legal proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/plaintiff-appellee> a rdf:Property ;
+    rdfs:label "plaintiff-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pte> ;
+    rdfs:comment "A plaintiff against whom an appeal is taken from one court or jurisdiction to another to reverse the judgment, usually in a legal proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/platemaker> a rdf:Property ;
+    rdfs:label "platemaker" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/plt> ;
+    rdfs:comment "A person, family, or organization involved in manufacturing a manifestation by preparing plates used in the production of printed images and/or text" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/platespraeses> a rdf:Property ;
+    rdfs:label "praeses" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pra> ;
+    rdfs:comment "A person who is the faculty moderator of an academic disputation, normally proposing a thesis and participating in the ensuing disputation" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/presenter> a rdf:Property ;
+    rdfs:label "presenter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pre> ;
+    rdfs:comment "A person or organization mentioned in an “X presents” credit for moving image materials and who is associated with production, finance, or distribution in some way.  A vanity credit;  in early years, normally the head of a studio" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/preservationist> a rdf:Property ;
+    rdfs:label "preservationist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/printer> a rdf:Property ;
+    rdfs:label "printer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prt> ;
+    rdfs:comment "A person, family, or organization involved in manufacturing a manifestation of printed text, notated music, etc., from type or plates, such as a book, newspaper, magazine, broadside, score, etc" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/printerof> a rdf:Property ;
+    rdfs:label "plates, printer of" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/printerofplates> a rdf:Property ;
+    rdfs:label "printer of plates" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pop> ;
+    rdfs:comment "A person or organization who prints illustrations from plates." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/printmaker> a rdf:Property ;
+    rdfs:label "printmaker" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prm> ;
+    rdfs:comment "A person or organization who makes a relief, intaglio, or planographic printing surface" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/processcontact> a rdf:Property ;
+    rdfs:label "process contact" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prc> ;
+    rdfs:comment "A person or organization primarily responsible for performing or initiating a process, such as is done with the collection of metadata sets" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/producer> a rdf:Property ;
+    rdfs:label "producer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pro> ;
+    rdfs:comment "A person, family, or organization responsible for most of the business aspects of a production for screen, audio recording, television, webcast, etc. The producer is generally responsible for fund raising, managing the production, hiring key personnel, arranging for distributors, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/producerofbook> a rdf:Property ;
+    rdfs:label "producer of book" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/productioncompany> a rdf:Property ;
+    rdfs:label "production company" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prn> ;
+    rdfs:comment "An organization that is responsible for financial, technical, and organizational management of a production for stage, screen, audio recording, television, webcast, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/productiondesigner> a rdf:Property ;
+    rdfs:label "production designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prs> ;
+    rdfs:comment "A person or organization responsible for designing the overall visual appearance of a moving image production" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/productionmanager> a rdf:Property ;
+    rdfs:label "production manager" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pmn> ;
+    rdfs:comment "A person responsible for all technical and business matters in a production" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/productionpersonnel> a rdf:Property ;
+    rdfs:label "production personnel" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prd> ;
+    rdfs:comment "A person or organization associated with the production (props, lighting, special effects, etc.) of a musical or dramatic presentation or entertainment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/productionplace> a rdf:Property ;
+    rdfs:label "production place" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prp> ;
+    rdfs:comment "The place of production (e.g., inscription, fabrication, construction, etc.) of a resource in an unpublished form" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/programmer> a rdf:Property ;
+    rdfs:label "programmer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prg> ;
+    rdfs:comment "A person, family, or organization responsible for creating a computer program" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/projectdirector> a rdf:Property ;
+    rdfs:label "project director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pdr> ;
+    rdfs:comment "A person or organization with primary responsibility for all essential aspects of a project, has overall responsibility for managing projects, or provides overall direction to a project manager" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/promoter> a rdf:Property ;
+    rdfs:label "promoter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/proofreader> a rdf:Property ;
+    rdfs:label "proofreader" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pfr> ;
+    rdfs:comment "A person who corrects printed matter. For manuscripts, use Corrector [crr]" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/provider> a rdf:Property ;
+    rdfs:label "provider" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/prv> ;
+    rdfs:comment "A person or organization who produces, publishes, manufactures, or distributes a resource if specific codes are not desired (e.g. [mfr], [pbl])" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/publicationplace> a rdf:Property ;
+    rdfs:label "publication place" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pup> ;
+    rdfs:comment "The place where a resource is published" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/publisher> a rdf:Property ;
+    rdfs:label "publisher" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pbl> ;
+    rdfs:comment "A person or organization responsible for publishing, releasing, or issuing a resource" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/publishingdirector> a rdf:Property ;
+    rdfs:label "publishing director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/pbd> ;
+    rdfs:comment "A person or organization who presides over the elaboration of a collective work to ensure its coherence or continuity. This includes editors-in-chief, literary editors, editors of series, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/puppeteer> a rdf:Property ;
+    rdfs:label "puppeteer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ppt> ;
+    rdfs:comment "A performer contributing to a resource by manipulating, controlling, or directing puppets or marionettes in a moving image production or a musical or dramatic presentation or entertainment" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/radiodirector> a rdf:Property ;
+    rdfs:label "radio director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rdd> ;
+    rdfs:comment "A director responsible for the general management and supervision of a radio program" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/radioproducer> a rdf:Property ;
+    rdfs:label "radio producer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rpc> ;
+    rdfs:comment "A producer responsible for most of the business aspects of a radio program" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/recipient> a rdf:Property ;
+    rdfs:label "recipient" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/recordingengineer> a rdf:Property ;
+    rdfs:label "recording engineer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rce> ;
+    rdfs:comment "A person contributing to a resource by supervising the technical aspects of a sound or video recording session" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/recordist> a rdf:Property ;
+    rdfs:label "recordist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rcd> ;
+    rdfs:comment "A person or organization who uses a recording device to capture sounds and/or video during a recording session, including field recordings of natural sounds, folkloric events, music, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/redaktor> a rdf:Property ;
+    rdfs:label "redaktor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/red> ;
+    rdfs:comment "A person or organization who writes or develops the framework for an item without being intellectually responsible for its content" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/renderer> a rdf:Property ;
+    rdfs:label "renderer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ren> ;
+    rdfs:comment "A person or organization who prepares drawings of architectural designs (i.e., renderings) in accurate, representational perspective to show what the project will look like when completed" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/reporter> a rdf:Property ;
+    rdfs:label "reporter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rpt> ;
+    rdfs:comment "A person or organization who writes or presents reports of news or current events on air or in print" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/repository> a rdf:Property ;
+    rdfs:label "repository" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rps> ;
+    rdfs:comment "An organization that hosts data or material culture objects and provides services to promote long term, consistent and shared use of those data or objects" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/researcher> a rdf:Property ;
+    rdfs:label "researcher" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/res> ;
+    rdfs:comment "A person or organization responsible for performing research" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/researchteamhead> a rdf:Property ;
+    rdfs:label "research team head" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rth> ;
+    rdfs:comment "A person who directed or managed a research project" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/researchteammember> a rdf:Property ;
+    rdfs:label "research team member" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rtm> ;
+    rdfs:comment "A person who participated in a research project but whose role did not involve direction or management of it" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/respondent> a rdf:Property ;
+    rdfs:label "respondent" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rsp> ;
+    rdfs:comment "A person or organization who makes an answer to the courts pursuant to an application for redress (usually in an equity proceeding) or a candidate for a degree who defends or opposes a thesis provided by the praeses in an academic disputation" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/respondent-appellant> a rdf:Property ;
+    rdfs:label "respondent-appellant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rst> ;
+    rdfs:comment "A respondent who takes an appeal from one court or jurisdiction to another to reverse the judgment, usually in an equity proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/respondent-appellee> a rdf:Property ;
+    rdfs:label "respondent-appellee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rse> ;
+    rdfs:comment "A respondent against whom an appeal is taken from one court or jurisdiction to another to reverse the judgment, usually in an equity proceeding" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/responsibleparty> a rdf:Property ;
+    rdfs:label "responsible party" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rpy> ;
+    rdfs:comment "A person or organization legally responsible for the content of the published material" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/restager> a rdf:Property ;
+    rdfs:label "restager" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rsg> ;
+    rdfs:comment "A person or organization, other than the original choreographer or director, responsible for restaging a choreographic or dramatic work and who contributes minimal new content" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/restorationist> a rdf:Property ;
+    rdfs:label "restorationist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rsr> ;
+    rdfs:comment "A person, family, or organization responsible for the set of technical, editorial, and intellectual procedures aimed at compensating for the degradation of an item by bringing it back to a state as close as possible to its original condition" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/reviewer> a rdf:Property ;
+    rdfs:label "reviewer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rev> ;
+    rdfs:comment "A person or organization responsible for the review of a book, motion picture, performance, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rubricator> a rdf:Property ;
+    rdfs:label "rubricator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/rbr> ;
+    rdfs:comment "A person or organization responsible for parts of a work, often headings or opening parts of a manuscript, that appear in a distinctive color, usually red" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/scenarist> a rdf:Property ;
+    rdfs:label "scenarist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sce> ;
+    rdfs:comment "A person or organization who is the author of a motion picture screenplay, generally the person who wrote the scenarios for a motion picture during the silent era" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/scientificadvisor> a rdf:Property ;
+    rdfs:label "scientific advisor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sad> ;
+    rdfs:comment "A person or organization who brings scientific, pedagogical, or historical competence to the conception and realization on a work, particularly in the case of audio-visual items" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/screenwriter> a rdf:Property ;
+    rdfs:label "screenwriter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/aus> ;
+    rdfs:comment "An author of a screenplay, script, or scene" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/scribe> a rdf:Property ;
+    rdfs:label "scribe" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/scr> ;
+    rdfs:comment "A person who is an amanuensis and for a writer of manuscripts proper. For a person who makes pen-facsimiles, use Facsimilist [fac]" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sculptor> a rdf:Property ;
+    rdfs:label "sculptor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/scl> ;
+    rdfs:comment "An artist responsible for creating a three-dimensional work by modeling, carving, or similar technique" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/secondparty> a rdf:Property ;
+    rdfs:label "second party" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/spy> ;
+    rdfs:comment "A person or organization who is identified as the party of the second part. In the case of transfer of right, this is the assignee, transferee, licensee, grantee, etc. Multiple parties can be named jointly as the second party" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/secretary> a rdf:Property ;
+    rdfs:label "secretary" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sec> ;
+    rdfs:comment "A person or organization who is a recorder, redactor, or other person responsible for expressing the views of a organization" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/seller> a rdf:Property ;
+    rdfs:label "seller" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sll> ;
+    rdfs:comment "A former owner of an item who sold that item to another owner" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/separatedFrom> a rdf:Property ;
+    rdfs:label "separated from" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/separatedFrom> ;
+    rdfs:comment "Work that spun off a part of its content to form a new work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/setdesigner> a rdf:Property ;
+    rdfs:label "set designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/std> ;
+    rdfs:comment "A person who translates the rough sketches of the art director into actual architectural structures for a theatrical presentation, entertainment, motion picture, etc. Set designers draw the detailed guides and specifications for building the set" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/setting> a rdf:Property ;
+    rdfs:label "setting" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/stg> ;
+    rdfs:comment "An entity in which the activity or plot of a work takes place, e.g. a geographic place, a time period, a building, an event" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/signer> a rdf:Property ;
+    rdfs:label "signer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sgn> ;
+    rdfs:comment "A person whose signature appears without a presentation or other statement indicative of provenance. When there is a presentation statement, use Inscriber [ins]." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/singer> a rdf:Property ;
+    rdfs:label "singer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sng> ;
+    rdfs:comment "A performer contributing to a resource by using his/her/their voice, with or without instrumental accompaniment, to produce music. A singer's performance may or may not include actual words" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sounddesigner> a rdf:Property ;
+    rdfs:label "sound designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sds> ;
+    rdfs:comment "A person who produces and reproduces the sound score (both live and recorded), the installation of microphones, the setting of sound levels, and the coordination of sources of sound for a production" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/speaker> a rdf:Property ;
+    rdfs:label "speaker" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/spk> ;
+    rdfs:comment "A performer contributing to a resource by speaking words, such as a lecture, speech, etc." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/splitInto> a rdf:Property ;
+    rdfs:label "split into" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/splitInto> ;
+    rdfs:comment "One of two or more works resulting from the division of an earlier work into separate works." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/sponsor> a rdf:Property ;
+    rdfs:label "sponsor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/spn> ;
+    rdfs:comment "A person, family, or organization sponsoring some aspect of a resource, e.g., funding research, sponsoring an event" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sponsoringbody> a rdf:Property ;
+    rdfs:label "sponsoring body" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/stagedirector> a rdf:Property ;
+    rdfs:label "stage director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sgd> ;
+    rdfs:comment "A person or organization contributing to a stage resource through the overall management and supervision of a performance" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/stagemanager> a rdf:Property ;
+    rdfs:label "stage manager" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/stm> ;
+    rdfs:comment "A person who is in charge of everything that occurs on a performance stage, and who acts as chief of all crews and assistant to a director during rehearsals" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/standardsbody> a rdf:Property ;
+    rdfs:label "standards body" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/stn> ;
+    rdfs:comment "An organization responsible for the development or enforcement of a standard" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/stereotyper> a rdf:Property ;
+    rdfs:label "stereotyper" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/str> ;
+    rdfs:comment "A person or organization who creates a new plate for printing by molding or copying another printing surface" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/storyteller> a rdf:Property ;
+    rdfs:label "storyteller" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/stl> ;
+    rdfs:comment "A performer contributing to a resource by relaying a creator's original story with dramatic or theatrical interpretation" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/supersededBy> a rdf:Property ;
+    rdfs:label "superseded by" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/supersededBy> ;
+    rdfs:comment "Later Work used in place of an earlier work, usually because the later work contains updated or new information." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/supersededInPartBy> a rdf:Property ;
+    rdfs:label "superseded in part by" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/supersededInPartBy> ;
+    rdfs:comment "Later Work used in part in place of an earlier work, usually because the later work contains updated or new information." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/supersedes> a rdf:Property ;
+    rdfs:label "supersedes" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/supersedes> ;
+    rdfs:comment "Earlier work whose content has been replaced by a later work, usually because the later work contains updated or new information." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/supersedesInPart> a rdf:Property ;
+    rdfs:label "supersedes in part" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/supersedesInPart> ;
+    rdfs:comment "Earlier work whose content has been partially replaced by a later work, usually because the later work contains updated or new information." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/supporting> a rdf:Property ;
+    rdfs:label "host, supporting" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/supportinghost> a rdf:Property ;
+    rdfs:label "supporting host" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/sht> ;
+    rdfs:comment "A person or organization that supports (by allocating facilities, staff, or other resources) a project, program, meeting, event, data objects, material culture objects, or other entities capable of support" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/supposedname> a rdf:Property ;
+    rdfs:label "supposed name" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/surveyor> a rdf:Property ;
+    rdfs:label "surveyor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/srv> ;
+    rdfs:comment "A person, family, or organization contributing to a cartographic resource by providing measurements or dimensional relationships for the geographic area represented" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/teacher> a rdf:Property ;
+    rdfs:label "teacher" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/tch> ;
+    rdfs:comment "A performer contributing to a resource by giving instruction or providing a demonstration" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/technicaldirector> a rdf:Property ;
+    rdfs:label "technical director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/tcd> ;
+    rdfs:comment "A person who is ultimately in charge of scenery, props, lights and sound for a production" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/technicaldraftsman> a rdf:Property ;
+    rdfs:label "technical draftsman" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/televisiondirector> a rdf:Property ;
+    rdfs:label "television director" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/tld> ;
+    rdfs:comment "A director responsible for the general management and supervision of a television program" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/televisionproducer> a rdf:Property ;
+    rdfs:label "television producer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/tlp> ;
+    rdfs:comment "A producer responsible for most of the business aspects of a television program" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/testifier> a rdf:Property ;
+    rdfs:label "testifier" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/thesisadvisor> a rdf:Property ;
+    rdfs:label "thesis advisor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/ths> ;
+    rdfs:comment "A person under whose supervision a degree candidate develops and presents a thesis, mémoire, or text of a dissertation" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/transcriber> a rdf:Property ;
+    rdfs:label "transcriber" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/trc> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by changing it from one system of notation to another. For a work transcribed for a different instrument or performing group, see Arranger [arr]. For makers of pen-facsimiles, use Facsimilist [fac]" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/translator> a rdf:Property ;
+    rdfs:label "translator" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/trl> ;
+    rdfs:comment "A person or organization who renders a text from one language into another, or from an older form of a language into the modern form" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/typedesigner> a rdf:Property ;
+    rdfs:label "type designer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/tyd> ;
+    rdfs:comment "A person or organization who designs the type face used in a particular item" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/typesetter> a rdf:Property ;
+    rdfs:label "typesetter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/typographer> a rdf:Property ;
+    rdfs:label "typographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/tyg> ;
+    rdfs:comment "A person or organization primarily responsible for choice and arrangement of type used in an item. If the typographer is also responsible for other aspects of the graphic design of a book (e.g., Book designer [bkd]), codes for both functions may be needed" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/unionOf> a rdf:Property ;
+    rdfs:label "union of" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/unionOf> ;
+    rdfs:comment "One of two or more works which came together to form a new work." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/universityplace> a rdf:Property ;
+    rdfs:label "university place" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/uvp> ;
+    rdfs:comment "A place where a university that is associated with a resource is located, for example, a university where an academic dissertation or thesis was presented" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/videographer> a rdf:Property ;
+    rdfs:label "videographer" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/vdg> ;
+    rdfs:comment "A person in charge of a video production, e.g. the video recording of a stage production as opposed to a commercial motion picture. The videographer may be the camera operator or may supervise one or more camera operators. Do not confuse with cinematographer" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/vocalist> a rdf:Property ;
+    rdfs:label "vocalist" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/voiceactor> a rdf:Property ;
+    rdfs:label "voice ctor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/vac> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/witness> a rdf:Property ;
+    rdfs:label "witness" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wit> ;
+    rdfs:comment "Use for a person who verifies the truthfulness of an event or action." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/woodcutter> a rdf:Property ;
+    rdfs:label "woodcutter" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wdc> ;
+    rdfs:comment "A person or organization who makes prints by cutting the image in relief on the plank side of a wood block" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/woodengraver> a rdf:Property ;
+    rdfs:label "wood engraver" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wde> ;
+    rdfs:comment "A person or organization who makes prints by cutting the image in relief on the end-grain of a wood block" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/writerofaccompanyingmaterial> a rdf:Property ;
+    rdfs:label "writer of accompanying material" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wam> ;
+    rdfs:comment "A person or organization who writes significant material which accompanies a sound recording or other audiovisual material" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/writerofaddedcommentary> a rdf:Property ;
+    rdfs:label "writer of added commentary" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wac> ;
+    rdfs:comment "A person, family, or organization contributing to an expression of a work by providing an interpretation or critical explanation of the original work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/writerofaddedlyrics> a rdf:Property ;
+    rdfs:label "writer of added lyrics" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wal> ;
+    rdfs:comment "A writer of words added to an expression of a musical work. For lyric writing in collaboration with a composer to form an original work, see lyricist" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/writerofaddedtext> a rdf:Property ;
+    rdfs:label "writer of added text" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wat> ;
+    rdfs:comment "A person, family, or organization contributing to a non-textual resource by providing text for the non-textual work (e.g., writing captions for photographs, descriptions of maps)." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/writerofintroduction> a rdf:Property ;
+    rdfs:label "writer of introduction" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/win> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by providing an introduction to the original work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/writerofpreface> a rdf:Property ;
+    rdfs:label "writer of preface" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wpr> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by providing a preface to the original work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/writerofsupplementarytextualcontent> a rdf:Property ;
+    rdfs:label "writer of supplementary textual content" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/wst> ;
+    rdfs:comment "A person, family, or organization contributing to a resource by providing supplementary textual content (e.g., an introduction, a preface) to the original work" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/abr> a rdf:Property ;
+    rdfs:label "abr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/acp> a rdf:Property ;
+    rdfs:label "acp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/act> a rdf:Property ;
+    rdfs:label "act" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/adi> a rdf:Property ;
+    rdfs:label "adi" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/adp> a rdf:Property ;
+    rdfs:label "adp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/aft> a rdf:Property ;
+    rdfs:label "aft" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/anl> a rdf:Property ;
+    rdfs:label "anl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/anm> a rdf:Property ;
+    rdfs:label "anm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ann> a rdf:Property ;
+    rdfs:label "ann" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ant> a rdf:Property ;
+    rdfs:label "ant" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ape> a rdf:Property ;
+    rdfs:label "ape" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/apl> a rdf:Property ;
+    rdfs:label "apl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/app> a rdf:Property ;
+    rdfs:label "app" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/aqt> a rdf:Property ;
+    rdfs:label "aqt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/arc> a rdf:Property ;
+    rdfs:label "arc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ard> a rdf:Property ;
+    rdfs:label "ard" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/arr> a rdf:Property ;
+    rdfs:label "arr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/art> a rdf:Property ;
+    rdfs:label "art" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/asg> a rdf:Property ;
+    rdfs:label "asg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/asn> a rdf:Property ;
+    rdfs:label "asn" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ato> a rdf:Property ;
+    rdfs:label "ato" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/att> a rdf:Property ;
+    rdfs:label "att" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/auc> a rdf:Property ;
+    rdfs:label "auc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/aud> a rdf:Property ;
+    rdfs:label "aud" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/aui> a rdf:Property ;
+    rdfs:label "aui" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/aus> a rdf:Property ;
+    rdfs:label "aus" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/aut> a rdf:Property ;
+    rdfs:label "aut" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bdd> a rdf:Property ;
+    rdfs:label "bdd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bjd> a rdf:Property ;
+    rdfs:label "bjd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bkd> a rdf:Property ;
+    rdfs:label "bkd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bkp> a rdf:Property ;
+    rdfs:label "bkp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/blw> a rdf:Property ;
+    rdfs:label "blw" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bnd> a rdf:Property ;
+    rdfs:label "bnd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bpd> a rdf:Property ;
+    rdfs:label "bpd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/brd> a rdf:Property ;
+    rdfs:label "brd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/brl> a rdf:Property ;
+    rdfs:label "brl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/bsl> a rdf:Property ;
+    rdfs:label "bsl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cas> a rdf:Property ;
+    rdfs:label "cas" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ccp> a rdf:Property ;
+    rdfs:label "ccp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/chr> a rdf:Property ;
+    rdfs:label "chr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cli> a rdf:Property ;
+    rdfs:label "cli" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cll> a rdf:Property ;
+    rdfs:label "cll" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/clr> a rdf:Property ;
+    rdfs:label "clr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/clt> a rdf:Property ;
+    rdfs:label "clt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cmm> a rdf:Property ;
+    rdfs:label "cmm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cmp> a rdf:Property ;
+    rdfs:label "cmp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cmt> a rdf:Property ;
+    rdfs:label "cmt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cnd> a rdf:Property ;
+    rdfs:label "cnd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cng> a rdf:Property ;
+    rdfs:label "cng" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cns> a rdf:Property ;
+    rdfs:label "cns" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/coe> a rdf:Property ;
+    rdfs:label "coe" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/col> a rdf:Property ;
+    rdfs:label "col" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/com> a rdf:Property ;
+    rdfs:label "com" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/con> a rdf:Property ;
+    rdfs:label "con" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cor> a rdf:Property ;
+    rdfs:label "cor" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cos> a rdf:Property ;
+    rdfs:label "cos" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cot> a rdf:Property ;
+    rdfs:label "cot" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cou> a rdf:Property ;
+    rdfs:label "cou" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cov> a rdf:Property ;
+    rdfs:label "cov" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cpc> a rdf:Property ;
+    rdfs:label "cpc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cpe> a rdf:Property ;
+    rdfs:label "cpe" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cph> a rdf:Property ;
+    rdfs:label "cph" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cpl> a rdf:Property ;
+    rdfs:label "cpl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cpt> a rdf:Property ;
+    rdfs:label "cpt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cre> a rdf:Property ;
+    rdfs:label "cre" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/crp> a rdf:Property ;
+    rdfs:label "crp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/crr> a rdf:Property ;
+    rdfs:label "crr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/crt> a rdf:Property ;
+    rdfs:label "crt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/csl> a rdf:Property ;
+    rdfs:label "csl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/csp> a rdf:Property ;
+    rdfs:label "csp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cst> a rdf:Property ;
+    rdfs:label "cst" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ctb> a rdf:Property ;
+    rdfs:label "ctb" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cte> a rdf:Property ;
+    rdfs:label "cte" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ctg> a rdf:Property ;
+    rdfs:label "ctg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ctr> a rdf:Property ;
+    rdfs:label "ctr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cts> a rdf:Property ;
+    rdfs:label "cts" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ctt> a rdf:Property ;
+    rdfs:label "ctt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cur> a rdf:Property ;
+    rdfs:label "cur" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/cwt> a rdf:Property ;
+    rdfs:label "cwt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dbp> a rdf:Property ;
+    rdfs:label "dbp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dfd> a rdf:Property ;
+    rdfs:label "dfd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dfe> a rdf:Property ;
+    rdfs:label "dfe" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dft> a rdf:Property ;
+    rdfs:label "dft" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dgg> a rdf:Property ;
+    rdfs:label "dgg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dgs> a rdf:Property ;
+    rdfs:label "dgs" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dis> a rdf:Property ;
+    rdfs:label "dis" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dln> a rdf:Property ;
+    rdfs:label "dln" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dnc> a rdf:Property ;
+    rdfs:label "dnc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dnr> a rdf:Property ;
+    rdfs:label "dnr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dpc> a rdf:Property ;
+    rdfs:label "dpc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dpt> a rdf:Property ;
+    rdfs:label "dpt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/drm> a rdf:Property ;
+    rdfs:label "drm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/drt> a rdf:Property ;
+    rdfs:label "drt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dsr> a rdf:Property ;
+    rdfs:label "dsr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dst> a rdf:Property ;
+    rdfs:label "dst" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dtc> a rdf:Property ;
+    rdfs:label "dtc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dte> a rdf:Property ;
+    rdfs:label "dte" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dtm> a rdf:Property ;
+    rdfs:label "dtm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dto> a rdf:Property ;
+    rdfs:label "dto" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/dub> a rdf:Property ;
+    rdfs:label "dub" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/edc> a rdf:Property ;
+    rdfs:label "edc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/edm> a rdf:Property ;
+    rdfs:label "edm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/edt> a rdf:Property ;
+    rdfs:label "edt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/egr> a rdf:Property ;
+    rdfs:label "egr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/elg> a rdf:Property ;
+    rdfs:label "elg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/elt> a rdf:Property ;
+    rdfs:label "elt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/eng> a rdf:Property ;
+    rdfs:label "eng" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/enj> a rdf:Property ;
+    rdfs:label "enj" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/etr> a rdf:Property ;
+    rdfs:label "etr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/evp> a rdf:Property ;
+    rdfs:label "evp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/exp> a rdf:Property ;
+    rdfs:label "exp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fac> a rdf:Property ;
+    rdfs:label "fac" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fds> a rdf:Property ;
+    rdfs:label "fds" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fld> a rdf:Property ;
+    rdfs:label "fld" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/flm> a rdf:Property ;
+    rdfs:label "flm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fmd> a rdf:Property ;
+    rdfs:label "fmd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fmk> a rdf:Property ;
+    rdfs:label "fmk" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fmo> a rdf:Property ;
+    rdfs:label "fmo" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fmp> a rdf:Property ;
+    rdfs:label "fmp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fnd> a rdf:Property ;
+    rdfs:label "fnd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/fpy> a rdf:Property ;
+    rdfs:label "fpy" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/frg> a rdf:Property ;
+    rdfs:label "frg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/gis> a rdf:Property ;
+    rdfs:label "gis" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/his> a rdf:Property ;
+    rdfs:label "his" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/hnr> a rdf:Property ;
+    rdfs:label "hnr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/honoree> a rdf:Property ;
+    rdfs:label "honoree" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibfra.me/vocab/relation/hnr> ;
+    rdfs:comment "A person, family, or organization honored by a work or item (e.g., the honoree of a festschrift, a person to whom a copy is presented)" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/hst> a rdf:Property ;
+    rdfs:label "hst" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ill> a rdf:Property ;
+    rdfs:label "ill" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ilu> a rdf:Property ;
+    rdfs:label "ilu" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ins> a rdf:Property ;
+    rdfs:label "ins" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/inv> a rdf:Property ;
+    rdfs:label "inv" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/isb> a rdf:Property ;
+    rdfs:label "isb" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/itr> a rdf:Property ;
+    rdfs:label "itr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ive> a rdf:Property ;
+    rdfs:label "ive" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ivr> a rdf:Property ;
+    rdfs:label "ivr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/jud> a rdf:Property ;
+    rdfs:label "jud" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/jug> a rdf:Property ;
+    rdfs:label "jug" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lbr> a rdf:Property ;
+    rdfs:label "lbr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lbt> a rdf:Property ;
+    rdfs:label "lbt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ldr> a rdf:Property ;
+    rdfs:label "ldr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/led> a rdf:Property ;
+    rdfs:label "led" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lee> a rdf:Property ;
+    rdfs:label "lee" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lel> a rdf:Property ;
+    rdfs:label "lel" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/len> a rdf:Property ;
+    rdfs:label "len" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/let> a rdf:Property ;
+    rdfs:label "let" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lgd> a rdf:Property ;
+    rdfs:label "lgd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lie> a rdf:Property ;
+    rdfs:label "lie" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lil> a rdf:Property ;
+    rdfs:label "lil" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lit> a rdf:Property ;
+    rdfs:label "lit" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lsa> a rdf:Property ;
+    rdfs:label "lsa" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lse> a rdf:Property ;
+    rdfs:label "lse" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lso> a rdf:Property ;
+    rdfs:label "lso" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ltg> a rdf:Property ;
+    rdfs:label "ltg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/lyr> a rdf:Property ;
+    rdfs:label "lyr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mcp> a rdf:Property ;
+    rdfs:label "mcp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mdc> a rdf:Property ;
+    rdfs:label "mdc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/med> a rdf:Property ;
+    rdfs:label "med" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mfp> a rdf:Property ;
+    rdfs:label "mfp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mfr> a rdf:Property ;
+    rdfs:label "mfr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mod> a rdf:Property ;
+    rdfs:label "mod" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mon> a rdf:Property ;
+    rdfs:label "mon" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mrb> a rdf:Property ;
+    rdfs:label "mrb" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mrk> a rdf:Property ;
+    rdfs:label "mrk" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/msd> a rdf:Property ;
+    rdfs:label "msd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mte> a rdf:Property ;
+    rdfs:label "mte" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mtk> a rdf:Property ;
+    rdfs:label "mtk" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/mus> a rdf:Property ;
+    rdfs:label "mus" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/nrt> a rdf:Property ;
+    rdfs:label "nrt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/opn> a rdf:Property ;
+    rdfs:label "opn" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/org> a rdf:Property ;
+    rdfs:label "org" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/orm> a rdf:Property ;
+    rdfs:label "orm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/osp> a rdf:Property ;
+    rdfs:label "osp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/oth> a rdf:Property ;
+    rdfs:label "oth" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/own> a rdf:Property ;
+    rdfs:label "own" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pan> a rdf:Property ;
+    rdfs:label "pan" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pat> a rdf:Property ;
+    rdfs:label "pat" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pbd> a rdf:Property ;
+    rdfs:label "pbd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pbl> a rdf:Property ;
+    rdfs:label "pbl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pdr> a rdf:Property ;
+    rdfs:label "pdr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pfr> a rdf:Property ;
+    rdfs:label "pfr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pht> a rdf:Property ;
+    rdfs:label "pht" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/plt> a rdf:Property ;
+    rdfs:label "plt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pma> a rdf:Property ;
+    rdfs:label "pma" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pmn> a rdf:Property ;
+    rdfs:label "pmn" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pop> a rdf:Property ;
+    rdfs:label "pop" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ppm> a rdf:Property ;
+    rdfs:label "ppm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ppt> a rdf:Property ;
+    rdfs:label "ppt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pra> a rdf:Property ;
+    rdfs:label "pra" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prc> a rdf:Property ;
+    rdfs:label "prc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prd> a rdf:Property ;
+    rdfs:label "prd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pre> a rdf:Property ;
+    rdfs:label "pre" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prf> a rdf:Property ;
+    rdfs:label "prf" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prg> a rdf:Property ;
+    rdfs:label "prg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prm> a rdf:Property ;
+    rdfs:label "prm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prn> a rdf:Property ;
+    rdfs:label "prn" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pro> a rdf:Property ;
+    rdfs:label "pro" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prp> a rdf:Property ;
+    rdfs:label "prp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prs> a rdf:Property ;
+    rdfs:label "prs" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prt> a rdf:Property ;
+    rdfs:label "prt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/prv> a rdf:Property ;
+    rdfs:label "prv" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pta> a rdf:Property ;
+    rdfs:label "pta" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pte> a rdf:Property ;
+    rdfs:label "pte" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ptf> a rdf:Property ;
+    rdfs:label "ptf" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pth> a rdf:Property ;
+    rdfs:label "pth" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ptt> a rdf:Property ;
+    rdfs:label "ptt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/pup> a rdf:Property ;
+    rdfs:label "pup" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rbr> a rdf:Property ;
+    rdfs:label "rbr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rcd> a rdf:Property ;
+    rdfs:label "rcd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rce> a rdf:Property ;
+    rdfs:label "rce" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rcp> a rdf:Property ;
+    rdfs:label "rcp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rdd> a rdf:Property ;
+    rdfs:label "rdd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/red> a rdf:Property ;
+    rdfs:label "red" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ren> a rdf:Property ;
+    rdfs:label "ren" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/res> a rdf:Property ;
+    rdfs:label "res" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rev> a rdf:Property ;
+    rdfs:label "rev" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rpc> a rdf:Property ;
+    rdfs:label "rpc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rps> a rdf:Property ;
+    rdfs:label "rps" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rpt> a rdf:Property ;
+    rdfs:label "rpt" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rpy> a rdf:Property ;
+    rdfs:label "rpy" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rse> a rdf:Property ;
+    rdfs:label "rse" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rsg> a rdf:Property ;
+    rdfs:label "rsg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rsp> a rdf:Property ;
+    rdfs:label "rsp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rsr> a rdf:Property ;
+    rdfs:label "rsr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rst> a rdf:Property ;
+    rdfs:label "rst" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rth> a rdf:Property ;
+    rdfs:label "rth" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/rtm> a rdf:Property ;
+    rdfs:label "rtm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sad> a rdf:Property ;
+    rdfs:label "sad" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sce> a rdf:Property ;
+    rdfs:label "sce" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/scl> a rdf:Property ;
+    rdfs:label "scl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/scr> a rdf:Property ;
+    rdfs:label "scr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sds> a rdf:Property ;
+    rdfs:label "sds" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sec> a rdf:Property ;
+    rdfs:label "sec" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sgd> a rdf:Property ;
+    rdfs:label "sgd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sgn> a rdf:Property ;
+    rdfs:label "sgn" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sht> a rdf:Property ;
+    rdfs:label "sht" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sll> a rdf:Property ;
+    rdfs:label "sll" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/sng> a rdf:Property ;
+    rdfs:label "sng" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/spk> a rdf:Property ;
+    rdfs:label "spk" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/spn> a rdf:Property ;
+    rdfs:label "spn" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/spy> a rdf:Property ;
+    rdfs:label "spy" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/srv> a rdf:Property ;
+    rdfs:label "srv" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/std> a rdf:Property ;
+    rdfs:label "std" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/stg> a rdf:Property ;
+    rdfs:label "stg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/stl> a rdf:Property ;
+    rdfs:label "stl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/stm> a rdf:Property ;
+    rdfs:label "stm" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/stn> a rdf:Property ;
+    rdfs:label "stn" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/str> a rdf:Property ;
+    rdfs:label "str" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/tcd> a rdf:Property ;
+    rdfs:label "tcd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/tch> a rdf:Property ;
+    rdfs:label "tch" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/ths> a rdf:Property ;
+    rdfs:label "ths" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/tld> a rdf:Property ;
+    rdfs:label "tld" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/tlp> a rdf:Property ;
+    rdfs:label "tlp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/trc> a rdf:Property ;
+    rdfs:label "trc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/trl> a rdf:Property ;
+    rdfs:label "trl" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/tyd> a rdf:Property ;
+    rdfs:label "tyd" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/tyg> a rdf:Property ;
+    rdfs:label "tyg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/uvp> a rdf:Property ;
+    rdfs:label "uvp" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/vac> a rdf:Property ;
+    rdfs:label "vac" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/vdg> a rdf:Property ;
+    rdfs:label "vdg" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wac> a rdf:Property ;
+    rdfs:label "wac" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wal> a rdf:Property ;
+    rdfs:label "wal" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wam> a rdf:Property ;
+    rdfs:label "wam" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wat> a rdf:Property ;
+    rdfs:label "wat" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wdc> a rdf:Property ;
+    rdfs:label "wdc" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wde> a rdf:Property ;
+    rdfs:label "wde" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/win> a rdf:Property ;
+    rdfs:label "win" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wit> a rdf:Property ;
+    rdfs:label "wit" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wpr> a rdf:Property ;
+    rdfs:label "wpr" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/wst> a rdf:Property ;
+    rdfs:label "wst" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/relation/hasDerivative> a rdf:Property ;
+    rdfs:label "has derivative" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/hasDerivative> ;
+    rdfs:comment "Target resource is a modification of the source resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/relation/isDerivativeOf> a rdf:Property ;
+    rdfs:label "is derivative of" ;
+    v:scope <http://bibfra.me/vocab/relation> ;
+    v:synonyms <http://bibframe.org/vocab/derivativeOf> ;
+    rdfs:comment "Source resource is a modification of the target resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+

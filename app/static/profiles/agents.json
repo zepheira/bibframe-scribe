@@ -2,72 +2,46 @@
     "Profile": {
         "id": "bfp:Agent",
         "title": "BIBFRAME Agents",
-        "resourceTemplate": [    	       
+        "resourceTemplate": [
             {
-	         "id": "bfp:Agent:Family",
+                "id": "bfp:Agent:Family",
                 "class": {
                     "classLabel": "Family",
-                    "id": "http://bibframe.org/vocab/Family",
-                    "labelProperty": "http://bibframe.org/vocab/label",
+                    "type": "http://bibfra.me/view/lite/Family",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
+                            "mandatory": "true",
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/ISNI",
-                                "propertyLabel": "ISNI"
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/VIAF",
-                                "propertyLabel": "VIAF"
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link"
                             },
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/ORCID",
-                                "propertyLabel": "ORCID"
+                                "id": "http://bibfra.me/view/lite/date",
+                                "propertyLabel": "Date"
                             },
-                            "type": "resource"
-                        }
-                    ]
-                }
-            },
-            {
-                "id": "bfp:Agent:Jurisdiction",
-                "class": {
-                    "classLabel": "Jurisdiction",
-                    "id": "http://bibframe.org/vocab/Jurisdiction",
-                    "labelProperty": "http://bibframe.org/vocab/label",
-                    "propertyTemplate": [
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
-                            },
+                            "repeatable": "true",
                             "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISNI",
-                                "propertyLabel": "ISNI"
-                            },
-                            "type": "literal"
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/VIAF",
-                                "propertyLabel": "VIAF"
-                            },
-                            "type": "resource"
                         }
                     ]
                 }
@@ -76,29 +50,73 @@
                 "id": "bfp:Agent:Meeting",
                 "class": {
                     "classLabel": "Meeting",
-                    "id": "http://bibframe.org/vocab/Meeting",
-                    "labelProperty": "http://bibframe.org/vocab/label",
+                    "type": "http://bibfra.me/view/lite/Meeting",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
+                            "mandatory": "true",
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/ISNI",
-                                "propertyLabel": "ISNI"
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/VIAF",
-                                "propertyLabel": "VIAF"
+                                "id": "http://bibfra.me/view/lite/Place",
+                                "propertyLabel": "Place"
                             },
+                            "repeatable": "true",
                             "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link (VIAF, Wikipedia, Wikidata, etc.)"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/link",
+                                "propertyLabel": "Website"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/date",
+                                "propertyLabel": "Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "propertyLabel": "Start Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "propertyLabel": "End Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
                         }
                     ]
                 }
@@ -107,29 +125,81 @@
                 "id": "bfp:Agent:Organization",
                 "class": {
                     "classLabel": "Organization",
-                    "id": "http://bibframe.org/vocab/Organization",
-                    "labelProperty": "http://bibframe.org/vocab/label",
+                    "type": "http://bibfra.me/view/lite/Organization",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
+                            "mandatory": "true",
                             "property": {
-                                "id": "http://bibframe.org/vocab/label",
-                                "propertyLabel": "Label"
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/homePage",
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/link",
                                 "propertyLabel": "Home Page"
                             },
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/VIAF",
-                                "propertyLabel": "VIAF"
+                                "id": "http://bibfra.me/view/lite/email",
+                                "propertyLabel": "E-mail Address"
                             },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/Place",
+                                "propertyLabel": "Place"
+                            },
+                            "repeatable": "true",
                             "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link"
+                            },
+                            "repeatable": "true",
+                            "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/date",
+                                "propertyLabel": "Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "propertyLabel": "Start Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "propertyLabel": "End Date"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
                         }
                     ]
                 }
@@ -138,71 +208,65 @@
                 "id": "bfp:Agent:Person",
                 "class": {
                     "classLabel": "Person",
-                    "id": "http://bibframe.org/vocab/Person",
-                    "labelProperty": "http://bibframe.org/vocab/lname",
+                    "type": "http://bibfra.me/view/lite/Person",
+                    "labelProperty": "http://bibfra.me/view/lite/label",
                     "propertyTemplate": [
                         {
+                            "mandatory": "true",
                             "property": {
-                                "id": "http://bibframe.org/vocab/fname",
-                                "propertyLabel": "First Name"
+                                "id": "http://bibfra.me/view/lite/name",
+                                "propertyLabel": "Name"
                             },
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/lname",
-                                "propertyLabel": "Last Name"
+                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "propertyLabel": "Alternative Name"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/auth/birthDate",
+                                "id": "http://bibfra.me/view/lite/birthDate",
                                 "propertyLabel": "Birth Date"
                             },
-                            "type": "literal",
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/auth/eathDate",
-                                "propertyLabel": "Date of Death"
-                            },
-                            "type": "literal",
-                            "valueConstraint": {
-                                "valueDataType": {
-                                    "id": "http://bibframe.org/vocab/proposed/ISO8601",
-                                    "valueLabel": "ISO 8601",
-                                    "valueLabelHint": "ISO"
-                                }
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibframe.org/vocab/ISNI",
-                                "propertyLabel": "ISNI"
-                            },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/VIAF",
-                                "propertyLabel": "VIAF"
+                                "id": "http://bibfra.me/view/lite/deathDate",
+                                "propertyLabel": "Death Date"
                             },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "propertyLabel": "Identity Service Link"
+                            },
+                            "repeatable": "true",
                             "type": "resource"
                         },
                         {
                             "property": {
-                                "id": "http://bibframe.org/vocab/ORCID",
-                                "propertyLabel": "ORCID"
+                                "id": "http://bibfra.me/view/lite/link",
+                                "propertyLabel": "Home Page"
                             },
+                            "repeatable": "true",
                             "type": "resource"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/view/lite/email",
+                                "propertyLabel": "E-mail Address"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
                         }
                     ]
                 }
