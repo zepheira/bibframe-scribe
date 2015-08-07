@@ -428,133 +428,133 @@
                             },
                             "repeatable": "true",
                             "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Instance:PrintBibliography",
+                "class": {
+                    "classLabel": "Print Bibliography",
+                    "type": "http://bibfra.me/vocab/marc/Print",
+                    "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/edition",
+                                "propertyLabel": "Edition Statement"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
                         },
                         {
-                            "id": "bfp:Instance:PrintBibliography",
-                            "class": {
-                                "classLabel": "Print Bibliography",
-                                "type": "http://bibfra.me/vocab/marc/Print",
-                                "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
-                                "propertyTemplate": [
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/marc/edition",
-                                            "propertyLabel": "Edition Statement"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "literal"
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/marc/publication",
-                                            "propertyLabel": "Publication"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "resource",
-                                        "valueConstraint": {
-                                            "descriptionTemplateRef": [
-                                                "bfp:Event:ProviderEvent"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/lite/copyright",
-                                            "propertyLabel": "Copyright"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "resource",
-                                        "valueConstraint": {
-                                            "descriptionTemplateRef": [
-                                                "bfp:Event:CopyrightEvent"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/marc/distribution",
-                                            "propertyLabel": "Distribution"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "resource",
-                                        "valueConstraint": {
-                                            "descriptionTemplateRef": [
-                                                "bfp:Event:ProviderEvent"
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/lite/rightsStatement",
-                                            "propertyLabel": "Rights Statement"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "literal"
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/marc/carrierCategory",
-                                            "propertyLabel": "Carrier Category"
-                                        },
-                                        "type": "resource",
-                                        "valueConstraint": {
-                                            "descriptionTemplateRef": [
-                                                "bfp:Category"
-                                            ],
-                                            "editable": "true",
-                                            "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
-                                            "defaultLiteral": "online resource"
-                                        }
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/marc/mediaCategory",
-                                            "propertyLabel": "Media Category"
-                                        },
-                                        "type": "resource",
-                                        "valueConstraint": {
-                                            "descriptionTemplateRef": [
-                                                "bfp:Category"
-                                            ],
-                                            "editable": "true",
-                                            "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
-                                            "defaultLiteral": "unmediated"
-                                        }
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/lite/controlCode",
-                                            "propertyLabel": "Control Code"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "literal"
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/marc/isbn",
-                                            "propertyLabel": "ISBN"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "literal"
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/marc/lccn",
-                                            "propertyLabel": "LCCN"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "literal"
-                                    },
-                                    {
-                                        "property": {
-                                            "id": "http://bibfra.me/vocab/lite/link",
-                                            "propertyLabel": "uri"
-                                        },
-                                        "repeatable": "true",
-                                        "type": "literal"
-                                    }
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/publication",
+                                "propertyLabel": "Publication"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Event:ProviderEvent"
                                 ]
                             }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/copyright",
+                                "propertyLabel": "Copyright"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Event:CopyrightEvent"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/distribution",
+                                "propertyLabel": "Distribution"
+                            },
+                            "repeatable": "true",
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Event:ProviderEvent"
+                                ]
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/rightsStatement",
+                                "propertyLabel": "Rights Statement"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/carrierCategory",
+                                "propertyLabel": "Carrier Category"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Category"
+                                ],
+                                "editable": "true",
+                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
+                                "defaultLiteral": "online resource"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/mediaCategory",
+                                "propertyLabel": "Media Category"
+                            },
+                            "type": "resource",
+                            "valueConstraint": {
+                                "descriptionTemplateRef": [
+                                    "bfp:Category"
+                                ],
+                                "editable": "true",
+                                "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
+                                "defaultLiteral": "unmediated"
+                            }
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/controlCode",
+                                "propertyLabel": "Control Code"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/isbn",
+                                "propertyLabel": "ISBN"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/lccn",
+                                "propertyLabel": "LCCN"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/link",
+                                "propertyLabel": "uri"
+                            },
+                            "repeatable": "true",
+                            "type": "literal"
                         }
                     ]
                 }
