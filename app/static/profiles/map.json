@@ -456,7 +456,7 @@
                 "class": {
                     "classLabel": "Electronic Map",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Map",
+                    "instantiates": "bfp:Work:Map",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
@@ -713,7 +713,7 @@
                 "class": {
                     "classLabel": "Print Map",
                     "type": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Map",
+                    "instantiates": "bfp:Work:Map",
                     "propertyTemplate": [
                         {
                             "property": {

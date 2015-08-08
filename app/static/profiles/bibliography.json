@@ -285,7 +285,7 @@
                 "class": {
                     "classLabel": "Electronic",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
+                    "instantiates": "bfp:Work:Bibliography",
                     "propertyTemplate": [
                         
                         {
@@ -437,7 +437,7 @@
                 "class": {
                     "classLabel": "Print Bibliography",
                     "type": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Bibliography",
+                    "instantiates": "bfp:Work:Bibliography",
                     "propertyTemplate": [
                         {
                             "property": {

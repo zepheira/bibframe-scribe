@@ -304,7 +304,7 @@
                 "class": {
                     "classLabel": "E-book",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Books",
+                    "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -454,7 +454,7 @@
                 "class": {
                     "classLabel": "Print Book",
                     "type": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Books",
+                    "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
                         {
                             "property": {

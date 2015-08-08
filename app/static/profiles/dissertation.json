@@ -347,7 +347,7 @@
                 "class": {
                     "classLabel": "Electronic Dissertation",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Dissertation",
+                    "instantiates": "bfp:Work:Dissertation",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -498,7 +498,7 @@
                 "class": {
                     "classLabel": "Print Dissertation",
                     "type": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Dissertation",
+                    "instantiates": "bfp:Work:Dissertation",
                     "propertyTemplate": [
                         {
                             "property": {

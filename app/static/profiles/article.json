@@ -58,7 +58,7 @@
                 "class": {
                     "classLabel": "Electronic Article",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Article",
+                    "instantiates": "bfp:Work:Article",
                     "propertyTemplate": [
                         {
                             "property": {
@@ -277,7 +277,7 @@
                 "class": {
                     "classLabel": "Print Article",
                     "type": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Article",
+                    "instantiates": "bfp:Work:Article",
                     "propertyTemplate": [
                         {
                             "property": {
