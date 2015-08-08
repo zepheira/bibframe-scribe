@@ -88,11 +88,12 @@
                         responses.map(function(curr) {
                             angular.forEach(curr, function(template) {
                                 relation = null;
-                                if (TemplateStore.hasTemplateByClassID(template.getRelation())) {
-                                    relation = TemplateStore.getTemplateByClassID(template.getRelation());
+                                if (TemplateStore.hasTemplateByID(template.getRelation())) {
+                                    relation = TemplateStore.getTemplateByID(template.getRelation());
                                     template.mergeTemplate(relation);
                                 }
                                 resources.push({
+                                    "id": template.getID(),
                                     "uri": template.getClassID(),
                                     "label": template.getLabel(),
                                     "sortKey": ((relation !== null) ? relation.getLabel() + "-" : "") + template.getLabel(),

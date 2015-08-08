@@ -47,7 +47,6 @@
         $scope.cacheDropzone = ResourceStore.cacheDropzone;
         $scope.config = Configuration;
         $scope.getTemplateByID = TemplateStore.getTemplateByID;
-        $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;
         $scope.setHasRequired = ResourceStore.setHasRequired;
         $scope.isLoading = ResourceStore.isLoading;
@@ -90,9 +89,9 @@
             var props, flags;
             if (!Configuration.editOnLoad() && !$scope.editLoaded) {
                 $scope.tabs.active = {};
-                $scope.tabs.active[resource.uri] = true;
+                $scope.tabs.active[resource.id] = true;
                 ResourceStore.clear();
-                _setup(TemplateStore.getTemplateByClassID(resource.uri), ResourceStore.getCurrent());
+                _setup(TemplateStore.getTemplateByID(resource.id), ResourceStore.getCurrent());
             }
         }
 
@@ -416,6 +415,11 @@
             });
         }
 
+        /**
+         * @@@Potentially problematic... Using "type" may be ambiguous.
+         *    Need to look up what it instantiates or is a holdingFor and
+         *    get that type if it's an instance / item.
+         */
         function _loadFromGraph(type, res, uri) {
             var tmpl,
                 deferred = $q.defer(),

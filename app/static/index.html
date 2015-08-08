@@ -89,9 +89,9 @@
               <progressbar value="progress()" class="active progress-striped"></progressbar>
             </div>
           </tab>
-          <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="!current().isEmpty()" active="tabs.active[resource.uri]">
+          <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="!current().isEmpty()" active="tabs.active[resource.id]">
             <tab-heading><span ng-show="resource.child"><i class="icon-chevron-right"></i> </span>{{resource.label}}</tab-heading>
-            <div ng-if="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-show="activeTemplate()&&activeTemplate().getClassID()==resource.uri" ng-include="'resource.html'"></div>
+            <div ng-if="activeTemplate()&&activeTemplate().getID()==resource.id" ng-show="activeTemplate()&&activeTemplate().getID()==resource.id" ng-include="'resource.html'"></div>
           </tab>
         </tabset>
         
@@ -189,7 +189,7 @@
             <span class="input-group-addon"><i class="icon-calendar"></i></span>
             <input type="text"
                    class="form-control"
-                   id="{{resource.uri}}-{{prop.getProperty().getID()}}"
+                   id="{{resource.id}}-{{prop.getProperty().getID()}}"
                    datepicker-popup="yyyy-MM-dd"
                    datepicker-options="{'show-weeks': false}"
                    show-button-bar="false"
@@ -218,7 +218,7 @@
             <input
                type="text"
                class="form-control"
-               id="{{resource.uri}}-{{prop.getProperty().getID()}}"
+               id="{{resource.id}}-{{prop.getProperty().getID()}}"
                ng-model="inputted[prop.getProperty().getID()]"
                scribe-enter="setValueFromInput(prop, inputted)"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues().length>0">
@@ -243,7 +243,7 @@
         <input
            type="text"
            class="form-control"
-           id="{{resource.uri}}-{{prop.getProperty().getID()}}"
+           id="{{resource.id}}-{{prop.getProperty().getID()}}"
            ng-model="inputted[prop.getProperty().getID()]"
            scribe-enter="setValueFromInput(prop, inputted)"
            ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
@@ -269,7 +269,7 @@
         <span class="input-group-addon">URL</span>
         <input type="text"
                class="form-control"
-               id="{{resource.uri}}-{{prop.getProperty().getID()}}"
+               id="{{resource.id}}-{{prop.getProperty().getID()}}"
                ng-model="inputted[prop.getProperty().getID()]"
                scribe-enter="setValueFromInput(prop, inputted)"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
@@ -313,7 +313,7 @@
                typeahead-editable="false"
                typeahead-loading="isLoading(prop.getProperty().getID())"
                typeahead-template-url="typeahead-match.html"
-               id="{{resource.uri}}-{{prop.getProperty().getID()}}">
+               id="{{resource.id}}-{{prop.getProperty().getID()}}">
           <span ng-if="!editExisting&&!prop.getConstraint().hasManyReferences()" class="input-group-btn">
             <button class="btn btn-default"
                 type="button"
@@ -349,9 +349,9 @@
     <script type="text/ng-template" id="resource.html">
       <form class="form-horizontal well" ng-submit="submit()" name="form-resource">
         <p ng-show="hasRequired()">Properties marked with <span class="required">*</span> are required.</p>
-        <div ng-repeat="prop in getTemplateByClassID(resource.uri).getPropertyTemplates()">
+        <div ng-repeat="prop in getTemplateByID(resource.id).getPropertyTemplates()">
           <p class="form-group">
-            <label for="{{resource.uri}}-{{prop.getProperty().getID()}}" class="property-label control-label col-md-3">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
+            <label for="{{resource.id}}-{{prop.getProperty().getID()}}" class="property-label control-label col-md-3">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
             <span class="col-md-8" ng-if="!prop.hasConstraint()||(prop.hasConstraint()&&prop.getConstraint().isEditable())">
               <span ng-switch="" on="prop.getType()">
                 <span ng-switch-when="resource">
