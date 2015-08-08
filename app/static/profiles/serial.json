@@ -293,7 +293,7 @@
                 "class": {
                     "classLabel": "Electronic Serial",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
-                    "instantiates": "http://bibfra.me/vocab/marc/Serials",
+                    "instantiates": "bfp:Work:Serial",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
@@ -558,7 +558,7 @@
                 "class": {
                     "classLabel": "Print Serial",
                     "type": "http://bibfra.me/vocab/marc/Print",
-                    "instantiates": "http://bibfra.me/vocab/marc/Serials",
+                    "instantiates": "bfp:Work:Serial",
                     "propertyTemplate": [
                         {
                             "property": {
