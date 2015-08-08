@@ -469,54 +469,6 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/marc/distribution",
-                                "propertyLabel": "Distribution"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/marc/carrierCategory",
-                                "propertyLabel": "Carrier Category"
-                            },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
-                                "editable": "true",
-                                "defaultURI": "http://id.loc.gov/vocabulary/carriers/nc",
-                                "defaultLiteral": "volume"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/marc/mediaCategory",
-                                "propertyLabel": "Media Category"
-                            },
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
-                                "editable": "true",
-                                "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
-                                "defaultLiteral": "unmediated"
-                            }
-                        },
-                        {
-                            "property": {
-                                "id": "http://bibfra.me/vocab/marc/publication",
-                                "propertyLabel": "Publication"
-                            },
-                            "repeatable": "true",
-                            "type": "resource",
-                            "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Event:ProviderEvent" ]
-                            }
-                        },
-                        {
-                            "property": {
                                 "id": "http://bibfra.me/vocab/lite/copyright",
                                 "propertyLabel": "Copyright"
                             },
