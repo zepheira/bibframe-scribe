@@ -54,7 +54,7 @@
                 }
             },
             {
-                "id": "bfp:Work:ElectronicArticle",
+                "id": "bfp:Instance:ElectronicArticle",
                 "class": {
                     "classLabel": "Electronic Article",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
@@ -273,7 +273,7 @@
                 }
             },
             {
-                "id": "bfp:Work:PrintArticle",
+                "id": "bfp:Instance:PrintArticle",
                 "class": {
                     "classLabel": "Print Article",
                     "type": "http://bibfra.me/vocab/marc/Print",
