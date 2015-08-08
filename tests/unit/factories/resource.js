@@ -22,7 +22,7 @@ describe("Resource", function() {
             rt = new ResourceTemplate({
                 id: "test",
                 "class": {
-                    id: "urn:testclass",
+                    type: "urn:testclass",
                     classLabel: "Test Class",
                     labelProperty: "urn:labelprop",
                     propertyTemplate: [{

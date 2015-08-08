@@ -45,7 +45,7 @@ describe("Profile", function() {
                     {
                         id: "rt-test",
                         "class": {
-                            id: "rt-class-test"
+                            type: "rt-class-test"
                         }
                     }
                 ]
@@ -56,7 +56,7 @@ describe("Profile", function() {
             res = new ResourceTemplate({
                 id: "res-test",
                 "class": {
-                    id: "fc"
+                    type: "fc"
                 }
             }, {});
             profile._processQuery(["fc"], [res, [{o: {value: "fc"}}]]);
@@ -91,7 +91,7 @@ describe("Profile", function() {
                     {
                         id: "rt-test",
                         "class": {
-                            id: "rt-class-test"
+                            type: "rt-class-test"
                         }
                     }
                 ]
@@ -122,7 +122,7 @@ describe("Profile", function() {
                     {
                         id: "rt-test",
                         "class": {
-                            id: "rt-class-test"
+                            type: "rt-class-test"
                         }
                     }
                 ]

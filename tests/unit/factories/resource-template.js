@@ -14,7 +14,7 @@ describe("ResourceTemplate", function() {
             rt = new ResourceTemplate({
                 id: "test",
                 "class": {
-                    id: "urn:testclass",
+                    type: "urn:testclass",
                     classLabel: "Test Class",
                     labelProperty: "urn:labelprop",
                     propertyTemplate: [{
@@ -82,7 +82,7 @@ describe("ResourceTemplate", function() {
             more = new ResourceTemplate({
                 id: "test",
                 "class": {
-                    id: "urn:moreclass",
+                    type: "urn:moreclass",
                     classLabel: "More Class",
                     labelProperty: "urn:labelprop",
                     propertyTemplate: [{
