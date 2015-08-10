@@ -97,7 +97,6 @@
 
         /**
          * Arguments are from input form, process and run to querying service.
-         * @@@ service?
          */
         function autocomplete(property, typed) {
             var i, classes, single, refs, services, idx, srv, filtered;
@@ -129,7 +128,7 @@
                 } else {
                     srv = service;
                 }
-                // @@@ $scope.useServices?
+                // @@@ get away from $scope
                 if ($scope.useServices[srv] && filtered.indexOf(service) < 0) {
                     filtered.push(service);
                 }
@@ -144,7 +143,6 @@
 
         /**
          * Fires when a dropdown item is selected
-         * @@@ service? - with autocomplete?
          */
         function selectValue(property, selection, created) {
             var seen = false, objType;
@@ -164,9 +162,9 @@
 
         /**
          * Convenience method
-         * @@@ rewrite to do without $scope
          */
         function setValueFromInput(prop, inputs) {
+            // @@@ rewrite to do without $scope
             if (!$scope.editExisting) {
                 ResourceStore.getCurrent().addPropertyValue(prop, inputs[prop.getProperty().getID()]);
                 inputs[prop.getProperty().getID()] = '';
@@ -175,7 +173,6 @@
 
         /**
          * Wipe out $scope form data as if no input was made.
-         * @@@ service - current work service
          */
         function reset(formScope, formName) {
             ResourceStore.reset();
@@ -234,7 +231,6 @@
 
         /**
          * Show a dialog with Resolver-queried RDF by putting result in $scope.
-         * @@@service? - resolver service
          */
         function popoverResource(uri) {
             // @@@ redo this with a service
@@ -252,10 +248,8 @@
         /**
          * Show a model dialog for an external URI using Resolver-queried
          * RDF - very similar to exported RDF dialog, perhaps combine.
-         * @@@service?
          */
         function showResource(val) {
-            // @@@ redo with a service, without resolver
             if (val.isResource()) {
                 Resolver.resolve({"uri": val.getValue()}).$promise.then(function(data) {
                     $modal.open({
@@ -298,7 +292,6 @@
         /**
          * Open up new input form in modal dialog to fill in a sub-resource
          * of the main form. Takes from and modifes $scope.
-         * @@@service?
          */
         function pivot(property, ref, toEdit) {
             var modal, res, doInit;
@@ -374,7 +367,6 @@
 
         /**
          * Checks $scope current work for whether mandatory-ness is met.
-         * @@@arguments
          */
         function validate() {
             var props, valid;
@@ -390,7 +382,6 @@
 
         /**
          * Takes N3 string and persists it to backing store.
-         * @@@error handling
          */
         function persist(n3) {
             Store.new(null, {"n3": n3}).$promise.then(function(resp) {
@@ -400,7 +391,6 @@
 
         /**
          * Open modal dialog to show (stored) string to user.
-         * @@@arguments, service?
          */
         function showRDF() {
             $modal.open({
