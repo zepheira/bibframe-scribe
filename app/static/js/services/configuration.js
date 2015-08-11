@@ -90,7 +90,7 @@
                                 relation = null;
                                 if (TemplateStore.hasTemplateByID(template.getRelation())) {
                                     relation = TemplateStore.getTemplateByID(template.getRelation());
-                                    template.mergeTemplate(relation);
+                                    template.setRelationResourceTemplate(relation);
                                 }
                                 resources.push({
                                     "id": template.getID(),

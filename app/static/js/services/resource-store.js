@@ -4,7 +4,7 @@
         .factory("ResourceStore", ["Resource", ResourceStore]);
 
     function ResourceStore(Resource) {
-        var service, _current, _created, _loading, _flags, _hasRequired, _cache, _dataTypes, _idbase;
+        var service, _current, _created, _cache, _dataTypes, _idbase;
         service = {
             getCurrent: getCurrent,
             setCurrent: setCurrent,
@@ -18,10 +18,6 @@
             getDataTypes: getDataTypes,
             getDataTypeByID: getDataTypeByID,
             setLoading: setLoading,
-            getAllLoading: getAllLoading,
-            isLoading: isLoading,
-            hasRequired: hasRequired,
-            setHasRequired: setHasRequired,
             addDataTypeHandler: addDataTypeHandler,
             newResource: newResource,
             setResourceTemplate: setResourceTemplate,
@@ -34,17 +30,11 @@
 
         _current = null;
         _parents = {
-            current: [],
-            loading: [],
-            flags: [],
-            hasRequired: []
+            current: []
         };
         _activeTemplate = null;
         _dataTypes = {};
         _created = [];
-        _loading = {};
-        _flags = {};
-        _hasRequired = false;
         _cache = {
             dz: null
         };
@@ -61,12 +51,6 @@
 
         function pivot(r) {
             _parents.current.push(_current);
-            _parents.loading.push(_loading);
-            _parents.flags.push(_flags);
-            _parents.hasRequired.push(_hasRequired);
-            _hasRequired = false;
-            _flags = {};
-            _loading = {};
             _current = r;
         }
 
@@ -74,9 +58,6 @@
             var ret = _current;
             addCreated(_current);
             _current = _parents.current.pop();
-            _loading = _parents.loading.pop();
-            _flags = _parents.flags.pop();
-            _hasRequired = _parents.hasRequired.pop();
             return ret;
         }
 
@@ -105,27 +86,7 @@
         }
 
         function setLoading(prop, loading) {
-           _loading[prop] = loading;
-        }
-
-        function getAllLoading() {
-            return _loading;
-        }
-
-        function isLoading(prop) {
-            if (typeof _loading[prop] !== "undefined") {
-                return _loading[prop];
-            } else {
-                return false;
-            }
-        }
-
-        function hasRequired() {
-            return _hasRequired;
-        }
-
-        function setHasRequired(req) {
-            _hasRequired = req;
+           _current.setLoading(prop, loading);
         }
 
         function setActiveTemplate(tmpl) {
@@ -160,9 +121,6 @@
         }
 
         function clear() {
-            _hasRequired = false;
-            _flags = {};
-            _loading = {};
             if (_cache.dz !== null) {
                 _cache.dz.destroy();
                 _cache.dz = null;

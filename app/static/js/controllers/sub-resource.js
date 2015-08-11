@@ -27,13 +27,8 @@
 
         function initialize() {
             if (doInitialization) {
-                var flags = { hasRequired: false, loading: {} };
-                angular.forEach(template.getPropertyTemplates(), function(prop) {
-                    $scope.current().initializeProperty(prop, flags);
-                });
-                $scope.setHasRequired(flags.hasRequired);
+                $scope.current().initialize();
             }
-            // @@@ need a way to ascertain if hasRequired is true if not initializating
         }
 
         function cancel() {

@@ -311,7 +311,7 @@
                typeahead-on-select="selectValue(prop,$item);inputted[prop.getProperty().getID()]=null"
                typeahead-min-length="1"
                typeahead-editable="false"
-               typeahead-loading="isLoading(prop.getProperty().getID())"
+               typeahead-loading="current().isLoading(prop.getProperty().getID())"
                typeahead-template-url="typeahead-match.html"
                id="{{resource.id}}-{{prop.getProperty().getID()}}">
           <span ng-if="!editExisting&&!prop.getConstraint().hasManyReferences()" class="input-group-btn">
@@ -348,7 +348,7 @@
 
     <script type="text/ng-template" id="resource.html">
       <form class="form-horizontal well" ng-submit="submit()" name="form-resource">
-        <p ng-show="hasRequired()">Properties marked with <span class="required">*</span> are required.</p>
+        <p ng-show="current().hasRequired()">Properties marked with <span class="required">*</span> are required.</p>
         <div ng-repeat="prop in getTemplateByID(resource.id).getPropertyTemplates()">
           <p class="form-group">
             <label for="{{resource.id}}-{{prop.getProperty().getID()}}" class="property-label control-label col-md-3">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
@@ -365,7 +365,7 @@
             <span ng-if="prop.hasConstraint()&&!prop.getConstraint().isEditable()">
               <span ng-include="'ineditable.html'"></span>
             </span>
-            <span class="col-md-1" ng-show="isLoading(prop.getProperty().getID())"><img src="img/spinner.gif"></span>
+            <span class="col-md-1" ng-show="current().isLoading(prop.getProperty().getID())"><img src="img/spinner.gif"></span>
           </p>
           <ul class="values" ng-hide="(prop.hasConstraint()&&!prop.getConstraint().isEditable())||getReferenceResourceType(prop.getConstraint().getReference())=='dropzone'">
             <li ng-repeat="val in current().getPropertyValues(prop.getProperty().getID())" class="badge badge-info">

@@ -65,20 +65,10 @@
         }
 
         function _setup(tmpl, res) {
-            var props, flags;
-            flags = {
-                hasRequired: false,
-                loading: ResourceStore.getAllLoading()
-            };
-
             $scope.inputted = {};
             ResourceStore.setActiveTemplate(tmpl);
             res.setTemplate(tmpl);
-            props = tmpl.getPropertyTemplates();
-            angular.forEach(props, function(prop) {
-                res.initializeProperty(prop, flags);
-            });
-            ResourceStore.setHasRequired(flags.hasRequired);
+            res.initialize();
         }
 
         /**
