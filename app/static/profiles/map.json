@@ -28,7 +28,7 @@
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/title",
+                                "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Title"
                             },
                             "repeatable": "false",
@@ -43,7 +43,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/titleAlternative",
+                                "id": "http://bibfra.me/vocab/lite/titleAlternative",
                                 "propertyLabel": "Alternative Title"
                             },
                             "type": "literal"
@@ -57,21 +57,21 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/date",
+                                "id": "http://bibfra.me/vocab/lite/date",
                                 "propertyLabel": "Date"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "id": "http://bibfra.me/vocab/lite/dateStart",
                                 "propertyLabel": "Start Date"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "id": "http://bibfra.me/vocab/lite/dateEnd",
                                 "propertyLabel": "End Date"
                             },
                             "type": "literal"
@@ -274,7 +274,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/genre",
+                                "id": "http://bibfra.me/vocab/lite/genre",
                                 "propertyLabel": "Genre"
                             },
                             "repeatable": "true",
@@ -332,63 +332,63 @@
                         },
                                                 {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/coordinates",
+                                "id": "http://bibfra.me/vocab/lite/coordinates",
                                 "propertyLabel": "Coordinates"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/equinox",
+                                "id": "http://bibfra.me/vocab/lite/equinox",
                                 "propertyLabel": "Equinox"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/scale",
+                                "id": "http://bibfra.me/vocab/lite/scale",
                                 "propertyLabel": "Scale"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/projection",
+                                "id": "http://bibfra.me/vocab/lite/projection",
                                 "propertyLabel": "Projection"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/presentationTechnique",
+                                "id": "http://bibfra.me/vocab/lite/presentationTechnique",
                                 "propertyLabel": "Presentation Technique"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/representationOfRelief",
+                                "id": "http://bibfra.me/vocab/lite/representationOfRelief",
                                 "propertyLabel": "Representation of Relief"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/geodeticGridVerticalMeasurement",
+                                "id": "http://bibfra.me/vocab/lite/geodeticGridVerticalMeasurement",
                                 "propertyLabel": "Geodetic, Grid, and Vertical Measurement"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/recordingTechnique",
+                                "id": "http://bibfra.me/vocab/lite/recordingTechnique",
                                 "propertyLabel": "Recording Technique"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/specialCharacteristic",
+                                "id": "http://bibfra.me/vocab/lite/specialCharacteristic",
                                 "propertyLabel": "Special Characteristic"
                             },
                             "type": "literal"
@@ -461,7 +461,7 @@
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/title",
+                                "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Title"
                             },
                             "repeatable": "false",
@@ -582,7 +582,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/lite/extent",
+                                "id": "http://bibfra.me/vocab/lite/extent",
                                 "propertyLabel": "Extent"
                             },
                             "repeatable": "true",
@@ -660,7 +660,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/image",
+                                "id": "http://bibfra.me/vocab/lite/image",
                                 "propertyLabel": "image"
                             },
                             "repeatable": "true",
@@ -668,7 +668,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/editionStatement",
+                                "id": "http://bibfra.me/vocab/lite/editionStatement",
                                 "propertyLabel": "Edition Statement"
                             },
                             "repeatable": "true",
@@ -822,7 +822,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/lite/extent",
+                                "id": "http://bibfra.me/vocab/lite/extent",
                                 "propertyLabel": "Extent"
                             },
                             "repeatable": "true",
@@ -907,7 +907,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/image",
+                                "id": "http://bibfra.me/vocab/lite/image",
                                 "propertyLabel": "Image"
                             },
                             "repeatable": "true",

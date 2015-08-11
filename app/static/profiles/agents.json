@@ -7,13 +7,13 @@
                 "id": "bfp:Agent:Family",
                 "class": {
                     "classLabel": "Family",
-                    "type": "http://bibfra.me/view/lite/Family",
-                    "labelProperty": "http://bibfra.me/view/lite/label",
+                    "type": "http://bibfra.me/vocab/lite/Family",
+                    "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/name",
+                                "id": "http://bibfra.me/vocab/lite/name",
                                 "propertyLabel": "Name"
                             },
                             "repeatable": "false",
@@ -21,7 +21,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "id": "http://bibfra.me/vocab/lite/nameAlternative",
                                 "propertyLabel": "Alternative Name"
                             },
                             "repeatable": "true",
@@ -29,7 +29,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "id": "http://bibfra.me/vocab/lite/authorityLink",
                                 "propertyLabel": "Identity Service Link"
                             },
                             "repeatable": "true",
@@ -37,7 +37,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/date",
+                                "id": "http://bibfra.me/vocab/lite/date",
                                 "propertyLabel": "Date"
                             },
                             "repeatable": "true",
@@ -50,13 +50,13 @@
                 "id": "bfp:Agent:Meeting",
                 "class": {
                     "classLabel": "Meeting",
-                    "type": "http://bibfra.me/view/lite/Meeting",
-                    "labelProperty": "http://bibfra.me/view/lite/label",
+                    "type": "http://bibfra.me/vocab/lite/Meeting",
+                    "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/name",
+                                "id": "http://bibfra.me/vocab/lite/name",
                                 "propertyLabel": "Name"
                             },
                             "repeatable": "false",
@@ -64,7 +64,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "id": "http://bibfra.me/vocab/lite/nameAlternative",
                                 "propertyLabel": "Alternative Name"
                             },
                             "repeatable": "true",
@@ -72,7 +72,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/Place",
+                                "id": "http://bibfra.me/vocab/lite/Place",
                                 "propertyLabel": "Place"
                             },
                             "repeatable": "true",
@@ -80,7 +80,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "id": "http://bibfra.me/vocab/lite/authorityLink",
                                 "propertyLabel": "Identity Service Link (VIAF, Wikipedia, Wikidata, etc.)"
                             },
                             "repeatable": "true",
@@ -88,7 +88,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/link",
+                                "id": "http://bibfra.me/vocab/lite/link",
                                 "propertyLabel": "Website"
                             },
                             "repeatable": "true",
@@ -96,7 +96,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/date",
+                                "id": "http://bibfra.me/vocab/lite/date",
                                 "propertyLabel": "Date"
                             },
                             "repeatable": "true",
@@ -104,7 +104,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "id": "http://bibfra.me/vocab/lite/dateStart",
                                 "propertyLabel": "Start Date"
                             },
                             "repeatable": "true",
@@ -112,7 +112,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "id": "http://bibfra.me/vocab/lite/dateEnd",
                                 "propertyLabel": "End Date"
                             },
                             "repeatable": "true",
@@ -125,13 +125,13 @@
                 "id": "bfp:Agent:Organization",
                 "class": {
                     "classLabel": "Organization",
-                    "type": "http://bibfra.me/view/lite/Organization",
-                    "labelProperty": "http://bibfra.me/view/lite/label",
+                    "type": "http://bibfra.me/vocab/lite/Organization",
+                    "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/name",
+                                "id": "http://bibfra.me/vocab/lite/name",
                                 "propertyLabel": "Name"
                             },
                             "repeatable": "false",
@@ -139,7 +139,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "id": "http://bibfra.me/vocab/lite/nameAlternative",
                                 "propertyLabel": "Alternative Name"
                             },
                             "repeatable": "true",
@@ -147,7 +147,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/link",
+                                "id": "http://bibfra.me/vocab/lite/link",
                                 "propertyLabel": "Home Page"
                             },
                             "repeatable": "true",
@@ -155,7 +155,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/email",
+                                "id": "http://bibfra.me/vocab/lite/email",
                                 "propertyLabel": "E-mail Address"
                             },
                             "repeatable": "true",
@@ -163,7 +163,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/Place",
+                                "id": "http://bibfra.me/vocab/lite/Place",
                                 "propertyLabel": "Place"
                             },
                             "repeatable": "true",
@@ -171,7 +171,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "id": "http://bibfra.me/vocab/lite/authorityLink",
                                 "propertyLabel": "Identity Service Link"
                             },
                             "repeatable": "true",
@@ -179,7 +179,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/date",
+                                "id": "http://bibfra.me/vocab/lite/date",
                                 "propertyLabel": "Date"
                             },
                             "repeatable": "true",
@@ -187,7 +187,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateStart",
+                                "id": "http://bibfra.me/vocab/lite/dateStart",
                                 "propertyLabel": "Start Date"
                             },
                             "repeatable": "true",
@@ -195,7 +195,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/dateEnd",
+                                "id": "http://bibfra.me/vocab/lite/dateEnd",
                                 "propertyLabel": "End Date"
                             },
                             "repeatable": "true",
@@ -208,13 +208,13 @@
                 "id": "bfp:Agent:Person",
                 "class": {
                     "classLabel": "Person",
-                    "type": "http://bibfra.me/view/lite/Person",
-                    "labelProperty": "http://bibfra.me/view/lite/label",
+                    "type": "http://bibfra.me/vocab/lite/Person",
+                    "labelProperty": "http://bibfra.me/vocab/lite/label",
                     "propertyTemplate": [
                         {
                             "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/view/lite/name",
+                                "id": "http://bibfra.me/vocab/lite/name",
                                 "propertyLabel": "Name"
                             },
                             "repeatable": "false",
@@ -222,7 +222,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/nameAlternative",
+                                "id": "http://bibfra.me/vocab/lite/nameAlternative",
                                 "propertyLabel": "Alternative Name"
                             },
                             "repeatable": "true",
@@ -230,7 +230,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/birthDate",
+                                "id": "http://bibfra.me/vocab/lite/birthDate",
                                 "propertyLabel": "Birth Date"
                             },
                             "repeatable": "true",
@@ -238,7 +238,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/deathDate",
+                                "id": "http://bibfra.me/vocab/lite/deathDate",
                                 "propertyLabel": "Death Date"
                             },
                             "repeatable": "true",
@@ -246,7 +246,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "id": "http://bibfra.me/vocab/lite/authorityLink",
                                 "propertyLabel": "Identity Service Link"
                             },
                             "repeatable": "true",
@@ -254,7 +254,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/link",
+                                "id": "http://bibfra.me/vocab/lite/link",
                                 "propertyLabel": "Home Page"
                             },
                             "repeatable": "true",
@@ -262,7 +262,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/email",
+                                "id": "http://bibfra.me/vocab/lite/email",
                                 "propertyLabel": "E-mail Address"
                             },
                             "repeatable": "true",

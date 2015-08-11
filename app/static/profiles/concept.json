@@ -9,14 +9,14 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/label",
+                                "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/lite/authorityLink",
+                                "id": "http://bibfra.me/vocab/lite/authorityLink",
                                 "propertyLabel": "Authority Link"
                             },
                             "repeatable": "true",
