@@ -10,7 +10,6 @@
             setCurrent: setCurrent,
             pivot: pivot,
             pivotDone: pivotDone,
-            getFlags: getFlags,
             getCreated: getCreated,
             addCreated: addCreated,
             setActiveTemplate: setActiveTemplate,
@@ -59,10 +58,6 @@
             addCreated(_current);
             _current = _parents.current.pop();
             return ret;
-        }
-
-        function getFlags() {
-            return _flags;
         }
 
         function getCreated() {
