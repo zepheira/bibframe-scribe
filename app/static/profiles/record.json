@@ -49,8 +49,8 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/musician",
-                                "propertyLabel": "Artist"
+                                "id": "http://bibfra.me/vocab/relation/musician",
+                                "propertyLabel": "Musician"
                             },
                             "repeatable": "true",
                             "type": "resource",
