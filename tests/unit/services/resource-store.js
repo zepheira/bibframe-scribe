@@ -26,6 +26,19 @@ describe("ResourceStore", function() {
         ResourceStore.setResourceTemplate({
             getClassID: function() {
                 return "test";
+            },
+            hasRelation: function() {
+                return true;
+            },
+            getRelationResourceTemplate: function() {
+                return {
+                    getClassID: function() {
+                        return "relation";
+                    },
+                    hasRelation: function() {
+                        return false;
+                    }
+                };
             }
         });
         expect(ResourceStore.getCurrent().getTemplate()).not.toBeNull();
@@ -40,7 +53,38 @@ describe("ResourceStore", function() {
         expect(ResourceStore.getCreated().length).toEqual(1);
     });
 
+    it("should not set a non-existent loading property", function() {
+        ResourceStore.newResource();
+        expect(ResourceStore.getCurrent().isLoading("urn:test")).toEqual(false);
+        ResourceStore.setLoading("urn:test", true);
+        expect(ResourceStore.getCurrent().isLoading("urn:test")).toEqual(false);
+    });
+
     it("should set a loading property", function() {
+        ResourceStore.newResource();
+        ResourceStore.getCurrent().setTemplate({
+            getClassID: function() {
+                return "test";
+            },
+            hasRelation: function() {
+                return false;
+            },
+            getOwnPropertyTemplates: function() {
+                return [new PropertyTemplate({
+                    repeatable: "true",
+                    mandatory: "true",
+                    type: "resource",
+                    property: {
+                        id: "urn:test",
+                        propertyLabel: "Test Prop"
+                    },
+                    valueConstraint: {
+                        descriptionTemplateRef: "testref"
+                    }
+                })];
+            }
+        });
+        ResourceStore.getCurrent().initialize();
         expect(ResourceStore.getCurrent().isLoading("urn:test")).toEqual(false);
         ResourceStore.setLoading("urn:test", true);
         expect(ResourceStore.getCurrent().isLoading("urn:test")).toEqual(true);
@@ -88,8 +132,7 @@ describe("ResourceStore", function() {
     });
 
     it("should reset the current resource to unedited state", function() {
-        var flags, pt;
-        flags = {hasRequired: false, loading: {}};
+        var pt;
         pt = new PropertyTemplate({
             repeatable: "true",
             mandatory: "true",
@@ -103,7 +146,21 @@ describe("ResourceStore", function() {
             }
         });
         ResourceStore.newResource();
-        ResourceStore.getCurrent().initializeProperty(pt, flags);
+        ResourceStore.getCurrent().setTemplate({
+            getClassID: function() {
+                return "test";
+            },
+            hasRelation: function() {
+                return false;
+            },
+            hasProperty: function(prop) {
+                return true;
+            },
+            getOwnPropertyTemplates: function() {
+                return [pt];
+            }
+        });
+        ResourceStore.getCurrent().initialize();
         expect(ResourceStore.getCurrent().isEmpty()).toEqual(true);
         ResourceStore.getCurrent().addPropertyValue(pt, "urn:val");
         expect(ResourceStore.getCurrent().isEmpty()).toEqual(false);
@@ -112,8 +169,7 @@ describe("ResourceStore", function() {
     });
 
     it("should clear current resouce store environment", function() {
-        var flags, pt, dz;
-        flags = {hasRequired: false, loading: {}};
+        var pt, dz;
         pt = new PropertyTemplate({
             repeatable: "true",
             mandatory: "true",
@@ -135,7 +191,21 @@ describe("ResourceStore", function() {
         expect(ResourceStore.getDropzone()).toBeNull();
 
         ResourceStore.newResource();
-        ResourceStore.getCurrent().initializeProperty(pt, flags);
+        ResourceStore.getCurrent().setTemplate({
+            getClassID: function() {
+                return "test";
+            },
+            hasRelation: function() {
+                return false;
+            },
+            hasProperty: function(prop) {
+                return true;
+            },
+            getOwnPropertyTemplates: function() {
+                return [pt];
+            }
+        });        
+        ResourceStore.getCurrent().initialize();
         ResourceStore.getCurrent().addPropertyValue(pt, "urn:val");
         ResourceStore.cacheDropzone(dz);
         expect(ResourceStore.getCurrent()).not.toBeNull();
