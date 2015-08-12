@@ -11,7 +11,7 @@
             this._type = (typeof tmpl !== "undefined" && tmpl !== null) ? tmpl.getClassID() : null;
             this._properties = {};
             this._pristine = {};
-            this._relation = (typeof tmpl !== "undefined" && tmpl !== null && tmpl.hasRelation()) ? new Resource(idBase, tmpl.getRelationResourceTemplate()) : null;
+            this._relation = (typeof tmpl !== "undefined" && tmpl !== null && tmpl.hasRelation() && tmpl.getRelationResourceTemplate() !== null) ? new Resource(idBase, tmpl.getRelationResourceTemplate()) : null;
             this._loading = {};
             this._hasRequired = false;
         }
@@ -46,9 +46,11 @@
         
         Resource.prototype.setTemplate = function(tmpl) {
             this._template = tmpl;
-            this._type = tmpl.getClassID();
-            if (tmpl.hasRelation()) {
-                this._relation = new Resource(this._idBase, tmpl.getRelationResourceTemplate());
+            if (typeof tmpl !== "undefined") {
+                this._type = tmpl.getClassID();
+                if (tmpl.hasRelation()) {
+                    this._relation = new Resource(this._idBase, tmpl.getRelationResourceTemplate());
+                }
             }
         };
 
@@ -95,6 +97,7 @@
                     if (typeof res._properties[prop] === "undefined") {
                         res._properties[prop] = [];
                         res._pristine[prop] = [];
+                        res._loading[prop] = false;
                     }
                     if (property.hasConstraint()) {
                         constraint = property.getConstraint();
@@ -115,7 +118,6 @@
                     if (!res._hasRequired && property.isRequired()) {
                         res._hasRequired = true;
                     }
-                    res.setLoading(prop, false);
                 });
                 if (res._relation !== null) {
                     res._relation.initialize();
