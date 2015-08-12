@@ -25,20 +25,21 @@
                             "repeatable": "true",
                             "type": "literal"
                         },
-                        {
-                            "mandatory": "true",
-                            "property": {
-                                "id": "http://bibfra.me/vocab/lite/title",
-                                "propertyLabel": "Title"
-                            },
-                            "repeatable": "false",
-                            "type": "literal"
-                        },
+                        {		                         {
+-                            "mandatory": "true",		
+-                            "property": {		
+-                                "id": "http://bibfra.me/vocab/lite/title",		
+-                                "propertyLabel": "Title"		
+-                            },		
+-                            "repeatable": "false",		
+-                            "type": "literal"		
+-                       },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/titleRemainder",
                                 "propertyLabel": "Title Remainder"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -46,6 +47,7 @@
                                 "id": "http://bibfra.me/vocab/lite/titleAlternative",
                                 "propertyLabel": "Alternative Title"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -53,6 +55,7 @@
                                 "id": "http://bibfra.me/view/library/marc/statementOfResponsibility",
                                 "propertyLabel": "Statement of Responsibility"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -60,6 +63,7 @@
                                 "id": "http://bibfra.me/vocab/lite/date",
                                 "propertyLabel": "Date"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -67,6 +71,7 @@
                                 "id": "http://bibfra.me/vocab/lite/dateStart",
                                 "propertyLabel": "Start Date"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -74,6 +79,7 @@
                                 "id": "http://bibfra.me/vocab/lite/dateEnd",
                                 "propertyLabel": "End Date"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -335,6 +341,7 @@
                                 "id": "http://bibfra.me/vocab/lite/coordinates",
                                 "propertyLabel": "Coordinates"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -342,6 +349,7 @@
                                 "id": "http://bibfra.me/vocab/lite/equinox",
                                 "propertyLabel": "Equinox"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -349,6 +357,7 @@
                                 "id": "http://bibfra.me/vocab/lite/scale",
                                 "propertyLabel": "Scale"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -356,6 +365,7 @@
                                 "id": "http://bibfra.me/vocab/lite/projection",
                                 "propertyLabel": "Projection"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -363,6 +373,7 @@
                                 "id": "http://bibfra.me/vocab/lite/presentationTechnique",
                                 "propertyLabel": "Presentation Technique"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -370,6 +381,7 @@
                                 "id": "http://bibfra.me/vocab/lite/representationOfRelief",
                                 "propertyLabel": "Representation of Relief"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -377,6 +389,7 @@
                                 "id": "http://bibfra.me/vocab/lite/geodeticGridVerticalMeasurement",
                                 "propertyLabel": "Geodetic, Grid, and Vertical Measurement"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -384,6 +397,7 @@
                                 "id": "http://bibfra.me/vocab/lite/recordingTechnique",
                                 "propertyLabel": "Recording Technique"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -391,6 +405,7 @@
                                 "id": "http://bibfra.me/vocab/lite/specialCharacteristic",
                                 "propertyLabel": "Special Characteristic"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -458,6 +473,14 @@
                     "type": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "bfp:Work:Map",
                     "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Instance Title"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/abbreviatedTitle",
@@ -584,6 +607,7 @@
                                 "id": "http://bibfra.me/vocab/marc/carrierCategory",
                                 "propertyLabel": "Carrier Category"
                             },
+                            "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
@@ -599,6 +623,7 @@
                                 "id": "http://bibfra.me/vocab/marc/mediaCategory",
                                 "propertyLabel": "Media Category"
                             },
+                            "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
@@ -670,6 +695,7 @@
                                 "id": "http://bibfra.me/vocab/lite/format",
                                 "propertyLabel": "Format"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -708,16 +734,24 @@
                     "propertyTemplate": [
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/dcrmb/keyTitle",
-                                "propertyLabel": "Key Title"
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Instance Title"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/marc/abbreviatedTitle",
+                                "propertyLabel": "Abbreviated Title"
                             },
                             "repeatable": "true",
                             "type": "literal"
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/dcrmb/titleProper",
-                                "propertyLabel": "Title Proper"
+                                "id": "http://bibfra.me/vocab/dcrmb/keyTitle",
+                                "propertyLabel": "Key Title"
                             },
                             "repeatable": "true",
                             "type": "literal"
@@ -824,6 +858,7 @@
                                 "id": "http://bibfra.me/vocab/marc/carrierCategory",
                                 "propertyLabel": "Carrier Category"
                             },
+                            "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
@@ -839,6 +874,7 @@
                                 "id": "http://bibfra.me/vocab/marc/mediaCategory",
                                 "propertyLabel": "Media Category"
                             },
+                            "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
                                 "descriptionTemplateRef": [
@@ -878,6 +914,7 @@
                                 "id": "http://bibfra.me/vocab/lite/format",
                                 "propertyLabel": "Format"
                             },
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
