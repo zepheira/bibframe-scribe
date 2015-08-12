@@ -358,9 +358,6 @@
             });
             if (this._relation !== null) {
                 nsProp = Namespace.extractNamespace('http://bibfra.me/vocab/lite/' + this._template.getRelationType());
-                console.log(this._template.getRelationType());
-                console.log(this._relation);
-                console.log(nsProp);
                 frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + this._relation.getID() + '" />\n';
                 result += this._relation.toRDF([], false);
             }
