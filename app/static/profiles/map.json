@@ -459,15 +459,6 @@
                     "instantiates": "bfp:Work:Map",
                     "propertyTemplate": [
                         {
-                            "mandatory": "true",
-                            "property": {
-                                "id": "http://bibfra.me/vocab/lite/title",
-                                "propertyLabel": "Title"
-                            },
-                            "repeatable": "false",
-                            "type": "literal"
-                        },
-                        {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/abbreviatedTitle",
                                 "propertyLabel": "Abbreviated Title"
