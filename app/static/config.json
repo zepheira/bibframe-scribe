@@ -91,16 +91,37 @@
                 "local:Agents"
             ]
         },
-        "Categories": {
+        "ContentCategory": {
             "classes": [
-                "http://bibfra.me/vocab/lite/Category"
+                "http://bibfra.me/vocab/lite/ContentCategory"
+            ],
+            "services": [
+                "lc:contentTypes"
+            ]
+        },
+        "CarrierCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/CarrierCategory"
+            ],
+            "services": [
+                "lc:carrier"
+            ]
+        },
+        "MediaCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/MediaCategory"
+            ],
+            "services": [
+                "lc:mediaTypes"
+            ]
+        },
+        "LanguageCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/LanguageCategory"
             ],
             "services": [
                 "lc:lang",
-                "lc:contentTypes",
-                "lc:carrier",
-                "lc:mediaTypes",
-                "local:Categories"
+                "local:LanguageCategory"
             ]
         },
         "Providers": {
