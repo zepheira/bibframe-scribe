@@ -403,7 +403,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/isTranslationOf",
+                                "id": "http://bibfra.me/vocab/relation/isTranslationOf",
                                 "propertyLabel": "Is Translation Of"
                             },
                             "repeatable": "true",
@@ -493,7 +493,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/hasEdition",
+                                "id": "http://bibfra.me/vocab/relation/hasEdition",
                                 "propertyLabel": "Has Other Edition"
                             },
                             "repeatable": "true",
@@ -506,7 +506,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/isEditionOf",
+                                "id": "http://bibfra.me/vocab/relation/isEditionOf",
                                 "propertyLabel": "Is Edition Of"
                             },
                             "repeatable": "true",
@@ -741,7 +741,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/hasEdition",
+                                "id": "http://bibfra.me/vocab/relation/hasEdition",
                                 "propertyLabel": "Has Other Edition"
                             },
                             "repeatable": "true",
@@ -754,7 +754,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/links/relation/isEditionOf",
+                                "id": "http://bibfra.me/vocab/relation/isEditionOf",
                                 "propertyLabel": "Is Edition Of"
                             },
                             "repeatable": "true",
