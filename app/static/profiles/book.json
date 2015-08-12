@@ -133,7 +133,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
+                                "descriptionTemplateRef": [ "bfp:Category:Content" ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/contentTypes/txt",
                                 "defaultLiteral": "text"
@@ -163,7 +163,7 @@
                             "repeatable": "true",
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ]
+                                "descriptionTemplateRef": [ "bfp:Category:Language" ]
                             }
                         },
                         {
@@ -362,7 +362,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
+                                "descriptionTemplateRef": [ "bfp:Category:Carrier" ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
                                 "defaultLiteral": "online resource"
@@ -376,7 +376,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
+                                "descriptionTemplateRef": [ "bfp:Category:Media" ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/mediaTypes/n",
                                 "defaultLiteral": "unmediated"
@@ -504,7 +504,7 @@
                             },
                             "type": "resource",
                             "valueConstraint": {
-                                "descriptionTemplateRef": [ "bfp:Category" ],
+                                "descriptionTemplateRef": [ "bfp:Category:Carrier" ],
                                 "editable": "true",
                                 "defaultURI": "http://id.loc.gov/vocabulary/carriers/cr",
                                 "defaultLiteral": "online resource"

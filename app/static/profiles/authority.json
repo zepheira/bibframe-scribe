@@ -4,10 +4,61 @@
         "title": "BIBFRAME Authorities",
         "resourceTemplate": [
             {
-                "id": "bfp:Category",
+                "id": "bfp:Category:Content",
                 "class": {
-                    "classLabel": "Category",
-                    "type": "http://bibfra.me/vocab/lite/Category",
+                    "classLabel": "Content Category",
+                    "type": "http://bibfra.me/vocab/lite/ContentCategory",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/label",
+                                "propertyLabel": "Label"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Category:Carrier",
+                "class": {
+                    "classLabel": "Carrier Category",
+                    "type": "http://bibfra.me/vocab/lite/CarrierCategory",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/label",
+                                "propertyLabel": "Label"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Category:Media",
+                "class": {
+                    "classLabel": "Media Category",
+                    "type": "http://bibfra.me/vocab/lite/MediaCategory",
+                    "propertyTemplate": [
+                        {
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/label",
+                                "propertyLabel": "Label"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        }
+                    ]
+                }
+            },
+            {
+                "id": "bfp:Category:Language",
+                "class": {
+                    "classLabel": "Language Category",
+                    "type": "http://bibfra.me/vocab/lite/LanguageCategory",
                     "propertyTemplate": [
                         {
                             "property": {
