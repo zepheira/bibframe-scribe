@@ -371,11 +371,15 @@
         }
 
         /**
-         * Takes N3 string and persists it to backing store.
+         * Takes N3 string and persists it to local and backing stores.
          */
         function persist(n3) {
-            Store.new(null, {"n3": n3}).$promise.then(function(resp) {
-                // console.log(resp);
+            Graph.loadResource(null, n3).then(function() {
+                Store.new(null, {"n3": n3}).$promise.then(function(resp) {
+                    // console.log(resp);
+                });
+            }, function() {
+                // console.log("not loaded");
             });
         }
 
