@@ -334,10 +334,10 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
-                                "propertyLabel": "uri"
+                                "propertyLabel": "URI"
                             },
                             "repeatable": "true",
-                            "type": "literal"
+                            "type": "resource"
                         }
                     ]
                 }
@@ -461,10 +461,10 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
-                                "propertyLabel": "uri"
+                                "propertyLabel": "URI"
                             },
                             "repeatable": "true",
-                            "type": "literal"
+                            "type": "resource"
                         },
                         {
                             "property": {
@@ -676,10 +676,10 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
-                                "propertyLabel": "uri"
+                                "propertyLabel": "URI"
                             },
                             "repeatable": "true",
-                            "type": "literal"
+                            "type": "resource"
                         },
                         {
                             "property": {
