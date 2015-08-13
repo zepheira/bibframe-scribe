@@ -404,9 +404,10 @@
                 });
             });
             if (res._relation !== null) {
+                frag += '  <http://bibfra.me/vocab/lite/' + res._template.getRelationType() + '> <' + res._relation.getID() + '>;\n';
                 result += res._relation.toN3([], false);
             }
-            result += '<' + res.getID() + '>\n' + frag + ' rdf:type <' + res.getType() + '> .\n';
+            result += '<' + res.getID() + '>\n' + frag + '  rdf:type <' + res.getType() + '> .\n';
             return result;
         };
 
