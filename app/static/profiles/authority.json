@@ -14,7 +14,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
-                            "repeatable": "false",
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
@@ -31,7 +31,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
-                            "repeatable": "false",
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
@@ -48,7 +48,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
-                            "repeatable": "false",
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
@@ -65,7 +65,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
-                            "repeatable": "false",
+                            "repeatable": "true",
                             "type": "literal"
                         }
                     ]
@@ -83,7 +83,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
-                            "repeatable": "false",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {
@@ -117,7 +117,7 @@
                                 "id": "http://bibfra.me/vocab/lite/label",
                                 "propertyLabel": "Label"
                             },
-                            "repeatable": "false",
+                            "repeatable": "true",
                             "type": "literal"
                         },
                         {

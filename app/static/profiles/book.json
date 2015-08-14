@@ -291,10 +291,10 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
-                                "propertyLabel": "uri"
+                                "propertyLabel": "URI"
                             },
                             "repeatable": "true",
-                            "type": "literal"
+                            "type": "resource"
                         }
                     ]
                 }
@@ -306,6 +306,15 @@
                     "type": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
+                        {
+                            "mandatory": "true",
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Instance Title"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/edition",
@@ -409,10 +418,10 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
-                                "propertyLabel": "uri"
+                                "propertyLabel": "URI"
                             },
                             "repeatable": "true",
-                            "type": "literal"
+                            "type": "resource"
                         },
                         {
                             "property": {
@@ -456,6 +465,15 @@
                     "type": "http://bibfra.me/vocab/marc/Print",
                     "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
+                        {
+                            "mandatory": "true",
+                            "property": {
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Instance Title"
+                            },
+                            "repeatable": "false",
+                            "type": "literal"
+                        },
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/marc/publication",
@@ -551,10 +569,10 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/link",
-                                "propertyLabel": "uri"
+                                "propertyLabel": "URI"
                             },
                             "repeatable": "true",
-                            "type": "literal"
+                            "type": "resource"
                         },
                         {
                             "property": {
