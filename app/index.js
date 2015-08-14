@@ -1,4 +1,4 @@
-var levelgraph, levelgraphN3, restify, uuid, http, url, Q, db, server, doProxy, proxyHelper, config, backend, tr, localSuggestHelper;
+var levelgraph, levelgraphN3, restify, uuid, http, url, Q, db, server, doProxy, proxyHelper, config, backend, tr, localSuggestHelper, BF;
 
 levelup = require ('level');
 levelgraph = require('levelgraph');
@@ -13,6 +13,7 @@ tr = require('./translate');
 // sort of silence Node warnings, appears to be a levelgraph usage that
 // triggers too many listeners warnings.
 require('events').EventEmitter.prototype._maxListeners = 20;
+BF = "http://bibfra.me/vocab/lite/";
 
 server = restify.createServer();
 server.use(restify.bodyParser({ mapParams: false }));
@@ -82,7 +83,7 @@ localSuggestHelper = function(qin, types) {
         predicate: db.v("p"),
         object: db.v("o"),
         filter: function predFilter(triple) {
-            return triple.predicate === "http://bibframe.org/vocab/title" || triple.predicate === "http://bibframe.org/vocab/label";
+            return triple.predicate === BF + "title" || triple.predicate === BF + "label";
         }
     }];
 
@@ -125,10 +126,51 @@ localSuggestHelper = function(qin, types) {
 
 // Retrieve NTriples of a specific resource
 server.get('/resource/get', function getResource(req, res, next) {
-    var subj, parts;
+    var subj, parts, query, rels, i, getRels, subjs, generateQuery, end;
+
     parts = url.parse(req.url, true);
     subj = parts.query.s;
-    db.n3.get({subject: subj}, function(err, triples) {
+
+    rels = [];
+    for (i in config.relations) {
+        rels.push(BF + i);
+    }
+
+    getRels = function(s) {
+        var d, i;
+        d = Q.defer();
+        query = [{
+            subject: s,
+            predicate: db.v("p"),
+            object: db.v("o"),
+            filter: function relFilter(triple) {
+                return rels.indexOf(triple.predicate) >= 0;
+            }
+        }];
+
+        db.search(query, {}, function(err, results) {
+            if ((typeof err === "undefined" || err === null) && results.length > 0) {
+                d.resolve(results[0].o);
+            } else {
+                d.reject("");
+            }
+        });
+
+        return d.promise;
+    };
+
+    generateQuery = function(subjects) {
+        return [{
+            subject: db.v("s"),
+            predicate: db.v("p"),
+            object: db.v("o"),
+            filter: function(triple) {
+                return subjects.indexOf(triple.subject) >= 0;
+            }
+        }];
+    };
+
+    end = function(err, triples) {
         if (typeof err === "undefined" || err === null) {
             res.send(200, {n3: triples});
             next();
@@ -136,7 +178,35 @@ server.get('/resource/get', function getResource(req, res, next) {
             res.send(500);
             next();
         }
-    });
+    };
+
+    subjs = [subj];
+    getRels(subj).then(function(relSubj) {
+        subjs.push(relSubj);
+        getRels(relSubj).then(function(subRelSubj) {
+            // two additional levels deep
+            subjs.push(subRelSubj);
+            db.search(generateQuery(subjs), {n3: {
+                subject: db.v("s"),
+                predicate: db.v("p"),
+                object: db.v("o")
+            }}, end);
+        }, function() {
+            // one additional level deep
+            db.search(generateQuery(subjs), {n3: {
+                subject: db.v("s"),
+                predicate: db.v("p"),
+                object: db.v("o")
+            }}, end);
+        });
+    }, function() {
+        // no additional levels
+        db.search(generateQuery(subjs), {n3: {
+                subject: db.v("s"),
+                predicate: db.v("p"),
+                object: db.v("o")
+            }}, end);
+    }).done();
 });
 
 // Query the store for a resource
