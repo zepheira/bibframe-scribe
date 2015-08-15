@@ -1,7 +1,7 @@
 "use strict";
 
 describe("TemplateStore", function() {
-    var TemplateStore
+    var TemplateStore;
 
     beforeEach(module("bibframeEditor"));
     beforeEach(inject(function($injector) {
@@ -36,10 +36,8 @@ describe("TemplateStore", function() {
     });
 
     it("should return and modify a modifiable ID template hash", function() {
-        var h = TemplateStore.getTemplateIDHash();
-        expect(h["test"]).toBeUndefined();
         expect(TemplateStore.hasTemplateByID("test")).toEqual(false);
-        h["test"] = {};
+        TemplateStore.addTemplate("test", "ctest", {});
         expect(TemplateStore.hasTemplateByID("test")).toEqual(true);
         expect(TemplateStore.getTemplateByID("test")).toEqual({});
     });
@@ -49,12 +47,11 @@ describe("TemplateStore", function() {
     });
 
     it("should add and find a basic resource type", function() {
-        var h = TemplateStore.getTemplateIDHash();
-        h["urn:test"] = {
+        TemplateStore.addTemplate("urn:test", "urn:classtest", {
             getClassID: function() {
                 return "urn:classtest";
             }
-        };
+        });
         TemplateStore.addResourceType("urn:classtest", "foo");
         expect(TemplateStore.getReferenceResourceType("urn:classtest")).toBeNull();
         expect(TemplateStore.getReferenceResourceType("urn:test")).toEqual("foo");

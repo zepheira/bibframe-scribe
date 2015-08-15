@@ -75,10 +75,14 @@ describe("Profile", function() {
         });
 
         it("should register and fill out the map", function() {
-            var m = {};
+            var m, h;
+            h = {};
+            m = function(id, tmpl) {
+                h[id] = tmpl;
+            };
             profile.registerResourceTemplates(m);
-            expect(m["rt-test"]).not.toBe(undefined);
-            expect(m["rt-class-test"]).toBe(undefined);
+            expect(h["rt-test"]).not.toBe(undefined);
+            expect(h["rt-class-test"]).toBe(undefined);
         });
     });
 
