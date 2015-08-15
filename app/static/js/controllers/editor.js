@@ -400,83 +400,140 @@
         }
 
         /**
-         * @@@Potentially problematic... Using "type" may be ambiguous.
-         *    Need to look up what it instantiates or is a holdingFor and
-         *    get that type if it's an instance / item.
-         */
-        function _loadFromGraph(type, res, uri) {
-            var tmpl,
-                deferred = $q.defer(),
-                fullq = "SELECT * WHERE { <" + uri + "> ?p ?o }";
-            if (TemplateStore.hasTemplateByClassID(type)) {
-                tmpl = TemplateStore.getTemplateByClassID(type);
-                _setup(tmpl, res);
-                $scope.tabs.active = type;
-                Graph.execute(res, fullq, Graph.DATA).then(function(response) {
-                    angular.forEach(response[1], function(triple) {
-                        if (tmpl.hasProperty(triple.p.value)) {
-                            if (triple.o.value.startsWith("\"")) {
-                                res.addPropertyValue(
-                                    tmpl.getPropertyByID(triple.p.value),
-                                    triple.o.value.slice(1, -1)
-                                );
-                            } else {
-                                res.addPropertyValue(
-                                    tmpl.getPropertyByID(triple.p.value),
-                                    triple.o.value
-                                );
-                            }
-                        }
-                    });
-                    ResourceStore.setCurrent(res);
-                    $scope.editLoaded = true;
-                    deferred.resolve();
-                });
-            } else {
-                deferred.reject();
-            }
-            return deferred.promise;
-        }
-
-        /**
          * Utility function to fill out a Resource from a local browser store,
          * only retrieves triples with uri argument as subject.
          */
         function editFromGraph(uri) {
             var existq = "ASK { <" + uri + "> ?p ?o }",
                 typeq = "SELECT ?o WHERE { <" + uri + "> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o }",
-                r,
-                type,
                 tmpl;
 
             Graph.execute(uri, existq, Graph.DATA).then(function(resp) {
                 return resp[1];
             }).then(function(inGraph) {
-                r = new Resource(null, null);
-                r.setID(uri);
                 if (!inGraph) {
                     // If not in local store, retrieve from backing store
                     Store.get({}, {s: uri}).$promise.then(function(triples) {
                         Graph.loadResource(uri, triples.n3).then(function() {
-                            Graph.execute(uri, typeq, Graph.DATA).then(function(typeresp) {
-                                type = typeresp[1][0].o.value;
-                                _loadFromGraph(type, r, uri).catch(function() {
-                                    Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
-                                });
+                            _loadFromGraph(uri).catch(function() {
+                                Message.addMessage("Cannot edit " + uri, "danger");
                             });
                         });
                     });
                 } else {
-                    Graph.execute(uri, typeq, Graph.DATA).then(function(typeresp) {
-                        type = typeresp[1][0].o.value;
-                        _loadFromGraph(type, r, uri).catch(function() {
-                            Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
-                        });
+                    _loadFromGraph(uri).catch(function() {
+                        Message.addMessage("Cannot edit " + uri, "danger");
                     });
                 }
             }).catch(function() {
                 Message.addMessage("Not in backing store: " + uri, "danger");
             });
         }
+
+        function _loadFromGraph(uri, sub) {
+            var rels, fullq, typeq, relsq, res, defer, tmpl;
+            
+            if (typeof sub === "undefined") {
+                sub = false;
+            }
+            defer = $q.defer();
+            rels = [];
+            angular.forEach(Configuration.getConfig().relations, function(v, p) {
+                rels.push(BF + p);
+            });
+            
+            res = new Resource(null, null);
+            typeq = "SELECT * WHERE { <" + uri + "> a ?o }";
+            relsq = "SELECT * WHERE { <" + uri + "> ?p ?o . ?o a ?t . FILTER(" + rels.map(function(a) { return "?p = <" + a + ">"; }).join(" || ") + ") }";
+            fullq = "SELECT * WHERE { <" + uri + "> ?p ?o  }";
+            
+            $q.all([
+                Graph.execute(res, typeq, Graph.DATA).then(function(response) {
+                    if (response[1].length > 0) {
+                        return response[1][0].o.value;
+                    } else {
+                        return null;
+                    }
+                }),
+                Graph.execute(res, relsq, Graph.DATA).then(function(response) {
+                    if (response[1].length > 0) {
+                        return {
+                            p: response[1][0].p.value,
+                            o: response[1][0].o.value,
+                            t: response[1][0].t.value
+                        };
+                    } else {
+                        return null;
+                    }
+                })
+            ]).then(function(response) {
+                var prop, ids, subids;
+                if (response[0] !== null) {
+                    res.setID(uri);
+                    ids = TemplateStore.identifiersFromClassID(response[0]);
+                    if (ids !== null && ids.length === 1) {
+                        tmpl = TemplateStore.getTemplateByID(ids[0]);
+                        if (!sub) {
+                            _setup(tmpl, res);
+                            $scope.tabs.active[ids[0]] = true;
+                        } else {
+                            res.setTemplate(tmpl);
+                            res.initialize();
+                        }
+                    }
+                    if (response[1] !== null) {
+                        prop = Namespace.extractNamespace(response[1].p);
+                        if (typeof tmpl === "undefined") {
+                            subids = TemplateStore.identifiersFromClassID(response[1].t);
+                            if (subids !== null && subids.length === 1) {
+                                res.getRelation().setTemplate(TemplateStore.getTemplateByID(subids[0]));
+                                res.getRelation().initialize();
+                                angular.forEach(ids, function(id) {
+                                    var candidate;
+                                    candidate = TemplateStore.getTemplateByID(id);
+                                    if (candidate.getRelationType() === prop.term) {
+                                        tmpl = candidate;
+                                        if (!sub) {
+                                            _setup(tmpl, res);
+                                            $scope.tabs.active[id] = true;
+                                        }  else {
+                                            res.setTemplate(tmpl);
+                                            res.initialize();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                        _loadFromGraph(response[1].o, true).then(function(subres) {
+                            res.setRelation(subres);
+                        });
+                    }
+                    Graph.execute(res, fullq, Graph.DATA).then(function(triples) {
+                        angular.forEach(triples[1], function(triple) {
+                            if (tmpl.hasProperty(triple.p.value)) {
+                                if (triple.o.value.startsWith("\"")) {
+                                    res.addPropertyValue(
+                                        tmpl.getPropertyByID(triple.p.value),
+                                        triple.o.value.slice(1, -1)
+                                    );
+                                } else {
+                                    res.addPropertyValue(
+                                        tmpl.getPropertyByID(triple.p.value),
+                                        triple.o.value
+                                    );
+                                }
+                            }
+                        });
+                        if (!sub) {
+                            ResourceStore.setCurrent(res);
+                            $scope.editLoaded = true;
+                        }
+                        defer.resolve(res);
+                    });
+                }
+            });
+            return defer.promise;
+        }
+        
     }
 })();
