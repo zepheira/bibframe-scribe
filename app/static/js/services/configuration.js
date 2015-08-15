@@ -142,7 +142,7 @@
                     });
                 }
             });
-            profile.registerResourceTemplates(TemplateStore.getTemplateIDHash());
+            profile.registerResourceTemplates(TemplateStore.addTemplate);
 
             return resources;       
         }

@@ -79,11 +79,11 @@
             }
         };
         
-        Profile.prototype.registerResourceTemplates = function(map) {
+        Profile.prototype.registerResourceTemplates = function(mapper) {
             var id;
             for (id in this._resourceTemplates) {
                 if (this._resourceTemplates.hasOwnProperty(id)) {
-                    map[this._resourceTemplates[id].getID()] = this._resourceTemplates[id];
+                    mapper(this._resourceTemplates[id].getID(), id, this._resourceTemplates[id]);
                 }
             }
         };
