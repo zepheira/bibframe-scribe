@@ -4,10 +4,11 @@
         .factory("Graph", ["$q", "Message", "TemplateStore", "Progress", Graph]);
 
     function Graph($q, Message, TemplateStore, Progress) {
-        var service, _store, SCHEMAS;
+        var service, _store, SCHEMAS, DATA, REMOTE, BF;
 
         SCHEMAS = "urn:schema";
         DATA = "urn:data";
+        REMOTE = "urn:remote";
         BF = "http://bibfra.me/vocab/lite/";
 
         service = {
@@ -16,7 +17,8 @@
             loadResource: loadResource,
             execute: execute,
             SCHEMAS: SCHEMAS,
-            DATA: DATA
+            DATA: DATA,
+            REMOTE: REMOTE
         };
 
         _store = rdfstore.create();
