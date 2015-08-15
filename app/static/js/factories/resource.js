@@ -54,6 +54,10 @@
             }
         };
 
+        Resource.prototype.setRelation = function(res) {
+            this._relation = res;
+        };
+
         Resource.prototype.getTemplate = function() {
             return this._template;
         };
