@@ -18,7 +18,8 @@
             execute: execute,
             SCHEMAS: SCHEMAS,
             DATA: DATA,
-            REMOTE: REMOTE
+            REMOTE: REMOTE,
+            BF: BF
         };
 
         _store = rdfstore.create();
