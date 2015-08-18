@@ -61,11 +61,12 @@
                     "instantiates": "bfp:Work:Article",
                     "propertyTemplate": [
                         {
+                            "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/vocab/dcrmb/titleProper",
-                                "propertyLabel": "Title Proper"
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Instance Title"
                             },
-                            "repeatable": "true",
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
@@ -280,11 +281,12 @@
                     "instantiates": "bfp:Work:Article",
                     "propertyTemplate": [
                         {
+                            "mandatory": "true",
                             "property": {
-                                "id": "http://bibfra.me/vocab/dcrmb/titleProper",
-                                "propertyLabel": "Title Proper"
+                                "id": "http://bibfra.me/vocab/lite/title",
+                                "propertyLabel": "Instance Title"
                             },
-                            "repeatable": "true",
+                            "repeatable": "false",
                             "type": "literal"
                         },
                         {
