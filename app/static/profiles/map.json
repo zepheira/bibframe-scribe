@@ -11,7 +11,7 @@
                     "propertyTemplate": [
                         {                   
                             "property": {
-                                "id": "http://bibfra.me/view/library/marc/catalogingSource",
+                                "id": "http://bibfra.me/vocab/marc/catalogingSource",
                                 "propertyLabel": "Cataloging Source"
                             },
                             "repeatable": "true",
@@ -19,7 +19,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/marc/lcCallNumber",
+                                "id": "http://bibfra.me/vocab/marc/lcCallNumber",
                                 "propertyLabel": "Library of Congress Call Number"
                             },
                             "repeatable": "true",
@@ -51,7 +51,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/view/library/marc/statementOfResponsibility",
+                                "id": "http://bibfra.me/vocab/marc/statementOfResponsibility",
                                 "propertyLabel": "Statement of Responsibility"
                             },
                             "repeatable": "true",
