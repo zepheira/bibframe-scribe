@@ -68,8 +68,7 @@
         <alert
              ng-repeat="msg in messages()"
              type="{{msg.severity}}"
-             close="closeMsg($index)"
-             ng-class="msg.serverity">
+             close="closeMsg($index)">
            {{msg.message}}
         </alert>
       </div>
