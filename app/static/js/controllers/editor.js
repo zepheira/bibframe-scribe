@@ -38,6 +38,7 @@
         
         $scope.progress = Progress.getCurrent;
         $scope.messages = Message.messages;
+        $scope.closeMsg = Message.removeMessage;
         $scope.initialized = Configuration.isInitialized;
         $scope.resourceOptions = Configuration.getResourceOptions;
         $scope.activeTemplate = ResourceStore.getActiveTemplate;
@@ -439,7 +440,7 @@
             defer = $q.defer();
             rels = [];
             angular.forEach(Configuration.getConfig().relations, function(v, p) {
-                rels.push(BF + p);
+                rels.push(Graph.BF + p);
             });
             
             res = new Resource(null, null);
@@ -511,15 +512,25 @@
                     Graph.execute(res, fullq, Graph.DATA).then(function(triples) {
                         angular.forEach(triples[1], function(triple) {
                             if (tmpl.hasProperty(triple.p.value)) {
-                                if (triple.o.value.startsWith("\"")) {
+                                if (triple.o.token === "literal") {
                                     res.addPropertyValue(
                                         tmpl.getPropertyByID(triple.p.value),
-                                        triple.o.value.slice(1, -1)
+                                        new PredObject(
+                                            triple.o.value,
+                                            triple.o.value,
+                                            "literal",
+                                            true
+                                        )
                                     );
                                 } else {
                                     res.addPropertyValue(
                                         tmpl.getPropertyByID(triple.p.value),
-                                        triple.o.value
+                                        new PredObject(
+                                            triple.o.value,
+                                            triple.o.value,
+                                            "resource",
+                                            false
+                                        )
                                     );
                                 }
                             }
