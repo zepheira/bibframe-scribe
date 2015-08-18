@@ -377,7 +377,11 @@
         function persist(n3) {
             Graph.loadResource(null, n3).then(function() {
                 Store.new(null, {"n3": n3}).$promise.then(function(resp) {
-                    // console.log(resp);
+                    if (resp.success) {
+                        Messages.addMessage("Saved!", "success");
+                    } else {
+                        Messages.addMessage("Failed to save!", "danger")
+                    }
                 });
             }, function() {
                 // console.log("not loaded");
