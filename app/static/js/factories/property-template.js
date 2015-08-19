@@ -5,7 +5,7 @@
 
     function PropertyTemplateFactory(Property, ValueConstraint) {
 
-        function PropertyTemplate(obj) {
+        function PropertyTemplate(obj, resource) {
             var i;
 
             this._repeatable = false;
@@ -13,6 +13,7 @@
             this._type = "literal";
             this._property = null;
             this._constraint = null;
+            this._fromResource = resource;
             
             if (typeof obj.repeatable !== "undefined") {
                 this._repeatable = (obj.repeatable.toLowerCase() === "true");
@@ -66,6 +67,14 @@
             return this._property;
         };
         
+        PropertyTemplate.prototype.getResourceTemplateID = function() {
+            return this._fromResource;
+        };
+
+        PropertyTemplate.prototype.generateFormID = function() {
+            return this._fromResource + "-" + this._property.getID();
+        };
+
         PropertyTemplate.prototype.hasConstraint = function() {
             return this._constraint !== null;
         };

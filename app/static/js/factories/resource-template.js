@@ -48,7 +48,7 @@
                 
                 if (typeof obj.class.propertyTemplate !== "undefined") {
                     for (i = 0; i < obj.class.propertyTemplate.length; i++) {
-                        pt = new PropertyTemplate(obj.class.propertyTemplate[i]);
+                        pt = new PropertyTemplate(obj.class.propertyTemplate[i], this._id);
                         this._propertyTemplates.push(pt);
                         this._propertyToTemplate[pt.getProperty().getID()] = pt;
                     }

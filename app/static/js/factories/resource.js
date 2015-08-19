@@ -133,12 +133,12 @@
         };
         
         /**
-         * Return property values based on the property URI.
+         * Return property values based on the property template.
          */
         Resource.prototype.getPropertyValues = function(property) {
             var vals = null;
-            if (typeof this._properties[property] !== "undefined") {
-                vals = this._properties[property];
+            if (typeof this._properties[property.getProperty().getID()] !== "undefined" && this._template.getID() === property.getResourceTemplateID()) {
+                vals = this._properties[property.getProperty().getID()];
             } else if (this._relation !== null) {
                 vals = this._relation.getPropertyValues(property);
             }
@@ -149,7 +149,15 @@
          * Set a work's value of a property when only the name of the
          * property and its object type are known. Will not set any
          * further constraints on text values.  This is largely to
-         * facilitate internal additions.
+         * facilitate internal additions.  Note that there is a weakness
+         * in this implementation compared to adding when the property
+         * template is known, that is, if the property is in both this
+         * resource and its relation, it's going to be added on this resource
+         * even if it belonged on the relation.
+         * This method is currently used exclusively with the dropzone
+         * directive, which is still mostly a demo (i.e., we're not accepting
+         * images for upload), so there's room to flesh out a more
+         * correct implementation in the future.
          */
         Resource.prototype.addTextPropertyValue = function(property, type, value) {
             var seen, val, isDirty, textValue;
@@ -208,7 +216,7 @@
             } else {
                 textValue = value;
             }
-            if (this._template.hasProperty(propID)) {
+            if (this._template.hasProperty(propID) && this._template.getID() === property.getResourceTemplateID()) {
                 if (typeof this._properties[propID] === "undefined") {
                     this._properties[propID] = [];
                 } else {

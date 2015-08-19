@@ -125,9 +125,9 @@
                 }
             });
 
-            ResourceStore.setLoading(property.getProperty().getID(), true);
+            ResourceStore.setLoading(property.generateFormID(), true);
             return Query.suggest({"q": typed, "services": JSON.stringify(filtered.sort())}).$promise.then(function(res) {
-                ResourceStore.setLoading(property.getProperty().getID(), false);
+                ResourceStore.setLoading(property.generateFormID(), false);
                 return res;
             });
         }
@@ -157,8 +157,8 @@
         function setValueFromInput(prop, inputs) {
             // @@@ rewrite to do without $scope
             if (!$scope.editExisting) {
-                ResourceStore.getCurrent().addPropertyValue(prop, inputs[prop.getProperty().getID()]);
-                inputs[prop.getProperty().getID()] = '';
+                ResourceStore.getCurrent().addPropertyValue(prop, inputs[prop.generateFormID()]);
+                inputs[prop.generateFormID()] = '';
             }
         }
 
@@ -193,7 +193,7 @@
 
             modal.result.then(function(newValue) {
                 var objs, target, mod;
-                objs = ResourceStore.getCurrent().getPropertyValues(property.getProperty().getID());
+                objs = ResourceStore.getCurrent().getPropertyValues(property);
                 angular.forEach(objs, function(obj, idx) {
                     if (obj.getValue() === value.getValue()) {
                         target = idx;
@@ -364,7 +364,7 @@
             props = ResourceStore.getActiveTemplate().getPropertyTemplates();
             valid = true;
             angular.forEach(props, function(prop) {
-                if (prop.isRequired() && ResourceStore.getCurrent().getPropertyValues(prop.getProperty().getID()).length === 0) {
+                if (prop.isRequired() && ResourceStore.getCurrent().getPropertyValues(prop).length === 0) {
                     valid = false;
                 }
             });
@@ -522,7 +522,7 @@
                                         new PredObject(
                                             triple.o.value,
                                             triple.o.value,
-                                            "literal",
+                                            PropertyTemplate.LITERAL,
                                             true
                                         )
                                     );
@@ -532,7 +532,7 @@
                                         new PredObject(
                                             triple.o.value,
                                             triple.o.value,
-                                            "resource",
+                                            PropertyTemplate.RESOURCE,
                                             false
                                         )
                                     );

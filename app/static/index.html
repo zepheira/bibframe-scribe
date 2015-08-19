@@ -188,28 +188,28 @@
             <span class="input-group-addon"><i class="icon-calendar"></i></span>
             <input type="text"
                    class="form-control"
-                   id="{{resource.id}}-{{prop.getProperty().getID()}}"
+                   id="{{prop.generateFormID()}}"
                    datepicker-popup="yyyy-MM-dd"
                    datepicker-options="{'show-weeks': false}"
                    show-button-bar="false"
                    is-open="opened"
                    ng-focus="opened=true"
-                   ng-model="inputted[prop.getProperty().getID()]"
+                   ng-model="inputted[prop.generateFormID()]"
                    scribe-enter="setValueFromInput(prop, inputted)"
-                   ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
+                   ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0">
             <span class="input-group-btn">
               <button
                  ng-show="!editExisting&&prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
-                 ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+                 ng-disabled="!inputted[prop.generateFormID()]"
+                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
               <button
                  ng-show="!editExisting&&!prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
-                 ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+                 ng-disabled="!inputted[prop.generateFormID()]"
+                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
             </span>
           </span>
           <span ng-switch-default class="input-group">
@@ -217,23 +217,23 @@
             <input
                type="text"
                class="form-control"
-               id="{{resource.id}}-{{prop.getProperty().getID()}}"
-               ng-model="inputted[prop.getProperty().getID()]"
+               id="{{prop.generateFormID()}}"
+               ng-model="inputted[prop.generateFormID()]"
                scribe-enter="setValueFromInput(prop, inputted)"
-               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues().length>0">
+               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0">
             <span class="input-group-btn">
               <button
                  ng-show="!editExisting&&prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
-                 ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+                 ng-disabled="!inputted[prop.generateFormID()]"
+                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
               <button
                  ng-show="!editExisting&&!prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
-                 ng-disabled="!inputted[prop.getProperty().getID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+                 ng-disabled="!inputted[prop.generateFormID()]"
+                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
             </span>
           </span>
         </span>
@@ -242,23 +242,23 @@
         <input
            type="text"
            class="form-control"
-           id="{{resource.id}}-{{prop.getProperty().getID()}}"
-           ng-model="inputted[prop.getProperty().getID()]"
+           id="{{prop.generateFormID()}}"
+           ng-model="inputted[prop.generateFormID()]"
            scribe-enter="setValueFromInput(prop, inputted)"
-           ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
+           ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0">
         <span class="input-group-btn">
           <button
              ng-show="!editExisting&&prop.isRepeatable()"
              class="btn btn-default"
              type="button"
-             ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+             ng-disabled="!inputted[prop.generateFormID()]"
+             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
           <button
              ng-show="!editExisting&&!prop.isRepeatable()"
              class="btn btn-default"
              type="button"
-             ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+             ng-disabled="!inputted[prop.generateFormID()]"
+             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
         </span>
       </span>
     </script>
@@ -268,23 +268,23 @@
         <span class="input-group-addon">URL</span>
         <input type="text"
                class="form-control"
-               id="{{resource.id}}-{{prop.getProperty().getID()}}"
-               ng-model="inputted[prop.getProperty().getID()]"
+               id="{{prop.generateFormID()}}"
+               ng-model="inputted[prop.generateFormID()]"
                scribe-enter="setValueFromInput(prop, inputted)"
-               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0">
+               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0">
         <span class="input-group-btn">
           <button
              ng-show="!editExisting&&prop.isRepeatable()"
              class="btn btn-default"
              type="button"
-             ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Add</button>
+             ng-disabled="!inputted[prop.generateFormID()]"
+             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
           <button
              ng-show="!editExisting&&!prop.isRepeatable()"
              class="btn btn-default"
              type="button"
-             ng-disabled="!inputted[prop.getProperty().getID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.getProperty().getID()]);inputted[prop.getProperty().getID()]=''">Set</button>
+             ng-disabled="!inputted[prop.generateFormID()]"
+             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
         </span>
       </span>
 
@@ -302,31 +302,31 @@
           <input type="text"
                class="form-control"
                placeholder="Type to search"
-               ng-model="inputted[prop.getProperty().getID()]"
+               ng-model="inputted[prop.generateFormID()]"
                ng-model-options="{debounce: 1000}"
                ng-required="prop.isRequired()"
-               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getProprtyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0"
+               ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
-               typeahead-on-select="selectValue(prop,$item);inputted[prop.getProperty().getID()]=null"
+               typeahead-on-select="selectValue(prop,$item);inputted[prop.generateFormID()]=null"
                typeahead-min-length="1"
                typeahead-editable="false"
-               typeahead-loading="current().isLoading(prop.getProperty().getID())"
+               typeahead-loading="current().isLoading(prop.generateFormID())"
                typeahead-template-url="typeahead-match.html"
-               id="{{resource.id}}-{{prop.getProperty().getID()}}">
+               id="{{prop.generateFormID()}}">
           <span ng-if="!editExisting&&!prop.getConstraint().hasManyReferences()" class="input-group-btn">
             <button class="btn btn-default"
                 type="button"
                 tooltip="Click to create a new resource"
                 tooltip-placement="right"
-                ng-disabled="!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropertyValues(prop.getProperty().getID()).length>0"
+                ng-disabled="!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0"
                 ng-click="pivot(prop,prop.getConstraint().getReference())"><i class="icon-plus"></i></button>
-            <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) -->
+            <!-- @@@ pivot(... inputted[prop.generateFormID()]) -->
           </span>
           <span ng-if="!editExisting&&prop.getConstraint().hasManyReferences()" class="dropdown input-group-btn" dropdown>
             <button
                class="btn btn-default dropdown-toggle"
                dropdown-toggle
-               ng-disabled="!prop.isRepeatable()&&current().getPropertyValues(prop.getProperty().getID())!=null&&current().getPropetyValues(prop.getProperty().getID()).length>0"
+               ng-disabled="!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0"
                aria-haspopup="true"
                aria-expanded="false"
                type="button"
@@ -337,7 +337,7 @@
             <ul class="dropdown-menu" role="menu">
               <li ng-repeat="ref in prop.getConstraint().getReference()">
                 <a ng-click="pivot(prop,ref)" class="click">{{getTemplateByID(ref).getLabel()}}</a>
-                <!-- @@@ pivot(... inputted[prop.getProperty().getID()]) to pass already typed material into new resource, when appropriate label vocab is set -->
+                <!-- @@@ pivot(... inputted[prop.generateFormID()]) to pass already typed material into new resource, when appropriate label vocab is set -->
               </li>
             </ul>
           </span>
@@ -350,7 +350,7 @@
         <p ng-show="current().hasRequired()">Properties marked with <span class="required">*</span> are required.</p>
         <div ng-repeat="prop in getTemplateByID(resource.id).getPropertyTemplates()">
           <p class="form-group">
-            <label for="{{resource.id}}-{{prop.getProperty().getID()}}" class="property-label control-label col-md-3">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
+            <label for="{{prop.generateFormID()}}" class="property-label control-label col-md-3">{{prop.getProperty().getLabel()}}<span ng-show="prop.isRequired()" class="required">*</span></label>
             <span class="col-md-8" ng-if="!prop.hasConstraint()||(prop.hasConstraint()&&prop.getConstraint().isEditable())">
               <span ng-switch="" on="prop.getType()">
                 <span ng-switch-when="resource">
@@ -364,10 +364,10 @@
             <span ng-if="prop.hasConstraint()&&!prop.getConstraint().isEditable()">
               <span ng-include="'ineditable.html'"></span>
             </span>
-            <span class="col-md-1" ng-show="current().isLoading(prop.getProperty().getID())"><img src="img/spinner.gif"></span>
+            <span class="col-md-1" ng-show="current().isLoading(prop.generateFormID())"><img src="img/spinner.gif"></span>
           </p>
           <ul class="values" ng-hide="(prop.hasConstraint()&&!prop.getConstraint().isEditable())||getReferenceResourceType(prop.getConstraint().getReference())=='dropzone'">
-            <li ng-repeat="val in current().getPropertyValues(prop.getProperty().getID())" class="badge badge-info">
+            <li ng-repeat="val in current().getPropertyValues(prop)" class="badge badge-info">
               <span ng-show="prop.isLiteral()||(!prop.isLiteral()&&!prop.hasConstraint())" class="click" ng-click="editLiteral(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&val.isCreated()" class="click" ng-click="editResource(prop,val)" title="Edit"><i class="icon-edit"></i> {{val.getLabel()}}</span>
               <span ng-show="!prop.isLiteral()&&prop.hasConstraint()&&!val.isCreated()" class="click" ng-click="showResource(val)" title="View details"><i class="icon-info-sign"></i> {{val.getLabel()}}</span>
