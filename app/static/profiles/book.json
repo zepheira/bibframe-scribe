@@ -307,7 +307,6 @@
                     "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
                         {
-                            "mandatory": "true",
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Transcribed Title"
@@ -466,7 +465,6 @@
                     "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
                         {
-                            "mandatory": "true",
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Transcribed Title"

@@ -61,7 +61,6 @@
                     "instantiates": "bfp:Work:Article",
                     "propertyTemplate": [
                         {
-                            "mandatory": "true",
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Transcribed Title"
@@ -281,7 +280,6 @@
                     "instantiates": "bfp:Work:Article",
                     "propertyTemplate": [
                         {
-                            "mandatory": "true",
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
                                 "propertyLabel": "Transcribed Title"
