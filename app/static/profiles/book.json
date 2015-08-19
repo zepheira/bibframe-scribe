@@ -307,10 +307,9 @@
                     "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
                         {
-                            "mandatory": "true",
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
-                                "propertyLabel": "Instance Title"
+                                "propertyLabel": "Transcribed Title"
                             },
                             "repeatable": "false",
                             "type": "literal"
@@ -466,10 +465,9 @@
                     "instantiates": "bfp:Work:Book",
                     "propertyTemplate": [
                         {
-                            "mandatory": "true",
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
-                                "propertyLabel": "Instance Title"
+                                "propertyLabel": "Transcribed Title"
                             },
                             "repeatable": "false",
                             "type": "literal"
