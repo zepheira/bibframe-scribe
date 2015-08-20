@@ -361,45 +361,59 @@ server.get('/resolver', function resolveResource(req, res, next) {
         "text/rdf+n3"
     ];
     parts = url.parse(req.url, true);
-    resource = url.parse(parts.query.r);
-    resource["headers"] = {
-        "Accept": acceptable.join(",")
-    };
-    request = http.request(resource);
-    request.then(function(response) {
-        response.body.read().then(function(answer) {
-            var res2, req2;
-            if (response.status === 200 && acceptable.indexOf(response.headers["content-type"]) >= 0) {
+    if (parts.query.r.indexOf(config.idBase) === 0) {
+        db.n3.get({subject: parts.query.r}, function(err, n3) {
+            if (typeof err === "undefined" || err === null) {
                 res.writeHead(200, {
-                    'Content-Type': response.headers["content-type"]
+                    'Content-Type': 'text/rdf+n3'
                 });
-                res.end(answer);
-            } else if (response.status >= 300 && response.status < 400 && typeof response.headers["location"] !== "undefined") {
-                res2 = url.parse(url.resolve(parts.query.r, response.headers["location"]));
-                res2["headers"] = {
-                    "Accept": acceptable.join(",")
-                };
-                req2 = http.request(res2);
-                req2.then(function(resp2) {
-                    resp2.body.read().then(function(ans2) {
-                        if (resp2.status === 200 && acceptable.indexOf(resp2.headers["content-type"]) >= 0) {
-                            res.writeHead(200, {
-                                'Content-Type': resp2.headers["content-type"]
-                            });
-                            res.end(ans2)
-                        } else {
-                            res.writeHead(503);
-                            res.end();
-                        };
-                    });
-                });
+                res.end(n3);                
             } else {
                 res.writeHead(503);
                 res.end();
             }
         });
-    });
-    return next();
+    } else {
+        resource = url.parse(parts.query.r);
+        resource["headers"] = {
+            "Accept": acceptable.join(",")
+        };
+        request = http.request(resource);
+        request.then(function(response) {
+            response.body.read().then(function(answer) {
+                var res2, req2;
+                if (response.status === 200 && acceptable.indexOf(response.headers["content-type"]) >= 0) {
+                    res.writeHead(200, {
+                        'Content-Type': response.headers["content-type"]
+                    });
+                    res.end(answer);
+                } else if (response.status >= 300 && response.status < 400 && typeof response.headers["location"] !== "undefined") {
+                    res2 = url.parse(url.resolve(parts.query.r, response.headers["location"]));
+                    res2["headers"] = {
+                        "Accept": acceptable.join(",")
+                    };
+                    req2 = http.request(res2);
+                    req2.then(function(resp2) {
+                        resp2.body.read().then(function(ans2) {
+                            if (resp2.status === 200 && acceptable.indexOf(resp2.headers["content-type"]) >= 0) {
+                                res.writeHead(200, {
+                                    'Content-Type': resp2.headers["content-type"]
+                                });
+                                res.end(ans2)
+                            } else {
+                                res.writeHead(503);
+                                res.end();
+                            };
+                        });
+                    });
+                } else {
+                    res.writeHead(503);
+                    res.end();
+                }
+            });
+        });
+        return next();
+    }
 });
 
 server.listen(backend.listen, function() {
