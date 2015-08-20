@@ -60,7 +60,7 @@ describe("ResourceTemplate", function() {
         });
         
         it("should return all associated property templates", function() {
-            var pt = new PropertyTemplate({property: {id: "urn:testprop"}});
+            var pt = new PropertyTemplate({property: {id: "urn:testprop"}}, rt.getID());
             expect(rt.getPropertyTemplates()).toEqual([pt]);
         });
         

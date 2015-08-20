@@ -31,7 +31,7 @@ describe("Resource", function() {
                     descriptionTemplateRef: "testref"
                 }
             };
-            pt = new PropertyTemplate(ptObj);
+            pt = new PropertyTemplate(ptObj, "test");
             rt = new ResourceTemplate({
                 id: "test",
                 "class": {
@@ -70,14 +70,14 @@ describe("Resource", function() {
         });
 
         it("should add a new property option, be empty", function() {
-            expect(typeof r.getPropertyValues("http://example.org/newprop")).not.toBeUndefined();
+            expect(typeof r.getPropertyValues(pt)).not.toBeUndefined();
             expect(r.isEmpty()).toEqual(true);
         });
 
         it("should add a new property option and value and set flags", function() {
             r.addPropertyValue(pt, "urn:val");
-            expect(typeof r.getPropertyValues("http://example.org/newprop")).not.toBeUndefined();
-            expect(r.getPropertyValues("http://example.org/newprop")[0].getValue()).toEqual("urn:val");
+            expect(typeof r.getPropertyValues(pt)).not.toBeUndefined();
+            expect(r.getPropertyValues(pt)[0].getValue()).toEqual("urn:val");
             expect(r.isEmpty()).toEqual(false);
             expect(r.isLoading("http://example.org/newprop")).toEqual(false);
             expect(r.hasRequired()).toEqual(true);
@@ -85,7 +85,7 @@ describe("Resource", function() {
 
         it("should add and then remove a property value", function() {
             r.addPropertyValue(pt, "urn:val");
-            expect(r.getPropertyValues("http://example.org/newprop")[0].getValue()).toEqual("urn:val");
+            expect(r.getPropertyValues(pt)[0].getValue()).toEqual("urn:val");
             expect(r.isEmpty()).toEqual(false);
             expect(r.removePropertyValue("http://example.org/newprop", "urn:val")).toEqual(true);
             expect(r.isEmpty()).toEqual(true);
@@ -93,7 +93,7 @@ describe("Resource", function() {
 
         it("should reset to an empty state", function() {
             r.addPropertyValue(pt, "urn:val");
-            expect(r.getPropertyValues("http://example.org/newprop")[0].getValue()).toEqual("urn:val");
+            expect(r.getPropertyValues(pt)[0].getValue()).toEqual("urn:val");
             expect(r.isEmpty()).toEqual(false);
             r.reset();
             expect(r.isEmpty()).toEqual(true);

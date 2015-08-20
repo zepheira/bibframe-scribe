@@ -144,9 +144,12 @@ describe("ResourceStore", function() {
             valueConstraint: {
                 descriptionTemplateRef: "testref"
             }
-        });
+        }, "tmplid");
         ResourceStore.newResource();
         ResourceStore.getCurrent().setTemplate({
+            getID: function() {
+                return "tmplid";
+            },
             getClassID: function() {
                 return "test";
             },
@@ -181,7 +184,7 @@ describe("ResourceStore", function() {
             valueConstraint: {
                 descriptionTemplateRef: "testref"
             }
-        });
+        }, "tmplid");
         dz = {
             destroy: function() {}
         }
@@ -192,6 +195,9 @@ describe("ResourceStore", function() {
 
         ResourceStore.newResource();
         ResourceStore.getCurrent().setTemplate({
+            getID: function() {
+                return "tmplid";
+            },
             getClassID: function() {
                 return "test";
             },
