@@ -17,8 +17,10 @@
             active: {}
         };
         $scope.editLoaded = false;
+        $scope.searchLoading = false;
 
         $scope.newEdit = newEdit;
+        $scope.search = search;
         $scope.autocomplete = autocomplete;
         $scope.setValueFromInput = setValueFromInput;
         $scope.reset = reset;
@@ -87,6 +89,45 @@
         }
 
         /**
+         * Search for local works and instances.
+         */
+        /**
+         * Search for local works and instances.
+         */
+        function search(typed) {
+            var i, classes, services, idx, srv, filtered;
+            classes = ["Works", "Instances"]; // maybe make this configurable
+            services = [];
+            filtered = [];
+
+            for (i = 0; i < classes.length; i++) {
+                services = services.concat(Configuration.getConfig().resourceMap[classes[i]].services);
+            }
+            
+            angular.forEach(services, function(service, i) {
+                // unclear what would happen if index was 0, do not handle
+                idx = service.indexOf(":");
+                if (idx > 0) {
+                    srv = service.substr(0, idx);
+                } else {
+                    srv = service;
+                }
+                if (srv === "local" && filtered.indexOf(service) < 0) {
+                    filtered.push(service);
+                }
+            });
+
+            $scope.searchLoading = true;
+            return Query.suggest({
+                q: typed,
+                services: JSON.stringify(filtered.sort())
+            }).$promise.then(function(res) {
+                $scope.searchLoading = false;
+                return res;
+            });            
+        }
+
+        /**
          * Arguments are from input form, process and run to querying service.
          */
         function autocomplete(property, typed) {
@@ -126,7 +167,10 @@
             });
 
             ResourceStore.setLoading(property.generateFormID(), true);
-            return Query.suggest({"q": typed, "services": JSON.stringify(filtered.sort())}).$promise.then(function(res) {
+            return Query.suggest({
+                q: typed,
+                services: JSON.stringify(filtered.sort())
+            }).$promise.then(function(res) {
                 ResourceStore.setLoading(property.generateFormID(), false);
                 return res;
             });

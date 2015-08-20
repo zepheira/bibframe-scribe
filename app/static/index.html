@@ -79,13 +79,41 @@
             <tab-heading ng-show="!activeTemplate()"></tab-heading>
             <div class="jumbotron" ng-show="initialized()">
               <h2>Hi.</h2>
-              <p>Click an instance on the left to begin cataloging that type.</p>
+              <p>Click an instance on the left to begin cataloging that type, or click 'Search' to look for existing material.</p>
               <br><br>
             </div>
             <div class="jumbotron" ng-show="!initialized()">
               <h2>Hey! Listen!</h2>
               <p>Before you get to your cataloging, we'll need to load up some profiles for you. Hang in there.</p>
               <progressbar value="progress()" class="active progress-striped"></progressbar>
+            </div>
+          </tab>
+          <tab disable="!current().isEmpty()">
+            <tab-heading>Search</tab-heading>
+            <div class="jumbotron">
+              <h2>Search</h2>
+              <p>Find local material by title or label; select for editing.</p>
+              <form class="form-horizontal">
+                <div>
+                  <span class="col-md-11">
+                    <input type="text"
+                         class="form-control"
+                         placeholder="Type to search"
+                         ng-model="inputted['search']"
+                         ng-model-options="{debounce: 1000}"
+                         typeahead="option.label for option in search($viewValue)"
+                         typeahead-on-select="editFromGraph($item.uri);inputted['search']=''"
+                         typeahead-min-length="1"
+                         typeahead-editable="false"
+                         typeahead-loading="searchLoading"
+                         typeahead-template-url="typeahead-match.html"
+                         id="search">
+                  </span>
+                  <span class="col-md-1" ng-show="searchLoading">
+                    <img src="img/spinner.gif">
+                  </span>
+                </div>
+              </form>
             </div>
           </tab>
           <tab ng-repeat="resource in resourceOptions() | orderBy:'sortKey'" select="newEdit(resource)" disable="!current().isEmpty()" active="tabs.active[resource.id]">
