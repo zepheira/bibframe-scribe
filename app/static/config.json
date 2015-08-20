@@ -47,6 +47,17 @@
                 "local:Works"
             ]
         },
+        "Instances": {
+            "classes": [
+                "http://bibfra.me/vocab/marc/Electronic",
+                "http://bibfra.me/vocab/marc/Print",
+                "http://bibfra.me/vocab/av/Vinyl",
+                "http://example.org/vocab/bfp/Image"
+            ],
+            "services": [
+                "local:Instances"
+            ]
+        },
         "Subjects": {
             "classes": [
                 "http://bibfra.me/vocab/lite/Topic",
