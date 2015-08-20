@@ -51,6 +51,9 @@ save data like labels originating from remote sources, the appearance during
 editing may differ from initial creation due to the use of URIs instead of more
 user-friendly labels.
 
+You can also use the search utility to do a typeahead find for locally stored
+resources labelled by a title or a label property.
+
 Load Data
 =========
 
