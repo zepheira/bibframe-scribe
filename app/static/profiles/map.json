@@ -475,7 +475,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
-                                "propertyLabel": "Instance Title"
+                                "propertyLabel": "Transcribed Title"
                             },
                             "repeatable": "false",
                             "type": "literal"
@@ -734,7 +734,7 @@
                         {
                             "property": {
                                 "id": "http://bibfra.me/vocab/lite/title",
-                                "propertyLabel": "Instance Title"
+                                "propertyLabel": "Transcribed Title"
                             },
                             "repeatable": "false",
                             "type": "literal"
