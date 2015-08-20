@@ -251,17 +251,13 @@
         Resource.prototype.removePropertyValue = function(property, value) {
             var prop, empty, objs, rmIdx, objVal;
             removed = false;
-            if (typeof property === "string") {
-                prop = property;
-            } else {
-                prop = property.getProperty().getID();
-            }
+            prop = property.getProperty().getID();
             if (typeof value === "string") {
                 objVal = value;
             } else {
                 objVal = value.getValue();
             }
-            if (typeof this._properties[prop] !== "undefined") {
+            if (typeof this._properties[prop] !== "undefined"  && this._template.getID() === property.getResourceTemplateID()) {
                 objs = this._properties[prop];
                 rmIdx = -1;
                 angular.forEach(objs, function(obj, idx) {

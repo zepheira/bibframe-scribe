@@ -87,7 +87,7 @@ describe("Resource", function() {
             r.addPropertyValue(pt, "urn:val");
             expect(r.getPropertyValues(pt)[0].getValue()).toEqual("urn:val");
             expect(r.isEmpty()).toEqual(false);
-            expect(r.removePropertyValue("http://example.org/newprop", "urn:val")).toEqual(true);
+            expect(r.removePropertyValue(pt, "urn:val")).toEqual(true);
             expect(r.isEmpty()).toEqual(true);
         });
 
