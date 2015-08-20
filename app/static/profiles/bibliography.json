@@ -272,7 +272,7 @@
                         },
                         {
                             "property": {
-                                "id": "http://bibfra.me/vocab/classificationLcc",
+                                "id": "http://bibfra.me/vocab/marc/classificationLcc",
                                 "propertyLabel": "LCC Classification"
                             },
                             "type": "literal"
@@ -283,7 +283,7 @@
             {
                 "id": "bfp:Instance:ElectronicBibliography",
                 "class": {
-                    "classLabel": "Electronic",
+                    "classLabel": "Electronic Bibliography",
                     "type": "http://bibfra.me/vocab/marc/Electronic",
                     "instantiates": "bfp:Work:Bibliography",
                     "propertyTemplate": [
