@@ -33,6 +33,18 @@ You can use the `static.js` provided as a sibling file for deployment.
 
 Issue described here: https://github.com/mcavage/node-restify/issues/549
 
+Profiles
+========
+
+Profiles are no longer included in this repository.  You can install profiles
+and their corresponding configuration from other repositories:
+
+ * [bibflow-profiles](https://github.com/zepheira/bibflow-profiles)
+ * [bibframe-scribe-profiles](https://github.com/zepheira/bibframe-scribe-profiles)
+
+Take all of the non-`config.json` files and place them in the
+`app/static/profiles` directory, and place `config.json` in `app/static`.
+
 Saving
 ======
 
