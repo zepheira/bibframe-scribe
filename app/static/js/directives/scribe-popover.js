@@ -40,6 +40,7 @@
                                 var esc, pos;
                                 $document.triggerHandler("scribePopoverOpened");
                                 esc = h.replace(/</g,"&lt;").replace(/>/g,"&gt;");
+                                // @@@ make this a template?
                                 tt = angular.element('<div class="popover right resource"><div class="arrow"></div><code>&lt;' + getAttr(atts, "Resource") + '&gt;</code><hr><pre>' + esc + '</pre></div>');
                                 $document.find("body").append(tt);
                                 tt.css({ top: 0, left: 0, display: "block" });
