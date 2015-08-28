@@ -6,13 +6,10 @@
     function EditorController($scope, $q, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore, Store) {
         // @@@ fix any data still on $scope
         $scope.inputted = {};
+        $scope.results = {};
         $scope.useServices = {};
         $scope.editExisting = false; // @@@ redo this, used as a signal
         $scope.pivoting = false;
-        $scope.popover = {
-            "uri": null,
-            "data": null
-        };
         $scope.tabs = {
             active: {}
         };
@@ -262,22 +259,6 @@
             });
 
             pivot(property, null, toEdit);
-        }
-
-        /**
-         * Show a dialog with Resolver-queried RDF by putting result in $scope.
-         */
-        function popoverResource(uri) {
-            // @@@ redo this with a service
-            if ($scope.popover.uri !== uri) {
-                $scope.popover.uri = uri;
-                $scope.popover.data = "Loading...";
-                Resolver.resolve({"uri": uri}).$promise.then(function(data) {
-                    $scope.popover.data = data.raw;
-                }).catch(function(data) {
-                    $scope.popover.data = "No additional data could be found.";
-                });
-            }
         }
 
         /**

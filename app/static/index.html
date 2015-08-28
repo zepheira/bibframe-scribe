@@ -9,7 +9,7 @@
     <link href="css/dropzone-basic.css" rel="stylesheet">
     <script src="js/lib/angular.min.js"></script>
     <script src="js/lib/angular-resource.min.js"></script>
-    <script src="js/lib/ui-bootstrap-tpls-0.13.1-SNAPSHOT.min.js"></script>
+    <script src="js/lib/ui-bootstrap-tpls-0.13.4-SNAPSHOT.min.js"></script>
     <script src="js/lib/http-throttler.js"></script>
     <script src="js/lib/dropzone.min.js"></script>
     <script>Dropzone.autoDiscover = false;</script>
@@ -39,6 +39,7 @@
     <script src="js/initializer.js"></script>
     <script src="js/directives/dropzone.js"></script>
     <script src="js/directives/scribe-enter.js"></script>
+    <script src="js/directives/scribe-popover.js"></script>
     <script src="js/controllers/show-resource.js"></script>
     <script src="js/controllers/export.js"></script>
     <script src="js/controllers/edit-literal.js"></script>
@@ -100,10 +101,12 @@
                          class="form-control"
                          placeholder="Type to search"
                          ng-model="inputted['search']"
-                         ng-model-options="{debounce: 1000}"
+                         ng-class="results['search'] ? 'typeahead-no-matches' : ''"
                          typeahead="option.label for option in search($viewValue)"
+                         typeahead-wait-ms="1000"
                          typeahead-on-select="editFromGraph($item.uri);inputted['search']=''"
                          typeahead-min-length="1"
+                         typeahead-no-results="results['search']"
                          typeahead-editable="false"
                          typeahead-loading="searchLoading"
                          typeahead-template-url="typeahead-match.html"
@@ -331,10 +334,12 @@
                class="form-control"
                placeholder="Type to search"
                ng-model="inputted[prop.generateFormID()]"
-               ng-model-options="{debounce: 1000}"
+               ng-class="results[prop.generateFormID()] ? 'typeahead-no-matches' : ''"
                ng-required="prop.isRequired()"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
+               typeahead-wait-ms="1000"
+               typeahead-no-results="results[prop.generateFormID()]"
                typeahead-on-select="selectValue(prop,$item);inputted[prop.generateFormID()]=null"
                typeahead-min-length="1"
                typeahead-editable="false"
@@ -414,15 +419,14 @@
     <!-- explicitly called in typeahead -->
     <script type="text/ng-template" id="typeahead-match.html">
       <a tabindex="-1"
-         popover-template="'popover-resource.html'"
-         popover-trigger="mouseenter"
-         popover-placement="right"
-         popover-popup-delay="1500"
-         popover-title="{{match.model.uri}}"
-         popover-class="resource"
+         scribe-popover
+         scribe-popover-resource="{{match.model.uri}}"
+         scribe-popover-delay="1500"
+         scribe-popover-trigger="mouseenter"
+         scribe-popover-cancel="mouseleave"
          title="{{match.model.fullLabel}}">
-        <span bind-html-unsafe="match.label | typeaheadHighlight:query"></span>
-        <small class="text-muted match-source" bind-html-unsafe="match.model.source | uppercase"></small>
+        <span ng-bind-html="match.label | typeaheadHighlight:query"></span>
+        <small class="text-muted match-source" ng-bind-html="match.model.source | uppercase | unsafe"></small>
       </a>
     </script>
 
@@ -447,15 +451,6 @@
       <div class="modal-footer">
         <p class="text-center"><button class="btn btn-default" ng-click="close()">Close</button></p>
       </div>      
-    </script>
-
-    <script type="text/ng-template" id="popover-resource.html">
-      <!-- $parent is incredibly undesirable, but there's no way to access
-           the parent scopes from inside the Angular UI-Bootstrap directives
-           (as they're currently designed) other than directly through
-           $parent -->
-      <span>{{$parent.$parent.$parent.$parent.popoverResource(match.model.uri)}}</span>
-      <pre>{{$parent.$parent.$parent.$parent.popover.data}}</pre>
     </script>
 
   </body>
