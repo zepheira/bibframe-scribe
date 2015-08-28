@@ -24,7 +24,6 @@
         $scope.selectValue = selectValue;
         $scope.editLiteral = editLiteral;
         $scope.editResource = editResource;
-        $scope.popoverResource = popoverResource;
         $scope.showResource = showResource;
         $scope.pivot = pivot;
         $scope.display = display;
