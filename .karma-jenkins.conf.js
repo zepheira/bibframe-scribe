@@ -7,7 +7,7 @@ module.exports = function(config) {
     files: [
       'app/static/js/lib/angular.min.js',
       'app/static/js/lib/angular-resource.min.js',
-      'app/static/js/lib/ui-bootstrap-tpls-0.13.1-SNAPSHOT.min.js',
+      'app/static/js/lib/ui-bootstrap-tpls-0.13.4-SNAPSHOT.min.js',
       'app/static/js/lib/http-throttler.js',
       'app/static/js/lib/dropzone.min.js',
       'app/static/js/lib/rdf_store_min.js',
