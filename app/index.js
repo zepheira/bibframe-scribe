@@ -271,7 +271,7 @@ server.get('/suggest/master', function suggestMaster(req, res, next) {
         }
         if (conf === 'local') {
             queue.push(localSuggestHelper(query, (sub !== null) ? config.resourceMap[sub].classes : null));
-	    } else if (conf == 'mesh') {
+        } else if (conf == 'mesh') {
 		    queue.push(sparqlProxyHelper(query, config.services[conf].sparql, config.services[conf].config, conf, (sub !== null) ? config.services[conf].branches[sub] : null));
         } else {
             queue.push(proxyHelper(query, config.services[conf].config, conf, (sub !== null) ? config.services[conf].branches[sub] : null));
@@ -369,7 +369,7 @@ server.get('/suggest/fast', function getFast(req, res, next) {
 
 server.get('/suggest/mesh', function getMesh(req, res, next) {
     // manipulating SPARQL endpoint output
-    doSparqlProxy(req, res, serviceConfig['mesh'].config, 'mesh', null, next);
+    doSparqlProxy(req, res, config.services['mesh'].config, 'mesh', null, next);
 });
 
 server.get('/suggest/lc', function getLC(req, res, next) {
