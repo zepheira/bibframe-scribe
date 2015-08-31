@@ -4,10 +4,12 @@
         .factory("Graph", ["$q", "Message", "TemplateStore", "Progress", Graph]);
 
     function Graph($q, Message, TemplateStore, Progress) {
-        var service, _store, SCHEMAS;
+        var service, _store, SCHEMAS, DATA, REMOTE, BF;
 
         SCHEMAS = "urn:schema";
         DATA = "urn:data";
+        REMOTE = "urn:remote";
+        BF = "http://bibfra.me/vocab/lite/";
 
         service = {
             getStore: getStore,
@@ -15,7 +17,9 @@
             loadResource: loadResource,
             execute: execute,
             SCHEMAS: SCHEMAS,
-            DATA: DATA
+            DATA: DATA,
+            REMOTE: REMOTE,
+            BF: BF
         };
 
         _store = rdfstore.create();
@@ -64,6 +68,24 @@
                 }
             });
             return deferred.promise;
+        }
+
+        /**
+         * Retrieve relation.
+         */
+        function getRelation(res) {
+            var relation, result, query;
+            result = $q.defer();
+            relation = res._template.getRelation();
+            if (relation !== null) {
+                query = "SELECT ?r WHERE { <" + res.getID() + "> <" + BF + relation + "> ?r }";
+                execute(res, query, DATA).then(function(results) {
+                    result.resolve(results[1]);
+                });
+            } else {
+                result.reject();
+            }
+            return result.promise;
         }
 
         function execute(res, query, graph) {

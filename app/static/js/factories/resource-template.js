@@ -15,14 +15,16 @@
             this._propertyTemplates = [];
             this._propertyToTemplate = {};
             this._relation = null;
+            this._relationType = null;
+            this._relationResourceTemplate = null;
             
             if (typeof obj.id !== "undefined") {
                 this._id = obj.id;
             }
             
             if (typeof obj.class !== "undefined") {
-                if (typeof obj.class.id !== "undefined") {
-                    this._classID = obj.class.id;
+                if (typeof obj.class.type !== "undefined") {
+                    this._classID = obj.class.type;
                 }
                 
                 if (typeof obj.class.classLabel !== "undefined") {
@@ -37,6 +39,7 @@
                 if (typeof config.relations !== "undefined") {
                     for (i in config.relations) {
                         if (typeof obj.class[i] !== "undefined") {
+                            this._relationType = i;
                             this._relation = obj.class[i];
                             break;
                         }
@@ -45,7 +48,7 @@
                 
                 if (typeof obj.class.propertyTemplate !== "undefined") {
                     for (i = 0; i < obj.class.propertyTemplate.length; i++) {
-                        pt = new PropertyTemplate(obj.class.propertyTemplate[i]);
+                        pt = new PropertyTemplate(obj.class.propertyTemplate[i], this._id);
                         this._propertyTemplates.push(pt);
                         this._propertyToTemplate[pt.getProperty().getID()] = pt;
                     }
@@ -80,6 +83,15 @@
         };
 
         ResourceTemplate.prototype.getPropertyTemplates = function() {
+            var t = [];
+            if (this._relationResourceTemplate !== null) {
+                t = t.concat(this._relationResourceTemplate.getPropertyTemplates());
+            }
+            t = t.concat(this._propertyTemplates);
+            return t;
+        };
+
+        ResourceTemplate.prototype.getOwnPropertyTemplates = function() {
             return this._propertyTemplates;
         };
         
@@ -91,17 +103,24 @@
             return this._propertyToTemplate[prop];
         };
         
+        ResourceTemplate.prototype.hasRelation = function() {
+            return (this._relation !== null);
+        };
+
+        ResourceTemplate.prototype.getRelationType = function() {
+            return this._relationType;
+        };
+
         ResourceTemplate.prototype.getRelation = function() {
             return this._relation;
         };
-        
-        ResourceTemplate.prototype.mergeTemplate = function(tmpl) {
-            var pts = tmpl.getPropertyTemplates(), rt;
-            rt = this;
-            this._propertyTemplates = pts.concat(this._propertyTemplates);
-            angular.forEach(pts, function(pt) {
-                rt._propertyToTemplate[pt.getProperty().getID()] = pt;  
-            });
+
+        ResourceTemplate.prototype.getRelationResourceTemplate = function() {
+            return this._relationResourceTemplate;
+        };
+
+        ResourceTemplate.prototype.setRelationResourceTemplate = function(r) {
+            this._relationResourceTemplate = r;
         };
 
         return ResourceTemplate;

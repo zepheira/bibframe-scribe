@@ -1,0 +1,31 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v: <http://bibfra.me/purl/versa/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bibfra.me/vocab/dcrmb/> v:title "BIBFRAME DCRM(B) vocabulary" .
+
+<http://bibfra.me/vocab/dcrmb/datePublication> a rdf:Property ;
+    rdfs:label "date publication" ;
+    v:remark "Required element. Recommended ISO 8601 date." ;
+    v:scope <http://bibfra.me/vocab/dcrmb> ;
+    v:value "Literal" ;
+    rdfs:comment "The date of publication." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/providerDate> .
+
+<http://bibfra.me/vocab/dcrmb/signature> a rdf:Property ;
+    rdfs:label "signature" ;
+    v:scope <http://bibfra.me/vocab/dcrmb> ;
+    v:value "Literal" ;
+    rdfs:comment "Lists or summaries of signatures often printed at the end of early printed books." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/dcrmb/titleProper> a rdf:Property ;
+    rdfs:label "title proper" ;
+    v:remark "Required element." ;
+    v:scope <http://bibfra.me/vocab/dcrmb> ;
+    v:value "Literal" ;
+    rdfs:comment "The proper title" ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+

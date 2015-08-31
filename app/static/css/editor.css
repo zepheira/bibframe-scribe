@@ -176,3 +176,8 @@ input[type="text"].typeahead-no-matches {
     overflow: scroll;
     width: 100%;
 }
+
+/** Search */
+.search .match-info {
+    display: none;
+}

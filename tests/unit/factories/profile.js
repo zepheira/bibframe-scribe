@@ -45,7 +45,7 @@ describe("Profile", function() {
                     {
                         id: "rt-test",
                         "class": {
-                            id: "rt-class-test"
+                            type: "rt-class-test"
                         }
                     }
                 ]
@@ -56,7 +56,7 @@ describe("Profile", function() {
             res = new ResourceTemplate({
                 id: "res-test",
                 "class": {
-                    id: "fc"
+                    type: "fc"
                 }
             }, {});
             profile._processQuery(["fc"], [res, [{o: {value: "fc"}}]]);
@@ -75,10 +75,14 @@ describe("Profile", function() {
         });
 
         it("should register and fill out the map", function() {
-            var m = {};
+            var m, h;
+            h = {};
+            m = function(id, tmpl) {
+                h[id] = tmpl;
+            };
             profile.registerResourceTemplates(m);
-            expect(m["rt-test"]).not.toBe(undefined);
-            expect(m["rt-class-test"]).toBe(undefined);
+            expect(h["rt-test"]).not.toBe(undefined);
+            expect(h["rt-class-test"]).toBe(undefined);
         });
     });
 
@@ -91,7 +95,7 @@ describe("Profile", function() {
                     {
                         id: "rt-test",
                         "class": {
-                            id: "rt-class-test"
+                            type: "rt-class-test"
                         }
                     }
                 ]
@@ -122,7 +126,7 @@ describe("Profile", function() {
                     {
                         id: "rt-test",
                         "class": {
-                            id: "rt-class-test"
+                            type: "rt-class-test"
                         }
                     }
                 ]

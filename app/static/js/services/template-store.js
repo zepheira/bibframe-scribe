@@ -14,7 +14,8 @@
             getTemplateByClassID: getTemplateByClassID,
             hasTemplateByID: hasTemplateByID,
             getTemplateByID: getTemplateByID,
-            getTemplateIDHash: getTemplateIDHash,
+            addTemplate: addTemplate,
+            identifiersFromClassID: identifiersFromClassID,
             addResourceType: addResourceType,
             getReferenceResourceType: getReferenceResourceType,
             getTypeProperties: getTypeProperties,
@@ -27,6 +28,7 @@
         _resourceTypes = {};
         _typeMap = {};
         _idToTemplate = {};
+        _classIDToID = {};
         _profiles = [];
 
         return service;
@@ -59,8 +61,21 @@
             return _idToTemplate[id];
         }
 
-        function getTemplateIDHash() {
-            return _idToTemplate;
+        function addTemplate(id, cid, tmpl) {
+            _idToTemplate[id] = tmpl;
+            if (typeof _classIDToID[cid] !== "undefined") {
+                _classIDToID[cid].push(id);
+            } else {
+                _classIDToID[cid] = [id];
+            }
+        }
+
+        function identifiersFromClassID(cid) {
+            if (typeof _classIDToID[cid] !== "undefined") {
+                return _classIDToID[cid];
+            } else {
+                return null;
+            }
         }
 
         function getReferenceResourceType(ref) {

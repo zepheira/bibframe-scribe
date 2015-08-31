@@ -33,27 +33,45 @@ You can use the `static.js` provided as a sibling file for deployment.
 
 Issue described here: https://github.com/mcavage/node-restify/issues/549
 
+Profiles
+========
+
+Profiles are no longer included in this repository.  You can install profiles
+and their corresponding configuration from other repositories:
+
+ * [bibflow-profiles](https://github.com/zepheira/bibflow-profiles)
+ * [bibframe-scribe-profiles](https://github.com/zepheira/bibframe-scribe-profiles)
+
+Take all of the non-`config.json` files and place them in the
+`app/static/profiles` directory, and place `config.json` in `app/static`.
+
+Saving
+======
+
+Data leaves the user-interface of Scribe by being normalized to Turtle/N3 and placed as a string paylod in some simple JSON: `{n3: [data]}`.
+
+Scribe expects to `PUT` the data to the endpoint `http://server/mount/resource/new`
+(where, for Scribe, `mount` is where the Node application is mounted and is
+optional if mounted at the root).
+
+Editing
+=======
+
+You can bring data into Scribe by appending `?edit=<resource>` to the UI
+location, likely `http://server/mount/static/`.  As Scribe does not currently
+save data like labels originating from remote sources, the appearance during
+editing may differ from initial creation due to the use of URIs instead of more
+user-friendly labels.
+
+You can also use the search utility to do a typeahead find for locally stored
+resources labelled by a title or a label property.
+
 Load Data
 =========
 
-*(This section doesn't pertain to the levelgraph branch; you could probably install levelgraph-n3-import through npm to accomplish a Turtle/N3 import into your configured LevelDB location).*
-
-You can pre-load RDF into the store.  Unfortunately, you can't use RDF/XML
-yet.  Turtle/N3 or JSON-LD are your options.  You might use `rapper` from the
-Raptor library to manipulate your existing serialization into something
-this software can read immediately.  It also only reads HTTP[S] from the
-command line easily, so you may want to publish your data to this software's
-static directory and load from the locally hosted URL:
-
-```
-% cp graph.n3 [env]/bibframe-scribe/app/static/
-% cd [env]/bibframe-scribe/app/
-% node index.js &
-% rdfstorejs load http://localhost:8888/static/graph.n3 --store-engine mongodb --store-mongo-domain localhost --store-name bfstore
-```
-
-Use `--store-overwrite true` if you want to obliterate your existing store
-and write the contents of graph.n3 into it instead.
+You could probably install levelgraph-n3-import through npm in order to obtain
+a command line tool that you can then use to import Turtle/N3 into your
+configured LevelDB location, but that hasn't yet been tested.
 
 License
 =======

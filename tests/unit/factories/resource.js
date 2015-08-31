@@ -13,31 +13,13 @@ describe("Resource", function() {
     }));
 
     describe("constructor", function() {
-        var r, rt, pt;
+        var r, rt, pt, ptObj;
         beforeEach(function() {
-            $httpBackend.expectPOST("../resource/id").respond([
+            $httpBackend.whenPOST("../resource/id").respond([
                 "urn:test/testuuid0",
                 "urn:test/testuuid1"
             ]);
-            rt = new ResourceTemplate({
-                id: "test",
-                "class": {
-                    id: "urn:testclass",
-                    classLabel: "Test Class",
-                    labelProperty: "urn:labelprop",
-                    propertyTemplate: [{
-                        property: {
-                            id: "urn:testprop"
-                        }
-                    }],
-                    instantiates: "testAlt"
-                },
-            }, {
-                relations: {
-                    "instantiates": "include"
-                }
-            });
-            pt = new PropertyTemplate({
+            ptObj = {
                 repeatable: "true",
                 mandatory: "true",
                 type: "resource",
@@ -48,6 +30,21 @@ describe("Resource", function() {
                 valueConstraint: {
                     descriptionTemplateRef: "testref"
                 }
+            };
+            pt = new PropertyTemplate(ptObj, "test");
+            rt = new ResourceTemplate({
+                id: "test",
+                "class": {
+                    type: "urn:testclass",
+                    classLabel: "Test Class",
+                    labelProperty: "urn:labelprop",
+                    propertyTemplate: [ptObj],
+                    instantiates: "testAlt"
+                },
+            }, {
+                relations: {
+                    "instantiates": "include"
+                }
             });
             r = new Resource("", rt);
             $httpBackend.flush();
@@ -57,6 +54,7 @@ describe("Resource", function() {
             // a problem in reality, but in testing world, we need to get
             // the ID set properly.
             r = new Resource("", rt);
+            r.initialize();
         });
         
         it("should return an ID with the correct base", function() {
@@ -72,58 +70,49 @@ describe("Resource", function() {
         });
 
         it("should add a new property option, be empty", function() {
-            r.initializeProperty(pt, {hasRequired: false, loading: {}});
-            expect(typeof r._properties["http://example.org/newprop"]).not.toBeUndefined();
+            expect(typeof r.getPropertyValues(pt)).not.toBeUndefined();
             expect(r.isEmpty()).toEqual(true);
         });
 
         it("should add a new property option and value and set flags", function() {
-            var flags = {hasRequired: false, loading: {}};
-            r.initializeProperty(pt, flags);
             r.addPropertyValue(pt, "urn:val");
-            expect(typeof r._properties["http://example.org/newprop"]).not.toBeUndefined();
-            expect(r._properties["http://example.org/newprop"][0].getValue()).toEqual("urn:val");
+            expect(typeof r.getPropertyValues(pt)).not.toBeUndefined();
+            expect(r.getPropertyValues(pt)[0].getValue()).toEqual("urn:val");
             expect(r.isEmpty()).toEqual(false);
-            expect(flags.loading["http://example.org/newprop"]).toEqual(false);
-            expect(flags.hasRequired).toEqual(true);
+            expect(r.isLoading("http://example.org/newprop")).toEqual(false);
+            expect(r.hasRequired()).toEqual(true);
         });
 
         it("should add and then remove a property value", function() {
-            var flags = {hasRequired: false, loading: {}};
-            r.initializeProperty(pt, flags);
             r.addPropertyValue(pt, "urn:val");
-            expect(r._properties["http://example.org/newprop"][0].getValue()).toEqual("urn:val");
+            expect(r.getPropertyValues(pt)[0].getValue()).toEqual("urn:val");
             expect(r.isEmpty()).toEqual(false);
-            expect(r.removePropertyValue("http://example.org/newprop", "urn:val")).toEqual(true);
+            expect(r.removePropertyValue(pt, "urn:val")).toEqual(true);
             expect(r.isEmpty()).toEqual(true);
         });
 
         it("should reset to an empty state", function() {
-            var flags = {hasRequired: false, loading: {}};
-            r.initializeProperty(pt, flags);
             r.addPropertyValue(pt, "urn:val");
-            expect(r._properties["http://example.org/newprop"][0].getValue()).toEqual("urn:val");
+            expect(r.getPropertyValues(pt)[0].getValue()).toEqual("urn:val");
             expect(r.isEmpty()).toEqual(false);
             r.reset();
             expect(r.isEmpty()).toEqual(true);
         });
 
         it("should print RDF/XML", function() {
-            var flags = {hasRequired: false, loading: {}}, rdf;
-            r.initializeProperty(pt, flags);
+            var rdf;
             r.addPropertyValue(pt, "urn:val");
             rdf = r.toRDF();
             expect(rdf).toMatch(/<?xml version="1.0"\?>/);
             expect(rdf).toMatch(/<rdf:RDF/);
             expect(rdf).toMatch(/xmlns:ns0="http:\/\/example.org\/"/);
-            expect(rdf).toMatch(/rdf:about="urn:test\/testuuid0-work"/);
-            expect(rdf).toMatch(/rdf:resource="testAlt"/);
+            expect(rdf).toMatch(/rdf:about="urn:test\/testuuid0"/);
             expect(rdf).toMatch(/ns0:newprop rdf:resource="urn:val"/);
+            // no separate testAlt, not setup...
         });
 
         it("should print N3", function() {
-            var flags = {hasRequired: false, loading: {}}, rdf;
-            r.initializeProperty(pt, flags);
+            var rdf;
             r.addPropertyValue(pt, "urn:val");
             rdf = r.toN3();
             expect(rdf).toMatch(/@prefix rdf: <http/);

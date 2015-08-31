@@ -1,38 +1,45 @@
 {
     "profiles": [
-        "authorities",
+        "authority",
         "agents",
+        "article",
         "events",
-        "language",
-        "categories",
-        "held",
+        "concept",
+        "item",
         "book",
         "dissertation",
         "bibliography",
         "record",
-        "vra"
+        "serial",
+        "map"
     ],
     "schemas": [
-        "vocab.n3",
+        "bflite.n3",
+        "bfmarc.n3",
+        "bfrel.n3",
+        "bfdcrmb.n3",
         "augment.n3"
     ],
     "firstClass": [
-        "http://bibframe.org/vocab/Work",
-        "http://bibframe.org/vocab/Instance",
-        "http://bibframe.org/vocab/HeldItem"
+        "http://bibfra.me/vocab/lite/Work",
+        "http://bibfra.me/vocab/lite/Instance",
+        "http://bibfra.me/vocab/lite/Item"
     ],
     "idBase": "http://example.org/",
     "relations": {
-        "instanceOf": "include",
+        "instantiates": "include",
         "holdingFor": "include"
     },
     "resourceMap": {
         "Works": {
             "classes": [
-                "http://bibframe.org/vocab/Book",
-                "http://bibframe.org/vocab/Dissertation",
-                "http://bibframe.org/vocab/Bibliography",
-                "http://bibframe.org/vocab/Article",
+                "http://bibfra.me/vocab/marc/Books",
+                "http://bibfra.me/vocab/marc/Dissertation",
+                "http://bibfra.me/vocab/marc/Bibliography",
+                "http://bibfra.me/vocab/marc/Article",
+                "http://bibfra.me/vocab/marc/Map",
+                "http://bibfra.me/vocab/marc/Audio",
+                "http://bibfra.me/vocab/marc/Serials",
                 "http://bibframe.org/vocab/Painting"
             ],
             "services": [
@@ -40,10 +47,22 @@
                 "local:Works"
             ]
         },
+        "Instances": {
+            "classes": [
+                "http://bibfra.me/vocab/marc/Electronic",
+                "http://bibfra.me/vocab/marc/Print",
+                "http://bibfra.me/vocab/av/Vinyl",
+                "http://example.org/vocab/bfp/Image"
+            ],
+            "services": [
+                "local:Instances"
+            ]
+        },
         "Subjects": {
             "classes": [
-                "http://bibframe.org/vocab/Topic",
+                "http://bibfra.me/vocab/lite/Topic",
                 "http://bibframe.org/vocab/TemporalConcept",
+                "http://bibfra.me/vocab/lite/Concept",
                 "http://bibframe.org/vocab/ClassificationEntity",
                 "http://bibframe.org/vocab/rda/Authority",
                 "http://bibframe.org/vocab/rda/Period",
@@ -61,7 +80,7 @@
         },
         "Places": {
             "classes": [
-                "http://bibframe.org/vocab/Place",
+                "http://bibfra.me/vocab/lite/Place",
                 "http://bibframe.org/vocab/rda/Place"
             ],
             "services": [
@@ -71,11 +90,11 @@
         },
         "Agents": {
             "classes": [
-                "http://bibframe.org/vocab/Family",
+                "http://bibfra.me/vocab/lite/Family",
                 "http://bibframe.org/vocab/Jurisdiction",
-                "http://bibframe.org/vocab/Meeting",
-                "http://bibframe.org/vocab/Organization",
-                "http://bibframe.org/vocab/Person",
+                "http://bibfra.me/vocab/lite/Meeting",
+                "http://bibfra.me/vocab/lite/Organization",
+                "http://bibfra.me/vocab/lite/Person",
                 "http://bibframe.org/vocab/rda/Agent"
             ],
             "services": [
@@ -84,18 +103,43 @@
                 "local:Agents"
             ]
         },
-        "Languages": {
+        "ContentCategory": {
             "classes": [
-                "http://bibframe.org/vocab/LanguageEntity"
+                "http://bibfra.me/vocab/lite/ContentCategory"
+            ],
+            "services": [
+                "lc:contentTypes"
+            ]
+        },
+        "CarrierCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/CarrierCategory"
+            ],
+            "services": [
+                "lc:carrier"
+            ]
+        },
+        "MediaCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/MediaCategory"
+            ],
+            "services": [
+                "lc:mediaTypes"
+            ]
+        },
+        "LanguageCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/LanguageCategory"
             ],
             "services": [
                 "lc:lang",
-                "local:Languages"
+                "local:LanguageCategory"
             ]
         },
         "Providers": {
             "classes": [
-                "http://bibframe.org/vocab/Provider",
+                "http://bibfra.me/vocab/lite/ProviderEvent",
+                "http://bibfra.me/vocab/lite/CopyrightEvent",
                 "http://bibframe.org/vocab/PublisherEvent",
                 "http://bibframe.org/vocab/ManufactureEvent",
                 "http://bibframe.org/vocab/ProducerEvent",
@@ -105,30 +149,6 @@
                 "lc:names",
                 "viaf",
                 "local:Providers"
-            ]
-        },
-        "ContentCategory": {
-            "classes": [
-                "http://bibframe.org/vocab/ContentCategory"
-            ],
-            "services": [
-                "lc:contentTypes"
-            ]
-        },
-        "CarrierCategory": {
-            "classes": [
-                "http://bibframe.org/vocab/CarrierCategory"
-            ],
-            "services": [
-                "lc:carrier"
-            ]
-        },
-        "MediaCategory": {
-            "classes": [
-                "http://bibframe.org/vocab/MediaCategory"
-            ],
-            "services": [
-                "lc:mediaTypes"
             ]
         }
     },

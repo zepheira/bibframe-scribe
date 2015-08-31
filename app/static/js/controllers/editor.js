@@ -6,26 +6,24 @@
     function EditorController($scope, $q, $modal, $log, Store, Configuration, Query, Graph, Message, Resolver, Namespace, Progress, Property, PredObject, ValueConstraint, PropertyTemplate, ResourceTemplate, Resource, Profile, ResourceStore, TemplateStore, Store) {
         // @@@ fix any data still on $scope
         $scope.inputted = {};
+        $scope.results = {};
         $scope.useServices = {};
         $scope.editExisting = false; // @@@ redo this, used as a signal
         $scope.pivoting = false;
-        $scope.popover = {
-            "uri": null,
-            "data": null
-        };
         $scope.tabs = {
             active: {}
         };
         $scope.editLoaded = false;
+        $scope.searchLoading = false;
 
         $scope.newEdit = newEdit;
+        $scope.search = search;
         $scope.autocomplete = autocomplete;
         $scope.setValueFromInput = setValueFromInput;
         $scope.reset = reset;
         $scope.selectValue = selectValue;
         $scope.editLiteral = editLiteral;
         $scope.editResource = editResource;
-        $scope.popoverResource = popoverResource;
         $scope.showResource = showResource;
         $scope.pivot = pivot;
         $scope.display = display;
@@ -38,6 +36,7 @@
         
         $scope.progress = Progress.getCurrent;
         $scope.messages = Message.messages;
+        $scope.closeMsg = Message.removeMessage;
         $scope.initialized = Configuration.isInitialized;
         $scope.resourceOptions = Configuration.getResourceOptions;
         $scope.activeTemplate = ResourceStore.getActiveTemplate;
@@ -47,7 +46,6 @@
         $scope.cacheDropzone = ResourceStore.cacheDropzone;
         $scope.config = Configuration;
         $scope.getTemplateByID = TemplateStore.getTemplateByID;
-        $scope.getTemplateByClassID = TemplateStore.getTemplateByClassID;
         $scope.hasRequired = ResourceStore.hasRequired;
         $scope.setHasRequired = ResourceStore.setHasRequired;
         $scope.isLoading = ResourceStore.isLoading;
@@ -66,20 +64,10 @@
         }
 
         function _setup(tmpl, res) {
-            var props, flags;
-            flags = {
-                hasRequired: false,
-                loading: ResourceStore.getAllLoading()
-            };
-
             $scope.inputted = {};
             ResourceStore.setActiveTemplate(tmpl);
             res.setTemplate(tmpl);
-            props = tmpl.getPropertyTemplates();
-            angular.forEach(props, function(prop) {
-                res.initializeProperty(prop, flags);
-            });
-            ResourceStore.setHasRequired(flags.hasRequired);
+            res.initialize();
         }
 
         /**
@@ -90,15 +78,53 @@
             var props, flags;
             if (!Configuration.editOnLoad() && !$scope.editLoaded) {
                 $scope.tabs.active = {};
-                $scope.tabs.active[resource.uri] = true;
+                $scope.tabs.active[resource.id] = true;
                 ResourceStore.clear();
-                _setup(TemplateStore.getTemplateByClassID(resource.uri), ResourceStore.getCurrent());
+                _setup(TemplateStore.getTemplateByID(resource.id), ResourceStore.getCurrent());
             }
         }
 
         /**
+         * Search for local works and instances.
+         */
+        /**
+         * Search for local works and instances.
+         */
+        function search(typed) {
+            var i, classes, services, idx, srv, filtered;
+            classes = ["Works", "Instances"]; // maybe make this configurable
+            services = [];
+            filtered = [];
+
+            for (i = 0; i < classes.length; i++) {
+                services = services.concat(Configuration.getConfig().resourceMap[classes[i]].services);
+            }
+            
+            angular.forEach(services, function(service, i) {
+                // unclear what would happen if index was 0, do not handle
+                idx = service.indexOf(":");
+                if (idx > 0) {
+                    srv = service.substr(0, idx);
+                } else {
+                    srv = service;
+                }
+                if (srv === "local" && filtered.indexOf(service) < 0) {
+                    filtered.push(service);
+                }
+            });
+
+            $scope.searchLoading = true;
+            return Query.suggest({
+                q: typed,
+                services: JSON.stringify(filtered.sort())
+            }).$promise.then(function(res) {
+                $scope.searchLoading = false;
+                return res;
+            });            
+        }
+
+        /**
          * Arguments are from input form, process and run to querying service.
-         * @@@ service?
          */
         function autocomplete(property, typed) {
             var i, classes, single, refs, services, idx, srv, filtered;
@@ -130,22 +156,24 @@
                 } else {
                     srv = service;
                 }
-                // @@@ $scope.useServices?
+                // @@@ get away from $scope
                 if ($scope.useServices[srv] && filtered.indexOf(service) < 0) {
                     filtered.push(service);
                 }
             });
 
-            ResourceStore.setLoading(property.getProperty().getID(), true);
-            return Query.suggest({"q": typed, "services": JSON.stringify(filtered.sort())}).$promise.then(function(res) {
-                ResourceStore.setLoading(property.getProperty().getID(), false);
+            ResourceStore.setLoading(property.generateFormID(), true);
+            return Query.suggest({
+                q: typed,
+                services: JSON.stringify(filtered.sort())
+            }).$promise.then(function(res) {
+                ResourceStore.setLoading(property.generateFormID(), false);
                 return res;
             });
         }
 
         /**
          * Fires when a dropdown item is selected
-         * @@@ service? - with autocomplete?
          */
         function selectValue(property, selection, created) {
             var seen = false, objType;
@@ -165,18 +193,17 @@
 
         /**
          * Convenience method
-         * @@@ rewrite to do without $scope
          */
         function setValueFromInput(prop, inputs) {
+            // @@@ rewrite to do without $scope
             if (!$scope.editExisting) {
-                ResourceStore.getCurrent().addPropertyValue(prop, inputs[prop.getProperty().getID()]);
-                inputs[prop.getProperty().getID()] = '';
+                ResourceStore.getCurrent().addPropertyValue(prop, inputs[prop.generateFormID()]);
+                inputs[prop.generateFormID()] = '';
             }
         }
 
         /**
          * Wipe out $scope form data as if no input was made.
-         * @@@ service - current work service
          */
         function reset(formScope, formName) {
             ResourceStore.reset();
@@ -206,7 +233,7 @@
 
             modal.result.then(function(newValue) {
                 var objs, target, mod;
-                objs = ResourceStore.getCurrent().getPropertyValues(property.getProperty().getID());
+                objs = ResourceStore.getCurrent().getPropertyValues(property);
                 angular.forEach(objs, function(obj, idx) {
                     if (obj.getValue() === value.getValue()) {
                         target = idx;
@@ -234,29 +261,10 @@
         }
 
         /**
-         * Show a dialog with Resolver-queried RDF by putting result in $scope.
-         * @@@service? - resolver service
-         */
-        function popoverResource(uri) {
-            // @@@ redo this with a service
-            if ($scope.popover.uri !== uri) {
-                $scope.popover.uri = uri;
-                $scope.popover.data = "Loading...";
-                Resolver.resolve({"uri": uri}).$promise.then(function(data) {
-                    $scope.popover.data = data.raw;
-                }).catch(function(data) {
-                    $scope.popover.data = "No additional data could be found.";
-                });
-            }
-        }
-
-        /**
          * Show a model dialog for an external URI using Resolver-queried
          * RDF - very similar to exported RDF dialog, perhaps combine.
-         * @@@service?
          */
         function showResource(val) {
-            // @@@ redo with a service, without resolver
             if (val.isResource()) {
                 Resolver.resolve({"uri": val.getValue()}).$promise.then(function(data) {
                     $modal.open({
@@ -299,7 +307,6 @@
         /**
          * Open up new input form in modal dialog to fill in a sub-resource
          * of the main form. Takes from and modifes $scope.
-         * @@@service?
          */
         function pivot(property, ref, toEdit) {
             var modal, res, doInit;
@@ -375,14 +382,13 @@
 
         /**
          * Checks $scope current work for whether mandatory-ness is met.
-         * @@@arguments
          */
         function validate() {
             var props, valid;
             props = ResourceStore.getActiveTemplate().getPropertyTemplates();
             valid = true;
             angular.forEach(props, function(prop) {
-                if (prop.isRequired() && ResourceStore.getCurrent().getPropertyValues(prop.getProperty().getID()).length === 0) {
+                if (prop.isRequired() && ResourceStore.getCurrent().getPropertyValues(prop).length === 0) {
                     valid = false;
                 }
             });
@@ -390,18 +396,24 @@
         }
 
         /**
-         * Takes N3 string and persists it to backing store.
-         * @@@error handling
+         * Takes N3 string and persists it to local and backing stores.
          */
         function persist(n3) {
-            Store.new(null, {"n3": n3}).$promise.then(function(resp) {
-                // console.log(resp);
+            Graph.loadResource(null, n3).then(function() {
+                Store.new(null, {"n3": n3}).$promise.then(function(resp) {
+                    if (resp.success) {
+                        Messages.addMessage("Saved!", "success");
+                    } else {
+                        Messages.addMessage("Failed to save!", "danger")
+                    }
+                });
+            }, function() {
+                // console.log("not loaded");
             });
         }
 
         /**
          * Open modal dialog to show (stored) string to user.
-         * @@@arguments, service?
          */
         function showRDF() {
             $modal.open({
@@ -416,40 +428,6 @@
             });
         }
 
-        function _loadFromGraph(type, res, uri) {
-            var tmpl,
-                deferred = $q.defer(),
-                fullq = "SELECT * WHERE { <" + uri + "> ?p ?o }";
-            if (TemplateStore.hasTemplateByClassID(type)) {
-                tmpl = TemplateStore.getTemplateByClassID(type);
-                _setup(tmpl, res);
-                $scope.tabs.active = type;
-                Graph.execute(res, fullq, Graph.DATA).then(function(response) {
-                    angular.forEach(response[1], function(triple) {
-                        if (tmpl.hasProperty(triple.p.value)) {
-                            if (triple.o.value.startsWith("\"")) {
-                                res.addPropertyValue(
-                                    tmpl.getPropertyByID(triple.p.value),
-                                    triple.o.value.slice(1, -1)
-                                );
-                            } else {
-                                res.addPropertyValue(
-                                    tmpl.getPropertyByID(triple.p.value),
-                                    triple.o.value
-                                );
-                            }
-                        }
-                    });
-                    ResourceStore.setCurrent(res);
-                    $scope.editLoaded = true;
-                    deferred.resolve();
-                });
-            } else {
-                deferred.reject();
-            }
-            return deferred.promise;
-        }
-
         /**
          * Utility function to fill out a Resource from a local browser store,
          * only retrieves triples with uri argument as subject.
@@ -457,38 +435,144 @@
         function editFromGraph(uri) {
             var existq = "ASK { <" + uri + "> ?p ?o }",
                 typeq = "SELECT ?o WHERE { <" + uri + "> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> ?o }",
-                r,
-                type,
                 tmpl;
 
             Graph.execute(uri, existq, Graph.DATA).then(function(resp) {
                 return resp[1];
             }).then(function(inGraph) {
-                r = new Resource(null, null);
-                r.setID(uri);
                 if (!inGraph) {
                     // If not in local store, retrieve from backing store
                     Store.get({}, {s: uri}).$promise.then(function(triples) {
                         Graph.loadResource(uri, triples.n3).then(function() {
-                            Graph.execute(uri, typeq, Graph.DATA).then(function(typeresp) {
-                                type = typeresp[1][0].o.value;
-                                _loadFromGraph(type, r, uri).catch(function() {
-                                    Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
-                                });
+                            _loadFromGraph(uri).catch(function() {
+                                Message.addMessage("Cannot edit " + uri, "danger");
                             });
                         });
                     });
                 } else {
-                    Graph.execute(uri, typeq, Graph.DATA).then(function(typeresp) {
-                        type = typeresp[1][0].o.value;
-                        _loadFromGraph(type, r, uri).catch(function() {
-                            Message.addMessage("Cannot edit " + uri + " due to lack of template for type, " + type, "danger");
-                        });
+                    _loadFromGraph(uri).catch(function() {
+                        Message.addMessage("Cannot edit " + uri, "danger");
                     });
                 }
             }).catch(function() {
                 Message.addMessage("Not in backing store: " + uri, "danger");
             });
         }
+
+        function _loadFromGraph(uri, sub) {
+            var rels, fullq, typeq, relsq, res, defer, tmpl;
+            
+            if (typeof sub === "undefined") {
+                sub = false;
+            }
+            defer = $q.defer();
+            rels = [];
+            angular.forEach(Configuration.getConfig().relations, function(v, p) {
+                rels.push(Graph.BF + p);
+            });
+            
+            res = new Resource(null, null);
+            typeq = "SELECT * WHERE { <" + uri + "> a ?o }";
+            relsq = "SELECT * WHERE { <" + uri + "> ?p ?o . ?o a ?t . FILTER(" + rels.map(function(a) { return "?p = <" + a + ">"; }).join(" || ") + ") }";
+            fullq = "SELECT * WHERE { <" + uri + "> ?p ?o  }";
+            
+            $q.all([
+                Graph.execute(res, typeq, Graph.DATA).then(function(response) {
+                    if (response[1].length > 0) {
+                        return response[1][0].o.value;
+                    } else {
+                        return null;
+                    }
+                }),
+                Graph.execute(res, relsq, Graph.DATA).then(function(response) {
+                    if (response[1].length > 0) {
+                        return {
+                            p: response[1][0].p.value,
+                            o: response[1][0].o.value,
+                            t: response[1][0].t.value
+                        };
+                    } else {
+                        return null;
+                    }
+                })
+            ]).then(function(response) {
+                var prop, ids, subids;
+                if (response[0] !== null) {
+                    res.setID(uri);
+                    ids = TemplateStore.identifiersFromClassID(response[0]);
+                    if (ids !== null && ids.length === 1) {
+                        tmpl = TemplateStore.getTemplateByID(ids[0]);
+                        if (!sub) {
+                            _setup(tmpl, res);
+                            $scope.tabs.active[ids[0]] = true;
+                        } else {
+                            res.setTemplate(tmpl);
+                            res.initialize();
+                        }
+                    }
+                    if (response[1] !== null) {
+                        prop = Namespace.extractNamespace(response[1].p);
+                        if (typeof tmpl === "undefined") {
+                            subids = TemplateStore.identifiersFromClassID(response[1].t);
+                            if (subids !== null && subids.length === 1) {
+                                res.getRelation().setTemplate(TemplateStore.getTemplateByID(subids[0]));
+                                res.getRelation().initialize();
+                                angular.forEach(ids, function(id) {
+                                    var candidate;
+                                    candidate = TemplateStore.getTemplateByID(id);
+                                    if (candidate.getRelationType() === prop.term) {
+                                        tmpl = candidate;
+                                        if (!sub) {
+                                            _setup(tmpl, res);
+                                            $scope.tabs.active[id] = true;
+                                        }  else {
+                                            res.setTemplate(tmpl);
+                                            res.initialize();
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                        _loadFromGraph(response[1].o, true).then(function(subres) {
+                            res.setRelation(subres);
+                        });
+                    }
+                    Graph.execute(res, fullq, Graph.DATA).then(function(triples) {
+                        angular.forEach(triples[1], function(triple) {
+                            if (tmpl.hasProperty(triple.p.value)) {
+                                if (triple.o.token === "literal") {
+                                    res.addPropertyValue(
+                                        tmpl.getPropertyByID(triple.p.value),
+                                        new PredObject(
+                                            triple.o.value,
+                                            triple.o.value,
+                                            PropertyTemplate.LITERAL,
+                                            true
+                                        )
+                                    );
+                                } else {
+                                    res.addPropertyValue(
+                                        tmpl.getPropertyByID(triple.p.value),
+                                        new PredObject(
+                                            triple.o.value,
+                                            triple.o.value,
+                                            PropertyTemplate.RESOURCE,
+                                            false
+                                        )
+                                    );
+                                }
+                            }
+                        });
+                        if (!sub) {
+                            ResourceStore.setCurrent(res);
+                            $scope.editLoaded = true;
+                        }
+                        defer.resolve(res);
+                    });
+                }
+            });
+            return defer.promise;
+        }
+        
     }
 })();
