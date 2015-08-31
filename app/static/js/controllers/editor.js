@@ -402,9 +402,9 @@
             Graph.loadResource(null, n3).then(function() {
                 Store.new(null, {"n3": n3}).$promise.then(function(resp) {
                     if (resp.success) {
-                        Messages.addMessage("Saved!", "success");
+                        Message.addMessage("Saved!", "success");
                     } else {
-                        Messages.addMessage("Failed to save!", "danger")
+                        Message.addMessage("Failed to save!", "danger")
                     }
                 });
             }, function() {
