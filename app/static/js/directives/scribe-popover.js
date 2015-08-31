@@ -65,6 +65,7 @@
                 };
 
                 destroy = function() {
+                    stop();
                     if (tt) {
                         tt.unbind("click", ttClick);
                         $document.unbind("click", docClick);
@@ -82,10 +83,6 @@
                     el.bind(cancel, stop);
                 }
 
-                /**
-                 * Remove popover on:
-                 *  autocomplete change (cancel, changing query)
-                 */
                 docClick = $document.on("click", destroy);
                 docType = $document.on("keypress", destroy);
                 $document.on("scribePopoverOpened", destroy);
