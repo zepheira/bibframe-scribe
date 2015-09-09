@@ -1,9 +1,9 @@
 (function() {
     angular
         .module("messageService", [])
-        .factory("Message", Message);
+        .factory("Message", ["$sce", Message]);
 
-    function Message() {
+    function Message($sce) {
         var service, _messages;
 
         service = {
@@ -21,7 +21,7 @@
         }
 
         function addMessage(msg, severity) {
-            _messages.push(new Msg(msg, severity));
+            _messages.push(new Msg($sce.trustAsHtml(msg), severity));
         }
 
         function removeMessage(idx) {

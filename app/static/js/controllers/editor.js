@@ -7,6 +7,7 @@
         // @@@ fix any data still on $scope
         $scope.inputted = {};
         $scope.results = {};
+        $scope.invalid = {};
         $scope.useServices = {};
         $scope.editExisting = false; // @@@ redo this, used as a signal
         $scope.pivoting = false;
@@ -197,6 +198,7 @@
         function setValueFromInput(prop, inputs) {
             // @@@ rewrite to do without $scope
             if (!$scope.editExisting) {
+                $scope.invalid[prop.generateFormID()] = false;
                 ResourceStore.getCurrent().addPropertyValue(prop, inputs[prop.generateFormID()]);
                 inputs[prop.generateFormID()] = '';
             }
@@ -369,14 +371,20 @@
          * Depending on flag, shows RDF to user or persists N3 to store.
          */
         function transmit(flag) {
-            if (validate()) {
+            var i, invalid, names;
+            invalid = validate();
+            if (invalid.length === 0) {
                 if (flag === "export") {
                     showRDF();
                 } else if (flag === "save") {
                     persist(ResourceStore.getCurrent().toN3(ResourceStore.getCreated()));
                 }
             } else {
-                alert("Please fill out all required properties before " + ((flag === "save") ? "saving" : "exporting") + ".");
+                names = "";
+                for (i = 0; i < invalid.length; i++) {
+                    names += "<li>" + invalid[i].getProperty().getLabel() + "</li>";
+                }
+                Message.addMessage("Please fill out all required properties before " + ((flag === "save") ? "saving" : "exporting") + ": <ul>" + names + "</ul>", "danger");
             }
         }
 
@@ -384,15 +392,17 @@
          * Checks $scope current work for whether mandatory-ness is met.
          */
         function validate() {
-            var props, valid;
+            var props, invalid;
+            $scope.invalid = {};
             props = ResourceStore.getActiveTemplate().getPropertyTemplates();
-            valid = true;
+            invalid = [];
             angular.forEach(props, function(prop) {
                 if (prop.isRequired() && ResourceStore.getCurrent().getPropertyValues(prop).length === 0) {
-                    valid = false;
+                    invalid.push(prop);
+                    $scope.invalid[prop.generateFormID()] = true;
                 }
             });
-            return valid;
+            return invalid;
         }
 
         /**

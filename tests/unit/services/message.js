@@ -15,7 +15,7 @@ describe("Message", function() {
     it("should add one message", function() {
         Message.addMessage("test", "critical");
         expect(Message.messages().length).toEqual(1);
-        expect(Message.messages()[0].message).toEqual("test");
+        expect(Message.messages()[0].message.$$unwrapTrustedValue()).toEqual("test");
     });
 
     it("should end up with one message", function() {
@@ -23,6 +23,6 @@ describe("Message", function() {
         Message.addMessage("test1", "info");
         Message.removeMessage(0);
         expect(Message.messages().length).toEqual(1);
-        expect(Message.messages()[0].message).toEqual("test1");
+        expect(Message.messages()[0].message.$$unwrapTrustedValue()).toEqual("test1");
     });
 });

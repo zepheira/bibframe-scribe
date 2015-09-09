@@ -10,6 +10,8 @@
         $scope.prop = property;
         $scope.inputted = {};
         $scope.inputted[property.generateFormID()] = literal;
+        $scope.results = {};
+        $scope.invalid = {};
         $scope.editExisting = true;
         $scope.pivoting = false;
 

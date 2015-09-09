@@ -69,8 +69,9 @@
         <alert
              ng-repeat="msg in messages()"
              type="{{msg.severity}}"
-             close="closeMsg($index)">
-           {{msg.message}}
+             close="closeMsg($index)"
+             dismiss-on-timeout="15000">
+             <div ng-bind-html="msg.message"></div>
         </alert>
       </div>
 
@@ -101,7 +102,7 @@
                          class="form-control"
                          placeholder="Type to search"
                          ng-model="inputted['search']"
-                         ng-class="results['search'] ? 'typeahead-no-matches' : ''"
+                         ng-class="{ 'typeahead-no-matches': results['search'] }"
                          typeahead="option.label for option in search($viewValue)"
                          typeahead-wait-ms="1000"
                          typeahead-on-select="editFromGraph($item.uri);inputted['search']=''"
@@ -225,6 +226,7 @@
                    show-button-bar="false"
                    is-open="opened"
                    ng-focus="opened=true"
+                   ng-class="{'ng-invalid': invalid[prop.generateFormID()]}"
                    ng-model="inputted[prop.generateFormID()]"
                    scribe-enter="setValueFromInput(prop, inputted)"
                    ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0">
@@ -234,13 +236,13 @@
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.generateFormID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
+                 ng-click="setValueFromInput(prop, inputted)">Add</button>
               <button
                  ng-show="!editExisting&&!prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.generateFormID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
+                 ng-click="setValueFromInput(prop, inputted)">Set</button>
             </span>
           </span>
           <span ng-switch-default class="input-group">
@@ -248,6 +250,7 @@
             <input
                type="text"
                class="form-control"
+               ng-class="{'ng-invalid': invalid[prop.generateFormID()]}"
                id="{{prop.generateFormID()}}"
                ng-model="inputted[prop.generateFormID()]"
                scribe-enter="setValueFromInput(prop, inputted)"
@@ -258,13 +261,13 @@
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.generateFormID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
+                 ng-click="setValueFromInput(prop, inputted)">Add</button>
               <button
                  ng-show="!editExisting&&!prop.isRepeatable()"
                  class="btn btn-default"
                  type="button"
                  ng-disabled="!inputted[prop.generateFormID()]"
-                 ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
+                 ng-click="setValueFromInput(prop, inputted)">Set</button>
             </span>
           </span>
         </span>
@@ -273,6 +276,7 @@
         <input
            type="text"
            class="form-control"
+           ng-class="{'ng-invalid': invalid[prop.generateFormID()]}"
            id="{{prop.generateFormID()}}"
            ng-model="inputted[prop.generateFormID()]"
            scribe-enter="setValueFromInput(prop, inputted)"
@@ -283,13 +287,13 @@
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.generateFormID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
+             ng-click="setValueFromInput(prop, inputted)">Add</button>
           <button
              ng-show="!editExisting&&!prop.isRepeatable()"
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.generateFormID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
+             ng-click="setValueFromInput(prop, inputted)">Set</button>
         </span>
       </span>
     </script>
@@ -299,6 +303,7 @@
         <span class="input-group-addon">URL</span>
         <input type="text"
                class="form-control"
+               ng-class="{'ng-invalid': invalid[prop.generateFormID()]}"
                id="{{prop.generateFormID()}}"
                ng-model="inputted[prop.generateFormID()]"
                scribe-enter="setValueFromInput(prop, inputted)"
@@ -309,13 +314,13 @@
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.generateFormID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Add</button>
+             ng-click="setValueFromInput(prop, inputted)">Add</button>
           <button
              ng-show="!editExisting&&!prop.isRepeatable()"
              class="btn btn-default"
              type="button"
              ng-disabled="!inputted[prop.generateFormID()]"
-             ng-click="current().addPropertyValue(prop,inputted[prop.generateFormID()]);inputted[prop.generateFormID()]=''">Set</button>
+             ng-click="setValueFromInput(prop, inputted)">Set</button>
         </span>
       </span>
 
@@ -334,7 +339,7 @@
                class="form-control"
                placeholder="Type to search"
                ng-model="inputted[prop.generateFormID()]"
-               ng-class="results[prop.generateFormID()] ? 'typeahead-no-matches' : ''"
+               ng-class="{ 'typeahead-no-matches': results[prop.generateFormID()], 'ng-invalid': invalid[prop.generateFormID()] }"
                ng-required="prop.isRequired()"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"

@@ -5,12 +5,10 @@
 
     function SubResourceController($scope, $modalInstance, template, doInitialization) {
         $scope.inputted = {};
+        $scope.results = {};
+        $scope.invalid = {};
         $scope.editExisting = false;
         $scope.pivoting = true;
-        $scope.popover = {
-            "uri": null,
-            "data": null
-        };
 
         $scope.resource = {
             id: template.getID(),
