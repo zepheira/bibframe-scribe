@@ -41,7 +41,7 @@
                                 $document.triggerHandler("scribePopoverOpened");
                                 esc = h.replace(/</g,"&lt;").replace(/>/g,"&gt;");
                                 // @@@ make this a template?
-                                tt = angular.element('<div class="popover right resource"><div class="arrow"></div><code>&lt;' + getAttr(atts, "Resource") + '&gt;</code><hr><pre>' + esc + '</pre></div>');
+                                tt = angular.element('<div class="popover right resource"><div class="arrow"></div><p class="text-center"><a target="_blank" href="' + getAttr(atts, "Resource") + '"><code>&lt;' + getAttr(atts, "Resource") + '&gt;</code></a></p><p class="text-center"><small>Click the URI above to view a more reader-oriented version in a new window, or review the RDF below.</small></p><hr><pre>' + esc + '</pre></div>');
                                 $document.find("body").append(tt);
                                 tt.css({ top: 0, left: 0, display: "block" });
                                 pos = $position.positionElements(el, tt, "right", true);
