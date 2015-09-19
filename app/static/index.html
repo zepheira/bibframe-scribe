@@ -336,11 +336,11 @@
         </span>
         <span class="input-group" ng-if="getReferenceResourceType(prop.getConstraint().getReference())!='dropzone'">
           <input type="text"
-               class="form-control"
+               class="form-control typeahead"
                placeholder="Type to search"
                ng-model="inputted[prop.generateFormID()]"
-               ng-class="{ 'typeahead-no-matches': results[prop.generateFormID()], 'ng-invalid': invalid[prop.generateFormID()] }"
-               ng-required="prop.isRequired()"
+               ng-class="{ 'typeahead-no-matches': results[prop.generateFormID()], 'ng-really-invalid': invalid[prop.generateFormID()] == true }"
+               ng-required="false"
                ng-disabled="!editExisting&&!prop.isRepeatable()&&current().getPropertyValues(prop)!=null&&current().getPropertyValues(prop).length>0"
                typeahead="option.label for option in autocomplete(prop,$viewValue)"
                typeahead-wait-ms="1000"

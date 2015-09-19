@@ -112,8 +112,12 @@
     white-space: nowrap;
 }
 
-.editor .ng-invalid {
+.editor input.ng-invalid, .editor input.really-invalid {
     background-color: #f2dede;
+}
+
+.editor input.typeahead.ng-invalid {
+    background-color: #fff;
 }
 
 input[type="text"].typeahead-no-matches {
