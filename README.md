@@ -66,6 +66,15 @@ user-friendly labels.
 You can also use the search utility to do a typeahead find for locally stored
 resources labelled by a title or a label property.
 
+Composing
+=========
+
+To compose profiles and see your changes when you reload the application page,
+append `?compose=yes` (anything other than an empty string) to make the
+application retrieve a unique, time-based URL.  This prevents your browser
+from relying on previous, cached retrievals of profiles and shows your work
+immediately.
+
 Load Data
 =========
 

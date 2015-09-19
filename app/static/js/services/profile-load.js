@@ -8,7 +8,8 @@
             "./profiles/:profile.:format",
             {
                 "profile": "@profile",
-                "format": "@format"
+                "format": "@format",
+                "noCache": "@cache"
             },
             {
                 "get": { "method": "GET", "isArray": false }

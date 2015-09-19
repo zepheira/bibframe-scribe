@@ -14,6 +14,7 @@
             initialize: initialize,
             isInitialized: isInitialized,
             editOnLoad: editOnLoad,
+            composeMode: composeMode,
             editResource: editResource
         };
 
@@ -45,8 +46,14 @@
         }
 
         function _parseArgs() {
-            if (typeof $location.search()["edit"] !== "undefined") {
-                _args.edit = $location.search()["edit"];
+            var search = $location.search();
+            if (typeof search["edit"] !== "undefined") {
+                _args.edit = search["edit"];
+            }
+            if (typeof search["compose"] !== "undefined") {
+                _args.compose = true;
+            } else {
+                _args.compose = false;
             }
         }
 
@@ -72,7 +79,7 @@
                     Message.addMessage('Failed to load schema ' + fail.config.url + ': HTTP ' + fail.status + ' - ' + fail.statusText, 'danger');
                 }).then(function() {
                     $q.all(_config.profiles.map(function(p) {
-                        return ProfileLoad.get({}, {"profile": p, "format": "json"}).$promise.then(function(resp) {
+                        return ProfileLoad.get({}, {"profile": p, "format": "json", "cache": composeMode() ? (new Date()).valueOf() : null}).$promise.then(function(resp) {
                             var prof, promise;
                             prof = new Profile(p);
                             return prof.init(resp.Profile, _config).then(function() {
@@ -149,6 +156,10 @@
 
         function editOnLoad() {
             return (typeof _args.edit !== "undefined");
+        }
+
+        function composeMode() {
+            return _args.compose;
         }
 
         function editResource() {
