@@ -112,11 +112,11 @@
     white-space: nowrap;
 }
 
-.editor input.ng-invalid, .editor input.really-invalid {
+.editor input.ng-invalid, .editor input.really-invalid, .pivot input.ng-invalid, .pivot input.really-invalid {
     background-color: #f2dede;
 }
 
-.editor input.typeahead.ng-invalid {
+.editor input.typeahead.ng-invalid, .pivot input.typeahead.ng-invalid {
     background-color: #fff;
 }
 
