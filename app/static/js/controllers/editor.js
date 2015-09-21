@@ -335,6 +335,9 @@
                 windowClass: "pivot",
                 scope: $scope,
                 resolve: {
+                    $modal: function() {
+                        return $modal;
+                    },
                     template: function() {
                         return res;
                     },
@@ -372,7 +375,7 @@
          */
         function transmit(flag) {
             var i, invalid, names;
-            invalid = validate();
+            invalid = validate(ResourceStore.getActiveTemplate(), $scope.invalid);
             if (invalid.length === 0) {
                 if (flag === "export") {
                     showRDF();
@@ -391,15 +394,14 @@
         /**
          * Checks $scope current work for whether mandatory-ness is met.
          */
-        function validate() {
+        function validate(tmpl, sc) {
             var props, invalid;
-            $scope.invalid = {};
-            props = ResourceStore.getActiveTemplate().getPropertyTemplates();
+            props = tmpl.getPropertyTemplates();
             invalid = [];
             angular.forEach(props, function(prop) {
                 if (prop.isRequired() && ResourceStore.getCurrent().getPropertyValues(prop).length === 0) {
                     invalid.push(prop);
-                    $scope.invalid[prop.generateFormID()] = true;
+                    sc[prop.generateFormID()] = true;
                 }
             });
             return invalid;

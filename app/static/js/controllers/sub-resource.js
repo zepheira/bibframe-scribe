@@ -3,10 +3,11 @@
         .module("bibframeEditor")
         .controller("SubResourceController", SubResourceController);
 
-    function SubResourceController($scope, $modalInstance, template, doInitialization) {
+    function SubResourceController($scope, $modalInstance, $modal, template, doInitialization) {
         $scope.inputted = {};
         $scope.results = {};
         $scope.invalid = {};
+        $scope.warnings = {};
         $scope.editExisting = false;
         $scope.pivoting = true;
 
@@ -34,7 +35,21 @@
         }
 
         function save() {
-            $modalInstance.close();
+            var invalid, names, i;
+            invalid = $scope.validate(template, $scope.invalid);
+            if (invalid.length === 0) {
+                $modalInstance.close();
+            } else {
+                names = "";
+                for (i = 0; i < invalid.length; i++) {
+                    names += "<li>" + invalid[i].getProperty().getLabel() + "</li>";
+                }
+                $scope.warnings["message"] = "Please fill out all required properties before saving: <ul>" + names + "</ul>";
+                $modal.open({
+                    templateUrl: "show-warning.html",
+                    scope: $scope
+                });
+            }
         }
     }
 })();
