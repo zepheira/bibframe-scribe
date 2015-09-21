@@ -321,7 +321,7 @@
         /**
          * Export resource as an RDF/XML string.
          */
-        Resource.prototype._resourceToRDF = function(refs) {
+        Resource.prototype._resourceToRDF = function(created, refs) {
             var frag = "",
             result = "",
             relFrag = "",
@@ -367,7 +367,7 @@
             if (this._relation !== null) {
                 nsProp = Namespace.extractNamespace('http://bibfra.me/vocab/lite/' + this._template.getRelationType());
                 frag += '    <' + nsProp.namespace + ':' + nsProp.term + ' rdf:resource="' + this._relation.getID() + '" />\n';
-                result += this._relation.toRDF([], false);
+                result += this._relation.toRDF(created, false);
             }
             result += '  <rdf:Description rdf:about="' + id + '">\n    <rdf:type rdf:resource="' + type + '"/>\n' + frag + '  </rdf:Description>\n';
             return result;
@@ -378,7 +378,7 @@
             rdf = '';
             tail = '</rdf:RDF>\n';
             refs = [];
-            rdf += this._resourceToRDF(refs);
+            rdf += this._resourceToRDF(created, refs);
             angular.forEach(created, function(res) {
                 if (refs.indexOf(res.getID()) >= 0) {
                     rdf += res.toRDF([], false);
@@ -391,7 +391,7 @@
             return rdf;
         };
         
-        Resource.prototype._resourceToN3 = function(refs) {
+        Resource.prototype._resourceToN3 = function(created, refs) {
             var frag = "",
             result = "",
             res = this;
@@ -413,7 +413,7 @@
             });
             if (res._relation !== null) {
                 frag += '  <http://bibfra.me/vocab/lite/' + res._template.getRelationType() + '> <' + res._relation.getID() + '>;\n';
-                result += res._relation.toN3([], false);
+                result += res._relation.toN3(created, false);
             }
             result += '<' + res.getID() + '>\n' + frag + '  rdf:type <' + res.getType() + '> .\n';
             return result;
@@ -423,7 +423,7 @@
             var rdf, refs, res;
             rdf = (typeof prefixed === "undefined" || prefixed === null || prefixed) ? '@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .\n\n' : "";
             refs = [];
-            rdf += this._resourceToN3(refs);
+            rdf += this._resourceToN3(created, refs);
             angular.forEach(created, function(res) {
                 if (refs.indexOf(res.getID()) >= 0) {
                     rdf += res.toN3([], false);
