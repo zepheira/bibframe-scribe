@@ -1,0 +1,27 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://bibfra.me/vocab/av/Vinyl> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibframe.org/vocab/Painting> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibframe.org/vocab/Image> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/marc/Serials> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Article> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Dissertation> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/marc/Bibliography> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+# Inference
+<http://bibfra.me/vocab/marc/Audio> a rdfs:Class;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .

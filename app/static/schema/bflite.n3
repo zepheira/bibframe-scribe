@@ -1,0 +1,531 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix v: <http://bibfra.me/purl/versa/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://bibfra.me/vocab/lite/Agent> a rdfs:Class ;
+    rdfs:label "Agent" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Agent> ;
+    rdfs:comment "An entity (e.g. person, organization, etc.) associated with a resource." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Authority> .
+
+<http://bibfra.me/vocab/lite/Annotation> a rdfs:Class ;
+    rdfs:label "Annotation" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Annotation> ;
+    rdfs:comment "Annotation, provides for loosely attached information about a resource" ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/Authority> a rdfs:Class ;
+    rdfs:label "Authority" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Authority> ;
+    rdfs:comment "A credible, curated description of a person, place or thing." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/Category> a rdfs:Class ;
+    rdfs:label "Category" ;
+    v:remark "A controlled vocabulary." ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Category>,
+        <http://schema.org/Enumeration> ;
+    rdfs:comment "A list of things regarded as having particular shared characteristics." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/Collection> a rdfs:Class ;
+    rdfs:label "Collection" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "An aggregation of works" ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/lite/Concept> a rdfs:Class ;
+    rdfs:label "Concept" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://www.w3.org/2009/08/skos-reference/skos.html#Concept> ;
+    rdfs:comment "Term describing the subject or aboutness of a resource. An idea or notion." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/CopyrightEvent> a rdfs:Class ;
+    rdfs:label "Copyright Event" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Copyright event associated with the intellectual property of an instance." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Event> .
+
+<http://bibfra.me/vocab/lite/Event> a rdfs:Class ;
+    rdfs:label "Event" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "A significant occurrence or happening" ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/Family> a rdfs:Class ;
+    rdfs:label "Family" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Family> ;
+    rdfs:comment "A social unit related by birth, marriage, adoption, civil union, or similar relationship." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Agent> .
+
+<http://bibfra.me/vocab/lite/Form> a rdfs:Class ;
+    rdfs:label "Form" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Category or genre that describes what the resource is." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Category> .
+
+<http://bibfra.me/vocab/lite/Instance> a rdfs:Class ;
+    rdfs:label "Instance" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Instance> ;
+    rdfs:comment "An individual embodiment of a Work." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/Meeting> a rdfs:Class ;
+    rdfs:label "Meeting" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Meeting> ;
+    rdfs:comment "A formal gathering of people for a particular purpose." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Agent> .
+
+<http://bibfra.me/vocab/lite/Organization> a rdfs:Class ;
+    rdfs:label "Organization" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Organization> ;
+    rdfs:comment "A unit of people, e.g., an institution, an association, or corporate body." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Agent> .
+
+<http://bibfra.me/vocab/lite/Person> a rdfs:Class ;
+    rdfs:label "Person" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Person> ;
+    rdfs:comment "An individual (alive, dead, undead, or fictional) in relation to a resource." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Agent> .
+
+<http://bibfra.me/vocab/lite/Place> a rdfs:Class ;
+    rdfs:label "Place" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Place> ;
+    rdfs:comment "Geographic location." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Authority> .
+
+<http://bibfra.me/vocab/lite/ProviderEvent> a rdfs:Class ;
+    rdfs:label "Provider Event" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Event associated with the publication, printing, distribution, issue, release or production of an instance." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Event> .
+
+<http://bibfra.me/vocab/lite/Resource> a rdfs:Class ;
+    rdfs:label "Resource" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Resource>,
+        <http://schema.org/Thing> ;
+    rdfs:comment "The most generic Bibframe entity." .
+
+<http://bibfra.me/vocab/lite/Topic> a rdfs:Class ;
+    rdfs:label "Topic" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Topic> ;
+    rdfs:comment "Subject term describing a general concept, event or object." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Authority> .
+
+<http://bibfra.me/vocab/lite/Work> a rdfs:Class ;
+    rdfs:label "Work" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/Work> ;
+    rdfs:comment "A distinct intellectual or artistic creation." ;
+    rdfs:subClassOf <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/annotator> a rdf:Property ;
+    rdfs:label "annotator" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibfra.me/vocab/annotator> ;
+    rdfs:comment "Agent associated with the annotation" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Annotation> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Agent> .
+
+<http://bibfra.me/vocab/lite/audience> a rdf:Property ;
+    rdfs:label "audience" ;
+    v:remark "A target audience can be formed of people of a certain age group, gender, marital status, etc.. Other groups, although not the main focus, may also be interested. The value of this property is intended to be a code list." ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "Literal" ;
+    rdfs:comment "Class of user for which the content of a resource is intended, or for whom the content is considered suitable." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/authorityLink> a rdf:Property ;
+    rdfs:label "authority link" ;
+    v:remark "Example identifiers include VIAF, LCNAF, ISNI, ORCID, etc." ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/hasAuthority>,
+        <http://schema.org/sameAs> ;
+    v:value "IRI" ;
+    rdfs:comment "Actionable IRI linking to an authoritative controlled vocabulary." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/link> .
+
+<http://bibfra.me/vocab/lite/body> a rdf:Property ;
+    rdfs:label "body" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibfra.me/vocab/body> ;
+    rdfs:comment "Body of an annotation" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Annotation> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/controlCode> a rdf:Property ;
+    rdfs:label "control code" ;
+    v:remark "A non-IRI based identifier reflecting local or community coding practices" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "Literal" ;
+    rdfs:comment "An alphanumeric string or indicator used to find and identify the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/copyright> a rdf:Property ;
+    rdfs:label "copyright" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Copyright event associated with the instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:range <http://bibfra.me/vocab/lite/CopyrightEvent> .
+
+<http://bibfra.me/vocab/lite/creator> a rdf:Property ;
+    rdfs:label "creator" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/creator>,
+        <http://purl.org/dc/terms/creator> ;
+    rdfs:comment "Entity (or entities) responsible with the creation of the origin resource" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Agent> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/contributor> .
+
+<http://bibfra.me/vocab/lite/dateEnd> a rdf:Property ;
+    rdfs:label "end date" ;
+    v:remark "Recommended ISO 8601 date" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://schema.org/endDate> ;
+    v:value "Literal" ;
+    rdfs:comment "The end date associated with the resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/date> .
+
+<http://bibfra.me/vocab/lite/dateStart> a rdf:Property ;
+    rdfs:label "start date" ;
+    v:remark "Recommended ISO 8601 date" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://schema.org/startDate> ;
+    v:value "Literal" ;
+    rdfs:comment "The start date associated with the resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/date> .
+
+<http://bibfra.me/vocab/lite/description> a rdf:Property ;
+    rdfs:label "description" ;
+    v:remark "Description for example of bibliographic resources may include but is not limited to: an abstract, a table of contents, a graphical representation, or a free-text account of the resource." ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/description>,
+        <http://purl.org/dc/terms/description>,
+        <http://schema.org/description> ;
+    v:value "Literal" ;
+    rdfs:comment "A description of the resource.",
+        "Description of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/dimensions> a rdf:Property ;
+    rdfs:label "dimensions" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/dimensions> ;
+    v:value "Literal" ;
+    rdfs:comment "A measure of the size of its covering properties." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/lite/extent> a rdf:Property ;
+    rdfs:label "extent" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/extent> ;
+    v:value "Literal" ;
+    rdfs:comment "Number of physical pages, volumes, cassettes, total playing time, etc., of of each type of unit." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/lite/focus> a rdf:Property ;
+    rdfs:label "focus" ;
+    v:remark "Often times the focus is the primary entity associated with a pre-coordinated subject heading." ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://xmlns.com/foaf/0.1/focus> ;
+    rdfs:comment "The underlying or focal entity associated with a concept." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Concept> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/format> a rdf:Property ;
+    rdfs:label "format" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/format> ;
+    v:value "IRI" ;
+    rdfs:comment "Format of the Instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/lite/genre> a rdf:Property ;
+    rdfs:label "genre" ;
+    v:remark "The 'is-ness' of a work" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/genre> ;
+    rdfs:comment "A category of artistic composition characterized by similarities in form, style, or subject matter." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Form> .
+
+<http://bibfra.me/vocab/lite/image> a rdf:Property ;
+    rdfs:label "image" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/image>,
+        <http://schema.org/image> ;
+    v:value "IRI" ;
+    rdfs:comment "The IRI of an image of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/instantiates> a rdf:Property ;
+    rdfs:label "instantiates" ;
+    v:remark "For use to connect Instances to Works in the BIBFRAME structure." ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/instanceOf> ;
+    rdfs:comment "The Work this resource instantiates or manifests." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/related> .
+
+<http://bibfra.me/vocab/lite/language> a rdf:Property ;
+    rdfs:label "language" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/language>,
+        <http://purl.org/dc/terms/language> ;
+    v:value "IRI" ;
+    rdfs:comment "A language associated with the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/license> a rdf:Property ;
+    rdfs:label "license" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://creativecommons.org/ns#license> ;
+    rdfs:comment "License associated with the rights event associated with a Work." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/CopyrightEvent> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/medium> a rdf:Property ;
+    rdfs:label "medium" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "IRI" ;
+    rdfs:comment "The medium of the Instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> .
+
+<http://bibfra.me/vocab/lite/memberOf> a rdf:Property ;
+    rdfs:label "member of" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Member of a Collection" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Collection> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/lite/nameAlternative> a rdf:Property ;
+    rdfs:label "alternative name" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "Literal" ;
+    rdfs:comment "The alternative name of an authority." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Authority> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/name> .
+
+<http://bibfra.me/vocab/lite/prefLabel> a rdf:Property ;
+    rdfs:label "prefered label" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://www.w3.org/2004/02/skos/core#prefLabel> ;
+    v:value "Literal" ;
+    rdfs:comment "The prefered human readable label of the resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/label> .
+
+<http://bibfra.me/vocab/lite/primary> a rdf:Property ;
+    rdfs:label "primary work" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Primary work associated with a Collection" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Collection> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/lite/providerAgent> a rdf:Property ;
+    rdfs:label "provider agent" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/providerName> ;
+    rdfs:comment "Agent associated with the publication, printing, distribution, issue, release or production of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/ProviderEvent> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Agent> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/who> .
+
+<http://bibfra.me/vocab/lite/providerDate> a rdf:Property ;
+    rdfs:label "provider date" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/providerDate> ;
+    rdfs:comment "Date associated with the publication, printing, distribution, issue, release or production of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/ProviderEvent> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/when> .
+
+<http://bibfra.me/vocab/lite/providerNote> a rdf:Property ;
+    rdfs:label "provider note" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "A note associated with the publication, printing, distribution, issue, release or production of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/ProviderEvent> ;
+    rdfs:range <http://bibfra.me/vocab/lite/> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/why> .
+
+<http://bibfra.me/vocab/lite/providerPlace> a rdf:Property ;
+    rdfs:label "provider place" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/providerPlace> ;
+    rdfs:comment "Place associated with the publication, printing, distribution, issue, release or production of an instance." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/ProviderEvent> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Place> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/where> .
+
+<http://bibfra.me/vocab/lite/provision> a rdf:Property ;
+    rdfs:label "provision" ;
+    v:remark "Connection to details such as the place, name, and/or date information relating to the publication, printing, distribution, issue, release, or production of an Instance." ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/provider> ;
+    rdfs:comment "Provider associated with the carrier." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance> ;
+    rdfs:range <http://bibfra.me/vocab/lite/ProviderEvent> .
+
+<http://bibfra.me/vocab/lite/rightsStatement> a rdf:Property ;
+    rdfs:label "rights statement" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://purl.org/dc/terms/rights> ;
+    v:value "Literal" ;
+    rdfs:comment "A rights statement associated with the origin resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/subject> a rdf:Property ;
+    rdfs:label "subject" ;
+    v:remark "The 'about-ness' of a work" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/subject>,
+        <http://purl.org/dc/terms/subject> ;
+    rdfs:comment "Index term, subject term, subject heading, or descriptor, a term for information retrieval which captures the essence of the topic of a resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Concept> .
+
+<http://bibfra.me/vocab/lite/target> a rdf:Property ;
+    rdfs:label "target" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibfra.me/vocab/target> ;
+    rdfs:comment "Target of an annotation" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Annotation> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/titleAlternative> a rdf:Property ;
+    rdfs:label "title alternative" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "Literal" ;
+    rdfs:comment "Alternative title of the resource." ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/title> .
+
+<http://bibfra.me/vocab/lite/what> a rdf:Property ;
+    rdfs:label "what" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Resource related to an Event" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Event> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/> v:highlight <http://bibfra.me/vocab/lite/Annotation>,
+        <http://bibfra.me/vocab/lite/Authority>,
+        <http://bibfra.me/vocab/lite/Event>,
+        <http://bibfra.me/vocab/lite/Instance>,
+        <http://bibfra.me/vocab/lite/Work> ;
+    v:title "BIBFRAME Lite vocabulary" .
+
+<http://bibfra.me/vocab/lite/contributor> a rdf:Property ;
+    rdfs:label "contributor" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/contributor>,
+        <http://purl.org/dc/terms/contributor> ;
+    rdfs:comment "Entity (or entities) who contribute to the origin resource" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance>,
+        <http://bibfra.me/vocab/lite/Work> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Agent> .
+
+<http://bibfra.me/vocab/lite/link> a rdf:Property ;
+    rdfs:label "link" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/link>,
+        <http://schema.org/url> ;
+    v:value "IRI" ;
+    rdfs:comment "The IRI of a resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/name> a rdf:Property ;
+    rdfs:label "name" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "Literal" ;
+    rdfs:comment "The name of an authority." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Authority> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/label> .
+
+<http://bibfra.me/vocab/lite/note> a rdf:Property ;
+    rdfs:label "note" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "Literal" ;
+    rdfs:comment "Additional descriptive information associated with the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/related> a rdf:Property ;
+    rdfs:label "related" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://purl.org/dc/terms/related> ;
+    rdfs:comment "A resource related to the origin resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/title> a rdf:Property ;
+    rdfs:label "title" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://purl.org/dc/terms/title> ;
+    v:value "Literal" ;
+    rdfs:comment "Title of the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Instance>,
+        <http://bibfra.me/vocab/lite/Work> .
+
+<http://bibfra.me/vocab/lite/when> a rdf:Property ;
+    rdfs:label "when" ;
+    v:remark "Recommended ISO 8601 date" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:value "Literal" ;
+    rdfs:comment "Date associated with an Event" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Event> .
+
+<http://bibfra.me/vocab/lite/where> a rdf:Property ;
+    rdfs:label "where" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Place associated with an Event" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Event> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Place> .
+
+<http://bibfra.me/vocab/lite/who> a rdf:Property ;
+    rdfs:label "who" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Person or thing related to an Event" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Event> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Agent> .
+
+<http://bibfra.me/vocab/lite/why> a rdf:Property ;
+    rdfs:label "why" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    rdfs:comment "Concept associated with an Event" ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Event> ;
+    rdfs:range <http://bibfra.me/vocab/lite/Concept> ;
+    rdfs:subPropertyOf <http://bibfra.me/vocab/lite/note> .
+
+<http://bibfra.me/vocab/lite/date> a rdf:Property ;
+    rdfs:label "date" ;
+    v:remark "Recommended ISO 8601 date" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://purl.org/dc/terms/date> ;
+    v:value "Literal" ;
+    rdfs:comment "The date associated with the resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+
+<http://bibfra.me/vocab/lite/label> a rdf:Property ;
+    rdfs:label "label" ;
+    v:scope <http://bibfra.me/vocab/lite> ;
+    v:synonyms <http://bibframe.org/vocab/label>,
+        <http://schema.org/name>,
+        rdfs:label ;
+    v:value "Literal" ;
+    rdfs:comment "A text string representing the name of resource." ;
+    rdfs:domain <http://bibfra.me/vocab/lite/Resource> .
+

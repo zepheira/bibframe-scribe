@@ -5,14 +5,15 @@ There are two pieces to this software.  The UI can be run locally without
 a webserver out of the box.  Just visit the file `app/static/index.html`
 in a browser.
 
-The backend is based on Node.js and MongoDB.  In order to avoid a confused
+The backend is based on Node.js.  In order to avoid a confused
 Node.js installation, consider using a virtual environment as provided by
 [nodeenv](https://github.com/ekalinin/nodeenv), which provides `npm` and `node`
-per environment and can be easily installed using `pip`.  You'll also need
-to install MongoDB, which can be done with `brew` on a Mac.  There will
-be a Chef cookbook coming soon to cover Linux server installs.
+per environment and can be easily installed using `pip`.  This branch uses
+LevelDB, which needs a directory to store its data.  The default supplied is
+`./bfstore`, relative to the `app/` directory; you can change this by supplying
+a `backend.json` in the `app/` directory.
 
-Until then.  With `nodeenv` and `mongod` binaries available:
+With the `nodeenv` binary available:
 
 ```
 % git clone [this repo]
@@ -21,43 +22,80 @@ Until then.  With `nodeenv` and `mongod` binaries available:
 % cd [env]
 % . bin/activate
 % cd bibframe-scribe
-% mongod -rest &
 % cd app
 % node index.js
 ```
 
-There is a bug in the restify library.  You will need to either download
-[the file](https://github.com/JasonGhent/node-restify/blob/bd3747da7db82507daaf9bc9d6110407063ae462/lib/plugins/static.js) as described in
-[the pull request](https://github.com/mcavage/node-restify/pull/451) and modify
-or replace `node_modules/restify/lib/plugins/static.js` until
-the patch makes it into a release.
+There is still a bug in the restify library.  The static.js plugin fails to
+evaluate a normalized path correctly and so will always return a 403
+regardless of which directory it is configured to use.  The patch is minor.
+You can use the `static.js` provided as a sibling file for deployment.
 
-You can also use `static.js` provided as a sibling file for deployment.
+Issue described here: https://github.com/mcavage/node-restify/issues/549
+
+Profiles
+========
+
+Profiles are no longer included in this repository.  You can install profiles
+and their corresponding configuration from other repositories:
+
+ * [bibflow-profiles](https://github.com/zepheira/bibflow-profiles)
+ * [bibframe-scribe-profiles](https://github.com/zepheira/bibframe-scribe-profiles)
+
+Take all of the non-`config.json` files and place them in the
+`app/static/profiles` directory, and place `config.json` in `app/static`.
+
+Saving
+======
+
+Data leaves the user-interface of Scribe by being normalized to Turtle/N3 and placed as a string paylod in some simple JSON: `{n3: [data]}`.
+
+Scribe expects to `PUT` the data to the endpoint `http://server/mount/resource/new`
+(where, for Scribe, `mount` is where the Node application is mounted and is
+optional if mounted at the root).
+
+Editing
+=======
+
+You can bring data into Scribe by appending `?edit=<resource>` to the UI
+location, likely `http://server/mount/static/`.  As Scribe does not currently
+save data like labels originating from remote sources, the appearance during
+editing may differ from initial creation due to the use of URIs instead of more
+user-friendly labels.
+
+You can also use the search utility to do a typeahead find for locally stored
+resources labelled by a title or a label property.
+
+Composing
+=========
+
+To compose profiles and see your changes when you reload the application page,
+append `?compose=yes` (anything other than an empty string) to make the
+application retrieve a unique, time-based URL.  This prevents your browser
+from relying on previous, cached retrievals of profiles and shows your work
+immediately.
 
 Load Data
 =========
 
-You can pre-load RDF into the store.  Unfortunately, you can't use RDF/XML
-yet.  Turtle/N3 or JSON-LD are your options.  You might use `rapper` from the
-Raptor library to manipulate your existing serialization into something
-this software can read immediately.  It also only reads HTTP[S] from the
-command line easily, so you may want to publish your data to this software's
-static directory and load from the locally hosted URL:
-
-```
-% cp graph.n3 [env]/bibframe-scribe/app/static/
-% cd [env]/bibframe-scribe/app/
-% node index.js &
-% rdfstorejs load http://localhost:8888/static/graph.n3 --store-engine mongodb --store-mongo-domain localhost --store-name bfstore
-```
-
-Use `--store-overwrite true` if you want to obliterate your existing store
-and write the contents of graph.n3 into it instead.
+You could probably install levelgraph-n3-import through npm in order to obtain
+a command line tool that you can then use to import Turtle/N3 into your
+configured LevelDB location, but that hasn't yet been tested.
 
 License
 =======
 
 This project is licensed under the Apache 2.0 license.  See the file LICENSE in this directory.
+
+Testing
+=======
+
+We're working on adding unit tests currently.  To run them, use Karma inside your existing NodeJS installation.
+
+```
+% npm install -g karma
+% karma start
+```
 
 More
 ====
@@ -68,4 +106,3 @@ Scribe developement has been supported in part by the Library of Congress, BIBFL
 * [Zepheira](http://zepheira.com/)
 * [Library of Congress](http://loc.gov/)
 * [BIBFLOW](http://www.lib.ucdavis.edu/bibflow/)
-

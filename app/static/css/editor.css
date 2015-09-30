@@ -7,6 +7,7 @@
     background-repeat: no-repeat;
     padding-left: 60px;
     padding-right: 10px;
+    padding-top: 4px;
 }
 
 /*
@@ -18,8 +19,8 @@
 }
 
 .property-label {
-    width: 20%;
     font-weight: bold;
+    text-align: left ! important;
 }
 
 .required {
@@ -41,13 +42,12 @@
 
 .editor .nav a {
     cursor: pointer;
-    padding: 0.5em 0 0.5em 1em;
 }
 
-.editor .nav .disabled {
+.editor .nav .disabled a {
     background: transparent;
     border-radius: 0;
-    border: 0;
+    border: 1px solid transparent;
 }
 
 .editor .nav .active {
@@ -56,6 +56,16 @@
     border-top: 1px solid #e3e3e3;
     border-bottom: 1px solid #e3e3e3;
     border-left: 1px solid #e3e3e3;
+}
+
+/* undo bootstrap */
+.editor .nav .active > a, .editor .nav .active > a:hover {
+    border: none;
+}
+
+/* undo bootstrap */
+.nav-tabs {
+    border-bottom: none;
 }
 
 .editor .nav li:first-child {
@@ -78,13 +88,21 @@
     margin-left: 20%;
 }
 
+/* bootstrap missed the dropdown button's corners */
+.editor .input-group-btn > .dropdown-toggle > .btn {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    margin-left: -1px;
+}
+
 .editor .badge {
     margin-bottom: 5px;
     margin-left: 5px;
 }
 
-.editor ul.ng-valid-date .btn-group {
-    display: none;
+/* removed from bootstrap 3 */
+.badge-info {
+    background-color: #3a87ad
 }
 
 .editor .match-info {
@@ -92,6 +110,14 @@
     line-height: 20px;
     padding: 3px 15px 4px;
     white-space: nowrap;
+}
+
+.editor input.ng-invalid, .editor input.really-invalid, .pivot input.ng-invalid, .pivot input.really-invalid {
+    background-color: #f2dede;
+}
+
+.editor input.typeahead.ng-invalid, .pivot input.typeahead.ng-invalid {
+    background-color: #fff;
 }
 
 input[type="text"].typeahead-no-matches {
@@ -125,4 +151,41 @@ input[type="text"].typeahead-no-matches {
 .export textarea {
     font-family: monospace;
     width: 99%;
+}
+
+/*
+ * Show Resource
+ */
+
+.show-resource {
+    width: 80%;
+    left: 10%;
+    margin-left: 0;
+}
+
+.show-resource p {
+    padding: 0;
+}
+
+.show-resource textarea {
+    font-family: monospace;
+    font-size: 85%;
+    width: 99%;
+}
+
+/** Popover version */
+.popover.resource {
+    max-width: 400px;
+}
+
+.popover.resource pre {
+    font-size: 75%;
+    height: 20em;
+    overflow: scroll;
+    width: 100%;
+}
+
+/** Search */
+.search .match-info {
+    display: none;
 }

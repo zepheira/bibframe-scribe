@@ -1,53 +1,213 @@
 {
     "profiles": [
-        "authorities",
+        "authority",
         "agents",
+        "article",
         "events",
-        "language",
-        "categories",
+        "concept",
+        "item",
         "book",
         "dissertation",
         "bibliography",
         "record",
-        "vra"
+        "serial",
+        "map"
     ],
-    "useWorks": [
-        "http://bibframe.org/vocab/Book",
-        "http://bibframe.org/vocab/Dissertation",
-        "http://bibframe.org/vocab/Bibliography",
-        "http://bibframe.org/vocab/Audio",
-        "http://bibframe.org/vocab/Painting"
+    "schemas": [
+        "bflite.n3",
+        "bfmarc.n3",
+        "bfrel.n3",
+        "bfdcrmb.n3",
+        "augment.n3"
     ],
-    "resourceServiceMap": {
-        "http://bibframe.org/vocab/Book": "Works",
-        "http://bibframe.org/vocab/Dissertation": "Works",
-        "http://bibframe.org/vocab/Bibliography": "Works",
-        "http://bibframe.org/vocab/Article": "Works",
-        "http://bibframe.org/vocab/Painting": "Works",
-        "http://bibframe.org/vocab/Topic": "Subjects",
-        "http://bibframe.org/vocab/Place": "Places",
-        "http://bibframe.org/vocab/TemporalConcept": "Subjects",
-        "http://bibframe.org/vocab/ClassificationEntity": "Subjects",
-        "http://bibframe.org/vocab/Family": "Agents",
-        "http://bibframe.org/vocab/Jurisdiction": "Agents",
-        "http://bibframe.org/vocab/Meeting": "Agents",
-        "http://bibframe.org/vocab/Organization": "Agents",
-        "http://bibframe.org/vocab/Person": "Agents",
-        "http://bibframe.org/vocab/LanguageEntity": "Languages",
-        "http://bibframe.org/vocab/Provider": "Providers",
-        "http://bibframe.org/vocab/PublisherEvent": "Providers",
-        "http://bibframe.org/vocab/ManufactureEvent": "Providers",
-        "http://bibframe.org/vocab/ProducerEvent": "Providers",
-        "http://bibframe.org/vocab/DistributeEvent": "Providers",
-        "http://bibframe.org/vocab/ContentCategory": "ContentCategory",
-        "http://bibframe.org/vocab/CarrierCategory": "CarrierCategory",
-        "http://bibframe.org/vocab/MediaCategory": "MediaCategory",
-        "http://bibframe.org/vocab/rda/Agent": "Agents",
-        "http://bibframe.org/vocab/rda/Place": "Places",
-        "http://bibframe.org/vocab/rda/Authority": "Subjects",
-        "http://bibframe.org/vocab/rda/Period": "Subjects",
-        "http://bibframe.org/vocab/rda/Technique": "Subjects",
-        "http://bibframe.org/vocab/rda/WorkType": "Subjects",
+    "firstClass": [
+        "http://bibfra.me/vocab/lite/Work",
+        "http://bibfra.me/vocab/lite/Instance",
+        "http://bibfra.me/vocab/lite/Item"
+    ],
+    "idBase": "http://example.org/",
+    "relations": {
+        "instantiates": "include",
+        "holdingFor": "include"
+    },
+    "resourceMap": {
+        "Works": {
+            "classes": [
+                "http://bibfra.me/vocab/marc/Books",
+                "http://bibfra.me/vocab/marc/Dissertation",
+                "http://bibfra.me/vocab/marc/Bibliography",
+                "http://bibfra.me/vocab/marc/Article",
+                "http://bibfra.me/vocab/marc/Map",
+                "http://bibfra.me/vocab/marc/Audio",
+                "http://bibfra.me/vocab/marc/Serials",
+                "http://bibframe.org/vocab/Painting"
+            ],
+            "services": [
+                "lc:works",
+                "local:Works"
+            ]
+        },
+        "Instances": {
+            "classes": [
+                "http://bibfra.me/vocab/marc/Electronic",
+                "http://bibfra.me/vocab/marc/Print",
+                "http://bibfra.me/vocab/av/Vinyl",
+                "http://example.org/vocab/bfp/Image"
+            ],
+            "services": [
+                "local:Instances"
+            ]
+        },
+        "Subjects": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/Topic",
+                "http://bibframe.org/vocab/TemporalConcept",
+                "http://bibfra.me/vocab/lite/Concept",
+                "http://bibframe.org/vocab/ClassificationEntity",
+                "http://bibframe.org/vocab/rda/Authority",
+                "http://bibframe.org/vocab/rda/Period",
+                "http://bibframe.org/vocab/rda/Technique",
+                "http://bibframe.org/vocab/rda/WorkType"
+            ],
+            "services": [
+                "viaf",
+                "lc:subjects",
+                "fast",
+                "agrovoc",
+                "local:Subjects"
+            ]
+        },
+        "Places": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/Place",
+                "http://bibframe.org/vocab/rda/Place"
+            ],
+            "services": [
+                "lc:geo",
+                "local:Places"
+            ]
+        },
+        "Agents": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/Family",
+                "http://bibframe.org/vocab/Jurisdiction",
+                "http://bibfra.me/vocab/lite/Meeting",
+                "http://bibfra.me/vocab/lite/Organization",
+                "http://bibfra.me/vocab/lite/Person",
+                "http://bibframe.org/vocab/rda/Agent"
+            ],
+            "services": [
+                "lc:names",
+                "viaf",
+                "local:Agents"
+            ]
+        },
+        "ContentCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/ContentCategory"
+            ],
+            "services": [
+                "lc:contentTypes"
+            ]
+        },
+        "CarrierCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/CarrierCategory"
+            ],
+            "services": [
+                "lc:carrier"
+            ]
+        },
+        "MediaCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/MediaCategory"
+            ],
+            "services": [
+                "lc:mediaTypes"
+            ]
+        },
+        "LanguageCategory": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/LanguageCategory"
+            ],
+            "services": [
+                "lc:lang",
+                "local:LanguageCategory"
+            ]
+        },
+        "Providers": {
+            "classes": [
+                "http://bibfra.me/vocab/lite/ProviderEvent",
+                "http://bibfra.me/vocab/lite/CopyrightEvent",
+                "http://bibframe.org/vocab/PublisherEvent",
+                "http://bibframe.org/vocab/ManufactureEvent",
+                "http://bibframe.org/vocab/ProducerEvent",
+                "http://bibframe.org/vocab/DistributeEvent"
+            ],
+            "services": [
+                "lc:names",
+                "viaf",
+                "local:Providers"
+            ]
+        }
+    },
+    "services": {
+        "local": {
+            "short": "Local",
+            "full": "Local Database"
+        },
+        "lc": {
+            "short": "LC",
+            "full": "Library of Congress",
+            "config": {
+                "host": "id.loc.gov",
+                "path": "/suggest/",
+                "queryArgs": "",
+                "arg": "q"
+            },
+            "branches": {
+                "subjects": "/authorities/subjects",
+                "geo": "/vocabulary/geographicAreas",
+                "names": "/authorities/names",
+                "lang": "/vocabulary/iso639-2",
+                "works": "/authorities/names",
+                "mediaTypes": "/vocabulary/mediaTypes",
+                "contentTypes": "/vocabulary/contentTypes",
+                "carrier": "/vocabulary/carriers"
+            }
+        },
+        "viaf": {
+            "short": "VIAF",
+            "full": "VIAF",
+            "config": {
+                "host": "viaf.org",
+                "path": "/viaf/AutoSuggest",
+                "queryArgs": "",
+                "arg": "query"
+            }
+        },
+        "fast": {
+            "short": "FAST",
+            "full": "assignFAST",
+            "config": {
+                "host": "fast.oclc.org",
+                "path": "/searchfast/fastsuggest",
+                "queryArgs": "&queryIndex=suggestall&queryReturn=suggestall%2Cidroot%2Cauth%2Ctag%2Ctype%2Craw%2Cbreaker%2Cindicator&rows=10",
+                "arg": "query"
+            }
+        },
+        "agrovoc": {
+            "short": "AgroVoc",
+            "full": "Agricultural Vocabulary",
+            "config": {
+                "host": "aims.fao.org",
+                "path": "/skosmos/rest/v1/search",
+                "queryArgs": "*&vocab=agrovoc&lang=en&labellang=en",
+                "arg": "query"
+            }
+        }
+    },
+    "resourceDefinitions": {
         "http://example.org/vocab/bfp/Image": {
             "type": "dropzone",
             "propertyMap": {
@@ -56,68 +216,6 @@
                 "width": "http://bibframe.org/vocab/width",
                 "height": "http://bibframe.org/vocab/height"
             }
-        }
-    },
-    "serviceProviderMap": {
-        "Subjects": [
-            "viaf",
-            "lc:subjects",
-            "fast",
-            "agrovoc",
-            "local:subjects"
-        ],
-        "Places": [
-            "lc:geo",
-            "local:geo"
-        ],
-        "Providers": [
-            "lc:names",
-            "viaf",
-            "local:providers"
-        ],
-        "Languages": [
-            "lc:lang",
-            "local:lang"
-        ],
-        "Agents": [
-            "lc:names",
-            "viaf",
-            "local:agents"
-        ],
-        "Works": [
-            "lc:works",
-            "local:works"
-        ],
-        "ContentCategory": [
-            "lc:contentTypes"
-        ],
-        "CarrierCategory": [
-            "lc:carrier"
-        ],
-        "MediaCategory": [
-            "lc:mediaTypes"
-        ]
-    },
-    "providerList": {
-        "local": {
-            "short": "Local",
-            "full": "Local Database"
-        },
-        "viaf": {
-            "short": "VIAF",
-            "full": "VIAF"
-        },
-        "fast": {
-            "short": "FAST",
-            "full": "assignFAST"
-        },
-        "lc": {
-            "short": "LC",
-            "full": "Library of Congress"
-        },
-        "agrovoc": {
-            "short": "AgroVoc",
-            "agrovoc": "Agricultural Vocabulary"
         }
     },
     "dataTypes": [
