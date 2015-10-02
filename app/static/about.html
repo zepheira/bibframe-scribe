@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <title>About the BIBFRAME Scribe prototype</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -8,67 +8,115 @@
     <link href="css/editor.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="http://zepheira.com/favicon.ico">
-  </head>
-  <body>
-    <nav class="navbar navbar-default">
-      <div class="navbar-header">
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="navbar-header">
         <a class="navbar-brand" href="index.html"><span class="application-logo"></span>BIBFRAME Scribe</a>
-      </div>
+    </div>
 
-      <ul class="nav navbar-nav pull-right">
+    <ul class="nav navbar-nav pull-right">
         <li><a href="index.html"><i class="icon-home"></i> Eric</a></li>
         <li><a href="activity.html">Activity <span class="badge badge-info">3</span></a></li>
         <li><a href="#">Settings</a></li>
         <li><a href="#">Help</a></li>
         <li class="active"><a href="#">About</a></li>
         <li><a href="#">Logout</a></li>
-      </ul>
-    </nav>
-    <div class="container">
-      <div class="row">
-        <h3>About the BIBFRAME Scribe prototype</h3>
-        <div class="jumbotron">
-          <h2>Overview</h2>
-          <p>The BIBFRAME Scribe prototype is a tool developed by <a href="http://zepheira.com/">Zepheira</a> that demonstrates how to catalog various materials in native BIBFRAME.  As a linked data framework on the web, BIBFRAME is designed to integrate with and engage in the wider information community while also serving the very specific needs of local implementation.</p>
-          <p>This prototype is designed to demonstrate how one would catalog entities in BIBFRAME, how the workflow is integrated with web services, and how to move between multiple types of entities in a single tool. BIBFRAME is designed to work with existing standards (RDA, DACS, VRA, etc.) and yet-to-be-developed community vocabularies.  For demonstration purposes, this prototype uses initial drafts for a small set of material types.</p>
-          <p>This prototype is a work in progress and is not yet aligned with the various BIBFRAME draft specifications and design patterns.</p>
+    </ul>
+</nav>
+<div class="container">
+    <div class="row">
+        <h2>About the BIBFRAME Scribe prototype</h2>
+
+        <div class="well">
+            <h2>Overview</h2>
+
+            <p>The Scribe prototype is a tool developed
+                by <a href="http://zepheira.com/">Zepheira</a> that
+                demonstrates how to catalog various materials natively in Linked Data. Initially supported by the <a href="http://loc.goc/">Library
+                    of Congress</a>, Scribe has matured with additional support from
+                <a href="https://www.lib.ucdavis.edu/">UC Davis University Library</a>
+                as part of the <a href="https://www.lib.ucdavis.edu/bibflow/about/">BIBFLOW project</a>
+                funded by the
+                <a href="https://www.imls.gov/">Institute for Museum and
+                    Library Services</a>. Feedback from
+                Zepheira's <a href="http://zepheira.com/solutions/library/training/">Linked
+                    Data and BIBFRAME Practical Practitioner Training</a> Alumni
+                have also been invaluable in Scribe's continued development.</p>
+
+            <p>This prototype is designed to demonstrate how one would
+                catalog entities using the <a href="http://bibfra.me/">Bibframe Lite</a> vocabulary.
+                Bibframe Lite is an RDF vocabulary designed
+                to integrate with and engage in the wider information
+                community while also serving the very specific needs of
+                local implementation. Zepheira works with a range of
+                communities to extend the Bibframe Lite vocabulary. These
+                additional vocabulary layers include:
+
+            <ul>
+                <li>BF Lite + Library</li>
+                <li>BF Lite + Archives</li>
+                <li>BF Lite + Rare Materials</li>
+                <li>BF Lite + Relation</li>
+            </ul>
+            </p>
+
         </div>
-        <h3>Status: Pre-release demonstration</h3>
-        <h4>Objectives</h4>
+
+
+        <h3>Prototype Objectives</h3>
         <ul>
-          <li>Demonstrate how components of the BIBFRAME framework come together in an editing platform.</li>
-          <li>Provide a method to examine workflows for cataloging in native BIBFRAME.</li>
-          <li>Explore common relationships between Works such as translations, derivative works, etc.</li>
-          <li>Demonstrate how different vocabularies are accommodated in a single interface.</li>
-          <li>Explore the ability to link to external services that are needed in workflows, such as VIAF, Library of Congress.</li>
-          <li>Demonstrate unique data entry features such as “look ahead” searches of remote services and a drag and drop image zone for images.</li>
-          <li>Show possible future functionality such as user activity dashboard via mock-up pages.</li>
+            <li>Demonstrate how components of the Bibframe Lite framework come together in an editing platform.</li>
+            <li>Provide a method to examine workflows for cataloging in native Bibframe Lite.</li>
+            <li>Explore common relationships between Works such as translations, derivative works, etc.</li>
+            <li>Demonstrate how different vocabularies are accommodated in a single interface.</li>
+            <li>Explore the ability to link to external services that are needed in workflows, such as VIAF, Library of
+                Congress.
+            </li>
+            <li>Demonstrate unique data entry features such as “look ahead” searches of remote services and a drag and
+                drop image zone for images.
+            </li>
+            <li>Show possible future functionality such as user activity dashboard via mock-up pages.</li>
         </ul>
 
-        <h4>Prototype Functionality Facts</h4>
+        <h3>Prototype Functionality</h3>
         <ul>
-          <li>Uses eight different profiles to demonstrate the flexibility of the framework, including electronic and print instances of:
-            <ul>
-              <li>Bibliography</li>
-              <li>Book</li>
-              <li>Dissertation</li>
-            </ul>
-            all of which contain some default values, some of which are read-only, and some of which can be subsequently edited by the user.
-          </li>
-          <li>Seeded with 15 records converted from MARCXML.</li>
-          <li>Interface reflects a subset of the BIBFRAME vocabulary.  The interface guides you to the particular instance and brings up only fields that are pertinent to that instance type.</li>
-          <li>Local search for instances and all other resources</li>
-          <li>Uses remote search services:
-            <ul>
-              <li><a href="http://id.loc.gov/">Library of Congress Linked Data Service</a> (names, subjects, languages, places, RDA categories)</li>
-              <li><a href="http://oclc.org/research/activities/assignfast.html">assignFAST</a> (subjects)</li>
-              <li><a href="http://viaf.org/">VIAF</a> (names, subjects)</li>
-              <li><a href="http://aims.fao.org/standards/agrovoc/about">AGROVOC</a> (subjects)</li>
-            </ul>
-          </li>
+            <li>Scribe uses 32 different profiles to demonstrate the flexibility of the framework, including 12 modular
+                micro-profiles for Events, Categories and Concepts. Scribe also includes profiles for electionic and
+                print versions of followingm and all of thish containue default values which can be edited by the
+                cataloger: :
+                <ul>
+                    <li>Bibliography</li>
+                    <li>Book</li>
+                    <li>Dissertation</li>
+                    <li>Article</li>
+                    <li>Vinyl record</li>
+                    <li>Map</li>
+                    <li>Serial</li>
+                </ul>
+            </li>
+            <li>Interface reflects a subset of the BIBFRAME Lite + Library vocabularies. The interface guides you to the
+                particular instance and brings up only fields that are pertinent to that instance type.
+            </li>
+            <li>Search allows users to find local material and select for additional curation and editing.</li>
+            <li>Uses remote search services:
+                <ul>
+                    <li><a href="http://id.loc.gov/">Library of Congress Linked Data Service</a> (names, subjects,
+                        languages, places, RDA categories)
+                    </li>
+                    <li><a href="http://oclc.org/research/activities/assignfast.html">assignFAST</a> (subjects)</li>
+                    <li><a href="http://viaf.org/">VIAF</a> (names, subjects)</li>
+                    <li><a href="http://aims.fao.org/standards/agrovoc/about">AGROVOC</a> (subjects)</li>
+                    <li><a href="http://id.nlm.nih.gov/mesh/">Medical Subject Headings (MeSH) RDF Linked Data (subjects)</a>
+                </ul>
+            </li>
+            <li>Support identifier disambiguation of subjects, people, and other resources by providing access to data
+                from remote search service in Resource Description Framework (RDF) format. For services that support
+                human readable content negotiation, users can click a link to open the RDF displayed in a new browser
+                tab for context.
+            </li>
         </ul>
-        <p class="text-right"><em>Last updated</em>: January 22, 2014</p>
-      </div>
+        <p class="text-right"><em>Last updated</em>: October 2, 2015</p>
     </div>
-  </body>
+</body>
 </html>
