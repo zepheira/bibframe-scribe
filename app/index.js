@@ -324,9 +324,15 @@ proxyHelper = function(qin, conf, source, branch) {
 };
 
 sparqlProxyHelper = function(qin, query, conf, source, branch) {
-    var request, a, fullQuery;
+    var request, a, reqObj, fullQuery;
     fullQuery = encodeURIComponent(query.replace("%s", qin));
-    request = http.request('http://' + conf.host + ((branch !== null) ? branch : '') + conf.path +  '?' + conf.arg + '=' + fullQuery + conf.queryArgs);
+    reqObj = {
+        "url": 'https://' + conf.host + ((branch !== null) ? branch : '') + conf.path +  '?' + conf.arg + '=' + fullQuery + conf.queryArgs,
+        "headers": {
+            "User-Agent": "BIBFRAME Scribe"
+        }
+    };
+    request = http.request(reqObj);
     return request.then(function(response) {
         return response.body.read().then(function(answer) {
             return tr[source](answer);
