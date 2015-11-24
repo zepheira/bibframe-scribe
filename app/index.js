@@ -312,8 +312,14 @@ server.get(/\/static\/?.*/, restify.serveStatic({
 }));
 
 proxyHelper = function(qin, conf, source, branch) {
-    var request, a;
-    request = http.request('http://' + conf.host + ((branch !== null) ? branch : '') + conf.path +  '?' + conf.arg + '=' + qin + conf.queryArgs);
+    var request, a, reqObj;
+    reqObj = {
+        "url": 'http://' + conf.host + ((branch !== null) ? branch : '') + conf.path +  '?' + conf.arg + '=' + qin + conf.queryArgs,
+        "headers": {
+            "User-Agent": "BIBFRAME Scribe"
+        }
+    };
+    request = http.request(reqObj);
     return request.then(function(response) {
         return response.body.read().then(function(answer) {
             return tr[source](answer);
