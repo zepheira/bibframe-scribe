@@ -1,0 +1,31 @@
+{
+    "name": "scribe",
+    "version": "1.0.0",
+    "description": "BIBFRAME Scribe Editor",
+    "keywords": [
+        "bibframe",
+        "editor"
+    ],
+    "homepage": "https://github.com/zepheira/bibframe-scribe/",
+    "bugs": "https://github.com/zepheira/bibframe-scribe/issues",
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zepheira/bibframe-scribe.git"
+    },
+    "dependencies": {
+        "level": "1.3.0",
+        "levelgraph": "1.0.0",
+        "levelgraph-n3": "1.0.0",
+        "n3": "0.4.3",
+        "restify": "3.0.3",
+        "uuid": "2.0.1",
+        "q": "1.4.1",
+        "q-io": "1.13.0"
+    },
+    "engines": {
+        "node": "0.12.4"
+    },
+    "private": true
+}
+
